@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "arcadiandream:item/makaite_axe"
+  }
+}

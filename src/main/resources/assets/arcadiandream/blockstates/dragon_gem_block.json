@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "arcadiandream:block/dragon_gem_block",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "arcadiandream:block/dragon_gem_block",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "arcadiandream:block/dragon_gem_block"
+    },
+    "facing=west": {
+      "model": "arcadiandream:block/dragon_gem_block",
+      "y": 90
+    }
+  }
+}

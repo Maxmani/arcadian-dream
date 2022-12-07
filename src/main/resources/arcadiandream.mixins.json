@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.reimaden.arcadiandream.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "DamageEnchantmentMixin",
+    "EnchantmentHelperMixin",
+    "EnchantmentMixin",
+    "LivingEntityMixin",
+    "PlayerEntityMixin",
+    "ProjectileEntityMixin",
+    "ThrownEntityMixin"
+  ],
+  "client": [
+    "client.ClientPlayNetworkHandlerMixin",
+    "client.EntityRendererMixin",
+    "client.ItemRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

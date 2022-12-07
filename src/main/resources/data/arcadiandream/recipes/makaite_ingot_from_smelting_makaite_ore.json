@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 0.8,
+  "group": "makaite_ingot",
+  "ingredient": {
+    "item": "arcadiandream:makaite_ore"
+  },
+  "result": "arcadiandream:makaite_ingot"
+}

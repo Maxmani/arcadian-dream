@@ -1,0 +1,14 @@
+{
+  "type": "arcadiandream:ritual_crafting",
+  "ingredients": [
+    {
+      "item": "arcadiandream:makaite_ingot"
+    },
+    {
+      "item": "minecraft:netherite_ingot"
+    }
+  ],
+  "output": {
+    "item":"arcadiandream:makaite_infused_netherite_ingot"
+  }
+}

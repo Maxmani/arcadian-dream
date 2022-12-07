@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "arcadiandream:dragon_gem"
+    }
+  },
+  "result": {
+    "item": "arcadiandream:dragon_gem_block"
+  }
+}

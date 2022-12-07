@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "arcadiandream:power_item"
+    }
+  },
+  "result": {
+    "item": "arcadiandream:big_power_item"
+  }
+}

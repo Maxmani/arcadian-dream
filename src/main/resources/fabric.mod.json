@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "id": "arcadiandream",
+  "version": "${version}",
+
+  "name": "Arcadian Dream",
+  "description": "WIP Touhou mod.",
+  "authors": [
+    "Maxmani"
+  ],
+  "contributors": [
+    "Virtlux"
+  ],
+  "contact": {
+  },
+
+  "license": "EUPL-1.2",
+  "icon": "assets/arcadiandream/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.reimaden.arcadiandream.ArcadianDream"
+    ],
+    "client": [
+      "net.reimaden.arcadiandream.ArcadianDreamClient"
+    ],
+    "jei_mod_plugin": [
+      "net.reimaden.arcadiandream.compat.jei.JEIPlugin"
+    ],
+    "rei_client": [
+      "net.reimaden.arcadiandream.compat.rei.REIPlugin"
+    ],
+    "emi": [
+      "net.reimaden.arcadiandream.compat.emi.EMIPlugin"
+    ]
+  },
+  "mixins": [
+    "arcadiandream.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "fabric-api": "*",
+    "minecraft": "~1.19",
+    "java": ">=17",
+    "geckolib3": ">=3.1.33",
+    "trinkets" : ">=3"
+  }
+}

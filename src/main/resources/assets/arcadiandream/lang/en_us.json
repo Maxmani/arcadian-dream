@@ -1,0 +1,91 @@
+{
+  "itemGroup.arcadiandream.items": "Arcadian Dream Items",
+  "itemGroup.arcadiandream.blocks": "Arcadian Dream Blocks",
+  "itemGroup.arcadiandream.danmaku": "Arcadian Dream Danmaku",
+
+  "item.arcadiandream.power_item": "Power Item",
+  "item.arcadiandream.big_power_item": "Big Power Item",
+  "item.arcadiandream.point_item": "Point Item",
+  "item.arcadiandream.max_point_item": "Max Point Item",
+  "item.arcadiandream.bomb_item": "Bomb Item",
+  "item.arcadiandream.extend_item": "Extend Item",
+  "item.arcadiandream.star_item": "Star Item",
+
+  "item.arcadiandream.heavenly_peach": "Heavenly Peach",
+
+  "item.arcadiandream.ordinary_hat": "Ordinary Hat",
+  "item.arcadiandream.nue_trident": "Nue Trident",
+  "item.arcadiandream.hisou_sword": "Sword of Hisou",
+
+  "item.arcadiandream.dragon_gem": "Dragon Gem",
+  "item.arcadiandream.raw_makaite": "Raw Makaite",
+  "item.arcadiandream.makaite_ingot": "Makaite Ingot",
+  "item.arcadiandream.makaite_infused_netherite_ingot": "Makaite-Infused Netherite Ingot",
+
+  "item.arcadiandream.makaite_helmet": "Makaite Helmet",
+  "item.arcadiandream.makaite_chestplate": "Makaite Chestplate",
+  "item.arcadiandream.makaite_leggings": "Makaite Leggings",
+  "item.arcadiandream.makaite_boots": "Makaite Boots",
+
+  "item.arcadiandream.makaite_sword": "Makaite Sword",
+  "item.arcadiandream.makaite_pickaxe": "Makaite Pickaxe",
+  "item.arcadiandream.makaite_axe": "Makaite Axe",
+  "item.arcadiandream.makaite_shovel": "Makaite Shovel",
+  "item.arcadiandream.makaite_hoe": "Makaite Hoe",
+
+  "item.arcadiandream.orb_bullet": "Orb Bullet",
+
+  "item.arcadiandream.music_disc_fairy_playground": "Music Disc",
+  "item.arcadiandream.music_disc_fairy_playground.desc": "Virtlux - Fairy Playground",
+  "item.arcadiandream.music_disc_the_shrine_long_forgotten": "Music Disc",
+  "item.arcadiandream.music_disc_the_shrine_long_forgotten.desc": "Virtlux - The Shrine Long Forgotten",
+
+  "item.arcadiandream.ordinary_hat.tooltip": "Increases your item pickup range",
+  "item.arcadiandream.bomb_item.cancel": "§bBullets cancelled:§r %1$s §6|| §bStar Items obtained:§r %2$s",
+  "item.arcadiandream.bomb_item.tooltip": "Converts bullets into Star Items",
+  "item.arcadiandream.bullet.tooltip": "Hold §oSHIFT§r for more details",
+  "item.arcadiandream.bullet.tooltip_speed": "Speed: %s",
+  "item.arcadiandream.bullet.tooltip_power": "Power: %s",
+  "item.arcadiandream.bullet.tooltip_duration": "Duration: %ss",
+  "item.arcadiandream.bullet.tooltip_cooldown": "Cooldown: %ss",
+  "item.arcadiandream.bullet.tooltip_gravity": "Gravity: %s",
+  "item.arcadiandream.bullet.tooltip_density": "Density: %s",
+  "item.arcadiandream.bullet.tooltip_pattern": "Pattern: %s",
+  "item.arcadiandream.bullet.tooltip_stack": "Stack: %s",
+  "item.arcadiandream.bullet.tooltip_amount": "Amount: %s",
+
+  "block.arcadiandream.dragon_gem_ore": "Dragon Gem Ore",
+  "block.arcadiandream.deepslate_dragon_gem_ore": "Deepslate Dragon Gem Ore",
+  "block.arcadiandream.end_stone_dragon_gem_ore": "End Stone Dragon Gem Ore",
+  "block.arcadiandream.dragon_gem_block": "Block of Dragon Gem",
+  "block.arcadiandream.makaite_ore": "Makaite Ore",
+  "block.arcadiandream.raw_makaite_block": "Block of Raw Makaite",
+  "block.arcadiandream.makaite_block": "Block of Makaite",
+  "block.arcadiandream.onbashira": "Onbashira",
+  "block.arcadiandream.onbashira_pillar": "Onbashira Pillar",
+  "block.arcadiandream.ritual_shrine": "Ritual Shrine",
+
+  "entity.arcadiandream.orb_bullet": "Orb Bullet",
+
+  "advancements.arcadiandream.root.title": "Arcadian Dream",
+  "advancements.arcadiandream.root.description": "Welcome to Gensokyo",
+  "advancements.arcadiandream.mine_dragon_gem.title": "Rainbow Dragon Cave",
+  "advancements.arcadiandream.mine_dragon_gem.description": "Acquire dragon gems",
+
+  "arcadiandream.subtitles.entity.danmaku.fire": "Danmaku fires",
+  "arcadiandream.subtitles.item.bomb_item.use": "Bomb Item activates",
+  "arcadiandream.subtitles.item.extend_item.use": "Extend Item activates",
+  "arcadiandream.subtitles.item.armor.equip_ordinary": "Clothing rustles",
+  "arcadiandream.subtitles.item.armor.equip_makaite": "Makaite armor clanks",
+  "arcadiandream.subtitles.block.onbashira.add_item": "Onbashira fills",
+  "arcadiandream.subtitles.block.ritual_shrine.use": "Ritual Shrine used",
+
+  "death.attack.danmaku": "%1$s was shot by %2$s",
+  "death.attack.danmaku.player": "%1$s was shot by %2$s using danmaku",
+
+  "arcadiandream.category.ritual_crafting": "Ritual Crafting",
+  "emi.category.arcadiandream.ritual_crafting": "Ritual Crafting",
+
+  "tag.c.raw_ores": "Raw Ores",
+  "tag.arcadiandream.dragon_gem_ores": "Dragon Gem Ores"
+}

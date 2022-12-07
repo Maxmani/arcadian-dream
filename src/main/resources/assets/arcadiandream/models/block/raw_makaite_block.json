@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "arcadiandream:block/raw_makaite_block"
+  }
+}

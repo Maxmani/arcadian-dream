@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "arcadiandream:item/makaite_infused_netherite_ingot"
+  }
+}

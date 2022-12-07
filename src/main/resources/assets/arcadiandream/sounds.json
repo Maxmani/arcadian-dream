@@ -1,0 +1,78 @@
+{
+  "music_disc.fairy_playground": {
+    "sounds": [
+      {
+        "name": "arcadiandream:records/fairy_playground",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc.the_shrine_long_forgotten": {
+    "sounds": [
+      {
+        "name": "arcadiandream:records/the_shrine_long_forgotten",
+        "stream": true
+      }
+    ]
+  },
+  "entity.danmaku.fire": {
+    "sounds": [
+      "arcadiandream:danmaku/fire"
+    ],
+    "subtitle": "arcadiandream.subtitles.entity.danmaku.fire"
+  },
+  "entity.danmaku.hit": {
+    "sounds": [
+      "arcadiandream:danmaku/hit"
+    ]
+  },
+  "item.bomb_item.use": {
+    "sounds": [
+      "arcadiandream:item/bomb_item/bomb"
+    ],
+    "subtitle": "arcadiandream.subtitles.item.bomb_item.use"
+  },
+  "item.armor.equip_ordinary": {
+    "sounds": [
+      "item/armor/equip_leather1",
+      "item/armor/equip_leather2",
+      "item/armor/equip_leather3",
+      "item/armor/equip_leather4",
+      "item/armor/equip_leather5",
+      "item/armor/equip_leather6"
+    ],
+    "subtitle": "arcadiandream.subtitles.item.armor.equip_ordinary"
+  },
+  "item.armor.equip_makaite": {
+    "sounds": [
+      "item/armor/equip_iron1",
+      "item/armor/equip_iron2",
+      "item/armor/equip_iron3",
+      "item/armor/equip_iron4",
+      "item/armor/equip_iron5",
+      "item/armor/equip_iron6"
+    ],
+    "subtitle": "arcadiandream.subtitles.item.armor.equip_makaite"
+  },
+  "item.extend_item.use": {
+    "sounds": [
+      "arcadiandream:item/extend_item/extend"
+    ],
+    "subtitle": "arcadiandream.subtitles.item.extend_item.use"
+  },
+  "block.onbashira.add_item": {
+    "sounds": [
+      "entity/itemframe/add_item1",
+      "entity/itemframe/add_item2",
+      "entity/itemframe/add_item3",
+      "entity/itemframe/add_item4"
+    ],
+    "subtitle": "arcadiandream.subtitles.block.onbashira.add_item"
+  },
+  "block.ritual_shrine.use": {
+    "sounds": [
+      "arcadiandream:random/ritual"
+    ],
+    "subtitle": "arcadiandream.subtitles.block.ritual_shrine.use"
+  }
+}
