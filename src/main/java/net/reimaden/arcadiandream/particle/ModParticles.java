@@ -1,5 +1,7 @@
 package net.reimaden.arcadiandream.particle;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.reimaden.arcadiandream.ArcadianDream;
@@ -21,6 +23,11 @@ public class ModParticles {
     }
 
     public static void register() {
+        ArcadianDream.LOGGER.debug("Registering particles for " + ArcadianDream.MOD_ID);
+    }
+
+    @Environment(EnvType.CLIENT)
+    public static void registerClient() {
         ParticleFactoryRegistry.getInstance().register(ModParticles.BULLET_DESPAWN, BulletDespawnParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.BULLET_SPAWN, BulletSpawnParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.BULLET_CANCEL, BulletCancelParticle.Factory::new);

@@ -18,13 +18,15 @@ public class ArcadianDreamClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        GeoArmorRenderer.registerArmorRenderer(new OrdinaryArmorRenderer(), ModItems.ORDINARY_HAT);
         ModModels.register();
         EntityRenderer.register();
-        ModParticles.register();
+        ModParticles.registerClient();
         ModColorProviders.register();
+        ModMessages.registerS2CPackets();
+
+        GeoArmorRenderer.registerArmorRenderer(new OrdinaryArmorRenderer(), ModItems.ORDINARY_HAT);
+
         BlockEntityRendererRegistry.register(ModBlockEntities.ONBASHIRA, OnbashiraBlockEntityRenderer::new);
         BlockEntityRendererRegistry.register(ModBlockEntities.RITUAL_SHRINE, RitualShrineBlockEntityRenderer::new);
-        ModMessages.registerS2CPackets();
     }
 }
