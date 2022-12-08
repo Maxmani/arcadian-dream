@@ -79,6 +79,7 @@
   "arcadiandream.subtitles.item.armor.equip_makaite": "Makaite armor clanks",
   "arcadiandream.subtitles.block.onbashira.add_item": "Onbashira fills",
   "arcadiandream.subtitles.block.ritual_shrine.use": "Ritual Shrine used",
+  "arcadiandream.subtitles.block.onbashira.create": "Onbashira tied",
 
   "death.attack.danmaku": "%1$s was shot by %2$s",
   "death.attack.danmaku.player": "%1$s was shot by %2$s using danmaku",

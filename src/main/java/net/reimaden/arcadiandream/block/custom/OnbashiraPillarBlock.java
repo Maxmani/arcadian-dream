@@ -1,20 +1,29 @@
 package net.reimaden.arcadiandream.block.custom;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ShapeContext;
-import net.minecraft.block.Waterloggable;
+import net.minecraft.block.*;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import net.reimaden.arcadiandream.block.ModBlocks;
+import net.reimaden.arcadiandream.item.ModItems;
+import net.reimaden.arcadiandream.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("deprecation")
@@ -33,6 +42,29 @@ public class OnbashiraPillarBlock extends Block implements Waterloggable {
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return SHAPE;
+    }
+
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        ItemStack paper = Items.PAPER.getDefaultStack();
+        ItemStack lead = Items.LEAD.getDefaultStack();
+
+        boolean hasItems = (player.getMainHandStack().isItemEqual(paper) && player.getOffHandStack().isItemEqual(lead))
+                || (player.getMainHandStack().isItemEqual(lead) && player.getOffHandStack().isItemEqual(paper));
+
+        if (world.isClient) return hasItems ? ActionResult.SUCCESS : ActionResult.PASS;
+
+        if (hasItems) {
+            if (!player.isCreative()) {
+                player.getMainHandStack().decrement(1);
+                player.getOffHandStack().decrement(1);
+            }
+            world.setBlockState(pos, ModBlocks.ONBASHIRA.getStateWithProperties(state));
+            player.incrementStat(Stats.CRAFTED.getOrCreateStat(ModItems.ONBASHIRA));
+            world.playSound(null, pos, ModSounds.BLOCK_ONBASHIRA_CREATE, SoundCategory.BLOCKS, 0.8f, 1.2f);
+        }
+
+        return ActionResult.PASS;
     }
 
     @Override

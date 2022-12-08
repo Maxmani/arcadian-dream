@@ -61,9 +61,9 @@ public class OnbashiraBlock extends BlockWithEntity implements BlockEntityProvid
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         Inventory blockEntity = (Inventory) world.getBlockEntity(pos);
 
-        ItemStack itemStack = player.getStackInHand(hand);
+        ItemStack stack = player.getStackInHand(hand);
         boolean bl = !blockEntity.getStack(0).isEmpty();
-        boolean bl2 = !itemStack.isEmpty();
+        boolean bl2 = !stack.isEmpty();
         boolean bl3 = !bl && bl2;
 
         if (world.isClient) return bl || bl2 ? ActionResult.SUCCESS : ActionResult.PASS;

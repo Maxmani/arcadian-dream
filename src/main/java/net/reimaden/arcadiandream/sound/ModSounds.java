@@ -16,6 +16,7 @@ public class ModSounds {
     public static final SoundEvent ITEM_EXTEND_ITEM_USE = registerSoundEvent("item.extend_item.use");
     public static final SoundEvent BLOCK_ONBASHIRA_ADD_ITEM = registerSoundEvent("block.onbashira.add_item");
     public static final SoundEvent BLOCK_RITUAL_SHRINE_USE = registerSoundEvent("block.ritual_shrine.use");
+    public static final SoundEvent BLOCK_ONBASHIRA_CREATE = registerSoundEvent("block.onbashira.create");
 
     // Music
     public static final SoundEvent MUSIC_DISC_FAIRY_PLAYGROUND = registerSoundEvent("music_disc.fairy_playground");
