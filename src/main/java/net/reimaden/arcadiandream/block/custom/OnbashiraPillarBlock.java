@@ -62,6 +62,7 @@ public class OnbashiraPillarBlock extends Block implements Waterloggable {
             world.setBlockState(pos, ModBlocks.ONBASHIRA.getStateWithProperties(state));
             player.incrementStat(Stats.CRAFTED.getOrCreateStat(ModItems.ONBASHIRA));
             world.playSound(null, pos, ModSounds.BLOCK_ONBASHIRA_CREATE, SoundCategory.BLOCKS, 0.8f, 1.2f);
+            return ActionResult.SUCCESS;
         }
 
         return ActionResult.PASS;

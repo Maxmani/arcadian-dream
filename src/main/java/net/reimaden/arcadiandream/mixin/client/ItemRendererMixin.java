@@ -20,7 +20,7 @@ public class ItemRendererMixin {
 
     @ModifyVariable(method = "renderItem(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformation$Mode;ZLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/client/render/model/BakedModel;)V", at = @At("HEAD"), argsOnly = true)
     private BakedModel guiModel(BakedModel defaultModel, ItemStack stack, ModelTransformation.Mode rendermode) {
-        if((rendermode == ModelTransformation.Mode.GUI || rendermode == ModelTransformation.Mode.GROUND || rendermode == ModelTransformation.Mode.FIXED)
+        if ((rendermode == ModelTransformation.Mode.GUI || rendermode == ModelTransformation.Mode.GROUND || rendermode == ModelTransformation.Mode.FIXED)
                 && stack.isOf(ModItems.NUE_TRIDENT)) {
             return models.getModelManager().getModel(new ModelIdentifier("arcadiandream:nue_trident_inventory#inventory"));
         }

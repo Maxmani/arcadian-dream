@@ -69,9 +69,10 @@ public class RitualShrineBlock extends BlockWithEntity implements BlockEntityPro
             } else {
                 blockEntity.doCrafting(player);
             }
+            return ActionResult.SUCCESS;
         }
 
-        return ActionResult.CONSUME;
+        return ActionResult.PASS;
     }
 
     @Override

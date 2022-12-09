@@ -8,6 +8,7 @@ import net.reimaden.arcadiandream.painting.ModPaintings;
 import net.reimaden.arcadiandream.particle.ModParticles;
 import net.reimaden.arcadiandream.recipe.ModRecipes;
 import net.reimaden.arcadiandream.sound.ModSounds;
+import net.reimaden.arcadiandream.statistic.ModStats;
 import net.reimaden.arcadiandream.util.ModDispenserBehavior;
 import net.reimaden.arcadiandream.world.feature.ModConfiguredFeatures;
 import net.reimaden.arcadiandream.item.ModItems;
@@ -36,6 +37,7 @@ public class ArcadianDream implements ModInitializer {
 		ModParticles.register();
 		ModDispenserBehavior.register();
 		ModRecipes.register();
+		ModStats.register();
 
 		ModLootTableModifiers.modify();
 		ModOreGeneration.generate();

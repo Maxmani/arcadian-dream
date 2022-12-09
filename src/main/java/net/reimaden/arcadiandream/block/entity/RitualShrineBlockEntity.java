@@ -27,6 +27,7 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import net.reimaden.arcadiandream.statistic.ModStats;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -98,11 +99,11 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
                 getOnbashiraPos(pos.add(getPos())).ifPresent(onbashiras::add);
             }
             List<ItemStack> stacks = onbashiras.stream().filter(OnbashiraBlockEntity::hasItemStack).map(OnbashiraBlockEntity::getItemStack).toList();
-            craftItem(stacks, onbashiras, this);
+            craftItem(stacks, onbashiras, this, player);
         }
     }
 
-    private void craftItem(List<ItemStack> stacks, List<OnbashiraBlockEntity> onbashiras, RitualShrineBlockEntity shrineBlock) {
+    private void craftItem(List<ItemStack> stacks, List<OnbashiraBlockEntity> onbashiras, RitualShrineBlockEntity shrineBlock, PlayerEntity player) {
         SimpleInventory inventory = new SimpleInventory(stacks.size());
         for (int i = 0; i < stacks.size(); i++) {
             inventory.setStack(i, stacks.get(i));
@@ -125,6 +126,7 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
             shrineBlock.setStack(0, new ItemStack(recipe.get().getOutput().getItem(), recipe.get().getOutput().getCount()));
             shrineBlock.markDirty();
             craftEffects();
+            player.incrementStat(ModStats.INTERACT_WITH_RITUAL_SHRINE);
         }
     }
 

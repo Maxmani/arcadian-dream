@@ -27,6 +27,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import net.reimaden.arcadiandream.statistic.ModStats;
 import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings({"deprecation", "ConstantConditions"})
@@ -76,15 +77,18 @@ public class OnbashiraBlock extends BlockWithEntity implements BlockEntityProvid
             blockEntity.markDirty();
             world.playSound(null, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, ModSounds.BLOCK_ONBASHIRA_ADD_ITEM, SoundCategory.BLOCKS,
                     1.0f, 1.0f);
+            player.incrementStat(ModStats.INTERACT_WITH_ONBASHIRA);
+            return ActionResult.SUCCESS;
         } else if (bl) {
             player.getInventory().offerOrDrop(blockEntity.getStack(0));
             blockEntity.removeStack(0);
             blockEntity.markDirty();
             world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_ITEM_PICKUP, player.getSoundCategory(),
                     0.2f, this.random.nextFloat() - this.random.nextFloat() * 1.4f + 2.0f);
+            return ActionResult.SUCCESS;
         }
 
-        return ActionResult.CONSUME;
+        return ActionResult.PASS;
     }
 
     @Override
