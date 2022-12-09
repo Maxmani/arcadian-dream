@@ -11,3 +11,4 @@ Unless mentioned otherwise, all assets (files in `src/main/resources/assets/`) a
 
 ## Disclaimer
 This is a fan work based on Touhou Project. Touhou Project and its characters are the property of Team Shanghai Alice (ZUN).
+<img alt="Business as usual" src="https://cdn.discordapp.com/attachments/696128453065310328/696359883427151963/business_as_usual.png" title="Business as usual" width="267"/>
