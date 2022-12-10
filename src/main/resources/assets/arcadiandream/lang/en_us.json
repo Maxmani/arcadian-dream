@@ -21,6 +21,7 @@
   "item.arcadiandream.raw_makaite": "Raw Makaite",
   "item.arcadiandream.makaite_ingot": "Makaite Ingot",
   "item.arcadiandream.makaite_infused_netherite_ingot": "Makaite-Infused Netherite Ingot",
+  "item.arcadiandream.wall_passing_chisel": "Wall-Passing Chisel",
 
   "item.arcadiandream.makaite_helmet": "Makaite Helmet",
   "item.arcadiandream.makaite_chestplate": "Makaite Chestplate",
@@ -80,6 +81,7 @@
   "arcadiandream.subtitles.block.onbashira.add_item": "Onbashira fills",
   "arcadiandream.subtitles.block.ritual_shrine.use": "Ritual Shrine used",
   "arcadiandream.subtitles.block.onbashira.create": "Onbashira tied",
+  "arcadiandream.subtitles.item.wall_passing_chisel.use": "Player warps",
 
   "death.attack.danmaku": "%1$s was shot by %2$s",
   "death.attack.danmaku.player": "%1$s was shot by %2$s using danmaku",

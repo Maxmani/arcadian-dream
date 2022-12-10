@@ -82,5 +82,11 @@
       "entity/leashknot/place3"
     ],
     "subtitle": "arcadiandream.subtitles.block.onbashira.create"
+  },
+  "item.wall_passing_chisel.use": {
+    "sounds": [
+      "arcadiandream:random/warp"
+    ],
+    "subtitle": "arcadiandream.subtitles.item.wall_passing_chisel.use"
   }
 }
