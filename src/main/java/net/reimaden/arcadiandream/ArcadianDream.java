@@ -3,6 +3,7 @@ package net.reimaden.arcadiandream;
 import net.fabricmc.api.ModInitializer;
 import net.reimaden.arcadiandream.block.ModBlocks;
 import net.reimaden.arcadiandream.block.entity.ModBlockEntities;
+import net.reimaden.arcadiandream.config.ArcadianDreamConfig;
 import net.reimaden.arcadiandream.entity.ModEntities;
 import net.reimaden.arcadiandream.painting.ModPaintings;
 import net.reimaden.arcadiandream.particle.ModParticles;
@@ -21,6 +22,7 @@ public class ArcadianDream implements ModInitializer {
 
 	public static final String MOD_ID = "arcadiandream";
 	public static final Logger LOGGER = LoggerFactory.getLogger(ArcadianDream.class);
+	public static final ArcadianDreamConfig CONFIG = ArcadianDreamConfig.createAndLoad();
 
 	@Override
 	public void onInitialize() {

@@ -93,5 +93,10 @@
   "tag.arcadiandream.dragon_gem_ores": "Dragon Gem Ores",
 
   "stat.arcadiandream.interact_with_ritual_shrine": "Interactions with Ritual Shrine",
-  "stat.arcadiandream.interact_with_onbashira": "Interactions with Onbashira"
+  "stat.arcadiandream.interact_with_onbashira": "Interactions with Onbashira",
+
+  "text.config.arcadian-dream.title": "Arcadian Dream Config",
+  "text.config.arcadian-dream.option.canUseChisel": "Can use Wall-Passing Chisel",
+  "text.config.arcadian-dream.option.maxChiselDistance": "Chisel maximum distance",
+  "text.config.arcadian-dream.option.maxChiselDistance.tooltip": "How far the player can travel using the Wall-Passing Chisel"
 }

@@ -15,6 +15,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.reimaden.arcadiandream.util.ModTags;
 import org.jetbrains.annotations.Nullable;
@@ -37,23 +38,25 @@ public class WallPassingChiselItem extends Item {
 
         BlockPos travel = travelPos(world, pos, facing);
 
-        if (world.isClient) return travel != null ? ActionResult.SUCCESS : ActionResult.PASS;
+        if (ArcadianDream.CONFIG.canUseChisel()) {
+            if (world.isClient) return travel != null ? ActionResult.SUCCESS : ActionResult.PASS;
 
-        if (player != null) {
-            if (travel != null && isSafePos(world, travel.up())) {
-                player.setPosition(travel.getX() + 0.5, travel.getY(), travel.getZ() + 0.5);
-                player.refreshPositionAfterTeleport(player.getPos());
+            if (player != null) {
+                if (travel != null && isSafePos(world, travel.up())) {
+                    player.setPosition(travel.getX() + 0.5, travel.getY(), travel.getZ() + 0.5);
+                    player.refreshPositionAfterTeleport(player.getPos());
 
-                if (hand == Hand.MAIN_HAND) {
-                    stack.damage(1, player, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
-                } else {
-                    stack.damage(1, player, e -> e.sendEquipmentBreakStatus(EquipmentSlot.OFFHAND));
+                    if (hand == Hand.MAIN_HAND) {
+                        stack.damage(1, player, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+                    } else {
+                        stack.damage(1, player, e -> e.sendEquipmentBreakStatus(EquipmentSlot.OFFHAND));
+                    }
+
+                    world.playSound(null, travel.getX(), travel.getY(), travel.getZ(), ModSounds.ITEM_WALL_PASSING_CHISEL_USE,
+                            player.getSoundCategory(), 0.4f, world.random.nextFloat() * 0.4f + 0.8f);
+                    player.getItemCooldownManager().set(this, 60);
+                    return ActionResult.SUCCESS;
                 }
-
-                world.playSound(null, travel.getX(), travel.getY(), travel.getZ(), ModSounds.ITEM_WALL_PASSING_CHISEL_USE,
-                        player.getSoundCategory(), 0.4f, world.random.nextFloat() * 0.4f + 0.8f);
-                player.getItemCooldownManager().set(this, 60);
-                return ActionResult.SUCCESS;
             }
         }
 
@@ -64,7 +67,7 @@ public class WallPassingChiselItem extends Item {
     private static BlockPos travelPos(World world, BlockPos pos, Direction facing) {
         facing = facing.getOpposite();
 
-        for (int i = 0; i < 16; i++) {
+        for (int i = 0; i < ArcadianDream.CONFIG.maxChiselDistance(); i++) {
             BlockState state = world.getBlockState(pos);
             if (!state.getBlock().getDefaultState().isIn(ModTags.Blocks.OBSIDIAN_BLOCKS) && state.getBlock().getHardness() >= 0.0f) {
                 if (isSafePos(world, pos)) {

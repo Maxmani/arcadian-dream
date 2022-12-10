@@ -38,6 +38,9 @@ repositories {
 		name = "ModMaven"
 		url = "https://modmaven.dev"
 	}
+	repositories {
+		maven { url 'https://maven.wispforest.io' }
+	}
 }
 
 dependencies {
@@ -66,6 +69,9 @@ dependencies {
 
 	modCompileOnly "dev.emi:emi:${project.emi_version}"
 	//modRuntimeOnly "dev.emi:emi:${project.emi_version}"
+
+	annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
+	include "io.wispforest:owo-sentinel:${project.owo_version}"
 }
 
 processResources {
