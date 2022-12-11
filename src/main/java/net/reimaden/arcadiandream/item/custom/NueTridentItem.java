@@ -1,5 +1,6 @@
 package net.reimaden.arcadiandream.item.custom;
 
+import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.util.EnchantmentHandler;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
@@ -17,7 +18,10 @@ public class NueTridentItem extends ModSpearItem implements EnchantmentHandler {
 
     @Override
     public boolean isExplicitlyValid(Enchantment enchantment) {
-        return enchantment.equals(Enchantments.IMPALING);
+        if (ArcadianDream.CONFIG.nueTridentOptions.canHaveImpaling()) {
+            return enchantment.equals(Enchantments.IMPALING);
+        }
+        return false;
     }
 
     @Override

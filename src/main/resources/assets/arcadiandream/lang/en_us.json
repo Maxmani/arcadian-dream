@@ -95,8 +95,13 @@
   "stat.arcadiandream.interact_with_ritual_shrine": "Interactions with Ritual Shrine",
   "stat.arcadiandream.interact_with_onbashira": "Interactions with Onbashira",
 
-  "text.config.arcadian-dream.title": "Arcadian Dream Config",
-  "text.config.arcadian-dream.option.canUseChisel": "Can use Wall-Passing Chisel",
-  "text.config.arcadian-dream.option.maxChiselDistance": "Chisel maximum distance",
-  "text.config.arcadian-dream.option.maxChiselDistance.tooltip": "How far the player can travel using the Wall-Passing Chisel"
+  "text.config.arcadian-dream.title": "Arcadian Dream Configuration",
+  "text.config.arcadian-dream.section.items": "Items",
+  "text.config.arcadian-dream.category.chiselOptions": "Wall-Passing Chisel",
+  "text.config.arcadian-dream.option.chiselOptions.canUse": "Can use Wall-Passing Chisel",
+  "text.config.arcadian-dream.option.chiselOptions.maxDistance": "Chisel maximum distance",
+  "text.config.arcadian-dream.option.chiselOptions.maxDistance.tooltip": "How many blocks the player can travel\nthrough using the Wall-Passing Chisel.",
+  "text.config.arcadian-dream.category.nueTridentOptions": "Nue Trident",
+  "text.config.arcadian-dream.option.nueTridentOptions.canHaveImpaling": "Impaling enchantment",
+  "text.config.arcadian-dream.option.nueTridentOptions.canHaveImpaling.tooltip": "Whether the Nue Trident is compatible\nwith the Impaling enchantment."
 }

@@ -38,7 +38,7 @@ public class WallPassingChiselItem extends Item {
 
         BlockPos travel = travelPos(world, pos, facing);
 
-        if (ArcadianDream.CONFIG.canUseChisel()) {
+        if (ArcadianDream.CONFIG.chiselOptions.canUse()) {
             if (world.isClient) return travel != null ? ActionResult.SUCCESS : ActionResult.PASS;
 
             if (player != null) {
@@ -67,7 +67,8 @@ public class WallPassingChiselItem extends Item {
     private static BlockPos travelPos(World world, BlockPos pos, Direction facing) {
         facing = facing.getOpposite();
 
-        for (int i = 0; i < ArcadianDream.CONFIG.maxChiselDistance(); i++) {
+        // Minimum value of two in order to go through a one block wide wall
+        for (int i = 0; i < ArcadianDream.CONFIG.chiselOptions.maxDistance() + 1; i++) {
             BlockState state = world.getBlockState(pos);
             if (!state.getBlock().getDefaultState().isIn(ModTags.Blocks.OBSIDIAN_BLOCKS) && state.getBlock().getHardness() >= 0.0f) {
                 if (isSafePos(world, pos)) {
