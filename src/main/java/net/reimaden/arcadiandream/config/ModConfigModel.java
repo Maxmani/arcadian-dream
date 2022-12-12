@@ -29,4 +29,16 @@ public class ModConfigModel {
         @Sync(Option.SyncMode.OVERRIDE_CLIENT)
         public boolean canHaveImpaling = true;
     }
+
+    @Nest
+    public HisouSwordOptions hisouSwordOptions = new HisouSwordOptions();
+
+    public static class HisouSwordOptions {
+        @RestartRequired
+        @RangeConstraint(min = 64, max = 256)
+        public int minHeightForPeaches = 196;
+
+        @Sync(Option.SyncMode.OVERRIDE_CLIENT)
+        public boolean canDisableShields = true;
+    }
 }

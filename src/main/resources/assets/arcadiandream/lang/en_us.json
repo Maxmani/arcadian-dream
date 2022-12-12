@@ -103,5 +103,9 @@
   "text.config.arcadian-dream.option.chiselOptions.maxDistance.tooltip": "How many blocks the player can travel\nthrough using the Wall-Passing Chisel.",
   "text.config.arcadian-dream.category.nueTridentOptions": "Nue Trident",
   "text.config.arcadian-dream.option.nueTridentOptions.canHaveImpaling": "Impaling enchantment",
-  "text.config.arcadian-dream.option.nueTridentOptions.canHaveImpaling.tooltip": "Whether the Nue Trident is compatible\nwith the Impaling enchantment."
+  "text.config.arcadian-dream.option.nueTridentOptions.canHaveImpaling.tooltip": "Whether the Nue Trident is compatible\nwith the Impaling enchantment.",
+  "text.config.arcadian-dream.category.hisouSwordOptions": "Sword of Hisou",
+  "text.config.arcadian-dream.option.hisouSwordOptions.minHeightForPeaches": "Minimum height to obtain Heavenly Peaches",
+  "text.config.arcadian-dream.option.hisouSwordOptions.minHeightForPeaches.tooltip": "The minimum Y value where leaves have a chance to drop\nHeavenly Peaches when broken with the Sword of Hisou.",
+  "text.config.arcadian-dream.option.hisouSwordOptions.canDisableShields": "Can disable shields"
 }

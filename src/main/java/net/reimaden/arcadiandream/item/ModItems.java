@@ -33,7 +33,7 @@ public class ModItems {
     public static final Item WALL_PASSING_CHISEL = registerItem("wall_passing_chisel", new WallPassingChiselItem(new FabricItemSettings().group(ModItemGroup.ITEMS).maxDamage(100)));
 
     // Food
-    public static final Item HEAVENLY_PEACH = registerItem("heavenly_peach", new Item(new FabricItemSettings().group(ModItemGroup.ITEMS)
+    public static final Item HEAVENLY_PEACH = registerItem("heavenly_peach", new Item(new FabricItemSettings().group(ModItemGroup.ITEMS).maxCount(16)
             .food(new FoodComponent.Builder().hunger(6).saturationModifier(0.4F).alwaysEdible()
                     .statusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE,600),1F).build())));
 

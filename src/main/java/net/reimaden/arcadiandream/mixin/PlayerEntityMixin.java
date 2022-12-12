@@ -1,5 +1,6 @@
 package net.reimaden.arcadiandream.mixin;
 
+import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -30,7 +31,7 @@ public abstract class PlayerEntityMixin {
 
     @Inject(method = "takeShieldHit", at = @At("TAIL"))
     private void disableShield(LivingEntity attacker, CallbackInfo ci) {
-        if (attacker.getMainHandStack().isOf(ModItems.HISOU_SWORD)) {
+        if (attacker.getMainHandStack().isOf(ModItems.HISOU_SWORD) && ArcadianDream.CONFIG.hisouSwordOptions.canDisableShields()) {
             this.disableShield(true);
         }
     }

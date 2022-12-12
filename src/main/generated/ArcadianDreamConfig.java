@@ -13,6 +13,8 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
     private final Option<java.lang.Boolean> chiselOptions_canUse = this.optionForKey(new Option.Key("chiselOptions.canUse"));
     private final Option<java.lang.Integer> chiselOptions_maxDistance = this.optionForKey(new Option.Key("chiselOptions.maxDistance"));
     private final Option<java.lang.Boolean> nueTridentOptions_canHaveImpaling = this.optionForKey(new Option.Key("nueTridentOptions.canHaveImpaling"));
+    private final Option<java.lang.Integer> hisouSwordOptions_minHeightForPeaches = this.optionForKey(new Option.Key("hisouSwordOptions.minHeightForPeaches"));
+    private final Option<java.lang.Boolean> hisouSwordOptions_canDisableShields = this.optionForKey(new Option.Key("hisouSwordOptions.canDisableShields"));
 
     private ArcadianDreamConfig() {
         super(net.reimaden.arcadiandream.config.ModConfigModel.class);
@@ -54,10 +56,35 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         }
 
     }
+    public final HisouSwordOptions_ hisouSwordOptions = new HisouSwordOptions_();
+    public class HisouSwordOptions_ implements HisouSwordOptions {
+        public int minHeightForPeaches() {
+            return hisouSwordOptions_minHeightForPeaches.value();
+        }
+
+        public void minHeightForPeaches(int value) {
+            hisouSwordOptions_minHeightForPeaches.set(value);
+        }
+
+        public boolean canDisableShields() {
+            return hisouSwordOptions_canDisableShields.value();
+        }
+
+        public void canDisableShields(boolean value) {
+            hisouSwordOptions_canDisableShields.set(value);
+        }
+
+    }
 
     public interface NueTridentOptions {
         boolean canHaveImpaling();
         void canHaveImpaling(boolean value);
+    }
+    public interface HisouSwordOptions {
+        int minHeightForPeaches();
+        void minHeightForPeaches(int value);
+        boolean canDisableShields();
+        void canDisableShields(boolean value);
     }
     public interface ChiselOptions {
         boolean canUse();
