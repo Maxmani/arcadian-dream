@@ -16,12 +16,14 @@
   "item.arcadiandream.ordinary_hat": "Ordinary Hat",
   "item.arcadiandream.nue_trident": "Nue Trident",
   "item.arcadiandream.hisou_sword": "Sword of Hisou",
+  "item.arcadiandream.mochi_hammer": "Mochi Hammer",
 
   "item.arcadiandream.dragon_gem": "Dragon Gem",
   "item.arcadiandream.raw_makaite": "Raw Makaite",
   "item.arcadiandream.makaite_ingot": "Makaite Ingot",
   "item.arcadiandream.makaite_infused_netherite_ingot": "Makaite-Infused Netherite Ingot",
   "item.arcadiandream.wall_passing_chisel": "Wall-Passing Chisel",
+  "item.arcadiandream.ibuki_gourd": "Ibuki Gourd",
 
   "item.arcadiandream.makaite_helmet": "Makaite Helmet",
   "item.arcadiandream.makaite_chestplate": "Makaite Chestplate",
@@ -54,6 +56,12 @@
   "item.arcadiandream.bullet.tooltip_pattern": "Pattern: %s",
   "item.arcadiandream.bullet.tooltip_stack": "Stack: %s",
   "item.arcadiandream.bullet.tooltip_amount": "Amount: %s",
+  "item.arcadiandream.ibuki_gourd.tooltip": "Empty",
+  "item.arcadiandream.mochi_hammer.tooltip": [
+    "Kills: ", {
+      "index": 0, "color": "dark_red"
+    }
+  ],
 
   "block.arcadiandream.dragon_gem_ore": "Dragon Gem Ore",
   "block.arcadiandream.deepslate_dragon_gem_ore": "Deepslate Dragon Gem Ore",
@@ -82,6 +90,7 @@
   "arcadiandream.subtitles.block.ritual_shrine.use": "Ritual Shrine used",
   "arcadiandream.subtitles.block.onbashira.create": "Onbashira tied",
   "arcadiandream.subtitles.item.wall_passing_chisel.use": "Player warps",
+  "arcadiandream.subtitles.item.ibuki_gourd.fill": "Gourd fills",
 
   "death.attack.danmaku": "%1$s was shot by %2$s",
   "death.attack.danmaku.player": "%1$s was shot by %2$s using danmaku",
@@ -107,5 +116,8 @@
   "text.config.arcadian-dream.category.hisouSwordOptions": "Sword of Hisou",
   "text.config.arcadian-dream.option.hisouSwordOptions.minHeightForPeaches": "Minimum height to obtain Heavenly Peaches",
   "text.config.arcadian-dream.option.hisouSwordOptions.minHeightForPeaches.tooltip": "The minimum Y value where leaves have a chance to drop\nHeavenly Peaches when broken with the Sword of Hisou.",
-  "text.config.arcadian-dream.option.hisouSwordOptions.canDisableShields": "Can disable shields"
+  "text.config.arcadian-dream.option.hisouSwordOptions.canDisableShields": "Can disable shields",
+  "text.config.arcadian-dream.category.mochiHammerOptions": "Mochi Hammer",
+  "text.config.arcadian-dream.option.mochiHammerOptions.lowViolence": "Low violence mode",
+  "text.config.arcadian-dream.option.mochiHammerOptions.lowViolence.tooltip": "Disable blood on the Mochi Hammer texture."
 }

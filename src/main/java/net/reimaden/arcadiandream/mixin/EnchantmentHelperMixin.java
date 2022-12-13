@@ -1,7 +1,7 @@
 package net.reimaden.arcadiandream.mixin;
 
 import com.google.common.collect.Lists;
-import net.reimaden.arcadiandream.item.custom.ModSpearItem;
+import net.reimaden.arcadiandream.util.EnchantmentHandler;
 import net.reimaden.arcadiandream.util.ValidatingEnchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
@@ -43,7 +43,7 @@ public class EnchantmentHelperMixin {
     private static void adjustPossibleEntries(int power, ItemStack stack, boolean treasureAllowed, CallbackInfoReturnable<List<EnchantmentLevelEntry>> cir) {
         Item item = stack.getItem();
 
-        if (item instanceof ModSpearItem) {
+        if (item instanceof EnchantmentHandler) {
             List<EnchantmentLevelEntry> entries = Lists.newArrayList();
 
             Registry.ENCHANTMENT.forEach(enchantment -> {

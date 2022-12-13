@@ -88,5 +88,14 @@
       "arcadiandream:random/warp"
     ],
     "subtitle": "arcadiandream.subtitles.item.wall_passing_chisel.use"
+  },
+  "item.ibuki_gourd.fill": {
+    "sounds": [
+      "item/bottle/fill1",
+      "item/bottle/fill2",
+      "item/bottle/fill3",
+      "item/bottle/fill4"
+    ],
+    "subtitle": "arcadiandream.subtitles.item.ibuki_gourd.fill"
   }
 }

@@ -41,4 +41,11 @@ public class ModConfigModel {
         @Sync(Option.SyncMode.OVERRIDE_CLIENT)
         public boolean canDisableShields = true;
     }
+
+    @Nest
+    public MochiHammerOptions mochiHammerOptions = new MochiHammerOptions();
+
+    public static class MochiHammerOptions {
+        public boolean lowViolence = false;
+    }
 }

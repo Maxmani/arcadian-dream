@@ -15,6 +15,7 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
     private final Option<java.lang.Boolean> nueTridentOptions_canHaveImpaling = this.optionForKey(new Option.Key("nueTridentOptions.canHaveImpaling"));
     private final Option<java.lang.Integer> hisouSwordOptions_minHeightForPeaches = this.optionForKey(new Option.Key("hisouSwordOptions.minHeightForPeaches"));
     private final Option<java.lang.Boolean> hisouSwordOptions_canDisableShields = this.optionForKey(new Option.Key("hisouSwordOptions.canDisableShields"));
+    private final Option<java.lang.Boolean> mochiHammerOptions_lowViolence = this.optionForKey(new Option.Key("mochiHammerOptions.lowViolence"));
 
     private ArcadianDreamConfig() {
         super(net.reimaden.arcadiandream.config.ModConfigModel.class);
@@ -75,11 +76,18 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         }
 
     }
+    public final MochiHammerOptions_ mochiHammerOptions = new MochiHammerOptions_();
+    public class MochiHammerOptions_ implements MochiHammerOptions {
+        public boolean lowViolence() {
+            return mochiHammerOptions_lowViolence.value();
+        }
 
-    public interface NueTridentOptions {
-        boolean canHaveImpaling();
-        void canHaveImpaling(boolean value);
+        public void lowViolence(boolean value) {
+            mochiHammerOptions_lowViolence.set(value);
+        }
+
     }
+
     public interface HisouSwordOptions {
         int minHeightForPeaches();
         void minHeightForPeaches(int value);
@@ -91,6 +99,14 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         void canUse(boolean value);
         int maxDistance();
         void maxDistance(int value);
+    }
+    public interface MochiHammerOptions {
+        boolean lowViolence();
+        void lowViolence(boolean value);
+    }
+    public interface NueTridentOptions {
+        boolean canHaveImpaling();
+        void canHaveImpaling(boolean value);
     }
 
 }

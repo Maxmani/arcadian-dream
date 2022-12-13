@@ -10,6 +10,7 @@ import net.reimaden.arcadiandream.entity.client.armor.OrdinaryArmorRenderer;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.networking.ModMessages;
 import net.reimaden.arcadiandream.particle.ModParticles;
+import net.reimaden.arcadiandream.util.ModModelPredicateProvider;
 import net.reimaden.arcadiandream.util.client.ModColorProviders;
 import net.reimaden.arcadiandream.util.client.ModModels;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
@@ -23,6 +24,7 @@ public class ArcadianDreamClient implements ClientModInitializer {
         ModParticles.registerClient();
         ModColorProviders.register();
         ModMessages.registerS2CPackets();
+        ModModelPredicateProvider.register();
 
         GeoArmorRenderer.registerArmorRenderer(new OrdinaryArmorRenderer(), ModItems.ORDINARY_HAT);
 

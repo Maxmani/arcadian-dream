@@ -31,6 +31,7 @@ public class ModItems {
     public static final Item MAKAITE_INFUSED_NETHERITE_INGOT = registerItem("makaite_infused_netherite_ingot", new Item(new FabricItemSettings().group(ModItemGroup.ITEMS).fireproof()));
 
     public static final Item WALL_PASSING_CHISEL = registerItem("wall_passing_chisel", new WallPassingChiselItem(new FabricItemSettings().group(ModItemGroup.ITEMS).maxDamage(100)));
+    public static final Item IBUKI_GOURD = registerItem("ibuki_gourd", new IbukiGourdItem(new FabricItemSettings().group(ModItemGroup.ITEMS).maxCount(1)));
 
     // Food
     public static final Item HEAVENLY_PEACH = registerItem("heavenly_peach", new Item(new FabricItemSettings().group(ModItemGroup.ITEMS).maxCount(16)
@@ -66,6 +67,8 @@ public class ModItems {
     public static final Item NUE_TRIDENT = registerItem("nue_trident", new NueTridentItem(ModToolMaterials.MAKAITE_INFUSED_NETHERITE, 4, -2.9f,
             new FabricItemSettings().group(ModItemGroup.ITEMS).fireproof()));
     public static final Item HISOU_SWORD = registerItem("hisou_sword", new SwordItem(ModToolMaterials.HISOU, 3, -2.0f,
+            new FabricItemSettings().group(ModItemGroup.ITEMS)));
+    public static final Item MOCHI_HAMMER = registerItem("mochi_hammer", new MochiHammerItem(ModToolMaterials.MOCHI_HAMMER, 3, -3.2f,
             new FabricItemSettings().group(ModItemGroup.ITEMS)));
 
     // Danmaku

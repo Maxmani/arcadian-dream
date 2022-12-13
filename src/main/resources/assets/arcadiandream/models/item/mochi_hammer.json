@@ -1,0 +1,74 @@
+{
+  "parent": "arcadiandream:item/handheld_big",
+  "textures": {
+    "layer0": "arcadiandream:item/mochi_hammer_0"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "arcadiandream:kills": 0.0
+      },
+      "model": "arcadiandream:item/mochi_hammer_0"
+    },
+    {
+      "predicate": {
+        "arcadiandream:kills": 0.01
+      },
+      "model": "arcadiandream:item/mochi_hammer_1"
+    },
+    {
+      "predicate": {
+        "arcadiandream:kills": 0.025
+      },
+      "model": "arcadiandream:item/mochi_hammer_2"
+    },
+    {
+      "predicate": {
+        "arcadiandream:kills": 0.05
+      },
+      "model": "arcadiandream:item/mochi_hammer_3"
+    },
+    {
+      "predicate": {
+        "arcadiandream:kills": 0.075
+      },
+      "model": "arcadiandream:item/mochi_hammer_4"
+    },
+    {
+      "predicate": {
+        "arcadiandream:kills": 0.1
+      },
+      "model": "arcadiandream:item/mochi_hammer_5"
+    },
+    {
+      "predicate": {
+        "arcadiandream:kills": 0.25
+      },
+      "model": "arcadiandream:item/mochi_hammer_6"
+    },
+    {
+      "predicate": {
+        "arcadiandream:kills": 0.5
+      },
+      "model": "arcadiandream:item/mochi_hammer_7"
+    },
+    {
+      "predicate": {
+        "arcadiandream:kills": 0.75
+      },
+      "model": "arcadiandream:item/mochi_hammer_8"
+    },
+    {
+      "predicate": {
+        "arcadiandream:kills": 0.9
+      },
+      "model": "arcadiandream:item/mochi_hammer_9"
+    },
+    {
+      "predicate": {
+        "arcadiandream:kills": 1.0
+      },
+      "model": "arcadiandream:item/mochi_hammer_10"
+    }
+  ]
+}
