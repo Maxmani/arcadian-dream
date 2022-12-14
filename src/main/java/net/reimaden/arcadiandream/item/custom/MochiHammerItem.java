@@ -19,7 +19,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-
 public class MochiHammerItem extends ModHammerItem {
 
     private final float attackDamage;
