@@ -4,12 +4,13 @@
   "version": "${version}",
 
   "name": "Arcadian Dream",
-  "description": "WIP Touhou mod.",
+  "description": "Modern Touhou mod.",
   "authors": [
     "Maxmani"
   ],
   "contributors": [
-    "Virtlux"
+    "Virtlux",
+    "Foxigami"
   ],
   "contact": {
   },
