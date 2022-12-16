@@ -48,4 +48,10 @@ public class ModConfigModel {
     public static class MochiHammerOptions {
         public boolean lowViolence = false;
     }
+
+    @SectionHeader("danmaku")
+
+    @Sync(Option.SyncMode.OVERRIDE_CLIENT)
+    @RangeConstraint(min = 1, max = 4)
+    public int danmakuCooldownMultiplier = 1;
 }

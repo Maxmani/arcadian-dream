@@ -119,5 +119,7 @@
   "text.config.arcadian-dream.option.hisouSwordOptions.canDisableShields": "Can disable shields",
   "text.config.arcadian-dream.category.mochiHammerOptions": "Mochi Hammer",
   "text.config.arcadian-dream.option.mochiHammerOptions.lowViolence": "Low violence mode",
-  "text.config.arcadian-dream.option.mochiHammerOptions.lowViolence.tooltip": "Disable blood on the Mochi Hammer texture."
+  "text.config.arcadian-dream.option.mochiHammerOptions.lowViolence.tooltip": "Disable blood on the Mochi Hammer texture.",
+  "text.config.arcadian-dream.section.danmaku": "Danmaku",
+  "text.config.arcadian-dream.option.danmakuCooldownMultiplier": "Cooldown multiplier"
 }

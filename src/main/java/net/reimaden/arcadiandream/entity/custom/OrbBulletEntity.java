@@ -31,7 +31,7 @@ public class OrbBulletEntity extends BaseBulletEntity {
     @Override
     public int getPower() {
         if (getStack().hasNbt()) {
-            return this.getStack().getNbt().getInt("Power");
+            return this.getStack().getNbt().getInt("power");
         } else {
             return 3;
         }
@@ -40,7 +40,7 @@ public class OrbBulletEntity extends BaseBulletEntity {
     @Override
     public int getMaxAge() {
         if (getStack().hasNbt()) {
-            return this.getStack().getNbt().getInt("Duration");
+            return this.getStack().getNbt().getInt("duration");
         } else {
             return 200;
         }

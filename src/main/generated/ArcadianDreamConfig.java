@@ -16,6 +16,7 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
     private final Option<java.lang.Integer> hisouSwordOptions_minHeightForPeaches = this.optionForKey(new Option.Key("hisouSwordOptions.minHeightForPeaches"));
     private final Option<java.lang.Boolean> hisouSwordOptions_canDisableShields = this.optionForKey(new Option.Key("hisouSwordOptions.canDisableShields"));
     private final Option<java.lang.Boolean> mochiHammerOptions_lowViolence = this.optionForKey(new Option.Key("mochiHammerOptions.lowViolence"));
+    private final Option<java.lang.Integer> danmakuCooldownMultiplier = this.optionForKey(new Option.Key("danmakuCooldownMultiplier"));
 
     private ArcadianDreamConfig() {
         super(net.reimaden.arcadiandream.config.ModConfigModel.class);
@@ -87,26 +88,34 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         }
 
     }
-
-    public interface HisouSwordOptions {
-        int minHeightForPeaches();
-        void minHeightForPeaches(int value);
-        boolean canDisableShields();
-        void canDisableShields(boolean value);
+    public int danmakuCooldownMultiplier() {
+        return danmakuCooldownMultiplier.value();
     }
+
+    public void danmakuCooldownMultiplier(int value) {
+        danmakuCooldownMultiplier.set(value);
+    }
+
+
     public interface ChiselOptions {
         boolean canUse();
         void canUse(boolean value);
         int maxDistance();
         void maxDistance(int value);
     }
-    public interface MochiHammerOptions {
-        boolean lowViolence();
-        void lowViolence(boolean value);
+    public interface HisouSwordOptions {
+        int minHeightForPeaches();
+        void minHeightForPeaches(int value);
+        boolean canDisableShields();
+        void canDisableShields(boolean value);
     }
     public interface NueTridentOptions {
         boolean canHaveImpaling();
         void canHaveImpaling(boolean value);
+    }
+    public interface MochiHammerOptions {
+        boolean lowViolence();
+        void lowViolence(boolean value);
     }
 
 }

@@ -21,12 +21,16 @@ public class BaseBulletEntity extends ThrownItemEntity {
         super(entityType, world);
     }
 
-    public BaseBulletEntity(EntityType<? extends ThrownItemEntity> entityType, double d, double e, double f, World world) {
-        super(entityType, d, e, f, world);
+    public BaseBulletEntity(World world, LivingEntity owner) {
+        super(null, owner, world);
     }
 
-    public BaseBulletEntity(EntityType<? extends ThrownItemEntity> entityType, LivingEntity livingEntity, World world) {
-        super(entityType, livingEntity, world);
+    public BaseBulletEntity(EntityType<? extends ThrownItemEntity> entityType, LivingEntity owner, World world) {
+        super(entityType, owner, world);
+    }
+
+    public BaseBulletEntity(EntityType<? extends ThrownItemEntity> entityType, double x, double y, double z, World world) {
+        super(entityType, x, y, z, world);
     }
 
     @Override
@@ -71,7 +75,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
 
     public int getPower() {
         if (getStack().hasNbt()) {
-            return this.getStack().getNbt().getInt("Power");
+            return this.getStack().getNbt().getInt("power");
         } else {
             return 0;
         }
@@ -79,7 +83,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
 
     public int getMaxAge() {
         if (getStack().hasNbt()) {
-            return this.getStack().getNbt().getInt("Duration");
+            return this.getStack().getNbt().getInt("duration");
         } else {
             return 0;
         }
@@ -88,7 +92,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
     @Override
     protected float getGravity() {
         if (getStack().hasNbt()) {
-            return this.getStack().getNbt().getFloat("Gravity");
+            return this.getStack().getNbt().getFloat("gravity");
         } else {
             return 0.0f;
         }
