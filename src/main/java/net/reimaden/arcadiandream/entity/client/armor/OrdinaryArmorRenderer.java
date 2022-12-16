@@ -1,6 +1,6 @@
 package net.reimaden.arcadiandream.entity.client.armor;
 
-import net.reimaden.arcadiandream.item.custom.OrdinaryArmorItem;
+import net.reimaden.arcadiandream.item.custom.armor.OrdinaryArmorItem;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
 public class OrdinaryArmorRenderer extends GeoArmorRenderer<OrdinaryArmorItem> {

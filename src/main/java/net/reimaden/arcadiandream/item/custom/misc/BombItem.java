@@ -1,4 +1,4 @@
-package net.reimaden.arcadiandream.item.custom;
+package net.reimaden.arcadiandream.item.custom.misc;
 
 import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
 import net.reimaden.arcadiandream.item.ModItems;

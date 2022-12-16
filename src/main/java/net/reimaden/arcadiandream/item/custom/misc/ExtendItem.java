@@ -1,4 +1,4 @@
-package net.reimaden.arcadiandream.item.custom;
+package net.reimaden.arcadiandream.item.custom.misc;
 
 import dev.emi.trinkets.api.TrinketItem;
 

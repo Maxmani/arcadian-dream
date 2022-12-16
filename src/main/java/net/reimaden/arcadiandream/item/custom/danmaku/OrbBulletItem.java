@@ -1,11 +1,10 @@
-package net.reimaden.arcadiandream.item.custom;
+package net.reimaden.arcadiandream.item.custom.danmaku;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.reimaden.arcadiandream.entity.custom.OrbBulletEntity;
 import net.minecraft.world.World;
 
-@SuppressWarnings("ConstantConditions")
 public class OrbBulletItem extends BaseBulletItem {
 
     public OrbBulletItem(Settings settings) {
@@ -18,13 +17,13 @@ public class OrbBulletItem extends BaseBulletItem {
     }
 
     @Override
-    public float getSpeed() {
-        return 1.0f;
+    public int getPower() {
+        return 3;
     }
 
     @Override
-    public int getPower() {
-        return 3;
+    public float getSpeed() {
+        return 1.0f;
     }
 
     @Override

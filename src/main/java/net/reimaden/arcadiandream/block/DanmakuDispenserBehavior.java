@@ -1,5 +1,6 @@
-package net.reimaden.arcadiandream.util;
+package net.reimaden.arcadiandream.block;
 
+import net.minecraft.nbt.NbtCompound;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.block.dispenser.ItemDispenserBehavior;
@@ -16,11 +17,15 @@ public abstract class DanmakuDispenserBehavior extends ItemDispenserBehavior {
 
     @Override
     public ItemStack dispenseSilently(BlockPointer pointer, ItemStack stack) {
+        NbtCompound nbt = stack.getNbt();
+
         ServerWorld world = pointer.getWorld();
         Position position = DispenserBlock.getOutputLocation(pointer);
         Direction direction = pointer.getBlockState().get(DispenserBlock.FACING);
         ProjectileEntity projectileEntity = this.createProjectile(world, position, stack);
-        projectileEntity.setVelocity(direction.getOffsetX(), (float)direction.getOffsetY(), direction.getOffsetZ(), this.getForce(), this.getVariation());
+        projectileEntity.setVelocity(direction.getOffsetX(), (float)direction.getOffsetY(), direction.getOffsetZ(),
+                nbt != null ? nbt.getFloat("speed") : getForce(),
+                nbt != null ? nbt.getFloat("divergence") : getVariation());
         world.spawnEntity(projectileEntity);
         stack.decrement(1);
         return stack;

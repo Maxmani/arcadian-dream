@@ -2,7 +2,7 @@
  * Credits to ArekkuusuJerii for the original code.
  * https://github.com/TeamNightclipse/Grimoire-Of-Alice/blob/1.12/src/main/java/arekkuusu/grimoireofalice/common/item/ItemWallPassingChisel.java
  */
-package net.reimaden.arcadiandream.item.custom;
+package net.reimaden.arcadiandream.item.custom.misc;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EquipmentSlot;

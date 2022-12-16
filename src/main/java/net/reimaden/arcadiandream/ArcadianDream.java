@@ -2,6 +2,7 @@ package net.reimaden.arcadiandream;
 
 import net.fabricmc.api.ModInitializer;
 import net.reimaden.arcadiandream.block.ModBlocks;
+import net.reimaden.arcadiandream.block.ModCauldronBehavior;
 import net.reimaden.arcadiandream.block.entity.ModBlockEntities;
 import net.reimaden.arcadiandream.config.ArcadianDreamConfig;
 import net.reimaden.arcadiandream.entity.ModEntities;
@@ -10,7 +11,7 @@ import net.reimaden.arcadiandream.particle.ModParticles;
 import net.reimaden.arcadiandream.recipe.ModRecipes;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.reimaden.arcadiandream.statistic.ModStats;
-import net.reimaden.arcadiandream.util.ModDispenserBehavior;
+import net.reimaden.arcadiandream.block.ModDispenserBehavior;
 import net.reimaden.arcadiandream.world.feature.ModConfiguredFeatures;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.util.ModLootTableModifiers;
@@ -40,6 +41,7 @@ public class ArcadianDream implements ModInitializer {
 		ModDispenserBehavior.register();
 		ModRecipes.register();
 		ModStats.register();
+		ModCauldronBehavior.register();
 
 		ModLootTableModifiers.modify();
 		ModOreGeneration.generate();

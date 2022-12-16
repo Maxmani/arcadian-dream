@@ -1,7 +1,7 @@
 package net.reimaden.arcadiandream.entity.client.armor;
 
 import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.item.custom.OrdinaryArmorItem;
+import net.reimaden.arcadiandream.item.custom.armor.OrdinaryArmorItem;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 

@@ -1,4 +1,4 @@
-package net.reimaden.arcadiandream.item.custom;
+package net.reimaden.arcadiandream.item.custom.armor;
 
 import net.reimaden.arcadiandream.item.ModItems;
 import net.minecraft.entity.EquipmentSlot;

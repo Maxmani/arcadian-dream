@@ -1,4 +1,4 @@
-package net.reimaden.arcadiandream.item.custom;
+package net.reimaden.arcadiandream.item.custom.tools;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;

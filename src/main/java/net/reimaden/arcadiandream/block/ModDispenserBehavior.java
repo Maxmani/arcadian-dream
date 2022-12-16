@@ -1,4 +1,4 @@
-package net.reimaden.arcadiandream.util;
+package net.reimaden.arcadiandream.block;
 
 import net.reimaden.arcadiandream.entity.custom.OrbBulletEntity;
 import net.reimaden.arcadiandream.item.ModItems;

@@ -1,4 +1,4 @@
-package net.reimaden.arcadiandream.item.custom;
+package net.reimaden.arcadiandream.item.custom.tools;
 
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.util.EnchantmentHandler;

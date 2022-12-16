@@ -1,7 +1,8 @@
-package net.reimaden.arcadiandream.item.custom;
+package net.reimaden.arcadiandream.item.custom.tools;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
+import net.reimaden.arcadiandream.util.EnchantmentHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -18,19 +19,18 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.Vanishable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.reimaden.arcadiandream.util.EnchantmentHandler;
 
 import java.util.Collections;
 import java.util.List;
 
-public class ModHammerItem extends ToolItem implements Vanishable, EnchantmentHandler {
+public class ModSpearItem extends ToolItem implements Vanishable, EnchantmentHandler {
 
     private final float attackDamage;
     private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
-    public ModHammerItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
+    public ModSpearItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
         super(material, settings);
-        this.attackDamage = (float) attackDamage + material.getAttackDamage();
+        this.attackDamage = (float)attackDamage + material.getAttackDamage();
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Weapon modifier",
                 this.attackDamage, EntityAttributeModifier.Operation.ADDITION));
@@ -39,7 +39,7 @@ public class ModHammerItem extends ToolItem implements Vanishable, EnchantmentHa
         this.attributeModifiers = builder.build();
     }
 
-    public float getAttackDamage() {
+    public float getAttackDamage(){
         return this.attackDamage;
     }
 
@@ -77,6 +77,6 @@ public class ModHammerItem extends ToolItem implements Vanishable, EnchantmentHa
 
     @Override
     public List<Enchantment> isInvalid() {
-        return List.of(Enchantments.SWEEPING);
+        return List.of(Enchantments.KNOCKBACK, Enchantments.LOOTING, Enchantments.SWEEPING);
     }
 }
