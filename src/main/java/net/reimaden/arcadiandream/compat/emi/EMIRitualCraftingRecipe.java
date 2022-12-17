@@ -1,8 +1,12 @@
+/*
+ * Copyright (c) 2022 Maxmani and contributors.
+ * Licensed under the EUPL-1.2 or later.
+ */
+
 package net.reimaden.arcadiandream.compat.emi;
 
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
-import dev.emi.emi.api.render.EmiTexture;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;

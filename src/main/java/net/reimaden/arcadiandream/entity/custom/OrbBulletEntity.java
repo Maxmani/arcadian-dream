@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2022 Maxmani and contributors.
+ * Licensed under the EUPL-1.2 or later.
+ */
+
 package net.reimaden.arcadiandream.entity.custom;
 
 import net.reimaden.arcadiandream.entity.ModEntities;
