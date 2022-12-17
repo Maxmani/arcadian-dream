@@ -26,6 +26,9 @@
     "client": [
       "net.reimaden.arcadiandream.ArcadianDreamClient"
     ],
+    "fabric-datagen": [
+      "net.reimaden.arcadiandream.datagen.ModDataGeneration"
+    ],
     "jei_mod_plugin": [
       "net.reimaden.arcadiandream.compat.jei.JEIPlugin"
     ],
