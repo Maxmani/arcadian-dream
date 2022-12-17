@@ -32,7 +32,7 @@
       "item": "minecraft:prismarine_crystals"
     }
   ],
-  "output": {
+  "result": {
     "item":"arcadiandream:nue_trident"
   }
 }
