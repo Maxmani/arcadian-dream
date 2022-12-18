@@ -1,0 +1,37 @@
+{
+  "parent": "arcadiandream:root",
+  "criteria": {
+    "inventory_changed": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arcadiandream:dragon_gem"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.arcadiandream.mine_dragon_gem.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "arcadiandream:dragon_gem"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.arcadiandream.mine_dragon_gem.title"
+    }
+  },
+  "requirements": [
+    [
+      "inventory_changed"
+    ]
+  ]
+}

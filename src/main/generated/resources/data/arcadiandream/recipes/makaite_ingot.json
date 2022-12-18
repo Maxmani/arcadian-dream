@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "arcadiandream:makaite_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "arcadiandream:makaite_ingot"
+  }
+}

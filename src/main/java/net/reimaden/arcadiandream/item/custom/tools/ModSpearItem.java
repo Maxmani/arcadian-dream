@@ -45,7 +45,7 @@ public class ModSpearItem extends ToolItem implements Vanishable, EnchantmentHan
     }
 
     public float getAttackDamage(){
-        return this.attackDamage;
+        return attackDamage;
     }
 
     @Override
@@ -70,7 +70,7 @@ public class ModSpearItem extends ToolItem implements Vanishable, EnchantmentHan
     @Override
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot slot) {
         if (slot == EquipmentSlot.MAINHAND) {
-            return this.attributeModifiers;
+            return attributeModifiers;
         }
         return super.getAttributeModifiers(slot);
     }

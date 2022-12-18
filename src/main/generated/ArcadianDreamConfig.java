@@ -97,10 +97,6 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
     }
 
 
-    public interface NueTridentOptions {
-        boolean canHaveImpaling();
-        void canHaveImpaling(boolean value);
-    }
     public interface ChiselOptions {
         boolean canUse();
         void canUse(boolean value);
@@ -110,6 +106,10 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
     public interface MochiHammerOptions {
         boolean lowViolence();
         void lowViolence(boolean value);
+    }
+    public interface NueTridentOptions {
+        boolean canHaveImpaling();
+        void canHaveImpaling(boolean value);
     }
     public interface HisouSwordOptions {
         int minHeightForPeaches();

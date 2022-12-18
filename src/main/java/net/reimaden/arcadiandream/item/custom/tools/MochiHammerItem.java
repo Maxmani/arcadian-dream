@@ -31,8 +31,8 @@ public class MochiHammerItem extends ModHammerItem {
 
     public MochiHammerItem(ToolMaterial material, int attackDamageIn, float attackSpeedIn, Settings settings) {
         super(material, attackDamageIn, attackSpeedIn, settings);
-        this.attackSpeed = attackSpeedIn;
         this.attackDamage = attackDamageIn;
+        this.attackSpeed = attackSpeedIn;
     }
 
     @Override // Increase stats based on the kill counter
@@ -76,7 +76,7 @@ public class MochiHammerItem extends ModHammerItem {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        if (stack.hasNbt() && stack.getOrCreateNbt().getInt("kill_count") >= 1) {
+        if (stack.hasNbt() && stack.getOrCreateNbt().getInt("kill_count") != 0) {
             tooltip.add(Text.translatable("item.arcadiandream.mochi_hammer.tooltip",
                     getKills(stack)).formatted(Formatting.GRAY));
         }

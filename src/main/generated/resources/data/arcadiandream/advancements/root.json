@@ -1,0 +1,37 @@
+{
+  "criteria": {
+    "inventory_changed": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arcadiandream:power_item"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "arcadiandream:textures/block/dragon_gem_block.png",
+    "description": {
+      "translate": "advancements.arcadiandream.root.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "arcadiandream:power_item"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.arcadiandream.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "inventory_changed"
+    ]
+  ]
+}

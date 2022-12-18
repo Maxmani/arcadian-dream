@@ -45,7 +45,7 @@ public class ModHammerItem extends ToolItem implements Vanishable, EnchantmentHa
     }
 
     public float getAttackDamage() {
-        return this.attackDamage;
+        return attackDamage;
     }
 
     @Override
@@ -70,7 +70,7 @@ public class ModHammerItem extends ToolItem implements Vanishable, EnchantmentHa
     @Override
     public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(EquipmentSlot slot) {
         if (slot == EquipmentSlot.MAINHAND) {
-            return this.attributeModifiers;
+            return attributeModifiers;
         }
         return super.getAttributeModifiers(slot);
     }
