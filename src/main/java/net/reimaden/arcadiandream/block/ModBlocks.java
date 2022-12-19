@@ -6,6 +6,9 @@
 package net.reimaden.arcadiandream.block;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.ExperienceDroppingBlock;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.block.custom.DragonGemBlock;
 import net.reimaden.arcadiandream.block.custom.RitualShrineBlock;
@@ -13,11 +16,9 @@ import net.reimaden.arcadiandream.block.custom.OnbashiraBlock;
 import net.reimaden.arcadiandream.block.custom.OnbashiraPillarBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
-import net.minecraft.block.OreBlock;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.util.registry.Registry;
 
 public class ModBlocks {
 
@@ -34,17 +35,17 @@ public class ModBlocks {
 
     // Ores
     public static final Block DRAGON_GEM_ORE = registerBlock("dragon_gem_ore",
-            new OreBlock(FabricBlockSettings.of(Material.STONE).strength(6.0f, 3.0f)
+            new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(6.0f, 3.0f)
                     .luminance(6).requiresTool(), UniformIntProvider.create(5, 10)));
     public static final Block DEEPSLATE_DRAGON_GEM_ORE = registerBlock("deepslate_dragon_gem_ore",
-            new OreBlock(FabricBlockSettings.of(Material.STONE).strength(7.5f, 3.0f).sounds(BlockSoundGroup.DEEPSLATE)
+            new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(7.5f, 3.0f).sounds(BlockSoundGroup.DEEPSLATE)
                     .luminance(6).requiresTool(), UniformIntProvider.create(5, 10)));
     public static final Block END_STONE_DRAGON_GEM_ORE = registerBlock("end_stone_dragon_gem_ore",
-            new OreBlock(FabricBlockSettings.of(Material.STONE).strength(12.0f, 9.0f)
+            new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(12.0f, 9.0f)
                     .luminance(6).requiresTool(), UniformIntProvider.create(5, 10)));
 
     public static final Block MAKAITE_ORE = registerBlock("makaite_ore",
-            new OreBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f, 3.0f)
+            new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f, 3.0f)
                     .requiresTool().sounds(BlockSoundGroup.NETHER_ORE)));
 
     // Raw Ore Blocks
@@ -61,7 +62,7 @@ public class ModBlocks {
             new Block(FabricBlockSettings.of(Material.METAL).strength(5.0f, 6.0f).sounds(BlockSoundGroup.METAL).requiresTool()));
 
     private static Block registerBlock(String name, Block block) {
-        return Registry.register(Registry.BLOCK, new Identifier(ArcadianDream.MOD_ID, name), block);
+        return Registry.register(Registries.BLOCK, new Identifier(ArcadianDream.MOD_ID, name), block);
     }
 
     public static void register() {

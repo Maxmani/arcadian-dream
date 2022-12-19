@@ -5,12 +5,12 @@
 
 package net.reimaden.arcadiandream.item;
 
+import net.minecraft.registry.tag.ItemTags;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.tag.ItemTags;
 
 import java.util.function.Supplier;
 

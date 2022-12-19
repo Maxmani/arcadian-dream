@@ -8,8 +8,8 @@ package net.reimaden.arcadiandream.util;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.minecraft.block.Block;
 import net.minecraft.loot.LootTables;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKey;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.minecraft.loot.LootPool;
@@ -43,7 +43,7 @@ public class ModLootTableModifiers {
                 tableBuilder.pool(poolBuilder.build());
             }
 
-            for (Map.Entry<RegistryKey<Block>, Block> entry : Registry.BLOCK.getEntrySet()) {
+            for (Map.Entry<RegistryKey<Block>, Block> entry : Registries.BLOCK.getEntrySet()) {
                 Block block = entry.getValue();
                 if (entry.getKey().getValue().toString().endsWith("leaves") && block.getLootTableId().equals(id)) {
                     poolBuilder

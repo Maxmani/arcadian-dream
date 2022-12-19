@@ -9,11 +9,12 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.particle.custom.*;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class ModParticles {
 
@@ -24,7 +25,7 @@ public class ModParticles {
     public static final DefaultParticleType RITUAL = registerParticle("ritual");
 
     private static DefaultParticleType registerParticle(String name) {
-        return Registry.register(Registry.PARTICLE_TYPE, new Identifier(ArcadianDream.MOD_ID, name), FabricParticleTypes.simple());
+        return Registry.register(Registries.PARTICLE_TYPE, new Identifier(ArcadianDream.MOD_ID, name), FabricParticleTypes.simple());
     }
 
     public static void register() {

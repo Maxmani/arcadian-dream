@@ -12,12 +12,6 @@ group = project.maven_group
 
 repositories {
 	maven {
-		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
-	}
-	maven {
-		url = uri("https://storage.googleapis.com/devan-maven/")
-	}
-	maven {
 		name = "TerraformersMC"
 		url = "https://maven.terraformersmc.com/"
 	}
@@ -28,16 +22,16 @@ repositories {
 	repositories {
 		maven { url "https://maven.shedaniel.me" }
 	}
-	maven {
-		// location of the maven that hosts JEI files
-		name = "Progwml6 maven"
-		url = "https://dvs1.progwml6.com/files/maven/"
-	}
-	maven {
-		// location of a maven mirror for JEI files, as a fallback
-		name = "ModMaven"
-		url = "https://modmaven.dev"
-	}
+	//maven {
+	//	// location of the maven that hosts JEI files
+	//	name = "Progwml6 maven"
+	//	url = "https://dvs1.progwml6.com/files/maven/"
+	//}
+	//maven {
+	//	// location of a maven mirror for JEI files, as a fallback
+	//	name = "ModMaven"
+	//	url = "https://modmaven.dev"
+	//}
 	repositories {
 		maven { url 'https://maven.wispforest.io' }
 	}
@@ -53,19 +47,16 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// Libraries
-	modImplementation "software.bernie.geckolib:geckolib-fabric-1.19:${project.geckolib_version}"
-
-	modRuntimeOnly("net.devtech:Stacc:${project.stacc_version}")
-
 	modImplementation "dev.emi:trinkets:${project.trinkets_version}"
 
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${project.rei_version}"
 	//modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
 
-	modImplementation("mezz.jei:jei-${project.minecraft_version}-fabric:${project.jei_version}") {
-		exclude group: "mezz.jei"
-	}
+	// TODO: Enable JEI again once it has updated to 1.19.3
+	//modImplementation("mezz.jei:jei-${project.minecraft_version}-fabric:${project.jei_version}") {
+	//	exclude group: "mezz.jei"
+	//}
 
 	modCompileOnly "dev.emi:emi:${project.emi_version}"
 	//modRuntimeOnly "dev.emi:emi:${project.emi_version}"

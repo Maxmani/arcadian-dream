@@ -6,7 +6,7 @@
 package net.reimaden.arcadiandream.datagen;
 
 import com.google.common.collect.Lists;
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementDisplay;
@@ -27,8 +27,8 @@ public class ModAdvancementGenerator extends FabricAdvancementProvider {
     private static final List<Consumer<Consumer<Advancement>>> generators = Util.make(Lists.newArrayList(),
             list -> list.add(new ModAdvancementsGenerator()));
 
-    protected ModAdvancementGenerator(FabricDataGenerator dataGenerator) {
-        super(dataGenerator);
+    protected ModAdvancementGenerator(FabricDataOutput output) {
+        super(output);
     }
 
     @Override

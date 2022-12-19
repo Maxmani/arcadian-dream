@@ -34,8 +34,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.reimaden.arcadiandream.statistic.ModStats;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -204,7 +204,7 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
         Inventories.writeNbt(nbt, items);
     }
 
-    @org.jetbrains.annotations.Nullable
+    @Nullable
     @Override
     public Packet<ClientPlayPacketListener> toUpdatePacket() {
         return BlockEntityUpdateS2CPacket.create(this);

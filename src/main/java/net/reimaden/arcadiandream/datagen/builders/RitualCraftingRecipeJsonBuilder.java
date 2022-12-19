@@ -16,9 +16,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
-import net.minecraft.tag.TagKey;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import net.reimaden.arcadiandream.recipe.RitualCraftingRecipe;
 import org.jetbrains.annotations.Nullable;
 
@@ -120,7 +120,7 @@ public class RitualCraftingRecipeJsonBuilder implements CraftingRecipeJsonBuilde
             }
             json.add("ingredients", jsonArray);
             JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("item", Registry.ITEM.getId(output).toString());
+            jsonObject.addProperty("item", Registries.ITEM.getId(output).toString());
             if (outputCount > 1) {
                 jsonObject.addProperty("count", outputCount);
             }

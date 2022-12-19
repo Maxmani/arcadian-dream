@@ -7,7 +7,7 @@ package net.reimaden.arcadiandream.mixin;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.fluid.Fluid;
-import net.minecraft.tag.TagKey;
+import net.minecraft.registry.tag.TagKey;
 import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

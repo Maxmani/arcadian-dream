@@ -17,10 +17,9 @@ import net.reimaden.arcadiandream.recipe.ModRecipes;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.reimaden.arcadiandream.statistic.ModStats;
 import net.reimaden.arcadiandream.block.ModDispenserBehavior;
-import net.reimaden.arcadiandream.world.feature.ModConfiguredFeatures;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.util.ModLootTableModifiers;
-import net.reimaden.arcadiandream.world.gen.ModOreGeneration;
+import net.reimaden.arcadiandream.world.ModWorldGen;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,8 +33,6 @@ public class ArcadianDream implements ModInitializer {
 	public void onInitialize() {
 		LOGGER.info("Initializing, please watch warmly until it is ready.");
 
-		ModConfiguredFeatures.register();
-
 		ModItems.register();
 		ModBlocks.register();
 		ModPaintings.register();
@@ -48,7 +45,7 @@ public class ArcadianDream implements ModInitializer {
 		ModStats.register();
 		ModCauldronBehavior.register();
 
+		ModWorldGen.register();
 		ModLootTableModifiers.modify();
-		ModOreGeneration.generate();
 	}
 }

@@ -6,11 +6,12 @@
 package net.reimaden.arcadiandream.block.entity;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.block.ModBlocks;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 
 public class ModBlockEntities {
 
@@ -18,11 +19,11 @@ public class ModBlockEntities {
     public static BlockEntityType<RitualShrineBlockEntity> RITUAL_SHRINE;
 
     public static void register() {
-        ONBASHIRA = Registry.register(Registry.BLOCK_ENTITY_TYPE,
+        ONBASHIRA = Registry.register(Registries.BLOCK_ENTITY_TYPE,
                 new Identifier(ArcadianDream.MOD_ID, "onbashira"),
                 FabricBlockEntityTypeBuilder.create(OnbashiraBlockEntity::new,
-                        ModBlocks.ONBASHIRA).build(null));
-        RITUAL_SHRINE = Registry.register(Registry.BLOCK_ENTITY_TYPE,
+                        ModBlocks.ONBASHIRA).build());
+        RITUAL_SHRINE = Registry.register(Registries.BLOCK_ENTITY_TYPE,
                 new Identifier(ArcadianDream.MOD_ID, "ritual_shrine"),
                 FabricBlockEntityTypeBuilder.create(RitualShrineBlockEntity::new,
                         ModBlocks.RITUAL_SHRINE).build(null));

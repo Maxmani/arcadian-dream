@@ -5,36 +5,42 @@
 
 package net.reimaden.arcadiandream.datagen;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import com.google.common.collect.ImmutableList;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.block.Blocks;
-import net.minecraft.data.server.RecipeProvider;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
+import net.minecraft.data.server.recipe.RecipeProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
-import net.minecraft.tag.ItemTags;
-import net.reimaden.arcadiandream.block.ModBlocks;
+import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.tag.ItemTags;
 import net.reimaden.arcadiandream.datagen.builders.RitualCraftingRecipeJsonBuilder;
 import net.reimaden.arcadiandream.datagen.providers.ModRecipeProvider;
 import net.reimaden.arcadiandream.item.ModItems;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 public class ModRecipeGenerator extends ModRecipeProvider {
 
-    public ModRecipeGenerator(FabricDataGenerator dataGenerator) {
-        super(dataGenerator);
+    private static final ImmutableList<ItemConvertible> DRAGON_GEM_ORES =
+            ImmutableList.of(ModItems.DRAGON_GEM_ORE, ModItems.DEEPSLATE_DRAGON_GEM_ORE, ModItems.END_STONE_DRAGON_GEM_ORE);
+    public static final ImmutableList<ItemConvertible> MAKAITE_ORES =
+            ImmutableList.of(ModItems.MAKAITE_ORE, ModItems.RAW_MAKAITE);
+
+    public ModRecipeGenerator(FabricDataOutput output) {
+        super(output);
     }
 
     @Override
-    protected void generateRecipes(Consumer<RecipeJsonProvider> exporter) {
+    public void generate(Consumer<RecipeJsonProvider> exporter) {
 
         // Shapeless Crafting recipes
-        makeReversibleCompacting(exporter, ModItems.POWER_ITEM, ModItems.BIG_POWER_ITEM);
-        makeReversibleCompacting(exporter, ModItems.POINT_ITEM, ModItems.MAX_POINT_ITEM);
-        makeReversibleCompacting(exporter, ModItems.RAW_MAKAITE, ModItems.RAW_MAKAITE_BLOCK);
-        makeReversibleCompacting(exporter, ModItems.MAKAITE_INGOT, ModItems.MAKAITE_BLOCK);
-        makeReversibleCompacting(exporter, ModItems.DRAGON_GEM, ModItems.DRAGON_GEM_BLOCK);
+        makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.POWER_ITEM, RecipeCategory.MISC, ModItems.BIG_POWER_ITEM);
+        makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.POINT_ITEM, RecipeCategory.MISC, ModItems.MAX_POINT_ITEM);
+        makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.RAW_MAKAITE, RecipeCategory.BUILDING_BLOCKS, ModItems.RAW_MAKAITE_BLOCK);
+        makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.MAKAITE_INGOT, RecipeCategory.BUILDING_BLOCKS, ModItems.MAKAITE_BLOCK);
+        makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.DRAGON_GEM, RecipeCategory.BUILDING_BLOCKS, ModItems.DRAGON_GEM_BLOCK);
 
         makeShapeless(exporter, ModItems.BOMB_ITEM, ModItems.EXTEND_ITEM, null, 3);
 
@@ -44,7 +50,7 @@ public class ModRecipeGenerator extends ModRecipeProvider {
         makeArmor(exporter, ModItems.MAKAITE_BOOTS, ModItems.MAKAITE_CHESTPLATE,
                 ModItems.MAKAITE_HELMET, ModItems.MAKAITE_LEGGINGS, ModItems.MAKAITE_INGOT);
 
-        ShapedRecipeJsonBuilder.create(ModItems.ORDINARY_HAT)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.ORDINARY_HAT)
                 .input('#', Items.BLACK_WOOL)
                 .input('S', Items.STRING)
                 .input('W', Items.WHITE_WOOL)
@@ -56,14 +62,14 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                         RecipeProvider.conditionsFromItem(Items.ENDER_PEARL))
                 .offerTo(exporter);
 
-        ShapedRecipeJsonBuilder.create(ModBlocks.ONBASHIRA_PILLAR)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModItems.ONBASHIRA_PILLAR)
                 .input('#', ItemTags.LOGS)
                 .pattern("#")
                 .pattern("#")
                 .criterion("has_log", RecipeProvider.conditionsFromTag(ItemTags.LOGS))
                 .offerTo(exporter);
 
-        ShapedRecipeJsonBuilder.create(ModBlocks.RITUAL_SHRINE)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModItems.RITUAL_SHRINE)
                 .input('#', Blocks.AMETHYST_BLOCK)
                 .input('D', ModItems.DRAGON_GEM)
                 .pattern(" D ")
@@ -74,16 +80,16 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .offerTo(exporter);
 
         // Smelting recipes
-        makeSmelting(exporter, List.of(ModBlocks.DRAGON_GEM_ORE, ModBlocks.DEEPSLATE_DRAGON_GEM_ORE, ModBlocks.END_STONE_DRAGON_GEM_ORE),
-                ModItems.DRAGON_GEM, 1.2f, 200, RecipeProvider.getItemPath(ModItems.DRAGON_GEM));
-        makeSmelting(exporter, List.of(ModBlocks.MAKAITE_ORE, ModItems.RAW_MAKAITE),
-                ModItems.MAKAITE_INGOT, 0.8f, 200, RecipeProvider.getItemPath(ModItems.MAKAITE_INGOT));
+        makeSmelting(exporter, DRAGON_GEM_ORES, RecipeCategory.MISC, ModItems.DRAGON_GEM, 1.2f, 200,
+                RecipeProvider.getItemPath(ModItems.DRAGON_GEM));
+        makeSmelting(exporter, MAKAITE_ORES, RecipeCategory.MISC, ModItems.MAKAITE_INGOT, 0.8f, 200,
+                RecipeProvider.getItemPath(ModItems.MAKAITE_INGOT));
 
         // Blasting recipes
-        makeBlasting(exporter, List.of(ModBlocks.DRAGON_GEM_ORE, ModBlocks.DEEPSLATE_DRAGON_GEM_ORE, ModBlocks.END_STONE_DRAGON_GEM_ORE),
-                ModItems.DRAGON_GEM, 1.2f, 100, RecipeProvider.getItemPath(ModItems.DRAGON_GEM));
-        makeBlasting(exporter, List.of(ModBlocks.MAKAITE_ORE, ModItems.RAW_MAKAITE),
-                ModItems.MAKAITE_INGOT, 0.8f, 100, RecipeProvider.getItemPath(ModItems.MAKAITE_INGOT));
+        makeBlasting(exporter, DRAGON_GEM_ORES, RecipeCategory.MISC, ModItems.DRAGON_GEM, 1.2f, 100,
+                RecipeProvider.getItemPath(ModItems.DRAGON_GEM));
+        makeBlasting(exporter, MAKAITE_ORES, RecipeCategory.MISC, ModItems.MAKAITE_INGOT, 0.8f, 100,
+                RecipeProvider.getItemPath(ModItems.MAKAITE_INGOT));
 
         // Ritual Crafting recipes
         RitualCraftingRecipeJsonBuilder.create(ModItems.MAKAITE_INFUSED_NETHERITE_INGOT)
