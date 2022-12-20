@@ -13,7 +13,6 @@ import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
-@SuppressWarnings("ConstantConditions")
 public class OrbBulletEntity extends BaseBulletEntity {
 
     public OrbBulletEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
@@ -33,6 +32,7 @@ public class OrbBulletEntity extends BaseBulletEntity {
         return ModItems.ORB_BULLET;
     }
 
+    @SuppressWarnings("DataFlowIssue")
     @Override
     public int getPower() {
         if (getStack().hasNbt()) {
@@ -42,6 +42,7 @@ public class OrbBulletEntity extends BaseBulletEntity {
         }
     }
 
+    @SuppressWarnings("DataFlowIssue")
     @Override
     public int getMaxAge() {
         if (getStack().hasNbt()) {

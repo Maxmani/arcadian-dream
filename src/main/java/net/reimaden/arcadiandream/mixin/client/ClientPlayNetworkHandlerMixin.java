@@ -29,6 +29,7 @@ public abstract class ClientPlayNetworkHandlerMixin {
 
     @Final @Shadow private MinecraftClient client;
 
+    @SuppressWarnings("OptionalGetWithoutIsPresent")
     @Inject(method = "getActiveTotemOfUndying", at = @At("RETURN"), cancellable = true)
     private static void getExtendItem(PlayerEntity player, CallbackInfoReturnable<ItemStack> cir) {
         Item item = ModItems.EXTEND_ITEM;
@@ -41,7 +42,7 @@ public abstract class ClientPlayNetworkHandlerMixin {
     public void onEntityStatus(EntityStatusS2CPacket packet, CallbackInfo ci) {
         ClientPlayNetworkHandler instance = (ClientPlayNetworkHandler) (Object) this;
         Entity entity = packet.getEntity(instance.getWorld());
-        if (packet.getStatus() == (byte)160) {
+        if (packet.getStatus() == (byte)160 && entity != null) {
             this.client.particleManager.addEmitter(entity, ModParticles.EXTEND, 30);
             instance.getWorld().playSound(entity.getX(), entity.getY(), entity.getZ(), ModSounds.ITEM_EXTEND_ITEM_USE, entity.getSoundCategory(), 1.0F, 1.0F, false);
             if (entity == this.client.player) {

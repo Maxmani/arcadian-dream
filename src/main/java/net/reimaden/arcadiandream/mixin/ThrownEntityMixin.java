@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin(ThrownEntity.class)
 public abstract class ThrownEntityMixin {
 
-    ThrownEntity bullet = ((ThrownEntity) (Object) this);
+    private final ThrownEntity bullet = ((ThrownEntity) (Object) this);
 
     // Prevent bullets from stopping in midair
     @ModifyConstant(method = "tick", constant = @Constant(floatValue = 0.99f))

@@ -28,7 +28,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-@SuppressWarnings({"ConstantConditions", "unused"})
 public class OnbashiraBlockEntity extends BlockEntity implements ImplementedInventory, SidedInventory {
 
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
@@ -45,7 +44,7 @@ public class OnbashiraBlockEntity extends BlockEntity implements ImplementedInve
 
     @Override
     public void markDirty() {
-        if (!world.isClient()) {
+        if (world != null && !world.isClient()) {
             PacketByteBuf data = PacketByteBufs.create();
             data.writeInt(items.size());
             for (ItemStack item : items) {
@@ -102,8 +101,8 @@ public class OnbashiraBlockEntity extends BlockEntity implements ImplementedInve
         return createNbt();
     }
 
-    public static void tick(World world, BlockPos blockPos, BlockState blockState, OnbashiraBlockEntity entity) {
-    }
+    @SuppressWarnings("unused")
+    public static void tick(World world, BlockPos blockPos, BlockState blockState, OnbashiraBlockEntity entity) {}
 
     @Override
     public int[] getAvailableSlots(Direction side) {
@@ -115,6 +114,7 @@ public class OnbashiraBlockEntity extends BlockEntity implements ImplementedInve
         return result;
     }
 
+    @SuppressWarnings("DataFlowIssue")
     @Override // Disable inserting from the top of the block
     public boolean canInsert(int slot, ItemStack stack, @Nullable Direction dir) {
         return dir != Direction.UP && this.getStack(0).getCount() == 0 && world.getBlockState(pos.up()).isAir();

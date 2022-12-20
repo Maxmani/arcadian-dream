@@ -59,7 +59,7 @@ dependencies {
 	//}
 
 	modCompileOnly "dev.emi:emi:${project.emi_version}"
-	//modRuntimeOnly "dev.emi:emi:${project.emi_version}"
+	modRuntimeOnly "dev.emi:emi:${project.emi_version}"
 
 	annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
 	include "io.wispforest:owo-sentinel:${project.owo_version}"
@@ -93,6 +93,7 @@ sourceSets { main { resources { srcDirs += dataOutput } } }
 
 tasks.withType(JavaCompile).configureEach {
 	// Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
+	//noinspection GroovyAssignabilityCheck, GroovyAccessibility
 	it.options.release = 17
 }
 
@@ -112,7 +113,9 @@ jar {
 // configure the maven publication
 publishing {
 	publications {
+		//noinspection GroovyAssignabilityCheck
 		mavenJava(MavenPublication) {
+			//noinspection GroovyAssignabilityCheck
 			from components.java
 		}
 	}

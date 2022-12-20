@@ -35,13 +35,13 @@ import net.minecraft.world.WorldAccess;
 import net.reimaden.arcadiandream.statistic.ModStats;
 import org.jetbrains.annotations.Nullable;
 
-@SuppressWarnings({"deprecation", "ConstantConditions"})
+@SuppressWarnings("deprecation")
 public class OnbashiraBlock extends BlockWithEntity implements BlockEntityProvider, Waterloggable {
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final BooleanProperty HAS_ITEM = BooleanProperty.of("has_item");
 
-    Random random = Random.createThreadSafe();
+    private final Random random = Random.create();
 
     public OnbashiraBlock(Settings settings) {
         super(settings);
@@ -63,6 +63,7 @@ public class OnbashiraBlock extends BlockWithEntity implements BlockEntityProvid
         return new OnbashiraBlockEntity(pos, state);
     }
 
+    @SuppressWarnings("DataFlowIssue")
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         Inventory blockEntity = (Inventory) world.getBlockEntity(pos);

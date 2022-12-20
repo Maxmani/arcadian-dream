@@ -40,7 +40,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@SuppressWarnings({"unused", "ConstantConditions", "OptionalGetWithoutIsPresent"})
 public class RitualShrineBlockEntity extends BlockEntity implements ImplementedInventory, SidedInventory {
 
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
@@ -57,7 +56,7 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
 
     @Override
     public void markDirty() {
-        if (!world.isClient()) {
+        if (world != null && !world.isClient()) {
             PacketByteBuf data = PacketByteBufs.create();
             data.writeInt(items.size());
             for (ItemStack item : items) {
@@ -96,7 +95,7 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
     };
 
     public void doCrafting(@Nullable PlayerEntity player) {
-        if (!world.isClient()) {
+        if (world != null && !world.isClient()) {
             List<OnbashiraBlockEntity> onbashiras = new ArrayList<>();
             for (BlockPos pos : ONBASHIRA_LOCATIONS) {
                 getOnbashiraPos(pos.add(getPos())).ifPresent(onbashiras::add);
@@ -109,6 +108,7 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
         }
     }
 
+    @SuppressWarnings({"DataFlowIssue", "OptionalGetWithoutIsPresent"})
     private void craftItem(List<ItemStack> stacks, List<OnbashiraBlockEntity> onbashiras, RitualShrineBlockEntity shrineBlock, PlayerEntity player) {
         SimpleInventory inventory = new SimpleInventory(stacks.size());
         for (int i = 0; i < stacks.size(); i++) {
@@ -137,6 +137,7 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
         }
     }
 
+    @SuppressWarnings("DataFlowIssue")
     private boolean hasRecipe(List<ItemStack> stacks, List<OnbashiraBlockEntity> onbashiras) {
         SimpleInventory inventory = new SimpleInventory(stacks.size());
         for (int i = 0; i < stacks.size(); i++) {
@@ -152,7 +153,9 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
     }
 
     private void craftEffects() {
-        world.playSound(null, getPos(), ModSounds.BLOCK_RITUAL_SHRINE_USE, SoundCategory.BLOCKS, 1f, 0.8f + world.random.nextFloat() * 0.4f);
+        if (world != null) {
+            world.playSound(null, getPos(), ModSounds.BLOCK_RITUAL_SHRINE_USE, SoundCategory.BLOCKS, 1f, 0.8f + world.random.nextFloat() * 0.4f);
+        }
 
         double d0 = pos.getX() + 0.5;
         double d1 = pos.getY() + 1.25;
@@ -164,14 +167,17 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
 
     private void onbashiraEffects(OnbashiraBlockEntity onbashiraBlock) {
         if (!onbashiraBlock.getStack(0).isEmpty()) {
-            ((ServerWorld) world).spawnParticles(ParticleTypes.SMOKE,
-                    onbashiraBlock.getPos().getX() + 0.5,
-                    onbashiraBlock.getPos().getY() + 1.25,
-                    onbashiraBlock.getPos().getZ() + 0.5,
-                    5, 0, 0.1, 0, 0.01);
+            if (world != null) {
+                ((ServerWorld) world).spawnParticles(ParticleTypes.SMOKE,
+                        onbashiraBlock.getPos().getX() + 0.5,
+                        onbashiraBlock.getPos().getY() + 1.25,
+                        onbashiraBlock.getPos().getZ() + 0.5,
+                        5, 0, 0.1, 0, 0.01);
+            }
         }
     }
 
+    @SuppressWarnings("DataFlowIssue")
     private Optional<OnbashiraBlockEntity> getOnbashiraPos(BlockPos pos) {
         return Optional.ofNullable((OnbashiraBlockEntity) world.getBlockEntity(pos));
     }
@@ -180,8 +186,8 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
         super(ModBlockEntities.RITUAL_SHRINE, pos, state);
     }
 
-    public static void tick(World world, BlockPos pos, BlockState state, RitualShrineBlockEntity blockEntity) {
-    }
+    @SuppressWarnings("unused")
+    public static void tick(World world, BlockPos pos, BlockState state, RitualShrineBlockEntity blockEntity) {}
 
     @Override
     public DefaultedList<ItemStack> getItems() {

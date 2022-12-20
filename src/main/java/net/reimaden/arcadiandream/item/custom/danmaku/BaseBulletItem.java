@@ -28,13 +28,13 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-@SuppressWarnings("ConstantConditions")
 public class BaseBulletItem extends Item implements DyeableBullet, BulletPatterns {
 
     public BaseBulletItem(Settings settings) {
         super(settings);
     }
 
+    @SuppressWarnings("DataFlowIssue")
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
@@ -101,6 +101,7 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
         }
     }
 
+    @SuppressWarnings("DataFlowIssue")
     private void nbtTooltip(ItemStack stack, List<Text> tooltip) {
         NbtCompound nbt = stack.getNbt();
 

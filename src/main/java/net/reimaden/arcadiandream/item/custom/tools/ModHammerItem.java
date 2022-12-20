@@ -30,6 +30,7 @@ import java.util.List;
 
 public class ModHammerItem extends ToolItem implements Vanishable, EnchantmentHandler {
 
+    @SuppressWarnings("FieldCanBeLocal")
     private final float attackDamage;
     private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
@@ -42,10 +43,6 @@ public class ModHammerItem extends ToolItem implements Vanishable, EnchantmentHa
         builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Weapon modifier",
                 attackSpeed, EntityAttributeModifier.Operation.ADDITION));
         this.attributeModifiers = builder.build();
-    }
-
-    public float getAttackDamage() {
-        return attackDamage;
     }
 
     @Override

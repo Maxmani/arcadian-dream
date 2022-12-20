@@ -15,9 +15,9 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 
-@SuppressWarnings({"ConstantConditions", "unused"})
 public class ItemStackSyncS2CPacket {
 
+    @SuppressWarnings({"unused", "DataFlowIssue"})
     public static void receive(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender packetSender) {
         int size = buf.readInt();
         DefaultedList<ItemStack> list = DefaultedList.ofSize(size, ItemStack.EMPTY);

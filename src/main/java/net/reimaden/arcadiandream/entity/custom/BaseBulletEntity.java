@@ -19,13 +19,13 @@ import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 
-@SuppressWarnings("ConstantConditions")
 public class BaseBulletEntity extends ThrownItemEntity {
 
     public BaseBulletEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
         super(entityType, world);
     }
 
+    @SuppressWarnings("DataFlowIssue") // This is never used, so I'll suppress it
     public BaseBulletEntity(World world, LivingEntity owner) {
         super(null, owner, world);
     }
@@ -78,6 +78,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
         }
     }
 
+    @SuppressWarnings("DataFlowIssue")
     public int getPower() {
         if (getStack().hasNbt()) {
             return this.getStack().getNbt().getInt("power");
@@ -86,6 +87,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
         }
     }
 
+    @SuppressWarnings("DataFlowIssue")
     public int getMaxAge() {
         if (getStack().hasNbt()) {
             return this.getStack().getNbt().getInt("duration");
@@ -94,6 +96,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
         }
     }
 
+    @SuppressWarnings("DataFlowIssue")
     @Override
     protected float getGravity() {
         if (getStack().hasNbt()) {

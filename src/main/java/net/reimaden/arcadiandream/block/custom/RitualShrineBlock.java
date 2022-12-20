@@ -34,14 +34,14 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
-@SuppressWarnings({"deprecation", "ConstantConditions"})
+@SuppressWarnings("deprecation")
 public class RitualShrineBlock extends BlockWithEntity implements BlockEntityProvider, Waterloggable {
 
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final BooleanProperty HAS_ITEM = BooleanProperty.of("has_item");
 
-    Random random = Random.createThreadSafe();
+    private final Random random = Random.create();
 
     public RitualShrineBlock(Settings settings) {
         super(settings);
@@ -57,6 +57,7 @@ public class RitualShrineBlock extends BlockWithEntity implements BlockEntityPro
         return SHAPE;
     }
 
+    @SuppressWarnings("DataFlowIssue")
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         RitualShrineBlockEntity blockEntity = (RitualShrineBlockEntity) world.getBlockEntity(pos);
