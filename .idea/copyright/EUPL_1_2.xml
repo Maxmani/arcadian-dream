@@ -1,0 +1,6 @@
+<component name="CopyrightManager">
+  <copyright>
+    <option name="notice" value="Copyright (c) &amp;#36;originalComment.match(&quot;Copyright \(c\) (\d+)&quot;, 1, &quot;-&quot;, &quot;&amp;#36;today.year&quot;)&amp;#36;today.year Maxmani and contributors.&#10;Licensed under the EUPL-1.2 or later." />
+    <option name="myName" value="EUPL-1.2" />
+  </copyright>
+</component>

@@ -1,0 +1,6 @@
+<component name="CopyrightManager">
+  <copyright>
+    <option name="notice" value="Copyright (c) &amp;#36;originalComment.match(&quot;Copyright \(c\) (\d+)&quot;, 1, &quot;-&quot;, &quot;&amp;#36;today.year&quot;)&amp;#36;today.year Maxmani and contributors.&#10;Licensed under the EUPL-1.2 or later.&#10;&#10;Credits to ArekkuusuJerii for the original code.&#10;https://github.com/TeamNightclipse/Grimoire-Of-Alice/blob/1.12/src/main/java/arekkuusu/grimoireofalice/common/item/ItemWallPassingChisel.java&#10;&#10;Grimoire Of Alice is Open Source and distributed under the&#10;Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md" />
+    <option name="myName" value="EUPL-1.2 + ArekkuusuJerii" />
+  </copyright>
+</component>

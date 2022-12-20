@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Copyright" pattern="file[arcadian-dream.main]:java/*.java&amp;&amp;!file[arcadian-dream.main]:java/net/reimaden/arcadiandream/block/entity/ImplementedInventory.java&amp;&amp;!file[arcadian-dream.main]:java/net/reimaden/arcadiandream/item/custom/misc/WallPassingChiselItem.java" />
+</component>
