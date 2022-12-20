@@ -1,11 +1,12 @@
 /*
  * Copyright (c) 2022 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
- */
-
-/*
+ *
  * Credits to ArekkuusuJerii for the original code.
  * https://github.com/TeamNightclipse/Grimoire-Of-Alice/blob/1.12/src/main/java/arekkuusu/grimoireofalice/common/item/ItemWallPassingChisel.java
+ *
+ * Grimoire Of Alice is Open Source and distributed under the
+ * Grimoire Of Alice license: https://github.com/ArekkuusuJerii/Grimoire-Of-Alice/blob/master/LICENSE.md
  */
 
 package net.reimaden.arcadiandream.item.custom.misc;
