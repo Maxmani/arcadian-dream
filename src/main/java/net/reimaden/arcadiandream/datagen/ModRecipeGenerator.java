@@ -106,14 +106,12 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input(Items.SPIDER_EYE)
                 .input(Items.DIAMOND)
                 .input(ModItems.MAKAITE_INFUSED_NETHERITE_INGOT)
-                .input(Items.PRISMARINE_CRYSTALS)
-                .input(Items.PRISMARINE_CRYSTALS)
+                .input(Items.PRISMARINE_CRYSTALS, 2)
                 .offerTo(exporter, ritualCraftingId(ModItems.NUE_TRIDENT));
 
         RitualCraftingRecipeJsonBuilder.create(ModItems.MOCHI_HAMMER)
                 .input(Items.RABBIT_HIDE)
-                .input(Items.STICK)
-                .input(Items.STICK)
+                .input(Items.STICK, 2)
                 .input(ItemTags.PLANKS)
                 .moonPhase(String.valueOf(MOON_PHASES.FULL_MOON.ordinal()))
                 .offerTo(exporter, ritualCraftingId(ModItems.MOCHI_HAMMER));
