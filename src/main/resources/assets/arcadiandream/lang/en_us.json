@@ -96,15 +96,16 @@
   "death.attack.danmaku": "%1$s was shot by %2$s",
   "death.attack.danmaku.player": "%1$s was shot by %2$s using danmaku",
 
+  "stat.arcadiandream.interact_with_ritual_shrine": "Interactions with Ritual Shrine",
+  "stat.arcadiandream.interact_with_onbashira": "Interactions with Onbashira",
+  "stat.arcadiandream.clean_bullet": "Bullets Cleaned",
+
   "arcadiandream.category.ritual_crafting": "Ritual Crafting",
   "emi.category.arcadiandream.ritual_crafting": "Ritual Crafting",
 
   "tag.c.raw_ores": "Raw Ores",
+  "tag.c.obsidian_blocks": "Obsidian Blocks",
   "tag.arcadiandream.dragon_gem_ores": "Dragon Gem Ores",
-
-  "stat.arcadiandream.interact_with_ritual_shrine": "Interactions with Ritual Shrine",
-  "stat.arcadiandream.interact_with_onbashira": "Interactions with Onbashira",
-  "stat.arcadiandream.clean_bullet": "Bullets Cleaned",
 
   "text.config.arcadian-dream.title": "Arcadian Dream Configuration",
   "text.config.arcadian-dream.section.items": "Items",
