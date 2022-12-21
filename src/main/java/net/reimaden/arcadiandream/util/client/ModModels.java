@@ -5,16 +5,19 @@
 
 package net.reimaden.arcadiandream.util.client;
 
-import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
-import net.minecraft.client.util.ModelIdentifier;
+import net.minecraft.data.client.Model;
+import net.minecraft.data.client.TextureKey;
+import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
+
+import java.util.Optional;
 
 public class ModModels {
 
-    public static final ModelIdentifier NUE_TRIDENT = new ModelIdentifier(ArcadianDream.MOD_ID, "nue_trident_inventory", "inventory");
+    public static final Model HANDHELD_BIG = ModModels.item("handheld_big", TextureKey.LAYER0);
 
-    public static void register() {
-        ModelLoadingRegistry.INSTANCE.registerModelProvider((manager, out) ->
-                out.accept(NUE_TRIDENT));
+    @SuppressWarnings("SameParameterValue")
+    private static Model item(String parent, TextureKey... requiredTextureKeys) {
+        return new Model(Optional.of(new Identifier(ArcadianDream.MOD_ID, "item/" + parent)), Optional.empty(), requiredTextureKeys);
     }
 }

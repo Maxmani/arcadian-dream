@@ -11,7 +11,7 @@ import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.item.ItemStack;
-import net.reimaden.arcadiandream.util.client.ModModels;
+import net.reimaden.arcadiandream.util.client.ModModelProviders;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -28,7 +28,7 @@ public class ItemRendererMixin {
         // Give the Nue Trident its separate inventory sprite, similar to the Trident or the Spyglass
         if ((rendermode == ModelTransformation.Mode.GUI || rendermode == ModelTransformation.Mode.GROUND || rendermode == ModelTransformation.Mode.FIXED)
                 && stack.isOf(ModItems.NUE_TRIDENT)) {
-            return models.getModelManager().getModel(ModModels.NUE_TRIDENT);
+            return models.getModelManager().getModel(ModModelProviders.NUE_TRIDENT);
         }
 
         return defaultModel;

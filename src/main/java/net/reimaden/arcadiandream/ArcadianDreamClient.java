@@ -15,13 +15,13 @@ import net.reimaden.arcadiandream.networking.ModMessages;
 import net.reimaden.arcadiandream.particle.ModParticles;
 import net.reimaden.arcadiandream.util.ModModelPredicateProvider;
 import net.reimaden.arcadiandream.util.client.ModColorProviders;
-import net.reimaden.arcadiandream.util.client.ModModels;
+import net.reimaden.arcadiandream.util.client.ModModelProviders;
 
 public class ArcadianDreamClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        ModModels.register();
+        ModModelProviders.register();
         EntityRenderer.register();
         ModParticles.registerClient();
         ModColorProviders.register();

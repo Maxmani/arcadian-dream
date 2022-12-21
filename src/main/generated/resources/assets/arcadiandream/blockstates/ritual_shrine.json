@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "arcadiandream:block/ritual_shrine",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "arcadiandream:block/ritual_shrine"
+    },
+    "facing=south": {
+      "model": "arcadiandream:block/ritual_shrine",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "arcadiandream:block/ritual_shrine",
+      "y": 270
+    }
+  }
+}

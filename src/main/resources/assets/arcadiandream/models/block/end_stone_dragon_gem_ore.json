@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "arcadiandream:block/end_stone_dragon_gem_ore"
-  }
-}
