@@ -1,8 +1,14 @@
 {
   "sources": [
     {
-      "type": "single",
-      "resource": "arcadiandream:models/item/nue_trident"
+      "type": "directory",
+      "source": "models/armor",
+      "prefix": "models/armor/"
+    },
+    {
+      "type": "directory",
+      "source": "models/item",
+      "prefix": "models/item/"
     }
   ]
 }

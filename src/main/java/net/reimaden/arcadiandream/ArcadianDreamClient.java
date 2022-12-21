@@ -7,10 +7,13 @@ package net.reimaden.arcadiandream;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.reimaden.arcadiandream.block.entity.ModBlockEntities;
 import net.reimaden.arcadiandream.block.entity.client.OnbashiraBlockEntityRenderer;
 import net.reimaden.arcadiandream.block.entity.client.RitualShrineBlockEntityRenderer;
 import net.reimaden.arcadiandream.entity.client.EntityRenderer;
+import net.reimaden.arcadiandream.model.ModArmorRenderer;
+import net.reimaden.arcadiandream.model.ModModelHandler;
 import net.reimaden.arcadiandream.networking.ModMessages;
 import net.reimaden.arcadiandream.particle.ModParticles;
 import net.reimaden.arcadiandream.util.ModModelPredicateProvider;
@@ -27,6 +30,8 @@ public class ArcadianDreamClient implements ClientModInitializer {
         ModColorProviders.register();
         ModMessages.registerS2CPackets();
         ModModelPredicateProvider.register();
+        ModModelHandler.register((loc, def) -> EntityModelLayerRegistry.registerModelLayer(loc, () -> def));
+        ModArmorRenderer.register();
 
         BlockEntityRendererRegistry.register(ModBlockEntities.ONBASHIRA, OnbashiraBlockEntityRenderer::new);
         BlockEntityRendererRegistry.register(ModBlockEntities.RITUAL_SHRINE, RitualShrineBlockEntityRenderer::new);

@@ -14,6 +14,7 @@
     "ThrownEntityMixin"
   ],
   "client": [
+    "client.EntityModelLayersAccessor",
     "client.ClientPlayNetworkHandlerMixin",
     "client.EntityRendererMixin",
     "client.ItemRendererMixin"
