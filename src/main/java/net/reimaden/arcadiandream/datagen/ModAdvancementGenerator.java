@@ -8,15 +8,16 @@ package net.reimaden.arcadiandream.datagen;
 import com.google.common.collect.Lists;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
-import net.minecraft.advancement.Advancement;
-import net.minecraft.advancement.AdvancementDisplay;
-import net.minecraft.advancement.AdvancementFrame;
+import net.minecraft.advancement.*;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.item.ItemConvertible;
+import net.minecraft.predicate.entity.EntityPredicate;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import net.reimaden.arcadiandream.ArcadianDream;
+import net.reimaden.arcadiandream.advancement.ModCriteria;
+import net.reimaden.arcadiandream.advancement.ModCriterion;
 import net.reimaden.arcadiandream.item.ModItems;
 
 import java.util.List;
@@ -49,6 +50,7 @@ public class ModAdvancementGenerator extends FabricAdvancementProvider {
                     false);
         }
 
+        @SuppressWarnings("unused")
         @Override
         public void accept(Consumer<Advancement> consumer) {
 
@@ -60,14 +62,21 @@ public class ModAdvancementGenerator extends FabricAdvancementProvider {
                             false,
                             false,
                             false)
-                    .criterion("inventory_changed", InventoryChangedCriterion.Conditions.items(ModItems.POWER_ITEM))
+                    .criterion(ModItems.POWER_ITEM.toString(), InventoryChangedCriterion.Conditions.items(ModItems.POWER_ITEM))
                     .build(consumer, "arcadiandream:root");
 
-            Advancement dragonGem = Advancement.Builder.create()
+            Advancement mineDragonGem = Advancement.Builder.create()
                     .parent(parentAdvancement)
                     .display(makeDisplay(AdvancementFrame.TASK, ModItems.DRAGON_GEM, "mine_dragon_gem"))
-                    .criterion("inventory_changed", InventoryChangedCriterion.Conditions.items(ModItems.DRAGON_GEM))
+                    .criterion(ModItems.DRAGON_GEM.toString(), InventoryChangedCriterion.Conditions.items(ModItems.DRAGON_GEM))
                     .build(consumer, "arcadiandream:mine_dragon_gem");
+
+            // TODO: Add support for item conditions
+            Advancement ritualCrafting = Advancement.Builder.create()
+                    .parent(mineDragonGem)
+                    .display(makeDisplay(AdvancementFrame.GOAL, ModItems.RITUAL_SHRINE, "ritual_crafting"))
+                    .criterion("ritual_crafting", new ModCriterion.Conditions(ModCriteria.RITUAL_CRAFTING.getId(), EntityPredicate.Extended.EMPTY))
+                    .build(consumer, "arcadiandream:ritual_crafting");
         }
     }
 }

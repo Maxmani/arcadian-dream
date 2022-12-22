@@ -5,6 +5,8 @@
 
 package net.reimaden.arcadiandream.item.custom.armor;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
@@ -25,6 +27,7 @@ public class OrdinaryArmorItem extends ModArmorItem{
         this.slot = slot;
     }
 
+    @Environment(EnvType.CLIENT)
     @Override
     protected BipedEntityModel<LivingEntity> provideArmorModelForSlot(EquipmentSlot slot) {
         EntityModelLoader models = MinecraftClient.getInstance().getEntityModelLoader();

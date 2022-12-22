@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.stat.Stats;
+import net.reimaden.arcadiandream.advancement.ModCriteria;
 import net.reimaden.arcadiandream.block.custom.RitualShrineBlock;
 import net.reimaden.arcadiandream.networking.ModMessages;
 import net.reimaden.arcadiandream.recipe.RitualCraftingRecipe;
@@ -134,6 +135,7 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
             craftEffects();
             player.incrementStat(ModStats.INTERACT_WITH_RITUAL_SHRINE);
             player.incrementStat(Stats.CRAFTED.getOrCreateStat(recipe.get().getOutput().getItem()));
+            ModCriteria.RITUAL_CRAFTING.trigger((ServerPlayerEntity) player);
         }
     }
 

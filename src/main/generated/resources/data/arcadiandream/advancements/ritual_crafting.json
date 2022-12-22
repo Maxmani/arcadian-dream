@@ -1,0 +1,29 @@
+{
+  "parent": "arcadiandream:mine_dragon_gem",
+  "criteria": {
+    "ritual_crafting": {
+      "conditions": {},
+      "trigger": "arcadiandream:ritual_crafting"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.arcadiandream.ritual_crafting.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "arcadiandream:ritual_shrine"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.arcadiandream.ritual_crafting.title"
+    }
+  },
+  "requirements": [
+    [
+      "ritual_crafting"
+    ]
+  ]
+}

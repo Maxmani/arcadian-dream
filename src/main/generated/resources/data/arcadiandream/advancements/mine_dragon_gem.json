@@ -1,7 +1,7 @@
 {
   "parent": "arcadiandream:root",
   "criteria": {
-    "inventory_changed": {
+    "dragon_gem": {
       "conditions": {
         "items": [
           {
@@ -31,7 +31,7 @@
   },
   "requirements": [
     [
-      "inventory_changed"
+      "dragon_gem"
     ]
   ]
 }

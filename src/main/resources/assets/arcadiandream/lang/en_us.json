@@ -58,11 +58,7 @@
   "item.arcadiandream.bullet.tooltip_stack": "Stack: %s",
   "item.arcadiandream.bullet.tooltip_amount": "Amount: %s",
   "item.arcadiandream.ibuki_gourd.tooltip": "Empty",
-  "item.arcadiandream.mochi_hammer.tooltip": [
-    "Kills: ", {
-      "index": 0, "color": "dark_red"
-    }
-  ],
+  "item.arcadiandream.mochi_hammer.tooltip": "Kills: §4%s",
 
   "block.arcadiandream.dragon_gem_ore": "Dragon Gem Ore",
   "block.arcadiandream.deepslate_dragon_gem_ore": "Deepslate Dragon Gem Ore",
@@ -81,6 +77,8 @@
   "advancements.arcadiandream.root.description": "Welcome to Gensokyo",
   "advancements.arcadiandream.mine_dragon_gem.title": "Rainbow Dragon Cave",
   "advancements.arcadiandream.mine_dragon_gem.description": "Acquire dragon gems",
+  "advancements.arcadiandream.ritual_crafting.title": "Ritual Crafting",
+  "advancements.arcadiandream.ritual_crafting.description": "Craft something using the Ritual Shrine",
 
   "arcadiandream.subtitles.entity.danmaku.fire": "Danmaku fires",
   "arcadiandream.subtitles.item.bomb_item.use": "Bomb Item activates",

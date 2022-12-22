@@ -6,6 +6,7 @@
 package net.reimaden.arcadiandream;
 
 import net.fabricmc.api.ModInitializer;
+import net.reimaden.arcadiandream.advancement.ModCriteria;
 import net.reimaden.arcadiandream.block.ModBlocks;
 import net.reimaden.arcadiandream.block.ModCauldronBehavior;
 import net.reimaden.arcadiandream.block.entity.ModBlockEntities;
@@ -44,6 +45,7 @@ public class ArcadianDream implements ModInitializer {
 		ModRecipes.register();
 		ModStats.register();
 		ModCauldronBehavior.register();
+		ModCriteria.register();
 
 		ModWorldGen.register();
 		ModLootTableModifiers.modify();

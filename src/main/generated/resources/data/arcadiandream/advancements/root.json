@@ -1,6 +1,6 @@
 {
   "criteria": {
-    "inventory_changed": {
+    "power_item": {
       "conditions": {
         "items": [
           {
@@ -31,7 +31,7 @@
   },
   "requirements": [
     [
-      "inventory_changed"
+      "power_item"
     ]
   ]
 }
