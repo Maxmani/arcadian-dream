@@ -2,7 +2,6 @@
   "parent": "arcadiandream:mine_dragon_gem",
   "criteria": {
     "ritual_crafting": {
-      "conditions": {},
       "trigger": "arcadiandream:ritual_crafting"
     }
   },

@@ -17,7 +17,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.advancement.ModCriteria;
-import net.reimaden.arcadiandream.advancement.ModCriterion;
+import net.reimaden.arcadiandream.advancement.RitualCraftingCriterion;
 import net.reimaden.arcadiandream.item.ModItems;
 
 import java.util.List;
@@ -71,11 +71,10 @@ public class ModAdvancementGenerator extends FabricAdvancementProvider {
                     .criterion(ModItems.DRAGON_GEM.toString(), InventoryChangedCriterion.Conditions.items(ModItems.DRAGON_GEM))
                     .build(consumer, "arcadiandream:mine_dragon_gem");
 
-            // TODO: Add support for item conditions
             Advancement ritualCrafting = Advancement.Builder.create()
                     .parent(mineDragonGem)
                     .display(makeDisplay(AdvancementFrame.GOAL, ModItems.RITUAL_SHRINE, "ritual_crafting"))
-                    .criterion("ritual_crafting", new ModCriterion.Conditions(ModCriteria.RITUAL_CRAFTING.getId(), EntityPredicate.Extended.EMPTY))
+                    .criterion("ritual_crafting", new RitualCraftingCriterion.Conditions(ModCriteria.RITUAL_CRAFTING.getId(), EntityPredicate.Extended.EMPTY))
                     .build(consumer, "arcadiandream:ritual_crafting");
         }
     }
