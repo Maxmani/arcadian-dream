@@ -18,10 +18,12 @@ public class REIRitualCraftingDisplay implements Display {
 
     private final List<EntryIngredient> input;
     private final EntryIngredient output;
+    private final String moonPhase;
 
     public REIRitualCraftingDisplay(RitualCraftingRecipe recipe) {
         this.input = EntryIngredients.ofIngredients(recipe.getIngredients());
         this.output = EntryIngredients.of(recipe.getOutput());
+        this.moonPhase = recipe.getMoonPhase();
     }
 
     @Override
@@ -37,5 +39,9 @@ public class REIRitualCraftingDisplay implements Display {
     @Override
     public CategoryIdentifier<?> getCategoryIdentifier() {
         return REIRitualCraftingCategory.CATEGORY;
+    }
+
+    String getMoonPhase() {
+        return moonPhase;
     }
 }

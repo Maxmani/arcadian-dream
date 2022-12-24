@@ -17,11 +17,11 @@
 //import net.minecraft.util.Identifier;
 //import net.reimaden.arcadiandream.ArcadianDream;
 //import net.reimaden.arcadiandream.block.ModBlocks;
-//import net.reimaden.arcadiandream.compat.IOnbashiraLocations;
+//import net.reimaden.arcadiandream.compat.IRitualCraftingLocations;
 //import net.reimaden.arcadiandream.recipe.RitualCraftingRecipe;
 //import org.jetbrains.annotations.NotNull;
 //
-//public class JEIRitualCraftingCategory implements IRecipeCategory<RitualCraftingRecipe>, IOnbashiraLocations {
+//public class JEIRitualCraftingCategory implements IRecipeCategory<RitualCraftingRecipe>, IRitualCraftingLocations {
 //
 //    public static final Identifier UID = new Identifier(ArcadianDream.MOD_ID, "ritual_crafting");
 //    public static final Identifier TEXTURE = new Identifier(ArcadianDream.MOD_ID, "textures/gui/ritual_crafting.png");

@@ -8,7 +8,7 @@ package net.reimaden.arcadiandream.compat;
 /**
  * Locations of the Ritual Crafting slots in a recipe viewer GUI.
  */
-public interface IOnbashiraLocations {
+public interface IRitualCraftingLocations {
 
     int[][] ONBASHIRAS = {
             // Inner onbashiras X, Y
@@ -32,4 +32,5 @@ public interface IOnbashiraLocations {
     };
 
     int[] OUTPUT_SLOT = {84, 84};
+    int[] MOON_SLOT = {164, 4};
 }

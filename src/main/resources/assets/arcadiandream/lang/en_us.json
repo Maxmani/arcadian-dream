@@ -100,6 +100,16 @@
 
   "arcadiandream.category.ritual_crafting": "Ritual Crafting",
   "emi.category.arcadiandream.ritual_crafting": "Ritual Crafting",
+  "arcadiandream.ritual_crafting.requirement": "Requires: §b%s",
+  "arcadiandream.ritual_crafting.moon_phase.0": "Full Moon",
+  "arcadiandream.ritual_crafting.moon_phase.1": "Waning Gibbous",
+  "arcadiandream.ritual_crafting.moon_phase.2": "Last Quarter",
+  "arcadiandream.ritual_crafting.moon_phase.3": "Waning Crescent",
+  "arcadiandream.ritual_crafting.moon_phase.4": "New Moon",
+  "arcadiandream.ritual_crafting.moon_phase.5": "Waxing Crescent",
+  "arcadiandream.ritual_crafting.moon_phase.6": "First Quarter",
+  "arcadiandream.ritual_crafting.moon_phase.7": "Waxing Gibbous",
+  "arcadiandream.ritual_crafting.moon_phase.invalid": "Invalid moon phase!",
 
   "tag.c.raw_ores": "Raw Ores",
   "tag.c.obsidian_blocks": "Obsidian Blocks",

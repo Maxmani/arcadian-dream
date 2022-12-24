@@ -19,21 +19,23 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.block.ModBlocks;
-import net.reimaden.arcadiandream.compat.IOnbashiraLocations;
+import net.reimaden.arcadiandream.compat.IRitualCraftingLocations;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class REIRitualCraftingCategory implements DisplayCategory<REIRitualCraftingDisplay>, IOnbashiraLocations {
+public class REIRitualCraftingCategory implements DisplayCategory<REIRitualCraftingDisplay>, IRitualCraftingLocations {
 
     public static final REIRitualCraftingCategory INSTANCE = new REIRitualCraftingCategory();
 
-    public static final Identifier ID = new Identifier(ArcadianDream.MOD_ID, "ritual_crafting");
-    public static final Identifier TEXTURE = new Identifier(ArcadianDream.MOD_ID, "textures/gui/ritual_crafting.png");
+    private static final Identifier TEXTURE = new Identifier(ArcadianDream.MOD_ID, "textures/gui/ritual_crafting.png");
+    private static final Identifier MOON_ICON = new Identifier(ArcadianDream.MOD_ID, "textures/gui/moon.png");
+
+    private static final Identifier ID = new Identifier(ArcadianDream.MOD_ID, "ritual_crafting");
     public static final CategoryIdentifier<? extends REIRitualCraftingDisplay> CATEGORY = CategoryIdentifier.of(ID);
 
-    public static final EntryStack<ItemStack> ICON = EntryStacks.of(ModBlocks.RITUAL_SHRINE);
-    public static final Text TITLE = Text.translatable("arcadiandream.category.ritual_crafting");
+    private static final EntryStack<ItemStack> ICON = EntryStacks.of(ModBlocks.RITUAL_SHRINE);
+    private static final Text TITLE = Text.translatable("arcadiandream.category.ritual_crafting");
 
     @Override
     public CategoryIdentifier<? extends REIRitualCraftingDisplay> getCategoryIdentifier() {
@@ -65,6 +67,23 @@ public class REIRitualCraftingCategory implements DisplayCategory<REIRitualCraft
         return 184;
     }
 
+    private Text tooltip(String moonPhase) {
+        Text tooltip;
+        switch (moonPhase) {
+            case "0" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.0");
+            case "1" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.1");
+            case "2" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.2");
+            case "3" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.3");
+            case "4" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.4");
+            case "5" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + "..ritual_crafting.moon_phase.5");
+            case "6" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.6");
+            case "7" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.7");
+            default -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.invalid");
+        }
+
+        return Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.requirement", tooltip);
+    }
+
     @Override
     public List<Widget> setupDisplay(REIRitualCraftingDisplay display, Rectangle bounds) {
         List<Widget> widgets = new ArrayList<>();
@@ -76,6 +95,12 @@ public class REIRitualCraftingCategory implements DisplayCategory<REIRitualCraft
         for (int i = 0; i < display.getInputEntries().size(); i++) {
             widgets.add(Widgets.createSlot(new Point(ONBASHIRAS[i][0] + bounds.x, ONBASHIRAS[i][1] + bounds.y))
                     .entries(display.getInputEntries().get(i)).disableBackground().markInput());
+        }
+        if (!display.getMoonPhase().isEmpty()) {
+            Widget moonPhase = Widgets.createTexturedWidget(MOON_ICON, MOON_SLOT[0] + bounds.x, MOON_SLOT[1] + bounds.y,
+                    0, 0, 16, 16, 16, 16);
+            Point point = new Point(MOON_SLOT[0] + bounds.x, MOON_SLOT[1] + bounds.y);
+            widgets.add(Widgets.withTooltip(Widgets.withBounds(moonPhase, new Rectangle(point.x, point.y, 16, 16)), tooltip(display.getMoonPhase())));
         }
 
         return widgets;

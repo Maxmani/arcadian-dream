@@ -55,6 +55,10 @@ public class RitualCraftingRecipe implements Recipe<SimpleInventory> {
         return result;
     }
 
+    public String getMoonPhase() {
+        return moonPhase;
+    }
+
     @Override
     public DefaultedList<Ingredient> getIngredients() {
         return recipeItems;
