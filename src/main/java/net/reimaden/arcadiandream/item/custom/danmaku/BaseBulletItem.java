@@ -70,7 +70,7 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
         return TypedActionResult.success(itemStack, world.isClient);
     }
 
-    @Override // TODO: Initialize NBT in a better way
+    @Override // TODO: Initialize NBT in a better way -> Item#getDefaultStack
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         if (!stack.hasNbt()) {
             NbtCompound nbt = stack.getOrCreateNbt();

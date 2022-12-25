@@ -13,10 +13,7 @@ import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.block.ModBlocks;
 import net.reimaden.arcadiandream.item.custom.armor.OrdinaryHatItem;
 import net.reimaden.arcadiandream.item.custom.danmaku.OrbBulletItem;
-import net.reimaden.arcadiandream.item.custom.misc.BombItem;
-import net.reimaden.arcadiandream.item.custom.misc.ExtendItem;
-import net.reimaden.arcadiandream.item.custom.misc.IbukiGourdItem;
-import net.reimaden.arcadiandream.item.custom.misc.WallPassingChiselItem;
+import net.reimaden.arcadiandream.item.custom.misc.*;
 import net.reimaden.arcadiandream.item.custom.tools.MochiHammerItem;
 import net.reimaden.arcadiandream.item.custom.tools.ModHoeItem;
 import net.reimaden.arcadiandream.item.custom.tools.NueTridentItem;
@@ -44,6 +41,7 @@ public class ModItems {
 
     public static final Item WALL_PASSING_CHISEL = registerItem("wall_passing_chisel", new WallPassingChiselItem(new FabricItemSettings().maxDamage(100)));
     public static final Item IBUKI_GOURD = registerItem("ibuki_gourd", new IbukiGourdItem(new FabricItemSettings().maxCount(1)));
+    public static final Item HEALING_CHARM = registerItem("healing_charm", new HealingCharmItem(new FabricItemSettings().maxCount(16)));
 
     // Food
     public static final Item HEAVENLY_PEACH = registerItem("heavenly_peach", new Item(new FabricItemSettings().maxCount(16)
@@ -106,6 +104,7 @@ public class ModItems {
             entries.add(MAKAITE_INFUSED_NETHERITE_INGOT);
             entries.add(WALL_PASSING_CHISEL);
             entries.add(IBUKI_GOURD);
+            entries.add(HEALING_CHARM);
             entries.add(HEAVENLY_PEACH);
             entries.add(ORDINARY_HAT);
             entries.add(MAKAITE_HELMET);
