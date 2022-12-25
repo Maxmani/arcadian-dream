@@ -28,6 +28,8 @@ public class OrdinaryArmorModel {
 
         ModelPartData head = root.addChild("head", ModelPartBuilder.create(), ModelTransform.pivot(0.0F, 1.0F, 0.0F));
 
+        // abandon hope all ye who enter here
+
         head.addChild("hat", ModelPartBuilder.create().uv(26, 36).cuboid(-2.0F, -36.25F, -4.25F, 4.0F, 2.0F, 4.0F, Dilation.NONE)
                 .uv(10, 35).cuboid(-1.5F, -37.25F, -4.0F, 3.0F, 1.0F, 5.0F, Dilation.NONE)
                 .uv(34, 25).cuboid(-3.0F, -34.75F, -5.25F, 6.0F, 2.0F, 6.0F, Dilation.NONE)
