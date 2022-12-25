@@ -22,8 +22,6 @@ import net.reimaden.arcadiandream.item.custom.tools.ModHoeItem;
 import net.reimaden.arcadiandream.item.custom.tools.NueTridentItem;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
@@ -49,8 +47,7 @@ public class ModItems {
 
     // Food
     public static final Item HEAVENLY_PEACH = registerItem("heavenly_peach", new Item(new FabricItemSettings().maxCount(16)
-            .food(new FoodComponent.Builder().hunger(6).saturationModifier(0.4F).alwaysEdible()
-                    .statusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE,600),1F).build())));
+            .food(ModFoodComponents.HEAVENLY_PEACH)));
 
     // Armor
     public static final Item ORDINARY_HAT = registerItem("ordinary_hat", new OrdinaryHatItem(ModArmorMaterials.ORDINARY, EquipmentSlot.HEAD,
