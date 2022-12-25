@@ -1,0 +1,23 @@
+{
+  "type": "arcadiandream:ritual_crafting",
+  "ingredients": [
+    {
+      "item": "minecraft:chain"
+    },
+    {
+      "tag": "minecraft:terracotta"
+    },
+    {
+      "item": "minecraft:bucket"
+    },
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "minecraft:paper"
+    }
+  ],
+  "result": {
+    "item": "arcadiandream:ibuki_gourd"
+  }
+}

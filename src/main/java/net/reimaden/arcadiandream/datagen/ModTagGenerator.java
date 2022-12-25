@@ -57,6 +57,7 @@ public class ModTagGenerator {
                     .add(ModBlocks.MAKAITE_BLOCK)
                     .add(ModBlocks.RITUAL_SHRINE);
 
+            // Modded block tags
             getOrCreateTagBuilder(ModTags.Blocks.OBSIDIAN_BLOCKS)
                     .add(Blocks.OBSIDIAN)
                     .add(Blocks.CRYING_OBSIDIAN);
@@ -79,7 +80,7 @@ public class ModTagGenerator {
         @Override
         protected void configure(RegistryWrapper.WrapperLookup arg) {
 
-            // "minecraft/tags/blocks/items"
+            // "minecraft/tags/items"
             getOrCreateTagBuilder(BEACON_PAYMENT_ITEMS)
                     .add(ModItems.DRAGON_GEM)
                     .add(ModItems.MAKAITE_INGOT)
@@ -97,7 +98,11 @@ public class ModTagGenerator {
                     .addTag(ModTags.Items.DRAGON_GEM_ORES)
                     .add(ModItems.MAKAITE_ORE);
 
+            // Modded item tags
             getOrCreateTagBuilder(ModTags.Items.RAW_ORES)
+                    .add(Items.RAW_IRON)
+                    .add(Items.RAW_COPPER)
+                    .add(Items.RAW_GOLD)
                     .add(ModItems.RAW_MAKAITE);
             getOrCreateTagBuilder(ConventionalItemTags.AXES)
                     .add(ModItems.MAKAITE_AXE);

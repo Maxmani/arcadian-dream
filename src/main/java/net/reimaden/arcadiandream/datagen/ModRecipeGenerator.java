@@ -13,6 +13,7 @@ import net.minecraft.data.server.recipe.RecipeProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.tag.ItemTags;
 import net.reimaden.arcadiandream.datagen.builders.RitualCraftingRecipeJsonBuilder;
@@ -112,8 +113,27 @@ public class ModRecipeGenerator extends ModRecipeProvider {
         RitualCraftingRecipeJsonBuilder.create(ModItems.MOCHI_HAMMER)
                 .input(Items.RABBIT_HIDE)
                 .input(Items.STICK, 2)
-                .input(ItemTags.PLANKS)
+                .input(Ingredient.fromTag(ItemTags.PLANKS), 3)
                 .moonPhase(String.valueOf(MOON_PHASES.FULL_MOON.ordinal()))
                 .offerTo(exporter, ritualCraftingId(ModItems.MOCHI_HAMMER));
+
+        RitualCraftingRecipeJsonBuilder.create(ModItems.WALL_PASSING_CHISEL)
+                .input(Items.ENDER_PEARL)
+                .input(Items.GOLD_INGOT)
+                .input(Items.STICK)
+                .input(Items.GOLD_INGOT)
+                .offerTo(exporter, ritualCraftingId(ModItems.WALL_PASSING_CHISEL));
+
+        RitualCraftingRecipeJsonBuilder.create(ModItems.IBUKI_GOURD)
+                .input(Items.CHAIN)
+                .input(ItemTags.TERRACOTTA)
+                .input(Items.BUCKET)
+                .input(Items.PAPER, 2)
+                .offerTo(exporter, ritualCraftingId(ModItems.IBUKI_GOURD));
+
+        RitualCraftingRecipeJsonBuilder.create(ModItems.HISOU_SWORD)
+                .input(Items.BLAZE_ROD)
+                .input(ModItems.DRAGON_GEM, 2)
+                .offerTo(exporter, ritualCraftingId(ModItems.HISOU_SWORD));
     }
 }
