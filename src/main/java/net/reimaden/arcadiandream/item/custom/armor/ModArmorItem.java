@@ -45,7 +45,6 @@ public class ModArmorItem extends ArmorItem {
         return new HelmetModel(root, slot);
     }
 
-    @SuppressWarnings("unused")
     public Identifier getArmorTexture(ItemStack stack, EquipmentSlot slot) {
         return null;
     }
