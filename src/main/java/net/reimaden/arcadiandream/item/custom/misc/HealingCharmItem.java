@@ -17,10 +17,11 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
+import net.reimaden.arcadiandream.sound.ModSounds;
 
 public class HealingCharmItem extends Item {
 
-    // TODO: Add a way to obtain this, perhaps a new villager profession? Also sound effects
+    // TODO: Add a way to obtain this, perhaps a new villager profession?
     public HealingCharmItem(Settings settings) {
         super(settings);
     }
@@ -32,13 +33,15 @@ public class HealingCharmItem extends Item {
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        if (user instanceof PlayerEntity player) {
-            player.getItemCooldownManager().set(this, 100);
+        PlayerEntity player = (PlayerEntity) user;
+        world.playSound(player, player.getX(), player.getY(), player.getZ(),
+                ModSounds.ITEM_HEALING_CHARM_USE, player.getSoundCategory(), 0.7f, world.random.nextFloat() * 0.4f + 0.8f);
 
-            player.incrementStat(Stats.USED.getOrCreateStat(this));
-            if (!player.getAbilities().creativeMode) {
-                stack.decrement(1);
-            }
+        player.getItemCooldownManager().set(this, 100);
+
+        player.incrementStat(Stats.USED.getOrCreateStat(this));
+        if (!player.getAbilities().creativeMode) {
+            stack.decrement(1);
         }
 
         if (!world.isClient()) {

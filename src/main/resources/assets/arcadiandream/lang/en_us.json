@@ -91,6 +91,7 @@
   "arcadiandream.subtitles.block.onbashira.create": "Onbashira tied",
   "arcadiandream.subtitles.item.wall_passing_chisel.use": "Player warps",
   "arcadiandream.subtitles.item.ibuki_gourd.fill": "Gourd fills",
+  "arcadiandream.subtitles.item.healing_charm.use": "Charm of Healing activates",
 
   "death.attack.danmaku": "%1$s was shot by %2$s",
   "death.attack.danmaku.player": "%1$s was shot by %2$s using danmaku",

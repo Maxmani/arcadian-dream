@@ -97,5 +97,11 @@
       "item/bottle/fill4"
     ],
     "subtitle": "arcadiandream.subtitles.item.ibuki_gourd.fill"
+  },
+  "item.healing_charm.use": {
+    "sounds": [
+      "arcadiandream:item/healing_charm/heal"
+    ],
+    "subtitle": "arcadiandream.subtitles.item.healing_charm.use"
   }
 }
