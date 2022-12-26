@@ -27,7 +27,7 @@ import java.util.List;
 public class EnchantmentHelperMixin {
 
     @Inject(method = "generateEnchantments", at = @At(value = "INVOKE", target = "Ljava/util/List;isEmpty()Z", ordinal = 0), locals = LocalCapture.CAPTURE_FAILHARD)
-    private static void generateEnchantments(Random random, ItemStack stack, int level, boolean treasureAllowed, CallbackInfoReturnable<List<?>> cir, List<?> list, Item item, int i, float f, List<EnchantmentLevelEntry> list2) {
+    private static void arcadiandream$generateEnchantments(Random random, ItemStack stack, int level, boolean treasureAllowed, CallbackInfoReturnable<List<?>> cir, List<?> list, Item item, int i, float f, List<EnchantmentLevelEntry> list2) {
         List<EnchantmentLevelEntry> newEnchantments = new ArrayList<>();
 
         list2.forEach(enchantmentLevelEntry -> {
@@ -45,7 +45,7 @@ public class EnchantmentHelperMixin {
     }
 
     @Inject(method = "getPossibleEntries", at = @At("HEAD"), cancellable = true)
-    private static void adjustPossibleEntries(int power, ItemStack stack, boolean treasureAllowed, CallbackInfoReturnable<List<EnchantmentLevelEntry>> cir) {
+    private static void arcadiandream$adjustPossibleEntries(int power, ItemStack stack, boolean treasureAllowed, CallbackInfoReturnable<List<EnchantmentLevelEntry>> cir) {
         Item item = stack.getItem();
 
         if (item instanceof EnchantmentHandler) {

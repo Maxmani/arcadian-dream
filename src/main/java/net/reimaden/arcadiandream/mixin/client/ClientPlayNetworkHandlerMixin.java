@@ -31,7 +31,7 @@ public abstract class ClientPlayNetworkHandlerMixin {
 
     @SuppressWarnings("OptionalGetWithoutIsPresent")
     @Inject(method = "getActiveTotemOfUndying", at = @At("RETURN"), cancellable = true)
-    private static void getExtendItem(PlayerEntity player, CallbackInfoReturnable<ItemStack> cir) {
+    private static void arcadiandream$getExtendItem(PlayerEntity player, CallbackInfoReturnable<ItemStack> cir) {
         Item item = ModItems.EXTEND_ITEM;
         if (TrinketsApi.getTrinketComponent(player).get().isEquipped(item)) {
             cir.setReturnValue(item.getDefaultStack());
@@ -39,7 +39,7 @@ public abstract class ClientPlayNetworkHandlerMixin {
     }
 
     @Inject(method = "onEntityStatus", at = @At("RETURN"))
-    public void onEntityStatus(EntityStatusS2CPacket packet, CallbackInfo ci) {
+    public void arcadiandream$onEntityStatus(EntityStatusS2CPacket packet, CallbackInfo ci) {
         ClientPlayNetworkHandler instance = (ClientPlayNetworkHandler) (Object) this;
         Entity entity = packet.getEntity(instance.getWorld());
         if (packet.getStatus() == (byte)160 && entity != null) {

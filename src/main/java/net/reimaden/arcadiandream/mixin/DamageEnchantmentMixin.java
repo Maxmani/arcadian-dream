@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class DamageEnchantmentMixin {
 
     @Inject(method = "canAccept", at = @At("HEAD"), cancellable = true)
-    private void denyImpaling(Enchantment other, CallbackInfoReturnable<Boolean> cir) {
+    private void arcadiandream$denyImpaling(Enchantment other, CallbackInfoReturnable<Boolean> cir) {
         if (other instanceof ImpalingEnchantment) {
             cir.setReturnValue(false);
         }

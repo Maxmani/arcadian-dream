@@ -19,7 +19,7 @@ public abstract class EntityMixin {
 
     // TODO: Find a better way to do this
     @Inject(method = "updateMovementInFluid", at = @At("HEAD"), cancellable = true)
-    private void preventPushFromFluids(TagKey<Fluid> tag, double speed, CallbackInfoReturnable<Boolean> cir) {
+    private void arcadiandream$preventPushFromFluids(TagKey<Fluid> tag, double speed, CallbackInfoReturnable<Boolean> cir) {
         Entity bullet = ((Entity) (Object) this);
         if (bullet instanceof BaseBulletEntity) {
             cir.setReturnValue(false);

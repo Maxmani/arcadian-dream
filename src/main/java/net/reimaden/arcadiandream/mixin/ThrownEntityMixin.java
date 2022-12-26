@@ -18,7 +18,7 @@ public abstract class ThrownEntityMixin {
 
     // Prevent bullets from stopping in midair
     @ModifyConstant(method = "tick", constant = @Constant(floatValue = 0.99f))
-    private float danmakuAirFriction(float value) {
+    private float arcadiandream$danmakuAirFriction(float value) {
         if (bullet instanceof BaseBulletEntity) {
             return 1f;
         }
@@ -27,7 +27,7 @@ public abstract class ThrownEntityMixin {
 
     // Prevent bullets from stopping in water
     @ModifyConstant(method = "tick", constant = @Constant(floatValue = 0.8f))
-    private float danmakuWaterFriction(float value) {
+    private float arcadiandream$danmakuWaterFriction(float value) {
         if (bullet instanceof BaseBulletEntity) {
             return 1f;
         }

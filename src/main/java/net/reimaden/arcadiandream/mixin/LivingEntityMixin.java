@@ -39,7 +39,7 @@ public abstract class LivingEntityMixin extends Entity {
     }
 
     @Inject(method = "tryUseTotem", at = @At("HEAD"), cancellable = true)
-    private void useExtendItem(DamageSource source, CallbackInfoReturnable<Boolean> cir) {
+    private void arcadiandream$useExtendItem(DamageSource source, CallbackInfoReturnable<Boolean> cir) {
         LivingEntity livingEntity = (LivingEntity) (Object) this;
         Item item = ModItems.EXTEND_ITEM;
 

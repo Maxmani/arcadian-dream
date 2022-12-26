@@ -25,7 +25,7 @@ public abstract class PlayerEntityMixin {
     @Shadow public abstract void disableShield(boolean sprinting);
 
     @ModifyVariable(method = "tickMovement", at = @At("STORE"), index = 2)
-    private Box increasePickupRange(Box value) {
+    private Box arcadiandream$increasePickupRange(Box value) {
         PlayerEntity player = ((PlayerEntity) (Object) this);
         ItemStack stack = player.getEquippedStack(EquipmentSlot.HEAD);
         if(stack.isOf(ModItems.ORDINARY_HAT)) {
@@ -35,7 +35,7 @@ public abstract class PlayerEntityMixin {
     }
 
     @Inject(method = "takeShieldHit", at = @At("TAIL"))
-    private void disableShield(LivingEntity attacker, CallbackInfo ci) {
+    private void arcadiandream$disableShield(LivingEntity attacker, CallbackInfo ci) {
         if (attacker.getMainHandStack().isOf(ModItems.HISOU_SWORD) && ArcadianDream.CONFIG.hisouSwordOptions.canDisableShields()) {
             this.disableShield(true);
         }
