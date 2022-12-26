@@ -30,6 +30,7 @@ public class ModLootTableGenerator {
             addDrop(ModBlocks.RITUAL_SHRINE);
             addDrop(ModBlocks.ONBASHIRA);
             addDrop(ModBlocks.ONBASHIRA_PILLAR);
+            addDrop(ModBlocks.DANMAKU_CRAFTING_TABLE);
         }
     }
 }

@@ -32,6 +32,9 @@ public class ModBlocks {
     public static final Block RITUAL_SHRINE = registerBlock("ritual_shrine",
             new RitualShrineBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f, 6.0F)
                     .sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().luminance(7)));
+    public static final Block DANMAKU_CRAFTING_TABLE = registerBlock("danmaku_crafting_table",
+            new Block(FabricBlockSettings.of(Material.WOOD).strength(2.5f)
+                    .sounds(BlockSoundGroup.WOOD)));
 
     // Ores
     public static final Block DRAGON_GEM_ORE = registerBlock("dragon_gem_ore",

@@ -16,9 +16,11 @@ import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.tag.ItemTags;
+import net.reimaden.arcadiandream.block.ModBlocks;
 import net.reimaden.arcadiandream.datagen.builders.RitualCraftingRecipeJsonBuilder;
 import net.reimaden.arcadiandream.datagen.providers.ModRecipeProvider;
 import net.reimaden.arcadiandream.item.ModItems;
+import net.reimaden.arcadiandream.util.ModTags;
 
 import java.util.function.Consumer;
 
@@ -63,14 +65,14 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                         RecipeProvider.conditionsFromItem(Items.ENDER_PEARL))
                 .offerTo(exporter);
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModItems.ONBASHIRA_PILLAR)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlocks.ONBASHIRA_PILLAR)
                 .input('#', ItemTags.LOGS)
                 .pattern("#")
                 .pattern("#")
                 .criterion("has_log", RecipeProvider.conditionsFromTag(ItemTags.LOGS))
                 .offerTo(exporter);
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModItems.RITUAL_SHRINE)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlocks.RITUAL_SHRINE)
                 .input('#', Blocks.AMETHYST_BLOCK)
                 .input('D', ModItems.DRAGON_GEM)
                 .pattern(" D ")
@@ -78,6 +80,15 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .pattern("###")
                 .criterion(RecipeProvider.hasItem(Blocks.AMETHYST_BLOCK),
                         RecipeProvider.conditionsFromItem(Blocks.AMETHYST_BLOCK))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlocks.DANMAKU_CRAFTING_TABLE)
+                .input('#', ModTags.Items.ITEMS)
+                .input('C', Blocks.CRAFTING_TABLE)
+                .pattern("###")
+                .pattern("#C#")
+                .pattern("###")
+                .criterion("has_item", RecipeProvider.conditionsFromTag(ModTags.Items.ITEMS))
                 .offerTo(exporter);
 
         // Smelting recipes

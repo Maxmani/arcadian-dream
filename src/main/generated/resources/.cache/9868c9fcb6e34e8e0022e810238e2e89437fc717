@@ -1,4 +1,4 @@
-// 1.19.3	2022-12-26T00:39:14.253444013	Arcadian Dream/Model Definitions
+// 1.19.3	2022-12-26T21:37:51.57435735	Arcadian Dream/Model Definitions
 f2ebcff21cadc28cf53399f6a3290da06c871e6e assets/arcadiandream/blockstates/deepslate_dragon_gem_ore.json
 e9e8dbe0ce582568df0e7c45a0233a6720eadae9 assets/arcadiandream/models/item/ordinary_hat.json
 b3fd83ff6c264078e0e26b32a9ac2bd489ce343f assets/arcadiandream/models/item/bomb_item.json
@@ -7,12 +7,14 @@ fe53fcace44138636ff859e48a65897d7f9017c2 assets/arcadiandream/models/item/makait
 3d4745c2c6efb822232cafa89e4441fb392752a9 assets/arcadiandream/models/block/end_stone_dragon_gem_ore.json
 30a4fead2da84ed993ee5cd1244be0193f2367e1 assets/arcadiandream/models/item/raw_makaite.json
 0b639cae8a2e791ac94ef5a3c6a553e68b4b834d assets/arcadiandream/models/item/max_point_item.json
+e11e578b2e626ed7c95098b987f70c0c364a6a72 assets/arcadiandream/models/block/danmaku_crafting_table.json
 8774603244ddead0ebfae7c35872dcc3655c6463 assets/arcadiandream/models/item/makaite_axe.json
 efae072a820d0852d90759125ce829921710027b assets/arcadiandream/models/item/mochi_hammer_5.json
 338f140eb5a6cd5956b84ebb7cee2f1635312932 assets/arcadiandream/models/item/dragon_gem_ore.json
 36efad711ce5c617dc1b17cebb419e75871bf1b8 assets/arcadiandream/models/item/deepslate_dragon_gem_ore.json
 a93156a34e996f83ce647afe490973d6778dcc21 assets/arcadiandream/models/item/star_item.json
 877cbf560cf064f7e660d00c612e879760cfc214 assets/arcadiandream/models/item/point_item.json
+8870eac424f9b9bd9c3960395d5681aa46769f78 assets/arcadiandream/blockstates/danmaku_crafting_table.json
 316632ea4c361d65fe536cf2b053a1f00b08a2d0 assets/arcadiandream/models/block/makaite_ore.json
 c2826ca1fefc59adbf76d66ecd7a94e8908e33dc assets/arcadiandream/models/item/mochi_hammer_6.json
 d4a98e7abde5d9530bab47b7d362e6f2631314b0 assets/arcadiandream/models/block/raw_makaite_block.json
@@ -26,6 +28,7 @@ acf63a460c423972d06570c4353a8b1383fbaa5a assets/arcadiandream/models/item/mochi_
 9e0e32906a9f5e3948947667c802838bfcc2e073 assets/arcadiandream/models/item/healing_charm.json
 9e00d97cf7abb19fe8fee0726d5ff2e634ce2bce assets/arcadiandream/models/item/big_power_item.json
 da2a70047500d96231eee95da1871bc59f9a7c30 assets/arcadiandream/models/item/ritual_shrine.json
+32a5996cb506d53af01969540542e0121b7a80d1 assets/arcadiandream/models/item/danmaku_crafting_table.json
 9cd76b1807be0c96dca42ae69778b54695d20c46 assets/arcadiandream/models/item/power_item.json
 be18823d95f8835b8822acf191961e68982fe97c assets/arcadiandream/models/item/onbashira_pillar.json
 b3bb07e4f1672cee148493163d1335fae3f014ad assets/arcadiandream/models/item/music_disc_fairy_playground.json

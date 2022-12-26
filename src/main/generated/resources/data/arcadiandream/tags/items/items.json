@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "arcadiandream:power_item",
+    "arcadiandream:big_power_item",
+    "arcadiandream:point_item",
+    "arcadiandream:max_point_item",
+    "arcadiandream:bomb_item",
+    "arcadiandream:extend_item",
+    "arcadiandream:star_item"
+  ]
+}

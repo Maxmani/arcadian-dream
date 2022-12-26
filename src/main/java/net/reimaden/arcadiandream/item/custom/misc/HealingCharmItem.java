@@ -21,7 +21,6 @@ import net.reimaden.arcadiandream.sound.ModSounds;
 
 public class HealingCharmItem extends Item {
 
-    // TODO: Add a way to obtain this, perhaps a new villager profession?
     public HealingCharmItem(Settings settings) {
         super(settings);
     }

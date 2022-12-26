@@ -124,6 +124,7 @@ public class ModItems {
         });
         ItemGroupEvents.modifyEntriesEvent(ModItemGroups.DANMAKU).register(entries -> {
             entries.add(BOMB_ITEM);
+            entries.add(DANMAKU_CRAFTING_TABLE);
             entries.add(ORB_BULLET);
         });
 
@@ -136,6 +137,8 @@ public class ModItems {
     public static final Item ONBASHIRA_PILLAR = registerBlockItem("onbashira_pillar", new BlockItem(ModBlocks.ONBASHIRA_PILLAR,
             new FabricItemSettings()));
     public static final Item RITUAL_SHRINE = registerBlockItem("ritual_shrine", new BlockItem(ModBlocks.RITUAL_SHRINE,
+            new FabricItemSettings()));
+    public static final Item DANMAKU_CRAFTING_TABLE = registerBlockItem("danmaku_crafting_table", new BlockItem(ModBlocks.DANMAKU_CRAFTING_TABLE,
             new FabricItemSettings()));
 
     public static final Item DRAGON_GEM_ORE = registerBlockItem("dragon_gem_ore", new BlockItem(ModBlocks.DRAGON_GEM_ORE,
@@ -162,6 +165,7 @@ public class ModItems {
             entries.add(ONBASHIRA);
             entries.add(ONBASHIRA_PILLAR);
             entries.add(RITUAL_SHRINE);
+            entries.add(DANMAKU_CRAFTING_TABLE);
             entries.add(DRAGON_GEM_ORE);
             entries.add(DEEPSLATE_DRAGON_GEM_ORE);
             entries.add(END_STONE_DRAGON_GEM_ORE);

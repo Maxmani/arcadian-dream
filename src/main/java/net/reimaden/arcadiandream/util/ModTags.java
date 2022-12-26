@@ -35,8 +35,8 @@ public class ModTags {
         public static final TagKey<Item> OBSIDIAN_BLOCKS = createCommonTag("obsidian_blocks");
         public static final TagKey<Item> DRAGON_GEM_ORES = createTag("dragon_gem_ores");
         public static final TagKey<Item> RAW_ORES = createCommonTag("raw_ores");
+        public static final TagKey<Item> ITEMS = createTag("items");
 
-        @SuppressWarnings("SameParameterValue")
         private static TagKey<Item> createTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(ArcadianDream.MOD_ID, name));
         }

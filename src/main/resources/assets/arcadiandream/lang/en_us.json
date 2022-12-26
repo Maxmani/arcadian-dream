@@ -71,8 +71,10 @@
   "block.arcadiandream.onbashira": "Onbashira",
   "block.arcadiandream.onbashira_pillar": "Onbashira Pillar",
   "block.arcadiandream.ritual_shrine": "Ritual Shrine",
+  "block.arcadiandream.danmaku_crafting_table": "Danmaku Crafting Table",
 
   "entity.arcadiandream.orb_bullet": "Orb Bullet",
+  "entity.minecraft.villager.antiquarian": "Antiquarian",
 
   "advancements.arcadiandream.root.title": "Arcadian Dream",
   "advancements.arcadiandream.root.description": "Welcome to Gensokyo",
@@ -116,6 +118,7 @@
   "tag.c.raw_ores": "Raw Ores",
   "tag.c.obsidian_blocks": "Obsidian Blocks",
   "tag.arcadiandream.dragon_gem_ores": "Dragon Gem Ores",
+  "tag.arcadiandream.items": "Items",
 
   "text.config.arcadian-dream.title": "Arcadian Dream Configuration",
   "text.config.arcadian-dream.section.items": "Items",

@@ -20,6 +20,7 @@ import net.reimaden.arcadiandream.statistic.ModStats;
 import net.reimaden.arcadiandream.block.ModDispenserBehavior;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.util.ModLootTableModifiers;
+import net.reimaden.arcadiandream.villager.ModVillagers;
 import net.reimaden.arcadiandream.world.ModWorldGen;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,6 +47,7 @@ public class ArcadianDream implements ModInitializer {
 		ModStats.register();
 		ModCauldronBehavior.register();
 		ModCriteria.register();
+		ModVillagers.register();
 
 		ModWorldGen.register();
 		ModLootTableModifiers.modify();

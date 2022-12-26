@@ -16,6 +16,7 @@ public class ModPaintings {
 
     public static final PaintingVariant REIMADEN = registerPainting("reimaden", new PaintingVariant(16, 16));
 
+    @SuppressWarnings("SameParameterValue")
     private static PaintingVariant registerPainting(String name, PaintingVariant paintingVariant) {
         return Registry.register(Registries.PAINTING_VARIANT, new Identifier(ArcadianDream.MOD_ID, name), paintingVariant);
     }

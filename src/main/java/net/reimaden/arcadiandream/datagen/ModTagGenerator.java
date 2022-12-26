@@ -48,7 +48,8 @@ public class ModTagGenerator {
             // "minecraft/tags/blocks/mineable"
             getOrCreateTagBuilder(AXE_MINEABLE)
                     .add(ModBlocks.ONBASHIRA)
-                    .add(ModBlocks.ONBASHIRA_PILLAR);
+                    .add(ModBlocks.ONBASHIRA_PILLAR)
+                    .add(ModBlocks.DANMAKU_CRAFTING_TABLE);
             getOrCreateTagBuilder(PICKAXE_MINEABLE)
                     .addTag(ModTags.Blocks.DRAGON_GEM_ORES)
                     .add(ModBlocks.DRAGON_GEM_BLOCK)
@@ -119,6 +120,14 @@ public class ModTagGenerator {
                     .add(ModItems.HISOU_SWORD);
             getOrCreateTagBuilder(ConventionalItemTags.FOODS)
                     .add(ModItems.HEAVENLY_PEACH);
+            getOrCreateTagBuilder(ModTags.Items.ITEMS)
+                    .add(ModItems.POWER_ITEM)
+                    .add(ModItems.BIG_POWER_ITEM)
+                    .add(ModItems.POINT_ITEM)
+                    .add(ModItems.MAX_POINT_ITEM)
+                    .add(ModItems.BOMB_ITEM)
+                    .add(ModItems.EXTEND_ITEM)
+                    .add(ModItems.STAR_ITEM);
         }
     }
 }

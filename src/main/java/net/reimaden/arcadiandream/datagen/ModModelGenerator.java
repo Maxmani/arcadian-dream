@@ -46,6 +46,7 @@ public class ModModelGenerator extends FabricModelProvider {
         block.registerNorthDefaultHorizontalRotation(ModBlocks.RITUAL_SHRINE);
         block.registerSimpleState(ModBlocks.ONBASHIRA);
         block.registerSimpleState(ModBlocks.ONBASHIRA_PILLAR);
+        block.registerSingleton(ModBlocks.DANMAKU_CRAFTING_TABLE, TexturedModel.CUBE_BOTTOM_TOP);
     }
 
     @Override

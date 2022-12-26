@@ -1,4 +1,4 @@
-// 1.19.3	2022-12-26T00:39:14.250851471	Arcadian Dream/Tags for minecraft:item
+// 1.19.3	2022-12-26T21:37:51.571062266	Arcadian Dream/Tags for minecraft:item
 1b84c93c68a07b16e2895dc831cc82946e935b04 data/minecraft/tags/items/beacon_payment_items.json
 7f6cec9b9055f107f9166259995070795ea95049 data/c/tags/items/hoes.json
 c2261d79c29b90e041df1c2cc00ab1686d3ffd20 data/c/tags/items/ores.json
@@ -6,6 +6,7 @@ c2261d79c29b90e041df1c2cc00ab1686d3ffd20 data/c/tags/items/ores.json
 ce08bc7154395a8294695711cb63ed80c74b4b77 data/arcadiandream/tags/items/dragon_gem_ores.json
 eebf2e570846d666cbc982caf74e7661b3d016ee data/c/tags/items/obsidian_blocks.json
 326e7bb88546dcf5690350479d2a2566e19e4037 data/c/tags/items/foods.json
+f830e3ea97d0443002243503bc905284e3f3b2fa data/arcadiandream/tags/items/items.json
 1c69d829fc8060a968b062f8bd0673b7680b106e data/c/tags/items/swords.json
 2a96f7db03d7de0a1be4809ec8341d457669f296 data/c/tags/items/spears.json
 55f5173448bba5d9c8af2cdfd55fe3eaed822e30 data/c/tags/items/raw_ores.json
