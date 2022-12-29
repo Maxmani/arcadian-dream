@@ -45,6 +45,7 @@
     "fabric-api": "*",
     "minecraft": "1.19.3",
     "java": ">=17",
-    "trinkets" : ">=3.5.0"
+    "trinkets" : ">=3.5.0",
+    "owo": ">=0.9.3"
   }
 }
