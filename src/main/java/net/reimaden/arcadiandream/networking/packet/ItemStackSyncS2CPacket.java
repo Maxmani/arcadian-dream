@@ -28,8 +28,7 @@ public class ItemStackSyncS2CPacket {
 
         if (client.world.getBlockEntity(pos) instanceof OnbashiraBlockEntity blockEntity) {
             blockEntity.setInventory(list);
-        }
-        if (client.world.getBlockEntity(pos) instanceof RitualShrineBlockEntity blockEntity) {
+        } else if (client.world.getBlockEntity(pos) instanceof RitualShrineBlockEntity blockEntity) {
             blockEntity.setInventory(list);
         }
     }
