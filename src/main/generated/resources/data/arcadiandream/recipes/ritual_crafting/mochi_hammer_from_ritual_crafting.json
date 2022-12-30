@@ -20,7 +20,7 @@
       "tag": "minecraft:planks"
     }
   ],
-  "moon_phase": "0",
+  "moon_phase": 0,
   "result": {
     "item": "arcadiandream:mochi_hammer"
   }

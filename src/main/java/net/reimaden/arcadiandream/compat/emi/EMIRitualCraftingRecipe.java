@@ -31,7 +31,7 @@ public class EMIRitualCraftingRecipe implements EmiRecipe, IRitualCraftingLocati
     private final Identifier id;
     private final List<EmiIngredient> inputs;
     private final EmiStack output;
-    private final String moonPhase;
+    private final byte moonPhase;
 
     public EMIRitualCraftingRecipe(RitualCraftingRecipe recipe) {
         this.id = recipe.getId();
@@ -73,14 +73,14 @@ public class EMIRitualCraftingRecipe implements EmiRecipe, IRitualCraftingLocati
     private OrderedText tooltip() {
         Text tooltip;
         switch (moonPhase) {
-            case "0" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.0");
-            case "1" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.1");
-            case "2" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.2");
-            case "3" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.3");
-            case "4" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.4");
-            case "5" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + "..ritual_crafting.moon_phase.5");
-            case "6" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.6");
-            case "7" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.7");
+            case 0 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.0");
+            case 1 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.1");
+            case 2 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.2");
+            case 3 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.3");
+            case 4 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.4");
+            case 5 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + "..ritual_crafting.moon_phase.5");
+            case 6 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.6");
+            case 7 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.7");
             default -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.invalid");
         }
 
@@ -94,7 +94,7 @@ public class EMIRitualCraftingRecipe implements EmiRecipe, IRitualCraftingLocati
             widget.addSlot(inputs.get(i), ONBASHIRAS[i][0] - 1, ONBASHIRAS[i][1] - 1).drawBack(false);
         }
         widget.addSlot(output, OUTPUT_SLOT[0] - 5, OUTPUT_SLOT[1] - 5).recipeContext(this).output(true).drawBack(false);
-        if (!moonPhase.isEmpty()) {
+        if (moonPhase != -1) {
             BiFunction<Integer, Integer, List<TooltipComponent>> tooltipSupplier = (mouseX, mouseY) ->
                     List.of(TooltipComponent.of(tooltip()));
 

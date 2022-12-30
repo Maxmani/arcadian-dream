@@ -22,9 +22,9 @@ public class RitualCraftingRecipe implements Recipe<SimpleInventory> {
     private final Identifier id;
     private final ItemStack output;
     private final DefaultedList<Ingredient> recipeItems;
-    private final String moonPhase;
+    private final byte moonPhase;
 
-    public RitualCraftingRecipe(Identifier id, ItemStack output, DefaultedList<Ingredient> recipeItems, String moonPhase) {
+    public RitualCraftingRecipe(Identifier id, ItemStack output, DefaultedList<Ingredient> recipeItems, byte moonPhase) {
         this.id = id;
         this.output = output;
         this.recipeItems = recipeItems;
@@ -33,6 +33,10 @@ public class RitualCraftingRecipe implements Recipe<SimpleInventory> {
 
     @Override
     public boolean matches(SimpleInventory inventory, World world) {
+        if (world.isClient()) {
+            return false;
+        }
+
         boolean result;
         int index = 0;
 
@@ -47,15 +51,15 @@ public class RitualCraftingRecipe implements Recipe<SimpleInventory> {
 
         // If the recipe requires a specific moon phase, check for it
         // If a valid moon phase recipe is found, make sure it's during a night
-        if ((!moonPhase.matches(String.valueOf(world.getMoonPhase())) && !moonPhase.isEmpty())
-                || (moonPhase.matches(String.valueOf(world.getMoonPhase())) && world.isDay())) {
+        if ((moonPhase != world.getMoonPhase() && moonPhase != -1)
+                || (moonPhase == world.getMoonPhase()) && world.isDay()) {
             result = false;
         }
 
         return result;
     }
 
-    public String getMoonPhase() {
+    public byte getMoonPhase() {
         return moonPhase;
     }
 
@@ -111,7 +115,7 @@ public class RitualCraftingRecipe implements Recipe<SimpleInventory> {
             JsonArray ingredients = JsonHelper.getArray(json, "ingredients");
             DefaultedList<Ingredient> inputs = DefaultedList.of();
 
-            String moon_phase = JsonHelper.getString(json, "moon_phase", "");
+            byte moon_phase = JsonHelper.getByte(json, "moon_phase", (byte) -1);
 
             if (ingredients.isEmpty()) {
                 throw new JsonParseException("No ingredients for Ritual Crafting recipe");
@@ -119,7 +123,7 @@ public class RitualCraftingRecipe implements Recipe<SimpleInventory> {
             if (ingredients.size() > 16) {
                 throw new JsonParseException("Too many ingredients for Ritual Crafting recipe");
             }
-            if (!moon_phase.isEmpty() && (Integer.parseInt(moon_phase) > 7 || Integer.parseInt(moon_phase) < 0)) {
+            if (moon_phase != -1 && (moon_phase > 7 || moon_phase < 0)) {
                 throw new JsonParseException("Invalid moon phase for Ritual Crafting recipe");
             }
 
@@ -141,18 +145,18 @@ public class RitualCraftingRecipe implements Recipe<SimpleInventory> {
             inputs.replaceAll(ignored -> Ingredient.fromPacket(buf));
 
             ItemStack output = buf.readItemStack();
-            String moon_phase = buf.readString();
+            byte moon_phase = buf.readByte();
             return new RitualCraftingRecipe(id, output, inputs, moon_phase);
         }
 
         @Override
         public void write(PacketByteBuf buf, RitualCraftingRecipe recipe) {
             buf.writeInt(recipe.getIngredients().size());
-            buf.writeString(recipe.moonPhase);
             for (Ingredient ing : recipe.getIngredients()) {
                 ing.write(buf);
             }
             buf.writeItemStack(recipe.getOutput());
+            buf.writeByte(recipe.moonPhase);
         }
     }
 

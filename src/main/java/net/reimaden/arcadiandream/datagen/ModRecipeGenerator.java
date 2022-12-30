@@ -138,7 +138,7 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input(Items.RABBIT_HIDE)
                 .input(Items.STICK, 2)
                 .input(Ingredient.fromTag(ItemTags.PLANKS), 3)
-                .moonPhase(String.valueOf(MOON_PHASES.FULL_MOON.ordinal()))
+                .moonPhase((byte) MOON_PHASES.FULL_MOON.ordinal())
                 .offerTo(exporter, ritualCraftingId(ModItems.MOCHI_HAMMER));
 
         RitualCraftingRecipeJsonBuilder.create(ModItems.WALL_PASSING_CHISEL)

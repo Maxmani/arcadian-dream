@@ -67,17 +67,17 @@ public class REIRitualCraftingCategory implements DisplayCategory<REIRitualCraft
         return 184;
     }
 
-    private Text tooltip(String moonPhase) {
+    private Text tooltip(byte moonPhase) {
         Text tooltip;
         switch (moonPhase) {
-            case "0" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.0");
-            case "1" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.1");
-            case "2" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.2");
-            case "3" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.3");
-            case "4" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.4");
-            case "5" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + "..ritual_crafting.moon_phase.5");
-            case "6" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.6");
-            case "7" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.7");
+            case 0 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.0");
+            case 1 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.1");
+            case 2 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.2");
+            case 3 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.3");
+            case 4 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.4");
+            case 5 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + "..ritual_crafting.moon_phase.5");
+            case 6 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.6");
+            case 7 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.7");
             default -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.invalid");
         }
 
@@ -96,7 +96,7 @@ public class REIRitualCraftingCategory implements DisplayCategory<REIRitualCraft
             widgets.add(Widgets.createSlot(new Point(ONBASHIRAS[i][0] + bounds.x, ONBASHIRAS[i][1] + bounds.y))
                     .entries(display.getInputEntries().get(i)).disableBackground().markInput());
         }
-        if (!display.getMoonPhase().isEmpty()) {
+        if (display.getMoonPhase() != -1) {
             Widget moonPhase = Widgets.createTexturedWidget(MOON_ICON, MOON_SLOT[0] + bounds.x, MOON_SLOT[1] + bounds.y,
                     0, 0, 16, 16, 16, 16);
             Point point = new Point(MOON_SLOT[0] + bounds.x, MOON_SLOT[1] + bounds.y);

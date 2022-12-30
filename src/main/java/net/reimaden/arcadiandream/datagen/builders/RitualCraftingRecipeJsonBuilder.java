@@ -30,7 +30,7 @@ public class RitualCraftingRecipeJsonBuilder implements CraftingRecipeJsonBuilde
     private final Item output;
     private final int outputCount;
     private final List<Ingredient> inputs = Lists.newArrayList();
-    private String moonPhase = "";
+    private byte moonPhase = -1;
 
     public RitualCraftingRecipeJsonBuilder(ItemConvertible output, int outputCount) {
         this.output = output.asItem();
@@ -71,7 +71,7 @@ public class RitualCraftingRecipeJsonBuilder implements CraftingRecipeJsonBuilde
         return this;
     }
 
-    public RitualCraftingRecipeJsonBuilder moonPhase(String moonPhase) {
+    public RitualCraftingRecipeJsonBuilder moonPhase(byte moonPhase) {
         this.moonPhase = moonPhase;
         return this;
     }
@@ -102,9 +102,9 @@ public class RitualCraftingRecipeJsonBuilder implements CraftingRecipeJsonBuilde
         private final Item output;
         private final int outputCount;
         private final List<Ingredient> inputs;
-        private final String moonPhase;
+        private final byte moonPhase;
 
-        public RitualCraftingRecipeJsonProvider(Identifier recipeId, Item output, int outputCount, List<Ingredient> inputs, String moonPhase) {
+        public RitualCraftingRecipeJsonProvider(Identifier recipeId, Item output, int outputCount, List<Ingredient> inputs, byte moonPhase) {
             this.recipeId = recipeId;
             this.output = output;
             this.outputCount = outputCount;
@@ -125,7 +125,7 @@ public class RitualCraftingRecipeJsonBuilder implements CraftingRecipeJsonBuilde
                 jsonObject.addProperty("count", outputCount);
             }
             JsonPrimitive jsonPrimitive = new JsonPrimitive(moonPhase);
-            if (!moonPhase.isEmpty()) {
+            if (moonPhase != -1) {
                 json.add("moon_phase", jsonPrimitive);
             }
             json.add("result", jsonObject);
