@@ -7,7 +7,9 @@ package net.reimaden.arcadiandream.datagen;
 
 import com.google.common.collect.ImmutableList;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.block.Blocks;
+import net.minecraft.data.server.recipe.CookingRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.RecipeProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
@@ -16,6 +18,8 @@ import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.util.Identifier;
+import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.block.ModBlocks;
 import net.reimaden.arcadiandream.datagen.builders.RitualCraftingRecipeJsonBuilder;
 import net.reimaden.arcadiandream.datagen.providers.ModRecipeProvider;
@@ -97,6 +101,15 @@ public class ModRecipeGenerator extends ModRecipeProvider {
         makeSmelting(exporter, MAKAITE_ORES, RecipeCategory.MISC, ModItems.MAKAITE_INGOT, 0.8f, 200,
                 RecipeProvider.getItemPath(ModItems.MAKAITE_INGOT));
 
+        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItems.DEATH_SCYTHE), RecipeCategory.MISC, Items.IRON_NUGGET, 0.1f, 200)
+                .criterion(RecipeProvider.hasItem(ModItems.DEATH_SCYTHE),
+                        RecipeProvider.conditionsFromItem(ModItems.DEATH_SCYTHE))
+                .offerTo(exporter, new Identifier(ArcadianDream.MOD_ID, (Items.IRON_NUGGET) + "_from_smelting"));
+        CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(ModItems.DEATH_SCYTHE), RecipeCategory.MISC, Items.IRON_NUGGET, 0.1f, 100)
+                .criterion(RecipeProvider.hasItem(ModItems.DEATH_SCYTHE),
+                        RecipeProvider.conditionsFromItem(ModItems.DEATH_SCYTHE))
+                .offerTo(exporter, new Identifier(ArcadianDream.MOD_ID, (Items.IRON_NUGGET) + "_from_blasting"));
+
         // Blasting recipes
         makeBlasting(exporter, DRAGON_GEM_ORES, RecipeCategory.MISC, ModItems.DRAGON_GEM, 1.2f, 100,
                 RecipeProvider.getItemPath(ModItems.DRAGON_GEM));
@@ -106,17 +119,17 @@ public class ModRecipeGenerator extends ModRecipeProvider {
         // Ritual Crafting recipes
         RitualCraftingRecipeJsonBuilder.create(ModItems.MAKAITE_INFUSED_NETHERITE_INGOT)
                 .input(ModItems.MAKAITE_INGOT)
-                .input(Items.NETHERITE_INGOT)
+                .input(ConventionalItemTags.NETHERITE_INGOTS)
                 .offerTo(exporter, ritualCraftingId(ModItems.MAKAITE_INFUSED_NETHERITE_INGOT));
 
         RitualCraftingRecipeJsonBuilder.create(ModItems.NUE_TRIDENT)
                 .input(Items.TRIDENT)
                 .input(ModItems.MAKAITE_INFUSED_NETHERITE_INGOT)
-                .input(Items.DIAMOND)
+                .input(ConventionalItemTags.DIAMONDS)
                 .input(Items.SPIDER_EYE)
                 .input(Items.FIRE_CHARGE)
                 .input(Items.SPIDER_EYE)
-                .input(Items.DIAMOND)
+                .input(ConventionalItemTags.DIAMONDS)
                 .input(ModItems.MAKAITE_INFUSED_NETHERITE_INGOT)
                 .input(Items.PRISMARINE_CRYSTALS, 2)
                 .offerTo(exporter, ritualCraftingId(ModItems.NUE_TRIDENT));
@@ -130,9 +143,9 @@ public class ModRecipeGenerator extends ModRecipeProvider {
 
         RitualCraftingRecipeJsonBuilder.create(ModItems.WALL_PASSING_CHISEL)
                 .input(Items.ENDER_PEARL)
-                .input(Items.GOLD_INGOT)
+                .input(ConventionalItemTags.GOLD_INGOTS)
                 .input(Items.STICK)
-                .input(Items.GOLD_INGOT)
+                .input(ConventionalItemTags.GOLD_INGOTS)
                 .offerTo(exporter, ritualCraftingId(ModItems.WALL_PASSING_CHISEL));
 
         RitualCraftingRecipeJsonBuilder.create(ModItems.IBUKI_GOURD)
@@ -146,5 +159,11 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input(Items.BLAZE_ROD)
                 .input(ModItems.DRAGON_GEM, 2)
                 .offerTo(exporter, ritualCraftingId(ModItems.HISOU_SWORD));
+
+        RitualCraftingRecipeJsonBuilder.create(ModItems.DEATH_SCYTHE)
+                .input(Items.STICK, 3)
+                .input(Ingredient.fromTag(ConventionalItemTags.IRON_INGOTS), 5)
+                .input(Ingredient.fromTag(ItemTags.SOUL_FIRE_BASE_BLOCKS), 8)
+                .offerTo(exporter, ritualCraftingId(ModItems.DEATH_SCYTHE));
     }
 }

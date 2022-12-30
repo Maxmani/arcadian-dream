@@ -17,6 +17,7 @@
   "item.arcadiandream.nue_trident": "Nue Trident",
   "item.arcadiandream.hisou_sword": "Sword of Hisou",
   "item.arcadiandream.mochi_hammer": "Mochi Hammer",
+  "item.arcadiandream.death_scythe": "Death Scythe",
 
   "item.arcadiandream.dragon_gem": "Dragon Gem",
   "item.arcadiandream.raw_makaite": "Raw Makaite",
@@ -94,6 +95,8 @@
   "arcadiandream.subtitles.item.wall_passing_chisel.use": "Player warps",
   "arcadiandream.subtitles.item.ibuki_gourd.fill": "Gourd fills",
   "arcadiandream.subtitles.item.healing_charm.use": "Charm of Healing activates",
+  "arcadiandream.subtitles.item.death_scythe.teleport": "Player teleports",
+  "arcadiandream.subtitles.item.death_scythe.teleport_generic": "Something teleports",
 
   "death.attack.danmaku": "%1$s was shot by %2$s",
   "death.attack.danmaku.player": "%1$s was shot by %2$s using danmaku",

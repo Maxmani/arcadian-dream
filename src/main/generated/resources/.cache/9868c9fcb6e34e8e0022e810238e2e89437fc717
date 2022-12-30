@@ -1,4 +1,4 @@
-// 1.19.3	2022-12-26T21:37:51.57435735	Arcadian Dream/Model Definitions
+// 1.19.3	2022-12-30T21:16:03.243640341	Arcadian Dream/Model Definitions
 f2ebcff21cadc28cf53399f6a3290da06c871e6e assets/arcadiandream/blockstates/deepslate_dragon_gem_ore.json
 e9e8dbe0ce582568df0e7c45a0233a6720eadae9 assets/arcadiandream/models/item/ordinary_hat.json
 b3fd83ff6c264078e0e26b32a9ac2bd489ce343f assets/arcadiandream/models/item/bomb_item.json
@@ -13,8 +13,9 @@ efae072a820d0852d90759125ce829921710027b assets/arcadiandream/models/item/mochi_
 338f140eb5a6cd5956b84ebb7cee2f1635312932 assets/arcadiandream/models/item/dragon_gem_ore.json
 36efad711ce5c617dc1b17cebb419e75871bf1b8 assets/arcadiandream/models/item/deepslate_dragon_gem_ore.json
 a93156a34e996f83ce647afe490973d6778dcc21 assets/arcadiandream/models/item/star_item.json
-877cbf560cf064f7e660d00c612e879760cfc214 assets/arcadiandream/models/item/point_item.json
 8870eac424f9b9bd9c3960395d5681aa46769f78 assets/arcadiandream/blockstates/danmaku_crafting_table.json
+877cbf560cf064f7e660d00c612e879760cfc214 assets/arcadiandream/models/item/point_item.json
+8665c40bf0b9b475a0f6ff1a2d61017c81991644 assets/arcadiandream/models/item/death_scythe.json
 316632ea4c361d65fe536cf2b053a1f00b08a2d0 assets/arcadiandream/models/block/makaite_ore.json
 c2826ca1fefc59adbf76d66ecd7a94e8908e33dc assets/arcadiandream/models/item/mochi_hammer_6.json
 d4a98e7abde5d9530bab47b7d362e6f2631314b0 assets/arcadiandream/models/block/raw_makaite_block.json

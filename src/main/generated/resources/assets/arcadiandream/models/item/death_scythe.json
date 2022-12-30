@@ -1,0 +1,6 @@
+{
+  "parent": "arcadiandream:item/handheld_big",
+  "textures": {
+    "layer0": "arcadiandream:item/death_scythe"
+  }
+}

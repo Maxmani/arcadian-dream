@@ -103,5 +103,19 @@
       "arcadiandream:item/healing_charm/heal"
     ],
     "subtitle": "arcadiandream.subtitles.item.healing_charm.use"
+  },
+  "item.death_scythe.teleport": {
+    "sounds": [
+      "mob/endermen/portal",
+      "mob/endermen/portal2"
+    ],
+    "subtitle": "arcadiandream.subtitles.item.death_scythe.teleport"
+  },
+  "item.death_scythe.teleport_generic": {
+    "sounds": [
+      "mob/endermen/portal",
+      "mob/endermen/portal2"
+    ],
+    "subtitle": "arcadiandream.subtitles.item.death_scythe.teleport_generic"
   }
 }

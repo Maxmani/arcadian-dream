@@ -117,7 +117,8 @@ public class ModTagGenerator {
                     .add(ModItems.NUE_TRIDENT);
             getOrCreateTagBuilder(ConventionalItemTags.SWORDS)
                     .add(ModItems.MAKAITE_SWORD)
-                    .add(ModItems.HISOU_SWORD);
+                    .add(ModItems.HISOU_SWORD)
+                    .add(ModItems.DEATH_SCYTHE);
             getOrCreateTagBuilder(ConventionalItemTags.FOODS)
                     .add(ModItems.HEAVENLY_PEACH);
             getOrCreateTagBuilder(ModTags.Items.ITEMS)

@@ -14,6 +14,7 @@ import net.reimaden.arcadiandream.block.ModBlocks;
 import net.reimaden.arcadiandream.item.custom.armor.OrdinaryHatItem;
 import net.reimaden.arcadiandream.item.custom.danmaku.OrbBulletItem;
 import net.reimaden.arcadiandream.item.custom.misc.*;
+import net.reimaden.arcadiandream.item.custom.tools.DeathScytheItem;
 import net.reimaden.arcadiandream.item.custom.tools.MochiHammerItem;
 import net.reimaden.arcadiandream.item.custom.tools.ModHoeItem;
 import net.reimaden.arcadiandream.item.custom.tools.NueTridentItem;
@@ -79,6 +80,8 @@ public class ModItems {
             new FabricItemSettings()));
     public static final Item MOCHI_HAMMER = registerItem("mochi_hammer", new MochiHammerItem(ModToolMaterials.MOCHI_HAMMER, 3, -3.2f,
             new FabricItemSettings()));
+    public static final Item DEATH_SCYTHE = registerItem("death_scythe", new DeathScytheItem(ToolMaterials.IRON, 4, -3.0f,
+            new FabricItemSettings()));
 
     // Danmaku
     public static final Item ORB_BULLET = registerItem("orb_bullet", new OrbBulletItem(new FabricItemSettings()));
@@ -119,6 +122,7 @@ public class ModItems {
             entries.add(NUE_TRIDENT);
             entries.add(HISOU_SWORD);
             entries.add(MOCHI_HAMMER);
+            entries.add(DEATH_SCYTHE);
             entries.add(MUSIC_DISC_FAIRY_PLAYGROUND);
             entries.add(MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN);
         });

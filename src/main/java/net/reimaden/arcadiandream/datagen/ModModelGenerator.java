@@ -60,5 +60,7 @@ public class ModModelGenerator extends FabricModelProvider {
         for (int i = 0; i < 11; i++) {
             item.register(ModItems.MOCHI_HAMMER, "_" + i, ModModels.HANDHELD_BIG);
         }
+
+        item.register(ModItems.DEATH_SCYTHE, ModModels.HANDHELD_BIG);
     }
 }

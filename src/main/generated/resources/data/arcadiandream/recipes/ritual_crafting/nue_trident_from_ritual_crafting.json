@@ -8,7 +8,7 @@
       "item": "arcadiandream:makaite_infused_netherite_ingot"
     },
     {
-      "item": "minecraft:diamond"
+      "tag": "c:diamonds"
     },
     {
       "item": "minecraft:spider_eye"
@@ -20,7 +20,7 @@
       "item": "minecraft:spider_eye"
     },
     {
-      "item": "minecraft:diamond"
+      "tag": "c:diamonds"
     },
     {
       "item": "arcadiandream:makaite_infused_netherite_ingot"
