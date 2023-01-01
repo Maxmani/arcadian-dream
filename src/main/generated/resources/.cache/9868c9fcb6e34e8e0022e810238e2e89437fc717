@@ -1,4 +1,4 @@
-// 1.19.3	2022-12-30T21:29:53.884814281	Arcadian Dream/Model Definitions
+// 1.19.3	2023-01-01T21:31:21.226895731	Arcadian Dream/Model Definitions
 f2ebcff21cadc28cf53399f6a3290da06c871e6e assets/arcadiandream/blockstates/deepslate_dragon_gem_ore.json
 e9e8dbe0ce582568df0e7c45a0233a6720eadae9 assets/arcadiandream/models/item/ordinary_hat.json
 b3fd83ff6c264078e0e26b32a9ac2bd489ce343f assets/arcadiandream/models/item/bomb_item.json
@@ -11,10 +11,10 @@ e11e578b2e626ed7c95098b987f70c0c364a6a72 assets/arcadiandream/models/block/danma
 8774603244ddead0ebfae7c35872dcc3655c6463 assets/arcadiandream/models/item/makaite_axe.json
 efae072a820d0852d90759125ce829921710027b assets/arcadiandream/models/item/mochi_hammer_5.json
 338f140eb5a6cd5956b84ebb7cee2f1635312932 assets/arcadiandream/models/item/dragon_gem_ore.json
-36efad711ce5c617dc1b17cebb419e75871bf1b8 assets/arcadiandream/models/item/deepslate_dragon_gem_ore.json
 a93156a34e996f83ce647afe490973d6778dcc21 assets/arcadiandream/models/item/star_item.json
-877cbf560cf064f7e660d00c612e879760cfc214 assets/arcadiandream/models/item/point_item.json
+36efad711ce5c617dc1b17cebb419e75871bf1b8 assets/arcadiandream/models/item/deepslate_dragon_gem_ore.json
 8870eac424f9b9bd9c3960395d5681aa46769f78 assets/arcadiandream/blockstates/danmaku_crafting_table.json
+877cbf560cf064f7e660d00c612e879760cfc214 assets/arcadiandream/models/item/point_item.json
 8665c40bf0b9b475a0f6ff1a2d61017c81991644 assets/arcadiandream/models/item/death_scythe.json
 316632ea4c361d65fe536cf2b053a1f00b08a2d0 assets/arcadiandream/models/block/makaite_ore.json
 c2826ca1fefc59adbf76d66ecd7a94e8908e33dc assets/arcadiandream/models/item/mochi_hammer_6.json
@@ -25,6 +25,7 @@ bc8ee45482b9eb52d5b5bfd0418a202c987eac6e assets/arcadiandream/models/item/makait
 6715abbf1feaa48c423149ebde4db512a7e411ae assets/arcadiandream/models/item/hisou_sword.json
 4b3b32b6b7d726d9171311ab299e1736ea287818 assets/arcadiandream/models/block/makaite_block.json
 180f91afeefbfea1490acc82020c5ea717beea32 assets/arcadiandream/models/item/mochi_hammer_3.json
+68bd9053871a5ea1b6157658faa071afc12e39e2 assets/arcadiandream/models/item/hourai_elixir.json
 acf63a460c423972d06570c4353a8b1383fbaa5a assets/arcadiandream/models/item/mochi_hammer_0.json
 9e0e32906a9f5e3948947667c802838bfcc2e073 assets/arcadiandream/models/item/healing_charm.json
 9e00d97cf7abb19fe8fee0726d5ff2e634ce2bce assets/arcadiandream/models/item/big_power_item.json
@@ -44,8 +45,8 @@ ac3e1126e77b24c7e385747bfa1153a036d8527a assets/arcadiandream/models/item/makait
 30ecf2c9a8b01fd30180e96f89facbfefe421996 assets/arcadiandream/models/block/deepslate_dragon_gem_ore.json
 179332784b9352ed4f01ad8e430c99a455bcb481 assets/arcadiandream/models/item/makaite_infused_netherite_ingot.json
 a624e46fda848287b623aecbccd045ec8103723c assets/arcadiandream/models/item/heavenly_peach.json
-2d3c31049d32406ebe0f11ac82f13a3ea63745aa assets/arcadiandream/models/item/makaite_ore.json
 2709e1355b8b0c9101983a1f5635c0ce4de02b88 assets/arcadiandream/models/block/dragon_gem_ore.json
+2d3c31049d32406ebe0f11ac82f13a3ea63745aa assets/arcadiandream/models/item/makaite_ore.json
 a235eee09a8c1e2172097bce6290adfe6a90da22 assets/arcadiandream/models/item/makaite_sword.json
 f2a0260b5578b6d1e754a6da704df710df3746d4 assets/arcadiandream/models/item/mochi_hammer_10.json
 f3dce81daae1565faa354883c1daac9bac9028ae assets/arcadiandream/models/item/dragon_gem.json

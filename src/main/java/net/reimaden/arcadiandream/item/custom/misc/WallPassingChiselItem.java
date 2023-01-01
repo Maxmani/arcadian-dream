@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  *
  * Credits to ArekkuusuJerii for the original code.
@@ -12,7 +12,6 @@
 package net.reimaden.arcadiandream.item.custom.misc;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -53,11 +52,7 @@ public class WallPassingChiselItem extends Item {
                     player.setPosition(travel.getX() + 0.5, travel.getY(), travel.getZ() + 0.5);
                     player.refreshPositionAfterTeleport(player.getPos());
 
-                    if (hand == Hand.MAIN_HAND) {
-                        stack.damage(1, player, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
-                    } else {
-                        stack.damage(1, player, e -> e.sendEquipmentBreakStatus(EquipmentSlot.OFFHAND));
-                    }
+                    stack.damage(1, player, e -> e.sendToolBreakStatus(hand));
 
                     world.playSound(null, travel.getX(), travel.getY(), travel.getZ(), ModSounds.ITEM_WALL_PASSING_CHISEL_USE,
                             player.getSoundCategory(), 0.4f, world.random.nextFloat() * 0.4f + 0.8f);

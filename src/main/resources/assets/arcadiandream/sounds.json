@@ -117,5 +117,20 @@
       "mob/endermen/portal2"
     ],
     "subtitle": "arcadiandream.subtitles.item.death_scythe.teleport_generic"
+  },
+  "item.hourai_elixir.use": {
+    "sounds": [
+      "mob/guardian/curse"
+    ]
+  },
+  "entity.generic.resurrect": {
+    "sounds": [
+      {
+        "name": "mob/wither/death",
+        "pitch": 2,
+        "volume": 0.7
+      }
+    ],
+    "subtitle": "arcadiandream.subtitles.entity.generic.resurrect"
   }
 }

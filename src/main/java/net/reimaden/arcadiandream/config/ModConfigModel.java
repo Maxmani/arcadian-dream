@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -11,7 +11,7 @@ import net.reimaden.arcadiandream.ArcadianDream;
 
 @SuppressWarnings("unused")
 @Modmenu(modId = ArcadianDream.MOD_ID)
-@Config(name = "arcadian-dream", wrapperName = "ArcadianDreamConfig")
+@Config(name = ArcadianDream.MOD_ID, wrapperName = "ArcadianDreamConfig")
 public class ModConfigModel {
 
     @SectionHeader("items")
@@ -52,6 +52,14 @@ public class ModConfigModel {
 
     public static class MochiHammerOptions {
         public boolean lowViolence = false;
+    }
+
+    @Nest
+    public HouraiElixirOptions houraiElixirOptions = new HouraiElixirOptions();
+
+    public static class HouraiElixirOptions {
+        @Sync(Option.SyncMode.OVERRIDE_CLIENT)
+        public boolean canDrink = false;
     }
 
     @SectionHeader("danmaku")

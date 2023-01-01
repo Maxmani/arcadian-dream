@@ -1,12 +1,11 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
 package net.reimaden.arcadiandream.item.custom.tools;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ProjectileUtil;
@@ -65,11 +64,7 @@ public class DeathScytheItem extends SwordItem {
                     swapPositions(world, player, entity, entityPos);
                     player.incrementStat(Stats.USED.getOrCreateStat(this));
 
-                    if (hand == Hand.MAIN_HAND) {
-                        stack.damage(1, player, e -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
-                    } else {
-                        stack.damage(1, player, e -> e.sendEquipmentBreakStatus(EquipmentSlot.OFFHAND));
-                    }
+                    stack.damage(1, player, e -> e.sendToolBreakStatus(hand));
 
                     player.getItemCooldownManager().set(this, 100);
                 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -12,6 +12,8 @@ import net.minecraft.registry.Registry;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.block.ModBlocks;
 import net.reimaden.arcadiandream.item.custom.armor.OrdinaryHatItem;
+import net.reimaden.arcadiandream.item.custom.consumables.HealingCharmItem;
+import net.reimaden.arcadiandream.item.custom.consumables.HouraiElixirItem;
 import net.reimaden.arcadiandream.item.custom.danmaku.OrbBulletItem;
 import net.reimaden.arcadiandream.item.custom.misc.*;
 import net.reimaden.arcadiandream.item.custom.tools.DeathScytheItem;
@@ -43,6 +45,7 @@ public class ModItems {
     public static final Item WALL_PASSING_CHISEL = registerItem("wall_passing_chisel", new WallPassingChiselItem(new FabricItemSettings().maxDamage(100)));
     public static final Item IBUKI_GOURD = registerItem("ibuki_gourd", new IbukiGourdItem(new FabricItemSettings().maxCount(1)));
     public static final Item HEALING_CHARM = registerItem("healing_charm", new HealingCharmItem(new FabricItemSettings().maxCount(16)));
+    public static final Item HOURAI_ELIXIR = registerItem("hourai_elixir", new HouraiElixirItem(new FabricItemSettings().maxCount(1).maxDamage(3).rarity(Rarity.EPIC)));
 
     // Food
     public static final Item HEAVENLY_PEACH = registerItem("heavenly_peach", new Item(new FabricItemSettings().maxCount(16)
@@ -108,6 +111,7 @@ public class ModItems {
             entries.add(WALL_PASSING_CHISEL);
             entries.add(IBUKI_GOURD);
             entries.add(HEALING_CHARM);
+            entries.add(HOURAI_ELIXIR);
             entries.add(HEAVENLY_PEACH);
             entries.add(ORDINARY_HAT);
             entries.add(MAKAITE_HELMET);

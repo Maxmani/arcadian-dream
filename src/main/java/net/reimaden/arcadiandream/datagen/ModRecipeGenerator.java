@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -165,5 +165,16 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input(Ingredient.fromTag(ConventionalItemTags.IRON_INGOTS), 5)
                 .input(Ingredient.fromTag(ItemTags.SOUL_FIRE_BASE_BLOCKS), 8)
                 .offerTo(exporter, ritualCraftingId(ModItems.DEATH_SCYTHE));
+
+        RitualCraftingRecipeJsonBuilder.create(ModItems.HOURAI_ELIXIR)
+                .input(Items.NETHER_STAR)
+                .input(Items.ENCHANTED_GOLDEN_APPLE)
+                .input(Items.NETHER_STAR)
+                .input(Items.ENCHANTED_GOLDEN_APPLE)
+                .input(Items.NETHER_STAR)
+                .input(Items.ENCHANTED_GOLDEN_APPLE)
+                .input(Items.NETHER_STAR)
+                .input(Items.ENCHANTED_GOLDEN_APPLE)
+                .offerTo(exporter, ritualCraftingId(ModItems.HOURAI_ELIXIR));
     }
 }

@@ -11,11 +11,12 @@
     "LivingEntityMixin",
     "PlayerEntityMixin",
     "ProjectileEntityMixin",
-    "ThrownEntityMixin"
+    "ThrownEntityMixin",
+    "UnbreakingEnchantmentMixin"
   ],
   "client": [
-    "client.EntityModelLayersAccessor",
     "client.ClientPlayNetworkHandlerMixin",
+    "client.EntityModelLayersAccessor",
     "client.EntityRendererMixin",
     "client.ItemRendererMixin"
   ],

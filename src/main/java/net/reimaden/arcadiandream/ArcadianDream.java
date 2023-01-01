@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -10,8 +10,10 @@ import net.reimaden.arcadiandream.advancement.ModCriteria;
 import net.reimaden.arcadiandream.block.ModBlocks;
 import net.reimaden.arcadiandream.block.ModCauldronBehavior;
 import net.reimaden.arcadiandream.block.entity.ModBlockEntities;
+import net.reimaden.arcadiandream.command.ModCommands;
 import net.reimaden.arcadiandream.config.ArcadianDreamConfig;
 import net.reimaden.arcadiandream.entity.ModEntities;
+import net.reimaden.arcadiandream.event.ModEvents;
 import net.reimaden.arcadiandream.painting.ModPaintings;
 import net.reimaden.arcadiandream.particle.ModParticles;
 import net.reimaden.arcadiandream.recipe.ModRecipes;
@@ -48,8 +50,11 @@ public class ArcadianDream implements ModInitializer {
 		ModCauldronBehavior.register();
 		ModCriteria.register();
 		ModVillagers.register();
+		ModCommands.register();
 
 		ModWorldGen.register();
 		ModLootTableModifiers.modify();
+
+		ModEvents.register();
 	}
 }

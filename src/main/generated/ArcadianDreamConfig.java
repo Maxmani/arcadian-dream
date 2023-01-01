@@ -16,6 +16,7 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
     private final Option<java.lang.Integer> hisouSwordOptions_minHeightForPeaches = this.optionForKey(new Option.Key("hisouSwordOptions.minHeightForPeaches"));
     private final Option<java.lang.Boolean> hisouSwordOptions_canDisableShields = this.optionForKey(new Option.Key("hisouSwordOptions.canDisableShields"));
     private final Option<java.lang.Boolean> mochiHammerOptions_lowViolence = this.optionForKey(new Option.Key("mochiHammerOptions.lowViolence"));
+    private final Option<java.lang.Boolean> houraiElixirOptions_canDrink = this.optionForKey(new Option.Key("houraiElixirOptions.canDrink"));
     private final Option<java.lang.Integer> danmakuCooldownMultiplier = this.optionForKey(new Option.Key("danmakuCooldownMultiplier"));
 
     private ArcadianDreamConfig() {
@@ -88,6 +89,17 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         }
 
     }
+    public final HouraiElixirOptions_ houraiElixirOptions = new HouraiElixirOptions_();
+    public class HouraiElixirOptions_ implements HouraiElixirOptions {
+        public boolean canDrink() {
+            return houraiElixirOptions_canDrink.value();
+        }
+
+        public void canDrink(boolean value) {
+            houraiElixirOptions_canDrink.set(value);
+        }
+
+    }
     public int danmakuCooldownMultiplier() {
         return danmakuCooldownMultiplier.value();
     }
@@ -103,13 +115,17 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         int maxDistance();
         void maxDistance(int value);
     }
-    public interface MochiHammerOptions {
-        boolean lowViolence();
-        void lowViolence(boolean value);
-    }
     public interface NueTridentOptions {
         boolean canHaveImpaling();
         void canHaveImpaling(boolean value);
+    }
+    public interface HouraiElixirOptions {
+        boolean canDrink();
+        void canDrink(boolean value);
+    }
+    public interface MochiHammerOptions {
+        boolean lowViolence();
+        void lowViolence(boolean value);
     }
     public interface HisouSwordOptions {
         int minHeightForPeaches();

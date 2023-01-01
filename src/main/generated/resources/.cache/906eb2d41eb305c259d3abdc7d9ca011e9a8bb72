@@ -1,7 +1,7 @@
-// 1.19.3	2022-12-30T21:29:53.881209054	Arcadian Dream/Block Loot Tables
+// 1.19.3	2023-01-01T21:31:21.225122618	Arcadian Dream/Block Loot Tables
 cfc83e3d8c5e4b5087e3f13ceadced4b93b38403 data/arcadiandream/loot_tables/blocks/deepslate_dragon_gem_ore.json
-3b3e0ea84ed56f1aed1491925077834e365f283c data/arcadiandream/loot_tables/blocks/dragon_gem_block.json
 ef335c54122351820455943d68cd428dd8152a0b data/arcadiandream/loot_tables/blocks/onbashira_pillar.json
+3b3e0ea84ed56f1aed1491925077834e365f283c data/arcadiandream/loot_tables/blocks/dragon_gem_block.json
 69a74b3cda375fb308392283a9c3e3c3f4dced85 data/arcadiandream/loot_tables/blocks/danmaku_crafting_table.json
 cc9bc76bad2ccb9cf5819bdb9a3554475ea19762 data/arcadiandream/loot_tables/blocks/raw_makaite_block.json
 a835c1ecb830b6efa4465d5657b73bd3e7af020b data/arcadiandream/loot_tables/blocks/makaite_ore.json
