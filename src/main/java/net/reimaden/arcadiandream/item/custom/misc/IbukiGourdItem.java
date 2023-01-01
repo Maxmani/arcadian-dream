@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -26,6 +26,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
+import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
 
@@ -40,8 +41,7 @@ public class IbukiGourdItem extends Item {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         if ((stack.hasNbt() && !(stack.getNbt() != null && stack.getNbt().getBoolean("filled"))) || !stack.hasNbt()) {
-            tooltip.add(Text.translatable("item.arcadiandream.ibuki_gourd.tooltip")
-                    .formatted(Formatting.GRAY).formatted(Formatting.ITALIC));
+            tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".ibuki_gourd.tooltip"));
         }
 
         super.appendTooltip(stack, world, tooltip, context);

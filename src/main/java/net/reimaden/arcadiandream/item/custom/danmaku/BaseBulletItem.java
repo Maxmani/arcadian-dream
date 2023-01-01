@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -7,7 +7,6 @@ package net.reimaden.arcadiandream.item.custom.danmaku;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
-import net.minecraft.util.Formatting;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
 import net.reimaden.arcadiandream.sound.ModSounds;
@@ -96,7 +95,7 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
             if (Screen.hasShiftDown()) {
                 nbtTooltip(stack, tooltip);
             } else {
-                tooltip.add(Text.translatable("item.arcadiandream.bullet.tooltip").formatted(Formatting.GRAY));
+                tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip"));
             }
         }
     }
@@ -115,26 +114,17 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
         int currentDensity = nbt.getInt("density");
         int currentStack = nbt.getInt("stack");
 
-        tooltip.add(Text.translatable("item.arcadiandream.bullet.tooltip_power",
-                currentPower).formatted(Formatting.GRAY));
-        tooltip.add(Text.translatable("item.arcadiandream.bullet.tooltip_speed",
-                currentSpeed).formatted(Formatting.GRAY));
-        tooltip.add(Text.translatable("item.arcadiandream.bullet.tooltip_duration",
-                (float)currentMaxAge / 20).formatted(Formatting.GRAY));
-        tooltip.add(Text.translatable("item.arcadiandream.bullet.tooltip_cooldown",
-                ((float)currentCooldown / 20) * ArcadianDream.CONFIG.danmakuCooldownMultiplier()).formatted(Formatting.GRAY));
-        tooltip.add(Text.translatable("item.arcadiandream.bullet.tooltip_gravity",
-                currentGravity).formatted(Formatting.GRAY));
-        tooltip.add(Text.translatable("item.arcadiandream.bullet.tooltip_divergence",
-                currentDivergence).formatted(Formatting.GRAY));
-        tooltip.add(Text.translatable("item.arcadiandream.bullet.tooltip_pattern",
-                currentPattern).formatted(Formatting.GRAY));
-        tooltip.add(Text.translatable("item.arcadiandream.bullet.tooltip_density",
-                currentDensity).formatted(Formatting.GRAY));
-        tooltip.add(Text.translatable("item.arcadiandream.bullet.tooltip_stack",
-                currentStack).formatted(Formatting.GRAY));
-        tooltip.add(Text.translatable("item.arcadiandream.bullet.tooltip_amount",
-                currentDensity * currentStack).formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_power", currentPower));
+        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_speed", currentSpeed));
+        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_duration", (float)currentMaxAge / 20));
+        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_cooldown",
+                ((float)currentCooldown / 20) * ArcadianDream.CONFIG.danmakuCooldownMultiplier()));
+        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_gravity", currentGravity));
+        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_divergence", currentDivergence));
+        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_pattern", currentPattern));
+        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_density", currentDensity));
+        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_stack", currentStack));
+        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_amount", currentDensity * currentStack));
     }
 
     @Override

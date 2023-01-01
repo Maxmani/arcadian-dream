@@ -1,10 +1,11 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
 package net.reimaden.arcadiandream.item.custom.misc;
 
+import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.particle.ModParticles;
@@ -17,7 +18,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.stat.Stats;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.Box;
@@ -55,8 +55,8 @@ public class BombItem extends Item {
                     ((ServerWorld) world).spawnParticles(ModParticles.BULLET_CANCEL, bulletEntity.getX(), bulletEntity.getY(), bulletEntity.getZ(), 1, 0, 0, 0, 0);
                     cancelled++;
 
-                    /* Get the ItemStack of the Star Items
-                       and give them to the player */
+                    // Get the ItemStack of the Star Items
+                    // and give them to the player
                     ItemStack item = itemEntity.getStack();
                     if (Random.create().nextBoolean()) { // 50% of the time
                         user.sendPickup(itemEntity, 1);
@@ -67,7 +67,7 @@ public class BombItem extends Item {
                 }
             }
             if (cancelled > 0) {
-                user.sendMessage(Text.translatable("item.arcadiandream.bomb_item.cancel", cancelled, stars), true);
+                user.sendMessage(Text.translatable("item." + ArcadianDream.MOD_ID + ".bomb_item.cancel", cancelled, stars), true);
                 world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.ITEM_BOMB_ITEM_USE, user.getSoundCategory(), 1f, 1f);
             }
         }
@@ -81,13 +81,13 @@ public class BombItem extends Item {
             return TypedActionResult.success(itemStack);
         }
 
-        // Fail if there are no bullets to cancel
-        return TypedActionResult.fail(itemStack);
+        // Pass if there are no bullets to cancel
+        return TypedActionResult.pass(itemStack);
     }
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.translatable("item.arcadiandream.bomb_item.tooltip").formatted(Formatting.YELLOW));
+        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bomb_item.tooltip"));
 
         super.appendTooltip(stack, world, tooltip, context);
     }

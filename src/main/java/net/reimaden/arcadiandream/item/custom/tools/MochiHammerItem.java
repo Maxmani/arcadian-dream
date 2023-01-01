@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -17,9 +17,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.reimaden.arcadiandream.ArcadianDream;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -77,8 +77,7 @@ public class MochiHammerItem extends ModHammerItem {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         if (stack.hasNbt() && stack.getOrCreateNbt().getInt("kill_count") != 0) {
-            tooltip.add(Text.translatable("item.arcadiandream.mochi_hammer.tooltip",
-                    getKills(stack)).formatted(Formatting.GRAY));
+            tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".mochi_hammer.tooltip", getKills(stack)));
         }
 
         super.appendTooltip(stack, world, tooltip, context);
