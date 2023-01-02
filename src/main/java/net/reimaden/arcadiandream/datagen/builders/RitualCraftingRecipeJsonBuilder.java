@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -31,6 +31,7 @@ public class RitualCraftingRecipeJsonBuilder implements CraftingRecipeJsonBuilde
     private final int outputCount;
     private final List<Ingredient> inputs = Lists.newArrayList();
     private byte moonPhase = -1;
+    private String dimension = "";
 
     public RitualCraftingRecipeJsonBuilder(ItemConvertible output, int outputCount) {
         this.output = output.asItem();
@@ -76,6 +77,11 @@ public class RitualCraftingRecipeJsonBuilder implements CraftingRecipeJsonBuilde
         return this;
     }
 
+    public RitualCraftingRecipeJsonBuilder dimension(String dimension) {
+        this.dimension = dimension.toLowerCase();
+        return this;
+    }
+
     @Override
     public CraftingRecipeJsonBuilder criterion(String name, CriterionConditions conditions) {
         return null;
@@ -93,7 +99,7 @@ public class RitualCraftingRecipeJsonBuilder implements CraftingRecipeJsonBuilde
 
     @Override
     public void offerTo(Consumer<RecipeJsonProvider> exporter, Identifier recipeId) {
-        exporter.accept(new RitualCraftingRecipeJsonProvider(recipeId, output, outputCount, inputs, moonPhase));
+        exporter.accept(new RitualCraftingRecipeJsonProvider(recipeId, output, outputCount, inputs, moonPhase, dimension));
     }
 
     public static class RitualCraftingRecipeJsonProvider implements RecipeJsonProvider {
@@ -103,13 +109,15 @@ public class RitualCraftingRecipeJsonBuilder implements CraftingRecipeJsonBuilde
         private final int outputCount;
         private final List<Ingredient> inputs;
         private final byte moonPhase;
+        private final String dimension;
 
-        public RitualCraftingRecipeJsonProvider(Identifier recipeId, Item output, int outputCount, List<Ingredient> inputs, byte moonPhase) {
+        public RitualCraftingRecipeJsonProvider(Identifier recipeId, Item output, int outputCount, List<Ingredient> inputs, byte moonPhase, String dimension) {
             this.recipeId = recipeId;
             this.output = output;
             this.outputCount = outputCount;
             this.inputs = inputs;
             this.moonPhase = moonPhase;
+            this.dimension = dimension;
         }
 
         @Override
@@ -124,9 +132,13 @@ public class RitualCraftingRecipeJsonBuilder implements CraftingRecipeJsonBuilde
             if (outputCount > 1) {
                 jsonObject.addProperty("count", outputCount);
             }
-            JsonPrimitive jsonPrimitive = new JsonPrimitive(moonPhase);
+            JsonPrimitive jsonMoon = new JsonPrimitive(moonPhase);
             if (moonPhase != -1) {
-                json.add("moon_phase", jsonPrimitive);
+                json.add("moon_phase", jsonMoon);
+            }
+            JsonPrimitive jsonDimension = new JsonPrimitive(dimension);
+            if (!dimension.isEmpty()) {
+                json.add("dimension", jsonDimension);
             }
             json.add("result", jsonObject);
         }

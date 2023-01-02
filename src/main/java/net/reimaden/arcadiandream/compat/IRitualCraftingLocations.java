@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -33,4 +33,5 @@ public interface IRitualCraftingLocations {
 
     int[] OUTPUT_SLOT = {84, 84};
     int[] MOON_SLOT = {164, 4};
+    int[] DIMENSION_SLOT = MOON_SLOT;
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -19,11 +19,13 @@ public class REIRitualCraftingDisplay implements Display {
     private final List<EntryIngredient> input;
     private final EntryIngredient output;
     private final byte moonPhase;
+    private final String dimension;
 
     public REIRitualCraftingDisplay(RitualCraftingRecipe recipe) {
         this.input = EntryIngredients.ofIngredients(recipe.getIngredients());
         this.output = EntryIngredients.of(recipe.getOutput());
         this.moonPhase = recipe.getMoonPhase();
+        this.dimension = recipe.getDimension();
     }
 
     @Override
@@ -43,5 +45,9 @@ public class REIRitualCraftingDisplay implements Display {
 
     byte getMoonPhase() {
         return moonPhase;
+    }
+
+    String getDimension() {
+        return dimension;
     }
 }

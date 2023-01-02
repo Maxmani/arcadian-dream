@@ -1,5 +1,6 @@
 {
   "type": "arcadiandream:ritual_crafting",
+  "dimension": "the_nether",
   "ingredients": [
     {
       "item": "minecraft:stick"

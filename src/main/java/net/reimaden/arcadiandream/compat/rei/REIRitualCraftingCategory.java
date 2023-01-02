@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -30,6 +30,7 @@ public class REIRitualCraftingCategory implements DisplayCategory<REIRitualCraft
 
     private static final Identifier TEXTURE = new Identifier(ArcadianDream.MOD_ID, "textures/gui/ritual_crafting.png");
     private static final Identifier MOON_ICON = new Identifier(ArcadianDream.MOD_ID, "textures/gui/moon.png");
+    private static final Identifier DIMENSION_ICON = new Identifier(ArcadianDream.MOD_ID, "textures/gui/dimension.png");
 
     private static final Identifier ID = new Identifier(ArcadianDream.MOD_ID, "ritual_crafting");
     public static final CategoryIdentifier<? extends REIRitualCraftingDisplay> CATEGORY = CategoryIdentifier.of(ID);
@@ -67,18 +68,30 @@ public class REIRitualCraftingCategory implements DisplayCategory<REIRitualCraft
         return 184;
     }
 
-    private Text tooltip(byte moonPhase) {
+    private Text moonPhaseTooltip(byte moonPhase) {
         Text tooltip;
         switch (moonPhase) {
-            case 0 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.0");
-            case 1 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.1");
-            case 2 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.2");
-            case 3 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.3");
-            case 4 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.4");
-            case 5 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + "..ritual_crafting.moon_phase.5");
-            case 6 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.6");
-            case 7 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.7");
-            default -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase.invalid");
+            case 0 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_0");
+            case 1 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_1");
+            case 2 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_2");
+            case 3 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_3");
+            case 4 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_4");
+            case 5 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + "..ritual_crafting.moon_phase_5");
+            case 6 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_6");
+            case 7 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_7");
+            default -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_invalid");
+        }
+
+        return Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.requirement", tooltip);
+    }
+
+    private Text dimensionTooltip(String dimension) {
+        Text tooltip;
+        switch (dimension) {
+            case "overworld" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.dimension_overworld");
+            case "the_nether" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.dimension_nether");
+            case "the_end" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.dimension_end");
+            default -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.dimension_unknown", dimension);
         }
 
         return Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.requirement", tooltip);
@@ -100,7 +113,12 @@ public class REIRitualCraftingCategory implements DisplayCategory<REIRitualCraft
             Widget moonPhase = Widgets.createTexturedWidget(MOON_ICON, MOON_SLOT[0] + bounds.x, MOON_SLOT[1] + bounds.y,
                     0, 0, 16, 16, 16, 16);
             Point point = new Point(MOON_SLOT[0] + bounds.x, MOON_SLOT[1] + bounds.y);
-            widgets.add(Widgets.withTooltip(Widgets.withBounds(moonPhase, new Rectangle(point.x, point.y, 16, 16)), tooltip(display.getMoonPhase())));
+            widgets.add(Widgets.withTooltip(Widgets.withBounds(moonPhase, new Rectangle(point.x, point.y, 16, 16)),moonPhaseTooltip(display.getMoonPhase())));
+        } else if (!display.getDimension().isEmpty()) {
+            Widget dimension = Widgets.createTexturedWidget(DIMENSION_ICON, DIMENSION_SLOT[0] + bounds.x, DIMENSION_SLOT[1] + bounds.y,
+                    0, 0, 16, 16, 16, 16);
+            Point point = new Point(DIMENSION_SLOT[0] + bounds.x, DIMENSION_SLOT[1] + bounds.y);
+            widgets.add(Widgets.withTooltip(Widgets.withBounds(dimension, new Rectangle(point.x, point.y, 16, 16)), dimensionTooltip(display.getDimension())));
         }
 
         return widgets;

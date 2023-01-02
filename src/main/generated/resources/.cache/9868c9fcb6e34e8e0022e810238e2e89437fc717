@@ -1,8 +1,8 @@
-// 1.19.3	2023-01-02T03:06:38.65769369	Arcadian Dream/Model Definitions
+// 1.19.3	2023-01-02T17:11:29.189324564	Arcadian Dream/Model Definitions
 f2ebcff21cadc28cf53399f6a3290da06c871e6e assets/arcadiandream/blockstates/deepslate_dragon_gem_ore.json
 e9e8dbe0ce582568df0e7c45a0233a6720eadae9 assets/arcadiandream/models/item/ordinary_hat.json
-b3fd83ff6c264078e0e26b32a9ac2bd489ce343f assets/arcadiandream/models/item/bomb_item.json
 8fd032362831d4163a0fe785780331eca2deab9d assets/arcadiandream/models/item/mochi_mallet_2.json
+b3fd83ff6c264078e0e26b32a9ac2bd489ce343f assets/arcadiandream/models/item/bomb_item.json
 f82784759ab552a81812c5a3a1b7fbe0d570788d assets/arcadiandream/blockstates/onbashira_pillar.json
 fe53fcace44138636ff859e48a65897d7f9017c2 assets/arcadiandream/models/item/makaite_ingot.json
 3d4745c2c6efb822232cafa89e4441fb392752a9 assets/arcadiandream/models/block/end_stone_dragon_gem_ore.json

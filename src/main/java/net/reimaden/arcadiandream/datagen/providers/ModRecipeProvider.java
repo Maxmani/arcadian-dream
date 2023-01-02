@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -38,6 +38,12 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         WAXING_CRESCENT,
         FIRST_QUARTER,
         WAXING_GIBBOUS
+    }
+
+    protected enum DIMENSIONS {
+        OVERWORLD,
+        THE_NETHER,
+        THE_END
     }
 
     protected static Identifier ritualCraftingId(Item item) {

@@ -1,5 +1,6 @@
 {
   "type": "arcadiandream:ritual_crafting",
+  "dimension": "the_end",
   "ingredients": [
     {
       "item": "minecraft:nether_star"

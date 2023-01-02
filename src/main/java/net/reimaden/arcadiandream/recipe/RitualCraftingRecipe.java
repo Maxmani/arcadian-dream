@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -23,12 +23,14 @@ public class RitualCraftingRecipe implements Recipe<SimpleInventory> {
     private final ItemStack output;
     private final DefaultedList<Ingredient> recipeItems;
     private final byte moonPhase;
+    private final String dimension;
 
-    public RitualCraftingRecipe(Identifier id, ItemStack output, DefaultedList<Ingredient> recipeItems, byte moonPhase) {
+    public RitualCraftingRecipe(Identifier id, ItemStack output, DefaultedList<Ingredient> recipeItems, byte moonPhase, String dimension) {
         this.id = id;
         this.output = output;
         this.recipeItems = recipeItems;
         this.moonPhase = moonPhase;
+        this.dimension = dimension;
     }
 
     @Override
@@ -56,11 +58,20 @@ public class RitualCraftingRecipe implements Recipe<SimpleInventory> {
             result = false;
         }
 
+        // If the recipe requires a specific dimension, check for it
+        if (!dimension.equalsIgnoreCase(world.getRegistryKey().getValue().getPath()) && !dimension.isEmpty()) {
+            result = false;
+        }
+
         return result;
     }
 
     public byte getMoonPhase() {
         return moonPhase;
+    }
+
+    public String getDimension() {
+        return dimension;
     }
 
     @Override
@@ -115,7 +126,8 @@ public class RitualCraftingRecipe implements Recipe<SimpleInventory> {
             JsonArray ingredients = JsonHelper.getArray(json, "ingredients");
             DefaultedList<Ingredient> inputs = DefaultedList.of();
 
-            byte moon_phase = JsonHelper.getByte(json, "moon_phase", (byte) -1);
+            byte moonPhase = JsonHelper.getByte(json, "moon_phase", (byte) -1);
+            String dimension = JsonHelper.getString(json, "dimension", "");
 
             if (ingredients.isEmpty()) {
                 throw new JsonParseException("No ingredients for Ritual Crafting recipe");
@@ -123,8 +135,11 @@ public class RitualCraftingRecipe implements Recipe<SimpleInventory> {
             if (ingredients.size() > 16) {
                 throw new JsonParseException("Too many ingredients for Ritual Crafting recipe");
             }
-            if (moon_phase != -1 && (moon_phase > 7 || moon_phase < 0)) {
+            if (moonPhase != -1 && (moonPhase > 7 || moonPhase < 0)) {
                 throw new JsonParseException("Invalid moon phase for Ritual Crafting recipe");
+            }
+            if (moonPhase != -1 && !dimension.isEmpty()) {
+                throw new JsonParseException("Ritual Crafting cannot have both a moon phase requirement and a dimension requirement");
             }
 
             for (int i = 0; i < ingredients.size(); i++) {
@@ -135,7 +150,7 @@ public class RitualCraftingRecipe implements Recipe<SimpleInventory> {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
             }
 
-            return new RitualCraftingRecipe(id, output, inputs, moon_phase);
+            return new RitualCraftingRecipe(id, output, inputs, moonPhase, dimension);
         }
 
         @Override
@@ -145,8 +160,10 @@ public class RitualCraftingRecipe implements Recipe<SimpleInventory> {
             inputs.replaceAll(ignored -> Ingredient.fromPacket(buf));
 
             ItemStack output = buf.readItemStack();
-            byte moon_phase = buf.readByte();
-            return new RitualCraftingRecipe(id, output, inputs, moon_phase);
+            byte moonPhase = buf.readByte();
+            String dimension = buf.readString();
+
+            return new RitualCraftingRecipe(id, output, inputs, moonPhase, dimension);
         }
 
         @Override
@@ -157,6 +174,7 @@ public class RitualCraftingRecipe implements Recipe<SimpleInventory> {
             }
             buf.writeItemStack(recipe.getOutput());
             buf.writeByte(recipe.moonPhase);
+            buf.writeString(recipe.dimension);
         }
     }
 

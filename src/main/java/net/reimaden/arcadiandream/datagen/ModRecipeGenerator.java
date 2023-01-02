@@ -164,6 +164,7 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input(Items.STICK, 3)
                 .input(Ingredient.fromTag(ConventionalItemTags.IRON_INGOTS), 5)
                 .input(Ingredient.fromTag(ItemTags.SOUL_FIRE_BASE_BLOCKS), 8)
+                .dimension(DIMENSIONS.THE_NETHER.toString())
                 .offerTo(exporter, ritualCraftingId(ModItems.DEATH_SCYTHE));
 
         RitualCraftingRecipeJsonBuilder.create(ModItems.HOURAI_ELIXIR)
@@ -175,6 +176,7 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input(Items.ENCHANTED_GOLDEN_APPLE)
                 .input(Items.NETHER_STAR)
                 .input(Items.ENCHANTED_GOLDEN_APPLE)
+                .dimension(DIMENSIONS.THE_END.toString())
                 .offerTo(exporter, ritualCraftingId(ModItems.HOURAI_ELIXIR));
     }
 }
