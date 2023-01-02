@@ -48,9 +48,9 @@ public class ModConfigModel {
     }
 
     @Nest
-    public MochiHammerOptions mochiHammerOptions = new MochiHammerOptions();
+    public MochiMalletOptions mochiMalletOptions = new MochiMalletOptions();
 
-    public static class MochiHammerOptions {
+    public static class MochiMalletOptions {
         public boolean lowViolence = false;
     }
 

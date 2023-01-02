@@ -24,12 +24,12 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class MochiHammerItem extends ModHammerItem {
+public class MochiMalletItem extends ModHammerItem {
 
     private final float attackDamage;
     private final float attackSpeed;
 
-    public MochiHammerItem(ToolMaterial material, int attackDamageIn, float attackSpeedIn, Settings settings) {
+    public MochiMalletItem(ToolMaterial material, int attackDamageIn, float attackSpeedIn, Settings settings) {
         super(material, attackDamageIn, attackSpeedIn, settings);
         this.attackDamage = attackDamageIn;
         this.attackSpeed = attackSpeedIn;
@@ -77,7 +77,7 @@ public class MochiHammerItem extends ModHammerItem {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         if (stack.hasNbt() && stack.getOrCreateNbt().getInt("kill_count") != 0) {
-            tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".mochi_hammer.tooltip", getKills(stack)));
+            tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".mochi_mallet.tooltip", getKills(stack)));
         }
 
         super.appendTooltip(stack, world, tooltip, context);

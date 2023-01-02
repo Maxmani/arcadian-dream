@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -14,12 +14,12 @@ import net.reimaden.arcadiandream.item.ModItems;
 public class ModModelPredicateProvider {
 
     public static void register() {
-        registerMochiHammer();
+        registerMochiMallet();
     }
 
-    private static void registerMochiHammer() {
-        ModelPredicateProviderRegistry.register(ModItems.MOCHI_HAMMER, new Identifier(ArcadianDream.MOD_ID, "kills"), (stack, world, entity, seed) -> {
-            if (!ArcadianDream.CONFIG.mochiHammerOptions.lowViolence()) {
+    private static void registerMochiMallet() {
+        ModelPredicateProviderRegistry.register(ModItems.MOCHI_MALLET, new Identifier(ArcadianDream.MOD_ID, "kills"), (stack, world, entity, seed) -> {
+            if (!ArcadianDream.CONFIG.mochiMalletOptions.lowViolence()) {
                 if (stack.getNbt() != null) {
                     return stack.hasNbt() ? MathHelper.clamp((float) stack.getNbt().getInt("kill_count"), 0.0f, 1000.0f) / 1000 : 0.0f;
                 }

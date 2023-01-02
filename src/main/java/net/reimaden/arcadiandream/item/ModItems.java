@@ -17,7 +17,7 @@ import net.reimaden.arcadiandream.item.custom.consumables.HouraiElixirItem;
 import net.reimaden.arcadiandream.item.custom.danmaku.OrbBulletItem;
 import net.reimaden.arcadiandream.item.custom.misc.*;
 import net.reimaden.arcadiandream.item.custom.tools.DeathScytheItem;
-import net.reimaden.arcadiandream.item.custom.tools.MochiHammerItem;
+import net.reimaden.arcadiandream.item.custom.tools.MochiMalletItem;
 import net.reimaden.arcadiandream.item.custom.tools.ModHoeItem;
 import net.reimaden.arcadiandream.item.custom.tools.NueTridentItem;
 import net.reimaden.arcadiandream.sound.ModSounds;
@@ -81,7 +81,7 @@ public class ModItems {
             new FabricItemSettings().fireproof()));
     public static final Item HISOU_SWORD = registerItem("hisou_sword", new SwordItem(ModToolMaterials.HISOU, 3, -2.0f,
             new FabricItemSettings()));
-    public static final Item MOCHI_HAMMER = registerItem("mochi_hammer", new MochiHammerItem(ModToolMaterials.MOCHI_HAMMER, 3, -3.2f,
+    public static final Item MOCHI_MALLET = registerItem("mochi_mallet", new MochiMalletItem(ModToolMaterials.MOCHI_MALLET, 3, -3.2f,
             new FabricItemSettings()));
     public static final Item DEATH_SCYTHE = registerItem("death_scythe", new DeathScytheItem(ToolMaterials.IRON, 4, -3.0f,
             new FabricItemSettings()));
@@ -125,7 +125,7 @@ public class ModItems {
             entries.add(MAKAITE_HOE);
             entries.add(NUE_TRIDENT);
             entries.add(HISOU_SWORD);
-            entries.add(MOCHI_HAMMER);
+            entries.add(MOCHI_MALLET);
             entries.add(DEATH_SCYTHE);
             entries.add(MUSIC_DISC_FAIRY_PLAYGROUND);
             entries.add(MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN);

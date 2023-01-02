@@ -134,12 +134,12 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input(Items.PRISMARINE_CRYSTALS, 2)
                 .offerTo(exporter, ritualCraftingId(ModItems.NUE_TRIDENT));
 
-        RitualCraftingRecipeJsonBuilder.create(ModItems.MOCHI_HAMMER)
+        RitualCraftingRecipeJsonBuilder.create(ModItems.MOCHI_MALLET)
                 .input(Items.RABBIT_HIDE)
                 .input(Items.STICK, 2)
                 .input(Ingredient.fromTag(ItemTags.PLANKS), 3)
                 .moonPhase((byte) MOON_PHASES.FULL_MOON.ordinal())
-                .offerTo(exporter, ritualCraftingId(ModItems.MOCHI_HAMMER));
+                .offerTo(exporter, ritualCraftingId(ModItems.MOCHI_MALLET));
 
         RitualCraftingRecipeJsonBuilder.create(ModItems.WALL_PASSING_CHISEL)
                 .input(Items.ENDER_PEARL)

@@ -15,7 +15,7 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
     private final Option<java.lang.Boolean> nueTridentOptions_canHaveImpaling = this.optionForKey(new Option.Key("nueTridentOptions.canHaveImpaling"));
     private final Option<java.lang.Integer> hisouSwordOptions_minHeightForPeaches = this.optionForKey(new Option.Key("hisouSwordOptions.minHeightForPeaches"));
     private final Option<java.lang.Boolean> hisouSwordOptions_canDisableShields = this.optionForKey(new Option.Key("hisouSwordOptions.canDisableShields"));
-    private final Option<java.lang.Boolean> mochiHammerOptions_lowViolence = this.optionForKey(new Option.Key("mochiHammerOptions.lowViolence"));
+    private final Option<java.lang.Boolean> mochiMalletOptions_lowViolence = this.optionForKey(new Option.Key("mochiMalletOptions.lowViolence"));
     private final Option<java.lang.Boolean> houraiElixirOptions_canDrink = this.optionForKey(new Option.Key("houraiElixirOptions.canDrink"));
     private final Option<java.lang.Integer> danmakuCooldownMultiplier = this.optionForKey(new Option.Key("danmakuCooldownMultiplier"));
 
@@ -78,14 +78,14 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         }
 
     }
-    public final MochiHammerOptions_ mochiHammerOptions = new MochiHammerOptions_();
-    public class MochiHammerOptions_ implements MochiHammerOptions {
+    public final MochiMalletOptions_ mochiMalletOptions = new MochiMalletOptions_();
+    public class MochiMalletOptions_ implements MochiMalletOptions {
         public boolean lowViolence() {
-            return mochiHammerOptions_lowViolence.value();
+            return mochiMalletOptions_lowViolence.value();
         }
 
         public void lowViolence(boolean value) {
-            mochiHammerOptions_lowViolence.set(value);
+            mochiMalletOptions_lowViolence.set(value);
         }
 
     }
@@ -109,12 +109,6 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
     }
 
 
-    public interface ChiselOptions {
-        boolean canUse();
-        void canUse(boolean value);
-        int maxDistance();
-        void maxDistance(int value);
-    }
     public interface NueTridentOptions {
         boolean canHaveImpaling();
         void canHaveImpaling(boolean value);
@@ -123,15 +117,21 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         boolean canDrink();
         void canDrink(boolean value);
     }
-    public interface MochiHammerOptions {
-        boolean lowViolence();
-        void lowViolence(boolean value);
-    }
     public interface HisouSwordOptions {
         int minHeightForPeaches();
         void minHeightForPeaches(int value);
         boolean canDisableShields();
         void canDisableShields(boolean value);
+    }
+    public interface MochiMalletOptions {
+        boolean lowViolence();
+        void lowViolence(boolean value);
+    }
+    public interface ChiselOptions {
+        boolean canUse();
+        void canUse(boolean value);
+        int maxDistance();
+        void maxDistance(int value);
     }
 
 }
