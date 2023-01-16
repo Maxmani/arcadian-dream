@@ -87,7 +87,8 @@ public class ModItems {
             new FabricItemSettings()));
 
     // Danmaku
-    public static final Item ORB_BULLET = registerItem("orb_bullet", new OrbBulletItem(new FabricItemSettings()));
+    public static final Item ORB_BULLET = registerItem("orb_bullet", new OrbBulletItem(new FabricItemSettings(),
+            3, 1.0f, 200, 2, 0.0f, 1, "spread", 1, 1));
 
     // Music Discs
     public static final Item MUSIC_DISC_FAIRY_PLAYGROUND = registerItem("music_disc_fairy_playground", new MusicDiscItem(10, ModSounds.MUSIC_DISC_FAIRY_PLAYGROUND,

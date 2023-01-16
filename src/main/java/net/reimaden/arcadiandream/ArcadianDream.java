@@ -30,7 +30,8 @@ import org.slf4j.LoggerFactory;
 public class ArcadianDream implements ModInitializer {
 
 	public static final String MOD_ID = "arcadiandream";
-	public static final Logger LOGGER = LoggerFactory.getLogger(ArcadianDream.class);
+	public static final String MOD_NAME = "Arcadian Dream";
+	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAME);
 	public static final ArcadianDreamConfig CONFIG = ArcadianDreamConfig.createAndLoad();
 
 	@Override

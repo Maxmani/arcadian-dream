@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -12,47 +12,14 @@ import net.minecraft.world.World;
 
 public class OrbBulletItem extends BaseBulletItem {
 
-    public OrbBulletItem(Settings settings) {
-        super(settings);
+
+    public OrbBulletItem(Settings settings, int power, float speed, int maxAge, int cooldown, float gravity,
+                         float divergence, String pattern, int density, int stack) {
+        super(settings, power, speed, maxAge, cooldown, gravity, divergence, pattern, density, stack);
     }
 
     @Override
     public ThrownItemEntity getBullet(World world, LivingEntity user) {
         return new OrbBulletEntity(world, user);
-    }
-
-    @Override
-    public int getPower() {
-        return 3;
-    }
-
-    @Override
-    public float getSpeed() {
-        return 1.0f;
-    }
-
-    @Override
-    public int getMaxAge() {
-        return 200;
-    }
-
-    @Override
-    public int getCooldown() {
-        return 2;
-    }
-
-    @Override
-    public float getGravity() {
-        return 0.0f;
-    }
-
-    @Override
-    public int getDensity() {
-        return 1;
-    }
-
-    @Override
-    public int getStack() {
-        return 1;
     }
 }

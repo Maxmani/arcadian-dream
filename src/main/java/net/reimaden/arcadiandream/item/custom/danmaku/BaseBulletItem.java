@@ -12,7 +12,6 @@ import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -29,15 +28,34 @@ import java.util.List;
 
 public class BaseBulletItem extends Item implements DyeableBullet, BulletPatterns {
 
-    public BaseBulletItem(Settings settings) {
+    private final int power;
+    private final float speed;
+    private final int maxAge;
+    private final int cooldown;
+    private final float gravity;
+    private final float divergence;
+    private final String pattern;
+    private final int density;
+    private final int stack;
+
+    public BaseBulletItem(Settings settings, int power, float speed, int maxAge, int cooldown, float gravity,
+                          float divergence, String pattern, int density, int stack) {
         super(settings);
+        this.power = power;
+        this.speed = speed;
+        this.maxAge = maxAge;
+        this.cooldown = cooldown;
+        this.gravity = gravity;
+        this.divergence = divergence;
+        this.pattern = pattern;
+        this.density = density;
+        this.stack = stack;
     }
 
-    @SuppressWarnings("DataFlowIssue")
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
-        NbtCompound nbt = itemStack.getNbt();
+        NbtCompound nbt = itemStack.getOrCreateNbt();
 
         world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.ENTITY_DANMAKU_FIRE, SoundCategory.PLAYERS, 1f, 1f);
         user.getItemCooldownManager().set(this, nbt.getInt("cooldown") * ArcadianDream.CONFIG.danmakuCooldownMultiplier());
@@ -47,16 +65,13 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
         int modifier = nbt.getInt("modifier");
         float speed = nbt.getFloat("speed");
         float divergence = nbt.getFloat("divergence");
-        float angle = 0;
-        float x = 0;
-        float y = 0;
-        float s = 0;
         float n = speed / stack;
 
         if (!world.isClient) {
             switch (nbt.getString("pattern").toLowerCase()) {
                 case "spread" -> createSpread(world, user, itemStack, density, speed, divergence);
-                case "ring" -> createRing(world, user, itemStack, density, stack, angle, speed, s, modifier, x, y, n, divergence);
+                case "ray" -> createRay(world, user, itemStack, speed, divergence, n, stack);
+                case "ring" -> createRing(world, user, itemStack, density, stack, speed, modifier, n, divergence);
                 default -> throw new IllegalArgumentException("No valid bullet pattern found!");
             }
         }
@@ -69,24 +84,20 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
         return TypedActionResult.success(itemStack, world.isClient);
     }
 
-    @Override // TODO: Initialize NBT in a better way -> Item#getDefaultStack
-    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if (!stack.hasNbt()) {
-            NbtCompound nbt = stack.getOrCreateNbt();
+    @Override
+    public void postProcessNbt(NbtCompound nbt) {
+        super.postProcessNbt(nbt);
 
-            nbt.putInt("power", getPower());
-            nbt.putFloat("speed", getSpeed());
-            nbt.putInt("duration", getMaxAge());
-            nbt.putInt("cooldown", getCooldown());
-            nbt.putFloat("gravity", getGravity());
-            nbt.putFloat("divergence", getDivergence());
-            nbt.putString("pattern", getPattern());
-            nbt.putInt("density", getDensity());
-            nbt.putInt("stack", getStack());
-
-            // Hide the "dyed" line
-            stack.addHideFlag(ItemStack.TooltipSection.DYE);
-        }
+        // Set default values
+        nbt.putInt("power", power);
+        nbt.putFloat("speed", speed);
+        nbt.putInt("duration", maxAge);
+        nbt.putInt("cooldown", cooldown);
+        nbt.putFloat("gravity", gravity);
+        nbt.putFloat("divergence", divergence);
+        nbt.putString("pattern", pattern);
+        nbt.putInt("density", density);
+        nbt.putInt("stack", stack);
     }
 
     @Override
@@ -130,41 +141,5 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
     @Override
     public ThrownItemEntity getBullet(World world, LivingEntity user) {
         return new BaseBulletEntity(world, user);
-    }
-
-    public int getPower() {
-        return 0;
-    }
-
-    public float getSpeed() {
-        return 0.0f;
-    }
-
-    public int getMaxAge() {
-        return 0;
-    }
-
-    public int getCooldown() {
-        return 0;
-    }
-
-    public float getGravity() {
-        return 0.0f;
-    }
-
-    public float getDivergence() {
-        return 0.0f;
-    }
-
-    public String getPattern() {
-        return "spread";
-    }
-
-    public int getDensity() {
-        return 0;
-    }
-
-    public int getStack() {
-        return 0;
     }
 }
