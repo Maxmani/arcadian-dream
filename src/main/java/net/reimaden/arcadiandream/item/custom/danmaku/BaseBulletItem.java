@@ -88,16 +88,21 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
     public void postProcessNbt(NbtCompound nbt) {
         super.postProcessNbt(nbt);
 
+        String[] keys = {"power", "speed", "duration", "cooldown", "gravity", "divergence", "pattern", "density", "stack"};
+        Object[] values = {power, speed, maxAge, cooldown, gravity, divergence, pattern, density, stack};
+
         // Set default values
-        nbt.putInt("power", power);
-        nbt.putFloat("speed", speed);
-        nbt.putInt("duration", maxAge);
-        nbt.putInt("cooldown", cooldown);
-        nbt.putFloat("gravity", gravity);
-        nbt.putFloat("divergence", divergence);
-        nbt.putString("pattern", pattern);
-        nbt.putInt("density", density);
-        nbt.putInt("stack", stack);
+        for (int i = 0; i < keys.length; i++) {
+            if (!nbt.contains(keys[i])) {
+                if (values[i] instanceof Integer) {
+                    nbt.putInt(keys[i], (int) values[i]);
+                } else if (values[i] instanceof Float) {
+                    nbt.putFloat(keys[i], (float) values[i]);
+                } else if (values[i] instanceof String) {
+                    nbt.putString(keys[i], (String) values[i]);
+                }
+            }
+        }
     }
 
     @Override
@@ -111,31 +116,32 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
         }
     }
 
-    @SuppressWarnings("DataFlowIssue")
-    private void nbtTooltip(ItemStack stack, List<Text> tooltip) {
-        NbtCompound nbt = stack.getNbt();
+    private void nbtTooltip(ItemStack itemStack, List<Text> tooltip) {
+        NbtCompound nbt = itemStack.getNbt();
 
-        int currentPower = nbt.getInt("power");
-        float currentSpeed = nbt.getFloat("speed");
-        int currentMaxAge = nbt.getInt("duration");
-        int currentCooldown = nbt.getInt("cooldown");
-        float currentGravity = nbt.getFloat("gravity");
-        float currentDivergence = nbt.getFloat("divergence");
-        String currentPattern = nbt.getString("pattern");
-        int currentDensity = nbt.getInt("density");
-        int currentStack = nbt.getInt("stack");
+        if (nbt != null) {
+            int power = nbt.getInt("power");
+            float speed = nbt.getFloat("speed");
+            int maxAge = nbt.getInt("duration");
+            int cooldown = nbt.getInt("cooldown");
+            float gravity = nbt.getFloat("gravity");
+            float divergence = nbt.getFloat("divergence");
+            String pattern = nbt.getString("pattern");
+            int density = nbt.getInt("density");
+            int stack = nbt.getInt("stack");
 
-        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_power", currentPower));
-        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_speed", currentSpeed));
-        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_duration", (float)currentMaxAge / 20));
-        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_cooldown",
-                ((float)currentCooldown / 20) * ArcadianDream.CONFIG.danmakuCooldownMultiplier()));
-        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_gravity", currentGravity));
-        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_divergence", currentDivergence));
-        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_pattern", currentPattern));
-        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_density", currentDensity));
-        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_stack", currentStack));
-        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip_amount", currentDensity * currentStack));
+            String keyPrefix = "item." + ArcadianDream.MOD_ID + ".bullet.tooltip_";
+            tooltip.add(Text.translatable(keyPrefix + "power", power));
+            tooltip.add(Text.translatable(keyPrefix + "speed", speed));
+            tooltip.add(Text.translatable(keyPrefix + "duration", (float) maxAge / 20));
+            tooltip.add(Text.translatable(keyPrefix + "cooldown", ((float) cooldown / 20) * ArcadianDream.CONFIG.danmakuCooldownMultiplier()));
+            tooltip.add(Text.translatable(keyPrefix + "gravity", gravity));
+            tooltip.add(Text.translatable(keyPrefix + "divergence", divergence));
+            tooltip.add(Text.translatable(keyPrefix + "pattern", pattern));
+            tooltip.add(Text.translatable(keyPrefix + "density", density));
+            tooltip.add(Text.translatable(keyPrefix + "stack", stack));
+            tooltip.add(Text.translatable(keyPrefix + "amount", density * stack));
+        }
     }
 
     @Override
