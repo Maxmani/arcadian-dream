@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -13,7 +13,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-@SuppressWarnings("ParameterCanBeLocal")
 public interface BulletPatterns {
 
     default void createSpread(World world, PlayerEntity user, ItemStack itemStack, int density, float speed, float divergence) {
@@ -25,19 +24,30 @@ public interface BulletPatterns {
         }
     }
 
+    default void createRay(World world, PlayerEntity user, ItemStack itemStack, float speed, float divergence, float n, int stack) {
+        for (int d = 0; d < stack; d++) {
+            ThrownItemEntity bulletEntity = getBullet(world, user);
+            bulletEntity.setItem(itemStack);
+            bulletEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, speed, divergence);
+            world.spawnEntity(bulletEntity);
+
+            speed = speed - n;
+        }
+    }
+
     default void createRing(World world, PlayerEntity user, ItemStack itemStack,
-                            int density, int stack, float angle, float speed, float s, int modifier, float x, float y, float n, float divergence) {
+                            int density, int stack, float speed, int modifier, float n, float divergence) {
         for (int i = 0; i < stack; i++) {
             for (int h = 0; h < density; h++) {
                 ThrownItemEntity bulletEntity = getBullet(world, user);
                 bulletEntity.setItem(itemStack);
 
-                angle = (h * (360 / (float)density)) + 180;
-                s = speed;
+                float angle = (h * (360 / (float) density)) + 180;
+                float s = speed;
                 if (modifier != 0) {
                     modifier = 1 + modifier;
-                    x = MathHelper.cos(angle);
-                    y = MathHelper.sin(angle) / 2; //replace 2 with modifier when modifier is correctly programmed in.
+                    float x = MathHelper.cos(angle);
+                    float y = MathHelper.sin(angle) / 2; // TODO: Replace 2 with modifier when modifier is correctly programmed in
                     angle = (float)MathHelper.atan2(y, x) * MathHelper.DEGREES_PER_RADIAN;
                     s = MathHelper.sqrt(MathHelper.square(x) + MathHelper.square(y)) * speed;
                 }

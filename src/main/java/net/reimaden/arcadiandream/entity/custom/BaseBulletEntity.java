@@ -1,10 +1,15 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
 package net.reimaden.arcadiandream.entity.custom;
 
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.event.GameEvent;
 import net.reimaden.arcadiandream.damage.ModDamageSources;
 import net.reimaden.arcadiandream.particle.ModParticles;
 import net.reimaden.arcadiandream.sound.ModSounds;
@@ -68,13 +73,54 @@ public class BaseBulletEntity extends ThrownItemEntity {
     }
 
     protected void onCollision(HitResult hitResult) {
-        super.onCollision(hitResult);
-        if (!this.world.isClient) {
-            this.kill();
-        }
-        if (world instanceof ServerWorld serverWorld) {
-            serverWorld.spawnParticles(ModParticles.BULLET_DESPAWN, this.getX(), this.getY(), this.getZ(), 1, 0, 0, 0, 0);
-            serverWorld.playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.ENTITY_DANMAKU_HIT, SoundCategory.NEUTRAL, 1f, 1f);
+        boolean bounce = true;
+        if (!bounce) {
+            super.onCollision(hitResult);
+            if (!this.world.isClient) {
+                this.kill();
+            }
+            if (world instanceof ServerWorld serverWorld) {
+                serverWorld.spawnParticles(ModParticles.BULLET_DESPAWN, this.getX(), this.getY(), this.getZ(), 1, 0, 0, 0, 0);
+                serverWorld.playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.ENTITY_DANMAKU_HIT, SoundCategory.NEUTRAL, 1f, 1f);
+            }
+        } else {
+            HitResult.Type type = hitResult.getType();
+            if (type == HitResult.Type.ENTITY) {
+                this.onEntityHit((EntityHitResult)hitResult);
+                this.world.emitGameEvent(GameEvent.PROJECTILE_LAND, hitResult.getPos(), GameEvent.Emitter.of(this, null));
+                if (!this.world.isClient) {
+                    this.kill();
+                }
+                if (world instanceof ServerWorld serverWorld) {
+                    serverWorld.spawnParticles(ModParticles.BULLET_DESPAWN, this.getX(), this.getY(), this.getZ(), 1, 0, 0, 0, 0);
+                    serverWorld.playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.ENTITY_DANMAKU_HIT, SoundCategory.NEUTRAL, 1f, 1f);
+                }
+            } else if (type == HitResult.Type.BLOCK) {
+                BlockHitResult blockHitResult = (BlockHitResult)hitResult;
+                this.onBlockHit(blockHitResult);
+                BlockPos blockPos = blockHitResult.getBlockPos();
+                this.world.emitGameEvent(GameEvent.PROJECTILE_LAND, blockPos, GameEvent.Emitter.of(this, this.world.getBlockState(blockPos)));
+
+                Vec3d velocity = getVelocity();
+                Direction direction = blockHitResult.getSide();
+
+                double x = velocity.getX();
+                double y = velocity.getY();
+                double z = velocity.getZ();
+
+                if (direction.getOffsetX() != 0) {
+                    x *= -1D;
+                } else if (direction.getOffsetY() != 0) {
+                    y *= -1D;
+                } else if (direction.getOffsetZ() != 0) {
+                    z *= -1D;
+                }
+
+                Vec3d newVelocity = new Vec3d(x, y, z);
+
+                setPosition(hitResult.getPos());
+                setVelocity(newVelocity);
+            }
         }
     }
 
