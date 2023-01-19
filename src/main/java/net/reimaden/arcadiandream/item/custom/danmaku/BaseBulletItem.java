@@ -7,6 +7,8 @@ package net.reimaden.arcadiandream.item.custom.danmaku;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
+import net.minecraft.text.MutableText;
+import net.minecraft.text.Style;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
 import net.reimaden.arcadiandream.sound.ModSounds;
@@ -24,9 +26,13 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 public class BaseBulletItem extends Item implements DyeableBullet, BulletPatterns {
+
+    private static final HashMap<Integer, MutableText> colorMap = new HashMap<>();
 
     private final int power;
     private final float speed;
@@ -37,9 +43,10 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
     private final String pattern;
     private final int density;
     private final int stack;
+    private final int reflections;
 
     public BaseBulletItem(Settings settings, int power, float speed, int maxAge, int cooldown, float gravity,
-                          float divergence, String pattern, int density, int stack) {
+                          float divergence, String pattern, int density, int stack, int reflections) {
         super(settings);
         this.power = power;
         this.speed = speed;
@@ -50,12 +57,16 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
         this.pattern = pattern;
         this.density = density;
         this.stack = stack;
+        this.reflections = reflections;
     }
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
         NbtCompound nbt = itemStack.getOrCreateNbt();
+
+        // Hide the "dyed" line in the tooltip
+        itemStack.addHideFlag(ItemStack.TooltipSection.DYE);
 
         world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.ENTITY_DANMAKU_FIRE, SoundCategory.PLAYERS, 1f, 1f);
         user.getItemCooldownManager().set(this, nbt.getInt("cooldown") * ArcadianDream.CONFIG.danmakuCooldownMultiplier());
@@ -66,12 +77,13 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
         float speed = nbt.getFloat("speed");
         float divergence = nbt.getFloat("divergence");
         float n = speed / stack;
+        int reflections = nbt.getInt("reflections");
 
         if (!world.isClient) {
             switch (nbt.getString("pattern").toLowerCase()) {
-                case "spread" -> createSpread(world, user, itemStack, density, speed, divergence);
-                case "ray" -> createRay(world, user, itemStack, speed, divergence, n, stack);
-                case "ring" -> createRing(world, user, itemStack, density, stack, speed, modifier, n, divergence);
+                case "spread" -> createSpread(world, user, itemStack, density, speed, divergence, reflections);
+                case "ray" -> createRay(world, user, itemStack, speed, divergence, n, stack, reflections);
+                case "ring" -> createRing(world, user, itemStack, density, stack, speed, modifier, n, divergence, reflections);
                 default -> throw new IllegalArgumentException("No valid bullet pattern found!");
             }
         }
@@ -88,8 +100,8 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
     public void postProcessNbt(NbtCompound nbt) {
         super.postProcessNbt(nbt);
 
-        String[] keys = {"power", "speed", "duration", "cooldown", "gravity", "divergence", "pattern", "density", "stack"};
-        Object[] values = {power, speed, maxAge, cooldown, gravity, divergence, pattern, density, stack};
+        String[] keys = {"power", "speed", "duration", "cooldown", "gravity", "divergence", "pattern", "density", "stack", "reflections"};
+        Object[] values = {power, speed, maxAge, cooldown, gravity, divergence, pattern, density, stack, reflections};
 
         // Set default values
         for (int i = 0; i < keys.length; i++) {
@@ -129,6 +141,7 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
             String pattern = nbt.getString("pattern");
             int density = nbt.getInt("density");
             int stack = nbt.getInt("stack");
+            int reflections = nbt.getInt("reflections");
 
             String keyPrefix = "item." + ArcadianDream.MOD_ID + ".bullet.tooltip_";
             tooltip.add(Text.translatable(keyPrefix + "power", power));
@@ -137,11 +150,43 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
             tooltip.add(Text.translatable(keyPrefix + "cooldown", ((float) cooldown / 20) * ArcadianDream.CONFIG.danmakuCooldownMultiplier()));
             tooltip.add(Text.translatable(keyPrefix + "gravity", gravity));
             tooltip.add(Text.translatable(keyPrefix + "divergence", divergence));
-            tooltip.add(Text.translatable(keyPrefix + "pattern", pattern));
+            tooltip.add(Text.translatable(keyPrefix + "pattern", Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.pattern_" + pattern.toLowerCase())));
             tooltip.add(Text.translatable(keyPrefix + "density", density));
             tooltip.add(Text.translatable(keyPrefix + "stack", stack));
             tooltip.add(Text.translatable(keyPrefix + "amount", density * stack));
+            tooltip.add(Text.translatable(keyPrefix + "reflections", reflections));
+            tooltip.add(Text.translatable(keyPrefix + "color", getColorName(itemStack).getString()).setStyle(Style.EMPTY.withColor(getColor(itemStack))));
         }
+    }
+
+    static {
+        colorMap.put(16711680, Text.translatable("color.minecraft.red"));
+        colorMap.put(65280, Text.translatable("color.minecraft.green"));
+        colorMap.put(255, Text.translatable("color.minecraft.blue"));
+        colorMap.put(16776960, Text.translatable("color.minecraft.yellow"));
+        colorMap.put(10494192, Text.translatable("color.minecraft.purple"));
+        colorMap.put(65535, Text.translatable("color.minecraft.cyan"));
+        colorMap.put(16777215, Text.translatable("color.minecraft.white"));
+        colorMap.put(0, Text.translatable("color.minecraft.black"));
+        colorMap.put(8421504, Text.translatable("color.minecraft.light_gray"));
+        colorMap.put(4210752, Text.translatable("color.minecraft.gray"));
+        colorMap.put(16761035, Text.translatable("color.minecraft.pink"));
+        colorMap.put(9849600, Text.translatable("color.minecraft.brown"));
+        colorMap.put(16753920, Text.translatable("color.minecraft.orange"));
+        colorMap.put(11393254, Text.translatable("color.minecraft.light_blue"));
+        colorMap.put(16711935, Text.translatable("color.minecraft.magenta"));
+        colorMap.put(12582656, Text.translatable("color.minecraft.lime"));
+    }
+
+    private MutableText getColorName(ItemStack stack) {
+        int color = getColor(stack);
+        MutableText colorName = colorMap.get(color);
+
+        if (colorName == null) {
+            colorName = (MutableText) Text.of(String.format(Locale.ROOT, "#%06X", color));
+        }
+
+        return colorName;
     }
 
     @Override

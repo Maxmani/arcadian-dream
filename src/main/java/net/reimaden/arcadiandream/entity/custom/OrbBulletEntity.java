@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -30,25 +30,5 @@ public class OrbBulletEntity extends BaseBulletEntity {
     @Override
     protected Item getDefaultItem() {
         return ModItems.ORB_BULLET;
-    }
-
-    @SuppressWarnings("DataFlowIssue")
-    @Override
-    public int getPower() {
-        if (getStack().hasNbt()) {
-            return this.getStack().getNbt().getInt("power");
-        } else {
-            return 3;
-        }
-    }
-
-    @SuppressWarnings("DataFlowIssue")
-    @Override
-    public int getMaxAge() {
-        if (getStack().hasNbt()) {
-            return this.getStack().getNbt().getInt("duration");
-        } else {
-            return 200;
-        }
     }
 }

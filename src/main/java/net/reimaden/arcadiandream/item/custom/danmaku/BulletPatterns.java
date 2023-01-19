@@ -12,22 +12,35 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.reimaden.arcadiandream.util.IEntityDataSaver;
+import net.reimaden.arcadiandream.util.DataSaver;
 
 public interface BulletPatterns {
 
-    default void createSpread(World world, PlayerEntity user, ItemStack itemStack, int density, float speed, float divergence) {
+    private static void addReflections(ThrownItemEntity bulletEntity, int reflections) {
+        IEntityDataSaver data = (IEntityDataSaver) bulletEntity;
+        DataSaver.addReflection(data, reflections);
+    }
+
+    default void createSpread(World world, PlayerEntity user, ItemStack itemStack, int density, float speed, float divergence, int reflections) {
         for (int i = 0; i < density; i++) {
             ThrownItemEntity bulletEntity = getBullet(world, user);
             bulletEntity.setItem(itemStack);
+
+            addReflections(bulletEntity, reflections);
+
             bulletEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, speed, divergence + density - 1);
             world.spawnEntity(bulletEntity);
         }
     }
 
-    default void createRay(World world, PlayerEntity user, ItemStack itemStack, float speed, float divergence, float n, int stack) {
+    default void createRay(World world, PlayerEntity user, ItemStack itemStack, float speed, float divergence, float n, int stack, int reflections) {
         for (int d = 0; d < stack; d++) {
             ThrownItemEntity bulletEntity = getBullet(world, user);
             bulletEntity.setItem(itemStack);
+
+            addReflections(bulletEntity, reflections);
+
             bulletEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, speed, divergence);
             world.spawnEntity(bulletEntity);
 
@@ -36,11 +49,13 @@ public interface BulletPatterns {
     }
 
     default void createRing(World world, PlayerEntity user, ItemStack itemStack,
-                            int density, int stack, float speed, int modifier, float n, float divergence) {
+                            int density, int stack, float speed, int modifier, float n, float divergence, int reflections) {
         for (int i = 0; i < stack; i++) {
             for (int h = 0; h < density; h++) {
                 ThrownItemEntity bulletEntity = getBullet(world, user);
                 bulletEntity.setItem(itemStack);
+
+                addReflections(bulletEntity, reflections);
 
                 float angle = (h * (360 / (float) density)) + 180;
                 float s = speed;

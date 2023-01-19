@@ -59,6 +59,11 @@
   "item.arcadiandream.bullet.tooltip_density": ["",{"text":"Density: ","color":"gray"},{"index":0}],
   "item.arcadiandream.bullet.tooltip_stack": ["",{"text":"Stack: ","color":"gray"},{"index":0}],
   "item.arcadiandream.bullet.tooltip_amount": ["",{"text":"Amount: ","color":"gray"},{"index":0}],
+  "item.arcadiandream.bullet.tooltip_reflections": ["",{"text":"Reflections: ","color":"gray"},{"index":0}],
+  "item.arcadiandream.bullet.tooltip_color": ["",{"text":"Color: ","color":"gray"},{"index":0}],
+  "item.arcadiandream.bullet.pattern_spread": "Spread",
+  "item.arcadiandream.bullet.pattern_ray": "Ray",
+  "item.arcadiandream.bullet.pattern_ring": "Ring",
 
   "block.arcadiandream.dragon_gem_ore": "Dragon Gem Ore",
   "block.arcadiandream.deepslate_dragon_gem_ore": "Deepslate Dragon Gem Ore",

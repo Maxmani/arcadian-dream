@@ -7,7 +7,7 @@ package net.reimaden.arcadiandream.util;
 
 import net.minecraft.nbt.NbtCompound;
 
-public class ElixirData {
+public class DataSaver {
 
     public static void addElixir(IEntityDataSaver player, byte level) {
         NbtCompound nbt = player.getPersistentData();
@@ -23,5 +23,17 @@ public class ElixirData {
         }
 
         nbt.putByte("elixir", elixirLevel);
+    }
+
+    public static void addReflection(IEntityDataSaver bullet, int reflection) {
+        NbtCompound nbt = bullet.getPersistentData();
+        int reflectionLevel = nbt.getByte("reflections");
+
+        if (reflectionLevel < 0) {
+            reflectionLevel = 0;
+        }
+        reflectionLevel += reflection;
+
+        nbt.putInt("reflections", reflectionLevel);
     }
 }

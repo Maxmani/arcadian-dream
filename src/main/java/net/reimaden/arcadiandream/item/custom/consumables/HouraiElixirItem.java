@@ -22,7 +22,7 @@ import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.sound.ModSounds;
-import net.reimaden.arcadiandream.util.ElixirData;
+import net.reimaden.arcadiandream.util.DataSaver;
 import net.reimaden.arcadiandream.util.IEntityDataSaver;
 import org.jetbrains.annotations.Nullable;
 
@@ -64,7 +64,7 @@ public class HouraiElixirItem extends Item {
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 100));
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 100));
 
-            ElixirData.addElixir(data, (byte) 1);
+            DataSaver.addElixir(data, (byte) 1);
             player.incrementStat(Stats.USED.getOrCreateStat(this));
 
             stack.damage(1, user, e -> e.sendToolBreakStatus(hand));

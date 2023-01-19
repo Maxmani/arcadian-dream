@@ -23,6 +23,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
+import net.reimaden.arcadiandream.util.IEntityDataSaver;
 
 public class BaseBulletEntity extends ThrownItemEntity {
 
@@ -58,10 +59,10 @@ public class BaseBulletEntity extends ThrownItemEntity {
         super.tick();
         if (!world.isClient) {
             if (age <= 1) {
-                ((ServerWorld) world).spawnParticles(ModParticles.BULLET_SPAWN, this.getX(), this.getY(), this.getZ(), 1, 0, 0, 0, 0);
+                ((ServerWorld) world).spawnParticles(ModParticles.BULLET_SPAWN, getX(), getY(), getZ(), 1, 0, 0, 0, 0);
             } else if (age >= getMaxAge()) {
-                this.kill();
-                ((ServerWorld) world).spawnParticles(ModParticles.BULLET_DESPAWN, this.getX(), this.getY(), this.getZ(), 1, 0, 0, 0, 0);
+                kill();
+                ((ServerWorld) world).spawnParticles(ModParticles.BULLET_DESPAWN, getX(), getY(), getZ(), 1, 0, 0, 0, 0);
             }
         }
     }
@@ -69,37 +70,33 @@ public class BaseBulletEntity extends ThrownItemEntity {
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
         Entity entity = entityHitResult.getEntity();
-        entity.damage(ModDamageSources.danmaku(this, this.getOwner()), (float)getPower());
+        entity.damage(ModDamageSources.danmaku(this, getOwner()), (float) getPower());
     }
 
     protected void onCollision(HitResult hitResult) {
-        boolean bounce = true;
-        if (!bounce) {
+        if (getReflections() <= 0) {
             super.onCollision(hitResult);
-            if (!this.world.isClient) {
-                this.kill();
+            if (!world.isClient()) {
+                kill();
             }
-            if (world instanceof ServerWorld serverWorld) {
-                serverWorld.spawnParticles(ModParticles.BULLET_DESPAWN, this.getX(), this.getY(), this.getZ(), 1, 0, 0, 0, 0);
-                serverWorld.playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.ENTITY_DANMAKU_HIT, SoundCategory.NEUTRAL, 1f, 1f);
-            }
+            bulletEffects();
         } else {
             HitResult.Type type = hitResult.getType();
             if (type == HitResult.Type.ENTITY) {
-                this.onEntityHit((EntityHitResult)hitResult);
-                this.world.emitGameEvent(GameEvent.PROJECTILE_LAND, hitResult.getPos(), GameEvent.Emitter.of(this, null));
-                if (!this.world.isClient) {
-                    this.kill();
+                onEntityHit((EntityHitResult)hitResult);
+                world.emitGameEvent(GameEvent.PROJECTILE_LAND, hitResult.getPos(), GameEvent.Emitter.of(this, null));
+                if (!world.isClient()) {
+                    kill();
                 }
-                if (world instanceof ServerWorld serverWorld) {
-                    serverWorld.spawnParticles(ModParticles.BULLET_DESPAWN, this.getX(), this.getY(), this.getZ(), 1, 0, 0, 0, 0);
-                    serverWorld.playSound(null, this.getX(), this.getY(), this.getZ(), ModSounds.ENTITY_DANMAKU_HIT, SoundCategory.NEUTRAL, 1f, 1f);
-                }
+                bulletEffects();
             } else if (type == HitResult.Type.BLOCK) {
-                BlockHitResult blockHitResult = (BlockHitResult)hitResult;
-                this.onBlockHit(blockHitResult);
+                BlockHitResult blockHitResult = (BlockHitResult) hitResult;
+                onBlockHit(blockHitResult);
                 BlockPos blockPos = blockHitResult.getBlockPos();
-                this.world.emitGameEvent(GameEvent.PROJECTILE_LAND, blockPos, GameEvent.Emitter.of(this, this.world.getBlockState(blockPos)));
+                world.emitGameEvent(GameEvent.PROJECTILE_LAND, blockPos, GameEvent.Emitter.of(this, world.getBlockState(blockPos)));
+                if (world instanceof ServerWorld serverWorld) {
+                    serverWorld.playSound(null, getX(), getY(), getZ(), ModSounds.ENTITY_DANMAKU_HIT, SoundCategory.NEUTRAL, 1f, 1f);
+                }
 
                 Vec3d velocity = getVelocity();
                 Direction direction = blockHitResult.getSide();
@@ -120,14 +117,23 @@ public class BaseBulletEntity extends ThrownItemEntity {
 
                 setPosition(hitResult.getPos());
                 setVelocity(newVelocity);
+
+                setReflections(getReflections() - 1);
             }
+        }
+    }
+
+    private void bulletEffects() {
+        if (world instanceof ServerWorld serverWorld) {
+            serverWorld.spawnParticles(ModParticles.BULLET_DESPAWN, getX(), getY(), getZ(), 1, 0, 0, 0, 0);
+            serverWorld.playSound(null, getX(), getY(), getZ(), ModSounds.ENTITY_DANMAKU_HIT, SoundCategory.NEUTRAL, 1f, 1f);
         }
     }
 
     @SuppressWarnings("DataFlowIssue")
     public int getPower() {
         if (getStack().hasNbt()) {
-            return this.getStack().getNbt().getInt("power");
+            return getStack().getNbt().getInt("power");
         } else {
             return 0;
         }
@@ -136,9 +142,9 @@ public class BaseBulletEntity extends ThrownItemEntity {
     @SuppressWarnings("DataFlowIssue")
     public int getMaxAge() {
         if (getStack().hasNbt()) {
-            return this.getStack().getNbt().getInt("duration");
+            return getStack().getNbt().getInt("duration");
         } else {
-            return 0;
+            return 200;
         }
     }
 
@@ -146,9 +152,19 @@ public class BaseBulletEntity extends ThrownItemEntity {
     @Override
     protected float getGravity() {
         if (getStack().hasNbt()) {
-            return this.getStack().getNbt().getFloat("gravity");
+            return getStack().getNbt().getFloat("gravity");
         } else {
             return 0.0f;
         }
+    }
+
+    public int getReflections() {
+        IEntityDataSaver bullet = (IEntityDataSaver) this;
+        return bullet.getPersistentData().getInt("reflections");
+    }
+
+    public void setReflections(int reflections) {
+        IEntityDataSaver bullet = (IEntityDataSaver) this;
+        bullet.getPersistentData().putInt("reflections", reflections);
     }
 }
