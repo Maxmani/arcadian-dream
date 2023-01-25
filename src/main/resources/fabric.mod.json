@@ -36,6 +36,9 @@
     ],
     "emi": [
       "net.reimaden.arcadiandream.compat.emi.EMIPlugin"
+    ],
+    "jei_mod_plugin": [
+      "net.reimaden.arcadiandream.compat.jei.JEIPlugin"
     ]
   },
   "mixins": [

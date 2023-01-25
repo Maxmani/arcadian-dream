@@ -22,16 +22,16 @@ repositories {
 	repositories {
 		maven { url "https://maven.shedaniel.me" }
 	}
-	//maven {
-	//	// location of the maven that hosts JEI files
-	//	name = "Progwml6 maven"
-	//	url = "https://dvs1.progwml6.com/files/maven/"
-	//}
-	//maven {
-	//	// location of a maven mirror for JEI files, as a fallback
-	//	name = "ModMaven"
-	//	url = "https://modmaven.dev"
-	//}
+	maven {
+		// location of the maven that hosts JEI files
+		name = "Progwml6 maven"
+		url = "https://dvs1.progwml6.com/files/maven/"
+	}
+	maven {
+		// location of a maven mirror for JEI files, as a fallback
+		name = "ModMaven"
+		url = "https://modmaven.dev"
+	}
 	repositories {
 		maven { url 'https://maven.wispforest.io' }
 	}
@@ -53,13 +53,12 @@ dependencies {
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${project.rei_version}"
 	// modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
 
-	// TODO: Enable JEI again once it has updated to 1.19.3
-	//modImplementation("mezz.jei:jei-${project.minecraft_version}-fabric:${project.jei_version}") {
-	//	exclude group: "mezz.jei"
-	//}
+	modImplementation("mezz.jei:jei-${project.minecraft_version}-fabric:${project.jei_version}") {
+		exclude group: "mezz.jei"
+	}
 
 	modCompileOnly "dev.emi:emi:${project.emi_version}"
-	modRuntimeOnly "dev.emi:emi:${project.emi_version}"
+	// modRuntimeOnly "dev.emi:emi:${project.emi_version}"
 
 	annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
 	include "io.wispforest:owo-sentinel:${project.owo_version}"
