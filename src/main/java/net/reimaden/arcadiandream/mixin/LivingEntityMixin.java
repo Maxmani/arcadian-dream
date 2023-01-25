@@ -41,7 +41,7 @@ import java.util.List;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
 
-    LivingEntity entity = (LivingEntity) (Object) this;
+    final LivingEntity entity = (LivingEntity) (Object) this;
 
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);

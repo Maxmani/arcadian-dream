@@ -5,11 +5,6 @@
 
 package net.reimaden.arcadiandream.entity.custom;
 
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.event.GameEvent;
 import net.reimaden.arcadiandream.damage.ModDamageSources;
 import net.reimaden.arcadiandream.particle.ModParticles;
 import net.reimaden.arcadiandream.sound.ModSounds;
@@ -23,7 +18,6 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
-import net.reimaden.arcadiandream.util.IEntityDataSaver;
 
 public class BaseBulletEntity extends ThrownItemEntity {
 
@@ -74,53 +68,13 @@ public class BaseBulletEntity extends ThrownItemEntity {
     }
 
     protected void onCollision(HitResult hitResult) {
-        if (getReflections() <= 0) {
-            super.onCollision(hitResult);
-            if (!world.isClient()) {
-                kill();
-            }
-            bulletEffects();
-        } else {
-            HitResult.Type type = hitResult.getType();
-            if (type == HitResult.Type.ENTITY) {
-                onEntityHit((EntityHitResult)hitResult);
-                world.emitGameEvent(GameEvent.PROJECTILE_LAND, hitResult.getPos(), GameEvent.Emitter.of(this, null));
-                if (!world.isClient()) {
-                    kill();
-                }
-                bulletEffects();
-            } else if (type == HitResult.Type.BLOCK) {
-                BlockHitResult blockHitResult = (BlockHitResult) hitResult;
-                onBlockHit(blockHitResult);
-                BlockPos blockPos = blockHitResult.getBlockPos();
-                world.emitGameEvent(GameEvent.PROJECTILE_LAND, blockPos, GameEvent.Emitter.of(this, world.getBlockState(blockPos)));
-                if (world instanceof ServerWorld serverWorld) {
-                    serverWorld.playSound(null, getX(), getY(), getZ(), ModSounds.ENTITY_DANMAKU_HIT, SoundCategory.NEUTRAL, 1f, 1f);
-                }
+        super.onCollision(hitResult);
 
-                Vec3d velocity = getVelocity();
-                Direction direction = blockHitResult.getSide();
-
-                double x = velocity.getX();
-                double y = velocity.getY();
-                double z = velocity.getZ();
-
-                if (direction.getOffsetX() != 0) {
-                    x *= -1D;
-                } else if (direction.getOffsetY() != 0) {
-                    y *= -1D;
-                } else if (direction.getOffsetZ() != 0) {
-                    z *= -1D;
-                }
-
-                Vec3d newVelocity = new Vec3d(x, y, z);
-
-                setPosition(hitResult.getPos());
-                setVelocity(newVelocity);
-
-                setReflections(getReflections() - 1);
-            }
+        if (!world.isClient()) {
+            kill();
         }
+
+        bulletEffects();
     }
 
     private void bulletEffects() {
@@ -156,15 +110,5 @@ public class BaseBulletEntity extends ThrownItemEntity {
         } else {
             return 0.0f;
         }
-    }
-
-    public int getReflections() {
-        IEntityDataSaver bullet = (IEntityDataSaver) this;
-        return bullet.getPersistentData().getInt("reflections");
-    }
-
-    public void setReflections(int reflections) {
-        IEntityDataSaver bullet = (IEntityDataSaver) this;
-        bullet.getPersistentData().putInt("reflections", reflections);
     }
 }

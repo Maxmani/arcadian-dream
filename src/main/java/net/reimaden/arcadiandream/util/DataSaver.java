@@ -24,16 +24,4 @@ public class DataSaver {
 
         nbt.putByte("elixir", elixirLevel);
     }
-
-    public static void addReflection(IEntityDataSaver bullet, int reflection) {
-        NbtCompound nbt = bullet.getPersistentData();
-        int reflectionLevel = nbt.getByte("reflections");
-
-        if (reflectionLevel < 0) {
-            reflectionLevel = 0;
-        }
-        reflectionLevel += reflection;
-
-        nbt.putInt("reflections", reflectionLevel);
-    }
 }

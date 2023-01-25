@@ -42,11 +42,9 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
     private final float divergence;
     private final String pattern;
     private final int density;
-    private final int stack;
-    private final int reflections;
 
     public BaseBulletItem(Settings settings, int power, float speed, int maxAge, int cooldown, float gravity,
-                          float divergence, String pattern, int density, int stack, int reflections) {
+                          float divergence, String pattern, int density) {
         super(settings);
         this.power = power;
         this.speed = speed;
@@ -56,8 +54,6 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
         this.divergence = divergence;
         this.pattern = pattern;
         this.density = density;
-        this.stack = stack;
-        this.reflections = reflections;
     }
 
     @Override
@@ -72,18 +68,15 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
         user.getItemCooldownManager().set(this, nbt.getInt("cooldown") * ArcadianDream.CONFIG.danmakuCooldownMultiplier());
 
         int density = nbt.getInt("density");
-        int stack = nbt.getInt("stack");
-        int modifier = nbt.getInt("modifier");
         float speed = nbt.getFloat("speed");
         float divergence = nbt.getFloat("divergence");
-        float n = speed / stack;
-        int reflections = nbt.getInt("reflections");
+        float n = speed / density;
 
         if (!world.isClient) {
             switch (nbt.getString("pattern").toLowerCase()) {
-                case "spread" -> createSpread(world, user, itemStack, density, speed, divergence, reflections);
-                case "ray" -> createRay(world, user, itemStack, speed, divergence, n, stack, reflections);
-                case "ring" -> createRing(world, user, itemStack, density, stack, speed, modifier, n, divergence, reflections);
+                case "spread" -> createSpread(world, user, itemStack, density, speed, divergence);
+                case "ray" -> createRay(world, user, itemStack, speed, divergence, n, density);
+                case "ring" -> createRing(world, user, itemStack, density, speed, divergence);
                 default -> throw new IllegalArgumentException("No valid bullet pattern found!");
             }
         }
@@ -100,8 +93,8 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
     public void postProcessNbt(NbtCompound nbt) {
         super.postProcessNbt(nbt);
 
-        String[] keys = {"power", "speed", "duration", "cooldown", "gravity", "divergence", "pattern", "density", "stack", "reflections"};
-        Object[] values = {power, speed, maxAge, cooldown, gravity, divergence, pattern, density, stack, reflections};
+        String[] keys = {"power", "speed", "duration", "cooldown", "gravity", "divergence", "pattern", "density"};
+        Object[] values = {power, speed, maxAge, cooldown, gravity, divergence, pattern, density};
 
         // Set default values
         for (int i = 0; i < keys.length; i++) {
@@ -140,8 +133,6 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
             float divergence = nbt.getFloat("divergence");
             String pattern = nbt.getString("pattern");
             int density = nbt.getInt("density");
-            int stack = nbt.getInt("stack");
-            int reflections = nbt.getInt("reflections");
 
             String keyPrefix = "item." + ArcadianDream.MOD_ID + ".bullet.tooltip_";
             tooltip.add(Text.translatable(keyPrefix + "power", power));
@@ -152,9 +143,6 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
             tooltip.add(Text.translatable(keyPrefix + "divergence", divergence));
             tooltip.add(Text.translatable(keyPrefix + "pattern", Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.pattern_" + pattern.toLowerCase())));
             tooltip.add(Text.translatable(keyPrefix + "density", density));
-            tooltip.add(Text.translatable(keyPrefix + "stack", stack));
-            tooltip.add(Text.translatable(keyPrefix + "amount", density * stack));
-            tooltip.add(Text.translatable(keyPrefix + "reflections", reflections));
             tooltip.add(Text.translatable(keyPrefix + "color", getColorName(itemStack).getString()).setStyle(Style.EMPTY.withColor(getColor(itemStack))));
         }
     }

@@ -17,8 +17,8 @@ import net.minecraft.util.Identifier;
 
 public class ModEntities {
 
-    public static final int DANMAKU_RANGE = 4;
-    public static final int DANMAKU_RATE = 1;
+    private static final int DANMAKU_RANGE = 4;
+    private static final int DANMAKU_RATE = 10;
 
     public static final EntityType<OrbBulletEntity> ORB_BULLET = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, "orb_bullet"),
