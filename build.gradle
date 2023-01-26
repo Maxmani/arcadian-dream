@@ -23,9 +23,14 @@ repositories {
 		maven { url "https://maven.shedaniel.me" }
 	}
 	maven {
-		// location of the maven that hosts JEI files
-		name = "Progwml6 maven"
+		// location of the maven that hosts JEI files before January 2023
+		name = "Progwml6's maven"
 		url = "https://dvs1.progwml6.com/files/maven/"
+	}
+	maven {
+		// location of the maven that hosts JEI files since January 2023
+		name = "Jared's maven"
+		url = "https://maven.blamejared.com/"
 	}
 	maven {
 		// location of a maven mirror for JEI files, as a fallback
@@ -47,19 +52,24 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// Libraries
+	// https://github.com/emilyploszaj/trinkets
 	modImplementation "dev.emi:trinkets:${project.trinkets_version}"
 
+	// https://github.com/shedaniel/RoughlyEnoughItems
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_version}"
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${project.rei_version}"
 	// modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
 
+	// https://github.com/mezz/JustEnoughItems
 	modImplementation("mezz.jei:jei-${project.minecraft_version}-fabric:${project.jei_version}") {
 		exclude group: "mezz.jei"
 	}
 
+	// https://github.com/emilyploszaj/emi
 	modCompileOnly "dev.emi:emi:${project.emi_version}"
 	// modRuntimeOnly "dev.emi:emi:${project.emi_version}"
 
+	// https://github.com/wisp-forest/owo-lib
 	annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
 	include "io.wispforest:owo-sentinel:${project.owo_version}"
 }
