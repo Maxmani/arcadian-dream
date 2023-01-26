@@ -1,0 +1,7 @@
+// 1.19.3	2023-01-26T04:19:20.364365428	Arcadian Dream/World Gen
+953f7e155888cb6c1f8f40613ae55fcb2b49da95 data/arcadiandream/worldgen/configured_feature/end_dragon_gem_ore.json
+d13deae28360c277e2725b4f74c1571b925eca9c data/arcadiandream/worldgen/configured_feature/dragon_gem_ore.json
+c30579dd5d946d6126babfc9a1edefb496ad31a1 data/arcadiandream/worldgen/placed_feature/end_dragon_gem_ore_placed.json
+108cb7139b10b9cc158b4692c1f74c725f5b044c data/arcadiandream/worldgen/placed_feature/dragon_gem_ore_placed.json
+51ca9372c2ccc967a6edf44b85fa0e40305d137f data/arcadiandream/worldgen/placed_feature/makaite_ore_placed.json
+91b8dfce7a29e2ff30ba5761864134f812122494 data/arcadiandream/worldgen/configured_feature/makaite_ore.json

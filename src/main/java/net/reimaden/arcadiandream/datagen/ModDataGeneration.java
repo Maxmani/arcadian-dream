@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -10,7 +10,8 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
 import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.datagen.providers.ModWorldGenProvider;
+import net.reimaden.arcadiandream.world.feature.ModConfiguredFeatures;
+import net.reimaden.arcadiandream.world.feature.ModPlacedFeatures;
 import org.jetbrains.annotations.Nullable;
 
 public class ModDataGeneration implements DataGeneratorEntrypoint {
@@ -20,7 +21,7 @@ public class ModDataGeneration implements DataGeneratorEntrypoint {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
         pack.addProvider(ModRecipeGenerator::new);
         pack.addProvider(ModAdvancementGenerator::new);
-        pack.addProvider(ModWorldGenProvider::new);
+        pack.addProvider(ModWorldGenerator::new);
         pack.addProvider(ModLootTableGenerator.BlockLoot::new);
         pack.addProvider(ModTagGenerator.BlockTags::new);
         pack.addProvider(ModTagGenerator.ItemTags::new);
@@ -29,8 +30,8 @@ public class ModDataGeneration implements DataGeneratorEntrypoint {
 
     @Override
     public void buildRegistry(RegistryBuilder registryBuilder) {
-        registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ModWorldGenGenerator::configuredFeatures);
-        registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, ModWorldGenGenerator::placedFeatures);
+        registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
+        registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
     }
 
     @Override

@@ -24,7 +24,7 @@ import net.reimaden.arcadiandream.block.ModDispenserBehavior;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.util.ModLootTableModifiers;
 import net.reimaden.arcadiandream.villager.ModVillagers;
-import net.reimaden.arcadiandream.world.ModWorldGen;
+import net.reimaden.arcadiandream.world.gen.ModWorldGen;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
