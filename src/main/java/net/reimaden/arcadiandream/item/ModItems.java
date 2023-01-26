@@ -97,46 +97,6 @@ public class ModItems {
             new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 134));
 
     private static Item registerItem(String name, Item item) {
-        ItemGroupEvents.modifyEntriesEvent(ModItemGroups.ITEMS).register(entries -> {
-            entries.add(POWER_ITEM);
-            entries.add(BIG_POWER_ITEM);
-            entries.add(POINT_ITEM);
-            entries.add(MAX_POINT_ITEM);
-            entries.add(BOMB_ITEM);
-            entries.add(EXTEND_ITEM);
-            entries.add(STAR_ITEM);
-            entries.add(DRAGON_GEM);
-            entries.add(RAW_MAKAITE);
-            entries.add(MAKAITE_INGOT);
-            entries.add(MAKAITE_INFUSED_NETHERITE_INGOT);
-            entries.add(WALL_PASSING_CHISEL);
-            entries.add(IBUKI_GOURD);
-            entries.add(HEALING_CHARM);
-            entries.add(HOURAI_ELIXIR);
-            entries.add(HEAVENLY_PEACH);
-            entries.add(ORDINARY_HAT);
-            entries.add(MAKAITE_HELMET);
-            entries.add(MAKAITE_CHESTPLATE);
-            entries.add(MAKAITE_LEGGINGS);
-            entries.add(MAKAITE_BOOTS);
-            entries.add(MAKAITE_SWORD);
-            entries.add(MAKAITE_PICKAXE);
-            entries.add(MAKAITE_AXE);
-            entries.add(MAKAITE_SHOVEL);
-            entries.add(MAKAITE_HOE);
-            entries.add(NUE_TRIDENT);
-            entries.add(HISOU_SWORD);
-            entries.add(MOCHI_MALLET);
-            entries.add(DEATH_SCYTHE);
-            entries.add(MUSIC_DISC_FAIRY_PLAYGROUND);
-            entries.add(MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN);
-        });
-        ItemGroupEvents.modifyEntriesEvent(ModItemGroups.DANMAKU).register(entries -> {
-            entries.add(BOMB_ITEM);
-            entries.add(DANMAKU_CRAFTING_TABLE);
-            entries.add(ORB_BULLET);
-        });
-
         return Registry.register(Registries.ITEM, new Identifier(ArcadianDream.MOD_ID, name), item);
     }
 
@@ -170,25 +130,68 @@ public class ModItems {
             new FabricItemSettings().fireproof()));
 
     private static Item registerBlockItem(String name, BlockItem block) {
-        ItemGroupEvents.modifyEntriesEvent(ModItemGroups.BLOCKS).register(entries -> {
-            entries.add(ONBASHIRA);
-            entries.add(ONBASHIRA_PILLAR);
-            entries.add(RITUAL_SHRINE);
-            entries.add(DANMAKU_CRAFTING_TABLE);
-            entries.add(DRAGON_GEM_ORE);
-            entries.add(DEEPSLATE_DRAGON_GEM_ORE);
-            entries.add(END_STONE_DRAGON_GEM_ORE);
-            entries.add(MAKAITE_ORE);
-            entries.add(RAW_MAKAITE_BLOCK);
-            entries.add(DRAGON_GEM_BLOCK);
-            entries.add(MAKAITE_BLOCK);
-        });
-
         return Registry.register(Registries.ITEM, new Identifier(ArcadianDream.MOD_ID, name), block);
+    }
+
+    // Mojang moment
+    private static void addItemsToItemGroups() {
+        addToItemGroup(ModItemGroups.ITEMS, POWER_ITEM);
+        addToItemGroup(ModItemGroups.ITEMS, BIG_POWER_ITEM);
+        addToItemGroup(ModItemGroups.ITEMS, POINT_ITEM);
+        addToItemGroup(ModItemGroups.ITEMS, MAX_POINT_ITEM);
+        addToItemGroup(ModItemGroups.ITEMS, BOMB_ITEM);
+        addToItemGroup(ModItemGroups.ITEMS, EXTEND_ITEM);
+        addToItemGroup(ModItemGroups.ITEMS, STAR_ITEM);
+        addToItemGroup(ModItemGroups.ITEMS, DRAGON_GEM);
+        addToItemGroup(ModItemGroups.ITEMS, RAW_MAKAITE);
+        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_INGOT);
+        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_INFUSED_NETHERITE_INGOT);
+        addToItemGroup(ModItemGroups.ITEMS, WALL_PASSING_CHISEL);
+        addToItemGroup(ModItemGroups.ITEMS, IBUKI_GOURD);
+        addToItemGroup(ModItemGroups.ITEMS, HEALING_CHARM);
+        addToItemGroup(ModItemGroups.ITEMS, HOURAI_ELIXIR);
+        addToItemGroup(ModItemGroups.ITEMS, HEAVENLY_PEACH);
+        addToItemGroup(ModItemGroups.ITEMS, ORDINARY_HAT);
+        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_HELMET);
+        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_CHESTPLATE);
+        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_LEGGINGS);
+        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_BOOTS);
+        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_SWORD);
+        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_PICKAXE);
+        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_AXE);
+        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_SHOVEL);
+        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_HOE);
+        addToItemGroup(ModItemGroups.ITEMS, NUE_TRIDENT);
+        addToItemGroup(ModItemGroups.ITEMS, HISOU_SWORD);
+        addToItemGroup(ModItemGroups.ITEMS, MOCHI_MALLET);
+        addToItemGroup(ModItemGroups.ITEMS, DEATH_SCYTHE);
+        addToItemGroup(ModItemGroups.ITEMS, MUSIC_DISC_FAIRY_PLAYGROUND);
+        addToItemGroup(ModItemGroups.ITEMS, MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN);
+
+        addToItemGroup(ModItemGroups.DANMAKU, BOMB_ITEM);
+        addToItemGroup(ModItemGroups.DANMAKU, DANMAKU_CRAFTING_TABLE);
+        addToItemGroup(ModItemGroups.DANMAKU, ORB_BULLET);
+
+        addToItemGroup(ModItemGroups.BLOCKS, ONBASHIRA);
+        addToItemGroup(ModItemGroups.BLOCKS, ONBASHIRA_PILLAR);
+        addToItemGroup(ModItemGroups.BLOCKS, RITUAL_SHRINE);
+        addToItemGroup(ModItemGroups.BLOCKS, DANMAKU_CRAFTING_TABLE);
+        addToItemGroup(ModItemGroups.BLOCKS, DRAGON_GEM_ORE);
+        addToItemGroup(ModItemGroups.BLOCKS, DEEPSLATE_DRAGON_GEM_ORE);
+        addToItemGroup(ModItemGroups.BLOCKS, END_STONE_DRAGON_GEM_ORE);
+        addToItemGroup(ModItemGroups.BLOCKS, MAKAITE_ORE);
+        addToItemGroup(ModItemGroups.BLOCKS, RAW_MAKAITE_BLOCK);
+        addToItemGroup(ModItemGroups.BLOCKS, DRAGON_GEM_BLOCK);
+        addToItemGroup(ModItemGroups.BLOCKS, MAKAITE_BLOCK);
+    }
+
+    private static void addToItemGroup(ItemGroup group, Item item) {
+        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));
     }
 
     public static void register() {
         ArcadianDream.LOGGER.debug("Registering items for " + ArcadianDream.MOD_ID);
-        // ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> entries.add(MY_ITEM));
+
+        addItemsToItemGroups();
     }
 }

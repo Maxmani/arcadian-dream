@@ -14,6 +14,7 @@ import net.reimaden.arcadiandream.command.ModCommands;
 import net.reimaden.arcadiandream.config.ArcadianDreamConfig;
 import net.reimaden.arcadiandream.entity.ModEntities;
 import net.reimaden.arcadiandream.event.ModEvents;
+import net.reimaden.arcadiandream.item.ModItemGroups;
 import net.reimaden.arcadiandream.painting.ModPaintings;
 import net.reimaden.arcadiandream.particle.ModParticles;
 import net.reimaden.arcadiandream.recipe.ModRecipes;
@@ -38,6 +39,7 @@ public class ArcadianDream implements ModInitializer {
 	public void onInitialize() {
 		LOGGER.info("Initializing, please watch warmly until it is ready.");
 
+		ModItemGroups.register();
 		ModItems.register();
 		ModBlocks.register();
 		ModPaintings.register();
