@@ -40,6 +40,10 @@ repositories {
 	repositories {
 		maven { url 'https://maven.wispforest.io' }
 	}
+	maven {
+		name = "CottonMC"
+		url = "https://server.bbkr.space/artifactory/libs-release"
+	}
 }
 
 dependencies {
@@ -72,6 +76,9 @@ dependencies {
 	// https://github.com/wisp-forest/owo-lib
 	annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
 	include "io.wispforest:owo-sentinel:${project.owo_version}"
+
+	// https://github.com/CottonMC/LibGui
+	modImplementation include("io.github.cottonmc:LibGui:${project.libgui_version}")
 }
 
 processResources {

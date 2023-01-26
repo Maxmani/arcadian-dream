@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -17,6 +17,7 @@ public class ModBlockEntities {
 
     public static BlockEntityType<OnbashiraBlockEntity> ONBASHIRA;
     public static BlockEntityType<RitualShrineBlockEntity> RITUAL_SHRINE;
+    public static BlockEntityType<DanmakuCraftingTableBlockEntity> DANMAKU_CRAFTING_TABLE;
 
     public static void register() {
         ONBASHIRA = Registry.register(Registries.BLOCK_ENTITY_TYPE,
@@ -26,6 +27,10 @@ public class ModBlockEntities {
         RITUAL_SHRINE = Registry.register(Registries.BLOCK_ENTITY_TYPE,
                 new Identifier(ArcadianDream.MOD_ID, "ritual_shrine"),
                 FabricBlockEntityTypeBuilder.create(RitualShrineBlockEntity::new,
+                        ModBlocks.RITUAL_SHRINE).build(null));
+        DANMAKU_CRAFTING_TABLE = Registry.register(Registries.BLOCK_ENTITY_TYPE,
+                new Identifier(ArcadianDream.MOD_ID, "danmaku_crafting_table"),
+                FabricBlockEntityTypeBuilder.create(DanmakuCraftingTableBlockEntity::new,
                         ModBlocks.RITUAL_SHRINE).build(null));
     }
 }

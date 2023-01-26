@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -10,10 +10,7 @@ import net.minecraft.block.ExperienceDroppingBlock;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.block.custom.DragonGemBlock;
-import net.reimaden.arcadiandream.block.custom.RitualShrineBlock;
-import net.reimaden.arcadiandream.block.custom.OnbashiraBlock;
-import net.reimaden.arcadiandream.block.custom.OnbashiraPillarBlock;
+import net.reimaden.arcadiandream.block.custom.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.sound.BlockSoundGroup;
@@ -33,7 +30,7 @@ public class ModBlocks {
             new RitualShrineBlock(FabricBlockSettings.of(Material.STONE).strength(4.0f, 6.0F)
                     .sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().luminance(7)));
     public static final Block DANMAKU_CRAFTING_TABLE = registerBlock("danmaku_crafting_table",
-            new Block(FabricBlockSettings.of(Material.WOOD).strength(2.5f)
+            new DanmakuCraftingTableBlock(FabricBlockSettings.of(Material.WOOD).strength(2.5f)
                     .sounds(BlockSoundGroup.WOOD)));
 
     // Ores

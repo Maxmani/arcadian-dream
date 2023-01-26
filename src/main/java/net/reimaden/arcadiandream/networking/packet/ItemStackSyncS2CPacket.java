@@ -1,11 +1,13 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
 package net.reimaden.arcadiandream.networking.packet;
 
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
+import net.minecraft.block.entity.BlockEntity;
+import net.reimaden.arcadiandream.block.entity.DanmakuCraftingTableBlockEntity;
 import net.reimaden.arcadiandream.block.entity.OnbashiraBlockEntity;
 import net.reimaden.arcadiandream.block.entity.RitualShrineBlockEntity;
 import net.minecraft.client.MinecraftClient;
@@ -26,10 +28,13 @@ public class ItemStackSyncS2CPacket {
         }
         BlockPos pos = buf.readBlockPos();
 
-        if (client.world.getBlockEntity(pos) instanceof OnbashiraBlockEntity blockEntity) {
-            blockEntity.setInventory(list);
-        } else if (client.world.getBlockEntity(pos) instanceof RitualShrineBlockEntity blockEntity) {
-            blockEntity.setInventory(list);
+        BlockEntity blockEntity = client.world.getBlockEntity(pos);
+        if (blockEntity instanceof OnbashiraBlockEntity) {
+            ((OnbashiraBlockEntity) blockEntity).setInventory(list);
+        } else if (blockEntity instanceof RitualShrineBlockEntity) {
+            ((RitualShrineBlockEntity) blockEntity).setInventory(list);
+        } else if (blockEntity instanceof DanmakuCraftingTableBlockEntity) {
+            ((DanmakuCraftingTableBlockEntity) blockEntity).setInventory(list);
         }
     }
 }
