@@ -19,7 +19,8 @@ public class ModModelGenerator extends FabricModelProvider {
 
     private static final ImmutableList<Block> SIMPLE_CUBES = ImmutableList.of(
             ModBlocks.DRAGON_GEM_ORE, ModBlocks.DEEPSLATE_DRAGON_GEM_ORE, ModBlocks.END_STONE_DRAGON_GEM_ORE, ModBlocks.MAKAITE_BLOCK,
-            ModBlocks.RAW_MAKAITE_BLOCK, ModBlocks.MAKAITE_ORE);
+            ModBlocks.RAW_MAKAITE_BLOCK, ModBlocks.MAKAITE_ORE
+    );
 
     private static final ImmutableList<Item> GENERATED_ITEMS = ImmutableList.of(
             ModItems.POWER_ITEM, ModItems.BIG_POWER_ITEM, ModItems.POINT_ITEM, ModItems.MAX_POINT_ITEM,
@@ -27,11 +28,13 @@ public class ModModelGenerator extends FabricModelProvider {
             ModItems.HEAVENLY_PEACH, ModItems.IBUKI_GOURD, ModItems.MAKAITE_BOOTS, ModItems.MAKAITE_CHESTPLATE,
             ModItems.MAKAITE_HELMET, ModItems.MAKAITE_LEGGINGS, ModItems.MAKAITE_INGOT, ModItems.MAKAITE_INFUSED_NETHERITE_INGOT,
             ModItems.MUSIC_DISC_FAIRY_PLAYGROUND, ModItems.MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN, ModItems.ORDINARY_HAT, ModItems.RAW_MAKAITE,
-            ModItems.HEALING_CHARM, ModItems.HOURAI_ELIXIR);
+            ModItems.HEALING_CHARM, ModItems.HOURAI_ELIXIR
+    );
 
     private static final ImmutableList<Item> HANDHELD_ITEMS = ImmutableList.of(
             ModItems.HISOU_SWORD, ModItems.MAKAITE_AXE, ModItems.MAKAITE_HOE, ModItems.MAKAITE_PICKAXE,
-            ModItems.MAKAITE_SHOVEL, ModItems.MAKAITE_SWORD);
+            ModItems.MAKAITE_SHOVEL, ModItems.MAKAITE_SWORD
+    );
 
     public ModModelGenerator(FabricDataOutput output) {
         super(output);

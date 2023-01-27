@@ -1,12 +1,12 @@
 {
-	"parent": "item/handheld",
-	"textures": {
-		"layer0": "arcadiandream:item/wall_passing_chisel"
-	},
-	"display": {
-		"head": {
-			"rotation": [0, 0, -20],
-			"translation": [0, 7.75, 3.25]
-		}
-	}
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "arcadiandream:item/wall_passing_chisel"
+  },
+  "display": {
+    "head": {
+      "rotation": [0, 0, -20],
+      "translation": [0, 7.75, 3.25]
+    }
+  }
 }

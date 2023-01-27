@@ -87,6 +87,8 @@ public class ModItems {
             new FabricItemSettings()));
 
     // Danmaku
+    public static final Item CIRCLE_BULLET_CORE = registerItem("circle_bullet_core", new Item(new FabricItemSettings()));
+
     public static final Item CIRCLE_SHOT = registerItem("circle_shot", new CircleShotItem(new FabricItemSettings().maxDamage(100),
             3, 1.0f, 200, 2, 0.0f, 0.0f, "spread", 1));
 
@@ -170,6 +172,7 @@ public class ModItems {
 
         addToItemGroup(ModItemGroups.DANMAKU, BOMB_ITEM);
         addToItemGroup(ModItemGroups.DANMAKU, DANMAKU_CRAFTING_TABLE);
+        addToItemGroup(ModItemGroups.DANMAKU, CIRCLE_BULLET_CORE);
         addToItemGroup(ModItemGroups.DANMAKU, CIRCLE_SHOT);
 
         addToItemGroup(ModItemGroups.BLOCKS, ONBASHIRA);
