@@ -25,7 +25,7 @@ public class ModItemGroups {
                 .icon(() -> new ItemStack(ModItems.ONBASHIRA))
                 .build();
         DANMAKU = FabricItemGroup.builder(new Identifier(ArcadianDream.MOD_ID, "danmaku"))
-                .icon(() -> new ItemStack(ModItems.ORB_BULLET))
+                .icon(() -> new ItemStack(ModItems.CIRCLE_SHOT))
                 .build();
     }
 }

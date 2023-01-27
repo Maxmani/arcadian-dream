@@ -9,7 +9,7 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.entity.custom.OrbBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.CircleBulletEntity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -20,9 +20,9 @@ public class ModEntities {
     private static final int DANMAKU_RANGE = 4;
     private static final int DANMAKU_RATE = 10;
 
-    public static final EntityType<OrbBulletEntity> ORB_BULLET = Registry.register(
+    public static final EntityType<CircleBulletEntity> ORB_BULLET = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, "orb_bullet"),
-            FabricEntityTypeBuilder.<OrbBulletEntity>create(SpawnGroup.MISC, OrbBulletEntity::new)
+            FabricEntityTypeBuilder.<CircleBulletEntity>create(SpawnGroup.MISC, CircleBulletEntity::new)
                     .dimensions(EntityDimensions.fixed(0.25f, 0.25f))
                     .trackRangeChunks(DANMAKU_RANGE).trackedUpdateRate(DANMAKU_RATE)
                     .build()

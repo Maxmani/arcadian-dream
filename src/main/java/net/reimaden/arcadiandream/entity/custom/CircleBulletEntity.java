@@ -13,22 +13,22 @@ import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
-public class OrbBulletEntity extends BaseBulletEntity {
+public class CircleBulletEntity extends BaseBulletEntity {
 
-    public OrbBulletEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
+    public CircleBulletEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
         super(entityType, world);
     }
 
-    public OrbBulletEntity(World world, LivingEntity owner) {
+    public CircleBulletEntity(World world, LivingEntity owner) {
         super(ModEntities.ORB_BULLET, owner, world);
     }
 
-    public OrbBulletEntity(World world, double x, double y, double z) {
+    public CircleBulletEntity(World world, double x, double y, double z) {
         super(ModEntities.ORB_BULLET, x, y, z, world);
     }
 
     @Override
     protected Item getDefaultItem() {
-        return ModItems.ORB_BULLET;
+        return ModItems.CIRCLE_SHOT;
     }
 }

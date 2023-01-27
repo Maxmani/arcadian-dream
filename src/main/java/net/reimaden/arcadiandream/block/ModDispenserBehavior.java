@@ -1,11 +1,11 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
 package net.reimaden.arcadiandream.block;
 
-import net.reimaden.arcadiandream.entity.custom.OrbBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.CircleBulletEntity;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.projectile.ProjectileEntity;
@@ -17,11 +17,11 @@ import net.minecraft.world.World;
 public class ModDispenserBehavior {
 
     public static void register() {
-        DispenserBlock.registerBehavior(ModItems.ORB_BULLET, new DanmakuDispenserBehavior() {
+        DispenserBlock.registerBehavior(ModItems.CIRCLE_SHOT, new DanmakuDispenserBehavior() {
 
             @Override
             protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
-                return Util.make(new OrbBulletEntity(world, position.getX(), position.getY(), position.getZ()), entity -> entity.setItem(stack));
+                return Util.make(new CircleBulletEntity(world, position.getX(), position.getY(), position.getZ()), entity -> entity.setItem(stack));
             }
         });
     }

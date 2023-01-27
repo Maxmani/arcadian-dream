@@ -8,7 +8,7 @@ package net.reimaden.arcadiandream.util;
 import com.google.common.collect.ImmutableList;
 import net.minecraft.item.Item;
 import net.reimaden.arcadiandream.item.ModItems;
-import net.reimaden.arcadiandream.item.custom.danmaku.BaseBulletItem;
+import net.reimaden.arcadiandream.item.custom.danmaku.BaseShotItem;
 
 public class ItemBreakUtil {
     private static final ImmutableList<Item> DISALLOWED_ITEMS = ImmutableList.of(
@@ -16,7 +16,7 @@ public class ItemBreakUtil {
     );
 
     public static boolean isDisallowed(Item item) {
-        return DISALLOWED_ITEMS.contains(item) || item instanceof BaseBulletItem;
+        return DISALLOWED_ITEMS.contains(item) || item instanceof BaseShotItem;
     }
 }
 

@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "arcadiandream:item/circle_shot",
+    "layer1": "arcadiandream:item/circle_shot_overlay"
+  }
+}

@@ -14,7 +14,7 @@ import net.reimaden.arcadiandream.block.ModBlocks;
 import net.reimaden.arcadiandream.item.custom.armor.OrdinaryHatItem;
 import net.reimaden.arcadiandream.item.custom.consumables.HealingCharmItem;
 import net.reimaden.arcadiandream.item.custom.consumables.HouraiElixirItem;
-import net.reimaden.arcadiandream.item.custom.danmaku.OrbBulletItem;
+import net.reimaden.arcadiandream.item.custom.danmaku.CircleShotItem;
 import net.reimaden.arcadiandream.item.custom.misc.*;
 import net.reimaden.arcadiandream.item.custom.tools.DeathScytheItem;
 import net.reimaden.arcadiandream.item.custom.tools.MochiMalletItem;
@@ -87,7 +87,7 @@ public class ModItems {
             new FabricItemSettings()));
 
     // Danmaku
-    public static final Item ORB_BULLET = registerItem("orb_bullet", new OrbBulletItem(new FabricItemSettings().maxDamage(100),
+    public static final Item CIRCLE_SHOT = registerItem("circle_shot", new CircleShotItem(new FabricItemSettings().maxDamage(100),
             3, 1.0f, 200, 2, 0.0f, 0.0f, "spread", 1));
 
     // Music Discs
@@ -170,7 +170,7 @@ public class ModItems {
 
         addToItemGroup(ModItemGroups.DANMAKU, BOMB_ITEM);
         addToItemGroup(ModItemGroups.DANMAKU, DANMAKU_CRAFTING_TABLE);
-        addToItemGroup(ModItemGroups.DANMAKU, ORB_BULLET);
+        addToItemGroup(ModItemGroups.DANMAKU, CIRCLE_SHOT);
 
         addToItemGroup(ModItemGroups.BLOCKS, ONBASHIRA);
         addToItemGroup(ModItemGroups.BLOCKS, ONBASHIRA_PILLAR);

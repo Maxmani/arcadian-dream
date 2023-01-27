@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-public class BaseBulletItem extends Item implements DyeableBullet, BulletPatterns {
+public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns {
 
     private static final HashMap<Integer, MutableText> colorMap = new HashMap<>();
 
@@ -44,8 +44,8 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
     private final String pattern;
     private final int density;
 
-    public BaseBulletItem(Settings settings, int power, float speed, int maxAge, int cooldown, float gravity,
-                          float divergence, String pattern, int density) {
+    public BaseShotItem(Settings settings, int power, float speed, int maxAge, int cooldown, float gravity,
+                        float divergence, String pattern, int density) {
         super(settings);
         this.power = power;
         this.speed = speed;
@@ -117,7 +117,7 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
             if (Screen.hasShiftDown()) {
                 nbtTooltip(stack, tooltip);
             } else {
-                tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.tooltip"));
+                tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".shot.tooltip"));
             }
         }
     }
@@ -135,7 +135,7 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
             String pattern = nbt.getString("pattern");
             int density = nbt.getInt("density");
 
-            String keyPrefix = "item." + ArcadianDream.MOD_ID + ".bullet.tooltip_";
+            String keyPrefix = "item." + ArcadianDream.MOD_ID + ".shot.tooltip_";
             tooltip.add(Text.translatable(keyPrefix + "power", power));
             tooltip.add(Text.translatable(keyPrefix + "speed", speed));
             tooltip.add(Text.translatable(keyPrefix + "duration", (float) maxAge / 20));
@@ -193,7 +193,7 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
         return false;
     }
 
-    @Override // TODO: Make bullets repairable in the danmaku crafting table itself
+    @Override // TODO: Make shots repairable in the danmaku crafting table itself
     public boolean canRepair(ItemStack stack, ItemStack ingredient) {
         return ingredient.getItem() == ModItems.MAX_POINT_ITEM;
     }

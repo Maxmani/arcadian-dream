@@ -1,7 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "arcadiandream:item/orb_bullet",
-    "layer1": "arcadiandream:item/orb_bullet_overlay"
-  }
-}

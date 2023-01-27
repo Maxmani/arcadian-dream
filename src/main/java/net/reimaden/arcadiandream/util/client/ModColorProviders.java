@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -15,12 +15,12 @@ import java.util.stream.Stream;
 
 public class ModColorProviders {
 
-    private static final List<Item> BULLETS = Stream.of(
-            ModItems.ORB_BULLET
+    private static final List<Item> SHOTS = Stream.of(
+            ModItems.CIRCLE_SHOT
     ).toList();
 
     public static void register() {
-        for (Item bullet : BULLETS) {
+        for (Item bullet : SHOTS) {
             ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex == 0 ? -1 : ((DyeableBullet) stack.getItem()).getColor(stack), bullet);
         }
     }
