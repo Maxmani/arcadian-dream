@@ -102,7 +102,7 @@ public class HouraiElixirItem extends Item {
         return false;
     }
 
-    @Override
+    @Override // This is necessary to prevent applying Mending through the anvil
     public boolean isDamageable() {
         return false;
     }

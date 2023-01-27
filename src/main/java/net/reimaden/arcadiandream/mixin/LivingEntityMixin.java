@@ -30,6 +30,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.reimaden.arcadiandream.util.IEntityDataSaver;
+import net.reimaden.arcadiandream.util.ItemBreakUtil;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -117,7 +118,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "playEquipmentBreakEffects", at = @At("HEAD"), cancellable = true)
     private void arcadiandream$disableBreakEffects(ItemStack stack, CallbackInfo ci) {
-        if (stack.isOf(ModItems.HOURAI_ELIXIR)) {
+        if (ItemBreakUtil.isDisallowed(stack.getItem())) {
             ci.cancel();
         }
     }

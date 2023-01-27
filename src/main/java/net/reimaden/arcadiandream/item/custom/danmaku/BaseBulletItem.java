@@ -5,25 +5,26 @@
 
 package net.reimaden.arcadiandream.item.custom.danmaku;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
-import net.minecraft.text.MutableText;
-import net.minecraft.text.Style;
-import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
-import net.reimaden.arcadiandream.sound.ModSounds;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.stat.Stats;
+import net.minecraft.text.MutableText;
+import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import net.reimaden.arcadiandream.ArcadianDream;
+import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
+import net.reimaden.arcadiandream.item.ModItems;
+import net.reimaden.arcadiandream.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -72,7 +73,7 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
         float divergence = nbt.getFloat("divergence");
         float n = speed / density;
 
-        if (!world.isClient) {
+        if (!world.isClient()) {
             switch (nbt.getString("pattern").toLowerCase()) {
                 case "spread" -> createSpread(world, user, itemStack, density, speed, divergence);
                 case "ray" -> createRay(world, user, itemStack, speed, divergence, n, density);
@@ -83,10 +84,10 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
 
         user.incrementStat(Stats.USED.getOrCreateStat(this));
         if (!user.getAbilities().creativeMode) {
-            itemStack.decrement(1);
+            itemStack.damage(1, user, e -> e.sendToolBreakStatus(hand));
         }
 
-        return TypedActionResult.success(itemStack, world.isClient);
+        return TypedActionResult.success(itemStack, world.isClient());
     }
 
     @Override
@@ -180,5 +181,20 @@ public class BaseBulletItem extends Item implements DyeableBullet, BulletPattern
     @Override
     public ThrownItemEntity getBullet(World world, LivingEntity user) {
         return new BaseBulletEntity(world, user);
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack stack) {
+        return false;
+    }
+
+    @Override // Like the Hourai Elixir, this is necessary to prevent applying Mending through the anvil
+    public boolean isDamageable() {
+        return false;
+    }
+
+    @Override // TODO: Make bullets repairable in the danmaku crafting table itself
+    public boolean canRepair(ItemStack stack, ItemStack ingredient) {
+        return ingredient.getItem() == ModItems.MAX_POINT_ITEM;
     }
 }
