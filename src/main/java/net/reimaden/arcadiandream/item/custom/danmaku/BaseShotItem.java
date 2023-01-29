@@ -57,13 +57,21 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         this.density = density;
     }
 
+    private static boolean isUsable(ItemStack stack) {
+        return stack.getDamage() < stack.getMaxDamage() - 1;
+    }
+
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        ItemStack itemStack = user.getStackInHand(hand);
-        NbtCompound nbt = itemStack.getOrCreateNbt();
+        ItemStack stack = user.getStackInHand(hand);
+        NbtCompound nbt = stack.getOrCreateNbt();
+
+        if (!isUsable(stack)) {
+            return TypedActionResult.pass(stack);
+        }
 
         // Hide the "dyed" line in the tooltip
-        itemStack.addHideFlag(ItemStack.TooltipSection.DYE);
+        stack.addHideFlag(ItemStack.TooltipSection.DYE);
 
         world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.ENTITY_DANMAKU_FIRE, SoundCategory.PLAYERS, 1f, 1f);
         user.getItemCooldownManager().set(this, nbt.getInt("cooldown") * ArcadianDream.CONFIG.danmakuCooldownMultiplier());
@@ -75,19 +83,19 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
 
         if (!world.isClient()) {
             switch (nbt.getString("pattern").toLowerCase()) {
-                case "spread" -> createSpread(world, user, itemStack, density, speed, divergence);
-                case "ray" -> createRay(world, user, itemStack, speed, divergence, n, density);
-                case "ring" -> createRing(world, user, itemStack, density, speed, divergence);
+                case "spread" -> createSpread(world, user, stack, density, speed, divergence);
+                case "ray" -> createRay(world, user, stack, speed, divergence, n, density);
+                case "ring" -> createRing(world, user, stack, density, speed, divergence);
                 default -> throw new IllegalArgumentException("No valid bullet pattern found!");
             }
         }
 
         user.incrementStat(Stats.USED.getOrCreateStat(this));
-        if (!user.getAbilities().creativeMode) {
-            itemStack.damage(1, user, e -> e.sendToolBreakStatus(hand));
+        if (!user.getAbilities().creativeMode && isUsable(stack)) {
+            stack.damage(1, user, e -> e.sendToolBreakStatus(hand));
         }
 
-        return TypedActionResult.success(itemStack, world.isClient());
+        return TypedActionResult.success(stack, world.isClient());
     }
 
     @Override
@@ -122,8 +130,8 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         }
     }
 
-    private void nbtTooltip(ItemStack itemStack, List<Text> tooltip) {
-        NbtCompound nbt = itemStack.getNbt();
+    private void nbtTooltip(ItemStack stack, List<Text> tooltip) {
+        NbtCompound nbt = stack.getNbt();
 
         if (nbt != null) {
             int power = nbt.getInt("power");
@@ -144,7 +152,7 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
             tooltip.add(Text.translatable(keyPrefix + "divergence", divergence));
             tooltip.add(Text.translatable(keyPrefix + "pattern", Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.pattern_" + pattern.toLowerCase())));
             tooltip.add(Text.translatable(keyPrefix + "density", density));
-            tooltip.add(Text.translatable(keyPrefix + "color", getColorName(itemStack).getString()).setStyle(Style.EMPTY.withColor(getColor(itemStack))));
+            tooltip.add(Text.translatable(keyPrefix + "color", getColorName(stack).getString()).setStyle(Style.EMPTY.withColor(getColor(stack))));
         }
     }
 
