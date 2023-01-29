@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "arcadiandream:faith_item"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "arcadiandream:star_item"
+  }
+}

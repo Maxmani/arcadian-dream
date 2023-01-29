@@ -1,4 +1,4 @@
-// 1.19.3	2023-01-26T04:19:20.365755052	Arcadian Dream/Model Definitions
+// 1.19.3	2023-01-29T23:13:55.900960445	Arcadian Dream/Model Definitions
 f2ebcff21cadc28cf53399f6a3290da06c871e6e assets/arcadiandream/blockstates/deepslate_dragon_gem_ore.json
 e9e8dbe0ce582568df0e7c45a0233a6720eadae9 assets/arcadiandream/models/item/ordinary_hat.json
 8fd032362831d4163a0fe785780331eca2deab9d assets/arcadiandream/models/item/mochi_mallet_2.json
@@ -52,6 +52,7 @@ a624e46fda848287b623aecbccd045ec8103723c assets/arcadiandream/models/item/heaven
 a235eee09a8c1e2172097bce6290adfe6a90da22 assets/arcadiandream/models/item/makaite_sword.json
 f3dce81daae1565faa354883c1daac9bac9028ae assets/arcadiandream/models/item/dragon_gem.json
 f1c33ba97e3b68859e9bbb6ec61f3389c2f64621 assets/arcadiandream/blockstates/end_stone_dragon_gem_ore.json
+1d31a0e5ba945a5009ee27c5086f26c161fbe815 assets/arcadiandream/models/item/faith_item.json
 66a2c52c08209273fde62aaff3857d77c529c5ad assets/arcadiandream/blockstates/dragon_gem_ore.json
 ef2b1b5e288c07e83056fb32c9a156d2c8fc8577 assets/arcadiandream/models/item/onbashira.json
 52b31d03d4ad1b9f22211c01c99f8b5773c4e096 assets/arcadiandream/models/item/makaite_chestplate.json

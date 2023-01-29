@@ -28,7 +28,7 @@ public class ModModelGenerator extends FabricModelProvider {
             ModItems.HEAVENLY_PEACH, ModItems.IBUKI_GOURD, ModItems.MAKAITE_BOOTS, ModItems.MAKAITE_CHESTPLATE,
             ModItems.MAKAITE_HELMET, ModItems.MAKAITE_LEGGINGS, ModItems.MAKAITE_INGOT, ModItems.MAKAITE_INFUSED_NETHERITE_INGOT,
             ModItems.MUSIC_DISC_FAIRY_PLAYGROUND, ModItems.MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN, ModItems.ORDINARY_HAT, ModItems.RAW_MAKAITE,
-            ModItems.HEALING_CHARM, ModItems.HOURAI_ELIXIR
+            ModItems.HEALING_CHARM, ModItems.HOURAI_ELIXIR, ModItems.FAITH_ITEM
     );
 
     private static final ImmutableList<Item> HANDHELD_ITEMS = ImmutableList.of(

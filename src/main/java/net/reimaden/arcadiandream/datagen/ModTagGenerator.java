@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -100,11 +100,6 @@ public class ModTagGenerator {
                     .add(ModItems.MAKAITE_ORE);
 
             // Modded item tags
-            getOrCreateTagBuilder(ModTags.Items.RAW_ORES)
-                    .add(Items.RAW_IRON)
-                    .add(Items.RAW_COPPER)
-                    .add(Items.RAW_GOLD)
-                    .add(ModItems.RAW_MAKAITE);
             getOrCreateTagBuilder(ConventionalItemTags.AXES)
                     .add(ModItems.MAKAITE_AXE);
             getOrCreateTagBuilder(ConventionalItemTags.HOES)
@@ -128,7 +123,8 @@ public class ModTagGenerator {
                     .add(ModItems.MAX_POINT_ITEM)
                     .add(ModItems.BOMB_ITEM)
                     .add(ModItems.EXTEND_ITEM)
-                    .add(ModItems.STAR_ITEM);
+                    .add(ModItems.STAR_ITEM)
+                    .add(ModItems.FAITH_ITEM);
         }
     }
 }

@@ -12,6 +12,7 @@
   "item.arcadiandream.bomb_item.tooltip": [{"text":"Converts bullets into Star Items","color":"yellow"}],
   "item.arcadiandream.extend_item": "Extend Item",
   "item.arcadiandream.star_item": "Star Item",
+  "item.arcadiandream.faith_item": "Faith Item",
   "item.arcadiandream.heavenly_peach": "Heavenly Peach",
   "item.arcadiandream.ordinary_hat": "Ordinary Hat",
   "item.arcadiandream.ordinary_hat.tooltip": [{"text":"Increases your item pickup range","color":"yellow"}],
@@ -127,7 +128,6 @@
   "arcadiandream.ritual_crafting.dimension_end": "The End",
   "arcadiandream.ritual_crafting.dimension_unknown": "Unknown dimension! (%s)",
 
-  "tag.c.raw_ores": "Raw Ores",
   "tag.c.obsidian_blocks": "Obsidian Blocks",
   "tag.arcadiandream.dragon_gem_ores": "Dragon Gem Ores",
   "tag.arcadiandream.items": "Items",
