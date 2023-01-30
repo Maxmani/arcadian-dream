@@ -9,7 +9,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.reimaden.arcadiandream.block.entity.client.ModBlockEntityRenderer;
 import net.reimaden.arcadiandream.entity.client.EntityRenderer;
-import net.reimaden.arcadiandream.gui.ModScreens;
+import net.reimaden.arcadiandream.gui.ModScreenHandlers;
 import net.reimaden.arcadiandream.model.ModArmorRenderer;
 import net.reimaden.arcadiandream.model.ModModelHandler;
 import net.reimaden.arcadiandream.networking.ModMessages;
@@ -31,6 +31,6 @@ public class ArcadianDreamClient implements ClientModInitializer {
         ModModelHandler.register((loc, def) -> EntityModelLayerRegistry.registerModelLayer(loc, () -> def));
         ModArmorRenderer.register();
         ModBlockEntityRenderer.register();
-        ModScreens.registerClient();
+        ModScreenHandlers.registerClient();
     }
 }

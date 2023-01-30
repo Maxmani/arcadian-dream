@@ -138,7 +138,7 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory inventory, PlayerEntity player) {
-        return new DanmakuCraftingGuiDescription(syncId, inventory, ScreenHandlerContext.create(world, pos));
+        return new DanmakuCraftingScreenHandler(syncId, inventory, this);
     }
 
     @Override

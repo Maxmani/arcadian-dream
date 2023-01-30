@@ -14,7 +14,7 @@ import net.reimaden.arcadiandream.command.ModCommands;
 import net.reimaden.arcadiandream.config.ArcadianDreamConfig;
 import net.reimaden.arcadiandream.entity.ModEntities;
 import net.reimaden.arcadiandream.event.ModEvents;
-import net.reimaden.arcadiandream.gui.ModScreens;
+import net.reimaden.arcadiandream.gui.ModScreenHandlers;
 import net.reimaden.arcadiandream.item.ModItemGroups;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.painting.ModPaintings;
@@ -58,6 +58,6 @@ public class ArcadianDream implements ModInitializer {
 		ModLootTableModifiers.modify();
 
 		ModEvents.register();
-		ModScreens.register();
+		ModScreenHandlers.register();
 	}
 }
