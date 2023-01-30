@@ -13,6 +13,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.Packet;
@@ -27,13 +28,15 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.reimaden.arcadiandream.gui.DanmakuCraftingGuiDescription;
 import net.reimaden.arcadiandream.networking.ModMessages;
 import org.jetbrains.annotations.Nullable;
 
-public class DanmakuCraftingTableBlockEntity extends BlockEntity implements ImplementedInventory, NamedScreenHandlerFactory {
+public class DanmakuCraftingTableBlockEntity extends BlockEntity implements ImplementedInventory, NamedScreenHandlerFactory, SidedInventory {
 
-    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(1, ItemStack.EMPTY);
+    public static final int SIZE = 7;
+    private static final DefaultedList<ItemStack> items = DefaultedList.ofSize(SIZE, ItemStack.EMPTY);
 
     public DanmakuCraftingTableBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.DANMAKU_CRAFTING_TABLE, pos, state);
@@ -46,9 +49,36 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
 
     public void setInventory(DefaultedList<ItemStack> list) {
         for (int i = 0; i < items.size(); i++) {
-            this.items.set(i, list.get(i));
+            items.set(i, list.get(i));
         }
     }
+
+//    public static void updateResult(World world) {
+//        if (world.isClient()) {
+//            return;
+//        }
+//
+//        /* Inventory slot indexes
+//         * 0 = Core
+//         * 1 = Shot
+//         * 2 = Result
+//         * 3 = Modifier
+//         * 4 = Repair
+//         * 5 = Pattern
+//         * 6 = Color
+//         */
+//
+//        if (items.get(2).isEmpty()) {
+//            items.set(0, ItemStack.EMPTY);
+//        }
+//
+//        if (items.get(0).getItem() instanceof BulletCoreItem) {
+//            ItemStack result = new ItemStack(ModItems.CIRCLE_SHOT);
+//            items.set(2, result);
+//        } else {
+//            items.set(2, ItemStack.EMPTY);
+//        }
+//    }
 
     @Override
     public void markDirty() {
@@ -65,6 +95,7 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
             }
         }
 
+//        updateResult(world);
         super.markDirty();
     }
 
@@ -93,7 +124,10 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
 
     @Override
     public boolean canPlayerUse(PlayerEntity player) {
-        return pos.isWithinDistance(player.getBlockPos(), 4.5D);
+        if (world != null && world.getBlockEntity(pos) != this) {
+            return false;
+        }
+        return !(player.squaredDistanceTo((double) pos.getX() + 0.5, (double) pos.getY() + 0.5, (double) pos.getZ() + 0.5) > 64.0);
     }
 
     @Override
@@ -105,5 +139,20 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory inventory, PlayerEntity player) {
         return new DanmakuCraftingGuiDescription(syncId, inventory, ScreenHandlerContext.create(world, pos));
+    }
+
+    @Override
+    public int[] getAvailableSlots(Direction side) {
+        return new int[0];
+    }
+
+    @Override
+    public boolean canInsert(int slot, ItemStack stack, @Nullable Direction dir) {
+        return false;
+    }
+
+    @Override
+    public boolean canExtract(int slot, ItemStack stack, Direction dir) {
+        return false;
     }
 }

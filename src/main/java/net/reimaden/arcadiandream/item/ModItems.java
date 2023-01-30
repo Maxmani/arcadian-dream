@@ -14,6 +14,7 @@ import net.reimaden.arcadiandream.block.ModBlocks;
 import net.reimaden.arcadiandream.item.custom.armor.OrdinaryHatItem;
 import net.reimaden.arcadiandream.item.custom.consumables.HealingCharmItem;
 import net.reimaden.arcadiandream.item.custom.consumables.HouraiElixirItem;
+import net.reimaden.arcadiandream.item.custom.danmaku.BulletCoreItem;
 import net.reimaden.arcadiandream.item.custom.danmaku.CircleShotItem;
 import net.reimaden.arcadiandream.item.custom.misc.*;
 import net.reimaden.arcadiandream.item.custom.tools.DeathScytheItem;
@@ -88,7 +89,7 @@ public class ModItems {
             new FabricItemSettings()));
 
     // Danmaku
-    public static final Item CIRCLE_BULLET_CORE = registerItem("circle_bullet_core", new Item(new FabricItemSettings()));
+    public static final Item CIRCLE_BULLET_CORE = registerItem("circle_bullet_core", new BulletCoreItem(new FabricItemSettings()));
 
     public static final Item CIRCLE_SHOT = registerItem("circle_shot", new CircleShotItem(new FabricItemSettings().maxDamage(100),
             3, 1.0f, 200, 2, 0.0f, 0.0f, "spread", 1));
