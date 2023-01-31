@@ -5,6 +5,7 @@
 
 package net.reimaden.arcadiandream.block.entity;
 
+import com.google.common.collect.ImmutableList;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -14,29 +15,38 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SidedInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.registry.Registries;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
-import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.reimaden.arcadiandream.gui.DanmakuCraftingGuiDescription;
+import net.reimaden.arcadiandream.ArcadianDream;
+import net.reimaden.arcadiandream.gui.DanmakuCraftingScreenHandler;
+import net.reimaden.arcadiandream.item.ModItems;
+import net.reimaden.arcadiandream.item.custom.danmaku.BaseShotItem;
+import net.reimaden.arcadiandream.item.custom.danmaku.BulletCoreItem;
 import net.reimaden.arcadiandream.networking.ModMessages;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class DanmakuCraftingTableBlockEntity extends BlockEntity implements ImplementedInventory, NamedScreenHandlerFactory, SidedInventory {
 
     public static final int SIZE = 7;
-    private static final DefaultedList<ItemStack> items = DefaultedList.ofSize(SIZE, ItemStack.EMPTY);
+    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(SIZE, ItemStack.EMPTY);
 
     public DanmakuCraftingTableBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.DANMAKU_CRAFTING_TABLE, pos, state);
@@ -53,32 +63,92 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
         }
     }
 
-//    public static void updateResult(World world) {
-//        if (world.isClient()) {
-//            return;
-//        }
-//
-//        /* Inventory slot indexes
-//         * 0 = Core
-//         * 1 = Shot
-//         * 2 = Result
-//         * 3 = Modifier
-//         * 4 = Repair
-//         * 5 = Pattern
-//         * 6 = Color
-//         */
-//
-//        if (items.get(2).isEmpty()) {
-//            items.set(0, ItemStack.EMPTY);
-//        }
-//
-//        if (items.get(0).getItem() instanceof BulletCoreItem) {
-//            ItemStack result = new ItemStack(ModItems.CIRCLE_SHOT);
-//            items.set(2, result);
-//        } else {
-//            items.set(2, ItemStack.EMPTY);
-//        }
-//    }
+    private void updateResult() {
+        /* Inventory slot indexes
+         * 0 = Core
+         * 1 = Shot
+         * 2 = Result
+         * 3 = Modifier
+         * 4 = Repair
+         * 5 = Pattern
+         * 6 = Color
+         */
+
+        if (!isValid()) {
+            items.set(2, ItemStack.EMPTY);
+            return;
+        }
+
+        if (craftingShot()) {
+            craftShot();
+        } else if (modifyingShot()) {
+            modifyShot();
+        }
+    }
+
+    private void craftShot() {
+        if (!(items.get(0).getItem() instanceof BulletCoreItem) || !items.get(3).isOf(ModItems.POWER_ITEM)) {
+            items.set(2, ItemStack.EMPTY);
+            return;
+        }
+
+        // Get the bullet type of the core
+        String itemName = items.get(0).getItem().getTranslationKey();
+        int underscoreIndex = itemName.indexOf("_");
+        String bulletCoreType = itemName.substring(itemName.lastIndexOf(".") + 1, underscoreIndex);
+        String shotType = bulletCoreType + "_shot";
+
+        // Set the output shot to the bullet type
+        ItemStack shotStack = new ItemStack(Registries.ITEM.get(new Identifier(ArcadianDream.MOD_ID, shotType)));
+        items.set(2, shotStack);
+    }
+
+    private void modifyShot() {
+        if (!(items.get(1).getItem() instanceof BaseShotItem)) {
+            items.set(2, ItemStack.EMPTY);
+            return;
+        }
+
+        ItemStack modifiedShot = items.get(1).copy();
+        modifyShot(modifiedShot);
+        items.set(2, modifiedShot);
+    }
+
+    private void modifyShot(ItemStack stack) {
+        if (items.get(5).isEmpty()) {
+            return;
+        }
+
+        ImmutableList<Item> patternItems = ImmutableList.of(
+                ModItems.SPREAD_PATTERN, ModItems.RAY_PATTERN, ModItems.RING_PATTERN
+        );
+
+        Map<Item, Integer> itemMap = new HashMap<>();
+        for (int i = 0; i < patternItems.size(); i++) {
+            itemMap.put(patternItems.get(i), i);
+        }
+
+        int itemId = itemMap.getOrDefault(items.get(5).getItem(), 0);
+
+        switch (itemId) {
+            case 0 -> stack.getOrCreateNbt().putString("pattern", "spread");
+            case 1 -> stack.getOrCreateNbt().putString("pattern", "ray");
+            case 2 -> stack.getOrCreateNbt().putString("pattern", "ring");
+            default -> throw new IllegalArgumentException("No valid bullet pattern found!");
+        }
+    }
+
+    private boolean craftingShot() {
+        return !items.get(0).isEmpty() && items.get(1).isEmpty();
+    }
+
+    private boolean modifyingShot() {
+        return items.get(0).isEmpty() && !items.get(1).isEmpty();
+    }
+
+    private boolean isValid() {
+        return craftingShot() || modifyingShot();
+    }
 
     @Override
     public void markDirty() {
@@ -95,7 +165,7 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
             }
         }
 
-//        updateResult(world);
+        updateResult();
         super.markDirty();
     }
 

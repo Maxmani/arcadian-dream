@@ -3,13 +3,14 @@
  * Licensed under the EUPL-1.2 or later.
  */
 
-package net.reimaden.arcadiandream.item.custom.misc;
+package net.reimaden.arcadiandream.item.custom.danmaku;
 
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import net.reimaden.arcadiandream.ArcadianDream;
+import net.reimaden.arcadiandream.item.custom.misc.PatternTemplateItem;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;

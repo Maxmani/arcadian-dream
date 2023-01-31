@@ -16,9 +16,10 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.reimaden.arcadiandream.block.entity.DanmakuCraftingTableBlockEntity;
-import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.item.custom.danmaku.BaseShotItem;
 import net.reimaden.arcadiandream.item.custom.danmaku.BulletCoreItem;
+import net.reimaden.arcadiandream.item.custom.danmaku.PatternItem;
+import net.reimaden.arcadiandream.util.ModTags;
 
 public class DanmakuCraftingScreenHandler extends ScreenHandler {
 
@@ -53,10 +54,10 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
         // Create slots
         DanmakuCraftingSlot coreSlot = new DanmakuCraftingSlot(inventory, 0, 15, topY, BulletCoreItem.class);
         DanmakuCraftingSlot shotSlot = new DanmakuCraftingSlot(inventory, 1, 39, topY, BaseShotItem.class);
-        DanmakuOutputSlot resultSlot = new DanmakuOutputSlot(inventory, 2, 136, 44);
+        DanmakuOutputSlot resultSlot = new DanmakuOutputSlot(playerInventory.player, inventory, 2, 136, 44);
         Slot modifierSlot = new Slot(inventory, 3, 27, bottomY);
-        DanmakuCraftingSlot repairSlot = new DanmakuCraftingSlot(inventory, 4, 80, topY, ModItems.FAITH_ITEM);
-        Slot patternSlot = new Slot(inventory, 5, 68, bottomY);
+        DanmakuCraftingSlot repairSlot = new DanmakuCraftingSlot(inventory, 4, 80, topY, ModTags.Items.DANMAKU_REPAIR_ITEMS);
+        DanmakuCraftingSlot patternSlot = new DanmakuCraftingSlot(inventory, 5, 68, bottomY, PatternItem.class);
         DanmakuCraftingSlot colorSlot = new DanmakuCraftingSlot(inventory, 6, 92, bottomY, ConventionalItemTags.DYES);
 
         // Add slots to screen
@@ -89,6 +90,10 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
             }
 
             if (originalStack.isEmpty()) {
+                if (slot instanceof DanmakuOutputSlot) {
+                    craft(inventory);
+                    ((DanmakuOutputSlot) slot).onCrafted(newStack);
+                }
                 slot.setStack(ItemStack.EMPTY);
             } else {
                 slot.markDirty();
@@ -123,26 +128,38 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
 
     static class DanmakuOutputSlot extends Slot {
 
-        public DanmakuOutputSlot(Inventory inventory, int index, int x, int y) {
+        private final PlayerEntity player;
+
+        public DanmakuOutputSlot(PlayerEntity player, Inventory inventory, int index, int x, int y) {
             super(inventory, index, x, y);
+            this.player = player;
         }
 
         @Override
         public boolean canInsert(ItemStack stack) {
             return false;
         }
+
+        @Override
+        public void onTakeItem(PlayerEntity player, ItemStack stack) {
+            super.onTakeItem(player, stack);
+
+            // Clear the input slots
+            craft(inventory);
+
+            onCrafted(stack);
+        }
+
+        @Override
+        protected void onCrafted(ItemStack stack) {
+            stack.onCraft(player.world, player, 1);
+        }
     }
 
     static class DanmakuCraftingSlot extends Slot {
 
-        private Item insertItem;
         private TagKey<Item> insertTag;
         private Class<?> insertClass;
-
-        public DanmakuCraftingSlot(Inventory inventory, int index, int x, int y, Item insertItem) {
-            super(inventory, index, x, y);
-            this.insertItem = insertItem;
-        }
 
         public DanmakuCraftingSlot(Inventory inventory, int index, int x, int y, TagKey<Item> insertTag) {
             super(inventory, index, x, y);
@@ -156,9 +173,37 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
 
         @Override
         public boolean canInsert(ItemStack stack) {
-            return (insertItem != null && stack.isOf(insertItem)) ||
-                    (insertClass != null && insertClass.isInstance(stack.getItem())) ||
+            return (insertClass != null && insertClass.isInstance(stack.getItem())) ||
                     (insertTag != null && stack.isIn(insertTag));
         }
+    }
+
+    private static void craft(Inventory inventory) {
+        /* Inventory slot indexes
+         * 0 = Core
+         * 1 = Shot
+         * 2 = Result
+         * 3 = Modifier
+         * 4 = Repair
+         * 5 = Pattern
+         * 6 = Color
+         */
+
+        // If creating a shot from a bullet core, clear the modifier slot too
+        if (inventory.getStack(0).getItem() instanceof BulletCoreItem) {
+            inventory.getStack(3).decrement(1);
+        }
+
+        // If modifying a shot, clear any modifier slots too
+        if (inventory.getStack(1).getItem() instanceof BaseShotItem) {
+            inventory.getStack(3).decrement(1);
+            inventory.getStack(4).decrement(1);
+            inventory.getStack(5).decrement(1);
+            inventory.getStack(6).decrement(1);
+        }
+
+        // Clear the input slots
+        inventory.getStack(0).decrement(1);
+        inventory.getStack(1).decrement(1);
     }
 }

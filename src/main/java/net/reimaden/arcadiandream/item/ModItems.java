@@ -16,6 +16,7 @@ import net.reimaden.arcadiandream.item.custom.consumables.HealingCharmItem;
 import net.reimaden.arcadiandream.item.custom.consumables.HouraiElixirItem;
 import net.reimaden.arcadiandream.item.custom.danmaku.BulletCoreItem;
 import net.reimaden.arcadiandream.item.custom.danmaku.CircleShotItem;
+import net.reimaden.arcadiandream.item.custom.danmaku.PatternItem;
 import net.reimaden.arcadiandream.item.custom.misc.*;
 import net.reimaden.arcadiandream.item.custom.tools.DeathScytheItem;
 import net.reimaden.arcadiandream.item.custom.tools.MochiMalletItem;
