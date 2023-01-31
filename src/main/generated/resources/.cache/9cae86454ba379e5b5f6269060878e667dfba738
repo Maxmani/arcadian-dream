@@ -1,4 +1,4 @@
-// 1.19.3	2023-01-29T23:13:55.896311069	Arcadian Dream/Tags for minecraft:item
+// 1.19.3	2023-01-31T23:14:20.17993938	Arcadian Dream/Tags for minecraft:item
 1b84c93c68a07b16e2895dc831cc82946e935b04 data/minecraft/tags/items/beacon_payment_items.json
 7f6cec9b9055f107f9166259995070795ea95049 data/c/tags/items/hoes.json
 c2261d79c29b90e041df1c2cc00ab1686d3ffd20 data/c/tags/items/ores.json
@@ -9,5 +9,8 @@ eebf2e570846d666cbc982caf74e7661b3d016ee data/c/tags/items/obsidian_blocks.json
 4fb007b34bbee2b175aebfd0cd307eb84c715582 data/arcadiandream/tags/items/items.json
 af7dcf4b1fa741f90379cc51dc2c42c1b27cd463 data/c/tags/items/swords.json
 2a96f7db03d7de0a1be4809ec8341d457669f296 data/c/tags/items/spears.json
+92dab56fb6812276513ebee14bb2d9d53ee53d57 data/arcadiandream/tags/items/shots.json
+c49f477cff8c37aa4e3482bda7e49f33c43d7fe6 data/arcadiandream/tags/items/danmaku_repair_items.json
 faa6596c9fee1e9cda128dcda5bd111b9c0906c2 data/c/tags/items/pickaxes.json
+c767ab53566ee0302a8c2ecfb6dbe51e0f2ccc75 data/arcadiandream/tags/items/bullet_cores.json
 c3ec5d72e6d29ea2e3739b3c55e95ec4aaf56e09 data/c/tags/items/axes.json

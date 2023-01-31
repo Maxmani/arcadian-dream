@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "arcadiandream:spread_pattern"
+    },
+    "X": {
+      "tag": "arcadiandream:items"
+    },
+    "Y": {
+      "tag": "arcadiandream:shots"
+    }
+  },
+  "pattern": [
+    "X#X",
+    "XYX",
+    "XXX"
+  ],
+  "result": {
+    "count": 2,
+    "item": "arcadiandream:spread_pattern"
+  }
+}

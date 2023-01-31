@@ -15,8 +15,10 @@ import net.minecraft.recipe.AbstractCookingRecipe;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
+import net.reimaden.arcadiandream.util.ModTags;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -219,6 +221,36 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         makeHelmet(exporter, helmet, material);
         makeLeggings(exporter, leggings, material);
 
+    }
+
+    private static void makePattern(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible template) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, output)
+                .input('#', template)
+                .input('X', ModTags.Items.ITEMS)
+                .pattern("XXX")
+                .pattern("X#X")
+                .pattern("XXX")
+                .criterion(RecipeProvider.hasItem(template),
+                        RecipeProvider.conditionsFromItem(template))
+                .offerTo(exporter);
+    }
+
+    private static void makePatternCopy(Consumer<RecipeJsonProvider> exporter, ItemConvertible pattern) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, pattern, 2)
+                .input('#', pattern)
+                .input('X', ModTags.Items.ITEMS)
+                .input('Y', ModTags.Items.SHOTS)
+                .pattern("X#X")
+                .pattern("XYX")
+                .pattern("XXX")
+                .criterion(RecipeProvider.hasItem(pattern),
+                        RecipeProvider.conditionsFromItem(pattern))
+                .offerTo(exporter, "copy_" + Registries.ITEM.getId(pattern.asItem()).getPath());
+    }
+
+    protected static void makePatterns(Consumer<RecipeJsonProvider> exporter, ItemConvertible template, ItemConvertible pattern) {
+        makePattern(exporter, pattern, template);
+        makePatternCopy(exporter, pattern);
     }
 
     @Override

@@ -49,6 +49,13 @@ public class ModItems {
     public static final Item HEALING_CHARM = registerItem("healing_charm", new HealingCharmItem(new FabricItemSettings().maxCount(16)));
     public static final Item HOURAI_ELIXIR = registerItem("hourai_elixir", new HouraiElixirItem(new FabricItemSettings().maxCount(1).maxDamage(3).rarity(Rarity.EPIC)));
 
+    public static final Item SPREAD_PATTERN_TEMPLATE = registerItem("spread_pattern_template", new PatternTemplateItem(new FabricItemSettings().maxCount(16)));
+    public static final Item RAY_PATTERN_TEMPLATE = registerItem("ray_pattern_template", new PatternTemplateItem(new FabricItemSettings().maxCount(16)));
+    public static final Item RING_PATTERN_TEMPLATE = registerItem("ring_pattern_template", new PatternTemplateItem(new FabricItemSettings().maxCount(16)));
+    public static final Item SPREAD_PATTERN = registerItem("spread_pattern", new PatternItem(new FabricItemSettings().maxCount(16)));
+    public static final Item RAY_PATTERN = registerItem("ray_pattern", new PatternItem(new FabricItemSettings().maxCount(16)));
+    public static final Item RING_PATTERN = registerItem("ring_pattern", new PatternItem(new FabricItemSettings().maxCount(16)));
+
     // Food
     public static final Item HEAVENLY_PEACH = registerItem("heavenly_peach", new Item(new FabricItemSettings().maxCount(16)
             .food(ModFoodComponents.HEAVENLY_PEACH)));
@@ -170,6 +177,9 @@ public class ModItems {
         addToItemGroup(ModItemGroups.ITEMS, HISOU_SWORD);
         addToItemGroup(ModItemGroups.ITEMS, MOCHI_MALLET);
         addToItemGroup(ModItemGroups.ITEMS, DEATH_SCYTHE);
+        addToItemGroup(ModItemGroups.ITEMS, SPREAD_PATTERN_TEMPLATE);
+        addToItemGroup(ModItemGroups.ITEMS, RAY_PATTERN_TEMPLATE);
+        addToItemGroup(ModItemGroups.ITEMS, RING_PATTERN_TEMPLATE);
         addToItemGroup(ModItemGroups.ITEMS, MUSIC_DISC_FAIRY_PLAYGROUND);
         addToItemGroup(ModItemGroups.ITEMS, MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN);
 
@@ -177,6 +187,9 @@ public class ModItems {
         addToItemGroup(ModItemGroups.DANMAKU, DANMAKU_CRAFTING_TABLE);
         addToItemGroup(ModItemGroups.DANMAKU, CIRCLE_BULLET_CORE);
         addToItemGroup(ModItemGroups.DANMAKU, CIRCLE_SHOT);
+        addToItemGroup(ModItemGroups.DANMAKU, SPREAD_PATTERN);
+        addToItemGroup(ModItemGroups.DANMAKU, RAY_PATTERN);
+        addToItemGroup(ModItemGroups.DANMAKU, RING_PATTERN);
 
         addToItemGroup(ModItemGroups.BLOCKS, ONBASHIRA);
         addToItemGroup(ModItemGroups.BLOCKS, ONBASHIRA_PILLAR);

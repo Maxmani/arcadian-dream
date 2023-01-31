@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -34,13 +34,16 @@ public class ModTags {
 
         public static final TagKey<Item> OBSIDIAN_BLOCKS = createCommonTag("obsidian_blocks");
         public static final TagKey<Item> DRAGON_GEM_ORES = createTag("dragon_gem_ores");
-        public static final TagKey<Item> RAW_ORES = createCommonTag("raw_ores");
         public static final TagKey<Item> ITEMS = createTag("items");
+        public static final TagKey<Item> BULLET_CORES = createTag("bullet_cores");
+        public static final TagKey<Item> SHOTS = createTag("shots");
+        public static final TagKey<Item> DANMAKU_REPAIR_ITEMS = createTag("danmaku_repair_items");
 
         private static TagKey<Item> createTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(ArcadianDream.MOD_ID, name));
         }
 
+        @SuppressWarnings("SameParameterValue")
         private static TagKey<Item> createCommonTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier("c", name));
         }

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "arcadiandream:ring_pattern"
+    },
+    "X": {
+      "tag": "arcadiandream:items"
+    },
+    "Y": {
+      "tag": "arcadiandream:shots"
+    }
+  },
+  "pattern": [
+    "X#X",
+    "XYX",
+    "XXX"
+  ],
+  "result": {
+    "count": 2,
+    "item": "arcadiandream:ring_pattern"
+  }
+}

@@ -125,6 +125,12 @@ public class ModTagGenerator {
                     .add(ModItems.EXTEND_ITEM)
                     .add(ModItems.STAR_ITEM)
                     .add(ModItems.FAITH_ITEM);
+            getOrCreateTagBuilder(ModTags.Items.BULLET_CORES)
+                    .add(ModItems.CIRCLE_BULLET_CORE);
+            getOrCreateTagBuilder(ModTags.Items.SHOTS)
+                    .add(ModItems.CIRCLE_SHOT);
+            getOrCreateTagBuilder(ModTags.Items.DANMAKU_REPAIR_ITEMS)
+                    .add(ModItems.FAITH_ITEM);
         }
     }
 }

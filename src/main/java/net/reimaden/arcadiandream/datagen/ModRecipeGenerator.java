@@ -58,6 +58,10 @@ public class ModRecipeGenerator extends ModRecipeProvider {
         makeArmor(exporter, ModItems.MAKAITE_BOOTS, ModItems.MAKAITE_CHESTPLATE,
                 ModItems.MAKAITE_HELMET, ModItems.MAKAITE_LEGGINGS, ModItems.MAKAITE_INGOT);
 
+        makePatterns(exporter, ModItems.SPREAD_PATTERN_TEMPLATE, ModItems.SPREAD_PATTERN);
+        makePatterns(exporter, ModItems.RAY_PATTERN_TEMPLATE, ModItems.RAY_PATTERN);
+        makePatterns(exporter, ModItems.RING_PATTERN_TEMPLATE, ModItems.RING_PATTERN);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.ORDINARY_HAT)
                 .input('#', Items.BLACK_WOOL)
                 .input('S', Items.STRING)
@@ -88,12 +92,20 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .offerTo(exporter);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, ModBlocks.DANMAKU_CRAFTING_TABLE)
-                .input('#', ModTags.Items.ITEMS)
+                .input('#', ModTags.Items.BULLET_CORES)
                 .input('C', Blocks.CRAFTING_TABLE)
                 .pattern("###")
                 .pattern("#C#")
                 .pattern("###")
-                .criterion("has_item", RecipeProvider.conditionsFromTag(ModTags.Items.ITEMS))
+                .criterion("has_item", RecipeProvider.conditionsFromTag(ModTags.Items.BULLET_CORES))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CIRCLE_BULLET_CORE)
+                .input('#', ModItems.STAR_ITEM)
+                .pattern(" # ")
+                .pattern("# #")
+                .pattern(" # ").criterion(RecipeProvider.hasItem(ModItems.STAR_ITEM),
+                        RecipeProvider.conditionsFromItem(ModItems.STAR_ITEM))
                 .offerTo(exporter);
 
         // Smelting recipes

@@ -1,11 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_item": {
+    "has_ray_pattern": {
       "conditions": {
         "items": [
           {
-            "tag": "arcadiandream:bullet_cores"
+            "items": [
+              "arcadiandream:ray_pattern"
+            ]
           }
         ]
       },
@@ -13,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "arcadiandream:danmaku_crafting_table"
+        "recipe": "minecraft:copy_ray_pattern"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_item",
+      "has_ray_pattern",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "arcadiandream:danmaku_crafting_table"
+      "minecraft:copy_ray_pattern"
     ]
   }
 }

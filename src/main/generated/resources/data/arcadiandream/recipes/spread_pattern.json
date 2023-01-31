@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "arcadiandream:spread_pattern_template"
+    },
+    "X": {
+      "tag": "arcadiandream:items"
+    }
+  },
+  "pattern": [
+    "XXX",
+    "X#X",
+    "XXX"
+  ],
+  "result": {
+    "item": "arcadiandream:spread_pattern"
+  }
+}
