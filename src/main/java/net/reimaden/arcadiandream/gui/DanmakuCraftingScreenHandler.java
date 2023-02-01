@@ -92,8 +92,7 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
 
             if (originalStack.isEmpty()) {
                 if (slot instanceof DanmakuOutputSlot) {
-                    craft(inventory);
-                    ((DanmakuOutputSlot) slot).onCrafted(newStack);
+                    slot.onTakeItem(player, newStack);
                 }
                 slot.setStack(ItemStack.EMPTY);
             } else {
@@ -145,15 +144,20 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
         public void onTakeItem(PlayerEntity player, ItemStack stack) {
             super.onTakeItem(player, stack);
 
+            onCrafted(stack);
+
             // Clear the input slots
             craft(inventory);
-
-            onCrafted(stack);
         }
 
         @Override
         protected void onCrafted(ItemStack stack) {
-            stack.onCraft(player.world, player, 1);
+            int count = stack.getCount();
+
+            // Don't run the onCraft method if the shot is being modified
+            if (inventory.getStack(1).isEmpty()) {
+                stack.onCraft(player.world, player, count);
+            }
         }
     }
 

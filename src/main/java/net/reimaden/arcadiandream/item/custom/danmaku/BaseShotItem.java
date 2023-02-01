@@ -24,15 +24,12 @@ import net.minecraft.world.World;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
 import net.reimaden.arcadiandream.sound.ModSounds;
+import net.reimaden.arcadiandream.util.ColorMap;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 
 public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns {
-
-    private static final HashMap<Integer, MutableText> colorMap = new HashMap<>();
 
     private final int power;
     private final float speed;
@@ -68,9 +65,6 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         if (!isUsable(stack)) {
             return TypedActionResult.pass(stack);
         }
-
-        // Hide the "dyed" line in the tooltip
-        stack.addHideFlag(ItemStack.TooltipSection.DYE);
 
         world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.ENTITY_DANMAKU_FIRE, SoundCategory.PLAYERS, 1f, 1f);
         user.getItemCooldownManager().set(this, nbt.getInt("cooldown") * ArcadianDream.CONFIG.danmakuCooldownMultiplier());
@@ -116,6 +110,12 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
                 }
             }
         }
+
+        hideDyeSection(nbt);
+    }
+
+    private void hideDyeSection(NbtCompound nbt) {
+        nbt.putInt("HideFlags", nbt.getInt("HideFlags") | ItemStack.TooltipSection.DYE.getFlag());
     }
 
     @Override
@@ -155,34 +155,9 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         }
     }
 
-    static {
-        colorMap.put(16711680, Text.translatable("color.minecraft.red"));
-        colorMap.put(65280, Text.translatable("color.minecraft.green"));
-        colorMap.put(255, Text.translatable("color.minecraft.blue"));
-        colorMap.put(16776960, Text.translatable("color.minecraft.yellow"));
-        colorMap.put(10494192, Text.translatable("color.minecraft.purple"));
-        colorMap.put(65535, Text.translatable("color.minecraft.cyan"));
-        colorMap.put(16777215, Text.translatable("color.minecraft.white"));
-        colorMap.put(0, Text.translatable("color.minecraft.black"));
-        colorMap.put(8421504, Text.translatable("color.minecraft.light_gray"));
-        colorMap.put(4210752, Text.translatable("color.minecraft.gray"));
-        colorMap.put(16761035, Text.translatable("color.minecraft.pink"));
-        colorMap.put(9849600, Text.translatable("color.minecraft.brown"));
-        colorMap.put(16753920, Text.translatable("color.minecraft.orange"));
-        colorMap.put(11393254, Text.translatable("color.minecraft.light_blue"));
-        colorMap.put(16711935, Text.translatable("color.minecraft.magenta"));
-        colorMap.put(12582656, Text.translatable("color.minecraft.lime"));
-    }
-
     private MutableText getColorName(ItemStack stack) {
         int color = getColor(stack);
-        MutableText colorName = colorMap.get(color);
-
-        if (colorName == null) {
-            colorName = (MutableText) Text.of(String.format(Locale.ROOT, "#%06X", color));
-        }
-
-        return colorName;
+        return ColorMap.getTranslationKey(color);
     }
 
     @Override

@@ -15,6 +15,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SidedInventory;
+import net.minecraft.item.DyeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -38,6 +39,7 @@ import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.item.custom.danmaku.BaseShotItem;
 import net.reimaden.arcadiandream.item.custom.danmaku.BulletCoreItem;
 import net.reimaden.arcadiandream.networking.ModMessages;
+import net.reimaden.arcadiandream.util.ColorMap;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -102,6 +104,8 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
         // Set the output shot to the bullet type
         ItemStack shotStack = new ItemStack(Registries.ITEM.get(new Identifier(ArcadianDream.MOD_ID, shotType)));
         items.set(2, shotStack);
+
+        shotStack.getOrCreateNbt();
     }
 
     private void modifyShot() {
@@ -143,6 +147,17 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
                 case 1 -> stack.getOrCreateNbt().putString("pattern", "ray");
                 case 2 -> stack.getOrCreateNbt().putString("pattern", "ring");
                 default -> throw new IllegalArgumentException("No valid bullet pattern found!");
+            }
+        }
+
+        if (!items.get(6).isEmpty()) {
+            Item dye = items.get(6).getItem();
+            if (dye instanceof DyeItem) {
+                Integer colorInt = ColorMap.getColorInt(((DyeItem) dye).getColor().getName());
+                if (colorInt != null) {
+                    BaseShotItem shot = (BaseShotItem) stack.getItem();
+                    shot.setColor(stack, colorInt);
+                }
             }
         }
     }
