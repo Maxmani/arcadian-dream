@@ -80,6 +80,8 @@ processResources {
 	filesMatching("fabric.mod.json") {
 		expand "version": project.version
 	}
+
+	exclude("assets/arcadiandream/sounds/records/README.md")
 }
 
 def dataOutput = 'src/main/generated/resources'
