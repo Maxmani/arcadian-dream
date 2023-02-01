@@ -23,7 +23,6 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
-import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
 
@@ -199,10 +198,5 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
     @Override // Like the Hourai Elixir, this is necessary to prevent applying Mending through the anvil
     public boolean isDamageable() {
         return false;
-    }
-
-    @Override // TODO: Make shots repairable in the danmaku crafting table itself
-    public boolean canRepair(ItemStack stack, ItemStack ingredient) {
-        return ingredient.getItem() == ModItems.MAX_POINT_ITEM;
     }
 }

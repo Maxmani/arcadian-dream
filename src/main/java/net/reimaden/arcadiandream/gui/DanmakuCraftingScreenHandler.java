@@ -24,6 +24,7 @@ import net.reimaden.arcadiandream.util.ModTags;
 public class DanmakuCraftingScreenHandler extends ScreenHandler {
 
     private static final int SIZE = DanmakuCraftingTableBlockEntity.SIZE;
+    private static final int REPAIR_AMOUNT = DanmakuCraftingTableBlockEntity.REPAIR_AMOUNT;
 
     private final Inventory inventory;
 
@@ -189,21 +190,33 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
          * 6 = Color
          */
 
+        ItemStack coreStack = inventory.getStack(0);
+        ItemStack shotStack = inventory.getStack(1);
+        ItemStack modifierStack = inventory.getStack(3);
+        ItemStack repairStack = inventory.getStack(4);
+        ItemStack patternStack = inventory.getStack(5);
+        ItemStack colorStack = inventory.getStack(6);
+
         // If creating a shot from a bullet core, clear the modifier slot too
-        if (inventory.getStack(0).getItem() instanceof BulletCoreItem) {
-            inventory.getStack(3).decrement(1);
+        if (coreStack.getItem() instanceof BulletCoreItem) {
+            modifierStack.decrement(1);
         }
 
         // If modifying a shot, clear any modifier slots too
-        if (inventory.getStack(1).getItem() instanceof BaseShotItem) {
-            inventory.getStack(3).decrement(1);
-            inventory.getStack(4).decrement(1);
-            inventory.getStack(5).decrement(1);
-            inventory.getStack(6).decrement(1);
+        if (shotStack.getItem() instanceof BaseShotItem) {
+            modifierStack.decrement(1);
+            if (!repairStack.isEmpty()) {
+                int repairCost = (shotStack.getDamage() + REPAIR_AMOUNT - 1) / REPAIR_AMOUNT;
+                repairCost = Math.min(repairCost, repairStack.getCount());
+                repairStack.decrement(repairCost);
+            }
+
+            patternStack.decrement(1);
+            colorStack.decrement(1);
         }
 
         // Clear the input slots
-        inventory.getStack(0).decrement(1);
-        inventory.getStack(1).decrement(1);
+        coreStack.decrement(1);
+        shotStack.decrement(1);
     }
 }

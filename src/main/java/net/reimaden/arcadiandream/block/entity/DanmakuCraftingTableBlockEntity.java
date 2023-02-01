@@ -46,6 +46,7 @@ import java.util.Map;
 public class DanmakuCraftingTableBlockEntity extends BlockEntity implements ImplementedInventory, NamedScreenHandlerFactory, SidedInventory {
 
     public static final int SIZE = 7;
+    public static final int REPAIR_AMOUNT = 50;
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(SIZE, ItemStack.EMPTY);
 
     public DanmakuCraftingTableBlockEntity(BlockPos pos, BlockState state) {
@@ -115,26 +116,34 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
     }
 
     private void modifyShot(ItemStack stack) {
-        if (items.get(5).isEmpty()) {
-            return;
+        if (!items.get(4).isEmpty()) {
+            for (int i = 0; i < items.get(4).getCount(); i++) {
+                if (stack.getDamage() <= 0) {
+                    break;
+                }
+
+                stack.setDamage(stack.getDamage() - REPAIR_AMOUNT);
+            }
         }
 
-        ImmutableList<Item> patternItems = ImmutableList.of(
-                ModItems.SPREAD_PATTERN, ModItems.RAY_PATTERN, ModItems.RING_PATTERN
-        );
+        if (!items.get(5).isEmpty()) {
+            ImmutableList<Item> patternItems = ImmutableList.of(
+                    ModItems.SPREAD_PATTERN, ModItems.RAY_PATTERN, ModItems.RING_PATTERN
+            );
 
-        Map<Item, Integer> itemMap = new HashMap<>();
-        for (int i = 0; i < patternItems.size(); i++) {
-            itemMap.put(patternItems.get(i), i);
-        }
+            Map<Item, Integer> itemMap = new HashMap<>();
+            for (int i = 0; i < patternItems.size(); i++) {
+                itemMap.put(patternItems.get(i), i);
+            }
 
-        int itemId = itemMap.getOrDefault(items.get(5).getItem(), 0);
+            int itemId = itemMap.getOrDefault(items.get(5).getItem(), 0);
 
-        switch (itemId) {
-            case 0 -> stack.getOrCreateNbt().putString("pattern", "spread");
-            case 1 -> stack.getOrCreateNbt().putString("pattern", "ray");
-            case 2 -> stack.getOrCreateNbt().putString("pattern", "ring");
-            default -> throw new IllegalArgumentException("No valid bullet pattern found!");
+            switch (itemId) {
+                case 0 -> stack.getOrCreateNbt().putString("pattern", "spread");
+                case 1 -> stack.getOrCreateNbt().putString("pattern", "ray");
+                case 2 -> stack.getOrCreateNbt().putString("pattern", "ring");
+                default -> throw new IllegalArgumentException("No valid bullet pattern found!");
+            }
         }
     }
 
