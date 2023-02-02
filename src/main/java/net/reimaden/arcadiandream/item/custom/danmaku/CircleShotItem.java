@@ -12,9 +12,11 @@ import net.minecraft.world.World;
 
 public class CircleShotItem extends BaseShotItem {
 
-    public CircleShotItem(Settings settings, int power, float speed, int maxAge, int cooldown, float gravity,
-                          float divergence, String pattern, int density) {
-        super(settings, power, speed, maxAge, cooldown, gravity, divergence, pattern, density);
+    public CircleShotItem(Settings settings, float power, float speed, int duration, int cooldown, float gravity,
+                          float divergence, String pattern, int density, float maxPower, float maxSpeed, int maxDuration,
+                          int maxCooldown, float maxDivergence, int maxDensity) {
+        super(settings, power, speed, duration, cooldown, gravity, divergence, pattern,
+                density, maxPower, maxSpeed, maxDuration, maxCooldown, maxDivergence, maxDensity);
     }
 
     @Override

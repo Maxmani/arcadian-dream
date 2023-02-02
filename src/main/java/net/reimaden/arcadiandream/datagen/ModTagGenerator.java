@@ -131,6 +131,19 @@ public class ModTagGenerator {
                     .add(ModItems.CIRCLE_SHOT);
             getOrCreateTagBuilder(ModTags.Items.DANMAKU_REPAIR_ITEMS)
                     .add(ModItems.FAITH_ITEM);
+            getOrCreateTagBuilder(ModTags.Items.DANMAKU_MODIFIERS)
+                    .addTag(ModTags.Items.DANMAKU_POWER_MODIFIERS)
+                    .addTag(ModTags.Items.DANMAKU_DENSITY_MODIFIERS)
+                    .addTag(ModTags.Items.DANMAKU_SPEED_MODIFIERS)
+                    .addTag(ModTags.Items.DANMAKU_DURATION_MODIFIERS);
+            getOrCreateTagBuilder(ModTags.Items.DANMAKU_POWER_MODIFIERS)
+                    .add(ModItems.POWER_ITEM);
+            getOrCreateTagBuilder(ModTags.Items.DANMAKU_DENSITY_MODIFIERS)
+                    .add(ModItems.BIG_POWER_ITEM);
+            getOrCreateTagBuilder(ModTags.Items.DANMAKU_SPEED_MODIFIERS)
+                    .add(ModItems.POINT_ITEM);
+            getOrCreateTagBuilder(ModTags.Items.DANMAKU_DURATION_MODIFIERS)
+                    .add(ModItems.STAR_ITEM);
         }
     }
 }

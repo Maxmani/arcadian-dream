@@ -38,6 +38,11 @@ public class ModTags {
         public static final TagKey<Item> BULLET_CORES = createTag("bullet_cores");
         public static final TagKey<Item> SHOTS = createTag("shots");
         public static final TagKey<Item> DANMAKU_REPAIR_ITEMS = createTag("danmaku_repair_items");
+        public static final TagKey<Item> DANMAKU_MODIFIERS = createTag("danmaku_modifiers");
+        public static final TagKey<Item> DANMAKU_POWER_MODIFIERS = createTag("danmaku_power_modifiers");
+        public static final TagKey<Item> DANMAKU_DENSITY_MODIFIERS = createTag("danmaku_density_modifiers");
+        public static final TagKey<Item> DANMAKU_SPEED_MODIFIERS = createTag("danmaku_speed_modifiers");
+        public static final TagKey<Item> DANMAKU_DURATION_MODIFIERS = createTag("danmaku_duration_modifiers");
 
         private static TagKey<Item> createTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(ArcadianDream.MOD_ID, name));

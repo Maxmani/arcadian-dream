@@ -13,6 +13,8 @@ import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.screen.ArrayPropertyDelegate;
+import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.reimaden.arcadiandream.block.entity.DanmakuCraftingTableBlockEntity;
@@ -24,19 +26,20 @@ import net.reimaden.arcadiandream.util.ModTags;
 public class DanmakuCraftingScreenHandler extends ScreenHandler {
 
     private static final int SIZE = DanmakuCraftingTableBlockEntity.SIZE;
-    private static final int REPAIR_AMOUNT = DanmakuCraftingTableBlockEntity.REPAIR_AMOUNT;
 
     private final Inventory inventory;
+    private final PropertyDelegate propertyDelegate;
 
     public DanmakuCraftingScreenHandler(int syncId, PlayerInventory inventory) {
-        this(syncId, inventory, new SimpleInventory(SIZE));
+        this(syncId, inventory, new SimpleInventory(SIZE), new ArrayPropertyDelegate(2));
     }
 
-    public DanmakuCraftingScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory) {
+    public DanmakuCraftingScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory, PropertyDelegate propertyDelegate) {
         super(ModScreenHandlers.DANMAKU_CRAFTING_SCREEN_HANDLER, syncId);
         checkSize(inventory, SIZE);
         this.inventory = inventory;
         inventory.onOpen(playerInventory.player);
+        this.propertyDelegate = propertyDelegate;
 
         // Set some helper variables
         final int topY = 32;
@@ -56,7 +59,7 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
         DanmakuCraftingSlot coreSlot = new DanmakuCraftingSlot(inventory, 0, 15, topY, BulletCoreItem.class);
         DanmakuCraftingSlot shotSlot = new DanmakuCraftingSlot(inventory, 1, 39, topY, BaseShotItem.class);
         DanmakuOutputSlot resultSlot = new DanmakuOutputSlot(playerInventory.player, inventory, 2, 136, 44);
-        Slot modifierSlot = new Slot(inventory, 3, 27, bottomY);
+        DanmakuCraftingSlot modifierSlot = new DanmakuCraftingSlot(inventory, 3, 27, bottomY, ModTags.Items.DANMAKU_MODIFIERS);
         DanmakuCraftingSlot repairSlot = new DanmakuCraftingSlot(inventory, 4, 80, topY, ModTags.Items.DANMAKU_REPAIR_ITEMS);
         DanmakuCraftingSlot patternSlot = new DanmakuCraftingSlot(inventory, 5, 68, bottomY, PatternItem.class);
         DanmakuCraftingSlot colorSlot = new DanmakuCraftingSlot(inventory, 6, 92, bottomY, ConventionalItemTags.DYES);
@@ -73,6 +76,8 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
         // Add player inventory
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
+
+        addProperties(propertyDelegate);
     }
 
     @Override
@@ -126,7 +131,7 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
         return slot.hasStack();
     }
 
-    static class DanmakuOutputSlot extends Slot {
+    class DanmakuOutputSlot extends Slot {
 
         private final PlayerEntity player;
 
@@ -148,6 +153,8 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
 
             // Clear the input slots
             craft(inventory);
+            propertyDelegate.set(0, 0);
+            propertyDelegate.set(1, 0);
         }
 
         @Override
@@ -183,7 +190,7 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
         }
     }
 
-    private static void craft(Inventory inventory) {
+    private void craft(Inventory inventory) {
         /* Inventory slot indexes
          * 0 = Core
          * 1 = Shot
@@ -208,12 +215,8 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
 
         // If modifying a shot, clear any modifier slots too
         if (shotStack.getItem() instanceof BaseShotItem) {
-            modifierStack.decrement(1);
-            if (!repairStack.isEmpty()) {
-                int repairCost = (shotStack.getDamage() + REPAIR_AMOUNT - 1) / REPAIR_AMOUNT;
-                repairCost = Math.min(repairCost, repairStack.getCount());
-                repairStack.decrement(repairCost);
-            }
+            modifierStack.decrement(propertyDelegate.get(0));
+            repairStack.decrement(propertyDelegate.get(1));
 
             patternStack.decrement(1);
             colorStack.decrement(1);

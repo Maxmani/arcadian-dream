@@ -54,7 +54,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
         if (!world.isClient) {
             if (age <= 1) {
                 ((ServerWorld) world).spawnParticles(ModParticles.BULLET_SPAWN, getX(), getY(), getZ(), 1, 0, 0, 0, 0);
-            } else if (age >= getMaxAge()) {
+            } else if (age >= getDuration()) {
                 kill();
                 ((ServerWorld) world).spawnParticles(ModParticles.BULLET_DESPAWN, getX(), getY(), getZ(), 1, 0, 0, 0, 0);
             }
@@ -64,7 +64,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
         Entity entity = entityHitResult.getEntity();
-        entity.damage(ModDamageSources.danmaku(this, getOwner()), (float) getPower());
+        entity.damage(ModDamageSources.danmaku(this, getOwner()), getPower());
     }
 
     protected void onCollision(HitResult hitResult) {
@@ -85,16 +85,16 @@ public class BaseBulletEntity extends ThrownItemEntity {
     }
 
     @SuppressWarnings("DataFlowIssue")
-    public int getPower() {
+    public float getPower() {
         if (getStack().hasNbt()) {
-            return getStack().getNbt().getInt("power");
+            return getStack().getNbt().getFloat("power");
         } else {
             return 0;
         }
     }
 
     @SuppressWarnings("DataFlowIssue")
-    public int getMaxAge() {
+    public int getDuration() {
         if (getStack().hasNbt()) {
             return getStack().getNbt().getInt("duration");
         } else {

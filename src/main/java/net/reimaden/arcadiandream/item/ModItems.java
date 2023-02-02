@@ -100,7 +100,8 @@ public class ModItems {
     public static final Item CIRCLE_BULLET_CORE = registerItem("circle_bullet_core", new BulletCoreItem(new FabricItemSettings()));
 
     public static final Item CIRCLE_SHOT = registerItem("circle_shot", new CircleShotItem(new FabricItemSettings().maxDamage(100),
-            3, 1.0f, 200, 2, 0.0f, 0.0f, "spread", 1));
+            1, 0.8f, 100, 2, 0.0f, 0.0f, "spread", 1,
+            15, 2, 200, 100, 90, 25));
 
     // Music Discs
     public static final Item MUSIC_DISC_FAIRY_PLAYGROUND = registerItem("music_disc_fairy_playground", new MusicDiscItem(10, ModSounds.MUSIC_DISC_FAIRY_PLAYGROUND,

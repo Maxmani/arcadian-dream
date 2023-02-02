@@ -25,6 +25,7 @@ import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.registry.Registries;
 import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -40,6 +41,7 @@ import net.reimaden.arcadiandream.item.custom.danmaku.BaseShotItem;
 import net.reimaden.arcadiandream.item.custom.danmaku.BulletCoreItem;
 import net.reimaden.arcadiandream.networking.ModMessages;
 import net.reimaden.arcadiandream.util.ColorMap;
+import net.reimaden.arcadiandream.util.ModTags;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
@@ -48,11 +50,37 @@ import java.util.Map;
 public class DanmakuCraftingTableBlockEntity extends BlockEntity implements ImplementedInventory, NamedScreenHandlerFactory, SidedInventory {
 
     public static final int SIZE = 7;
-    public static final int REPAIR_AMOUNT = 50;
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(SIZE, ItemStack.EMPTY);
+
+    protected final PropertyDelegate propertyDelegate;
+    private int modifierCount = 0;
+    private int repairCount = 0;
 
     public DanmakuCraftingTableBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.DANMAKU_CRAFTING_TABLE, pos, state);
+        this.propertyDelegate = new PropertyDelegate() {
+            @Override
+            public int get(int index) {
+                return switch (index) {
+                    case 0 -> modifierCount;
+                    case 1 -> repairCount;
+                    default -> 0;
+                };
+            }
+
+            @Override
+            public void set(int index, int value) {
+                switch (index) {
+                    case 0 -> modifierCount = value;
+                    case 1 -> repairCount = value;
+                }
+            }
+
+            @Override
+            public int size() {
+                return 2;
+            }
+        };
     }
 
     @Override
@@ -77,6 +105,9 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
          * 6 = Color
          */
 
+        propertyDelegate.set(0, 0);
+        propertyDelegate.set(1, 0);
+
         if (!isValid()) {
             items.set(2, ItemStack.EMPTY);
             return;
@@ -90,7 +121,7 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
     }
 
     private void craftShot() {
-        if (!(items.get(0).getItem() instanceof BulletCoreItem) || !items.get(3).isOf(ModItems.POWER_ITEM)) {
+        if (!(items.get(0).getItem() instanceof BulletCoreItem) || !items.get(3).isOf(ModItems.BIG_POWER_ITEM)) {
             items.set(2, ItemStack.EMPTY);
             return;
         }
@@ -119,14 +150,36 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
         items.set(2, modifiedShot);
     }
 
+    // I am too afraid to optimize this
+    // TODO: Add gravity and divergence modifiers
     private void modifyShot(ItemStack stack) {
+        BaseShotItem shot = (BaseShotItem) stack.getItem();
+
+        if (!items.get(3).isEmpty()) {
+            ItemStack modifierStack = items.get(3);
+            int count = modifierStack.getCount();
+            float percentage = 0.05f;
+            float reductionPercentage = 0.02f;
+
+            double maxPower, maxSpeed;
+            int maxDuration;
+            maxPower = shot.getMaxPower();
+            maxSpeed = shot.getMaxSpeed();
+            maxDuration = shot.getMaxDuration();
+
+            applyModifiers(stack, shot, modifierStack, count, percentage, reductionPercentage, maxPower, maxSpeed, maxDuration);
+        }
+
         if (!items.get(4).isEmpty()) {
+            int repairAmount = 50;
+
             for (int i = 0; i < items.get(4).getCount(); i++) {
                 if (stack.getDamage() <= 0) {
                     break;
                 }
 
-                stack.setDamage(stack.getDamage() - REPAIR_AMOUNT);
+                stack.setDamage(stack.getDamage() - repairAmount);
+                propertyDelegate.set(1, propertyDelegate.get(1) + 1);
             }
         }
 
@@ -143,9 +196,9 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
             int itemId = itemMap.getOrDefault(items.get(5).getItem(), 0);
 
             switch (itemId) {
-                case 0 -> stack.getOrCreateNbt().putString("pattern", "spread");
-                case 1 -> stack.getOrCreateNbt().putString("pattern", "ray");
-                case 2 -> stack.getOrCreateNbt().putString("pattern", "ring");
+                case 0 -> shot.setPattern(stack, "spread");
+                case 1 -> shot.setPattern(stack, "ray");
+                case 2 -> shot.setPattern(stack, "ring");
                 default -> throw new IllegalArgumentException("No valid bullet pattern found!");
             }
         }
@@ -155,9 +208,97 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
             if (dye instanceof DyeItem) {
                 Integer colorInt = ColorMap.getColorInt(((DyeItem) dye).getColor().getName());
                 if (colorInt != null) {
-                    BaseShotItem shot = (BaseShotItem) stack.getItem();
                     shot.setColor(stack, colorInt);
                 }
+            }
+        }
+    }
+
+    private void applyModifiers(ItemStack stack, BaseShotItem shot, ItemStack modifierStack, int count, float percentage, float reductionPercentage, double maxPower, double maxSpeed, int maxDuration) {
+        if (modifierStack.isIn(ModTags.Items.DANMAKU_POWER_MODIFIERS)) {
+            maxPower *= 2;
+
+            for (int i = 0; i < count; i++) {
+                if (shot.getPower(stack) >= shot.getMaxPower()) {
+                    break;
+                }
+
+                double power = shot.getPower(stack);
+                double result = power * (1 + percentage * (1 - (power / maxPower)));
+                shot.setPower(stack, (float) result);
+
+                shot.setCooldown(stack, shot.getCooldown(stack) + 1);
+                double speed = shot.getSpeed(stack);
+                double resultReductionSpeed = speed * (1 - reductionPercentage * (speed / maxSpeed));
+                int duration = shot.getDuration(stack);
+                double resultReductionDuration = duration * (1 - reductionPercentage * (duration / (double) maxDuration));
+                shot.setSpeed(stack, Math.max((float) resultReductionSpeed, 0.05f));
+                shot.setDuration(stack, Math.max((int) resultReductionDuration, 20));
+
+                propertyDelegate.set(0, propertyDelegate.get(0) + 1);
+            }
+        } else if (modifierStack.isIn(ModTags.Items.DANMAKU_DENSITY_MODIFIERS)) {
+            for (int i = 0; i < count; i++) {
+                if (shot.getDensity(stack) >= shot.getMaxDensity()) {
+                    break;
+                }
+
+                shot.setDensity(stack, shot.getDensity(stack) + 1);
+
+                shot.setCooldown(stack, shot.getCooldown(stack) + 1);
+                double resultReductionPower = shot.getPower(stack) * (1 - reductionPercentage * (shot.getPower(stack) / maxPower));
+                double speed = shot.getSpeed(stack);
+                double resultReductionSpeed = speed * (1 - reductionPercentage * (speed / maxSpeed));
+                int duration = shot.getDuration(stack);
+                double resultReductionDuration = duration * (1 - reductionPercentage * (duration / (double) maxDuration));
+                shot.setPower(stack, Math.max((float) resultReductionPower, 0.1f));
+                shot.setSpeed(stack, Math.max((float) resultReductionSpeed, 0.05f));
+                shot.setDuration(stack, Math.max((int) resultReductionDuration, 20));
+
+                propertyDelegate.set(0, propertyDelegate.get(0) + 1);
+            }
+        } else if (modifierStack.isIn(ModTags.Items.DANMAKU_SPEED_MODIFIERS)) {
+            maxSpeed *= 2;
+
+            for (int i = 0; i < count; i++) {
+                if (shot.getSpeed(stack) >= shot.getMaxSpeed()) {
+                    break;
+                }
+
+                double speed = shot.getSpeed(stack);
+                double result = speed * (1 + percentage * (1 - (speed / maxSpeed)));
+                shot.setSpeed(stack, (float) result);
+
+                shot.setCooldown(stack, shot.getCooldown(stack) + 1);
+                double resultReductionPower = shot.getPower(stack) * (1 - reductionPercentage * (shot.getPower(stack) / maxPower));
+                int duration = shot.getDuration(stack);
+                double resultReductionDuration = duration * (1 - reductionPercentage * (duration / (double) maxDuration));
+                shot.setPower(stack, Math.max((float) resultReductionPower, 0.1f));
+                shot.setDuration(stack, Math.max((int) resultReductionDuration, 20));
+
+                propertyDelegate.set(0, propertyDelegate.get(0) + 1);
+            }
+        } else if (modifierStack.isIn(ModTags.Items.DANMAKU_DURATION_MODIFIERS)) {
+            maxDuration *= 2;
+
+            for (int i = 0; i < count; i++) {
+                if (shot.getDuration(stack) >= shot.getMaxDuration()) {
+                    break;
+                }
+
+                double duration = shot.getDuration(stack);
+                double result = duration * (1 + percentage * (1 - (duration / maxDuration)));
+                result = Math.ceil(result);
+                shot.setDuration(stack, (int) result);
+
+                shot.setCooldown(stack, shot.getCooldown(stack) + 1);
+                double resultReductionPower = shot.getPower(stack) * (1 - reductionPercentage * (shot.getPower(stack) / maxPower));
+                double speed = shot.getSpeed(stack);
+                double resultReductionSpeed = speed * (1 - reductionPercentage * (speed / maxSpeed));
+                shot.setPower(stack, Math.max((float) resultReductionPower, 0.1f));
+                shot.setSpeed(stack, Math.max((float) resultReductionSpeed, 0.05f));
+
+                propertyDelegate.set(0, propertyDelegate.get(0) + 1);
             }
         }
     }
@@ -194,15 +335,19 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
     }
 
     @Override
-    public void readNbt(NbtCompound nbt) {
-        super.readNbt(nbt);
-        Inventories.readNbt(nbt, items);
-    }
-
-    @Override
     public void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         Inventories.writeNbt(nbt, items);
+        nbt.putInt("modifierCount", modifierCount);
+        nbt.putInt("repairCount", repairCount);
+    }
+
+    @Override
+    public void readNbt(NbtCompound nbt) {
+        super.readNbt(nbt);
+        Inventories.readNbt(nbt, items);
+        modifierCount = nbt.getInt("modifierCount");
+        repairCount = nbt.getInt("repairCount");
     }
 
     @Nullable
@@ -232,7 +377,7 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory inventory, PlayerEntity player) {
-        return new DanmakuCraftingScreenHandler(syncId, inventory, this);
+        return new DanmakuCraftingScreenHandler(syncId, inventory, this, propertyDelegate);
     }
 
     @Override

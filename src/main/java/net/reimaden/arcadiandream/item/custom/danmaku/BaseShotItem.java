@@ -31,26 +31,48 @@ import java.util.List;
 
 public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns {
 
-    private final int power;
+    // Shot properties, aka the initial stats
+    private final float power;
     private final float speed;
-    private final int maxAge;
+    private final int duration;
     private final int cooldown;
     private final float gravity;
     private final float divergence;
     private final String pattern;
     private final int density;
 
-    public BaseShotItem(Settings settings, int power, float speed, int maxAge, int cooldown, float gravity,
-                        float divergence, String pattern, int density) {
+    // Max values for the properties
+    private final float maxPower;
+    private final float maxSpeed;
+    private final int maxDuration;
+    private final int maxCooldown;
+    private final float maxGravity;
+    private final float maxDivergence;
+    private final int maxDensity;
+
+    // Dear God, please forgive me for this constructor
+    public BaseShotItem(Settings settings, float power, float speed, int duration, int cooldown, float gravity,
+                        float divergence, String pattern, int density, float maxPower, float maxSpeed, int maxDuration,
+                        int maxCooldown, float maxDivergence, int maxDensity) {
         super(settings);
         this.power = power;
         this.speed = speed;
-        this.maxAge = maxAge;
+        this.duration = duration;
         this.cooldown = cooldown;
         this.gravity = gravity;
         this.divergence = divergence;
         this.pattern = pattern;
         this.density = density;
+
+        this.maxPower = maxPower;
+        this.maxSpeed = maxSpeed;
+        this.maxDuration = maxDuration;
+        this.maxCooldown = maxCooldown;
+        this.maxDivergence = maxDivergence;
+        this.maxDensity = maxDensity;
+
+        // Gravity is a special case, because the difference between 0 and 1 is dumb
+        this.maxGravity = 1f;
     }
 
     private static boolean isUsable(ItemStack stack) {
@@ -96,7 +118,7 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         super.postProcessNbt(nbt);
 
         String[] keys = {"power", "speed", "duration", "cooldown", "gravity", "divergence", "pattern", "density"};
-        Object[] values = {power, speed, maxAge, cooldown, gravity, divergence, pattern, density};
+        Object[] values = {power, speed, duration, cooldown, gravity, divergence, pattern, density};
 
         // Set default values
         for (int i = 0; i < keys.length; i++) {
@@ -133,9 +155,9 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         NbtCompound nbt = stack.getNbt();
 
         if (nbt != null) {
-            int power = nbt.getInt("power");
+            float power = nbt.getFloat("power");
             float speed = nbt.getFloat("speed");
-            int maxAge = nbt.getInt("duration");
+            int duration = nbt.getInt("duration");
             int cooldown = nbt.getInt("cooldown");
             float gravity = nbt.getFloat("gravity");
             float divergence = nbt.getFloat("divergence");
@@ -143,12 +165,17 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
             int density = nbt.getInt("density");
 
             String keyPrefix = "item." + ArcadianDream.MOD_ID + ".shot.tooltip_";
-            tooltip.add(Text.translatable(keyPrefix + "power", power));
-            tooltip.add(Text.translatable(keyPrefix + "speed", speed));
-            tooltip.add(Text.translatable(keyPrefix + "duration", (float) maxAge / 20));
+            String formattedPower = String.format("%.2f", power);
+            String formattedSpeed = String.format("%.2f", speed);
+            String formattedGravity = String.format("%.2f", gravity);
+            String formattedDivergence = String.format("%.2f", divergence);
+
+            tooltip.add(Text.translatable(keyPrefix + "power", formattedPower));
+            tooltip.add(Text.translatable(keyPrefix + "speed", formattedSpeed));
+            tooltip.add(Text.translatable(keyPrefix + "duration", (float) duration / 20));
             tooltip.add(Text.translatable(keyPrefix + "cooldown", ((float) cooldown / 20) * ArcadianDream.CONFIG.danmakuCooldownMultiplier()));
-            tooltip.add(Text.translatable(keyPrefix + "gravity", gravity));
-            tooltip.add(Text.translatable(keyPrefix + "divergence", divergence));
+            tooltip.add(Text.translatable(keyPrefix + "gravity", formattedGravity));
+            tooltip.add(Text.translatable(keyPrefix + "divergence", formattedDivergence));
             tooltip.add(Text.translatable(keyPrefix + "pattern", Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.pattern_" + pattern.toLowerCase())));
             tooltip.add(Text.translatable(keyPrefix + "density", density));
             tooltip.add(Text.translatable(keyPrefix + "color", getColorName(stack).getString()).setStyle(Style.EMPTY.withColor(getColor(stack))));
@@ -173,5 +200,113 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
     @Override // Like the Hourai Elixir, this is necessary to prevent applying Mending through the anvil
     public boolean isDamageable() {
         return false;
+    }
+
+    // These aren't traditional getters and setters, but they're used to set the values of the NBT tags
+
+    private void setParamFloat(ItemStack stack, String key, float value, float maxValue) {
+        stack.getOrCreateNbt().putFloat(key, Math.min(value, maxValue));
+    }
+
+    private void setParamInt(ItemStack stack, String key, int value, int maxValue) {
+        stack.getOrCreateNbt().putInt(key, Math.min(value, maxValue));
+    }
+
+    public void setPower(ItemStack stack, float power) {
+        setParamFloat(stack, "power", power, maxPower);
+    }
+
+    public void setSpeed(ItemStack stack, float speed) {
+        setParamFloat(stack, "speed", speed, maxSpeed);
+    }
+
+    public void setDuration(ItemStack stack, int duration) {
+        setParamInt(stack, "duration", duration, maxDuration);
+    }
+
+    public void setCooldown(ItemStack stack, int cooldown) {
+        setParamInt(stack, "cooldown", cooldown, maxCooldown);
+    }
+
+    @SuppressWarnings("unused")
+    public void setGravity(ItemStack stack, float gravity) {
+        setParamFloat(stack, "gravity", gravity, maxGravity);
+    }
+
+    @SuppressWarnings("unused")
+    public void setDivergence(ItemStack stack, float divergence) {
+        setParamFloat(stack, "divergence", divergence, maxDivergence);
+    }
+
+    public void setPattern(ItemStack stack, String pattern) {
+        stack.getOrCreateNbt().putString("pattern", pattern);
+    }
+
+    public void setDensity(ItemStack stack, int density) {
+        setParamInt(stack, "density", density, maxDensity);
+    }
+
+    private float getParamFloat(ItemStack stack, String key) {
+        return stack.getOrCreateNbt().getFloat(key);
+    }
+
+    private int getParamInt(ItemStack stack, String key) {
+        return stack.getOrCreateNbt().getInt(key);
+    }
+
+    public float getPower(ItemStack stack) {
+        return getParamFloat(stack, "power");
+    }
+
+    public float getSpeed(ItemStack stack) {
+        return getParamFloat(stack, "speed");
+    }
+
+    public int getDuration(ItemStack stack) {
+        return getParamInt(stack, "duration");
+    }
+
+    public int getCooldown(ItemStack stack) {
+        return getParamInt(stack, "cooldown");
+    }
+
+    @SuppressWarnings("unused")
+    public float getGravity(ItemStack stack) {
+        return getParamFloat(stack, "gravity");
+    }
+
+    @SuppressWarnings("unused")
+    public float getDivergence(ItemStack stack) {
+        return getParamFloat(stack, "divergence");
+    }
+
+    public int getDensity(ItemStack stack) {
+        return getParamInt(stack, "density");
+    }
+
+    public float getMaxPower() {
+        return maxPower;
+    }
+
+    public float getMaxSpeed() {
+        return maxSpeed;
+    }
+
+    public int getMaxDuration() {
+        return maxDuration;
+    }
+
+    @SuppressWarnings("unused")
+    public float getMaxGravity() {
+        return maxGravity;
+    }
+
+    @SuppressWarnings("unused")
+    public float getMaxDivergence() {
+        return maxDivergence;
+    }
+
+    public int getMaxDensity() {
+        return maxDensity;
     }
 }

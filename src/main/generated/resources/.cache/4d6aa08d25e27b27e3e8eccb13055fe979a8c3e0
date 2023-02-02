@@ -1,4 +1,4 @@
-// 1.19.3	2023-01-31T23:14:20.181853685	Arcadian Dream/Recipes
+// 1.19.3	2023-02-02T21:27:52.148611292	Arcadian Dream/Recipes
 feba32d12abb9cfd082a0379cdf39d94b2445a33 data/arcadiandream/recipes/makaite_ingot_from_smelting_raw_makaite.json
 1d0f32b71173df524db21330a43cf06bae91af0f data/arcadiandream/advancements/recipes/misc/raw_makaite.json
 7b48ed8cd5d1401e3d5f36f103d7e7870b6f74af data/arcadiandream/recipes/makaite_pickaxe.json
@@ -47,8 +47,8 @@ b149baaa4f29c3a00a4b7e69ffc0388e916bbc6c data/arcadiandream/recipes/ritual_craft
 b142b40199b91786942e9bd7323f5c41406a3f22 data/arcadiandream/advancements/recipes/combat/ordinary_hat.json
 ce652719baa764c1b2624ba1b878cf1e72993039 data/arcadiandream/advancements/recipes/combat/makaite_boots.json
 0910cf86328e66edd02b2a6a98e7c9641d640f67 data/arcadiandream/recipes/ritual_shrine.json
-0e6dffd2806a5d39f826851a794f6d1ab8040a2d data/arcadiandream/advancements/recipes/misc/dragon_gem.json
 00b9ac655478c65424b5ff833049fd34ecc102e0 data/arcadiandream/recipes/makaite_sword.json
+0e6dffd2806a5d39f826851a794f6d1ab8040a2d data/arcadiandream/advancements/recipes/misc/dragon_gem.json
 574b4854a15bab503482052f90001bd32aa60c55 data/arcadiandream/advancements/recipes/combat/makaite_chestplate.json
 0c988a901d06814afcb13e633cfa1971b6241909 data/arcadiandream/recipes/faith_item.json
 17147763665366507de5d82a7e3b56ee22b79d4b data/arcadiandream/recipes/dragon_gem_block.json
