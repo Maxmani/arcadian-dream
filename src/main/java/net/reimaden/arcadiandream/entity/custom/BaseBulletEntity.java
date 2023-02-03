@@ -51,12 +51,10 @@ public class BaseBulletEntity extends ThrownItemEntity {
     @Override
     public void tick() {
         super.tick();
-        if (!world.isClient) {
-            if (age <= 1) {
-                ((ServerWorld) world).spawnParticles(ModParticles.BULLET_SPAWN, getX(), getY(), getZ(), 1, 0, 0, 0, 0);
-            } else if (age >= getDuration()) {
+        if (!world.isClient()) {
+            if (age >= getDuration()) {
                 kill();
-                ((ServerWorld) world).spawnParticles(ModParticles.BULLET_DESPAWN, getX(), getY(), getZ(), 1, 0, 0, 0, 0);
+                despawnParticle((ServerWorld) world);
             }
         }
     }
@@ -72,43 +70,48 @@ public class BaseBulletEntity extends ThrownItemEntity {
 
         if (!world.isClient()) {
             kill();
-        }
-
-        bulletEffects();
-    }
-
-    private void bulletEffects() {
-        if (world instanceof ServerWorld serverWorld) {
-            serverWorld.spawnParticles(ModParticles.BULLET_DESPAWN, getX(), getY(), getZ(), 1, 0, 0, 0, 0);
-            serverWorld.playSound(null, getX(), getY(), getZ(), ModSounds.ENTITY_DANMAKU_HIT, SoundCategory.NEUTRAL, 1f, 1f);
+            bulletEffects((ServerWorld) world);
         }
     }
 
-    @SuppressWarnings("DataFlowIssue")
-    public float getPower() {
+    private void bulletEffects(ServerWorld serverWorld) {
+        despawnParticle(serverWorld);
+        serverWorld.playSound(null, getX(), getY(), getZ(),
+                ModSounds.ENTITY_DANMAKU_HIT, SoundCategory.NEUTRAL, 1f, getSoundPitch());
+    }
+
+    private void despawnParticle(ServerWorld serverWorld) {
+        serverWorld.spawnParticles(ModParticles.BULLET_DESPAWN,
+                getPos().getX(), getPos().getY() + getHeight() / 2, getPos().getZ(),
+                1, 0, 0, 0, 0);
+    }
+
+    private float getPower() {
         if (getStack().hasNbt()) {
-            return getStack().getNbt().getFloat("power");
+            return getStack().getOrCreateNbt().getFloat("power");
         } else {
             return 0;
         }
     }
 
-    @SuppressWarnings("DataFlowIssue")
-    public int getDuration() {
+    private int getDuration() {
         if (getStack().hasNbt()) {
-            return getStack().getNbt().getInt("duration");
+            return getStack().getOrCreateNbt().getInt("duration");
         } else {
             return 200;
         }
     }
 
-    @SuppressWarnings("DataFlowIssue")
     @Override
     protected float getGravity() {
         if (getStack().hasNbt()) {
-            return getStack().getNbt().getFloat("gravity");
+            return getStack().getOrCreateNbt().getFloat("gravity");
         } else {
             return 0.0f;
         }
+    }
+
+    public float getSoundPitch() {
+        return 1f;
     }
 }

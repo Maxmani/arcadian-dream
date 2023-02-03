@@ -20,6 +20,7 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
@@ -30,6 +31,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns {
+
+    private final Random random = Random.create();
 
     // Shot properties, aka the initial stats
     private final float power;
@@ -88,7 +91,8 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
             return TypedActionResult.pass(stack);
         }
 
-        world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.ENTITY_DANMAKU_FIRE, SoundCategory.PLAYERS, 1f, 1f);
+        world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.ENTITY_DANMAKU_FIRE,
+                SoundCategory.PLAYERS, 1f, 1f + (random.nextFloat() - 0.5f) * 0.1f);
         user.getItemCooldownManager().set(this, nbt.getInt("cooldown") * ArcadianDream.CONFIG.danmakuCooldownMultiplier());
 
         int density = nbt.getInt("density");

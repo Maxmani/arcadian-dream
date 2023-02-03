@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -81,8 +81,8 @@ public class OnbashiraBlock extends BlockWithEntity implements BlockEntityProvid
                 player.getStackInHand(hand).decrement(1);
             }
             blockEntity.markDirty();
-            world.playSound(null, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, ModSounds.BLOCK_ONBASHIRA_ADD_ITEM, SoundCategory.BLOCKS,
-                    1.0f, 1.0f);
+            world.playSound(null, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5,
+                    ModSounds.BLOCK_ONBASHIRA_ADD_ITEM, SoundCategory.BLOCKS, 1.0f, 1.0f);
             player.incrementStat(ModStats.INTERACT_WITH_ONBASHIRA);
             return ActionResult.SUCCESS;
         } else if (bl) {
