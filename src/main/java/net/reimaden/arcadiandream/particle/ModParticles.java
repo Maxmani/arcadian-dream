@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -19,7 +19,6 @@ import net.minecraft.util.Identifier;
 public class ModParticles {
 
     public static final DefaultParticleType BULLET_DESPAWN = registerParticle("bullet_despawn");
-    public static final DefaultParticleType BULLET_SPAWN = registerParticle("bullet_spawn");
     public static final DefaultParticleType BULLET_CANCEL = registerParticle("bullet_cancel");
     public static final DefaultParticleType EXTEND = registerParticle("extend");
     public static final DefaultParticleType RITUAL = registerParticle("ritual");
@@ -35,7 +34,6 @@ public class ModParticles {
     @Environment(EnvType.CLIENT)
     public static void registerClient() {
         ParticleFactoryRegistry.getInstance().register(ModParticles.BULLET_DESPAWN, BulletDespawnParticle.Factory::new);
-        ParticleFactoryRegistry.getInstance().register(ModParticles.BULLET_SPAWN, BulletSpawnParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.BULLET_CANCEL, BulletCancelParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.EXTEND, ExtendParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.RITUAL, RitualParticle.Factory::new);
