@@ -19,14 +19,16 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.block.ModBlocks;
-import net.reimaden.arcadiandream.compat.IRitualCraftingLocations;
+import net.reimaden.arcadiandream.compat.TooltipHelper;
 import net.reimaden.arcadiandream.recipe.RitualCraftingRecipe;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class JEIRitualCraftingCategory implements IRecipeCategory<RitualCraftingRecipe>, IRitualCraftingLocations {
+import static net.reimaden.arcadiandream.compat.RitualCraftingLocations.*;
+
+public class JEIRitualCraftingCategory implements IRecipeCategory<RitualCraftingRecipe> {
 
     private final IGuiHelper guiHelper;
 
@@ -74,35 +76,6 @@ public class JEIRitualCraftingCategory implements IRecipeCategory<RitualCrafting
         builder.addSlot(RecipeIngredientRole.OUTPUT, OUTPUT_SLOT[0], OUTPUT_SLOT[1]).addItemStack(recipe.getOutput());
     }
 
-    private Text moonPhaseTooltip(byte moonPhase) {
-        Text tooltip;
-        switch (moonPhase) {
-            case 0 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_0");
-            case 1 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_1");
-            case 2 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_2");
-            case 3 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_3");
-            case 4 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_4");
-            case 5 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + "..ritual_crafting.moon_phase_5");
-            case 6 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_6");
-            case 7 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_7");
-            default -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_invalid");
-        }
-
-        return Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.requirement", tooltip);
-    }
-
-    private Text dimensionTooltip(String dimension) {
-        Text tooltip;
-        switch (dimension) {
-            case "overworld" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.dimension_overworld");
-            case "the_nether" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.dimension_nether");
-            case "the_end" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.dimension_end");
-            default -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.dimension_unknown", dimension);
-        }
-
-        return Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.requirement", tooltip);
-    }
-
     @Override
     public void draw(RitualCraftingRecipe recipe, IRecipeSlotsView recipeSlotsView, MatrixStack stack, double mouseX, double mouseY) {
         IDrawable moon_icon = guiHelper.drawableBuilder(MOON_ICON, 0, 0, 16, 16).setTextureSize(16, 16).build();
@@ -121,11 +94,11 @@ public class JEIRitualCraftingCategory implements IRecipeCategory<RitualCrafting
 
         if (getMoonPhase(recipe)) {
             if (mouseX >= MOON_SLOT[0] && mouseX <= MOON_SLOT[0] + 16 && mouseY >= MOON_SLOT[1] && mouseY <= MOON_SLOT[1] + 16) {
-                tooltip.add(moonPhaseTooltip(recipe.getMoonPhase()));
+                tooltip.add(TooltipHelper.moonPhase(recipe.getMoonPhase()));
             }
         } else if (getDimension(recipe)) {
             if (mouseX >= DIMENSION_SLOT[0] && mouseX <= DIMENSION_SLOT[0] + 16 && mouseY >= DIMENSION_SLOT[1] && mouseY <= DIMENSION_SLOT[1] + 16) {
-                tooltip.add(dimensionTooltip(recipe.getDimension()));
+                tooltip.add(TooltipHelper.dimension(recipe.getDimension()));
             }
         }
 

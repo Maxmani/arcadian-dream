@@ -12,10 +12,9 @@ import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
 import net.minecraft.client.gui.tooltip.TooltipComponent;
 import net.minecraft.text.OrderedText;
-import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.compat.IRitualCraftingLocations;
+import net.reimaden.arcadiandream.compat.TooltipHelper;
 import net.reimaden.arcadiandream.recipe.RitualCraftingRecipe;
 import org.jetbrains.annotations.Nullable;
 
@@ -23,7 +22,9 @@ import java.util.List;
 import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
-public class EMIRitualCraftingRecipe implements EmiRecipe, IRitualCraftingLocations {
+import static net.reimaden.arcadiandream.compat.RitualCraftingLocations.*;
+
+public class EMIRitualCraftingRecipe implements EmiRecipe {
 
     private static final Identifier TEXTURE = new Identifier(ArcadianDream.MOD_ID, "textures/gui/ritual_crafting.png");
     private static final Identifier MOON_ICON = new Identifier(ArcadianDream.MOD_ID, "textures/gui/moon.png");
@@ -72,35 +73,6 @@ public class EMIRitualCraftingRecipe implements EmiRecipe, IRitualCraftingLocati
     public int getDisplayHeight() {
         return 184;
     }
-    
-    private OrderedText moonPhaseTooltip() {
-        Text tooltip;
-        switch (moonPhase) {
-            case 0 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_0");
-            case 1 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_1");
-            case 2 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_2");
-            case 3 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_3");
-            case 4 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_4");
-            case 5 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + "..ritual_crafting.moon_phase_5");
-            case 6 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_6");
-            case 7 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_7");
-            default -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_invalid");
-        }
-
-        return Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.requirement", tooltip).asOrderedText();
-    }
-
-    private OrderedText dimensionTooltip() {
-        Text tooltip;
-        switch (dimension) {
-            case "overworld" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.dimension_overworld");
-            case "the_nether" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.dimension_nether");
-            case "the_end" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.dimension_end");
-            default -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.dimension_unknown", dimension);
-        }
-
-        return Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.requirement", tooltip).asOrderedText();
-    }
 
     @Override
     public void addWidgets(WidgetHolder widget) {
@@ -111,13 +83,13 @@ public class EMIRitualCraftingRecipe implements EmiRecipe, IRitualCraftingLocati
         widget.addSlot(output, OUTPUT_SLOT[0] - 5, OUTPUT_SLOT[1] - 5).recipeContext(this).output(true).drawBack(false);
         if (moonPhase != -1) {
             BiFunction<Integer, Integer, List<TooltipComponent>> tooltipSupplier = (mouseX, mouseY) ->
-                    List.of(TooltipComponent.of(moonPhaseTooltip()));
+                    List.of(TooltipComponent.of((OrderedText) TooltipHelper.moonPhase(moonPhase)));
 
             widget.addTexture(MOON_ICON, MOON_SLOT[0] + 1, MOON_SLOT[1] - 1, 16, 16,
                     0, 0, 16, 16, 16, 16).tooltip(tooltipSupplier);
         } else if (!dimension.isEmpty()) {
             BiFunction<Integer, Integer, List<TooltipComponent>> tooltipSupplier = (mouseX, mouseY) ->
-                    List.of(TooltipComponent.of(dimensionTooltip()));
+                    List.of(TooltipComponent.of((OrderedText) TooltipHelper.dimension(dimension)));
 
             widget.addTexture(DIMENSION_ICON, DIMENSION_SLOT[0] + 1, DIMENSION_SLOT[1] - 1, 16, 16,
                     0, 0, 16, 16, 16, 16).tooltip(tooltipSupplier);

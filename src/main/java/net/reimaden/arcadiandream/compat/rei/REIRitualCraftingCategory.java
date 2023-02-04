@@ -19,12 +19,14 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.block.ModBlocks;
-import net.reimaden.arcadiandream.compat.IRitualCraftingLocations;
+import net.reimaden.arcadiandream.compat.TooltipHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class REIRitualCraftingCategory implements DisplayCategory<REIRitualCraftingDisplay>, IRitualCraftingLocations {
+import static net.reimaden.arcadiandream.compat.RitualCraftingLocations.*;
+
+public class REIRitualCraftingCategory implements DisplayCategory<REIRitualCraftingDisplay> {
 
     public static final REIRitualCraftingCategory INSTANCE = new REIRitualCraftingCategory();
 
@@ -68,35 +70,6 @@ public class REIRitualCraftingCategory implements DisplayCategory<REIRitualCraft
         return 184;
     }
 
-    private Text moonPhaseTooltip(byte moonPhase) {
-        Text tooltip;
-        switch (moonPhase) {
-            case 0 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_0");
-            case 1 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_1");
-            case 2 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_2");
-            case 3 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_3");
-            case 4 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_4");
-            case 5 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + "..ritual_crafting.moon_phase_5");
-            case 6 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_6");
-            case 7 -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_7");
-            default -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.moon_phase_invalid");
-        }
-
-        return Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.requirement", tooltip);
-    }
-
-    private Text dimensionTooltip(String dimension) {
-        Text tooltip;
-        switch (dimension) {
-            case "overworld" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.dimension_overworld");
-            case "the_nether" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.dimension_nether");
-            case "the_end" -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.dimension_end");
-            default -> tooltip = Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.dimension_unknown", dimension);
-        }
-
-        return Text.translatable(ArcadianDream.MOD_ID + ".ritual_crafting.requirement", tooltip);
-    }
-
     @Override
     public List<Widget> setupDisplay(REIRitualCraftingDisplay display, Rectangle bounds) {
         List<Widget> widgets = new ArrayList<>();
@@ -113,12 +86,12 @@ public class REIRitualCraftingCategory implements DisplayCategory<REIRitualCraft
             Widget moonPhase = Widgets.createTexturedWidget(MOON_ICON, MOON_SLOT[0] + bounds.x, MOON_SLOT[1] + bounds.y,
                     0, 0, 16, 16, 16, 16);
             Point point = new Point(MOON_SLOT[0] + bounds.x, MOON_SLOT[1] + bounds.y);
-            widgets.add(Widgets.withTooltip(Widgets.withBounds(moonPhase, new Rectangle(point.x, point.y, 16, 16)),moonPhaseTooltip(display.getMoonPhase())));
+            widgets.add(Widgets.withTooltip(Widgets.withBounds(moonPhase, new Rectangle(point.x, point.y, 16, 16)), TooltipHelper.moonPhase(display.getMoonPhase())));
         } else if (!display.getDimension().isEmpty()) {
             Widget dimension = Widgets.createTexturedWidget(DIMENSION_ICON, DIMENSION_SLOT[0] + bounds.x, DIMENSION_SLOT[1] + bounds.y,
                     0, 0, 16, 16, 16, 16);
             Point point = new Point(DIMENSION_SLOT[0] + bounds.x, DIMENSION_SLOT[1] + bounds.y);
-            widgets.add(Widgets.withTooltip(Widgets.withBounds(dimension, new Rectangle(point.x, point.y, 16, 16)), dimensionTooltip(display.getDimension())));
+            widgets.add(Widgets.withTooltip(Widgets.withBounds(dimension, new Rectangle(point.x, point.y, 16, 16)), TooltipHelper.dimension(display.getDimension())));
         }
 
         return widgets;
