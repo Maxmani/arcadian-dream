@@ -13,7 +13,6 @@ import net.minecraft.text.Text;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
 import net.reimaden.arcadiandream.item.ModItems;
-import net.reimaden.arcadiandream.particle.ModParticles;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -70,7 +69,7 @@ public abstract class LivingEntityMixin extends Entity {
 
                     if (bulletEntity.getOwner() != entity) {
                         bulletEntity.kill();
-                        ((ServerWorld) world).spawnParticles(ModParticles.BULLET_CANCEL, bulletEntity.getX(), bulletEntity.getY(), bulletEntity.getZ(), 1, 0, 0, 0, 0);
+                        bulletEntity.cancelParticle((ServerWorld) world);
                     }
                 }
 

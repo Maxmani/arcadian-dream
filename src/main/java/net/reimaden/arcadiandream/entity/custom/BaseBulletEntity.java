@@ -86,6 +86,12 @@ public class BaseBulletEntity extends ThrownItemEntity {
                 1, 0, 0, 0, 0);
     }
 
+    public void cancelParticle(ServerWorld serverWorld) {
+        serverWorld.spawnParticles(ModParticles.BULLET_CANCEL,
+                getPos().getX(), getPos().getY() + getHeight() / 2, getPos().getZ(),
+                1, 0, 0, 0, 0);
+    }
+
     private float getPower() {
         if (getStack().hasNbt()) {
             return getStack().getOrCreateNbt().getFloat("power");

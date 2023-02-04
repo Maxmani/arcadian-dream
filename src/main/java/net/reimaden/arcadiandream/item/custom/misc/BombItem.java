@@ -5,11 +5,6 @@
 
 package net.reimaden.arcadiandream.item.custom.misc;
 
-import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
-import net.reimaden.arcadiandream.item.ModItems;
-import net.reimaden.arcadiandream.particle.ModParticles;
-import net.reimaden.arcadiandream.sound.ModSounds;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -23,6 +18,10 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import net.reimaden.arcadiandream.ArcadianDream;
+import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
+import net.reimaden.arcadiandream.item.ModItems;
+import net.reimaden.arcadiandream.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -52,7 +51,7 @@ public class BombItem extends Item {
                     itemEntity.setPos(bulletEntity.getX(), bulletEntity.getY(), bulletEntity.getZ());
                     world.spawnEntity(itemEntity);
                     bulletEntity.kill();
-                    ((ServerWorld) world).spawnParticles(ModParticles.BULLET_CANCEL, bulletEntity.getX(), bulletEntity.getY(), bulletEntity.getZ(), 1, 0, 0, 0, 0);
+                    bulletEntity.cancelParticle((ServerWorld) world);
                     cancelled++;
 
                     // Get the ItemStack of the Star Items
