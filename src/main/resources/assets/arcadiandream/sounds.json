@@ -24,7 +24,8 @@
   "entity.danmaku.hit": {
     "sounds": [
       "arcadiandream:danmaku/hit"
-    ]
+    ],
+    "subtitle": "arcadiandream.subtitles.entity.danmaku.hit"
   },
   "item.bomb_item.use": {
     "sounds": [

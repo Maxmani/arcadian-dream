@@ -100,7 +100,8 @@
   "advancements.arcadiandream.ritual_crafting.title": "Ritual Crafting",
   "advancements.arcadiandream.ritual_crafting.description": "Craft something using the Ritual Shrine",
 
-  "arcadiandream.subtitles.entity.danmaku.fire": "Danmaku fires",
+  "arcadiandream.subtitles.entity.danmaku.fire": "Danmaku fired",
+  "arcadiandream.subtitles.entity.danmaku.hit": "Danmaku hits",
   "arcadiandream.subtitles.item.bomb_item.use": "Bomb Item activates",
   "arcadiandream.subtitles.item.extend_item.use": "Extend Item activates",
   "arcadiandream.subtitles.item.armor.equip_ordinary": "Clothing rustles",
