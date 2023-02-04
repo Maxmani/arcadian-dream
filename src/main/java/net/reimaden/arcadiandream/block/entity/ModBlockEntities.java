@@ -31,6 +31,6 @@ public class ModBlockEntities {
         DANMAKU_CRAFTING_TABLE = Registry.register(Registries.BLOCK_ENTITY_TYPE,
                 new Identifier(ArcadianDream.MOD_ID, "danmaku_crafting_table"),
                 FabricBlockEntityTypeBuilder.create(DanmakuCraftingTableBlockEntity::new,
-                        ModBlocks.RITUAL_SHRINE).build(null));
+                        ModBlocks.DANMAKU_CRAFTING_TABLE).build(null));
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -51,22 +51,22 @@ public class ModVillagers {
 
     @SuppressWarnings("unused")
     public static void registerTrades() {
-        int defaultMaxUses = 12;
-        int commonMaxUses = 16;
-        int rareMaxUses = 3;
+        final int defaultMaxUses = 12;
+        final int commonMaxUses = 16;
+        final int rareMaxUses = 3;
 
-        int noviceSellXP = 1;
-        int noviceBuyXP = 2;
-        int apprenticeSellXP = 5;
-        int apprenticeBuyXP = 10;
-        int journeymanSellXP = 10;
-        int journeymanBuyXP = 20;
-        int expertSellXP = 15;
-        int expertBuyXP = 30;
-        int masterTradeXP = 30;
+        final int noviceSellXP = 1;
+        final int noviceBuyXP = 2;
+        final int apprenticeSellXP = 5;
+        final int apprenticeBuyXP = 10;
+        final int journeymanSellXP = 10;
+        final int journeymanBuyXP = 20;
+        final int expertSellXP = 15;
+        final int expertBuyXP = 30;
+        final int masterTradeXP = 30;
 
-        float lowPriceMultiplier = 0.05f;
-        float highPriceMultiplier = 0.2f;
+        final float lowPriceMultiplier = 0.05f;
+        final float highPriceMultiplier = 0.2f;
 
         // WIP
         TradeOfferHelper.registerVillagerOffers(ANTIQUARIAN, 1, factories -> {

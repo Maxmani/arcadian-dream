@@ -14,14 +14,19 @@ import net.reimaden.arcadiandream.ArcadianDream;
 
 public class ModStats {
 
-    public static final Identifier INTERACT_WITH_RITUAL_SHRINE = new Identifier(ArcadianDream.MOD_ID, "interact_with_ritual_shrine");
-    public static final Identifier INTERACT_WITH_ONBASHIRA = new Identifier(ArcadianDream.MOD_ID, "interact_with_onbashira");
+    public static final Identifier INTERACT_WITH_RITUAL_SHRINE = registerStat("interact_with_ritual_shrine", StatFormatter.DEFAULT);
+    public static final Identifier INTERACT_WITH_ONBASHIRA = registerStat("interact_with_onbashira", StatFormatter.DEFAULT);
+    public static final Identifier INTERACT_WITH_DANMAKU_CRAFTING_TABLE = registerStat("interact_with_danmaku_crafting_table", StatFormatter.DEFAULT);
+
+    @SuppressWarnings("SameParameterValue")
+    private static Identifier registerStat(String id, StatFormatter formatter) {
+        Identifier identifier = new Identifier(ArcadianDream.MOD_ID, id);
+        Registry.register(Registries.CUSTOM_STAT, id, identifier);
+        Stats.CUSTOM.getOrCreateStat(identifier, formatter);
+        return identifier;
+    }
 
     public static void register() {
-        Registry.register(Registries.CUSTOM_STAT, "interact_with_ritual_shrine", INTERACT_WITH_RITUAL_SHRINE);
-        Registry.register(Registries.CUSTOM_STAT, "interact_with_onbashira", INTERACT_WITH_ONBASHIRA);
-
-        Stats.CUSTOM.getOrCreateStat(INTERACT_WITH_RITUAL_SHRINE, StatFormatter.DEFAULT);
-        Stats.CUSTOM.getOrCreateStat(INTERACT_WITH_ONBASHIRA, StatFormatter.DEFAULT);
+        ArcadianDream.LOGGER.debug("Registering statistics for " + ArcadianDream.MOD_ID);
     }
 }

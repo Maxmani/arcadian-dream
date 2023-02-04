@@ -169,10 +169,10 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
             int density = nbt.getInt("density");
 
             String keyPrefix = "item." + ArcadianDream.MOD_ID + ".shot.tooltip_";
-            String formattedPower = String.format("%.2f", power);
-            String formattedSpeed = String.format("%.2f", speed);
-            String formattedGravity = String.format("%.2f", gravity);
-            String formattedDivergence = String.format("%.2f", divergence);
+            String formattedPower = formatFloatValue(power);
+            String formattedSpeed = formatFloatValue(speed);
+            String formattedGravity = formatFloatValue(gravity);
+            String formattedDivergence = formatFloatValue(divergence);
 
             tooltip.add(Text.translatable(keyPrefix + "power", formattedPower));
             tooltip.add(Text.translatable(keyPrefix + "speed", formattedSpeed));
@@ -184,6 +184,11 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
             tooltip.add(Text.translatable(keyPrefix + "density", density));
             tooltip.add(Text.translatable(keyPrefix + "color", getColorName(stack).getString()).setStyle(Style.EMPTY.withColor(getColor(stack))));
         }
+    }
+
+    private static String formatFloatValue(float value) {
+        int intValue = (int) value;
+        return intValue == value ? Integer.toString(intValue) : String.format("%.2f", value);
     }
 
     private MutableText getColorName(ItemStack stack) {

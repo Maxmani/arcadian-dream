@@ -20,6 +20,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.reimaden.arcadiandream.block.entity.DanmakuCraftingTableBlockEntity;
+import net.reimaden.arcadiandream.statistic.ModStats;
 import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("deprecation")
@@ -43,6 +44,7 @@ public class DanmakuCraftingTableBlock extends BlockWithEntity implements BlockE
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         player.openHandledScreen(state.createScreenHandlerFactory(world, pos));
+        player.incrementStat(ModStats.INTERACT_WITH_DANMAKU_CRAFTING_TABLE);
         return ActionResult.SUCCESS;
     }
 
