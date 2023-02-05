@@ -16,10 +16,12 @@ import java.util.Map;
  * These values are used across the mod, mostly for bullet colors.
  */
 public class ColorMap {
+
+    public static final int DEFAULT_COLOR = 16711680;
     private static final Map<Integer, String> colorMap = new HashMap<>();
 
     static {
-        colorMap.put(16711680, "red");
+        colorMap.put(DEFAULT_COLOR, "red");
         colorMap.put(65280, "green");
         colorMap.put(255, "blue");
         colorMap.put(16776960, "yellow");

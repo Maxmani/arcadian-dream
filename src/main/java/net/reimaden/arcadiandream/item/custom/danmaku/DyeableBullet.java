@@ -8,12 +8,13 @@ package net.reimaden.arcadiandream.item.custom.danmaku;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
+import net.reimaden.arcadiandream.util.ColorMap;
 
 public interface DyeableBullet {
 
     String COLOR_KEY = "color";
     String DISPLAY_KEY = "display";
-    int DEFAULT_COLOR = 16711680;
+    int DEFAULT_COLOR = ColorMap.DEFAULT_COLOR;
 
     default boolean hasColor(ItemStack stack) {
         NbtCompound nbtCompound = stack.getSubNbt(DISPLAY_KEY);

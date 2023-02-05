@@ -12,6 +12,7 @@ import net.reimaden.arcadiandream.block.ModDispenserBehavior;
 import net.reimaden.arcadiandream.block.entity.ModBlockEntities;
 import net.reimaden.arcadiandream.command.ModCommands;
 import net.reimaden.arcadiandream.config.ArcadianDreamConfig;
+import net.reimaden.arcadiandream.enchantment.ModEnchantments;
 import net.reimaden.arcadiandream.entity.ModEntities;
 import net.reimaden.arcadiandream.event.ModEvents;
 import net.reimaden.arcadiandream.gui.ModScreenHandlers;
@@ -53,6 +54,7 @@ public class ArcadianDream implements ModInitializer {
 		ModCriteria.register();
 		ModVillagers.register();
 		ModCommands.register();
+		ModEnchantments.register();
 
 		ModWorldGen.register();
 		ModLootTableModifiers.modify();
