@@ -191,5 +191,18 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input(Items.ENCHANTED_GOLDEN_APPLE)
                 .dimension(DIMENSIONS.THE_END.toString())
                 .offerTo(exporter, ritualCraftingId(ModItems.HOURAI_ELIXIR));
+
+        RitualCraftingRecipeJsonBuilder.create(ModItems.MIRACLE_MALLET)
+                .input(Items.NETHER_STAR)
+                .input(Blocks.GOLD_BLOCK)
+                .input(Blocks.EMERALD_BLOCK)
+                .input(Blocks.REDSTONE_BLOCK)
+                .input(Items.BLAZE_ROD)
+                .input(Blocks.REDSTONE_BLOCK)
+                .input(Blocks.EMERALD_BLOCK)
+                .input(Blocks.GOLD_BLOCK)
+                .input(Blocks.GOLD_BLOCK)
+                .input(Blocks.GOLD_BLOCK)
+                .offerTo(exporter, ritualCraftingId(ModItems.MIRACLE_MALLET));
     }
 }

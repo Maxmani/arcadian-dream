@@ -73,7 +73,7 @@ public class MiracleMalletItem extends ModHammerItem {
                 });
 
                 if (pitch < maxScale) {
-                    playSound(world, user, 1f + pitch * 0.1f - 0.15f);
+                    playSound(world, entity, 1f + pitch * 0.1f - 0.15f);
                     incrementStatAndDamageStack(user, hand, stack);
                     return TypedActionResult.success(stack);
                 }
@@ -110,6 +110,11 @@ public class MiracleMalletItem extends ModHammerItem {
     private static void playSound(World world, PlayerEntity user, float isScaled) {
         world.playSound(null, user.getBlockPos(), ModSounds.ITEM_MIRACLE_MALLET_USE,
                 user.getSoundCategory(), 0.5f, isScaled);
+    }
+
+    private static void playSound(World world, Entity bullet, float pitch) {
+        world.playSound(null, bullet.getBlockPos(), ModSounds.ITEM_MIRACLE_MALLET_USE,
+                bullet.getSoundCategory(), 0.5f, pitch);
     }
 
     private static void incrementStatAndDamageStack(PlayerEntity user, Hand hand, ItemStack stack) {
