@@ -7,7 +7,6 @@ package net.reimaden.arcadiandream.item.custom.tools;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.stat.Stats;
@@ -15,11 +14,10 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
-import net.minecraft.util.math.Box;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
 import net.reimaden.arcadiandream.sound.ModSounds;
+import net.reimaden.arcadiandream.util.RaycastHelper;
 import virtuoel.pehkui.api.ScaleData;
 import virtuoel.pehkui.api.ScaleType;
 import virtuoel.pehkui.api.ScaleTypes;
@@ -57,7 +55,9 @@ public class MiracleMalletItem extends ModHammerItem {
         ItemStack stack = user.getStackInHand(hand);
 
         if (!world.isClient()) {
-            EntityHitResult result = raycast(user);
+            Predicate<Entity> filter = e -> e instanceof BaseBulletEntity;
+            EntityHitResult result = RaycastHelper.raycast(user, 16, filter);
+
             if (result != null && result.getType() == HitResult.Type.ENTITY) {
                 // Scale bullet
                 Entity entity = result.getEntity();
@@ -107,23 +107,13 @@ public class MiracleMalletItem extends ModHammerItem {
         return TypedActionResult.pass(stack);
     }
 
-    private void playSound(World world, PlayerEntity user, float isScaled) {
+    private static void playSound(World world, PlayerEntity user, float isScaled) {
         world.playSound(null, user.getBlockPos(), ModSounds.ITEM_MIRACLE_MALLET_USE,
                 user.getSoundCategory(), 0.5f, isScaled);
     }
 
-    private void incrementStatAndDamageStack(PlayerEntity user, Hand hand, ItemStack stack) {
-        user.incrementStat(Stats.USED.getOrCreateStat(this));
+    private static void incrementStatAndDamageStack(PlayerEntity user, Hand hand, ItemStack stack) {
+        user.incrementStat(Stats.USED.getOrCreateStat(stack.getItem()));
         stack.damage(1, user, e -> e.sendToolBreakStatus(hand));
-    }
-
-    private EntityHitResult raycast(PlayerEntity user) {
-        Vec3d pos = user.getEyePos();
-        Vec3d direction = user.getRotationVec(1.0f);
-        Vec3d endPos = pos.add(direction.multiply(10.0));
-        Box box = user.getBoundingBox().expand(16.0);
-        Predicate<Entity> filter = e -> e instanceof BaseBulletEntity;
-
-        return ProjectileUtil.raycast(user, pos, endPos, box, filter, 1000);
     }
 }

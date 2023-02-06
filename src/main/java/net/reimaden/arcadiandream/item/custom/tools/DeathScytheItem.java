@@ -8,7 +8,6 @@ package net.reimaden.arcadiandream.item.custom.tools;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
 import net.minecraft.item.SwordItem;
@@ -19,10 +18,10 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
-import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.reimaden.arcadiandream.sound.ModSounds;
+import net.reimaden.arcadiandream.util.RaycastHelper;
 
 import java.util.function.Predicate;
 
@@ -43,16 +42,8 @@ public class DeathScytheItem extends SwordItem {
 
         if (!world.isClient() && user instanceof PlayerEntity player) {
             if (remainingUseTicks < getMaxUseTime(stack) - 20) {
-
-                // NONE OF THIS MAKES SENSE OR WHY THIS WORKS THE WAY IT DOES.
-                // UNLESS THE MASSIVE VALUES ARE GOING TO CAUSE PROBLEMS, I AM KEEPING IT THE WAY IT IS.
-                Vec3d playerPos = player.getEyePos();
-                Vec3d playerLook = player.getRotationVec(1.0f).normalize();
-                Vec3d endPos = playerPos.add(playerLook.multiply(1000.0));
-                Box playerBox = player.getBoundingBox().expand(16.0);
                 Predicate<Entity> filter = e -> e != player && e instanceof LivingEntity;
-
-                EntityHitResult result = ProjectileUtil.raycast(player, playerPos, endPos, playerBox, filter, 1000.0);
+                EntityHitResult result = RaycastHelper.raycast(player, 16, filter);
 
                 if (result != null && result.getType() == HitResult.Type.ENTITY) {
                     Entity entity = result.getEntity();
