@@ -77,6 +77,7 @@
   "item.arcadiandream.ray_pattern.tooltip": [{"translate":"item.arcadiandream.ray_pattern_template.tooltip"}],
   "item.arcadiandream.ring_pattern": [{"translate":"item.arcadiandream.pattern"}],
   "item.arcadiandream.ring_pattern.tooltip": [{"translate":"item.arcadiandream.ring_pattern_template.tooltip"}],
+  "item.arcadiandream.miracle_mallet": "Miracle Mallet",
 
   "block.arcadiandream.dragon_gem_ore": "Dragon Gem Ore",
   "block.arcadiandream.deepslate_dragon_gem_ore": "Deepslate Dragon Gem Ore",
@@ -90,7 +91,7 @@
   "block.arcadiandream.ritual_shrine": "Ritual Shrine",
   "block.arcadiandream.danmaku_crafting_table": "Danmaku Crafting Table",
 
-  "entity.arcadiandream.orb_bullet": "Orb Bullet",
+  "entity.arcadiandream.circle_bullet": "Circle Bullet",
   "entity.minecraft.villager.antiquarian": "Antiquarian",
 
   "enchantment.arcadiandream.danmaku_protection": "Danmaku Protection",
@@ -117,6 +118,7 @@
   "arcadiandream.subtitles.item.death_scythe.teleport": "Player teleports",
   "arcadiandream.subtitles.item.death_scythe.teleport_generic": "Something teleports",
   "arcadiandream.subtitles.entity.generic.resurrect": "Resurrection",
+  "arcadiandream.subtitles.item.miracle_mallet.use": "Miracle Mallet rings",
 
   "death.attack.danmaku": [{"index":0},{"translate":"death.attack.arrow"},{"index":1}],
   "death.attack.danmaku.player": "%1$s was shot by %2$s using danmaku",

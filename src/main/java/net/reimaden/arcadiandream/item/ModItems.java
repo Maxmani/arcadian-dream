@@ -18,10 +18,7 @@ import net.reimaden.arcadiandream.item.custom.danmaku.BulletCoreItem;
 import net.reimaden.arcadiandream.item.custom.danmaku.CircleShotItem;
 import net.reimaden.arcadiandream.item.custom.danmaku.PatternItem;
 import net.reimaden.arcadiandream.item.custom.misc.*;
-import net.reimaden.arcadiandream.item.custom.tools.DeathScytheItem;
-import net.reimaden.arcadiandream.item.custom.tools.MochiMalletItem;
-import net.reimaden.arcadiandream.item.custom.tools.ModHoeItem;
-import net.reimaden.arcadiandream.item.custom.tools.NueTridentItem;
+import net.reimaden.arcadiandream.item.custom.tools.*;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;
@@ -95,6 +92,8 @@ public class ModItems {
             new FabricItemSettings()));
     public static final Item DEATH_SCYTHE = registerItem("death_scythe", new DeathScytheItem(ToolMaterials.IRON, 4, -3.0f,
             new FabricItemSettings()));
+    public static final Item MIRACLE_MALLET = registerItem("miracle_mallet", new MiracleMalletItem(ToolMaterials.DIAMOND, 3, -3.2f,
+            new FabricItemSettings().rarity(Rarity.RARE)));
 
     // Danmaku
     public static final Item CIRCLE_BULLET_CORE = registerItem("circle_bullet_core", new BulletCoreItem(new FabricItemSettings()));
@@ -179,6 +178,7 @@ public class ModItems {
         addToItemGroup(ModItemGroups.ITEMS, HISOU_SWORD);
         addToItemGroup(ModItemGroups.ITEMS, MOCHI_MALLET);
         addToItemGroup(ModItemGroups.ITEMS, DEATH_SCYTHE);
+        addToItemGroup(ModItemGroups.ITEMS, MIRACLE_MALLET);
         addToItemGroup(ModItemGroups.ITEMS, SPREAD_PATTERN_TEMPLATE);
         addToItemGroup(ModItemGroups.ITEMS, RAY_PATTERN_TEMPLATE);
         addToItemGroup(ModItemGroups.ITEMS, RING_PATTERN_TEMPLATE);

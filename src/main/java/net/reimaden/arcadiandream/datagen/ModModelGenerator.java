@@ -40,7 +40,7 @@ public class ModModelGenerator extends FabricModelProvider {
 
     private static final ImmutableList<Item> HANDHELD_ITEMS = ImmutableList.of(
             ModItems.HISOU_SWORD, ModItems.MAKAITE_AXE, ModItems.MAKAITE_HOE, ModItems.MAKAITE_PICKAXE,
-            ModItems.MAKAITE_SHOVEL, ModItems.MAKAITE_SWORD
+            ModItems.MAKAITE_SHOVEL, ModItems.MAKAITE_SWORD, ModItems.MIRACLE_MALLET
     );
 
     private static final ImmutableList<Item> PATTERN_TEMPLATES = ImmutableList.of(

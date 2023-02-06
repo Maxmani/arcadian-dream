@@ -20,11 +20,11 @@ public class CircleBulletEntity extends BaseBulletEntity {
     }
 
     public CircleBulletEntity(World world, LivingEntity owner) {
-        super(ModEntities.ORB_BULLET, owner, world);
+        super(ModEntities.CIRCLE_BULLET, owner, world);
     }
 
     public CircleBulletEntity(World world, double x, double y, double z) {
-        super(ModEntities.ORB_BULLET, x, y, z, world);
+        super(ModEntities.CIRCLE_BULLET, x, y, z, world);
     }
 
     @Override

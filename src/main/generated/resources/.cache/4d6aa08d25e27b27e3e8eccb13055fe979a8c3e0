@@ -1,4 +1,4 @@
-// 1.19.3	2023-02-02T21:27:52.148611292	Arcadian Dream/Recipes
+// 1.19.3	2023-02-05T23:20:24.323074608	Arcadian Dream/Recipes
 feba32d12abb9cfd082a0379cdf39d94b2445a33 data/arcadiandream/recipes/makaite_ingot_from_smelting_raw_makaite.json
 1d0f32b71173df524db21330a43cf06bae91af0f data/arcadiandream/advancements/recipes/misc/raw_makaite.json
 7b48ed8cd5d1401e3d5f36f103d7e7870b6f74af data/arcadiandream/recipes/makaite_pickaxe.json
@@ -19,8 +19,8 @@ e680250afc835f2f0548fc0f16dcb685f374c3d3 data/arcadiandream/recipes/makaite_legg
 1e5b043259a8c244ebdf6f36b0c5de605d2ad813 data/arcadiandream/recipes/raw_makaite_block.json
 2b8c137dd7aed90045a11b20803ae94daa679f6a data/arcadiandream/recipes/iron_nugget_from_blasting.json
 8dce65e49c8f056a58d4d15923ee8149ca9e1af4 data/arcadiandream/advancements/recipes/decorations/ritual_shrine.json
-bb1410d7928e1eabf6e30e55254310cd3b43301a data/arcadiandream/recipes/makaite_ingot_from_smelting_makaite_ore.json
 6c85e8161e37bacdb82fe8bb778109b83b238a8a data/arcadiandream/advancements/recipes/misc/iron_nugget_from_smelting.json
+bb1410d7928e1eabf6e30e55254310cd3b43301a data/arcadiandream/recipes/makaite_ingot_from_smelting_makaite_ore.json
 209d2979250b656af614ebdec18098c158a93284 data/arcadiandream/advancements/recipes/misc/faith_item.json
 25d207397c00c0bdda82feb9efc90fd4127b3515 data/arcadiandream/recipes/ring_pattern.json
 cca7c26fcee43caa3a82e2de1d344153416cb7a5 data/arcadiandream/advancements/recipes/decorations/danmaku_crafting_table.json

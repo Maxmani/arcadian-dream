@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -30,16 +30,14 @@ import java.util.List;
 
 public class ModHammerItem extends ToolItem implements Vanishable, EnchantmentHandler {
 
-    @SuppressWarnings("FieldCanBeLocal")
-    private final float attackDamage;
     private final Multimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
     public ModHammerItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
         super(material, settings);
-        this.attackDamage = (float) attackDamage + material.getAttackDamage();
+        float damage = (float) attackDamage + material.getAttackDamage();
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Weapon modifier",
-                this.attackDamage, EntityAttributeModifier.Operation.ADDITION));
+                damage, EntityAttributeModifier.Operation.ADDITION));
         builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Weapon modifier",
                 attackSpeed, EntityAttributeModifier.Operation.ADDITION));
         this.attributeModifiers = builder.build();

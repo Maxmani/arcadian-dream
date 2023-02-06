@@ -133,5 +133,11 @@
       }
     ],
     "subtitle": "arcadiandream.subtitles.entity.generic.resurrect"
+  },
+  "item.miracle_mallet.use": {
+    "sounds": [
+      "arcadiandream:random/ring"
+    ],
+    "subtitle": "arcadiandream.subtitles.item.miracle_mallet.use"
   }
 }
