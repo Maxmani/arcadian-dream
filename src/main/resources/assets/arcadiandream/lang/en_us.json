@@ -149,8 +149,17 @@
   "arcadiandream.ritual_crafting.dimension_unknown": "Unknown dimension! (%s)",
 
   "tag.c.obsidian_blocks": "Obsidian Blocks",
+  "tag.c.hammers": "Hammers",
   "tag.arcadiandream.dragon_gem_ores": "Dragon Gem Ores",
   "tag.arcadiandream.items": "Items",
+  "tag.arcadiandream.bullet_cores": "Bullet Cores",
+  "tag.arcadiandream.shots": "Shots",
+  "tag.arcadiandream.danmaku_modifiers": "Danmaku Modifiers",
+  "tag.arcadiandream.danmaku_density_modifiers": "Danmaku Density Modifiers",
+  "tag.arcadiandream.danmaku_duration_modifiers": "Danmaku Duration Modifiers",
+  "tag.arcadiandream.danmaku_power_modifiers": "Danmaku Power Modifiers",
+  "tag.arcadiandream.danmaku_speed_modifiers": "Danmaku Speed Modifiers",
+  "tag.arcadiandream.danmaku_repair_items": "Danmaku Repair Items",
 
   "text.config.arcadiandream.title": "Arcadian Dream Configuration",
   "text.config.arcadiandream.section.items": "Items",

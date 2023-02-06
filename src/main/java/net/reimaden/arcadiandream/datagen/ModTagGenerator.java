@@ -86,6 +86,9 @@ public class ModTagGenerator {
                     .add(ModItems.DRAGON_GEM)
                     .add(ModItems.MAKAITE_INGOT)
                     .add(ModItems.MAKAITE_INFUSED_NETHERITE_INGOT);
+            getOrCreateTagBuilder(MUSIC_DISCS)
+                    .add(ModItems.MUSIC_DISC_FAIRY_PLAYGROUND)
+                    .add(ModItems.MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN);
 
             // Block tags to item tags
             getOrCreateTagBuilder(ModTags.Items.OBSIDIAN_BLOCKS)
@@ -114,6 +117,9 @@ public class ModTagGenerator {
                     .add(ModItems.MAKAITE_SWORD)
                     .add(ModItems.HISOU_SWORD)
                     .add(ModItems.DEATH_SCYTHE);
+            getOrCreateTagBuilder(ModTags.Items.HAMMERS)
+                    .add(ModItems.MOCHI_MALLET)
+                    .add(ModItems.MIRACLE_MALLET);
             getOrCreateTagBuilder(ConventionalItemTags.FOODS)
                     .add(ModItems.HEAVENLY_PEACH);
             getOrCreateTagBuilder(ModTags.Items.ITEMS)
