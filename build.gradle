@@ -64,22 +64,19 @@ dependencies {
 	// modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
 
 	// https://github.com/mezz/JustEnoughItems
-	modImplementation("mezz.jei:jei-${project.minecraft_version}-fabric:${project.jei_version}") {
-		exclude group: "mezz.jei"
-	}
+	modCompileOnly("mezz.jei:jei-${project.minecraft_version}-fabric:${project.jei_version}") {exclude group: "mezz.jei"}
+	// modRuntimeOnly("mezz.jei:jei-${project.minecraft_version}-fabric:${project.jei_version}")
 
 	// https://github.com/emilyploszaj/emi
 	modCompileOnly "dev.emi:emi:${project.emi_version}"
-	// modRuntimeOnly "dev.emi:emi:${project.emi_version}"
+	modRuntimeOnly "dev.emi:emi:${project.emi_version}"
 
 	// https://github.com/wisp-forest/owo-lib
 	annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
 	include "io.wispforest:owo-sentinel:${project.owo_version}"
 
 	// https://github.com/Virtuoel/Pehkui
-	modApi("com.github.Virtuoel:Pehkui:${pehkui_version}", {
-		exclude group: "net.fabricmc.fabric-api"
-	})
+	modApi("com.github.Virtuoel:Pehkui:${pehkui_version}", {exclude group: "net.fabricmc.fabric-api"})
 }
 
 processResources {

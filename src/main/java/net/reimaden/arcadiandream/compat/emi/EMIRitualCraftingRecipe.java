@@ -89,7 +89,7 @@ public class EMIRitualCraftingRecipe implements EmiRecipe {
                     0, 0, 16, 16, 16, 16).tooltip(tooltipSupplier);
         } else if (!dimension.isEmpty()) {
             BiFunction<Integer, Integer, List<TooltipComponent>> tooltipSupplier = (mouseX, mouseY) ->
-                    List.of(TooltipComponent.of((OrderedText) TooltipHelper.dimension(dimension)));
+                    List.of(TooltipComponent.of(TooltipHelper.dimension(dimension).asOrderedText()));
 
             widget.addTexture(DIMENSION_ICON, DIMENSION_SLOT[0] + 1, DIMENSION_SLOT[1] - 1, 16, 16,
                     0, 0, 16, 16, 16, 16).tooltip(tooltipSupplier);
