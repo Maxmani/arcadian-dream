@@ -78,14 +78,16 @@ public class ModModelGenerator extends FabricModelProvider {
         item.register(ModItems.DEATH_SCYTHE, ModModels.HANDHELD_BIG);
 
         for (int i = 0; i < PATTERN_TEMPLATES.size(); i++) {
-            registerWithSameTexture(PATTERN_TEMPLATES.get(i), new Identifier(ArcadianDream.MOD_ID, "item/pattern_template"), Models.GENERATED, item);
+            registerWithSpecificTexture(PATTERN_TEMPLATES.get(i), "item/pattern_template", Models.GENERATED, item);
         }
+
+        registerWithSpecificTexture(ModItems.CIRCLE_BULLET_CORE, "item/circle_shot", ModModels.DANMAKU, item);
     }
 
     @SuppressWarnings("SameParameterValue")
-    private void registerWithSameTexture(Item item, Identifier texture, Model model, ItemModelGenerator generator) {
+    private void registerWithSpecificTexture(Item item, String name, Model model, ItemModelGenerator generator) {
         BiConsumer<Identifier, Supplier<JsonElement>> writer = generator.writer;
 
-        model.upload(ModelIds.getItemModelId(item), TextureMap.layer0(texture), writer);
+        model.upload(ModelIds.getItemModelId(item), TextureMap.layer0(new Identifier(ArcadianDream.MOD_ID, name)), writer);
     }
 }

@@ -1,4 +1,4 @@
-// 1.19.3	2023-02-06T19:51:40.761125575	Arcadian Dream/Model Definitions
+// 1.19.3	2023-02-07T13:04:30.558059947	Arcadian Dream/Model Definitions
 f2ebcff21cadc28cf53399f6a3290da06c871e6e assets/arcadiandream/blockstates/deepslate_dragon_gem_ore.json
 e9e8dbe0ce582568df0e7c45a0233a6720eadae9 assets/arcadiandream/models/item/ordinary_hat.json
 8fd032362831d4163a0fe785780331eca2deab9d assets/arcadiandream/models/item/mochi_mallet_2.json
@@ -49,6 +49,7 @@ f7841bcc4cf3f5f326201b83b655f2603b536519 assets/arcadiandream/models/item/mochi_
 ac3e1126e77b24c7e385747bfa1153a036d8527a assets/arcadiandream/models/item/makaite_hoe.json
 402162341d07cbefc6fbd154877e8ee67dda6938 assets/arcadiandream/blockstates/makaite_block.json
 416572d17e45896cdf2116c15f671ddee92d017a assets/arcadiandream/models/block/dragon_gem_block.json
+b0768a67b6a7a40241d8d3cb43b96bf97b9ce36c assets/arcadiandream/models/item/circle_bullet_core.json
 30ecf2c9a8b01fd30180e96f89facbfefe421996 assets/arcadiandream/models/block/deepslate_dragon_gem_ore.json
 179332784b9352ed4f01ad8e430c99a455bcb481 assets/arcadiandream/models/item/makaite_infused_netherite_ingot.json
 a624e46fda848287b623aecbccd045ec8103723c assets/arcadiandream/models/item/heavenly_peach.json
