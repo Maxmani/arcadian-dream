@@ -9,5 +9,6 @@ public class ModWorldGen {
 
     public static void register() {
         ModOreGeneration.generate();
+        ModEntitySpawn.addEntitySpawn();
     }
 }

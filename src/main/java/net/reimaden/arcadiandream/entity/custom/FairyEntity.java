@@ -27,15 +27,14 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.LocalDifficulty;
-import net.minecraft.world.ServerWorldAccess;
-import net.minecraft.world.World;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.*;
 import net.reimaden.arcadiandream.entity.variant.FairyVariant;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
@@ -163,5 +162,21 @@ public class FairyEntity extends HostileEntity implements GeoEntity {
 
     private void setVariant(FairyVariant variant) {
         dataTracker.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
+    }
+
+    public static boolean canSpawn(EntityType<FairyEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+        return world.getDifficulty() != Difficulty.PEACEFUL && isOutside(world, pos) && canMobSpawn(type, world, spawnReason, pos, random);
+    }
+
+    private static boolean isOutside(BlockRenderView world, BlockPos pos) {
+        return isLightLevelValidForNaturalSpawn(world, pos) && isAboveSeaLevel(pos);
+    }
+
+    private static boolean isLightLevelValidForNaturalSpawn(BlockRenderView world, BlockPos pos) {
+        return world.getBaseLightLevel(pos, 0) > 8;
+    }
+
+    private static boolean isAboveSeaLevel(BlockPos pos) {
+        return pos.getY() >= 63;
     }
 }
