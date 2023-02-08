@@ -5,15 +5,34 @@
 
 package net.reimaden.arcadiandream.entity.client.entities;
 
+import com.google.common.collect.Maps;
 import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.Util;
+import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.client.models.FairyEntityModel;
 import net.reimaden.arcadiandream.entity.custom.FairyEntity;
+import net.reimaden.arcadiandream.entity.variant.FairyVariant;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
+import java.util.Map;
+
 public class FairyEntityRenderer extends GeoEntityRenderer<FairyEntity> {
+
+    public static final Map<FairyVariant, Identifier> LOCATION_BY_VARIANT =
+            Util.make(Maps.newEnumMap(FairyVariant.class), (map) -> {
+                map.put(FairyVariant.BLUE, new Identifier(ArcadianDream.MOD_ID, "textures/entity/fairy/fairy_blue.png"));
+                map.put(FairyVariant.RED, new Identifier(ArcadianDream.MOD_ID, "textures/entity/fairy/fairy_red.png"));
+                map.put(FairyVariant.GREEN, new Identifier(ArcadianDream.MOD_ID, "textures/entity/fairy/fairy_green.png"));
+            });
 
     public FairyEntityRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new FairyEntityModel());
         shadowRadius = 0.45f;
+    }
+
+    @Override
+    public Identifier getTextureLocation(FairyEntity animatable) {
+        return LOCATION_BY_VARIANT.get(animatable.getVariant());
     }
 }
