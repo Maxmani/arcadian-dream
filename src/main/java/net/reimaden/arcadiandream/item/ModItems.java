@@ -11,6 +11,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.block.ModBlocks;
+import net.reimaden.arcadiandream.entity.ModEntities;
 import net.reimaden.arcadiandream.item.custom.armor.OrdinaryHatItem;
 import net.reimaden.arcadiandream.item.custom.consumables.HealingCharmItem;
 import net.reimaden.arcadiandream.item.custom.consumables.HouraiElixirItem;
@@ -108,6 +109,11 @@ public class ModItems {
     public static final Item MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN = registerItem("music_disc_the_shrine_long_forgotten", new MusicDiscItem(14, ModSounds.MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN,
             new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 134));
 
+    // Spawn Eggs
+    public static final Item FAIRY_SPAWN_EGG = registerItem("fairy_spawn_egg",
+            new SpawnEggItem(ModEntities.FAIRY, 0x004BCC, 0xF6FF5F,
+                    new FabricItemSettings()));
+
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(ArcadianDream.MOD_ID, name), item);
     }
@@ -204,6 +210,8 @@ public class ModItems {
         addToItemGroup(ModItemGroups.BLOCKS, RAW_MAKAITE_BLOCK);
         addToItemGroup(ModItemGroups.BLOCKS, DRAGON_GEM_BLOCK);
         addToItemGroup(ModItemGroups.BLOCKS, MAKAITE_BLOCK);
+
+        addToItemGroup(ItemGroups.SPAWN_EGGS, FAIRY_SPAWN_EGG);
     }
 
     private static void addToItemGroup(ItemGroup group, Item item) {

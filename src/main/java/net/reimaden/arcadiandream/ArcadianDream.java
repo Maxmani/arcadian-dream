@@ -13,6 +13,7 @@ import net.reimaden.arcadiandream.block.entity.ModBlockEntities;
 import net.reimaden.arcadiandream.command.ModCommands;
 import net.reimaden.arcadiandream.config.ArcadianDreamConfig;
 import net.reimaden.arcadiandream.enchantment.ModEnchantments;
+import net.reimaden.arcadiandream.entity.ModAttributes;
 import net.reimaden.arcadiandream.entity.ModEntities;
 import net.reimaden.arcadiandream.event.ModEvents;
 import net.reimaden.arcadiandream.gui.ModScreenHandlers;
@@ -28,6 +29,7 @@ import net.reimaden.arcadiandream.villager.ModVillagers;
 import net.reimaden.arcadiandream.world.gen.ModWorldGen;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import software.bernie.geckolib.GeckoLib;
 
 public class ArcadianDream implements ModInitializer {
 
@@ -61,5 +63,8 @@ public class ArcadianDream implements ModInitializer {
 
 		ModEvents.register();
 		ModScreenHandlers.register();
+
+		GeckoLib.initialize();
+		ModAttributes.register();
 	}
 }

@@ -14,6 +14,7 @@ import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;
+import net.reimaden.arcadiandream.entity.custom.FairyEntity;
 
 public class ModEntities {
 
@@ -25,6 +26,12 @@ public class ModEntities {
             FabricEntityTypeBuilder.<CircleBulletEntity>create(SpawnGroup.MISC, CircleBulletEntity::new)
                     .dimensions(EntityDimensions.changing(0.25f, 0.25f))
                     .trackRangeChunks(DANMAKU_RANGE).trackedUpdateRate(DANMAKU_RATE)
+                    .build()
+    );
+    public static final EntityType<FairyEntity> FAIRY = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, "fairy"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, FairyEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.5f, 1.5f))
                     .build()
     );
 

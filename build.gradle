@@ -43,6 +43,9 @@ repositories {
 	maven {
 		url = "https://jitpack.io"
 	}
+	maven {
+		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+	}
 }
 
 dependencies {
@@ -77,6 +80,9 @@ dependencies {
 
 	// https://github.com/Virtuoel/Pehkui
 	modApi("com.github.Virtuoel:Pehkui:${pehkui_version}", {exclude group: "net.fabricmc.fabric-api"})
+
+	// https://github.com/bernie-g/geckolib
+	modImplementation "software.bernie.geckolib:geckolib-fabric-${project.minecraft_version}:${project.geckolib_version}"
 }
 
 processResources {

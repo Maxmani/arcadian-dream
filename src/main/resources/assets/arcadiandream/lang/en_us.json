@@ -78,6 +78,7 @@
   "item.arcadiandream.ring_pattern": [{"translate":"item.arcadiandream.pattern"}],
   "item.arcadiandream.ring_pattern.tooltip": [{"translate":"item.arcadiandream.ring_pattern_template.tooltip"}],
   "item.arcadiandream.miracle_mallet": "Miracle Mallet",
+  "item.arcadiandream.fairy_spawn_egg": "Fairy Spawn Egg",
 
   "block.arcadiandream.dragon_gem_ore": "Dragon Gem Ore",
   "block.arcadiandream.deepslate_dragon_gem_ore": "Deepslate Dragon Gem Ore",
@@ -93,6 +94,7 @@
 
   "entity.arcadiandream.circle_bullet": "Circle Bullet",
   "entity.minecraft.villager.antiquarian": "Antiquarian",
+  "entity.arcadiandream.fairy": "Fairy",
 
   "enchantment.arcadiandream.danmaku_protection": "Danmaku Protection",
 
