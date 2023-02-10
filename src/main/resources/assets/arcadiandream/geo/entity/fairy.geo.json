@@ -12,7 +12,12 @@
 			},
 			"bones": [
 				{
+					"name": "fairy",
+					"pivot": [0, 0, 0]
+				},
+				{
 					"name": "head",
+					"parent": "fairy",
 					"pivot": [0, 20, 0],
 					"cubes": [
 						{"origin": [-4, 16, -4], "size": [8, 8, 8], "uv": [0, 16]}
@@ -50,6 +55,7 @@
 				},
 				{
 					"name": "body",
+					"parent": "fairy",
 					"pivot": [0, 10, 0],
 					"cubes": [
 						{"origin": [-3, 10, -2], "size": [6, 6, 4], "uv": [28, 28]},
@@ -79,6 +85,7 @@
 				},
 				{
 					"name": "arms",
+					"parent": "fairy",
 					"pivot": [0, 0, 0]
 				},
 				{
@@ -99,12 +106,13 @@
 				},
 				{
 					"name": "legs",
+					"parent": "fairy",
 					"pivot": [0, 0, 0]
 				},
 				{
 					"name": "rightLeg",
 					"parent": "legs",
-					"pivot": [-1.5, 5, 0],
+					"pivot": [-1.5, 10, 0],
 					"cubes": [
 						{"origin": [-3, 0, -2], "size": [3, 10, 4], "uv": [14, 32]}
 					]
@@ -112,7 +120,7 @@
 				{
 					"name": "leftLeg",
 					"parent": "legs",
-					"pivot": [1.5, 5, 0],
+					"pivot": [1.5, 10, 0],
 					"cubes": [
 						{"origin": [0, 0, -2], "size": [3, 10, 4], "uv": [0, 32]}
 					]

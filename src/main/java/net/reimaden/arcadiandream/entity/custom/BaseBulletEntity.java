@@ -21,6 +21,10 @@ import net.minecraft.world.World;
 
 public class BaseBulletEntity extends ThrownItemEntity {
 
+    private int power = 0;
+    private int duration = 200;
+    private float gravity = 0.0f;
+
     public BaseBulletEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -96,7 +100,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
         if (getStack().hasNbt()) {
             return getStack().getOrCreateNbt().getFloat("power");
         } else {
-            return 0;
+            return power;
         }
     }
 
@@ -104,7 +108,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
         if (getStack().hasNbt()) {
             return getStack().getOrCreateNbt().getInt("duration");
         } else {
-            return 200;
+            return duration;
         }
     }
 
@@ -113,11 +117,23 @@ public class BaseBulletEntity extends ThrownItemEntity {
         if (getStack().hasNbt()) {
             return getStack().getOrCreateNbt().getFloat("gravity");
         } else {
-            return 0.0f;
+            return gravity;
         }
     }
 
     public float getSoundPitch() {
         return 1f;
+    }
+
+    public void setPower(int power) {
+        this.power = power;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public void setGravity(float gravity) {
+        this.gravity = gravity;
     }
 }
