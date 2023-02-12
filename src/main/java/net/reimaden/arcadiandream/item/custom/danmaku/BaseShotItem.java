@@ -103,8 +103,11 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         if (!world.isClient()) {
             switch (nbt.getString("pattern").toLowerCase()) {
                 case "spread" -> createSpread(world, user, stack, density, speed, divergence);
-                case "ray" -> createRay(world, user, stack, speed, divergence, n, density);
+                case "ray" -> createRay(world, user, stack, density, speed, divergence, n);
                 case "ring" -> createRing(world, user, stack, density, speed, divergence);
+                case "cone" -> createCone(world, user, stack, density, speed, divergence);
+                case "double" -> createDouble(world, user, stack, density, speed, divergence, n);
+                case "triple" -> createTriple(world, user, stack, density, speed, divergence, n);
                 default -> throw new IllegalArgumentException("No valid bullet pattern found!");
             }
         }

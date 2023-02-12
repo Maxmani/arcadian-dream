@@ -185,7 +185,8 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
 
         if (!items.get(5).isEmpty()) {
             ImmutableList<Item> patternItems = ImmutableList.of(
-                    ModItems.SPREAD_PATTERN, ModItems.RAY_PATTERN, ModItems.RING_PATTERN
+                    ModItems.SPREAD_PATTERN, ModItems.RAY_PATTERN, ModItems.RING_PATTERN, ModItems.CONE_PATTERN,
+                    ModItems.DOUBLE_PATTERN, ModItems.TRIPLE_PATTERN
             );
 
             Map<Item, Integer> itemMap = new HashMap<>();
@@ -199,6 +200,9 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
                 case 0 -> shot.setPattern(stack, "spread");
                 case 1 -> shot.setPattern(stack, "ray");
                 case 2 -> shot.setPattern(stack, "ring");
+                case 3 -> shot.setPattern(stack, "cone");
+                case 4 -> shot.setPattern(stack, "double");
+                case 5 -> shot.setPattern(stack, "triple");
                 default -> throw new IllegalArgumentException("No valid bullet pattern found!");
             }
         }

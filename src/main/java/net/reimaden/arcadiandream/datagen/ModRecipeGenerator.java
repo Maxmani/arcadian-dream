@@ -61,6 +61,9 @@ public class ModRecipeGenerator extends ModRecipeProvider {
         makePatterns(exporter, ModItems.SPREAD_PATTERN_TEMPLATE, ModItems.SPREAD_PATTERN);
         makePatterns(exporter, ModItems.RAY_PATTERN_TEMPLATE, ModItems.RAY_PATTERN);
         makePatterns(exporter, ModItems.RING_PATTERN_TEMPLATE, ModItems.RING_PATTERN);
+        makePatterns(exporter, ModItems.CONE_PATTERN_TEMPLATE, ModItems.CONE_PATTERN);
+        makePatterns(exporter, ModItems.DOUBLE_PATTERN_TEMPLATE, ModItems.DOUBLE_PATTERN);
+        makePatterns(exporter, ModItems.TRIPLE_PATTERN_TEMPLATE, ModItems.TRIPLE_PATTERN);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.ORDINARY_HAT)
                 .input('#', Items.BLACK_WOOL)

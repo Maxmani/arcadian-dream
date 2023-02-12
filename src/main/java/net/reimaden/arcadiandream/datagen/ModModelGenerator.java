@@ -35,16 +35,13 @@ public class ModModelGenerator extends FabricModelProvider {
             ModItems.MAKAITE_HELMET, ModItems.MAKAITE_LEGGINGS, ModItems.MAKAITE_INGOT, ModItems.MAKAITE_INFUSED_NETHERITE_INGOT,
             ModItems.MUSIC_DISC_FAIRY_PLAYGROUND, ModItems.MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN, ModItems.ORDINARY_HAT, ModItems.RAW_MAKAITE,
             ModItems.HEALING_CHARM, ModItems.HOURAI_ELIXIR, ModItems.FAITH_ITEM, ModItems.SPREAD_PATTERN,
-            ModItems.RAY_PATTERN, ModItems.RING_PATTERN
+            ModItems.RAY_PATTERN, ModItems.RING_PATTERN, ModItems.CONE_PATTERN, ModItems.DOUBLE_PATTERN,
+            ModItems.TRIPLE_PATTERN
     );
 
     private static final ImmutableList<Item> HANDHELD_ITEMS = ImmutableList.of(
             ModItems.HISOU_SWORD, ModItems.MAKAITE_AXE, ModItems.MAKAITE_HOE, ModItems.MAKAITE_PICKAXE,
             ModItems.MAKAITE_SHOVEL, ModItems.MAKAITE_SWORD, ModItems.MIRACLE_MALLET
-    );
-
-    private static final ImmutableList<Item> PATTERN_TEMPLATES = ImmutableList.of(
-            ModItems.SPREAD_PATTERN_TEMPLATE, ModItems.RAY_PATTERN_TEMPLATE, ModItems.RING_PATTERN_TEMPLATE
     );
 
     public ModModelGenerator(FabricDataOutput output) {
@@ -76,10 +73,6 @@ public class ModModelGenerator extends FabricModelProvider {
         }
 
         item.register(ModItems.DEATH_SCYTHE, ModModels.HANDHELD_BIG);
-
-        for (int i = 0; i < PATTERN_TEMPLATES.size(); i++) {
-            registerWithSpecificTexture(PATTERN_TEMPLATES.get(i), "item/pattern_template", Models.GENERATED, item);
-        }
 
         registerWithSpecificTexture(ModItems.CIRCLE_BULLET_CORE, "item/circle_shot", ModModels.DANMAKU, item);
     }

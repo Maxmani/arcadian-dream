@@ -51,9 +51,15 @@ public class ModItems {
     public static final Item SPREAD_PATTERN_TEMPLATE = registerItem("spread_pattern_template", new PatternTemplateItem(new FabricItemSettings().maxCount(16)));
     public static final Item RAY_PATTERN_TEMPLATE = registerItem("ray_pattern_template", new PatternTemplateItem(new FabricItemSettings().maxCount(16)));
     public static final Item RING_PATTERN_TEMPLATE = registerItem("ring_pattern_template", new PatternTemplateItem(new FabricItemSettings().maxCount(16)));
+    public static final Item CONE_PATTERN_TEMPLATE = registerItem("cone_pattern_template", new PatternTemplateItem(new FabricItemSettings().maxCount(16)));
+    public static final Item DOUBLE_PATTERN_TEMPLATE = registerItem("double_pattern_template", new PatternTemplateItem(new FabricItemSettings().maxCount(16)));
+    public static final Item TRIPLE_PATTERN_TEMPLATE = registerItem("triple_pattern_template", new PatternTemplateItem(new FabricItemSettings().maxCount(16)));
     public static final Item SPREAD_PATTERN = registerItem("spread_pattern", new PatternItem(new FabricItemSettings().maxCount(16)));
     public static final Item RAY_PATTERN = registerItem("ray_pattern", new PatternItem(new FabricItemSettings().maxCount(16)));
     public static final Item RING_PATTERN = registerItem("ring_pattern", new PatternItem(new FabricItemSettings().maxCount(16)));
+    public static final Item CONE_PATTERN = registerItem("cone_pattern", new PatternItem(new FabricItemSettings().maxCount(16)));
+    public static final Item DOUBLE_PATTERN = registerItem("double_pattern", new PatternItem(new FabricItemSettings().maxCount(16)));
+    public static final Item TRIPLE_PATTERN = registerItem("triple_pattern", new PatternItem(new FabricItemSettings().maxCount(16)));
 
     // Food
     public static final Item HEAVENLY_PEACH = registerItem("heavenly_peach", new Item(new FabricItemSettings().maxCount(16)
@@ -188,6 +194,9 @@ public class ModItems {
         addToItemGroup(ModItemGroups.ITEMS, SPREAD_PATTERN_TEMPLATE);
         addToItemGroup(ModItemGroups.ITEMS, RAY_PATTERN_TEMPLATE);
         addToItemGroup(ModItemGroups.ITEMS, RING_PATTERN_TEMPLATE);
+        addToItemGroup(ModItemGroups.ITEMS, CONE_PATTERN_TEMPLATE);
+        addToItemGroup(ModItemGroups.ITEMS, DOUBLE_PATTERN_TEMPLATE);
+        addToItemGroup(ModItemGroups.ITEMS, TRIPLE_PATTERN_TEMPLATE);
         addToItemGroup(ModItemGroups.ITEMS, MUSIC_DISC_FAIRY_PLAYGROUND);
         addToItemGroup(ModItemGroups.ITEMS, MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN);
 
@@ -198,6 +207,9 @@ public class ModItems {
         addToItemGroup(ModItemGroups.DANMAKU, SPREAD_PATTERN);
         addToItemGroup(ModItemGroups.DANMAKU, RAY_PATTERN);
         addToItemGroup(ModItemGroups.DANMAKU, RING_PATTERN);
+        addToItemGroup(ModItemGroups.DANMAKU, CONE_PATTERN);
+        addToItemGroup(ModItemGroups.DANMAKU, DOUBLE_PATTERN);
+        addToItemGroup(ModItemGroups.DANMAKU, TRIPLE_PATTERN);
 
         addToItemGroup(ModItemGroups.BLOCKS, ONBASHIRA);
         addToItemGroup(ModItemGroups.BLOCKS, ONBASHIRA_PILLAR);

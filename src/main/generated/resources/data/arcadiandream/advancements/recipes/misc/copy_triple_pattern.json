@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:copy_triple_pattern"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_triple_pattern": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arcadiandream:triple_pattern"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_triple_pattern",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:copy_triple_pattern"
+    ]
+  }
+}
