@@ -16,7 +16,6 @@
   ],
   "client": [
     "client.ClientPlayNetworkHandlerMixin",
-    "client.EntityModelLayersAccessor",
     "client.EntityRendererMixin",
     "client.ItemRendererMixin"
   ],
