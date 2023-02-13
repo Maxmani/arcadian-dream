@@ -8,7 +8,7 @@ package net.reimaden.arcadiandream.util;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -18,20 +18,24 @@ import java.util.Map;
 public class ColorMap {
 
     public static final int DEFAULT_COLOR = 16711680;
-    private static final Map<Integer, String> colorMap = new HashMap<>();
+    private static final Map<Integer, String> colorMap = new LinkedHashMap<>();
 
     static {
         colorMap.put(DEFAULT_COLOR, "red");
         colorMap.put(65280, "green");
-        colorMap.put(255, "blue");
-        colorMap.put(16776960, "yellow");
+        colorMap.put(1908223, "blue");
+        colorMap.put(16770048, "yellow");
         colorMap.put(10494192, "purple");
         colorMap.put(65535, "cyan");
+        colorMap.put(16753920, "orange");
+        colorMap.put(3847130, "light_blue");
+        colorMap.put(16711935, "magenta");
+        colorMap.put(12582656, "lime");
         colorMap.put(16777215, "white");
-        colorMap.put(0, "black");
+        colorMap.put(657930, "black");
         colorMap.put(8421504, "light_gray");
         colorMap.put(4210752, "gray");
-        colorMap.put(16761035, "pink");
+        colorMap.put(15961002, "pink");
         colorMap.put(9849600, "brown");
         colorMap.put(16753920, "orange");
         colorMap.put(11393254, "light_blue");
