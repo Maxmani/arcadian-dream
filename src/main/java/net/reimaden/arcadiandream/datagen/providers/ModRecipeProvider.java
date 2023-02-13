@@ -31,21 +31,41 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         super(output);
     }
 
-    protected enum MOON_PHASES {
-        FULL_MOON,
-        WANING_GIBBOUS,
-        LAST_QUARTER,
-        WANING_CRESCENT,
-        NEW_MOON,
-        WAXING_CRESCENT,
-        FIRST_QUARTER,
-        WAXING_GIBBOUS
+    protected enum MoonPhases {
+        FULL_MOON((byte) 0),
+        WANING_GIBBOUS((byte) 1),
+        LAST_QUARTER((byte) 2),
+        WANING_CRESCENT((byte) 3),
+        NEW_MOON((byte) 4),
+        WAXING_CRESCENT((byte) 5),
+        FIRST_QUARTER((byte) 6),
+        WAXING_GIBBOUS((byte) 7);
+
+        private final byte id;
+
+        MoonPhases(byte id) {
+            this.id = id;
+        }
+
+        public byte getId() {
+            return id;
+        }
     }
 
-    protected enum DIMENSIONS {
-        OVERWORLD,
-        THE_NETHER,
-        THE_END
+    protected enum Dimensions {
+        OVERWORLD("overworld"),
+        THE_NETHER("the_nether"),
+        THE_END("the_end");
+
+        private final String id;
+
+        Dimensions(String id) {
+            this.id = id;
+        }
+
+        public String getId() {
+            return id;
+        }
     }
 
     protected static Identifier ritualCraftingId(Item item) {

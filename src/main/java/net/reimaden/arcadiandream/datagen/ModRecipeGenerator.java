@@ -120,11 +120,11 @@ public class ModRecipeGenerator extends ModRecipeProvider {
         CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItems.DEATH_SCYTHE), RecipeCategory.MISC, Items.IRON_NUGGET, 0.1f, 200)
                 .criterion(RecipeProvider.hasItem(ModItems.DEATH_SCYTHE),
                         RecipeProvider.conditionsFromItem(ModItems.DEATH_SCYTHE))
-                .offerTo(exporter, new Identifier(ArcadianDream.MOD_ID, (Items.IRON_NUGGET) + "_from_smelting"));
+                .offerTo(exporter, new Identifier(ArcadianDream.MOD_ID, Items.IRON_NUGGET + "_from_smelting"));
         CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(ModItems.DEATH_SCYTHE), RecipeCategory.MISC, Items.IRON_NUGGET, 0.1f, 100)
                 .criterion(RecipeProvider.hasItem(ModItems.DEATH_SCYTHE),
                         RecipeProvider.conditionsFromItem(ModItems.DEATH_SCYTHE))
-                .offerTo(exporter, new Identifier(ArcadianDream.MOD_ID, (Items.IRON_NUGGET) + "_from_blasting"));
+                .offerTo(exporter, new Identifier(ArcadianDream.MOD_ID, Items.IRON_NUGGET + "_from_blasting"));
 
         // Blasting recipes
         makeBlasting(exporter, DRAGON_GEM_ORES, RecipeCategory.MISC, ModItems.DRAGON_GEM, 1.2f, 100,
@@ -154,7 +154,7 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input(Items.RABBIT_HIDE)
                 .input(Items.STICK, 2)
                 .input(Ingredient.fromTag(ItemTags.PLANKS), 3)
-                .moonPhase((byte) MOON_PHASES.FULL_MOON.ordinal())
+                .moonPhase(MoonPhases.FULL_MOON.getId())
                 .offerTo(exporter, ritualCraftingId(ModItems.MOCHI_MALLET));
 
         RitualCraftingRecipeJsonBuilder.create(ModItems.WALL_PASSING_CHISEL)
@@ -180,7 +180,7 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input(Items.STICK, 3)
                 .input(Ingredient.fromTag(ConventionalItemTags.IRON_INGOTS), 5)
                 .input(Ingredient.fromTag(ItemTags.SOUL_FIRE_BASE_BLOCKS), 8)
-                .dimension(DIMENSIONS.THE_NETHER.toString())
+                .dimension(Dimensions.THE_NETHER.getId())
                 .offerTo(exporter, ritualCraftingId(ModItems.DEATH_SCYTHE));
 
         RitualCraftingRecipeJsonBuilder.create(ModItems.HOURAI_ELIXIR)
@@ -192,7 +192,7 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input(Items.ENCHANTED_GOLDEN_APPLE)
                 .input(Items.NETHER_STAR)
                 .input(Items.ENCHANTED_GOLDEN_APPLE)
-                .dimension(DIMENSIONS.THE_END.toString())
+                .dimension(Dimensions.THE_END.getId())
                 .offerTo(exporter, ritualCraftingId(ModItems.HOURAI_ELIXIR));
 
         RitualCraftingRecipeJsonBuilder.create(ModItems.MIRACLE_MALLET)
