@@ -58,12 +58,23 @@ public class BaseBulletEntity extends ThrownItemEntity {
         }
     }
 
+    @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
+        if (world.isClient()) {
+            return;
+        }
         Entity entity = entityHitResult.getEntity();
-        entity.damage(ModDamageSources.danmaku(this, getOwner()), getPower());
+        Entity owner = getOwner();
+        if (entity instanceof FairyEntity fairy) {
+            if (owner != null && fairy.getClass().equals(owner.getClass())) {
+                return;
+            }
+        }
+        entity.damage(ModDamageSources.danmaku(this, owner), getPower());
     }
 
+    @Override
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
 
