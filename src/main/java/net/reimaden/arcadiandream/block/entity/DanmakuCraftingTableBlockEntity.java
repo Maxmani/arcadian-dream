@@ -210,10 +210,8 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
         if (!items.get(6).isEmpty()) {
             Item dye = items.get(6).getItem();
             if (dye instanceof DyeItem) {
-                Integer colorInt = ColorMap.getColorInt(((DyeItem) dye).getColor().getName());
-                if (colorInt != null) {
-                    shot.setColor(stack, colorInt);
-                }
+                int colorInt = ColorMap.getColorInt(((DyeItem) dye).getColor().getName());
+                shot.setColor(stack, colorInt);
             }
         }
     }

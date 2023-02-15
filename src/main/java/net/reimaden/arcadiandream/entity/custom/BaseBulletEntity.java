@@ -5,25 +5,20 @@
 
 package net.reimaden.arcadiandream.entity.custom;
 
-import net.reimaden.arcadiandream.damage.ModDamageSources;
-import net.reimaden.arcadiandream.particle.ModParticles;
-import net.reimaden.arcadiandream.sound.ModSounds;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
+import net.reimaden.arcadiandream.damage.ModDamageSources;
+import net.reimaden.arcadiandream.particle.ModParticles;
+import net.reimaden.arcadiandream.sound.ModSounds;
 
 public class BaseBulletEntity extends ThrownItemEntity {
-
-    private int power = 0;
-    private int duration = 200;
-    private float gravity = 0.0f;
 
     public BaseBulletEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
         super(entityType, world);
@@ -80,8 +75,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
 
     private void bulletEffects(ServerWorld serverWorld) {
         despawnParticle(serverWorld);
-        serverWorld.playSound(null, getX(), getY(), getZ(),
-                ModSounds.ENTITY_DANMAKU_HIT, SoundCategory.NEUTRAL, 1f, getSoundPitch());
+        playSound(ModSounds.ENTITY_DANMAKU_HIT, 0.8f, getSoundPitch());
     }
 
     private void despawnParticle(ServerWorld serverWorld) {
@@ -100,7 +94,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
         if (getStack().hasNbt()) {
             return getStack().getOrCreateNbt().getFloat("power");
         } else {
-            return power;
+            return 0.0f;
         }
     }
 
@@ -108,7 +102,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
         if (getStack().hasNbt()) {
             return getStack().getOrCreateNbt().getInt("duration");
         } else {
-            return duration;
+            return 200;
         }
     }
 
@@ -117,23 +111,11 @@ public class BaseBulletEntity extends ThrownItemEntity {
         if (getStack().hasNbt()) {
             return getStack().getOrCreateNbt().getFloat("gravity");
         } else {
-            return gravity;
+            return 0.0f;
         }
     }
 
     public float getSoundPitch() {
         return 1f;
-    }
-
-    public void setPower(int power) {
-        this.power = power;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
-    public void setGravity(float gravity) {
-        this.gravity = gravity;
     }
 }

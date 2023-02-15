@@ -6,9 +6,10 @@
 package net.reimaden.arcadiandream.item.custom.danmaku;
 
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
-import net.reimaden.arcadiandream.entity.custom.CircleBulletEntity;
 import net.minecraft.world.World;
+import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.CircleBulletEntity;
+import org.jetbrains.annotations.NotNull;
 
 public class CircleShotItem extends BaseShotItem {
 
@@ -20,7 +21,7 @@ public class CircleShotItem extends BaseShotItem {
     }
 
     @Override
-    public ThrownItemEntity getBullet(World world, LivingEntity user) {
+    public @NotNull BaseBulletEntity getBullet(World world, LivingEntity user) {
         return new CircleBulletEntity(world, user);
     }
 }

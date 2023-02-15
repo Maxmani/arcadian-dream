@@ -7,6 +7,7 @@ package net.reimaden.arcadiandream.util;
 
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
+import net.minecraft.util.math.random.Random;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -37,20 +38,18 @@ public class ColorMap {
         colorMap.put(4210752, "gray");
         colorMap.put(15961002, "pink");
         colorMap.put(9849600, "brown");
-        colorMap.put(16753920, "orange");
-        colorMap.put(11393254, "light_blue");
-        colorMap.put(16711935, "magenta");
-        colorMap.put(12582656, "lime");
     }
 
-    public static Integer getColorInt(String colorName) {
+    private ColorMap() {}
+
+    public static int getColorInt(String colorName) {
         for (Map.Entry<Integer, String> entry : colorMap.entrySet()) {
             if (entry.getValue().equalsIgnoreCase(colorName)) {
                 return entry.getKey();
             }
         }
 
-        return null;
+        throw new IllegalArgumentException("Invalid color name: " + colorName);
     }
 
     public static String getColorName(int color) {
@@ -60,5 +59,21 @@ public class ColorMap {
     public static MutableText getTranslationKey(int color) {
         String colorName = getColorName(color);
         return Text.translatable("color.minecraft." + colorName);
+    }
+
+    @SuppressWarnings("unused")
+    public static int getRandomColor(Random random) {
+        int index = random.nextInt(colorMap.size());
+        return (int) colorMap.keySet().toArray()[index];
+    }
+
+    // Includes only sane colors for bullets
+    public static int getRandomBulletColor(Random random) {
+        int index = random.nextInt(colorMap.size() - 5);
+        return (int) colorMap.keySet().toArray()[index];
+    }
+
+    public static boolean matchesMap(int color) {
+        return colorMap.containsKey(color);
     }
 }

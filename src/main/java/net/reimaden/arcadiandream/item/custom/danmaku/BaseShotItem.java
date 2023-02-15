@@ -9,7 +9,6 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -26,9 +25,11 @@ import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.reimaden.arcadiandream.util.ColorMap;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Locale;
 
 public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns {
 
@@ -162,6 +163,8 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         NbtCompound nbt = stack.getNbt();
 
         if (nbt != null) {
+            NbtCompound nbtDisplay = nbt.getCompound(DISPLAY_KEY);
+
             float power = nbt.getFloat("power");
             float speed = nbt.getFloat("speed");
             int duration = nbt.getInt("duration");
@@ -176,6 +179,7 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
             String formattedSpeed = formatFloatValue(speed);
             String formattedGravity = formatFloatValue(gravity);
             String formattedDivergence = formatFloatValue(divergence);
+            String formattedColor = ColorMap.matchesMap(getColor(stack)) ? getColorName(stack).getString() : String.format(Locale.ROOT, "#%06X", nbtDisplay.getInt(COLOR_KEY));
 
             tooltip.add(Text.translatable(keyPrefix + "power", formattedPower));
             tooltip.add(Text.translatable(keyPrefix + "speed", formattedSpeed));
@@ -185,7 +189,7 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
             tooltip.add(Text.translatable(keyPrefix + "divergence", formattedDivergence));
             tooltip.add(Text.translatable(keyPrefix + "pattern", Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.pattern_" + pattern.toLowerCase())));
             tooltip.add(Text.translatable(keyPrefix + "density", density));
-            tooltip.add(Text.translatable(keyPrefix + "color", getColorName(stack).getString()).setStyle(Style.EMPTY.withColor(getColor(stack))));
+            tooltip.add(Text.translatable(keyPrefix + "color", formattedColor).setStyle(Style.EMPTY.withColor(getColor(stack))));
         }
     }
 
@@ -200,7 +204,7 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
     }
 
     @Override
-    public ThrownItemEntity getBullet(World world, LivingEntity user) {
+    public @NotNull BaseBulletEntity getBullet(World world, LivingEntity user) {
         return new BaseBulletEntity(world, user);
     }
 
@@ -214,7 +218,7 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         return false;
     }
 
-    // These aren't traditional getters and setters, but they're used to set the values of the NBT tags
+    /* These aren't traditional getters and setters, but they're used to set the values of the NBT tags */
 
     private void setParamFloat(ItemStack stack, String key, float value, float maxValue) {
         stack.getOrCreateNbt().putFloat(key, Math.min(value, maxValue));

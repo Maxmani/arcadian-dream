@@ -7,8 +7,8 @@ package net.reimaden.arcadiandream.entity.custom;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.RangedAttackMob;
 import net.minecraft.entity.ai.control.FlightMoveControl;
+import net.minecraft.entity.ai.control.LookControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
@@ -33,8 +33,13 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.*;
+import net.reimaden.arcadiandream.entity.ai.DanmakuGoal;
+import net.reimaden.arcadiandream.entity.variant.FairyPersonality;
 import net.reimaden.arcadiandream.entity.variant.FairyVariant;
+import net.reimaden.arcadiandream.item.custom.danmaku.MobBulletPatterns;
 import net.reimaden.arcadiandream.sound.ModSounds;
+import net.reimaden.arcadiandream.util.ColorMap;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -45,18 +50,24 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.UUID;
 
-public class FairyEntity extends HostileEntity implements GeoEntity, RangedAttackMob, Angerable {
+public class FairyEntity extends HostileEntity implements GeoEntity, DanmakuMob, Angerable {
 
     @Nullable
     private UUID angryAt;
     private int angerTime;
     private static final UniformIntProvider ANGER_TIME_RANGE = TimeHelper.betweenSeconds(20, 39);
 
+    private static final TrackedData<Integer> VARIANT = DataTracker.registerData(FairyEntity.class, TrackedDataHandlerRegistry.INTEGER);
+    private static final TrackedData<Integer> PERSONALITY = DataTracker.registerData(FairyEntity.class, TrackedDataHandlerRegistry.INTEGER);
+    private final int bulletColor;
+
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public FairyEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
         this.moveControl = new FlightMoveControl(this, 10, true);
+        this.lookControl = new LookControl(this);
+        this.bulletColor = ColorMap.getRandomBulletColor(getRandom());
     }
 
     public static DefaultAttributeContainer.Builder setAttributes() {
@@ -75,21 +86,18 @@ public class FairyEntity extends HostileEntity implements GeoEntity, RangedAttac
         goalSelector.add(4, new LookAtEntityGoal(this, MobEntity.class, 6.0F));
         goalSelector.add(5, new LookAroundGoal(this));
 
-        targetSelector.add(1, new RevengeGoal(this));
+        targetSelector.add(1, new RevengeGoal(this, FairyEntity.class));
         targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
         targetSelector.add(3, new UniversalAngerGoal<>(this, false));
     }
 
-    static class DanmakuGoal extends ProjectileAttackGoal {
-
-        public DanmakuGoal(FairyEntity fairy, double speed, int cooldown, float maxAttackDistance) {
-            super(fairy, speed, cooldown, maxAttackDistance);
-        }
-
-        @Override
-        public boolean shouldContinue() {
-            return canStart();
-        }
+    public int getPersonalityBasedCooldown() {
+        return switch (getPersonality()) {
+            case AGGRESSIVE -> 20;
+            case CURIOUS, SPONTANEOUS, TIMID -> 40;
+            case CONFIDENT -> 25;
+            case PLAYFUL -> 30;
+        };
     }
 
     @Override
@@ -106,15 +114,19 @@ public class FairyEntity extends HostileEntity implements GeoEntity, RangedAttac
 
     @Override
     public void attack(LivingEntity target, float pullProgress) {
-        CircleBulletEntity bullet = new CircleBulletEntity(world, this);
-        bullet.setPower(10);
-        double d = target.getY() + target.getHeight() / 2;
-        double e = target.getX() - this.getX();
-        double f = d - bullet.getY();
-        double g = target.getZ() - this.getZ();
-        bullet.setVelocity(e, f, g, 0.8f, 0f);
+        AttackPatterns patterns = new AttackPatterns();
+
+        switch (getPersonality()) {
+            case AGGRESSIVE -> patterns.aggressive(this, target, world);
+            case CURIOUS -> patterns.curious(this, target, world);
+            case CONFIDENT -> patterns.confident(this, target, world);
+            case PLAYFUL -> patterns.playful(this, target, world);
+            case SPONTANEOUS -> patterns.spontaneous(this, target, world);
+            case TIMID -> patterns.timid(this, target, world);
+            default -> throw new IllegalStateException("Unexpected value: " + getPersonality());
+        }
+
         playSound(ModSounds.ENTITY_DANMAKU_FIRE, 1f, 1f + (random.nextFloat() - 0.5f) * 0.1f);
-        world.spawnEntity(bullet);
     }
 
     private PlayState predicate(AnimationState<?> state) {
@@ -192,29 +204,32 @@ public class FairyEntity extends HostileEntity implements GeoEntity, RangedAttac
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
         nbt.putInt("Variant", getTypeVariant());
+        nbt.putInt("Personality", getTypePersonality());
         writeAngerToNbt(nbt);
     }
 
     @Override
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
-        dataTracker.set(DATA_ID_TYPE_VARIANT, nbt.getInt("Variant"));
+        dataTracker.set(VARIANT, nbt.getInt("Variant"));
+        dataTracker.set(PERSONALITY, nbt.getInt("Personality"));
         readAngerFromNbt(world, nbt);
     }
 
     @Override
     protected void initDataTracker() {
         super.initDataTracker();
-        dataTracker.startTracking(DATA_ID_TYPE_VARIANT, 0);
+        dataTracker.startTracking(VARIANT, 0);
+        dataTracker.startTracking(PERSONALITY, 0);
     }
-
-    private static final TrackedData<Integer> DATA_ID_TYPE_VARIANT =
-            DataTracker.registerData(FairyEntity.class, TrackedDataHandlerRegistry.INTEGER);
 
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, EntityData entityData, NbtCompound entityNbt) {
         FairyVariant variant = Util.getRandom(FairyVariant.values(), random);
+        FairyPersonality personality = Util.getRandom(FairyPersonality.values(), random);
+
         setVariant(variant);
+        setPersonality(personality);
 
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
     }
@@ -224,11 +239,23 @@ public class FairyEntity extends HostileEntity implements GeoEntity, RangedAttac
     }
 
     private int getTypeVariant() {
-        return this.dataTracker.get(DATA_ID_TYPE_VARIANT);
+        return this.dataTracker.get(VARIANT);
     }
 
     private void setVariant(FairyVariant variant) {
-        dataTracker.set(DATA_ID_TYPE_VARIANT, variant.getId() & 255);
+        dataTracker.set(VARIANT, variant.getId() & 255);
+    }
+
+    public FairyPersonality getPersonality() {
+        return FairyPersonality.byId(getTypePersonality() & 255);
+    }
+
+    private int getTypePersonality() {
+        return this.dataTracker.get(PERSONALITY);
+    }
+
+    private void setPersonality(FairyPersonality personality) {
+        dataTracker.set(PERSONALITY, personality.getId() & 255);
     }
 
     public static boolean canSpawn(EntityType<FairyEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
@@ -271,5 +298,37 @@ public class FairyEntity extends HostileEntity implements GeoEntity, RangedAttac
     @Override
     public void chooseRandomAngerTime() {
         setAngerTime(ANGER_TIME_RANGE.get(random));
+    }
+
+    private static class AttackPatterns implements MobBulletPatterns {
+
+        public void aggressive(FairyEntity fairy, LivingEntity target, World world) {
+            createRing(world, fairy, target, 10, 0.5f, 0, 4, 50, fairy.bulletColor);
+        }
+
+        public void curious(FairyEntity fairy, LivingEntity target, World world) {
+            createRay(world, fairy, target, 5, 0.5f, 1, 4, 50, fairy.bulletColor);
+        }
+
+        public void confident(FairyEntity fairy, LivingEntity target, World world) {
+            createSpread(world, fairy,target, 4, 0.5f, 5, 4, 50, fairy.bulletColor);
+        }
+
+        public void playful(FairyEntity fairy, LivingEntity target, World world) {
+            createDouble(world, fairy, target, 6,0.5f, 0, 3, 50, fairy.bulletColor);
+        }
+
+        public void spontaneous(FairyEntity fairy, LivingEntity target, World world) {
+            createTriple(world, fairy, target, 3, 0.6f, 0, 4, 50, fairy.bulletColor);
+        }
+
+        public void timid(FairyEntity fairy, LivingEntity target, World world) {
+            createSpread(world, fairy, target, 1, 0.4f, 1, 3, 50, fairy.bulletColor);
+        }
+
+        @Override
+        public @NotNull BaseBulletEntity getBullet(World world, LivingEntity user) {
+            return new CircleBulletEntity(world, user);
+        }
     }
 }
