@@ -1,13 +1,13 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
 package net.reimaden.arcadiandream.mixin;
 
-import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.projectile.ProjectileEntity;
+import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

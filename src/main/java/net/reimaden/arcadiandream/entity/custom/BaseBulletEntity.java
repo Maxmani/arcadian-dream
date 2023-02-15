@@ -76,6 +76,13 @@ public class BaseBulletEntity extends ThrownItemEntity {
 
     @Override
     protected void onCollision(HitResult hitResult) {
+        // Make bullets ignore their owner
+        if (hitResult.getType() == HitResult.Type.ENTITY) {
+            Entity entity = ((EntityHitResult) hitResult).getEntity();
+            if (entity == getOwner()) {
+                return;
+            }
+        }
         super.onCollision(hitResult);
 
         if (!world.isClient()) {
