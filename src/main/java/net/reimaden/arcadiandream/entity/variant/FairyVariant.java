@@ -12,7 +12,8 @@ public enum FairyVariant {
 
     BLUE(0),
     RED(1),
-    GREEN(2);
+    GREEN(2),
+    YELLOW(3);
 
     private static final FairyVariant[] BY_ID = Arrays.stream(values()).sorted(Comparator
             .comparingInt(FairyVariant::getId)).toArray(FairyVariant[]::new);

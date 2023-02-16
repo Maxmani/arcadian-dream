@@ -187,7 +187,7 @@ public class FairyEntity extends HostileEntity implements GeoEntity, DanmakuMob,
     @Override
     protected EntityNavigation createNavigation(World world) {
         BirdNavigation birdNavigation = new BirdNavigation(this, world);
-        birdNavigation.setCanPathThroughDoors(true);
+        birdNavigation.setCanPathThroughDoors(false);
         birdNavigation.setCanSwim(true);
         birdNavigation.setCanEnterOpenDoors(true);
         return birdNavigation;

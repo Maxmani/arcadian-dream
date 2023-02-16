@@ -24,6 +24,7 @@ public class FairyEntityRenderer extends GeoEntityRenderer<FairyEntity> {
                 map.put(FairyVariant.BLUE, new Identifier(ArcadianDream.MOD_ID, "textures/entity/fairy/fairy_blue.png"));
                 map.put(FairyVariant.RED, new Identifier(ArcadianDream.MOD_ID, "textures/entity/fairy/fairy_red.png"));
                 map.put(FairyVariant.GREEN, new Identifier(ArcadianDream.MOD_ID, "textures/entity/fairy/fairy_green.png"));
+                map.put(FairyVariant.YELLOW, new Identifier(ArcadianDream.MOD_ID, "textures/entity/fairy/fairy_yellow.png"));
             });
 
     public FairyEntityRenderer(EntityRendererFactory.Context ctx) {
