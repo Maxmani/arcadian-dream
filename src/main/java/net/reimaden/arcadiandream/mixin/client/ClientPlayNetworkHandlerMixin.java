@@ -1,14 +1,11 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
 package net.reimaden.arcadiandream.mixin.client;
 
 import dev.emi.trinkets.api.TrinketsApi;
-import net.reimaden.arcadiandream.item.ModItems;
-import net.reimaden.arcadiandream.particle.ModParticles;
-import net.reimaden.arcadiandream.sound.ModSounds;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.entity.Entity;
@@ -16,6 +13,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.s2c.play.EntityStatusS2CPacket;
+import net.reimaden.arcadiandream.item.ModItems;
+import net.reimaden.arcadiandream.particle.ModParticles;
+import net.reimaden.arcadiandream.sound.ModSounds;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
