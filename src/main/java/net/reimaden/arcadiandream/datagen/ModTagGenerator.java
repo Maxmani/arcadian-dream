@@ -35,40 +35,32 @@ public class ModTagGenerator {
             // "minecraft/tags/blocks"
             getOrCreateTagBuilder(NEEDS_DIAMOND_TOOL)
                     .addTag(ModTags.Blocks.DRAGON_GEM_ORES)
-                    .add(ModBlocks.DRAGON_GEM_BLOCK)
-                    .add(ModBlocks.RITUAL_SHRINE);
+                    .add(ModBlocks.DRAGON_GEM_BLOCK, ModBlocks.RITUAL_SHRINE);
             getOrCreateTagBuilder(NEEDS_IRON_TOOL)
-                    .add(ModBlocks.MAKAITE_ORE)
-                    .add(ModBlocks.RAW_MAKAITE_BLOCK)
-                    .add(ModBlocks.MAKAITE_BLOCK);
+                    .add(ModBlocks.MAKAITE_ORE, ModBlocks.RAW_MAKAITE_BLOCK, ModBlocks.MAKAITE_BLOCK);
             getOrCreateTagBuilder(BEACON_BASE_BLOCKS)
-                    .add(ModBlocks.DRAGON_GEM_BLOCK)
-                    .add(ModBlocks.MAKAITE_BLOCK);
+                    .add(ModBlocks.DRAGON_GEM_BLOCK, ModBlocks.MAKAITE_BLOCK);
 
             // "minecraft/tags/blocks/mineable"
             getOrCreateTagBuilder(AXE_MINEABLE)
-                    .add(ModBlocks.ONBASHIRA)
-                    .add(ModBlocks.ONBASHIRA_PILLAR)
-                    .add(ModBlocks.DANMAKU_CRAFTING_TABLE);
+                    .add(ModBlocks.ONBASHIRA, ModBlocks.ONBASHIRA_PILLAR, ModBlocks.DANMAKU_CRAFTING_TABLE);
             getOrCreateTagBuilder(PICKAXE_MINEABLE)
                     .addTag(ModTags.Blocks.DRAGON_GEM_ORES)
-                    .add(ModBlocks.DRAGON_GEM_BLOCK)
-                    .add(ModBlocks.MAKAITE_ORE)
-                    .add(ModBlocks.RAW_MAKAITE_BLOCK)
-                    .add(ModBlocks.MAKAITE_BLOCK)
-                    .add(ModBlocks.RITUAL_SHRINE);
+                    .add(ModBlocks.DRAGON_GEM_BLOCK, ModBlocks.MAKAITE_ORE, ModBlocks.RAW_MAKAITE_BLOCK, ModBlocks.MAKAITE_BLOCK,
+                            ModBlocks.RITUAL_SHRINE);
 
             // Modded block tags
             getOrCreateTagBuilder(ModTags.Blocks.OBSIDIAN_BLOCKS)
-                    .add(Blocks.OBSIDIAN)
-                    .add(Blocks.CRYING_OBSIDIAN);
+                    .add(Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN);
             getOrCreateTagBuilder(ModTags.Blocks.DRAGON_GEM_ORES)
-                    .add(ModBlocks.DRAGON_GEM_ORE)
-                    .add(ModBlocks.DEEPSLATE_DRAGON_GEM_ORE)
-                    .add(ModBlocks.END_STONE_DRAGON_GEM_ORE);
+                    .add(ModBlocks.DRAGON_GEM_ORE, ModBlocks.DEEPSLATE_DRAGON_GEM_ORE, ModBlocks.END_STONE_DRAGON_GEM_ORE);
             getOrCreateTagBuilder(ConventionalBlockTags.ORES)
                     .addTag(ModTags.Blocks.DRAGON_GEM_ORES)
                     .add(ModBlocks.MAKAITE_ORE);
+            getOrCreateTagBuilder(ModTags.Blocks.FAIRIES_SPAWNABLE_ON)
+                    .forceAddTag(FOXES_SPAWNABLE_ON)
+                    .forceAddTag(ICE)
+                    .add(Blocks.MUD);
         }
     }
 
@@ -83,21 +75,15 @@ public class ModTagGenerator {
 
             // "minecraft/tags/items"
             getOrCreateTagBuilder(BEACON_PAYMENT_ITEMS)
-                    .add(ModItems.DRAGON_GEM)
-                    .add(ModItems.MAKAITE_INGOT)
-                    .add(ModItems.MAKAITE_INFUSED_NETHERITE_INGOT);
+                    .add(ModItems.DRAGON_GEM, ModItems.MAKAITE_INGOT, ModItems.MAKAITE_INFUSED_NETHERITE_INGOT);
             getOrCreateTagBuilder(MUSIC_DISCS)
-                    .add(ModItems.MUSIC_DISC_FAIRY_PLAYGROUND)
-                    .add(ModItems.MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN);
+                    .add(ModItems.MUSIC_DISC_FAIRY_PLAYGROUND, ModItems.MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN);
 
             // Block tags to item tags
             getOrCreateTagBuilder(ModTags.Items.OBSIDIAN_BLOCKS)
-                    .add(Items.OBSIDIAN)
-                    .add(Items.CRYING_OBSIDIAN);
+                    .add(Items.OBSIDIAN, Items.CRYING_OBSIDIAN);
             getOrCreateTagBuilder(ModTags.Items.DRAGON_GEM_ORES)
-                    .add(ModItems.DRAGON_GEM_ORE)
-                    .add(ModItems.DEEPSLATE_DRAGON_GEM_ORE)
-                    .add(ModItems.END_STONE_DRAGON_GEM_ORE);
+                    .add(ModItems.DRAGON_GEM_ORE, ModItems.DEEPSLATE_DRAGON_GEM_ORE, ModItems.END_STONE_DRAGON_GEM_ORE);
             getOrCreateTagBuilder(ConventionalItemTags.ORES)
                     .addTag(ModTags.Items.DRAGON_GEM_ORES)
                     .add(ModItems.MAKAITE_ORE);
@@ -114,23 +100,14 @@ public class ModTagGenerator {
             getOrCreateTagBuilder(ConventionalItemTags.SPEARS)
                     .add(ModItems.NUE_TRIDENT);
             getOrCreateTagBuilder(ConventionalItemTags.SWORDS)
-                    .add(ModItems.MAKAITE_SWORD)
-                    .add(ModItems.HISOU_SWORD)
-                    .add(ModItems.DEATH_SCYTHE);
+                    .add(ModItems.MAKAITE_SWORD, ModItems.HISOU_SWORD, ModItems.DEATH_SCYTHE);
             getOrCreateTagBuilder(ModTags.Items.HAMMERS)
-                    .add(ModItems.MOCHI_MALLET)
-                    .add(ModItems.MIRACLE_MALLET);
+                    .add(ModItems.MOCHI_MALLET, ModItems.MIRACLE_MALLET);
             getOrCreateTagBuilder(ConventionalItemTags.FOODS)
                     .add(ModItems.HEAVENLY_PEACH);
             getOrCreateTagBuilder(ModTags.Items.ITEMS)
-                    .add(ModItems.POWER_ITEM)
-                    .add(ModItems.BIG_POWER_ITEM)
-                    .add(ModItems.POINT_ITEM)
-                    .add(ModItems.MAX_POINT_ITEM)
-                    .add(ModItems.BOMB_ITEM)
-                    .add(ModItems.EXTEND_ITEM)
-                    .add(ModItems.STAR_ITEM)
-                    .add(ModItems.FAITH_ITEM);
+                    .add(ModItems.POWER_ITEM, ModItems.BIG_POWER_ITEM, ModItems.POINT_ITEM, ModItems.MAX_POINT_ITEM,
+                            ModItems.BOMB_ITEM, ModItems.EXTEND_ITEM, ModItems.STAR_ITEM, ModItems.FAITH_ITEM);
             getOrCreateTagBuilder(ModTags.Items.BULLET_CORES)
                     .add(ModItems.CIRCLE_BULLET_CORE);
             getOrCreateTagBuilder(ModTags.Items.SHOTS)

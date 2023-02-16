@@ -39,6 +39,7 @@ import net.reimaden.arcadiandream.entity.variant.FairyVariant;
 import net.reimaden.arcadiandream.item.custom.danmaku.MobBulletPatterns;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.reimaden.arcadiandream.util.ColorMap;
+import net.reimaden.arcadiandream.util.ModTags;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
@@ -258,20 +259,21 @@ public class FairyEntity extends HostileEntity implements GeoEntity, DanmakuMob,
         dataTracker.set(PERSONALITY, personality.getId() & 255);
     }
 
-    public static boolean canSpawn(EntityType<FairyEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        return world.getDifficulty() != Difficulty.PEACEFUL && isOutside(world, pos) && canMobSpawn(type, world, spawnReason, pos, random);
+    public static boolean canSpawn(EntityType<FairyEntity> type, ServerWorldAccess world, SpawnReason reason, BlockPos pos, Random random) {
+        return world.getDifficulty() != Difficulty.PEACEFUL && isValidSpawn(world, pos) && canMobSpawn(type, world, reason, pos, random);
     }
 
-    private static boolean isOutside(BlockRenderView world, BlockPos pos) {
-        return isLightLevelValidForNaturalSpawn(world, pos) && isAboveSeaLevel(pos);
+    private static boolean isValidSpawn(ServerWorldAccess world, BlockPos pos) {
+        return world.getBlockState(pos.down()).isIn(ModTags.Blocks.FAIRIES_SPAWNABLE_ON) && isLightLevelValid(world, pos);
     }
 
-    private static boolean isLightLevelValidForNaturalSpawn(BlockRenderView world, BlockPos pos) {
-        return world.getBaseLightLevel(pos, 0) > 8;
+    private static boolean isLightLevelValid(ServerWorldAccess world, BlockPos pos) {
+        return world.getLightLevel(pos) > 8 && world.getLevelProperties().getTimeOfDay() < 12000;
     }
 
-    private static boolean isAboveSeaLevel(BlockPos pos) {
-        return pos.getY() >= 63;
+    @Override
+    public float getPathfindingFavor(BlockPos pos, WorldView world) {
+        return 0.0f;
     }
 
     @Override

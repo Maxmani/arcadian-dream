@@ -18,7 +18,7 @@ public class ModEntitySpawn {
 
     public static void addEntitySpawn() {
         BiomeModifications.addSpawn(BiomeSelectors.tag(ConventionalBiomeTags.CLIMATE_TEMPERATE), SpawnGroup.MONSTER,
-                ModEntities.FAIRY, 300, 1, 3);
+                ModEntities.FAIRY, 100, 1, 3);
 
         SpawnRestriction.register(ModEntities.FAIRY, SpawnRestriction.Location.ON_GROUND,
                 Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, FairyEntity::canSpawn);
