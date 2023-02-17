@@ -10,6 +10,7 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import net.reimaden.arcadiandream.ArcadianDream;
+import net.reimaden.arcadiandream.entity.client.entities.layers.FairyWingsLayer;
 import net.reimaden.arcadiandream.entity.client.models.FairyEntityModel;
 import net.reimaden.arcadiandream.entity.custom.FairyEntity;
 import net.reimaden.arcadiandream.entity.variant.FairyVariant;
@@ -30,6 +31,7 @@ public class FairyEntityRenderer extends GeoEntityRenderer<FairyEntity> {
     public FairyEntityRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new FairyEntityModel());
         shadowRadius = 0.45f;
+        addRenderLayer(new FairyWingsLayer(this));
     }
 
     @Override
