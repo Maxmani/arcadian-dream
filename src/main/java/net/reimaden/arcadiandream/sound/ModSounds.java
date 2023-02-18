@@ -33,6 +33,9 @@ public class ModSounds {
     public static final SoundEvent ENTITY_DANMAKU_FIRE = registerSoundEvent("entity.danmaku.fire");
     public static final SoundEvent ENTITY_DANMAKU_HIT = registerSoundEvent("entity.danmaku.hit");
     public static final SoundEvent ENTITY_GENERIC_RESURRECT = registerSoundEvent("entity.generic.resurrect");
+    public static final SoundEvent ENTITY_FAIRY_AMBIENT = registerSoundEvent("entity.fairy.ambient");
+    public static final SoundEvent ENTITY_FAIRY_HURT = registerSoundEvent("entity.fairy.hurt");
+    public static final SoundEvent ENTITY_FAIRY_DEATH = registerSoundEvent("entity.fairy.death");
 
     // Music
     public static final SoundEvent MUSIC_DISC_FAIRY_PLAYGROUND = registerSoundEvent("music_disc.fairy_playground");

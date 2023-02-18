@@ -25,7 +25,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.TimeHelper;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
@@ -163,20 +162,30 @@ public class FairyEntity extends HostileEntity implements GeoEntity, DanmakuMob,
     @Override
     protected void playStepSound(BlockPos pos, BlockState state) {}
 
+    @Override
+    protected float getSoundVolume() {
+        return 0.8f;
+    }
+
+    @Override
+    public float getSoundPitch() {
+        return super.getSoundPitch() * 0.9f;
+    }
+
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.ENTITY_BAT_AMBIENT;
+        return ModSounds.ENTITY_FAIRY_AMBIENT;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundEvents.ENTITY_BAT_HURT;
+        return ModSounds.ENTITY_FAIRY_HURT;
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_BAT_DEATH;
+        return ModSounds.ENTITY_FAIRY_DEATH;
     }
 
     @Override

@@ -139,5 +139,29 @@
       "arcadiandream:random/ring"
     ],
     "subtitle": "arcadiandream.subtitles.item.miracle_mallet.use"
+  },
+  "entity.fairy.ambient": {
+    "sounds": [
+      "mob/bat/idle1",
+      "mob/bat/idle2",
+      "mob/bat/idle3",
+      "mob/bat/idle4"
+    ],
+    "subtitle": "arcadiandream.subtitles.entity.fairy.ambient"
+  },
+  "entity.fairy.death": {
+    "sounds": [
+      "mob/bat/death"
+    ],
+    "subtitle": "arcadiandream.subtitles.entity.fairy.death"
+  },
+  "entity.fairy.hurt": {
+    "sounds": [
+      "mob/bat/hurt1",
+      "mob/bat/hurt2",
+      "mob/bat/hurt3",
+      "mob/bat/hurt4"
+    ],
+    "subtitle": "arcadiandream.subtitles.entity.fairy.hurt"
   }
 }
