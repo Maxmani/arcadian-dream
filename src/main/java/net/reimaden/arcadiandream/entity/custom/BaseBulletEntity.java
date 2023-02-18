@@ -134,6 +134,6 @@ public class BaseBulletEntity extends ThrownItemEntity {
     }
 
     public float getSoundPitch() {
-        return 1f;
+        return 1f + (random.nextFloat() - 0.5f) * 0.1f;
     }
 }

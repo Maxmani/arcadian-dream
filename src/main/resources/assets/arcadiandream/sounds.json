@@ -23,7 +23,10 @@
   },
   "entity.danmaku.hit": {
     "sounds": [
-      "arcadiandream:danmaku/hit"
+      {
+        "name": "arcadiandream:danmaku/hit",
+        "stream": true
+      }
     ],
     "subtitle": "arcadiandream.subtitles.entity.danmaku.hit"
   },
