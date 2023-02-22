@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "arcadiandream:circle_shot"
+    "arcadiandream:circle_shot",
+    "arcadiandream:bubble_shot",
+    "arcadiandream:amulet_shot"
   ]
 }

@@ -75,6 +75,8 @@ public class ModModelGenerator extends FabricModelProvider {
         item.register(ModItems.DEATH_SCYTHE, ModModels.HANDHELD_BIG);
 
         registerWithSpecificTexture(ModItems.CIRCLE_BULLET_CORE, "item/circle_shot", ModModels.DANMAKU, item);
+        registerWithSpecificTexture(ModItems.BUBBLE_BULLET_CORE, "item/bubble_shot", ModModels.DANMAKU, item);
+        registerWithSpecificTexture(ModItems.AMULET_BULLET_CORE, "item/amulet_shot", ModModels.DANMAKU, item);
     }
 
     @SuppressWarnings("SameParameterValue")

@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "arcadiandream:circle_bullet_core"
+    "arcadiandream:circle_bullet_core",
+    "arcadiandream:bubble_bullet_core",
+    "arcadiandream:amulet_bullet_core"
   ]
 }

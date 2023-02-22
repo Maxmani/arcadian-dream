@@ -9,18 +9,21 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.reimaden.arcadiandream.ArcadianDream;
+import net.reimaden.arcadiandream.entity.custom.AmuletBulletEntity;
 import net.reimaden.arcadiandream.entity.custom.CircleBulletEntity;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.entity.custom.FairyEntity;
+import net.reimaden.arcadiandream.entity.custom.BubbleBulletEntity;
 
 public class ModEntities {
 
     private static final int DANMAKU_RANGE = 4;
     private static final int DANMAKU_RATE = 10;
 
+    // Danmaku
     public static final EntityType<CircleBulletEntity> CIRCLE_BULLET = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, "circle_bullet"),
             FabricEntityTypeBuilder.<CircleBulletEntity>create(SpawnGroup.MISC, CircleBulletEntity::new)
@@ -28,6 +31,22 @@ public class ModEntities {
                     .trackRangeChunks(DANMAKU_RANGE).trackedUpdateRate(DANMAKU_RATE)
                     .build()
     );
+    public static final EntityType<BubbleBulletEntity> BUBBLE_BULLET = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, "bubble_bullet"),
+            FabricEntityTypeBuilder.<BubbleBulletEntity>create(SpawnGroup.MISC, BubbleBulletEntity::new)
+                    .dimensions(EntityDimensions.changing(0.75f, 0.75f))
+                    .trackRangeChunks(DANMAKU_RANGE).trackedUpdateRate(DANMAKU_RATE)
+                    .build()
+    );
+    public static final EntityType<AmuletBulletEntity> AMULET_BULLET = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, "amulet_bullet"),
+            FabricEntityTypeBuilder.<AmuletBulletEntity>create(SpawnGroup.MISC, AmuletBulletEntity::new)
+                    .dimensions(EntityDimensions.changing(0.25f, 0.25f))
+                    .trackRangeChunks(DANMAKU_RANGE).trackedUpdateRate(DANMAKU_RATE)
+                    .build()
+    );
+
+    // Mobs
     public static final EntityType<FairyEntity> FAIRY = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, "fairy"),
             FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, FairyEntity::new)

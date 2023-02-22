@@ -3,14 +3,14 @@
  * Licensed under the EUPL-1.2 or later.
  */
 
-package net.reimaden.arcadiandream.entity.client.entities;
+package net.reimaden.arcadiandream.entity.client.renderers;
 
 import com.google.common.collect.Maps;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.entity.client.entities.layers.FairyWingsLayer;
+import net.reimaden.arcadiandream.entity.client.renderers.layers.FairyWingsLayer;
 import net.reimaden.arcadiandream.entity.client.models.FairyEntityModel;
 import net.reimaden.arcadiandream.entity.custom.FairyEntity;
 import net.reimaden.arcadiandream.entity.variant.FairyVariant;

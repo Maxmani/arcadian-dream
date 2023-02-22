@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.reimaden.arcadiandream.block.ModBlocks;
@@ -109,9 +110,9 @@ public class ModTagGenerator {
                     .add(ModItems.POWER_ITEM, ModItems.BIG_POWER_ITEM, ModItems.POINT_ITEM, ModItems.MAX_POINT_ITEM,
                             ModItems.BOMB_ITEM, ModItems.EXTEND_ITEM, ModItems.STAR_ITEM, ModItems.FAITH_ITEM);
             getOrCreateTagBuilder(ModTags.Items.BULLET_CORES)
-                    .add(ModItems.CIRCLE_BULLET_CORE);
+                    .add(ModTags.BULLET_CORES.toArray(new Item[0]));
             getOrCreateTagBuilder(ModTags.Items.SHOTS)
-                    .add(ModItems.CIRCLE_SHOT);
+                    .add(ModTags.SHOTS.toArray(new Item[0]));
             getOrCreateTagBuilder(ModTags.Items.DANMAKU_REPAIR_ITEMS)
                     .add(ModItems.FAITH_ITEM);
             getOrCreateTagBuilder(ModTags.Items.DANMAKU_MODIFIERS)
@@ -127,6 +128,9 @@ public class ModTagGenerator {
                     .add(ModItems.POINT_ITEM);
             getOrCreateTagBuilder(ModTags.Items.DANMAKU_DURATION_MODIFIERS)
                     .add(ModItems.STAR_ITEM);
+            getOrCreateTagBuilder(ModTags.Items.UNDEAD_PARTS)
+                    .add(Items.ROTTEN_FLESH, Items.BONE, Items.PHANTOM_MEMBRANE, Items.ZOMBIE_HEAD,
+                            Items.SKELETON_SKULL, Items.WITHER_SKELETON_SKULL);
         }
     }
 }

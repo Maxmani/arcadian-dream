@@ -45,7 +45,11 @@
   "item.arcadiandream.makaite_shovel": "Makaite Shovel",
   "item.arcadiandream.makaite_hoe": "Makaite Hoe",
   "item.arcadiandream.circle_bullet_core": "Circle Bullet Core",
+  "item.arcadiandream.bubble_bullet_core": "Bubble Bullet Core",
+  "item.arcadiandream.amulet_bullet_core": "Amulet Bullet Core",
   "item.arcadiandream.circle_shot": "Circle Shot",
+  "item.arcadiandream.bubble_shot": "Bubble Shot",
+  "item.arcadiandream.amulet_shot": "Amulet Shot",
   "item.arcadiandream.music_disc_fairy_playground": "Music Disc",
   "item.arcadiandream.music_disc_fairy_playground.desc": "Virtlux - Fairy Playground",
   "item.arcadiandream.music_disc_the_shrine_long_forgotten": "Music Disc",
@@ -60,6 +64,7 @@
   "item.arcadiandream.shot.tooltip_pattern": ["",{"text":"Pattern: ","color":"gray"},{"index":0}],
   "item.arcadiandream.shot.tooltip_density": ["",{"text":"Density: ","color":"gray"},{"index":0}],
   "item.arcadiandream.shot.tooltip_color": ["",{"text":"Color: ","color":"gray"},{"index":0}],
+  "item.arcadiandream.shot.tooltip_smite": [{"translate":"enchantment.minecraft.smite","color":"#00CCFF"}],
   "item.arcadiandream.bullet.pattern_spread": "Spread",
   "item.arcadiandream.bullet.pattern_ray": "Ray",
   "item.arcadiandream.bullet.pattern_ring": "Ring",
@@ -108,6 +113,8 @@
   "block.arcadiandream.danmaku_crafting_table": "Danmaku Crafting Table",
 
   "entity.arcadiandream.circle_bullet": "Circle Bullet",
+  "entity.arcadiandream.bubble_bullet": "Bubble Bullet",
+  "entity.arcadiandream.amulet_bullet": "Amulet Bullet",
   "entity.minecraft.villager.antiquarian": "Antiquarian",
   "entity.arcadiandream.fairy": "Fairy",
 
@@ -180,6 +187,7 @@
   "tag.arcadiandream.danmaku_power_modifiers": "Danmaku Power Modifiers",
   "tag.arcadiandream.danmaku_speed_modifiers": "Danmaku Speed Modifiers",
   "tag.arcadiandream.danmaku_repair_items": "Danmaku Repair Items",
+  "tag.arcadiandream.undead_parts": "Undead Parts",
 
   "text.config.arcadiandream.title": "Arcadian Dream Configuration",
   "text.config.arcadiandream.section.items": "Items",

@@ -71,7 +71,11 @@ public class BaseBulletEntity extends ThrownItemEntity {
                 return;
             }
         }
-        entity.damage(ModDamageSources.danmaku(this, owner), getPower());
+        applyDamage(entity, owner);
+    }
+
+    protected void applyDamage(Entity target, Entity owner) {
+        target.damage(ModDamageSources.danmaku(this, owner), getPower());
     }
 
     @Override
@@ -108,7 +112,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
                 1, 0, 0, 0, 0);
     }
 
-    private float getPower() {
+    protected float getPower() {
         if (getStack().hasNbt()) {
             return getStack().getOrCreateNbt().getFloat("power");
         } else {
@@ -116,7 +120,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
         }
     }
 
-    private int getDuration() {
+    protected int getDuration() {
         if (getStack().hasNbt()) {
             return getStack().getOrCreateNbt().getInt("duration");
         } else {

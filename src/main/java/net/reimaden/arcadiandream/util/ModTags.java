@@ -5,14 +5,23 @@
 
 package net.reimaden.arcadiandream.util;
 
+import com.google.common.collect.ImmutableList;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
+import net.reimaden.arcadiandream.item.ModItems;
 
 public class ModTags {
+
+    public static final ImmutableList<Item> BULLET_CORES = ImmutableList.of(
+            ModItems.CIRCLE_BULLET_CORE, ModItems.BUBBLE_BULLET_CORE, ModItems.AMULET_BULLET_CORE
+    );
+    public static final ImmutableList<Item> SHOTS = ImmutableList.of(
+            ModItems.CIRCLE_SHOT, ModItems.BUBBLE_SHOT, ModItems.AMULET_SHOT
+    );
 
     public static class Blocks {
 
@@ -44,6 +53,7 @@ public class ModTags {
         public static final TagKey<Item> DANMAKU_SPEED_MODIFIERS = createTag("danmaku_speed_modifiers");
         public static final TagKey<Item> DANMAKU_DURATION_MODIFIERS = createTag("danmaku_duration_modifiers");
         public static final TagKey<Item> HAMMERS = createCommonTag("hammers");
+        public static final TagKey<Item> UNDEAD_PARTS = createTag("undead_parts");
 
         private static TagKey<Item> createTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(ArcadianDream.MOD_ID, name));

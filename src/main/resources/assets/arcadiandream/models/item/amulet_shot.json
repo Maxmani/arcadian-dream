@@ -1,0 +1,7 @@
+{
+  "parent": "arcadiandream:item/danmaku",
+  "textures": {
+    "layer0": "arcadiandream:item/amulet_shot",
+    "layer1": "arcadiandream:item/amulet_shot_overlay"
+  }
+}
