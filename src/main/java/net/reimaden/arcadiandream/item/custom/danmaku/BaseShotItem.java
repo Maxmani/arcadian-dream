@@ -12,7 +12,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.stat.Stats;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
@@ -25,6 +24,7 @@ import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.reimaden.arcadiandream.util.ColorMap;
+import net.reimaden.arcadiandream.util.ModTags;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -92,14 +92,17 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
             return TypedActionResult.pass(stack);
         }
 
-        world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.ENTITY_DANMAKU_FIRE,
-                SoundCategory.PLAYERS, 1f, 1f + (random.nextFloat() - 0.5f) * 0.1f);
-        user.getItemCooldownManager().set(this, nbt.getInt("cooldown") * ArcadianDream.CONFIG.danmakuCooldownMultiplier());
+        final int cooldown = nbt.getInt("cooldown") * ArcadianDream.CONFIG.danmakuCooldownMultiplier();
 
-        int density = nbt.getInt("density");
-        float speed = nbt.getFloat("speed");
-        float divergence = nbt.getFloat("divergence");
-        float n = speed / density;
+        user.playSound(ModSounds.ENTITY_DANMAKU_FIRE, getSoundVolume(), getSoundPitch(random));
+        for (Item item : ModTags.SHOTS) {
+            user.getItemCooldownManager().set(item, cooldown);
+        }
+
+        final int density = nbt.getInt("density");
+        final float speed = nbt.getFloat("speed");
+        final float divergence = nbt.getFloat("divergence");
+        final float n = speed / density;
 
         if (!world.isClient()) {
             switch (nbt.getString("pattern").toLowerCase()) {
@@ -119,6 +122,14 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         }
 
         return TypedActionResult.success(stack, world.isClient());
+    }
+
+    public static float getSoundPitch(Random random) {
+        return 1.0f + (random.nextFloat() - 0.5f) * 0.1f;
+    }
+
+    public static float getSoundVolume() {
+        return 1.0f;
     }
 
     @Override

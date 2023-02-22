@@ -35,6 +35,7 @@ import net.minecraft.world.*;
 import net.reimaden.arcadiandream.entity.ai.DanmakuGoal;
 import net.reimaden.arcadiandream.entity.variant.FairyPersonality;
 import net.reimaden.arcadiandream.entity.variant.FairyVariant;
+import net.reimaden.arcadiandream.item.custom.danmaku.BaseShotItem;
 import net.reimaden.arcadiandream.item.custom.danmaku.MobBulletPatterns;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.reimaden.arcadiandream.util.ColorMap;
@@ -126,7 +127,7 @@ public class FairyEntity extends HostileEntity implements GeoEntity, DanmakuMob,
             default -> throw new IllegalStateException("Unexpected value: " + getPersonality());
         }
 
-        playSound(ModSounds.ENTITY_DANMAKU_FIRE, 1f, 1f + (random.nextFloat() - 0.5f) * 0.1f);
+        playSound(ModSounds.ENTITY_DANMAKU_FIRE, BaseShotItem.getSoundVolume(), BaseShotItem.getSoundPitch(random));
     }
 
     private PlayState predicate(AnimationState<?> state) {
