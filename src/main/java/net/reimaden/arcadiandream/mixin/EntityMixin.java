@@ -5,10 +5,9 @@
 
 package net.reimaden.arcadiandream.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.entity.Entity;
-import net.minecraft.fluid.Fluid;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.registry.tag.TagKey;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
 import net.reimaden.arcadiandream.util.IEntityDataSaver;
@@ -23,13 +22,10 @@ public abstract class EntityMixin implements IEntityDataSaver {
 
     private NbtCompound persistentData;
 
-    // TODO: Find a better way to do this
-    @Inject(method = "updateMovementInFluid", at = @At("HEAD"), cancellable = true)
-    private void arcadiandream$preventPushFromFluids(TagKey<Fluid> tag, double speed, CallbackInfoReturnable<Boolean> cir) {
-        Entity bullet = ((Entity) (Object) this);
-        if (bullet instanceof BaseBulletEntity) {
-            cir.setReturnValue(false);
-        }
+    @ModifyExpressionValue(method = "updateMovementInFluid", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/Vec3d;length()D", ordinal = 0))
+    private double arcadiandream$preventPushFromFluids(double original) {
+        Entity entity = ((Entity) (Object) this);
+        return original * (entity instanceof BaseBulletEntity ? 0 : 1);
     }
 
     @Override

@@ -85,6 +85,11 @@ dependencies {
 
 	// https://github.com/bernie-g/geckolib
 	modImplementation "software.bernie.geckolib:geckolib-fabric-${project.minecraft_version}:${project.geckolib_version}"
+
+	// https://github.com/LlamaLad7/MixinExtras
+	implementation("com.github.LlamaLad7:MixinExtras:${project.mixinextras_version}")
+	annotationProcessor("com.github.LlamaLad7:MixinExtras:${project.mixinextras_version}")
+	include("com.github.LlamaLad7:MixinExtras:${project.mixinextras_version}")
 }
 
 processResources {
