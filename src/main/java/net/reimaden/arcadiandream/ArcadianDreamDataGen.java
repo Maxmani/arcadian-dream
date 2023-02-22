@@ -3,18 +3,18 @@
  * Licensed under the EUPL-1.2 or later.
  */
 
-package net.reimaden.arcadiandream.datagen;
+package net.reimaden.arcadiandream;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
-import net.reimaden.arcadiandream.ArcadianDream;
+import net.reimaden.arcadiandream.datagen.*;
 import net.reimaden.arcadiandream.world.feature.ModConfiguredFeatures;
 import net.reimaden.arcadiandream.world.feature.ModPlacedFeatures;
 import org.jetbrains.annotations.Nullable;
 
-public class ModDataGeneration implements DataGeneratorEntrypoint {
+public class ArcadianDreamDataGen implements DataGeneratorEntrypoint {
 
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {

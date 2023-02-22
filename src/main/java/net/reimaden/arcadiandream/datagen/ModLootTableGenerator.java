@@ -29,7 +29,7 @@ public class ModLootTableGenerator {
 
     public static class BlockLoot extends FabricBlockLootTableProvider {
 
-        protected BlockLoot(FabricDataOutput dataOutput) {
+        public BlockLoot(FabricDataOutput dataOutput) {
             super(dataOutput);
         }
 

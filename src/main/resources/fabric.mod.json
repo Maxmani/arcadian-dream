@@ -32,7 +32,7 @@
       "net.reimaden.arcadiandream.ArcadianDreamPreLaunch"
     ],
     "fabric-datagen": [
-      "net.reimaden.arcadiandream.datagen.ModDataGeneration"
+      "net.reimaden.arcadiandream.ArcadianDreamDataGen"
     ],
     "rei_client": [
       "net.reimaden.arcadiandream.compat.rei.REIPlugin"

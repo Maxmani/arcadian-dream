@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -28,7 +28,7 @@ public class ModAdvancementGenerator extends FabricAdvancementProvider {
     private static final List<Consumer<Consumer<Advancement>>> generators = Util.make(Lists.newArrayList(),
             list -> list.add(new ModAdvancementsGenerator()));
 
-    protected ModAdvancementGenerator(FabricDataOutput output) {
+    public ModAdvancementGenerator(FabricDataOutput output) {
         super(output);
     }
 
