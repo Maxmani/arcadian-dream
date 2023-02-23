@@ -118,7 +118,10 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
 
         user.incrementStat(Stats.USED.getOrCreateStat(this));
         if (!user.getAbilities().creativeMode && isUsable(stack)) {
-            stack.damage(1, user, e -> e.sendToolBreakStatus(hand));
+            final int damage = 1 + density / 4;
+            final int maxDamage = stack.getMaxDamage();
+            final int currentDamage = stack.getDamage();
+            stack.damage(damage >= maxDamage - currentDamage ? maxDamage - currentDamage - 1 : damage, user, e -> e.sendToolBreakStatus(hand));
         }
 
         return TypedActionResult.success(stack, world.isClient());
