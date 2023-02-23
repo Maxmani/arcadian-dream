@@ -6,20 +6,18 @@
 package net.reimaden.arcadiandream.datagen;
 
 import com.google.common.collect.ImmutableList;
-import com.google.gson.JsonElement;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
 import net.minecraft.data.client.*;
 import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.block.ModBlocks;
-import net.reimaden.arcadiandream.util.client.ModModels;
 import net.reimaden.arcadiandream.item.ModItems;
-
-import java.util.function.BiConsumer;
-import java.util.function.Supplier;
+import net.reimaden.arcadiandream.util.ModTags;
+import net.reimaden.arcadiandream.util.client.ModModels;
 
 public class ModModelGenerator extends FabricModelProvider {
 
@@ -74,15 +72,16 @@ public class ModModelGenerator extends FabricModelProvider {
 
         item.register(ModItems.DEATH_SCYTHE, ModModels.HANDHELD_BIG);
 
-        registerWithSpecificTexture(ModItems.CIRCLE_BULLET_CORE, "item/circle_shot", ModModels.DANMAKU, item);
-        registerWithSpecificTexture(ModItems.BUBBLE_BULLET_CORE, "item/bubble_shot", ModModels.DANMAKU, item);
-        registerWithSpecificTexture(ModItems.AMULET_BULLET_CORE, "item/amulet_shot", ModModels.DANMAKU, item);
+        for (Item core : ModTags.BULLET_CORES) {
+            Identifier itemId = Registries.ITEM.getId(core);
+            String bulletCoreType = itemId.getPath().split("_")[0];
+            String textureName = "item/" + bulletCoreType + "_shot";
+            registerWithSpecificTexture(core, textureName, ModModels.DANMAKU, item);
+        }
     }
 
     @SuppressWarnings("SameParameterValue")
     private void registerWithSpecificTexture(Item item, String name, Model model, ItemModelGenerator generator) {
-        BiConsumer<Identifier, Supplier<JsonElement>> writer = generator.writer;
-
-        model.upload(ModelIds.getItemModelId(item), TextureMap.layer0(new Identifier(ArcadianDream.MOD_ID, name)), writer);
+        model.upload(ModelIds.getItemModelId(item), TextureMap.layer0(new Identifier(ArcadianDream.MOD_ID, name)), generator.writer);
     }
 }

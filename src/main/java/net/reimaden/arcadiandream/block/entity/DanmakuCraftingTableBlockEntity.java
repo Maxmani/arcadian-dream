@@ -127,9 +127,8 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
         }
 
         // Get the bullet type of the core
-        String itemName = items.get(0).getItem().getTranslationKey();
-        int underscoreIndex = itemName.indexOf("_");
-        String bulletCoreType = itemName.substring(itemName.lastIndexOf(".") + 1, underscoreIndex);
+        Identifier itemId = Registries.ITEM.getId(items.get(0).getItem());
+        String bulletCoreType = itemId.getPath().split("_")[0];
         String shotType = bulletCoreType + "_shot";
 
         // Set the output shot to the bullet type
