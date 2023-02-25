@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Arcadian Dream",
-  "description": "Modern Touhou mod.",
+  "description": "A modern Touhou mod.",
   "authors": [
     "Maxmani"
   ],
@@ -57,5 +57,11 @@
     "owo": ">=0.9.3",
     "pehkui": ">=3.6.3",
     "geckolib": ">=4.0.3"
+  },
+
+  "custom": {
+    "loom:injected_interfaces": {
+      "net/minecraft/class_1282": ["net/reimaden/arcadiandream/util/IDamageSource"]
+    }
   }
 }

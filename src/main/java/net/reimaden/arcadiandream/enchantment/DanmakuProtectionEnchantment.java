@@ -10,7 +10,6 @@ import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.enchantment.ProtectionEnchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.damage.DamageSource;
-import net.reimaden.arcadiandream.damage.custom.DanmakuDamageSource;
 
 public class DanmakuProtectionEnchantment extends Enchantment {
 
@@ -20,7 +19,7 @@ public class DanmakuProtectionEnchantment extends Enchantment {
 
     @Override
     public int getProtectionAmount(int level, DamageSource source) {
-        if (source instanceof DanmakuDamageSource) {
+        if (source.isDanmaku()) {
             return level * 2;
         }
 
