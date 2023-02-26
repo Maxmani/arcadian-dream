@@ -128,6 +128,15 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                         RecipeProvider.conditionsFromItem(ModItems.STAR_ITEM))
                 .offerTo(exporter);
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.STAR_BULLET_CORE)
+                .input('#', ModItems.STAR_ITEM)
+                .input('U', Items.ARROW)
+                .pattern("# #")
+                .pattern(" U ")
+                .pattern("# #").criterion(RecipeProvider.hasItem(ModItems.STAR_ITEM),
+                        RecipeProvider.conditionsFromItem(ModItems.STAR_ITEM))
+                .offerTo(exporter);
+
         // Smelting recipes
         makeSmelting(exporter, DRAGON_GEM_ORES, RecipeCategory.MISC, ModItems.DRAGON_GEM, 1.2f, 200,
                 RecipeProvider.getItemPath(ModItems.DRAGON_GEM));

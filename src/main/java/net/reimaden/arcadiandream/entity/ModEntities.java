@@ -9,14 +9,11 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.entity.custom.AmuletBulletEntity;
-import net.reimaden.arcadiandream.entity.custom.CircleBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.*;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;
-import net.reimaden.arcadiandream.entity.custom.FairyEntity;
-import net.reimaden.arcadiandream.entity.custom.BubbleBulletEntity;
 
 public class ModEntities {
 
@@ -42,6 +39,13 @@ public class ModEntities {
             Registries.ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, "amulet_bullet"),
             FabricEntityTypeBuilder.<AmuletBulletEntity>create(SpawnGroup.MISC, AmuletBulletEntity::new)
                     .dimensions(EntityDimensions.changing(0.25f, 0.25f))
+                    .trackRangeChunks(DANMAKU_RANGE).trackedUpdateRate(DANMAKU_RATE)
+                    .build()
+    );
+    public static final EntityType<StarBulletEntity> STAR_BULLET = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, "star_bullet"),
+            FabricEntityTypeBuilder.<StarBulletEntity>create(SpawnGroup.MISC, StarBulletEntity::new)
+                    .dimensions(EntityDimensions.changing(0.50f, 0.50f))
                     .trackRangeChunks(DANMAKU_RANGE).trackedUpdateRate(DANMAKU_RATE)
                     .build()
     );

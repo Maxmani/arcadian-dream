@@ -1,0 +1,7 @@
+{
+  "parent": "arcadiandream:item/danmaku",
+  "textures": {
+    "layer0": "arcadiandream:item/star_shot",
+    "layer1": "arcadiandream:item/star_shot_overlay"
+  }
+}

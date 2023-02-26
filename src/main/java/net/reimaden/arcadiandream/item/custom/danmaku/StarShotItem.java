@@ -12,25 +12,25 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.entity.custom.AmuletBulletEntity;
 import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.StarBulletEntity;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class AmuletShotItem extends BaseShotItem {
+public class StarShotItem extends BaseShotItem {
 
-    public AmuletShotItem(Settings settings, float power, float speed, int duration, int cooldown, float gravity,
-                          float divergence, String pattern, int density, float maxPower, float maxSpeed, int maxDuration,
-                          int maxCooldown, float maxDivergence, int maxDensity) {
+    public StarShotItem(Settings settings, float power, float speed, int duration, int cooldown, float gravity,
+                        float divergence, String pattern, int density, float maxPower, float maxSpeed, int maxDuration,
+                        int maxCooldown, float maxDivergence, int maxDensity) {
         super(settings, power, speed, duration, cooldown, gravity, divergence, pattern,
                 density, maxPower, maxSpeed, maxDuration, maxCooldown, maxDivergence, maxDensity);
     }
 
     @Override
     public @NotNull BaseBulletEntity getBullet(World world, LivingEntity user) {
-        return new AmuletBulletEntity(world, user);
+        return new StarBulletEntity(world, user);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class AmuletShotItem extends BaseShotItem {
         }
 
         if (Screen.hasShiftDown()) {
-            tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".shot.tooltip_smite"));
+            tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".shot.tooltip_armorPenetration"));
         }
     }
 }
