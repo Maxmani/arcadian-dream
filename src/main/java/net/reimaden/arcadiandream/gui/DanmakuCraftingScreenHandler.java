@@ -225,5 +225,10 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
         // Clear the input slots
         coreStack.decrement(1);
         shotStack.decrement(1);
+
+        // Dirty fix to prevent a dupe
+        if (coreStack.isEmpty() && shotStack.isEmpty()) {
+            inventory.getStack(2).decrement(1);
+        }
     }
 }
