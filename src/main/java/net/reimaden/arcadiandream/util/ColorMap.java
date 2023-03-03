@@ -22,22 +22,22 @@ public class ColorMap {
     private static final Map<Integer, String> colorMap = new LinkedHashMap<>();
 
     static {
-        colorMap.put(DEFAULT_COLOR, "red");
-        colorMap.put(65280, "green");
-        colorMap.put(1908223, "blue");
-        colorMap.put(16770048, "yellow");
-        colorMap.put(10494192, "purple");
-        colorMap.put(65535, "cyan");
-        colorMap.put(16753920, "orange");
-        colorMap.put(3847130, "light_blue");
-        colorMap.put(16711935, "magenta");
-        colorMap.put(12582656, "lime");
         colorMap.put(16777215, "white");
-        colorMap.put(657930, "black");
         colorMap.put(8421504, "light_gray");
         colorMap.put(4210752, "gray");
-        colorMap.put(15961002, "pink");
+        colorMap.put(657930, "black");
         colorMap.put(9849600, "brown");
+        colorMap.put(DEFAULT_COLOR, "red");
+        colorMap.put(16753920, "orange");
+        colorMap.put(16770048, "yellow");
+        colorMap.put(12582656, "lime");
+        colorMap.put(65280, "green");
+        colorMap.put(65535, "cyan");
+        colorMap.put(3847130, "light_blue");
+        colorMap.put(1908223, "blue");
+        colorMap.put(10494192, "purple");
+        colorMap.put(16711935, "magenta");
+        colorMap.put(15961002, "pink");
     }
 
     private ColorMap() {}
@@ -69,7 +69,7 @@ public class ColorMap {
 
     // Includes only sane colors for bullets
     public static int getRandomBulletColor(Random random) {
-        int index = random.nextInt(colorMap.size() - 5);
+        int index = random.nextInt(colorMap.size() - 5) + 5;
         return (int) colorMap.keySet().toArray()[index];
     }
 

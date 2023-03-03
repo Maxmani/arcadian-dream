@@ -9,14 +9,14 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.reimaden.arcadiandream.entity.ModEntities;
 import net.reimaden.arcadiandream.entity.client.renderers.*;
 
-public class EntityRenderer {
+public class ModEntityRenderers {
 
     public static void register() {
         // Danmaku
-        EntityRendererRegistry.register(ModEntities.CIRCLE_BULLET, BulletEntityRenderer::new);
-        EntityRendererRegistry.register(ModEntities.BUBBLE_BULLET, BubbleBulletEntityRenderer::new);
-        EntityRendererRegistry.register(ModEntities.AMULET_BULLET, FlatBulletEntityRenderer::new);
-        EntityRendererRegistry.register(ModEntities.STAR_BULLET, StarBulletEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.CIRCLE_BULLET, ctx -> new BulletEntityRenderer(ctx, 1.0f));
+        EntityRendererRegistry.register(ModEntities.BUBBLE_BULLET, ctx -> new BubbleBulletEntityRenderer(ctx, 4.0f));
+        EntityRendererRegistry.register(ModEntities.AMULET_BULLET, ctx -> new FlatBulletEntityRenderer(ctx, 1.0f));
+        EntityRendererRegistry.register(ModEntities.STAR_BULLET, ctx -> new StarBulletEntityRenderer(ctx, 2.0f));
 
         // Mobs
         EntityRendererRegistry.register(ModEntities.FAIRY, FairyEntityRenderer::new);

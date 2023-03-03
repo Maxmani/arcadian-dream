@@ -17,6 +17,8 @@ import net.reimaden.arcadiandream.item.ModItems;
 
 public class StarBulletEntity extends BaseBulletEntity {
 
+    private final boolean rotationAngle = random.nextBoolean();
+
     public StarBulletEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -37,5 +39,9 @@ public class StarBulletEntity extends BaseBulletEntity {
     @Override
     protected void applyDamage(Entity target, Entity owner) {
         target.damage(ModDamageSources.danmaku(this, owner).setBypassesArmor(), getPower());
+    }
+
+    public boolean getRotationAngle() {
+        return rotationAngle;
     }
 }
