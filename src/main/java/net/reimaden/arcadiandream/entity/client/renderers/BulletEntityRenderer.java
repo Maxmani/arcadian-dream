@@ -26,7 +26,7 @@ public class BulletEntityRenderer extends FlyingItemEntityRenderer<BaseBulletEnt
     public BulletEntityRenderer(EntityRendererFactory.Context ctx, float scale) {
         super(ctx);
         this.itemRenderer = ctx.getItemRenderer();
-        this.scale = scale;
+        this.scale = scale / 2;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class BulletEntityRenderer extends FlyingItemEntityRenderer<BaseBulletEnt
 
     protected void modifyMatrices(MatrixStack matrices, BaseBulletEntity entity, float tickDelta) {
         matrices.push();
-        matrices.scale(scale / 2, scale / 2, scale / 2);
+        matrices.scale(scale, scale, scale);
         matrices.translate(0.0f, 0.25f, 0.0f);
         matrices.multiply(dispatcher.getRotation());
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0f));

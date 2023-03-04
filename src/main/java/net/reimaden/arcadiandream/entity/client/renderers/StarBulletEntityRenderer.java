@@ -24,11 +24,11 @@ public class StarBulletEntityRenderer extends BulletEntityRenderer {
 
     @Override
     public void render(BaseBulletEntity entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light) {
-        int age = entity.age % 360;
+        int age = (entity.age - 7) % 360;
         ItemStack stack = entity.getStack();
         BaseShotItem item = (BaseShotItem) stack.getItem();
         float speed = item.getSpeed(stack) * 5;
-        float rotation = (age + tickDelta) / 25.0F + 6.0F;
+        float rotation = (age + tickDelta) / 25.0f + 6.0f;
         rotationSpeed = rotation * speed;
 
         super.render(entity, yaw, tickDelta, matrices, vertexConsumers, light);

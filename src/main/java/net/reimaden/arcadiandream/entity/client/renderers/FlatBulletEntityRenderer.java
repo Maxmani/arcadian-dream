@@ -20,7 +20,7 @@ public class FlatBulletEntityRenderer extends BulletEntityRenderer {
     @Override
     protected void modifyMatrices(MatrixStack matrices, BaseBulletEntity entity, float tickDelta) {
         matrices.push();
-        matrices.scale(scale / 2, scale / 2, scale / 2);
+        matrices.scale(scale, scale, scale);
 
         // Rotate the model based on the direction
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(MathHelper.lerp(tickDelta, entity.prevYaw, entity.getYaw()) - 90.0f));
