@@ -129,6 +129,9 @@ public class ModItems {
     public static final Item FAIRY_SPAWN_EGG = registerItem("fairy_spawn_egg",
             new SpawnEggItem(ModEntities.FAIRY, 0x004BCC, 0xF6FF5F,
                     new FabricItemSettings()));
+    public static final Item SUNFLOWER_FAIRY_SPAWN_EGG = registerItem("sunflower_fairy_spawn_egg",
+            new SpawnEggItem(ModEntities.SUNFLOWER_FAIRY, 0xEFEFEF, 0xFBD405,
+                    new FabricItemSettings()));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(ArcadianDream.MOD_ID, name), item);
@@ -240,6 +243,7 @@ public class ModItems {
         addToItemGroup(ModItemGroups.BLOCKS, MAKAITE_BLOCK);
 
         addToItemGroup(ItemGroups.SPAWN_EGGS, FAIRY_SPAWN_EGG);
+        addToItemGroup(ItemGroups.SPAWN_EGGS, SUNFLOWER_FAIRY_SPAWN_EGG);
     }
 
     private static void addToItemGroup(ItemGroup group, Item item) {

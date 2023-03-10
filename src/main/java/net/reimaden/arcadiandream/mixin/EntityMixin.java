@@ -9,7 +9,7 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NbtCompound;
 import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.danmaku.BaseBulletEntity;
 import net.reimaden.arcadiandream.util.IEntityDataSaver;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

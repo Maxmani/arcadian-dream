@@ -6,14 +6,19 @@
 package net.reimaden.arcadiandream.entity;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.entity.custom.*;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.reimaden.arcadiandream.ArcadianDream;
+import net.reimaden.arcadiandream.entity.custom.hostile.FairyEntity;
+import net.reimaden.arcadiandream.entity.custom.danmaku.AmuletBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.danmaku.BubbleBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.danmaku.CircleBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.danmaku.StarBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.hostile.SunflowerFairyEntity;
 
 public class ModEntities {
 
@@ -54,7 +59,13 @@ public class ModEntities {
     public static final EntityType<FairyEntity> FAIRY = Registry.register(
             Registries.ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, "fairy"),
             FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, FairyEntity::new)
-                    .dimensions(EntityDimensions.fixed(0.5f, 1.5f))
+                    .dimensions(EntityDimensions.fixed(0.55f, 1.55f))
+                    .build()
+    );
+    public static final EntityType<SunflowerFairyEntity> SUNFLOWER_FAIRY = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, "sunflower_fairy"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, SunflowerFairyEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.7f, 1.7f))
                     .build()
     );
 

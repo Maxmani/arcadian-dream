@@ -7,8 +7,8 @@ package net.reimaden.arcadiandream.item.custom.danmaku;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.world.World;
-import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
-import net.reimaden.arcadiandream.entity.custom.CircleBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.danmaku.BaseBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.danmaku.CircleBulletEntity;
 import org.jetbrains.annotations.NotNull;
 
 public class CircleShotItem extends BaseShotItem {

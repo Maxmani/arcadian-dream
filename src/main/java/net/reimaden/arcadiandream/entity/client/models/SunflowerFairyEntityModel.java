@@ -8,33 +8,32 @@ package net.reimaden.arcadiandream.entity.client.models;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.entity.client.renderers.FairyEntityRenderer;
-import net.reimaden.arcadiandream.entity.custom.hostile.FairyEntity;
+import net.reimaden.arcadiandream.entity.custom.hostile.SunflowerFairyEntity;
 import software.bernie.geckolib.constant.DataTickets;
 import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
 import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.model.data.EntityModelData;
 
-public class FairyEntityModel extends GeoModel<FairyEntity> {
+public class SunflowerFairyEntityModel extends GeoModel<SunflowerFairyEntity> {
 
     @Override
-    public Identifier getModelResource(FairyEntity animatable) {
-        return new Identifier(ArcadianDream.MOD_ID, "geo/entity/fairy.geo.json");
+    public Identifier getModelResource(SunflowerFairyEntity animatable) {
+        return new Identifier(ArcadianDream.MOD_ID, "geo/entity/sunflower_fairy.geo.json");
     }
 
     @Override
-    public Identifier getTextureResource(FairyEntity animatable) {
-        return FairyEntityRenderer.LOCATION_BY_VARIANT.get(animatable.getVariant());
+    public Identifier getTextureResource(SunflowerFairyEntity animatable) {
+        return new Identifier(ArcadianDream.MOD_ID, "textures/entity/fairy/sunflower_fairy.png");
     }
 
     @Override
-    public Identifier getAnimationResource(FairyEntity animatable) {
-        return new Identifier(ArcadianDream.MOD_ID, "animations/entity/fairy.animation.json");
+    public Identifier getAnimationResource(SunflowerFairyEntity animatable) {
+        return new Identifier(ArcadianDream.MOD_ID, "animations/entity/sunflower_fairy.animation.json");
     }
 
     @Override
-    public void setCustomAnimations(FairyEntity animatable, long instanceId, AnimationState<FairyEntity> animationState) {
+    public void setCustomAnimations(SunflowerFairyEntity animatable, long instanceId, AnimationState<SunflowerFairyEntity> animationState) {
         CoreGeoBone head = getAnimationProcessor().getBone("head");
 
         if (head != null) {

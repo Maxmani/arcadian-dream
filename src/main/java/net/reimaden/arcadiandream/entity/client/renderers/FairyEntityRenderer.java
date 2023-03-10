@@ -12,7 +12,7 @@ import net.minecraft.util.Util;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.client.renderers.layers.FairyWingsLayer;
 import net.reimaden.arcadiandream.entity.client.models.FairyEntityModel;
-import net.reimaden.arcadiandream.entity.custom.FairyEntity;
+import net.reimaden.arcadiandream.entity.custom.hostile.FairyEntity;
 import net.reimaden.arcadiandream.entity.variant.FairyVariant;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 

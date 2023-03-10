@@ -3,7 +3,7 @@
  * Licensed under the EUPL-1.2 or later.
  */
 
-package net.reimaden.arcadiandream.entity.custom;
+package net.reimaden.arcadiandream.entity.custom.danmaku;
 
 import net.reimaden.arcadiandream.entity.ModEntities;
 import net.reimaden.arcadiandream.item.ModItems;

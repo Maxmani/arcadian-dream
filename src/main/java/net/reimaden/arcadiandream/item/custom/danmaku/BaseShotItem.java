@@ -21,7 +21,7 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.danmaku.BaseBulletEntity;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.reimaden.arcadiandream.util.ColorMap;
 import net.reimaden.arcadiandream.util.ModTags;

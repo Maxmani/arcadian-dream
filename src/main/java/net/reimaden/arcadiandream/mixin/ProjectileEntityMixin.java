@@ -7,7 +7,7 @@ package net.reimaden.arcadiandream.mixin;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.projectile.ProjectileEntity;
-import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.danmaku.BaseBulletEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

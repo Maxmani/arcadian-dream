@@ -10,7 +10,7 @@ import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.util.math.MathHelper;
 import net.reimaden.arcadiandream.entity.custom.DanmakuMob;
-import net.reimaden.arcadiandream.entity.custom.FairyEntity;
+import net.reimaden.arcadiandream.entity.custom.hostile.BaseFairyEntity;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
@@ -85,7 +85,7 @@ public class DanmakuGoal extends Goal {
         } else {
             mob.getNavigation().stop();
         }
-        mob.getLookControl().lookAt(target, 180.0f, 180.0f);
+        mob.getLookControl().lookAt(target, 30.0f, 180.0f);
         if (--updateCountdownTicks == 0) {
             if (!bl) {
                 return;
@@ -93,9 +93,9 @@ public class DanmakuGoal extends Goal {
             float f = (float)Math.sqrt(d) / maxShootRange;
             float g = MathHelper.clamp(f, 0.1f, 1.0f);
             owner.attack(target, g);
-            if (mob instanceof FairyEntity fairy) {
-                setMinIntervalTicks(fairy.getPersonalityBasedCooldown());
-                setMaxIntervalTicks(fairy.getPersonalityBasedCooldown());
+            if (mob instanceof BaseFairyEntity fairy) {
+                setMinIntervalTicks(fairy.getAttackCooldown());
+                setMaxIntervalTicks(fairy.getAttackCooldown());
             }
             updateCountdownTicks = MathHelper.floor(f * (float)(maxIntervalTicks - minIntervalTicks) + (float)minIntervalTicks);
         } else if (updateCountdownTicks < 0) {

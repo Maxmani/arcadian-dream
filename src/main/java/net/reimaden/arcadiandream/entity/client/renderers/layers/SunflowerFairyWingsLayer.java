@@ -12,25 +12,25 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.entity.custom.hostile.FairyEntity;
+import net.reimaden.arcadiandream.entity.custom.hostile.SunflowerFairyEntity;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.renderer.GeoRenderer;
 import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 
-public class FairyWingsLayer extends GeoRenderLayer<FairyEntity> {
+public class SunflowerFairyWingsLayer extends GeoRenderLayer<SunflowerFairyEntity> {
 
-    private static final Identifier TEXTURE = new Identifier(ArcadianDream.MOD_ID, "textures/entity/fairy/fairy_wings.png");
+    private static final Identifier TEXTURE = new Identifier(ArcadianDream.MOD_ID, "textures/entity/fairy/sunflower_fairy_wings.png");
 
-    public FairyWingsLayer(GeoRenderer<FairyEntity> entityRenderer) {
+    public SunflowerFairyWingsLayer(GeoRenderer<SunflowerFairyEntity> entityRenderer) {
         super(entityRenderer);
     }
 
     @Override
-    public void render(MatrixStack poseStack, FairyEntity animatable, BakedGeoModel bakedModel, RenderLayer renderType, VertexConsumerProvider bufferSource, VertexConsumer buffer, float partialTick, int packedLight, int packedOverlay) {
+    public void render(MatrixStack poseStack, SunflowerFairyEntity animatable, BakedGeoModel bakedModel, RenderLayer renderType, VertexConsumerProvider bufferSource, VertexConsumer buffer, float partialTick, int packedLight, int packedOverlay) {
         RenderLayer renderLayer = RenderLayer.getEntityTranslucent(TEXTURE);
 
         getRenderer().reRender(getDefaultBakedModel(animatable), poseStack, bufferSource, animatable, renderLayer,
                 bufferSource.getBuffer(renderLayer), partialTick, packedLight, OverlayTexture.DEFAULT_UV,
-                1, 1, 1, 0.5f);
+                1, 1, 1, 0.75f);
     }
 }

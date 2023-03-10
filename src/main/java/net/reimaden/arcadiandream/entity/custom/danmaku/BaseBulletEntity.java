@@ -3,7 +3,7 @@
  * Licensed under the EUPL-1.2 or later.
  */
 
-package net.reimaden.arcadiandream.entity.custom;
+package net.reimaden.arcadiandream.entity.custom.danmaku;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -15,12 +15,13 @@ import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 import net.reimaden.arcadiandream.damage.ModDamageSources;
+import net.reimaden.arcadiandream.entity.custom.hostile.BaseFairyEntity;
 import net.reimaden.arcadiandream.particle.ModParticles;
 import net.reimaden.arcadiandream.sound.ModSounds;
 
 public class BaseBulletEntity extends ThrownItemEntity {
 
-    public BaseBulletEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
+    protected BaseBulletEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
         super(entityType, world);
     }
 
@@ -29,11 +30,11 @@ public class BaseBulletEntity extends ThrownItemEntity {
         super(null, owner, world);
     }
 
-    public BaseBulletEntity(EntityType<? extends ThrownItemEntity> entityType, LivingEntity owner, World world) {
+    protected BaseBulletEntity(EntityType<? extends ThrownItemEntity> entityType, LivingEntity owner, World world) {
         super(entityType, owner, world);
     }
 
-    public BaseBulletEntity(EntityType<? extends ThrownItemEntity> entityType, double x, double y, double z, World world) {
+    protected BaseBulletEntity(EntityType<? extends ThrownItemEntity> entityType, double x, double y, double z, World world) {
         super(entityType, x, y, z, world);
     }
 
@@ -66,10 +67,8 @@ public class BaseBulletEntity extends ThrownItemEntity {
         }
         Entity entity = entityHitResult.getEntity();
         Entity owner = getOwner();
-        if (entity instanceof FairyEntity fairy) {
-            if (owner != null && fairy.getClass().equals(owner.getClass())) {
-                return;
-            }
+        if (entity instanceof BaseFairyEntity && owner instanceof BaseFairyEntity) {
+            return;
         }
         applyDamage(entity, owner);
     }

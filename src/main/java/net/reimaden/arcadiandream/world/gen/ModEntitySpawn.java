@@ -12,7 +12,7 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.world.Heightmap;
 import net.reimaden.arcadiandream.entity.ModEntities;
-import net.reimaden.arcadiandream.entity.custom.FairyEntity;
+import net.reimaden.arcadiandream.entity.custom.hostile.FairyEntity;
 
 public class ModEntitySpawn {
 

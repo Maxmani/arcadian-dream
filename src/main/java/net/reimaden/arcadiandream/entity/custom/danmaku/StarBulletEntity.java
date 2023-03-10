@@ -3,7 +3,7 @@
  * Licensed under the EUPL-1.2 or later.
  */
 
-package net.reimaden.arcadiandream.entity.custom;
+package net.reimaden.arcadiandream.entity.custom.danmaku;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;

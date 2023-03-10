@@ -25,7 +25,7 @@ import net.minecraft.util.Pair;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.entity.custom.BaseBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.danmaku.BaseBulletEntity;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.reimaden.arcadiandream.util.IEntityDataSaver;

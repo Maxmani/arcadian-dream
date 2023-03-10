@@ -5,7 +5,7 @@
 
 package net.reimaden.arcadiandream.block;
 
-import net.reimaden.arcadiandream.entity.custom.CircleBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.danmaku.CircleBulletEntity;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.projectile.ProjectileEntity;

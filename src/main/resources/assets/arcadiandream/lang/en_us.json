@@ -102,6 +102,7 @@
   "item.arcadiandream.triple_pattern.tooltip": [{"translate":"item.arcadiandream.triple_pattern_template.tooltip"}],
   "item.arcadiandream.miracle_mallet": "Miracle Mallet",
   "item.arcadiandream.fairy_spawn_egg": "Fairy Spawn Egg",
+  "item.arcadiandream.sunflower_fairy_spawn_egg": "Sunflower Fairy Spawn Egg",
 
   "block.arcadiandream.dragon_gem_ore": "Dragon Gem Ore",
   "block.arcadiandream.deepslate_dragon_gem_ore": "Deepslate Dragon Gem Ore",
@@ -121,6 +122,7 @@
   "entity.arcadiandream.star_bullet": "Star Bullet",
   "entity.minecraft.villager.antiquarian": "Antiquarian",
   "entity.arcadiandream.fairy": "Fairy",
+  "entity.arcadiandream.sunflower_fairy": "Sunflower Fairy",
 
   "enchantment.arcadiandream.danmaku_protection": "Danmaku Protection",
 
