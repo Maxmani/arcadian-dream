@@ -11,16 +11,33 @@ import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBiomeTags;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.world.Heightmap;
+import net.minecraft.world.biome.BiomeKeys;
 import net.reimaden.arcadiandream.entity.ModEntities;
 import net.reimaden.arcadiandream.entity.custom.hostile.FairyEntity;
+import net.reimaden.arcadiandream.entity.custom.hostile.SunflowerFairyEntity;
 
 public class ModEntitySpawn {
 
-    public static void addEntitySpawn() {
-        BiomeModifications.addSpawn(BiomeSelectors.tag(ConventionalBiomeTags.CLIMATE_TEMPERATE), SpawnGroup.MONSTER,
-                ModEntities.FAIRY, 100, 1, 3);
+    public static final int FAIRY_WEIGHT = 80;
 
+    public static void addEntitySpawn() {
+        modifyBiomes();
+        restrictSpawns();
+    }
+
+    private static void modifyBiomes() {
+        BiomeModifications.addSpawn(BiomeSelectors.tag(ConventionalBiomeTags.CLIMATE_TEMPERATE), SpawnGroup.MONSTER,
+                ModEntities.FAIRY, FAIRY_WEIGHT, 1, 3);
+        BiomeModifications.addSpawn(BiomeSelectors.tag(ConventionalBiomeTags.CLIMATE_TEMPERATE), SpawnGroup.MONSTER,
+                ModEntities.SUNFLOWER_FAIRY, FAIRY_WEIGHT / 4, 1, 1);
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.SUNFLOWER_PLAINS), SpawnGroup.MONSTER,
+                ModEntities.SUNFLOWER_FAIRY, (int) (FAIRY_WEIGHT * 1.25f), 1, 1);
+    }
+
+    private static void restrictSpawns() {
         SpawnRestriction.register(ModEntities.FAIRY, SpawnRestriction.Location.ON_GROUND,
                 Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, FairyEntity::canSpawn);
+        SpawnRestriction.register(ModEntities.SUNFLOWER_FAIRY, SpawnRestriction.Location.ON_GROUND,
+                Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, SunflowerFairyEntity::canSpawn);
     }
 }

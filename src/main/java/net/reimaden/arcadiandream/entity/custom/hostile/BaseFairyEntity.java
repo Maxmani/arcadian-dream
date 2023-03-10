@@ -191,7 +191,7 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
         readAngerFromNbt(world, nbt);
     }
 
-    public static boolean canSpawn(EntityType<FairyEntity> type, ServerWorldAccess world, SpawnReason reason, BlockPos pos, Random random) {
+    public static boolean canSpawn(EntityType<? extends BaseFairyEntity> type, ServerWorldAccess world, SpawnReason reason, BlockPos pos, Random random) {
         return world.getDifficulty() != Difficulty.PEACEFUL && isValidSpawn(world, pos) && canMobSpawn(type, world, reason, pos, random);
     }
 
