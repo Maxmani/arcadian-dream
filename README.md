@@ -1,6 +1,6 @@
 # Arcadian Dream
 
-A modern Touhou mod for Minecraft. Arcadian Dream adds new blocks, items, mobs, and other content based on the [Touhou Project](https://en.touhouwiki.net/wiki/Touhou_Wiki) series.
+A Touhou mod for modern Minecraft. Arcadian Dream adds new blocks, items, mobs, and other content based on the [Touhou Project](https://en.touhouwiki.net/wiki/Touhou_Wiki) series. It aims to provide a full Touhou experience in Minecraft.
 The mod is still in early development and is not yet feature-complete. The mod is currently available for [Fabric](https://fabricmc.net/) and Minecraft version 1.19.
 
 My code is not the best, and I'm still learning. If you see something that could be improved, feel free to open an issue or a pull request.
@@ -15,7 +15,7 @@ Everything in the mod is subject to change. This list is not exhaustive.
 - A mostly working danmaku system
 - Dozens of useful blocks and items
 - New enchantments
-- Ritual crafting
+- A new crafting system
 - Mobs that fire danmaku
 - New ores to mine and process
 - Highly configurable
@@ -23,14 +23,15 @@ Everything in the mod is subject to change. This list is not exhaustive.
 ### Planned features
 
 - More of the above
-- New structures and possibly dimensions
-- New biomes
+- Laser danmaku
+- New structures
+- New biomes and possibly dimensions
 - Lots of advancements
 - And more!
 
 ## Installation
 
-TBA
+Alpha version coming soon.
 
 ### Dependencies
 
@@ -43,6 +44,7 @@ TBA
 ## Credits
 
 - All [contributors](https://github.com/Maxmani/arcadian-dream/graphs/contributors)
+- Developers of used [libraries](https://github.com/Maxmani/arcadian-dream/blob/HEAD/build.gradle#L51)
 - [ZUN](https://www16.big.or.jp/~zun/) for Touhou Project
 
 ### Special thanks
