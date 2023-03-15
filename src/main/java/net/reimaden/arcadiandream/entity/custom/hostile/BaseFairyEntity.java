@@ -99,11 +99,7 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
     }
 
     private PlayState predicate(AnimationState<?> state) {
-        if (age >= 1) {
-            state.getController().setTransitionLength(5);
-        }
-
-        if (state.isMoving()) {
+        if (state.isMoving() && hurtTime == 0) {
             state.getController().setAnimation(RawAnimation.begin().then("move", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
@@ -120,7 +116,7 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar registrar) {
         registrar.add(new AnimationController<>(this, "controller",
-                0, this::predicate));
+                5, this::predicate));
     }
 
     @Override
