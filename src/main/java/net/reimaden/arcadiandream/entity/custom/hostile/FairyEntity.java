@@ -5,6 +5,7 @@
 
 package net.reimaden.arcadiandream.entity.custom.hostile;
 
+import com.google.common.collect.ImmutableList;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -69,7 +70,7 @@ public class FairyEntity extends BaseFairyEntity {
             case PLAYFUL -> cooldown = 30;
         }
 
-        return cooldown + cooldownOffset;
+        return cooldown + getCooldownOffset();
     }
 
     @Override
@@ -110,8 +111,8 @@ public class FairyEntity extends BaseFairyEntity {
 
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, EntityData entityData, NbtCompound entityNbt) {
-        FairyVariant variant = Util.getRandom(FairyVariant.values(), random);
-        FairyPersonality personality = Util.getRandom(FairyPersonality.values(), random);
+        FairyVariant variant = Util.getRandom(FairyVariant.values(), getRandom());
+        FairyPersonality personality = Util.getRandom(FairyPersonality.values(), getRandom());
 
         setVariant(variant);
         setPersonality(personality);
@@ -124,7 +125,7 @@ public class FairyEntity extends BaseFairyEntity {
     }
 
     private int getTypeVariant() {
-        return this.dataTracker.get(VARIANT);
+        return dataTracker.get(VARIANT);
     }
 
     private void setVariant(FairyVariant variant) {
@@ -144,7 +145,7 @@ public class FairyEntity extends BaseFairyEntity {
     }
 
     @Override
-    public BaseBulletEntity availableBullets(World world, LivingEntity user) {
+    public ImmutableList<BaseBulletEntity> availableBullets(World world, LivingEntity user) {
         return super.availableBullets(world, user);
     }
 
@@ -176,7 +177,7 @@ public class FairyEntity extends BaseFairyEntity {
 
         @Override
         public @NotNull BaseBulletEntity getBullet(World world, LivingEntity user) {
-            return FairyEntity.this.availableBullets(world, user);
+            return FairyEntity.this.availableBullets(world, user).get(getBulletType());
         }
     }
 }

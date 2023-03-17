@@ -5,10 +5,8 @@
 
 package net.reimaden.arcadiandream.entity.custom.hostile;
 
-import net.minecraft.entity.EntityDimensions;
-import net.minecraft.entity.EntityPose;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
+import com.google.common.collect.ImmutableList;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -19,22 +17,26 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Box;
+import net.minecraft.world.LocalDifficulty;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.reimaden.arcadiandream.entity.ai.DanmakuGoal;
 import net.reimaden.arcadiandream.entity.custom.danmaku.BaseBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.danmaku.CircleBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.danmaku.StarBulletEntity;
 import net.reimaden.arcadiandream.item.custom.danmaku.MobBulletPatterns;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class SunflowerFairyEntity extends BaseFairyEntity {
 
     private final AttackPatterns patterns;
-    private final int attackType;
+    private byte attackType;
 
     public SunflowerFairyEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
         this.experiencePoints = STRONG_MONSTER_XP;
         this.patterns = new AttackPatterns();
-        this.attackType = getRandom().nextInt(1);
     }
 
     public static DefaultAttributeContainer.Builder setAttributes() {
@@ -58,14 +60,29 @@ public class SunflowerFairyEntity extends BaseFairyEntity {
 
     @Override
     public int getAttackCooldown() {
-        return super.getAttackCooldown();
+        int cooldown = super.getAttackCooldown();
+
+        switch (getAttackType()) {
+            case 0 -> cooldown = 20;
+            case 1 -> cooldown = 40;
+            case 2 -> cooldown = 60;
+            case 3 -> cooldown = 30;
+            case 4 -> cooldown = 12;
+            case 5 -> cooldown = 35;
+        }
+
+        return cooldown + getCooldownOffset();
     }
 
     @Override
     public void attack(LivingEntity target, float pullProgress) {
-        //noinspection SwitchStatementWithTooFewBranches
         switch (getAttackType()) {
-            case 0 -> patterns.test(this, target, world);
+            case 0 -> patterns.burstAttack(this, target, world);
+            case 1 -> patterns.spreadAttack(this, target, world);
+            case 2 -> patterns.carpetBombAttack(this, world);
+            case 3 -> patterns.coneAttack(this, target, world);
+            case 4 -> patterns.crossAttack(this, target, world);
+            case 5 -> patterns.ringAttack(this, target, world);
             default -> throw new IllegalStateException("Unexpected value: " + getAttackType());
         }
 
@@ -107,20 +124,37 @@ public class SunflowerFairyEntity extends BaseFairyEntity {
     @Override
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
+        nbt.putByte("AttackType", getAttackType());
     }
 
     @Override
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
-    }
-
-    public int getAttackType() {
-        return attackType;
+        setAttackType(nbt.getByte("AttackType"));
     }
 
     @Override
-    public BaseBulletEntity availableBullets(World world, LivingEntity user) {
-        return super.availableBullets(world, user);
+    public @Nullable EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+        byte attackType = (byte) getRandom().nextInt(6);
+
+        setAttackType(attackType);
+
+        return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+    }
+
+    public byte getAttackType() {
+        return attackType;
+    }
+
+    private void setAttackType(byte attackType) {
+        this.attackType = attackType;
+    }
+
+    @Override
+    public ImmutableList<BaseBulletEntity> availableBullets(World world, LivingEntity user) {
+        return ImmutableList.of(
+                new CircleBulletEntity(world, user), new StarBulletEntity(world, user)
+        );
     }
 
     private class AttackPatterns implements MobBulletPatterns {
@@ -129,13 +163,33 @@ public class SunflowerFairyEntity extends BaseFairyEntity {
 
         // TODO: Add more patterns
 
-        private void test(LivingEntity fairy, LivingEntity target, World world) {
-            createSpread(world, fairy, target, randomDensity, 0.5f, 2, 5, 50, getBulletColor());
+        private void burstAttack(LivingEntity fairy, LivingEntity target, World world) {
+            createSpread(world, fairy, target, randomDensity, 0.5f, 5, 5, 50, getBulletColor());
+        }
+
+        private void spreadAttack(LivingEntity fairy, LivingEntity target, World world) {
+            createSpread(world, fairy, target, randomDensity + 5, 0.2f, 180, 4, 20, getBulletColor());
+        }
+
+        private void carpetBombAttack(LivingEntity fairy, World world) {
+            createRain(world, fairy, 15, 1.2f, 8, 5, 100, getBulletColor(), 0.1f);
+        }
+
+        private void coneAttack(LivingEntity fairy, LivingEntity target, World world) {
+            createCone(world, fairy, target, 5, 0.5f, 0, 6, 50, getBulletColor());
+        }
+
+        private void crossAttack(LivingEntity fairy, LivingEntity target, World world) {
+            createRing(world, fairy, target, 4, 0.65f, 0, 3, 40, getBulletColor());
+        }
+
+        private void ringAttack(LivingEntity fairy, LivingEntity target, World world) {
+            createRing(world, fairy, target, 15, 0.45f, 0, 4, 60, getBulletColor());
         }
 
         @Override
         public @NotNull BaseBulletEntity getBullet(World world, LivingEntity user) {
-            return SunflowerFairyEntity.this.availableBullets(world, user);
+            return SunflowerFairyEntity.this.availableBullets(world, user).get(getBulletType());
         }
     }
 }

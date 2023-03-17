@@ -5,6 +5,7 @@
 
 package net.reimaden.arcadiandream.entity.custom;
 
+import com.google.common.collect.ImmutableList;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.RangedAttackMob;
@@ -16,7 +17,7 @@ import net.reimaden.arcadiandream.sound.ModSounds;
 
 public interface DanmakuMob extends RangedAttackMob {
 
-    BaseBulletEntity availableBullets(World world, LivingEntity user);
+    ImmutableList<BaseBulletEntity> availableBullets(World world, LivingEntity user);
 
     default void getDanmakuSound(Entity entity, Random random) {
         entity.playSound(ModSounds.ENTITY_DANMAKU_FIRE, BaseShotItem.getSoundVolume(), BaseShotItem.getSoundPitch(random));

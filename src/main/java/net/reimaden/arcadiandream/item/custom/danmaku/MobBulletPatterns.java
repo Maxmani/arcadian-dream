@@ -157,6 +157,54 @@ public interface MobBulletPatterns {
         }
     }
 
+    default void createRain(World world, LivingEntity user, int density, float speed, float divergence, float power, int duration, int color, float gravity) {
+        float yaw = user.getHeadYaw();
+
+        ItemStack stack = getBullet(world, user).getStack();
+        BaseShotItem item = (BaseShotItem) stack.getItem();
+        item.setPower(stack, power);
+        item.setDuration(stack, duration);
+        item.setColor(stack, color);
+        item.setGravity(stack, gravity);
+
+        for (int i = 0; i < density; i++) {
+            BaseBulletEntity bulletEntity = getBullet(world, user);
+            bulletEntity.setItem(stack);
+
+            bulletEntity.setVelocity(user, -90.0f, yaw, 0.0f, speed, divergence + density - 1);
+            world.spawnEntity(bulletEntity);
+        }
+    }
+
+    default void createCone(World world, LivingEntity user, LivingEntity target, int density, float speed, float divergence, float power, int duration, int color) {
+        float pitch = user.getPitch();
+        float yaw = user.getHeadYaw();
+        float targetHitbox = (target.getHeight() / 2) * 5;
+        final float cone = 45f;
+
+        ItemStack stack = getBullet(world, user).getStack();
+        BaseShotItem item = (BaseShotItem) stack.getItem();
+        item.setPower(stack, power);
+        item.setDuration(stack, duration);
+        item.setColor(stack, color);
+
+        for (int i = 0; i < density; i++) {
+            BaseBulletEntity bulletEntity = getBullet(world, user);
+            bulletEntity.setItem(stack);
+
+            float angle = (i * (cone / (density - 1)));
+            Vec3d bullet = new Vec3d(0, 0, 1);
+
+            bullet = bullet.rotateY((angle + (180 - (cone / 2))) * MathHelper.RADIANS_PER_DEGREE);
+            bullet = bullet.rotateX((pitch + targetHitbox) * MathHelper.RADIANS_PER_DEGREE);
+            bullet = bullet.rotateY((-yaw + 180) * MathHelper.RADIANS_PER_DEGREE);
+
+            bulletEntity.setVelocity(bullet.getX(), bullet.getY(), bullet.getZ(), speed, divergence);
+
+            world.spawnEntity(bulletEntity);
+        }
+    }
+
     @NotNull
     BaseBulletEntity getBullet(World world, LivingEntity user);
 }
