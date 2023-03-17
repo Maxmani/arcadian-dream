@@ -35,6 +35,7 @@ public class MiracleMalletItem extends ModHammerItem {
     private static final float scale = 0.25f;
     private static final int hitboxScale = 2;
     private static final int maxScale = 4;
+    private static final float visibilityScale = 0.5f;
 
     public MiracleMalletItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
         super(material, attackDamage, attackSpeed, settings);
@@ -43,7 +44,6 @@ public class MiracleMalletItem extends ModHammerItem {
     static {
         scaleTypes.add(ScaleTypes.WIDTH);
         scaleTypes.add(ScaleTypes.HEIGHT);
-        scaleTypes.add(ScaleTypes.VISIBILITY);
         scaleTypes.add(ScaleTypes.DROPS);
 
         bulletScaleTypes.add(ScaleTypes.WIDTH);
@@ -82,6 +82,7 @@ public class MiracleMalletItem extends ModHammerItem {
             } else if (user.isSneaking()) {
                 // Scale self
                 ScaleData hitbox = ScaleTypes.HITBOX_WIDTH.getScaleData(user);
+                ScaleData visibility = ScaleTypes.VISIBILITY.getScaleData(user);
                 AtomicBoolean isScaled = new AtomicBoolean();
 
                 scaleTypes.forEach(scaleType -> {
@@ -89,10 +90,12 @@ public class MiracleMalletItem extends ModHammerItem {
                     if (data.getScale() != scale) {
                         data.setScale(scale);
                         hitbox.setScale(hitboxScale);
+                        visibility.setScale(visibilityScale);
                         isScaled.set(true);
                     } else if (data.getScale() != defaultScale) {
                         data.setScale(defaultScale);
                         hitbox.setScale(defaultScale);
+                        visibility.setScale(defaultScale);
                         isScaled.set(false);
                     }
                 });
