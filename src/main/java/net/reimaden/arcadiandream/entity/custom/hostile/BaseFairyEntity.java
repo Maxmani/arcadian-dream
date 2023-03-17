@@ -95,7 +95,7 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
     @Override
     protected void mobTick() {
         super.mobTick();
-        tickAngerLogic((ServerWorld) world, false);
+        tickAngerLogic((ServerWorld) world, true);
 
         if (getBulletType() > availableBullets(world, this).size() - 1 || getBulletType() < 0) {
             setBulletType((byte) 0);

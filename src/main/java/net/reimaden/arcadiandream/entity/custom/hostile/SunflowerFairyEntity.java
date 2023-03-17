@@ -54,8 +54,7 @@ public class SunflowerFairyEntity extends BaseFairyEntity {
         goalSelector.add(5, new LookAroundGoal(this));
 
         targetSelector.add(1, new RevengeGoal(this, BaseFairyEntity.class));
-        targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true, false));
-        targetSelector.add(3, new UniversalAngerGoal<>(this, false));
+        targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
     }
 
     @Override
