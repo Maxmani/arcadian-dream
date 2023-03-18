@@ -11,7 +11,6 @@ import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
 import net.minecraft.client.gui.tooltip.TooltipComponent;
-import net.minecraft.text.OrderedText;
 import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.compat.TooltipHelper;
@@ -83,7 +82,7 @@ public class EMIRitualCraftingRecipe implements EmiRecipe {
         widget.addSlot(output, OUTPUT_SLOT[0] - 5, OUTPUT_SLOT[1] - 5).recipeContext(this).output(true).drawBack(false);
         if (moonPhase != -1) {
             BiFunction<Integer, Integer, List<TooltipComponent>> tooltipSupplier = (mouseX, mouseY) ->
-                    List.of(TooltipComponent.of((OrderedText) TooltipHelper.moonPhase(moonPhase)));
+                    List.of(TooltipComponent.of(TooltipHelper.moonPhase(moonPhase).asOrderedText()));
 
             widget.addTexture(MOON_ICON, MOON_SLOT[0] + 1, MOON_SLOT[1] - 1, 16, 16,
                     0, 0, 16, 16, 16, 16).tooltip(tooltipSupplier);
