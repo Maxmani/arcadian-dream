@@ -76,7 +76,7 @@ public class ModTagGenerator {
 
             // "minecraft/tags/items"
             getOrCreateTagBuilder(BEACON_PAYMENT_ITEMS)
-                    .add(ModItems.DRAGON_GEM, ModItems.MAKAITE_INGOT, ModItems.MAKAITE_INFUSED_NETHERITE_INGOT);
+                    .add(ModItems.DRAGON_GEM, ModItems.MAKAITE_INGOT);
             getOrCreateTagBuilder(MUSIC_DISCS)
                     .add(ModItems.MUSIC_DISC_FAIRY_PLAYGROUND, ModItems.MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN);
 

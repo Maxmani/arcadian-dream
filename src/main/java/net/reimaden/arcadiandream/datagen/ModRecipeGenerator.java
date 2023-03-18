@@ -159,21 +159,17 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 RecipeProvider.getItemPath(ModItems.MAKAITE_INGOT));
 
         // Ritual Crafting recipes
-        RitualCraftingRecipeJsonBuilder.create(ModItems.MAKAITE_INFUSED_NETHERITE_INGOT)
-                .input(ModItems.MAKAITE_INGOT)
-                .input(ConventionalItemTags.NETHERITE_INGOTS)
-                .offerTo(exporter, ritualCraftingId(ModItems.MAKAITE_INFUSED_NETHERITE_INGOT));
-
         RitualCraftingRecipeJsonBuilder.create(ModItems.NUE_TRIDENT)
                 .input(Items.TRIDENT)
-                .input(ModItems.MAKAITE_INFUSED_NETHERITE_INGOT)
+                .input(ConventionalItemTags.NETHERITE_INGOTS)
                 .input(ConventionalItemTags.DIAMONDS)
                 .input(Items.SPIDER_EYE)
                 .input(Items.FIRE_CHARGE)
                 .input(Items.SPIDER_EYE)
                 .input(ConventionalItemTags.DIAMONDS)
-                .input(ModItems.MAKAITE_INFUSED_NETHERITE_INGOT)
+                .input(ConventionalItemTags.NETHERITE_INGOTS)
                 .input(Items.PRISMARINE_CRYSTALS, 2)
+                .input(ModItems.MAKAITE_INGOT, 6)
                 .offerTo(exporter, ritualCraftingId(ModItems.NUE_TRIDENT));
 
         RitualCraftingRecipeJsonBuilder.create(ModItems.MOCHI_MALLET)

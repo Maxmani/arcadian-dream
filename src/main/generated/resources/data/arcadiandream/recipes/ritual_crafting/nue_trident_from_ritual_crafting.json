@@ -5,7 +5,7 @@
       "item": "minecraft:trident"
     },
     {
-      "item": "arcadiandream:makaite_infused_netherite_ingot"
+      "tag": "c:netherite_ingots"
     },
     {
       "tag": "c:diamonds"
@@ -23,13 +23,31 @@
       "tag": "c:diamonds"
     },
     {
-      "item": "arcadiandream:makaite_infused_netherite_ingot"
+      "tag": "c:netherite_ingots"
     },
     {
       "item": "minecraft:prismarine_crystals"
     },
     {
       "item": "minecraft:prismarine_crystals"
+    },
+    {
+      "item": "arcadiandream:makaite_ingot"
+    },
+    {
+      "item": "arcadiandream:makaite_ingot"
+    },
+    {
+      "item": "arcadiandream:makaite_ingot"
+    },
+    {
+      "item": "arcadiandream:makaite_ingot"
+    },
+    {
+      "item": "arcadiandream:makaite_ingot"
+    },
+    {
+      "item": "arcadiandream:makaite_ingot"
     }
   ],
   "result": {

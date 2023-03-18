@@ -24,7 +24,6 @@ public enum ModToolMaterials implements ToolMaterial {
      */
 
     MAKAITE(MiningLevels.IRON, 905, 6.0f, 2.0f, 15, () -> Ingredient.ofItems(ModItems.MAKAITE_INGOT)),
-    MAKAITE_INFUSED_NETHERITE(MiningLevels.NETHERITE, 1016, 8.5f, 5.0f, 14, () -> Ingredient.ofItems(ModItems.MAKAITE_INFUSED_NETHERITE_INGOT)),
     HISOU(MiningLevels.DIAMOND, 1796, 10.0f, 3.0f, 9, () -> Ingredient.ofItems(ModItems.DRAGON_GEM)),
     MOCHI_MALLET(MiningLevels.WOOD, 190, 3.0f, 0.0f, 10, () -> Ingredient.ofItems(Items.RABBIT_HIDE));
 

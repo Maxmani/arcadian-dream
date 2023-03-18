@@ -39,7 +39,6 @@ public class ModItems {
     public static final Item DRAGON_GEM = registerItem("dragon_gem", new Item(new FabricItemSettings()));
     public static final Item RAW_MAKAITE = registerItem("raw_makaite", new Item(new FabricItemSettings().fireproof()));
     public static final Item MAKAITE_INGOT = registerItem("makaite_ingot", new Item(new FabricItemSettings().fireproof()));
-    public static final Item MAKAITE_INFUSED_NETHERITE_INGOT = registerItem("makaite_infused_netherite_ingot", new Item(new FabricItemSettings().fireproof()));
 
     public static final Item WALL_PASSING_CHISEL = registerItem("wall_passing_chisel", new WallPassingChiselItem(new FabricItemSettings().maxDamage(100)));
     public static final Item IBUKI_GOURD = registerItem("ibuki_gourd", new IbukiGourdItem(new FabricItemSettings().maxCount(1)));
@@ -89,7 +88,7 @@ public class ModItems {
             new FabricItemSettings().fireproof()));
 
     // Weapons
-    public static final Item NUE_TRIDENT = registerItem("nue_trident", new NueTridentItem(ModToolMaterials.MAKAITE_INFUSED_NETHERITE, 4, -2.9f,
+    public static final Item NUE_TRIDENT = registerItem("nue_trident", new NueTridentItem(ToolMaterials.NETHERITE, 5, -2.9f,
             new FabricItemSettings().fireproof()));
     public static final Item HISOU_SWORD = registerItem("hisou_sword", new SwordItem(ModToolMaterials.HISOU, 3, -2.0f,
             new FabricItemSettings()));
@@ -183,7 +182,6 @@ public class ModItems {
         addToItemGroup(ModItemGroups.ITEMS, DRAGON_GEM);
         addToItemGroup(ModItemGroups.ITEMS, RAW_MAKAITE);
         addToItemGroup(ModItemGroups.ITEMS, MAKAITE_INGOT);
-        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_INFUSED_NETHERITE_INGOT);
         addToItemGroup(ModItemGroups.ITEMS, WALL_PASSING_CHISEL);
         addToItemGroup(ModItemGroups.ITEMS, IBUKI_GOURD);
         addToItemGroup(ModItemGroups.ITEMS, HEALING_CHARM);
