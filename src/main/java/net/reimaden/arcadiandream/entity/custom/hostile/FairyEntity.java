@@ -75,6 +75,8 @@ public class FairyEntity extends BaseFairyEntity {
 
     @Override
     public void attack(LivingEntity target, float pullProgress) {
+        super.attack(target, pullProgress);
+
         switch (getPersonality()) {
             case AGGRESSIVE -> patterns.aggressive(this, target, world);
             case CURIOUS -> patterns.curious(this, target, world);
@@ -84,8 +86,6 @@ public class FairyEntity extends BaseFairyEntity {
             case TIMID -> patterns.timid(this, target, world);
             default -> throw new IllegalStateException("Unexpected value: " + getPersonality());
         }
-
-        super.attack(target, pullProgress);
     }
 
     @Override

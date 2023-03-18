@@ -75,6 +75,8 @@ public class SunflowerFairyEntity extends BaseFairyEntity {
 
     @Override
     public void attack(LivingEntity target, float pullProgress) {
+        super.attack(target, pullProgress);
+
         switch (getAttackType()) {
             case 0 -> patterns.burstAttack(this, target, world);
             case 1 -> patterns.spreadAttack(this, target, world);
@@ -84,8 +86,6 @@ public class SunflowerFairyEntity extends BaseFairyEntity {
             case 5 -> patterns.ringAttack(this, target, world);
             default -> throw new IllegalStateException("Unexpected value: " + getAttackType());
         }
-
-        super.attack(target, pullProgress);
     }
 
     @Override

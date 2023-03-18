@@ -76,6 +76,10 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
 
     @Override
     public void attack(LivingEntity target, float pullProgress) {
+        if (getBulletType() > availableBullets(world, this).size() - 1 || getBulletType() < 0) {
+            setBulletType((byte) 0);
+        }
+
         getDanmakuSound(this, getRandom());
     }
 
@@ -96,10 +100,6 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
     protected void mobTick() {
         super.mobTick();
         tickAngerLogic((ServerWorld) world, true);
-
-        if (getBulletType() > availableBullets(world, this).size() - 1 || getBulletType() < 0) {
-            setBulletType((byte) 0);
-        }
     }
 
     private PlayState predicate(AnimationState<?> state) {
