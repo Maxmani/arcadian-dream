@@ -36,6 +36,7 @@ public class ModSounds {
     public static final SoundEvent ENTITY_FAIRY_AMBIENT = registerSoundEvent("entity.fairy.ambient");
     public static final SoundEvent ENTITY_FAIRY_HURT = registerSoundEvent("entity.fairy.hurt");
     public static final SoundEvent ENTITY_FAIRY_DEATH = registerSoundEvent("entity.fairy.death");
+    public static final SoundEvent ENTITY_VILLAGER_WORK_ANTIQUARIAN = registerSoundEvent("entity.villager.work_antiquarian");
 
     // Music
     public static final SoundEvent MUSIC_DISC_FAIRY_PLAYGROUND = registerSoundEvent("music_disc.fairy_playground");

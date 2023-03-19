@@ -151,6 +151,7 @@
   "arcadiandream.subtitles.entity.fairy.ambient": "Fairy squeaks",
   "arcadiandream.subtitles.entity.fairy.death": "Fairy dies",
   "arcadiandream.subtitles.entity.fairy.hurt": "Fairy hurts",
+  "arcadiandream.subtitles.entity.villager.work_antiquarian": "Antiquarian works",
 
   "death.attack.danmaku": [{"index":0},{"translate":"death.attack.arrow"},{"index":1}],
   "death.attack.danmaku.player": "%1$s was shot by %2$s using danmaku",

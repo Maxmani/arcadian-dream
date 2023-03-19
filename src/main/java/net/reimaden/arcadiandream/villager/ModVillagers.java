@@ -15,7 +15,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.VillagerProfession;
@@ -23,14 +22,30 @@ import net.minecraft.world.poi.PointOfInterestType;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.block.ModBlocks;
 import net.reimaden.arcadiandream.item.ModItems;
+import net.reimaden.arcadiandream.sound.ModSounds;
 
+@SuppressWarnings("unused")
 public class ModVillagers {
 
-    @SuppressWarnings("unused")
+    private static final int DEFAULT_MAX_USES = 12;
+    private static final int COMMON_MAX_USES = 16;
+    private static final int RARE_MAX_USES = 3;
+    private static final int NOVICE_SELL_XP = 1;
+    private static final int NOVICE_BUY_XP = 2;
+    private static final int APPRENTICE_SELL_XP = 5;
+    private static final int APPRENTICE_BUY_XP = 10;
+    private static final int JOURNEYMAN_SELL_XP = 10;
+    private static final int JOURNEYMAN_BUY_XP = 20;
+    private static final int EXPERT_SELL_XP = 15;
+    private static final int EXPERT_BUY_XP = 30;
+    private static final int MASTER_TRADE_XP = 30;
+    private static final float LOW_PRICE_MULTIPLIER = 0.05f;
+    private static final float HIGH_PRICE_MULTIPLIER = 0.2f;
+
     public static final PointOfInterestType ANTIQUARIAN_POI = registerPOI("antiquarian_poi", ModBlocks.DANMAKU_CRAFTING_TABLE);
     public static final VillagerProfession ANTIQUARIAN = registerProfession("antiquarian",
             RegistryKey.of(Registries.POINT_OF_INTEREST_TYPE.getKey(), new Identifier(ArcadianDream.MOD_ID, "antiquarian_poi")),
-            SoundEvents.ENTITY_VILLAGER_WORK_TOOLSMITH);
+            ModSounds.ENTITY_VILLAGER_WORK_ANTIQUARIAN);
 
     @SuppressWarnings("SameParameterValue")
     private static VillagerProfession registerProfession(String name, RegistryKey<PointOfInterestType> type, SoundEvent workSound) {
@@ -49,48 +64,30 @@ public class ModVillagers {
         registerTrades();
     }
 
-    @SuppressWarnings("unused")
     public static void registerTrades() {
-        final int defaultMaxUses = 12;
-        final int commonMaxUses = 16;
-        final int rareMaxUses = 3;
-
-        final int noviceSellXP = 1;
-        final int noviceBuyXP = 2;
-        final int apprenticeSellXP = 5;
-        final int apprenticeBuyXP = 10;
-        final int journeymanSellXP = 10;
-        final int journeymanBuyXP = 20;
-        final int expertSellXP = 15;
-        final int expertBuyXP = 30;
-        final int masterTradeXP = 30;
-
-        final float lowPriceMultiplier = 0.05f;
-        final float highPriceMultiplier = 0.2f;
-
         // WIP
         TradeOfferHelper.registerVillagerOffers(ANTIQUARIAN, 1, factories -> {
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(ModItems.STAR_ITEM, 16),
                     new ItemStack(Items.EMERALD),
-                    defaultMaxUses, noviceSellXP, lowPriceMultiplier
+                    DEFAULT_MAX_USES, NOVICE_SELL_XP, LOW_PRICE_MULTIPLIER
             ));
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(ModItems.POWER_ITEM, 8),
                     new ItemStack(Items.EMERALD),
-                    commonMaxUses, noviceSellXP, lowPriceMultiplier
+                    COMMON_MAX_USES, NOVICE_SELL_XP, LOW_PRICE_MULTIPLIER
             ));
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(ModItems.POINT_ITEM, 8),
                     new ItemStack(Items.EMERALD),
-                    commonMaxUses, noviceSellXP, lowPriceMultiplier
+                    COMMON_MAX_USES, NOVICE_SELL_XP, LOW_PRICE_MULTIPLIER
             ));
         });
         TradeOfferHelper.registerVillagerOffers(ANTIQUARIAN, 2, factories -> {
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(Items.EMERALD, 16),
                     new ItemStack(ModItems.HEALING_CHARM),
-                    defaultMaxUses, apprenticeBuyXP, highPriceMultiplier
+                    DEFAULT_MAX_USES, APPRENTICE_BUY_XP, HIGH_PRICE_MULTIPLIER
             ));
         });
     }

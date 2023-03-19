@@ -166,5 +166,11 @@
       "mob/bat/hurt4"
     ],
     "subtitle": "arcadiandream.subtitles.entity.fairy.hurt"
+  },
+  "entity.villager.work_antiquarian": {
+    "sounds": [
+      "arcadiandream:random/ritual"
+    ],
+    "subtitle": "arcadiandream.subtitles.entity.villager.work_antiquarian"
   }
 }
