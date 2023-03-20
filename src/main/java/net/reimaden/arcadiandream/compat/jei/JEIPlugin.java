@@ -25,7 +25,7 @@ import java.util.Objects;
 public class JEIPlugin implements IModPlugin {
 
     public static final Identifier ID = new Identifier(ArcadianDream.MOD_ID, "jei_plugin");
-    public static RecipeType<RitualCraftingRecipe> RITUAL_CRAFTING_TYPE = new RecipeType<>(JEIRitualCraftingCategory.UID, RitualCraftingRecipe.class);
+    public static final RecipeType<RitualCraftingRecipe> RITUAL_CRAFTING_TYPE = new RecipeType<>(JEIRitualCraftingCategory.UID, RitualCraftingRecipe.class);
 
     @Override
     public @NotNull Identifier getPluginUid() {

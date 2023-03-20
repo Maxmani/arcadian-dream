@@ -77,7 +77,7 @@ public class JEIRitualCraftingCategory implements IRecipeCategory<RitualCrafting
     }
 
     @Override
-    public void draw(RitualCraftingRecipe recipe, IRecipeSlotsView recipeSlotsView, MatrixStack stack, double mouseX, double mouseY) {
+    public void draw(@NotNull RitualCraftingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull MatrixStack stack, double mouseX, double mouseY) {
         IDrawable moon_icon = guiHelper.drawableBuilder(MOON_ICON, 0, 0, 16, 16).setTextureSize(16, 16).build();
         IDrawable dimension_icon = guiHelper.drawableBuilder(DIMENSION_ICON, 0, 0, 16, 16).setTextureSize(16, 16).build();
 
@@ -89,7 +89,7 @@ public class JEIRitualCraftingCategory implements IRecipeCategory<RitualCrafting
     }
 
     @Override
-    public @NotNull List<Text> getTooltipStrings(RitualCraftingRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
+    public @NotNull List<Text> getTooltipStrings(@NotNull RitualCraftingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
         List<Text> tooltip = new ArrayList<>();
 
         if (getMoonPhase(recipe)) {

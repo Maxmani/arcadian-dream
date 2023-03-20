@@ -101,7 +101,7 @@ public class IbukiGourdItem extends Item {
         return stack;
     }
 
-    private void effects(LivingEntity user) {
+    private static void effects(LivingEntity user) {
         user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 400));
         user.addStatusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 600));
     }
