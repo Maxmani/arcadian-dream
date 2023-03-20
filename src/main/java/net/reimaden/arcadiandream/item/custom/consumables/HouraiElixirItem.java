@@ -90,6 +90,8 @@ public class HouraiElixirItem extends Item {
         } else {
             tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".hourai_elixir.tooltip"));
         }
+
+        super.appendTooltip(stack, world, tooltip, context);
     }
 
     @Override

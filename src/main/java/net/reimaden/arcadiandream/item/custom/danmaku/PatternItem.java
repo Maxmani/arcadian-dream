@@ -5,15 +5,8 @@
 
 package net.reimaden.arcadiandream.item.custom.danmaku;
 
-import net.minecraft.client.item.TooltipContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.text.Text;
-import net.minecraft.world.World;
-import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.item.custom.misc.PatternTemplateItem;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 public class PatternItem extends PatternTemplateItem {
 
@@ -22,13 +15,7 @@ public class PatternItem extends PatternTemplateItem {
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        if (patternName == null) {
-            String itemName = getTranslationKey();
-            int underscoreIndex = itemName.indexOf("_");
-            patternName = itemName.substring(itemName.lastIndexOf(".") + 1, underscoreIndex);
-        }
-
-        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + "." + patternName + "_pattern" + ".tooltip"));
+    protected @NotNull String getString() {
+        return "_pattern";
     }
 }

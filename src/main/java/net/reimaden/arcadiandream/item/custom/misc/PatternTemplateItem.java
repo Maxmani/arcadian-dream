@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import net.reimaden.arcadiandream.ArcadianDream;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -31,6 +32,13 @@ public class PatternTemplateItem extends Item {
             patternName = itemName.substring(itemName.lastIndexOf(".") + 1, underscoreIndex);
         }
 
-        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + "." + patternName + "_pattern_template" + ".tooltip"));
+        tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + "." + patternName + getString() + ".tooltip"));
+
+        super.appendTooltip(stack, world, tooltip, context);
+    }
+
+    @NotNull
+    protected String getString() {
+        return "_pattern_template";
     }
 }

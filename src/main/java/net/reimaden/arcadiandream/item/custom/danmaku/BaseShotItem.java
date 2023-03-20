@@ -171,6 +171,8 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
                 tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".shot.tooltip"));
             }
         }
+
+        super.appendTooltip(stack, world, tooltip, context);
     }
 
     private void nbtTooltip(ItemStack stack, List<Text> tooltip) {
