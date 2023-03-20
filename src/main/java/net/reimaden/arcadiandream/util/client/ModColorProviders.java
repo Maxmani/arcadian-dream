@@ -14,7 +14,7 @@ public class ModColorProviders {
 
     public static void register() {
         for (Item bullet : ModTags.SHOTS) {
-            ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex == 0 ? -1 : ((DyeableBullet) stack.getItem()).getColor(stack), bullet);
+            ColorProviderRegistry.ITEM.register((stack, tintIndex) -> tintIndex > 0 ? -1 : ((DyeableBullet) stack.getItem()).getColor(stack), bullet);
         }
     }
 }
