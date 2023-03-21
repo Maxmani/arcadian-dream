@@ -7,6 +7,7 @@ package net.reimaden.arcadiandream.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -248,9 +249,19 @@ public class ModItems {
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));
     }
 
+    private static void addCompostables() {
+        addToComposterRegistry(HEAVENLY_PEACH, 0.65f);
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private static void addToComposterRegistry(Item item, float chance) {
+        CompostingChanceRegistry.INSTANCE.add(item, chance);
+    }
+
     public static void register() {
         ArcadianDream.LOGGER.debug("Registering items for " + ArcadianDream.MOD_ID);
 
         addItemsToItemGroups();
+        addCompostables();
     }
 }
