@@ -10,6 +10,7 @@ import net.minecraft.block.Block;
 import net.minecraft.loot.LootTables;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.minecraft.loot.LootPool;
@@ -31,6 +32,12 @@ public class ModLootTableModifiers {
     private static final int PEACH_HEIGHT = ArcadianDream.CONFIG.hisouSwordOptions.minHeightForPeaches();
     private static final float TEMPLATE_CHANCE = 0.25f;
     private static final float TEMPLATE_CHANCE_ALT = 0.10f;
+    private static final Identifier[] SPREAD_PATTERN_STRUCTURES = {
+            LootTables.SHIPWRECK_SUPPLY_CHEST, LootTables.SHIPWRECK_TREASURE_CHEST, LootTables.SHIPWRECK_MAP_CHEST
+    };
+    private static final Identifier[] TRIPLE_PATTERN_STRUCTURES = {
+            LootTables.STRONGHOLD_CORRIDOR_CHEST, LootTables.STRONGHOLD_CROSSING_CHEST, LootTables.STRONGHOLD_LIBRARY_CHEST
+    };
 
     public static void modify() {
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
@@ -55,30 +62,20 @@ public class ModLootTableModifiers {
                             .conditionally(MatchToolLootCondition.builder(ItemPredicate.Builder.create().items(ModItems.HISOU_SWORD)))
                             .conditionally(LocationCheckLootCondition.builder(LocationPredicate.Builder.create().y(NumberRange.FloatRange.atLeast(PEACH_HEIGHT))));
                     tableBuilder.pool(poolBuilder.build());
+                    break;
                 }
             }
 
             // Pattern templates
-            if (LootTables.SHIPWRECK_SUPPLY_CHEST.equals(id)) {
-                poolBuilder
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .conditionally(RandomChanceLootCondition.builder(TEMPLATE_CHANCE_ALT))
-                        .with(ItemEntry.builder(ModItems.SPREAD_PATTERN_TEMPLATE));
-                tableBuilder.pool(poolBuilder.build());
-            }
-            if (LootTables.SHIPWRECK_TREASURE_CHEST.equals(id)) {
-                poolBuilder
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .conditionally(RandomChanceLootCondition.builder(TEMPLATE_CHANCE_ALT))
-                        .with(ItemEntry.builder(ModItems.SPREAD_PATTERN_TEMPLATE));
-                tableBuilder.pool(poolBuilder.build());
-            }
-            if (LootTables.SHIPWRECK_MAP_CHEST.equals(id)) {
-                poolBuilder
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .conditionally(RandomChanceLootCondition.builder(TEMPLATE_CHANCE_ALT))
-                        .with(ItemEntry.builder(ModItems.SPREAD_PATTERN_TEMPLATE));
-                tableBuilder.pool(poolBuilder.build());
+            for (Identifier matchingId : SPREAD_PATTERN_STRUCTURES) {
+                if (matchingId.equals(id)) {
+                    poolBuilder
+                            .rolls(ConstantLootNumberProvider.create(1))
+                            .conditionally(RandomChanceLootCondition.builder(TEMPLATE_CHANCE_ALT))
+                            .with(ItemEntry.builder(ModItems.SPREAD_PATTERN_TEMPLATE));
+                    tableBuilder.pool(poolBuilder.build());
+                    break;
+                }
             }
             if (LootTables.PILLAGER_OUTPOST_CHEST.equals(id)) {
                 poolBuilder
@@ -108,26 +105,15 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(ModItems.DOUBLE_PATTERN_TEMPLATE));
                 tableBuilder.pool(poolBuilder.build());
             }
-            if (LootTables.STRONGHOLD_CORRIDOR_CHEST.equals(id)) {
-                poolBuilder
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .conditionally(RandomChanceLootCondition.builder(TEMPLATE_CHANCE_ALT))
-                        .with(ItemEntry.builder(ModItems.TRIPLE_PATTERN_TEMPLATE));
-                tableBuilder.pool(poolBuilder.build());
-            }
-            if (LootTables.STRONGHOLD_CROSSING_CHEST.equals(id)) {
-                poolBuilder
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .conditionally(RandomChanceLootCondition.builder(TEMPLATE_CHANCE_ALT))
-                        .with(ItemEntry.builder(ModItems.TRIPLE_PATTERN_TEMPLATE));
-                tableBuilder.pool(poolBuilder.build());
-            }
-            if (LootTables.STRONGHOLD_LIBRARY_CHEST.equals(id)) {
-                poolBuilder
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .conditionally(RandomChanceLootCondition.builder(TEMPLATE_CHANCE_ALT))
-                        .with(ItemEntry.builder(ModItems.TRIPLE_PATTERN_TEMPLATE));
-                tableBuilder.pool(poolBuilder.build());
+            for (Identifier matchingId : TRIPLE_PATTERN_STRUCTURES) {
+                if (matchingId.equals(id)) {
+                    poolBuilder
+                            .rolls(ConstantLootNumberProvider.create(1))
+                            .conditionally(RandomChanceLootCondition.builder(TEMPLATE_CHANCE_ALT))
+                            .with(ItemEntry.builder(ModItems.TRIPLE_PATTERN_TEMPLATE));
+                    tableBuilder.pool(poolBuilder.build());
+                    break;
+                }
             }
         });
     }
