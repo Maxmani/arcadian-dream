@@ -17,7 +17,10 @@
     "sources": "https://github.com/Maxmani/arcadian-dream"
   },
 
-  "license": "EUPL-1.2",
+  "license": [
+    "EUPL-1.2",
+    "CC-BY-SA-4.0"
+  ],
   "icon": "assets/arcadiandream/icon.png",
 
   "environment": "*",
