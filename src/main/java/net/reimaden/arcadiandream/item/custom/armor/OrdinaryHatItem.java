@@ -6,7 +6,6 @@
 package net.reimaden.arcadiandream.item.custom.armor;
 
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
@@ -18,8 +17,8 @@ import java.util.List;
 
 public class OrdinaryHatItem extends OrdinaryArmorItem {
 
-    public OrdinaryHatItem(ArmorMaterial material, EquipmentSlot slot, Settings settings) {
-        super(material, slot, settings);
+    public OrdinaryHatItem(ArmorMaterial material, Type type, Settings settings) {
+        super(material, type, settings);
     }
 
     @Override

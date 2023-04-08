@@ -52,19 +52,13 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.14.11",
+    "fabricloader": ">=0.14.14",
     "fabric-api": "*",
-    "minecraft": "1.19.3",
+    "minecraft": "1.19.4",
     "java": ">=17",
-    "trinkets" : ">=3.5.0",
-    "owo": ">=0.9.3",
-    "pehkui": ">=3.6.3",
-    "geckolib": ">=4.0.3"
-  },
-
-  "custom": {
-    "loom:injected_interfaces": {
-      "net/minecraft/class_1282": ["net/reimaden/arcadiandream/util/IDamageSource"]
-    }
+    "trinkets" : ">=3.6.0",
+    "owo": ">=0.10.3",
+    "pehkui": ">=3.7.2",
+    "geckolib": ">=4.1.3"
   }
 }

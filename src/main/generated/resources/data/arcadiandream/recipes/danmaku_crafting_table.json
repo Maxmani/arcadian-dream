@@ -16,5 +16,6 @@
   ],
   "result": {
     "item": "arcadiandream:danmaku_crafting_table"
-  }
+  },
+  "show_notification": true
 }

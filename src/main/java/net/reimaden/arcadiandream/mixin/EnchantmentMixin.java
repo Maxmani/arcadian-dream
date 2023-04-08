@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Enchantment.class)
 public abstract class EnchantmentMixin {
 
-    @Shadow @Final public EnchantmentTarget type;
+    @Shadow @Final public EnchantmentTarget target;
 
     @Inject(method = "isAcceptableItem", at = @At("HEAD"), cancellable = true)
     private void arcadiandream$isAcceptable(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
@@ -28,7 +28,7 @@ public abstract class EnchantmentMixin {
                 cir.setReturnValue(true);
             }
 
-            boolean contains = ((EnchantmentHandler) stack.getItem()).getEnchantmentTypes().contains(type);
+            boolean contains = ((EnchantmentHandler) stack.getItem()).getEnchantmentTypes().contains(target);
             boolean itemAccepts = !((EnchantmentHandler) stack.getItem()).isInvalid().contains((Enchantment) (Object) this);
 
             if (contains && itemAccepts) {

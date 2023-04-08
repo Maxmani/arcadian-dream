@@ -16,5 +16,6 @@
   ],
   "result": {
     "item": "arcadiandream:double_pattern"
-  }
+  },
+  "show_notification": true
 }

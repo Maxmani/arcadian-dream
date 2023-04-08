@@ -26,6 +26,7 @@ public class AmuletBulletEntity extends BaseBulletEntity {
         super(ModEntities.AMULET_BULLET, owner, world);
     }
 
+    @SuppressWarnings("unused") // TODO: Update dispenser behavior
     public AmuletBulletEntity(World world, double x, double y, double z) {
         super(ModEntities.AMULET_BULLET, x, y, z, world);
     }
@@ -38,9 +39,9 @@ public class AmuletBulletEntity extends BaseBulletEntity {
     @Override
     protected void applyDamage(Entity target, Entity owner) {
         if (target instanceof LivingEntity livingEntity && livingEntity.getGroup() == EntityGroup.UNDEAD) {
-            target.damage(ModDamageSources.danmaku(this, owner), getPower() * 2);
+            target.damage(ModDamageSources.danmaku(world, this, owner), getPower() * 2);
         } else {
-            target.damage(ModDamageSources.danmaku(this, owner), getPower());
+            target.damage(ModDamageSources.danmaku(world, this, owner), getPower());
         }
     }
 }

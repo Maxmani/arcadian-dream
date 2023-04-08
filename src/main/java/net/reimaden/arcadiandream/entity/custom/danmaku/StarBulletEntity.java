@@ -27,6 +27,7 @@ public class StarBulletEntity extends BaseBulletEntity {
         super(ModEntities.STAR_BULLET, owner, world);
     }
 
+    @SuppressWarnings("unused") // TODO: Update dispenser behavior
     public StarBulletEntity(World world, double x, double y, double z) {
         super(ModEntities.STAR_BULLET, x, y, z, world);
     }
@@ -38,7 +39,7 @@ public class StarBulletEntity extends BaseBulletEntity {
 
     @Override
     protected void applyDamage(Entity target, Entity owner) {
-        target.damage(ModDamageSources.danmaku(this, owner).setBypassesArmor(), getPower());
+        target.damage(ModDamageSources.danmakuSharp(world, this, owner), getPower());
     }
 
     public boolean getRotationAngle() {

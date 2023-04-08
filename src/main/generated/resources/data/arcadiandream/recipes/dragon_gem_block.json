@@ -13,5 +13,6 @@
   ],
   "result": {
     "item": "arcadiandream:dragon_gem_block"
-  }
+  },
+  "show_notification": true
 }

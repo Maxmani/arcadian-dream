@@ -16,5 +16,6 @@
   ],
   "result": {
     "item": "arcadiandream:ritual_shrine"
-  }
+  },
+  "show_notification": true
 }

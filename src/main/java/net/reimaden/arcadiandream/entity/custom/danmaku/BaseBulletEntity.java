@@ -74,7 +74,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
     }
 
     protected void applyDamage(Entity target, Entity owner) {
-        target.damage(ModDamageSources.danmaku(this, owner), getPower());
+        target.damage(ModDamageSources.danmaku(world, this, owner), getPower());
     }
 
     @Override

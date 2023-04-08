@@ -1,8 +1,6 @@
-// 1.19.3	2023-03-18T17:55:12.154826244	Arcadian Dream/Tags for minecraft:item
+// 1.19.4	2023-04-08T16:05:37.796005933	Arcadian Dream/Tags for minecraft:item
 628dc8f78c7bde824d4cc9778219ea879917c0c6 data/minecraft/tags/items/beacon_payment_items.json
-7f6cec9b9055f107f9166259995070795ea95049 data/c/tags/items/hoes.json
 c2261d79c29b90e041df1c2cc00ab1686d3ffd20 data/c/tags/items/ores.json
-17b791fbb02cf078115b86c7346a19793c242043 data/c/tags/items/shovels.json
 6a55cdc3faae5abf87c84c42345e90db0024f0c6 data/arcadiandream/tags/items/danmaku_density_modifiers.json
 ce08bc7154395a8294695711cb63ed80c74b4b77 data/arcadiandream/tags/items/dragon_gem_ores.json
 4651de23556edc9f1df1f9c414f4d5383d6a899c data/arcadiandream/tags/items/danmaku_power_modifiers.json
@@ -11,14 +9,16 @@ eebf2e570846d666cbc982caf74e7661b3d016ee data/c/tags/items/obsidian_blocks.json
 4fb007b34bbee2b175aebfd0cd307eb84c715582 data/arcadiandream/tags/items/items.json
 67d4c89e9b687fbbccec2aa8e65747186cef0924 data/c/tags/items/hammers.json
 269902ccfad601d1a6b813634d86d6dfaa0eaa0b data/arcadiandream/tags/items/danmaku_modifiers.json
-af7dcf4b1fa741f90379cc51dc2c42c1b27cd463 data/c/tags/items/swords.json
+c3ec5d72e6d29ea2e3739b3c55e95ec4aaf56e09 data/minecraft/tags/items/axes.json
+7f6cec9b9055f107f9166259995070795ea95049 data/minecraft/tags/items/hoes.json
 2a96f7db03d7de0a1be4809ec8341d457669f296 data/c/tags/items/spears.json
+17b791fbb02cf078115b86c7346a19793c242043 data/minecraft/tags/items/shovels.json
+af7dcf4b1fa741f90379cc51dc2c42c1b27cd463 data/minecraft/tags/items/swords.json
 c8a68598377c261077f1f9fd947fdb9be17150a1 data/arcadiandream/tags/items/shots.json
 b792c29d9820be69e91577d73563dcbbb62c25e0 data/arcadiandream/tags/items/undead_parts.json
+faa6596c9fee1e9cda128dcda5bd111b9c0906c2 data/minecraft/tags/items/pickaxes.json
 9bcc55fda813f90b905ba617d7dec5f0cbbaa0c8 data/minecraft/tags/items/music_discs.json
 c49f477cff8c37aa4e3482bda7e49f33c43d7fe6 data/arcadiandream/tags/items/danmaku_repair_items.json
-faa6596c9fee1e9cda128dcda5bd111b9c0906c2 data/c/tags/items/pickaxes.json
 a00b69d0e9051b60e6f666550db717d44a3607a9 data/arcadiandream/tags/items/bullet_cores.json
-c3ec5d72e6d29ea2e3739b3c55e95ec4aaf56e09 data/c/tags/items/axes.json
-f698f3c1cf839fa51b03092bcf084a532a5d5445 data/arcadiandream/tags/items/danmaku_speed_modifiers.json
 92a25d0436938daf12da7d7acb2d7982d1058178 data/arcadiandream/tags/items/danmaku_duration_modifiers.json
+f698f3c1cf839fa51b03092bcf084a532a5d5445 data/arcadiandream/tags/items/danmaku_speed_modifiers.json

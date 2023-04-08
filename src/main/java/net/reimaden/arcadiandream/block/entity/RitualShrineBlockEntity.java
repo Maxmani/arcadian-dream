@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -8,32 +8,33 @@ package net.reimaden.arcadiandream.block.entity;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.inventory.SimpleInventory;
-import net.minecraft.stat.Stats;
-import net.reimaden.arcadiandream.advancement.ModCriteria;
-import net.reimaden.arcadiandream.block.custom.RitualShrineBlock;
-import net.reimaden.arcadiandream.networking.ModMessages;
-import net.reimaden.arcadiandream.recipe.RitualCraftingRecipe;
-import net.reimaden.arcadiandream.sound.ModSounds;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SidedInventory;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.network.Packet;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.stat.Stats;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import net.reimaden.arcadiandream.advancement.ModCriteria;
+import net.reimaden.arcadiandream.block.custom.RitualShrineBlock;
+import net.reimaden.arcadiandream.networking.ModMessages;
+import net.reimaden.arcadiandream.recipe.RitualCraftingRecipe;
+import net.reimaden.arcadiandream.sound.ModSounds;
 import net.reimaden.arcadiandream.statistic.ModStats;
 import org.jetbrains.annotations.Nullable;
 
@@ -97,6 +98,8 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
 
     public void doCrafting(@Nullable PlayerEntity player) {
         if (world != null && !world.isClient()) {
+            DynamicRegistryManager registryManager = world.getRegistryManager();
+
             List<OnbashiraBlockEntity> onbashiras = new ArrayList<>();
             for (BlockPos pos : ONBASHIRA_LOCATIONS) {
                 getOnbashiraPos(pos.add(getPos())).ifPresent(onbashiras::add);
@@ -105,12 +108,12 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
                 getOnbashiraPos(pos.add(getPos())).ifPresent(onbashiras::add);
             }
             List<ItemStack> stacks = onbashiras.stream().filter(OnbashiraBlockEntity::hasItemStack).map(OnbashiraBlockEntity::getItemStack).toList();
-            craftItem(stacks, onbashiras, this, player);
+            craftItem(stacks, onbashiras, this, player, registryManager);
         }
     }
 
     @SuppressWarnings({"DataFlowIssue", "OptionalGetWithoutIsPresent"})
-    private void craftItem(List<ItemStack> stacks, List<OnbashiraBlockEntity> onbashiras, RitualShrineBlockEntity shrineBlock, PlayerEntity player) {
+    private void craftItem(List<ItemStack> stacks, List<OnbashiraBlockEntity> onbashiras, RitualShrineBlockEntity shrineBlock, PlayerEntity player, DynamicRegistryManager registryManager) {
         SimpleInventory inventory = new SimpleInventory(stacks.size());
         for (int i = 0; i < stacks.size(); i++) {
             inventory.setStack(i, stacks.get(i));
@@ -130,11 +133,11 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
             onbashiras.forEach(entity -> entity.setStack(0, ItemStack.EMPTY));
             onbashiras.forEach(OnbashiraBlockEntity::markDirty);
 
-            shrineBlock.setStack(0, new ItemStack(recipe.get().getOutput().getItem(), recipe.get().getOutput().getCount()));
+            shrineBlock.setStack(0, new ItemStack(recipe.get().getOutput(registryManager).getItem(), recipe.get().getOutput(registryManager).getCount()));
             shrineBlock.markDirty();
             craftEffects();
             player.incrementStat(ModStats.INTERACT_WITH_RITUAL_SHRINE);
-            player.incrementStat(Stats.CRAFTED.getOrCreateStat(recipe.get().getOutput().getItem()));
+            player.incrementStat(Stats.CRAFTED.getOrCreateStat(recipe.get().getOutput(registryManager).getItem()));
             ModCriteria.RITUAL_CRAFTING.trigger((ServerPlayerEntity) player);
         }
     }

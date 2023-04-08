@@ -90,17 +90,17 @@ public class ModTagGenerator {
                     .add(ModItems.MAKAITE_ORE);
 
             // Modded item tags
-            getOrCreateTagBuilder(ConventionalItemTags.AXES)
+            getOrCreateTagBuilder(AXES)
                     .add(ModItems.MAKAITE_AXE);
-            getOrCreateTagBuilder(ConventionalItemTags.HOES)
+            getOrCreateTagBuilder(HOES)
                     .add(ModItems.MAKAITE_HOE);
-            getOrCreateTagBuilder(ConventionalItemTags.PICKAXES)
+            getOrCreateTagBuilder(PICKAXES)
                     .add(ModItems.MAKAITE_PICKAXE);
-            getOrCreateTagBuilder(ConventionalItemTags.SHOVELS)
+            getOrCreateTagBuilder(SHOVELS)
                     .add(ModItems.MAKAITE_SHOVEL);
             getOrCreateTagBuilder(ConventionalItemTags.SPEARS)
                     .add(ModItems.NUE_TRIDENT);
-            getOrCreateTagBuilder(ConventionalItemTags.SWORDS)
+            getOrCreateTagBuilder(SWORDS)
                     .add(ModItems.MAKAITE_SWORD, ModItems.HISOU_SWORD, ModItems.DEATH_SCYTHE);
             getOrCreateTagBuilder(ModTags.Items.HAMMERS)
                     .add(ModItems.MOCHI_MALLET, ModItems.MIRACLE_MALLET);

@@ -13,5 +13,6 @@
   ],
   "result": {
     "item": "arcadiandream:max_point_item"
-  }
+  },
+  "show_notification": true
 }

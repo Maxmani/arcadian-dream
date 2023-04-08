@@ -13,5 +13,6 @@
   ],
   "result": {
     "item": "arcadiandream:makaite_block"
-  }
+  },
+  "show_notification": true
 }
