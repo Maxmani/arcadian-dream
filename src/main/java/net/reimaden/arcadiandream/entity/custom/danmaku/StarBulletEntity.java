@@ -27,7 +27,6 @@ public class StarBulletEntity extends BaseBulletEntity {
         super(ModEntities.STAR_BULLET, owner, world);
     }
 
-    @SuppressWarnings("unused") // TODO: Update dispenser behavior
     public StarBulletEntity(World world, double x, double y, double z) {
         super(ModEntities.STAR_BULLET, x, y, z, world);
     }

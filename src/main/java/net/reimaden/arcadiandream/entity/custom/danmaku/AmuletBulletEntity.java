@@ -26,7 +26,6 @@ public class AmuletBulletEntity extends BaseBulletEntity {
         super(ModEntities.AMULET_BULLET, owner, world);
     }
 
-    @SuppressWarnings("unused") // TODO: Update dispenser behavior
     public AmuletBulletEntity(World world, double x, double y, double z) {
         super(ModEntities.AMULET_BULLET, x, y, z, world);
     }

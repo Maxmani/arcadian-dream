@@ -23,7 +23,6 @@ public class BubbleBulletEntity extends BaseBulletEntity {
         super(ModEntities.BUBBLE_BULLET, owner, world);
     }
 
-    @SuppressWarnings("unused") // TODO: Update dispenser behavior
     public BubbleBulletEntity(World world, double x, double y, double z) {
         super(ModEntities.BUBBLE_BULLET, x, y, z, world);
     }
