@@ -6,8 +6,10 @@
 package net.reimaden.arcadiandream.damage;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.damage.DamageScaling;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageType;
+import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
@@ -17,8 +19,17 @@ import org.jetbrains.annotations.Nullable;
 
 public class ModDamageSources {
 
-    private static final RegistryKey<DamageType> DANMAKU = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier(ArcadianDream.MOD_ID, "danmaku"));
-    private static final RegistryKey<DamageType> DANMAKU_SHARP = RegistryKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier(ArcadianDream.MOD_ID, "danmaku_sharp"));
+    public static final RegistryKey<DamageType> DANMAKU = registerKey("danmaku");
+    public static final RegistryKey<DamageType> DANMAKU_SHARP = registerKey("danmaku_sharp");
+
+    public static void bootstrap(Registerable<DamageType> damageTypeRegisterable) {
+        damageTypeRegisterable.register(ModDamageSources.DANMAKU, new DamageType("danmaku", DamageScaling.NEVER, 0.1f));
+        damageTypeRegisterable.register(ModDamageSources.DANMAKU_SHARP, new DamageType("danmakuSharp", DamageScaling.NEVER, 0.1f));
+    }
+
+    private static RegistryKey<DamageType> registerKey(String name) {
+        return RegistryKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier(ArcadianDream.MOD_ID, name));
+    }
 
     @SuppressWarnings("unused")
     private static DamageSource create(World world, RegistryKey<DamageType> key) {

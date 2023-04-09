@@ -10,16 +10,20 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.damage.DamageType;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.reimaden.arcadiandream.block.ModBlocks;
+import net.reimaden.arcadiandream.damage.ModDamageSources;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.util.ModTags;
 
 import java.util.concurrent.CompletableFuture;
 
 import static net.minecraft.registry.tag.BlockTags.*;
+import static net.minecraft.registry.tag.DamageTypeTags.BYPASSES_ARMOR;
 import static net.minecraft.registry.tag.ItemTags.*;
 
 public class ModTagGenerator {
@@ -131,6 +135,25 @@ public class ModTagGenerator {
             getOrCreateTagBuilder(ModTags.Items.UNDEAD_PARTS)
                     .add(Items.ROTTEN_FLESH, Items.BONE, Items.PHANTOM_MEMBRANE, Items.ZOMBIE_HEAD,
                             Items.SKELETON_SKULL, Items.WITHER_SKELETON_SKULL);
+        }
+    }
+
+    public static class DamageTypeTags extends FabricTagProvider<DamageType> {
+
+        public DamageTypeTags(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+            super(output, RegistryKeys.DAMAGE_TYPE, registriesFuture);
+        }
+
+        @Override
+        protected void configure(RegistryWrapper.WrapperLookup lookup) {
+
+            // "minecraft/tags/damage_type"
+            getOrCreateTagBuilder(BYPASSES_ARMOR)
+                    .add(ModDamageSources.DANMAKU_SHARP);
+
+            // Modded damage type tags
+            getOrCreateTagBuilder(ModTags.DamageTypes.IS_DANMAKU)
+                    .add(ModDamageSources.DANMAKU, ModDamageSources.DANMAKU_SHARP);
         }
     }
 }
