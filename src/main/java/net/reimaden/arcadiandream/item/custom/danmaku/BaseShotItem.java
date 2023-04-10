@@ -79,7 +79,7 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         this.maxGravity = 1f;
     }
 
-    private static boolean isUsable(ItemStack stack) {
+    public static boolean isUsable(ItemStack stack) {
         return stack.getDamage() < stack.getMaxDamage() - 1;
     }
 
@@ -105,15 +105,7 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         final float n = speed / density;
 
         if (!world.isClient()) {
-            switch (nbt.getString("pattern").toLowerCase()) {
-                case "spread" -> createSpread(world, user, stack, density, speed, divergence);
-                case "ray" -> createRay(world, user, stack, density, speed, divergence, n);
-                case "ring" -> createRing(world, user, stack, density, speed, divergence);
-                case "cone" -> createCone(world, user, stack, density, speed, divergence);
-                case "double" -> createDouble(world, user, stack, density, speed, divergence, n);
-                case "triple" -> createTriple(world, user, stack, density, speed, divergence, n);
-                default -> throw new IllegalArgumentException("No valid bullet pattern found!");
-            }
+            fireShot(world, user, stack, nbt, density, speed, divergence, n);
         }
 
         user.incrementStat(Stats.USED.getOrCreateStat(this));
@@ -125,6 +117,18 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         }
 
         return TypedActionResult.success(stack, world.isClient());
+    }
+
+    private void fireShot(World world, PlayerEntity user, ItemStack stack, NbtCompound nbt, int density, float speed, float divergence, float n) {
+        switch (nbt.getString("pattern").toLowerCase()) {
+            case "spread" -> createSpread(world, user, stack, density, speed, divergence);
+            case "ray" -> createRay(world, user, stack, density, speed, divergence, n);
+            case "ring" -> createRing(world, user, stack, density, speed, divergence);
+            case "cone" -> createCone(world, user, stack, density, speed, divergence);
+            case "double" -> createDouble(world, user, stack, density, speed, divergence, n);
+            case "triple" -> createTriple(world, user, stack, density, speed, divergence, n);
+            default -> throw new IllegalArgumentException("No valid bullet pattern found!");
+        }
     }
 
     public static float getSoundPitch(Random random) {

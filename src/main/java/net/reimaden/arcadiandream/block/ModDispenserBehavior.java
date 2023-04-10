@@ -5,7 +5,10 @@
 
 package net.reimaden.arcadiandream.block;
 
+import net.reimaden.arcadiandream.entity.custom.danmaku.AmuletBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.danmaku.BubbleBulletEntity;
 import net.reimaden.arcadiandream.entity.custom.danmaku.CircleBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.danmaku.StarBulletEntity;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.entity.projectile.ProjectileEntity;
@@ -22,6 +25,27 @@ public class ModDispenserBehavior {
             @Override
             protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
                 return Util.make(new CircleBulletEntity(world, position.getX(), position.getY(), position.getZ()), entity -> entity.setItem(stack));
+            }
+        });
+        DispenserBlock.registerBehavior(ModItems.BUBBLE_SHOT, new DanmakuDispenserBehavior() {
+
+            @Override
+            protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
+                return Util.make(new BubbleBulletEntity(world, position.getX(), position.getY(), position.getZ()), entity -> entity.setItem(stack));
+            }
+        });
+        DispenserBlock.registerBehavior(ModItems.AMULET_SHOT, new DanmakuDispenserBehavior() {
+
+            @Override
+            protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
+                return Util.make(new AmuletBulletEntity(world, position.getX(), position.getY(), position.getZ()), entity -> entity.setItem(stack));
+            }
+        });
+        DispenserBlock.registerBehavior(ModItems.STAR_SHOT, new DanmakuDispenserBehavior() {
+
+            @Override
+            protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
+                return Util.make(new StarBulletEntity(world, position.getX(), position.getY(), position.getZ()), entity -> entity.setItem(stack));
             }
         });
     }
