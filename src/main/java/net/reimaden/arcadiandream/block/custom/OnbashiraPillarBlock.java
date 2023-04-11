@@ -5,7 +5,10 @@
 
 package net.reimaden.arcadiandream.block.custom;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.ShapeContext;
+import net.minecraft.block.Waterloggable;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -35,14 +38,13 @@ import org.jetbrains.annotations.Nullable;
 public class OnbashiraPillarBlock extends Block implements Waterloggable {
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
+    private static final VoxelShape SHAPE = Block.createCuboidShape(1, 0, 1, 15, 16, 15);
 
     public OnbashiraPillarBlock(Settings settings) {
         super(settings);
-        setDefaultState(this.getStateManager().getDefaultState()
+        setDefaultState(getStateManager().getDefaultState()
                 .with(WATERLOGGED, false));
     }
-
-    private static final VoxelShape SHAPE = Block.createCuboidShape(1, 0, 1, 15, 16, 15);
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -57,7 +59,7 @@ public class OnbashiraPillarBlock extends Block implements Waterloggable {
         boolean hasItems = (player.getMainHandStack().isItemEqual(paper) && player.getOffHandStack().isItemEqual(lead))
                 || (player.getMainHandStack().isItemEqual(lead) && player.getOffHandStack().isItemEqual(paper));
 
-        if (world.isClient) return hasItems ? ActionResult.SUCCESS : ActionResult.PASS;
+        if (world.isClient()) return hasItems ? ActionResult.SUCCESS : ActionResult.PASS;
 
         if (hasItems) {
             if (!player.isCreative()) {
@@ -81,7 +83,7 @@ public class OnbashiraPillarBlock extends Block implements Waterloggable {
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
+        return getDefaultState().with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER);
     }
 
     @Override

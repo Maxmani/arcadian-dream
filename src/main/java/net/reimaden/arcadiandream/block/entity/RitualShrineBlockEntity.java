@@ -29,7 +29,6 @@ import net.minecraft.stat.Stats;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.world.World;
 import net.reimaden.arcadiandream.advancement.ModCriteria;
 import net.reimaden.arcadiandream.block.custom.RitualShrineBlock;
 import net.reimaden.arcadiandream.networking.ModMessages;
@@ -190,9 +189,6 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
     public RitualShrineBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.RITUAL_SHRINE, pos, state);
     }
-
-    @SuppressWarnings("unused")
-    public static void tick(World world, BlockPos pos, BlockState state, RitualShrineBlockEntity blockEntity) {}
 
     @Override
     public DefaultedList<ItemStack> getItems() {

@@ -5,13 +5,8 @@
 
 package net.reimaden.arcadiandream.block.custom;
 
-import net.reimaden.arcadiandream.block.entity.ModBlockEntities;
-import net.reimaden.arcadiandream.block.entity.OnbashiraBlockEntity;
-import net.reimaden.arcadiandream.sound.ModSounds;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityTicker;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -23,7 +18,9 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -32,6 +29,8 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import net.reimaden.arcadiandream.block.entity.OnbashiraBlockEntity;
+import net.reimaden.arcadiandream.sound.ModSounds;
 import net.reimaden.arcadiandream.statistic.ModStats;
 import org.jetbrains.annotations.Nullable;
 
@@ -40,17 +39,16 @@ public class OnbashiraBlock extends BlockWithEntity implements BlockEntityProvid
 
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final BooleanProperty HAS_ITEM = BooleanProperty.of("has_item");
+    private static final VoxelShape SHAPE = Block.createCuboidShape(1, 0, 1, 15, 16, 15);
 
     private final Random random = Random.create();
 
     public OnbashiraBlock(Settings settings) {
         super(settings);
-        setDefaultState(this.getStateManager().getDefaultState()
+        setDefaultState(getStateManager().getDefaultState()
                 .with(WATERLOGGED, false)
                 .with(HAS_ITEM, false));
     }
-
-    private static final VoxelShape SHAPE = Block.createCuboidShape(1, 0, 1, 15, 16, 15);
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -90,7 +88,7 @@ public class OnbashiraBlock extends BlockWithEntity implements BlockEntityProvid
             blockEntity.removeStack(0);
             blockEntity.markDirty();
             world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_ITEM_PICKUP, player.getSoundCategory(),
-                    0.2f, this.random.nextFloat() - this.random.nextFloat() * 1.4f + 2.0f);
+                    0.2f, random.nextFloat() - random.nextFloat() * 1.4f + 2.0f);
             return ActionResult.SUCCESS;
         }
 
@@ -113,7 +111,7 @@ public class OnbashiraBlock extends BlockWithEntity implements BlockEntityProvid
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState()
+        return getDefaultState()
                 .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER)
                 .with(HAS_ITEM, false);
     }
@@ -140,12 +138,6 @@ public class OnbashiraBlock extends BlockWithEntity implements BlockEntityProvid
     @Override
     public BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.MODEL;
-    }
-
-    @Nullable
-    @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.ONBASHIRA, OnbashiraBlockEntity::tick);
     }
 
     @Override

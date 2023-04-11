@@ -5,14 +5,8 @@
 
 package net.reimaden.arcadiandream.block.custom;
 
-import net.reimaden.arcadiandream.block.ModBlocks;
-import net.reimaden.arcadiandream.block.entity.ModBlockEntities;
-import net.reimaden.arcadiandream.block.entity.RitualShrineBlockEntity;
-import net.reimaden.arcadiandream.particle.ModParticles;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityTicker;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -32,6 +26,9 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import net.reimaden.arcadiandream.block.ModBlocks;
+import net.reimaden.arcadiandream.block.entity.RitualShrineBlockEntity;
+import net.reimaden.arcadiandream.particle.ModParticles;
 import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("deprecation")
@@ -40,17 +37,16 @@ public class RitualShrineBlock extends BlockWithEntity implements BlockEntityPro
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final BooleanProperty HAS_ITEM = BooleanProperty.of("has_item");
+    private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 12, 16);
 
     private final Random random = Random.create();
 
     public RitualShrineBlock(Settings settings) {
         super(settings);
-        setDefaultState(this.getStateManager().getDefaultState()
+        setDefaultState(getStateManager().getDefaultState()
                 .with(WATERLOGGED, false)
                 .with(HAS_ITEM, false));
     }
-
-    private static final VoxelShape SHAPE = Block.createCuboidShape(0, 0, 0, 16, 12, 16);
 
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
@@ -71,7 +67,7 @@ public class RitualShrineBlock extends BlockWithEntity implements BlockEntityPro
                 blockEntity.removeStack(0);
                 blockEntity.markDirty();
                 world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_ITEM_PICKUP, player.getSoundCategory(),
-                        0.2f, this.random.nextFloat() - this.random.nextFloat() * 1.4f + 2.0f);
+                        0.2f, random.nextFloat() - random.nextFloat() * 1.4f + 2.0f);
             } else {
                 blockEntity.doCrafting(player);
             }
@@ -130,11 +126,6 @@ public class RitualShrineBlock extends BlockWithEntity implements BlockEntityPro
     }
 
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.RITUAL_SHRINE, RitualShrineBlockEntity::tick);
-    }
-
-    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(FACING, WATERLOGGED, HAS_ITEM);
     }
@@ -142,7 +133,7 @@ public class RitualShrineBlock extends BlockWithEntity implements BlockEntityPro
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState()
+        return getDefaultState()
                 .with(FACING, ctx.getHorizontalPlayerFacing().getOpposite())
                 .with(WATERLOGGED, ctx.getWorld().getFluidState(ctx.getBlockPos()).getFluid() == Fluids.WATER)
                 .with(HAS_ITEM, false);
