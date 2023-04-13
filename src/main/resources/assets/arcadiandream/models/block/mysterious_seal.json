@@ -1,6 +1,5 @@
 {
 	"credit": "Made with Blockbench",
-	"parent": "minecraft:block/block",
 	"textures": {
 		"0": "arcadiandream:block/mysterious_seal",
 		"particle": "arcadiandream:block/mysterious_seal"
