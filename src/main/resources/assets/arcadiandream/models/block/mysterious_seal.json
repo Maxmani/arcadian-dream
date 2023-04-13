@@ -1,0 +1,18 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "minecraft:block/block",
+	"textures": {
+		"0": "arcadiandream:block/mysterious_seal",
+		"particle": "arcadiandream:block/mysterious_seal"
+	},
+	"elements": [
+		{
+			"from": [-0.01, -0.01, 15.99],
+			"to": [16.01, 16.01, 16.01],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#0"},
+				"south": {"uv": [16, 0, 0, 16], "texture": "#0"}
+			}
+		}
+	]
+}

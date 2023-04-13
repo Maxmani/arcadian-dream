@@ -46,6 +46,7 @@ public class ModLootTableGenerator {
             addDrop(ModBlocks.ONBASHIRA);
             addDrop(ModBlocks.ONBASHIRA_PILLAR);
             addDrop(ModBlocks.DANMAKU_CRAFTING_TABLE);
+            addDropWithSilkTouch(ModBlocks.MYSTERIOUS_SEAL);
         }
     }
 

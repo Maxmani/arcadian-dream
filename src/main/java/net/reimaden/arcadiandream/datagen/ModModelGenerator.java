@@ -19,6 +19,8 @@ import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.util.ModTags;
 import net.reimaden.arcadiandream.util.client.ModModels;
 
+import java.util.function.Consumer;
+
 public class ModModelGenerator extends FabricModelProvider {
 
     private static final ImmutableList<Block> SIMPLE_CUBES = ImmutableList.of(
@@ -55,6 +57,17 @@ public class ModModelGenerator extends FabricModelProvider {
         block.registerSimpleState(ModBlocks.ONBASHIRA);
         block.registerSimpleState(ModBlocks.ONBASHIRA_PILLAR);
         block.registerSingleton(ModBlocks.DANMAKU_CRAFTING_TABLE, TexturedModel.CUBE_BOTTOM_TOP);
+        registerSeal(block);
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private void registerNorthDefaultRotationStates(Block block, Consumer<BlockStateSupplier> blockStateCollector) {
+        blockStateCollector.accept(VariantsBlockStateSupplier.create(block, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockModelId(block))).coordinate(BlockStateModelGenerator.createNorthDefaultRotationStates()));
+    }
+
+    private void registerSeal(BlockStateModelGenerator generator) {
+        registerNorthDefaultRotationStates(ModBlocks.MYSTERIOUS_SEAL, generator.blockStateCollector);
+        generator.registerItemModel(ModBlocks.MYSTERIOUS_SEAL);
     }
 
     @Override

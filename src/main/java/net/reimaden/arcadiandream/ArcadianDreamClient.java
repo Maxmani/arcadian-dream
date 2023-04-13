@@ -6,6 +6,7 @@
 package net.reimaden.arcadiandream;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.reimaden.arcadiandream.block.client.ModBlockRenderLayers;
 import net.reimaden.arcadiandream.block.entity.client.ModBlockEntityRenderer;
 import net.reimaden.arcadiandream.entity.client.ModEntityRenderers;
 import net.reimaden.arcadiandream.gui.ModScreenHandlers;
@@ -27,5 +28,6 @@ public class ArcadianDreamClient implements ClientModInitializer {
         ModModelPredicateProvider.register();
         ModBlockEntityRenderer.register();
         ModScreenHandlers.registerClient();
+        ModBlockRenderLayers.register();
     }
 }

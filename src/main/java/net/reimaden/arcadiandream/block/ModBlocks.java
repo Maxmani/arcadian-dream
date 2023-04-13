@@ -35,6 +35,9 @@ public class ModBlocks {
     public static final Block DANMAKU_CRAFTING_TABLE = registerBlock("danmaku_crafting_table",
             new DanmakuCraftingTableBlock(FabricBlockSettings.of(Material.WOOD, MapColor.DARK_RED).strength(2.5f)
                     .sounds(BlockSoundGroup.WOOD)));
+    public static final Block MYSTERIOUS_SEAL = registerBlock("mysterious_seal",
+            new MysteriousSealBlock(FabricBlockSettings.of(Material.DECORATION).strength(0.1f).noCollision()
+                    .sounds(BlockSoundGroup.AZALEA_LEAVES).luminance(5)));
 
     // Ores
     public static final Block DRAGON_GEM_ORE = registerBlock("dragon_gem_ore",

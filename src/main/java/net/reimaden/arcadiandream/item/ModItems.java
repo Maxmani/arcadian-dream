@@ -145,6 +145,8 @@ public class ModItems {
             new FabricItemSettings()));
     public static final Item DANMAKU_CRAFTING_TABLE = registerBlockItem("danmaku_crafting_table", new BlockItem(ModBlocks.DANMAKU_CRAFTING_TABLE,
             new FabricItemSettings()));
+    public static final Item MYSTERIOUS_SEAL = registerBlockItem("mysterious_seal", new BlockItem(ModBlocks.MYSTERIOUS_SEAL,
+            new FabricItemSettings().rarity(Rarity.RARE)));
 
     public static final Item DRAGON_GEM_ORE = registerBlockItem("dragon_gem_ore", new BlockItem(ModBlocks.DRAGON_GEM_ORE,
             new FabricItemSettings()));
@@ -232,6 +234,7 @@ public class ModItems {
         addToItemGroup(ModItemGroups.BLOCKS, ONBASHIRA_PILLAR);
         addToItemGroup(ModItemGroups.BLOCKS, RITUAL_SHRINE);
         addToItemGroup(ModItemGroups.BLOCKS, DANMAKU_CRAFTING_TABLE);
+        addToItemGroup(ModItemGroups.BLOCKS, MYSTERIOUS_SEAL);
         addToItemGroup(ModItemGroups.BLOCKS, DRAGON_GEM_ORE);
         addToItemGroup(ModItemGroups.BLOCKS, DEEPSLATE_DRAGON_GEM_ORE);
         addToItemGroup(ModItemGroups.BLOCKS, END_STONE_DRAGON_GEM_ORE);

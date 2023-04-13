@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "arcadiandream:block/mysterious_seal",
+      "x": 90
+    },
+    "facing=east": {
+      "model": "arcadiandream:block/mysterious_seal",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "arcadiandream:block/mysterious_seal"
+    },
+    "facing=south": {
+      "model": "arcadiandream:block/mysterious_seal",
+      "y": 180
+    },
+    "facing=up": {
+      "model": "arcadiandream:block/mysterious_seal",
+      "x": 270
+    },
+    "facing=west": {
+      "model": "arcadiandream:block/mysterious_seal",
+      "y": 270
+    }
+  }
+}

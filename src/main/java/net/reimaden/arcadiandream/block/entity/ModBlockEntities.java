@@ -15,22 +15,20 @@ import net.reimaden.arcadiandream.block.ModBlocks;
 
 public class ModBlockEntities {
 
-    public static BlockEntityType<OnbashiraBlockEntity> ONBASHIRA;
-    public static BlockEntityType<RitualShrineBlockEntity> RITUAL_SHRINE;
-    public static BlockEntityType<DanmakuCraftingTableBlockEntity> DANMAKU_CRAFTING_TABLE;
+    public static final BlockEntityType<OnbashiraBlockEntity> ONBASHIRA = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, "onbashira"),
+            FabricBlockEntityTypeBuilder.create(OnbashiraBlockEntity::new, ModBlocks.ONBASHIRA).build());
+    public static final BlockEntityType<RitualShrineBlockEntity> RITUAL_SHRINE = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, "ritual_shrine"),
+            FabricBlockEntityTypeBuilder.create(RitualShrineBlockEntity::new, ModBlocks.RITUAL_SHRINE).build());
+    public static final BlockEntityType<DanmakuCraftingTableBlockEntity> DANMAKU_CRAFTING_TABLE = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, "danmaku_crafting_table"),
+            FabricBlockEntityTypeBuilder.create(DanmakuCraftingTableBlockEntity::new, ModBlocks.DANMAKU_CRAFTING_TABLE).build());
+    public static final BlockEntityType<MysteriousSealBlockEntity> MYSTERIOUS_SEAL = Registry.register(
+            Registries.BLOCK_ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, "mysterious_seal"),
+            FabricBlockEntityTypeBuilder.create(MysteriousSealBlockEntity::new, ModBlocks.MYSTERIOUS_SEAL).build());
 
     public static void register() {
-        ONBASHIRA = Registry.register(Registries.BLOCK_ENTITY_TYPE,
-                new Identifier(ArcadianDream.MOD_ID, "onbashira"),
-                FabricBlockEntityTypeBuilder.create(OnbashiraBlockEntity::new,
-                        ModBlocks.ONBASHIRA).build());
-        RITUAL_SHRINE = Registry.register(Registries.BLOCK_ENTITY_TYPE,
-                new Identifier(ArcadianDream.MOD_ID, "ritual_shrine"),
-                FabricBlockEntityTypeBuilder.create(RitualShrineBlockEntity::new,
-                        ModBlocks.RITUAL_SHRINE).build(null));
-        DANMAKU_CRAFTING_TABLE = Registry.register(Registries.BLOCK_ENTITY_TYPE,
-                new Identifier(ArcadianDream.MOD_ID, "danmaku_crafting_table"),
-                FabricBlockEntityTypeBuilder.create(DanmakuCraftingTableBlockEntity::new,
-                        ModBlocks.DANMAKU_CRAFTING_TABLE).build(null));
+        ArcadianDream.LOGGER.debug("Registering block entities for " + ArcadianDream.MOD_ID);
     }
 }
