@@ -11,20 +11,26 @@ import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.damage.DamageType;
+import net.minecraft.entity.decoration.painting.PaintingVariant;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.world.poi.PointOfInterestType;
 import net.reimaden.arcadiandream.block.ModBlocks;
 import net.reimaden.arcadiandream.damage.ModDamageSources;
 import net.reimaden.arcadiandream.item.ModItems;
+import net.reimaden.arcadiandream.painting.ModPaintings;
 import net.reimaden.arcadiandream.util.ModTags;
+import net.reimaden.arcadiandream.villager.ModVillagers;
 
 import java.util.concurrent.CompletableFuture;
 
 import static net.minecraft.registry.tag.BlockTags.*;
 import static net.minecraft.registry.tag.DamageTypeTags.BYPASSES_ARMOR;
 import static net.minecraft.registry.tag.ItemTags.*;
+import static net.minecraft.registry.tag.PaintingVariantTags.PLACEABLE;
+import static net.minecraft.registry.tag.PointOfInterestTypeTags.ACQUIRABLE_JOB_SITE;
 
 public class ModTagGenerator {
 
@@ -154,6 +160,32 @@ public class ModTagGenerator {
             // Modded damage type tags
             getOrCreateTagBuilder(ModTags.DamageTypes.IS_DANMAKU)
                     .add(ModDamageSources.DANMAKU, ModDamageSources.DANMAKU_SHARP);
+        }
+    }
+
+    public static class PaintingVariantTags extends FabricTagProvider<PaintingVariant> {
+
+        public PaintingVariantTags(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+            super(output, RegistryKeys.PAINTING_VARIANT, registriesFuture);
+        }
+
+        @Override
+        protected void configure(RegistryWrapper.WrapperLookup arg) {
+            getOrCreateTagBuilder(PLACEABLE)
+                    .add(ModPaintings.REIMADEN);
+        }
+    }
+
+    public static class PointOfInterestTypeTags extends FabricTagProvider<PointOfInterestType> {
+
+        public PointOfInterestTypeTags(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+            super(output, RegistryKeys.POINT_OF_INTEREST_TYPE, registriesFuture);
+        }
+
+        @Override
+        protected void configure(RegistryWrapper.WrapperLookup arg) {
+            getOrCreateTagBuilder(ACQUIRABLE_JOB_SITE)
+                    .add(ModVillagers.ANTIQUARIAN_POI);
         }
     }
 }
