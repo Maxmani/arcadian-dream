@@ -43,6 +43,8 @@ public class MysteriousSealBlockEntity extends BlockEntity {
     }
 
     private static void extinguishFire(World world, BlockPos pos) {
+        if (world.isClient()) return;
+
         BlockPos.streamOutwards(pos, RANGE, RANGE, RANGE)
                 .filter(fire -> world.getBlockState(fire).getBlock() instanceof AbstractFireBlock)
                 .forEach(fire -> {
