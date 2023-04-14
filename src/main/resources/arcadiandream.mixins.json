@@ -8,10 +8,12 @@
     "EnchantmentHelperMixin",
     "EnchantmentMixin",
     "EntityMixin",
+    "FireBlockMixin",
     "LivingEntityMixin",
     "PlayerEntityMixin",
     "ProjectileEntityMixin",
     "ThrownEntityMixin",
+    "TntBlockMixin",
     "UnbreakingEnchantmentMixin"
   ],
   "client": [
