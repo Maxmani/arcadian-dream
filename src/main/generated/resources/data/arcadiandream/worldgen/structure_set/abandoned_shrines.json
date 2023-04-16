@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 478423525,
+    "separation": 32,
+    "spacing": 75
+  },
+  "structures": [
+    {
+      "structure": "arcadiandream:abandoned_shrine",
+      "weight": 1
+    }
+  ]
+}

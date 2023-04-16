@@ -7,6 +7,8 @@ package net.reimaden.arcadiandream.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.fabricmc.fabric.api.mininglevel.v1.FabricMineableTags;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBiomeTags;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.block.Blocks;
@@ -16,6 +18,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.poi.PointOfInterestType;
 import net.reimaden.arcadiandream.block.ModBlocks;
 import net.reimaden.arcadiandream.damage.ModDamageSources;
@@ -43,7 +46,7 @@ public class ModTagGenerator {
         @Override
         protected void configure(RegistryWrapper.WrapperLookup arg) {
 
-            // "minecraft/tags/blocks"
+            // minecraft/tags/blocks
             getOrCreateTagBuilder(NEEDS_DIAMOND_TOOL)
                     .addTag(ModTags.Blocks.DRAGON_GEM_ORES)
                     .add(ModBlocks.DRAGON_GEM_BLOCK, ModBlocks.RITUAL_SHRINE);
@@ -52,13 +55,16 @@ public class ModTagGenerator {
             getOrCreateTagBuilder(BEACON_BASE_BLOCKS)
                     .add(ModBlocks.DRAGON_GEM_BLOCK, ModBlocks.MAKAITE_BLOCK);
 
-            // "minecraft/tags/blocks/mineable"
+            // minecraft/tags/blocks/mineable
+            // fabric/tags/blocks/mineable
             getOrCreateTagBuilder(AXE_MINEABLE)
                     .add(ModBlocks.ONBASHIRA, ModBlocks.ONBASHIRA_PILLAR, ModBlocks.DANMAKU_CRAFTING_TABLE, ModBlocks.MYSTERIOUS_SEAL);
             getOrCreateTagBuilder(PICKAXE_MINEABLE)
                     .addTag(ModTags.Blocks.DRAGON_GEM_ORES)
                     .add(ModBlocks.DRAGON_GEM_BLOCK, ModBlocks.MAKAITE_ORE, ModBlocks.RAW_MAKAITE_BLOCK, ModBlocks.MAKAITE_BLOCK,
                             ModBlocks.RITUAL_SHRINE);
+            getOrCreateTagBuilder(FabricMineableTags.SWORD_MINEABLE)
+                    .add(ModBlocks.MYSTERIOUS_SEAL);
 
             // Modded block tags
             getOrCreateTagBuilder(ModTags.Blocks.OBSIDIAN_BLOCKS)
@@ -84,7 +90,7 @@ public class ModTagGenerator {
         @Override
         protected void configure(RegistryWrapper.WrapperLookup arg) {
 
-            // "minecraft/tags/items"
+            // minecraft/tags/items
             getOrCreateTagBuilder(BEACON_PAYMENT_ITEMS)
                     .add(ModItems.DRAGON_GEM, ModItems.MAKAITE_INGOT);
             getOrCreateTagBuilder(MUSIC_DISCS)
@@ -153,7 +159,7 @@ public class ModTagGenerator {
         @Override
         protected void configure(RegistryWrapper.WrapperLookup lookup) {
 
-            // "minecraft/tags/damage_type"
+            // minecraft/tags/damage_type
             getOrCreateTagBuilder(BYPASSES_ARMOR)
                     .add(ModDamageSources.DANMAKU_SHARP);
 
@@ -186,6 +192,19 @@ public class ModTagGenerator {
         protected void configure(RegistryWrapper.WrapperLookup arg) {
             getOrCreateTagBuilder(ACQUIRABLE_JOB_SITE)
                     .add(ModVillagers.ANTIQUARIAN_POI);
+        }
+    }
+
+    public static class BiomeTags extends FabricTagProvider<Biome> {
+
+        public BiomeTags(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+            super(output, RegistryKeys.BIOME, registriesFuture);
+        }
+
+        @Override
+        protected void configure(RegistryWrapper.WrapperLookup arg) {
+            getOrCreateTagBuilder(ModTags.Biomes.ABANDONED_SHRINE_HAS_STRUCTURE)
+                    .forceAddTag(ConventionalBiomeTags.FOREST);
         }
     }
 }

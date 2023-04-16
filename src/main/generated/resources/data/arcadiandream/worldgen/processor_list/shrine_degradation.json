@@ -1,0 +1,401 @@
+{
+  "processors": [
+    {
+      "processor_type": "minecraft:rule",
+      "rules": [
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:stone_brick_wall",
+              "Properties": {
+                "east": "none",
+                "north": "tall",
+                "south": "tall",
+                "up": "false",
+                "waterlogged": "false",
+                "west": "none"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.5
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:mossy_stone_brick_wall",
+            "Properties": {
+              "east": "none",
+              "north": "tall",
+              "south": "tall",
+              "up": "false",
+              "waterlogged": "false",
+              "west": "none"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:stone_brick_wall",
+              "Properties": {
+                "east": "tall",
+                "north": "none",
+                "south": "none",
+                "up": "false",
+                "waterlogged": "false",
+                "west": "tall"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.5
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:mossy_stone_brick_wall",
+            "Properties": {
+              "east": "tall",
+              "north": "none",
+              "south": "none",
+              "up": "false",
+              "waterlogged": "false",
+              "west": "tall"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:stone_brick_wall",
+              "Properties": {
+                "east": "tall",
+                "north": "tall",
+                "south": "tall",
+                "up": "true",
+                "waterlogged": "false",
+                "west": "none"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.5
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:mossy_stone_brick_wall",
+            "Properties": {
+              "east": "tall",
+              "north": "tall",
+              "south": "tall",
+              "up": "true",
+              "waterlogged": "false",
+              "west": "none"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:stone_brick_wall",
+              "Properties": {
+                "east": "tall",
+                "north": "tall",
+                "south": "none",
+                "up": "true",
+                "waterlogged": "false",
+                "west": "tall"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.5
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:mossy_stone_brick_wall",
+            "Properties": {
+              "east": "tall",
+              "north": "tall",
+              "south": "none",
+              "up": "true",
+              "waterlogged": "false",
+              "west": "tall"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:stone_brick_wall",
+              "Properties": {
+                "east": "none",
+                "north": "tall",
+                "south": "tall",
+                "up": "true",
+                "waterlogged": "false",
+                "west": "tall"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.5
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:mossy_stone_brick_wall",
+            "Properties": {
+              "east": "none",
+              "north": "tall",
+              "south": "tall",
+              "up": "true",
+              "waterlogged": "false",
+              "west": "tall"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:stone_brick_wall",
+              "Properties": {
+                "east": "tall",
+                "north": "none",
+                "south": "tall",
+                "up": "true",
+                "waterlogged": "false",
+                "west": "tall"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.5
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:mossy_stone_brick_wall",
+            "Properties": {
+              "east": "tall",
+              "north": "none",
+              "south": "tall",
+              "up": "true",
+              "waterlogged": "false",
+              "west": "tall"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:stone_brick_wall",
+              "Properties": {
+                "east": "tall",
+                "north": "none",
+                "south": "tall",
+                "up": "true",
+                "waterlogged": "false",
+                "west": "none"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.5
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:mossy_stone_brick_wall",
+            "Properties": {
+              "east": "tall",
+              "north": "none",
+              "south": "tall",
+              "up": "true",
+              "waterlogged": "false",
+              "west": "none"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:stone_brick_wall",
+              "Properties": {
+                "east": "tall",
+                "north": "tall",
+                "south": "none",
+                "up": "true",
+                "waterlogged": "false",
+                "west": "none"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.5
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:mossy_stone_brick_wall",
+            "Properties": {
+              "east": "tall",
+              "north": "tall",
+              "south": "none",
+              "up": "true",
+              "waterlogged": "false",
+              "west": "none"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:stone_brick_wall",
+              "Properties": {
+                "east": "none",
+                "north": "tall",
+                "south": "none",
+                "up": "true",
+                "waterlogged": "false",
+                "west": "tall"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.5
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:mossy_stone_brick_wall",
+            "Properties": {
+              "east": "none",
+              "north": "tall",
+              "south": "none",
+              "up": "true",
+              "waterlogged": "false",
+              "west": "tall"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block_state": {
+              "Name": "minecraft:stone_brick_wall",
+              "Properties": {
+                "east": "none",
+                "north": "none",
+                "south": "tall",
+                "up": "true",
+                "waterlogged": "false",
+                "west": "tall"
+              }
+            },
+            "predicate_type": "minecraft:random_blockstate_match",
+            "probability": 0.5
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:mossy_stone_brick_wall",
+            "Properties": {
+              "east": "none",
+              "north": "none",
+              "south": "tall",
+              "up": "true",
+              "waterlogged": "false",
+              "west": "tall"
+            }
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:stone_bricks",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.5
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:mossy_stone_bricks"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:white_wool",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.05
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:air"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:white_wool",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.05
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:cobweb"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:dirt_path",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.35
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:air"
+          }
+        },
+        {
+          "input_predicate": {
+            "block": "minecraft:polished_blackstone_bricks",
+            "predicate_type": "minecraft:random_block_match",
+            "probability": 0.5
+          },
+          "location_predicate": {
+            "predicate_type": "minecraft:always_true"
+          },
+          "output_state": {
+            "Name": "minecraft:cracked_polished_blackstone_bricks"
+          }
+        }
+      ]
+    },
+    {
+      "integrity": 0.75,
+      "processor_type": "minecraft:block_rot",
+      "rottable_blocks": "minecraft:dark_oak_trapdoor"
+    },
+    {
+      "processor_type": "minecraft:protected_blocks",
+      "value": "#minecraft:features_cannot_replace"
+    },
+    {
+      "blocks": [
+        {
+          "Name": "minecraft:air"
+        }
+      ],
+      "processor_type": "minecraft:block_ignore"
+    }
+  ]
+}

@@ -12,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.biome.Biome;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.item.ModItems;
 
@@ -72,6 +73,16 @@ public class ModTags {
         @SuppressWarnings("SameParameterValue")
         private static TagKey<DamageType> createTag(String name) {
             return TagKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier(ArcadianDream.MOD_ID, name));
+        }
+    }
+
+    public static class Biomes {
+
+        public static final TagKey<Biome> ABANDONED_SHRINE_HAS_STRUCTURE = createTag("has_structure/abandoned_shrine");
+
+        @SuppressWarnings("SameParameterValue")
+        private static TagKey<Biome> createTag(String name) {
+            return TagKey.of(RegistryKeys.BIOME, new Identifier(ArcadianDream.MOD_ID, name));
         }
     }
 }

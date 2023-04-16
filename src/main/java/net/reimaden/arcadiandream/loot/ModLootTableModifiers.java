@@ -3,7 +3,7 @@
  * Licensed under the EUPL-1.2 or later.
  */
 
-package net.reimaden.arcadiandream.util;
+package net.reimaden.arcadiandream.loot;
 
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.minecraft.block.Block;

@@ -15,7 +15,6 @@ import net.reimaden.arcadiandream.ArcadianDream;
 
 public class ModEnchantments {
 
-    @SuppressWarnings("unused")
     public static final Enchantment DANMAKU_PROTECTION = registerEnchantment("danmaku_protection",
             new DanmakuProtectionEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
                     EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET));
