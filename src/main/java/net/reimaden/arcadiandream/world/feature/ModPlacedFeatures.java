@@ -19,20 +19,20 @@ import java.util.List;
 
 public class ModPlacedFeatures {
 
-    public static final RegistryKey<PlacedFeature> DRAGON_GEM_ORE_PLACED_KEY = registerKey("dragon_gem_ore_placed");
-    public static final RegistryKey<PlacedFeature> END_DRAGON_GEM_ORE_PLACED_KEY = registerKey("end_dragon_gem_ore_placed");
-    public static final RegistryKey<PlacedFeature> MAKAITE_ORE_PLACED_KEY = registerKey("makaite_ore_placed");
+    public static final RegistryKey<PlacedFeature> DRAGON_GEM_ORE = registerKey("dragon_gem_ore");
+    public static final RegistryKey<PlacedFeature> END_DRAGON_GEM_ORE = registerKey("end_dragon_gem_ore");
+    public static final RegistryKey<PlacedFeature> MAKAITE_ORE = registerKey("makaite_ore");
 
     public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
-        register(context, DRAGON_GEM_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.DRAGON_GEM_ORE_KEY),
+        register(context, DRAGON_GEM_ORE, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.DRAGON_GEM_ORE),
                 modifiersWithCount(4, // Veins per chunk
                         HeightRangePlacementModifier.trapezoid(YOffset.aboveBottom(-80), YOffset.aboveBottom(80))));
-        register(context, END_DRAGON_GEM_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.END_DRAGON_GEM_ORE_KEY),
+        register(context, END_DRAGON_GEM_ORE, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.END_DRAGON_GEM_ORE),
                 modifiersWithCount(3, // Veins per chunk
                         HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(80))));
-        register(context, MAKAITE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MAKAITE_ORE_KEY),
+        register(context, MAKAITE_ORE, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MAKAITE_ORE),
                 modifiersWithCount(6, // Veins per chunk
                         PlacedFeatures.TEN_ABOVE_AND_BELOW_RANGE));
     }

@@ -25,9 +25,9 @@ import java.util.List;
 
 public class ModConfiguredFeatures {
 
-    public static final RegistryKey<ConfiguredFeature<?, ?>> DRAGON_GEM_ORE_KEY = registerKey("dragon_gem_ore");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> END_DRAGON_GEM_ORE_KEY = registerKey("end_dragon_gem_ore");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> MAKAITE_ORE_KEY = registerKey("makaite_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> DRAGON_GEM_ORE = registerKey("dragon_gem_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> END_DRAGON_GEM_ORE = registerKey("end_dragon_gem_ore");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> MAKAITE_ORE = registerKey("makaite_ore");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
@@ -43,9 +43,9 @@ public class ModConfiguredFeatures {
         List<OreFeatureConfig.Target> makaiteOres =
                 List.of(OreFeatureConfig.createTarget(netherReplaceables, ModBlocks.MAKAITE_ORE.getDefaultState()));
 
-        register(context, DRAGON_GEM_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldDragonGemOres, 5, 0.5f));
-        register(context, END_DRAGON_GEM_ORE_KEY, Feature.ORE, new OreFeatureConfig(endDragonGemOres, 4, 0.5f));
-        register(context, MAKAITE_ORE_KEY, Feature.ORE, new OreFeatureConfig(makaiteOres, 8, 0.25f));
+        register(context, DRAGON_GEM_ORE, Feature.ORE, new OreFeatureConfig(overworldDragonGemOres, 5, 0.5f));
+        register(context, END_DRAGON_GEM_ORE, Feature.ORE, new OreFeatureConfig(endDragonGemOres, 4, 0.5f));
+        register(context, MAKAITE_ORE, Feature.ORE, new OreFeatureConfig(makaiteOres, 8, 0.25f));
     }
 
     private static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {

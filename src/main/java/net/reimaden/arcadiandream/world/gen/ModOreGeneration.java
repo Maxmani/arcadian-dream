@@ -15,15 +15,15 @@ public class ModOreGeneration {
     public static void generate() {
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(),
                 GenerationStep.Feature.UNDERGROUND_ORES,
-                ModPlacedFeatures.DRAGON_GEM_ORE_PLACED_KEY
+                ModPlacedFeatures.DRAGON_GEM_ORE
         );
         BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(),
                 GenerationStep.Feature.UNDERGROUND_ORES,
-                ModPlacedFeatures.END_DRAGON_GEM_ORE_PLACED_KEY
+                ModPlacedFeatures.END_DRAGON_GEM_ORE
         );
         BiomeModifications.addFeature(BiomeSelectors.foundInTheNether(),
                 GenerationStep.Feature.UNDERGROUND_ORES,
-                ModPlacedFeatures.MAKAITE_ORE_PLACED_KEY
+                ModPlacedFeatures.MAKAITE_ORE
         );
     }
 }

@@ -42,9 +42,10 @@ public class ModVillagers {
     private static final float LOW_PRICE_MULTIPLIER = 0.05f;
     private static final float HIGH_PRICE_MULTIPLIER = 0.2f;
 
-    public static final PointOfInterestType ANTIQUARIAN_POI = registerPOI("antiquarian_poi", ModBlocks.DANMAKU_CRAFTING_TABLE);
-    public static final VillagerProfession ANTIQUARIAN = registerProfession("antiquarian",
-            RegistryKey.of(Registries.POINT_OF_INTEREST_TYPE.getKey(), new Identifier(ArcadianDream.MOD_ID, "antiquarian_poi")),
+    private static final String ANTIQUARIAN_NAME = "antiquarian";
+    public static final PointOfInterestType ANTIQUARIAN_POI = registerPOI(ANTIQUARIAN_NAME, ModBlocks.DANMAKU_CRAFTING_TABLE);
+    public static final VillagerProfession ANTIQUARIAN = registerProfession(ANTIQUARIAN_NAME,
+            RegistryKey.of(Registries.POINT_OF_INTEREST_TYPE.getKey(), new Identifier(ArcadianDream.MOD_ID, ANTIQUARIAN_NAME)),
             ModSounds.ENTITY_VILLAGER_WORK_ANTIQUARIAN);
 
     @SuppressWarnings("SameParameterValue")
@@ -83,6 +84,8 @@ public class ModVillagers {
                     COMMON_MAX_USES, NOVICE_SELL_XP, LOW_PRICE_MULTIPLIER
             ));
         });
+        // WIP
+        // noinspection CodeBlock2Expr
         TradeOfferHelper.registerVillagerOffers(ANTIQUARIAN, 2, factories -> {
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(Items.EMERALD, 16),
