@@ -178,6 +178,13 @@ public class ModAdvancementGenerator extends FabricAdvancementProvider {
                     .display(makeDisplay(AdvancementFrame.GOAL, ModItems.HEAVENLY_PEACH, "obtain_heavenly_peach"))
                     .criterion(ModItems.HEAVENLY_PEACH.toString(), InventoryChangedCriterion.Conditions.items(ModItems.HEAVENLY_PEACH))
                     .build(consumer, makeName("obtain_heavenly_peach"));
+
+            Advancement mochiMalletKills = Advancement.Builder.create()
+                    .parent(ritualCrafting)
+                    .display(makeDisplay(AdvancementFrame.TASK, getMallet(), "mochi_mallet_kills"))
+                    .criterion("kills_accumulated", InventoryChangedCriterion.Conditions.items(ItemPredicate.Builder.create()
+                            .items(ModItems.MOCHI_MALLET).nbt(getKillsNbt()).build()))
+                    .build(consumer, makeName("mochi_mallet_kills"));
         }
 
         private static NbtCompound densityNbt() {
@@ -197,6 +204,18 @@ public class ModAdvancementGenerator extends FabricAdvancementProvider {
                 builder.criterion(Registries.ITEM.getId(item).getPath(), InventoryChangedCriterion.Conditions.items(item));
             }
             return builder;
+        }
+
+        private static ItemStack getMallet() {
+            ItemStack stack = new ItemStack(ModItems.MOCHI_MALLET);
+            stack.setNbt(getKillsNbt());
+            return stack;
+        }
+
+        private static NbtCompound getKillsNbt() {
+            NbtCompound nbt = new NbtCompound();
+            nbt.putInt("kill_count", 100);
+            return nbt;
         }
     }
 }
