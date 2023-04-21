@@ -6,8 +6,8 @@
 package net.reimaden.arcadiandream.entity;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
-import net.reimaden.arcadiandream.entity.custom.hostile.FairyEntity;
-import net.reimaden.arcadiandream.entity.custom.hostile.SunflowerFairyEntity;
+import net.reimaden.arcadiandream.entity.custom.mob.FairyEntity;
+import net.reimaden.arcadiandream.entity.custom.mob.SunflowerFairyEntity;
 
 public class ModAttributes {
 

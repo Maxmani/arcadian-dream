@@ -13,12 +13,12 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.entity.custom.hostile.FairyEntity;
+import net.reimaden.arcadiandream.entity.custom.mob.FairyEntity;
 import net.reimaden.arcadiandream.entity.custom.danmaku.AmuletBulletEntity;
 import net.reimaden.arcadiandream.entity.custom.danmaku.BubbleBulletEntity;
 import net.reimaden.arcadiandream.entity.custom.danmaku.CircleBulletEntity;
 import net.reimaden.arcadiandream.entity.custom.danmaku.StarBulletEntity;
-import net.reimaden.arcadiandream.entity.custom.hostile.SunflowerFairyEntity;
+import net.reimaden.arcadiandream.entity.custom.mob.SunflowerFairyEntity;
 
 public class ModEntities {
 

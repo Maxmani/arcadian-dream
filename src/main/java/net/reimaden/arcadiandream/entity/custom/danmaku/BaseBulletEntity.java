@@ -15,7 +15,7 @@ import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 import net.reimaden.arcadiandream.damage.ModDamageSources;
-import net.reimaden.arcadiandream.entity.custom.hostile.BaseFairyEntity;
+import net.reimaden.arcadiandream.entity.custom.mob.BaseFairyEntity;
 import net.reimaden.arcadiandream.particle.ModParticles;
 import net.reimaden.arcadiandream.sound.ModSounds;
 

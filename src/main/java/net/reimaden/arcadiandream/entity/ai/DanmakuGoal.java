@@ -10,7 +10,7 @@ import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.util.math.MathHelper;
 import net.reimaden.arcadiandream.entity.custom.DanmakuMob;
-import net.reimaden.arcadiandream.entity.custom.hostile.BaseFairyEntity;
+import net.reimaden.arcadiandream.entity.custom.mob.BaseFairyEntity;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;

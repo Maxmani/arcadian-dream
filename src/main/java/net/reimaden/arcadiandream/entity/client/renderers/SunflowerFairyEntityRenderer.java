@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.client.models.SunflowerFairyEntityModel;
 import net.reimaden.arcadiandream.entity.client.renderers.layers.SunflowerFairyWingsLayer;
-import net.reimaden.arcadiandream.entity.custom.hostile.SunflowerFairyEntity;
+import net.reimaden.arcadiandream.entity.custom.mob.SunflowerFairyEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 public class SunflowerFairyEntityRenderer extends GeoEntityRenderer<SunflowerFairyEntity> {

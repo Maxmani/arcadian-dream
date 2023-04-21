@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.client.renderers.FairyEntityRenderer;
-import net.reimaden.arcadiandream.entity.custom.hostile.FairyEntity;
+import net.reimaden.arcadiandream.entity.custom.mob.FairyEntity;
 import software.bernie.geckolib.constant.DataTickets;
 import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
 import software.bernie.geckolib.core.animation.AnimationState;

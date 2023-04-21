@@ -8,7 +8,7 @@ package net.reimaden.arcadiandream.entity.client.models;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.entity.custom.hostile.SunflowerFairyEntity;
+import net.reimaden.arcadiandream.entity.custom.mob.SunflowerFairyEntity;
 import software.bernie.geckolib.constant.DataTickets;
 import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
 import software.bernie.geckolib.core.animation.AnimationState;

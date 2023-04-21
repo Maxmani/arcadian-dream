@@ -3,7 +3,7 @@
  * Licensed under the EUPL-1.2 or later.
  */
 
-package net.reimaden.arcadiandream.entity.custom.hostile;
+package net.reimaden.arcadiandream.entity.custom.mob;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.entity.*;

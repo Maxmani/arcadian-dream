@@ -13,8 +13,8 @@ import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.BiomeKeys;
 import net.reimaden.arcadiandream.entity.ModEntities;
-import net.reimaden.arcadiandream.entity.custom.hostile.FairyEntity;
-import net.reimaden.arcadiandream.entity.custom.hostile.SunflowerFairyEntity;
+import net.reimaden.arcadiandream.entity.custom.mob.FairyEntity;
+import net.reimaden.arcadiandream.entity.custom.mob.SunflowerFairyEntity;
 
 public class ModEntitySpawn {
 
