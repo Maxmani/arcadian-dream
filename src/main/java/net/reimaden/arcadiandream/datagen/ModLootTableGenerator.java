@@ -142,15 +142,14 @@ public class ModLootTableGenerator {
             );
             consumer.accept(ModLootTables.ABANDONED_SHRINE_SUPPLY_CHEST, LootTable.builder()
                     .pool(LootPool.builder().rolls(UniformLootNumberProvider.create(3.0f, 10.0f))
-                            .with(ItemEntry.builder(Items.PAPER).weight(17).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 12.0f))))
+                            .with(ItemEntry.builder(Items.PAPER).weight(18).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 12.0f))))
                             .with(ItemEntry.builder(Items.BOOK).weight(7).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f))))
                             .with(ItemEntry.builder(Items.POTATO).weight(8).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 4.0f))))
                             .with(ItemEntry.builder(Items.POISONOUS_POTATO).weight(16).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 6.0f))))
                             .with(ItemEntry.builder(Items.WHEAT).weight(8).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(8.0f, 21.0f))))
                             .with(ItemEntry.builder(Items.ROTTEN_FLESH).weight(18).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 8.0f))))
-                            .with(ItemEntry.builder(ModItems.HEAVENLY_PEACH).weight(4).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 3.0f))))
-                            .with(ItemEntry.builder(ModItems.BOMB_ITEM).weight(3))
-                            .with(ItemEntry.builder(Items.IRON_INGOT).weight(11).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 6.0f))))
+                            .with(ItemEntry.builder(ModItems.BOMB_ITEM).weight(5))
+                            .with(ItemEntry.builder(Items.IRON_INGOT).weight(12).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 6.0f))))
                             .with(ItemEntry.builder(Items.SUSPICIOUS_STEW).weight(8).apply(SetStewEffectLootFunction.builder().withEffect(StatusEffects.LEVITATION, UniformLootNumberProvider.create(7.0f, 10.0f))))
                     )
             );

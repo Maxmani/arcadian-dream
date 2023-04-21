@@ -18,7 +18,7 @@
             }
           ],
           "name": "minecraft:paper",
-          "weight": 17
+          "weight": 18
         },
         {
           "type": "minecraft:item",
@@ -102,24 +102,8 @@
         },
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 3.0,
-                "min": 1.0
-              },
-              "function": "minecraft:set_count"
-            }
-          ],
-          "name": "arcadiandream:heavenly_peach",
-          "weight": 4
-        },
-        {
-          "type": "minecraft:item",
           "name": "arcadiandream:bomb_item",
-          "weight": 3
+          "weight": 5
         },
         {
           "type": "minecraft:item",
@@ -135,7 +119,7 @@
             }
           ],
           "name": "minecraft:iron_ingot",
-          "weight": 11
+          "weight": 12
         },
         {
           "type": "minecraft:item",
