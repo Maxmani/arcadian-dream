@@ -1,0 +1,28 @@
+{
+  "parent": "arcadiandream:shoot_danmaku",
+  "criteria": {
+    "modified_danmaku": {
+      "trigger": "arcadiandream:danmaku_modified"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.arcadiandream.modify_danmaku.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "arcadiandream:danmaku_crafting_table"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.arcadiandream.modify_danmaku.title"
+    }
+  },
+  "requirements": [
+    [
+      "modified_danmaku"
+    ]
+  ]
+}

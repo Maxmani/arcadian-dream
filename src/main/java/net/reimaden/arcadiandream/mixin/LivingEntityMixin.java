@@ -23,9 +23,9 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.stat.Stats;
 import net.minecraft.text.Text;
 import net.minecraft.util.Pair;
-import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 import net.reimaden.arcadiandream.ArcadianDream;
+import net.reimaden.arcadiandream.advancement.ModCriteria;
 import net.reimaden.arcadiandream.entity.custom.danmaku.BaseBulletEntity;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.sound.ModSounds;
@@ -42,7 +42,7 @@ import java.util.List;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
 
-    final LivingEntity entity = (LivingEntity) (Object) this;
+    private final LivingEntity entity = (LivingEntity) (Object) this;
 
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
@@ -50,11 +50,12 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "tryUseTotem", at = @At("HEAD"), cancellable = true)
     private void arcadiandream$useExtendItem(DamageSource source, CallbackInfoReturnable<Boolean> cir) {
-        Item item = ModItems.EXTEND_ITEM;
-
         if (source.isIn(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
             cir.setReturnValue(false);
         } else {
+            final Item item = ModItems.EXTEND_ITEM;
+            int cancelled = 0;
+
             if (TrinketsApi.getTrinketComponent(entity).get().isEquipped(item)) {
 
                 // Do the usual Totem stuff
@@ -66,13 +67,16 @@ public abstract class LivingEntityMixin extends Entity {
 
                 // Clear bullets
                 for (BaseBulletEntity bulletEntity : world.getNonSpectatingEntities(BaseBulletEntity.class,
-                        new Box(entity.getX(), entity.getY(), entity.getZ(), entity.getX(), entity.getY(), entity.getZ()).expand(24.0, 24.0, 24.0))) {
+                        entity.getBoundingBox().expand(24.0, 24.0, 24.0))) {
 
                     if (bulletEntity.getOwner() != entity) {
-                        bulletEntity.kill();
+                        bulletEntity.discard();
                         bulletEntity.cancelParticle((ServerWorld) world);
+                        cancelled++;
                     }
                 }
+
+                if (cancelled > 0) ModCriteria.BULLETS_CANCELLED.trigger((ServerPlayerEntity) entity, cancelled, true);
 
                 // Remove item
                 if (TrinketsApi.getTrinketComponent(entity).isPresent()) {

@@ -1,0 +1,40 @@
+{
+  "parent": "arcadiandream:ritual_crafting",
+  "criteria": {
+    "hourai_elixir": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arcadiandream:hourai_elixir"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.arcadiandream.obtain_hourai_elixir.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "arcadiandream:hourai_elixir"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.arcadiandream.obtain_hourai_elixir.title"
+    }
+  },
+  "requirements": [
+    [
+      "hourai_elixir"
+    ]
+  ],
+  "rewards": {
+    "experience": 150
+  }
+}

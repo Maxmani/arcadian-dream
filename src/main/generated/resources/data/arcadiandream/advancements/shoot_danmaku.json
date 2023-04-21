@@ -1,0 +1,43 @@
+{
+  "parent": "arcadiandream:root",
+  "criteria": {
+    "shot_danmaku": {
+      "conditions": {
+        "damage": {
+          "type": {
+            "direct_entity": {
+              "type": "#arcadiandream:danmaku"
+            },
+            "tags": [
+              {
+                "expected": true,
+                "id": "arcadiandream:is_danmaku"
+              }
+            ]
+          }
+        }
+      },
+      "trigger": "minecraft:player_hurt_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.arcadiandream.shoot_danmaku.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "arcadiandream:circle_shot"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.arcadiandream.shoot_danmaku.title"
+    }
+  },
+  "requirements": [
+    [
+      "shot_danmaku"
+    ]
+  ]
+}

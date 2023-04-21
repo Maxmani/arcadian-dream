@@ -6,12 +6,15 @@
 package net.reimaden.arcadiandream.advancement;
 
 import net.minecraft.advancement.criterion.Criteria;
+import net.reimaden.arcadiandream.ArcadianDream;
 
 public class ModCriteria {
 
-    public static RitualCraftingCriterion RITUAL_CRAFTING;
+    public static final RitualCraftingCriterion RITUAL_CRAFTING = Criteria.register(new RitualCraftingCriterion());
+    public static final DanmakuModifiedCriterion DANMAKU_MODIFIED = Criteria.register(new DanmakuModifiedCriterion());
+    public static final BulletsCancelledCriterion BULLETS_CANCELLED = Criteria.register(new BulletsCancelledCriterion());
 
     public static void register() {
-        RITUAL_CRAFTING = Criteria.register(new RitualCraftingCriterion());
+        ArcadianDream.LOGGER.debug("Registering criteria for " + ArcadianDream.MOD_ID);
     }
 }

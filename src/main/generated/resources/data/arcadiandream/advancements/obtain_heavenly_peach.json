@@ -1,0 +1,37 @@
+{
+  "parent": "arcadiandream:hisou_sword",
+  "criteria": {
+    "heavenly_peach": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arcadiandream:heavenly_peach"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.arcadiandream.obtain_heavenly_peach.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "arcadiandream:heavenly_peach"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.arcadiandream.obtain_heavenly_peach.title"
+    }
+  },
+  "requirements": [
+    [
+      "heavenly_peach"
+    ]
+  ]
+}

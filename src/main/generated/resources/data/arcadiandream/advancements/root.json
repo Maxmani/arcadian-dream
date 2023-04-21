@@ -15,7 +15,7 @@
   },
   "display": {
     "announce_to_chat": false,
-    "background": "arcadiandream:textures/block/dragon_gem_block.png",
+    "background": "arcadiandream:textures/block/danmaku_crafting_table_bottom.png",
     "description": {
       "translate": "advancements.arcadiandream.root.description"
     },

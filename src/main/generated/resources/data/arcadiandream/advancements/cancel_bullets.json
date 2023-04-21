@@ -1,0 +1,31 @@
+{
+  "parent": "arcadiandream:root",
+  "criteria": {
+    "cancelled_bullets": {
+      "conditions": {
+        "from_extend": false
+      },
+      "trigger": "arcadiandream:bullets_cancelled"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.arcadiandream.cancel_bullets.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "arcadiandream:star_item"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.arcadiandream.cancel_bullets.title"
+    }
+  },
+  "requirements": [
+    [
+      "cancelled_bullets"
+    ]
+  ]
+}

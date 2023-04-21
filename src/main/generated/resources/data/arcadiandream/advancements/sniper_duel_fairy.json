@@ -1,0 +1,56 @@
+{
+  "parent": "arcadiandream:shoot_danmaku",
+  "criteria": {
+    "killed_fairy": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "#arcadiandream:fairies",
+              "distance": {
+                "horizontal": {
+                  "min": 50.0
+                }
+              }
+            }
+          }
+        ],
+        "killing_blow": {
+          "tags": [
+            {
+              "expected": true,
+              "id": "arcadiandream:is_danmaku"
+            }
+          ]
+        }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.arcadiandream.sniper_duel_fairy.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "arcadiandream:star_shot",
+      "nbt": "{HideFlags:64,cooldown:5,density:1,display:{color:65535},divergence:0.0f,duration:100,gravity:0.0f,pattern:\"spread\",power:1.0f,speed:0.65f}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.arcadiandream.sniper_duel_fairy.title"
+    }
+  },
+  "requirements": [
+    [
+      "killed_fairy"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  }
+}

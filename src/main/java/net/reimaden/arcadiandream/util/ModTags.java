@@ -7,6 +7,7 @@ package net.reimaden.arcadiandream.util;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.damage.DamageType;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
@@ -63,6 +64,21 @@ public class ModTags {
 
         private static TagKey<Item> createCommonTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier("c", name));
+        }
+    }
+
+    public static class EntityTypes {
+
+        public static final TagKey<EntityType<?>> DANMAKU = createTag("danmaku");
+        public static final TagKey<EntityType<?>> FAIRIES = createTag("fairies");
+
+        private static TagKey<EntityType<?>> createTag(String name) {
+            return TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, name));
+        }
+
+        @SuppressWarnings("unused")
+        private static TagKey<EntityType<?>> createCommonTag(String name) {
+            return TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier("c", name));
         }
     }
 

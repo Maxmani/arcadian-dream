@@ -22,6 +22,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.poi.PointOfInterestType;
 import net.reimaden.arcadiandream.block.ModBlocks;
 import net.reimaden.arcadiandream.damage.ModDamageSources;
+import net.reimaden.arcadiandream.entity.ModEntities;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.painting.ModPaintings;
 import net.reimaden.arcadiandream.util.ModTags;
@@ -147,6 +148,21 @@ public class ModTagGenerator {
             getOrCreateTagBuilder(ModTags.Items.UNDEAD_PARTS)
                     .add(Items.ROTTEN_FLESH, Items.BONE, Items.PHANTOM_MEMBRANE, Items.ZOMBIE_HEAD,
                             Items.SKELETON_SKULL, Items.WITHER_SKELETON_SKULL);
+        }
+    }
+
+    public static class EntityTypeTags extends FabricTagProvider.EntityTypeTagProvider {
+
+        public EntityTypeTags(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
+            super(output, completableFuture);
+        }
+
+        @Override
+        protected void configure(RegistryWrapper.WrapperLookup arg) {
+            getOrCreateTagBuilder(ModTags.EntityTypes.DANMAKU)
+                    .add(ModEntities.CIRCLE_BULLET, ModEntities.BUBBLE_BULLET, ModEntities.AMULET_BULLET, ModEntities.STAR_BULLET);
+            getOrCreateTagBuilder(ModTags.EntityTypes.FAIRIES)
+                    .add(ModEntities.FAIRY, ModEntities.SUNFLOWER_FAIRY);
         }
     }
 

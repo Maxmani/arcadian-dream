@@ -53,7 +53,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
         super.tick();
         if (!world.isClient()) {
             if (age >= getDuration()) {
-                kill();
+                discard();
                 despawnParticle((ServerWorld) world);
             }
         }

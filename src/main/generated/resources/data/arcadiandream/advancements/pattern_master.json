@@ -1,0 +1,115 @@
+{
+  "parent": "arcadiandream:modify_danmaku",
+  "criteria": {
+    "cone_pattern": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arcadiandream:cone_pattern"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "double_pattern": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arcadiandream:double_pattern"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "ray_pattern": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arcadiandream:ray_pattern"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "ring_pattern": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arcadiandream:ring_pattern"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "spread_pattern": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arcadiandream:spread_pattern"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "triple_pattern": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arcadiandream:triple_pattern"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.arcadiandream.pattern_master.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "arcadiandream:ring_pattern"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.arcadiandream.pattern_master.title"
+    }
+  },
+  "requirements": [
+    [
+      "spread_pattern"
+    ],
+    [
+      "ray_pattern"
+    ],
+    [
+      "ring_pattern"
+    ],
+    [
+      "cone_pattern"
+    ],
+    [
+      "double_pattern"
+    ],
+    [
+      "triple_pattern"
+    ]
+  ],
+  "rewards": {
+    "experience": 100
+  }
+}

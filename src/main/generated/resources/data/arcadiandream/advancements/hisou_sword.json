@@ -1,0 +1,38 @@
+{
+  "parent": "arcadiandream:ritual_crafting",
+  "criteria": {
+    "hisou_sword": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arcadiandream:hisou_sword"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.arcadiandream.hisou_sword.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "arcadiandream:hisou_sword",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.arcadiandream.hisou_sword.title"
+    }
+  },
+  "requirements": [
+    [
+      "hisou_sword"
+    ]
+  ]
+}

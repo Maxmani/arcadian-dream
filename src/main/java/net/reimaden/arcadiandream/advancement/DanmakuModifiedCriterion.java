@@ -1,8 +1,3 @@
-/*
- * Copyright (c) 2022 Maxmani and contributors.
- * Licensed under the EUPL-1.2 or later.
- */
-
 package net.reimaden.arcadiandream.advancement;
 
 import com.google.gson.JsonObject;
@@ -15,9 +10,9 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
 
-public class RitualCraftingCriterion extends AbstractCriterion<RitualCraftingCriterion.Conditions> {
+public class DanmakuModifiedCriterion extends AbstractCriterion<DanmakuModifiedCriterion.Conditions> {
 
-    private static final Identifier ID = new Identifier(ArcadianDream.MOD_ID, "ritual_crafting");
+    private static final Identifier ID = new Identifier(ArcadianDream.MOD_ID, "danmaku_modified");
 
     @Override
     protected Conditions conditionsFromJson(JsonObject obj, EntityPredicate.Extended playerPredicate, AdvancementEntityPredicateDeserializer predicateDeserializer) {

@@ -32,6 +32,7 @@ public class ArcadianDreamDataGen implements DataGeneratorEntrypoint {
         pack.addProvider(ModLootTableGenerator.ChestLoot::new);
         pack.addProvider(ModTagGenerator.BlockTags::new);
         pack.addProvider(ModTagGenerator.ItemTags::new);
+        pack.addProvider(ModTagGenerator.EntityTypeTags::new);
         pack.addProvider(ModTagGenerator.DamageTypeTags::new);
         pack.addProvider(ModTagGenerator.PaintingVariantTags::new);
         pack.addProvider(ModTagGenerator.PointOfInterestTypeTags::new);

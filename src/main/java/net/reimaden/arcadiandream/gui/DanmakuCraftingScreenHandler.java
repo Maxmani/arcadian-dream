@@ -17,6 +17,8 @@ import net.minecraft.screen.ArrayPropertyDelegate;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.reimaden.arcadiandream.advancement.ModCriteria;
 import net.reimaden.arcadiandream.block.entity.DanmakuCraftingTableBlockEntity;
 import net.reimaden.arcadiandream.item.custom.danmaku.BaseShotItem;
 import net.reimaden.arcadiandream.item.custom.danmaku.BulletCoreItem;
@@ -28,7 +30,6 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
     private static final int SIZE = DanmakuCraftingTableBlockEntity.SIZE;
 
     private final Inventory inventory;
-    private final PropertyDelegate propertyDelegate;
 
     public DanmakuCraftingScreenHandler(int syncId, PlayerInventory inventory) {
         this(syncId, inventory, new SimpleInventory(SIZE), new ArrayPropertyDelegate(2));
@@ -39,7 +40,6 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
         checkSize(inventory, SIZE);
         this.inventory = inventory;
         inventory.onOpen(playerInventory.player);
-        this.propertyDelegate = propertyDelegate;
 
         // Set some helper variables
         final int topY = 32;
@@ -58,7 +58,7 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
         // Create slots
         DanmakuCraftingSlot coreSlot = new DanmakuCraftingSlot(inventory, 0, 15, topY, BulletCoreItem.class);
         DanmakuCraftingSlot shotSlot = new DanmakuCraftingSlot(inventory, 1, 39, topY, BaseShotItem.class);
-        DanmakuOutputSlot resultSlot = new DanmakuOutputSlot(playerInventory.player, inventory, 2, 136, 44);
+        DanmakuOutputSlot resultSlot = new DanmakuOutputSlot(playerInventory.player, inventory, 2, 136, 44, propertyDelegate);
         DanmakuCraftingSlot modifierSlot = new DanmakuCraftingSlot(inventory, 3, 27, bottomY, ModTags.Items.DANMAKU_MODIFIERS);
         DanmakuCraftingSlot repairSlot = new DanmakuCraftingSlot(inventory, 4, 80, topY, ModTags.Items.DANMAKU_REPAIR_ITEMS);
         DanmakuCraftingSlot patternSlot = new DanmakuCraftingSlot(inventory, 5, 68, bottomY, PatternItem.class);
@@ -131,13 +131,15 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
         return slot.hasStack();
     }
 
-    class DanmakuOutputSlot extends Slot {
+    static class DanmakuOutputSlot extends Slot {
 
         private final PlayerEntity player;
+        private final PropertyDelegate propertyDelegate;
 
-        public DanmakuOutputSlot(PlayerEntity player, Inventory inventory, int index, int x, int y) {
+        public DanmakuOutputSlot(PlayerEntity player, Inventory inventory, int index, int x, int y, PropertyDelegate propertyDelegate) {
             super(inventory, index, x, y);
             this.player = player;
+            this.propertyDelegate = propertyDelegate;
         }
 
         @Override
@@ -152,7 +154,7 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
             onCrafted(stack);
 
             // Clear the input slots
-            craft(inventory);
+            craft(inventory, propertyDelegate, player);
             propertyDelegate.set(0, 0);
             propertyDelegate.set(1, 0);
         }
@@ -190,7 +192,9 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
         }
     }
 
-    private void craft(Inventory inventory) {
+    private static void craft(Inventory inventory, PropertyDelegate propertyDelegate, PlayerEntity player) {
+        if (player.world.isClient()) return;
+
         /* Inventory slot indexes
          * 0 = Core
          * 1 = Shot
@@ -217,6 +221,11 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
         if (shotStack.getItem() instanceof BaseShotItem) {
             modifierStack.decrement(propertyDelegate.get(0));
             repairStack.decrement(propertyDelegate.get(1));
+
+            // Trigger advancement for modifying a shot
+            if (propertyDelegate.get(0) > 0 || !patternStack.isEmpty() || !colorStack.isEmpty()) { // Make sure we are actually modifying a shot
+                ModCriteria.DANMAKU_MODIFIED.trigger((ServerPlayerEntity) player);
+            }
 
             patternStack.decrement(1);
             colorStack.decrement(1);

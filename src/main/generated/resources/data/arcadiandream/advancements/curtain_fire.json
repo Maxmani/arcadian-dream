@@ -1,0 +1,35 @@
+{
+  "parent": "arcadiandream:modify_danmaku",
+  "criteria": {
+    "shot_danmaku": {
+      "conditions": {
+        "item": {
+          "nbt": "{density:25}",
+          "tag": "arcadiandream:shots"
+        }
+      },
+      "trigger": "minecraft:item_durability_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.arcadiandream.curtain_fire.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "arcadiandream:circle_shot",
+      "nbt": "{HideFlags:64,cooldown:2,density:1,display:{color:16711935},divergence:0.0f,duration:100,gravity:0.0f,pattern:\"spread\",power:1.0f,speed:0.8f}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.arcadiandream.curtain_fire.title"
+    }
+  },
+  "requirements": [
+    [
+      "shot_danmaku"
+    ]
+  ]
+}
