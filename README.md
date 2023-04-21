@@ -15,19 +15,20 @@ Everything in the mod is subject to change. This list is not exhaustive.
 - A mostly working danmaku system
 - Dozens of useful blocks and items
 - New enchantments
+- New structures
 - A new crafting system
 - Mobs that fire danmaku
 - New ores to mine and process
+- More advancements
 - Highly configurable
 
 ### Planned features
 
 - More of the above
 - Laser danmaku
-- New structures
 - New biomes and possibly dimensions
-- Lots of advancements
 - And more!
+- Seriously, I have a lot of ideas
 
 ## Installation
 
