@@ -61,19 +61,19 @@ public class OnbashiraBlock extends BlockWithEntity implements BlockEntityProvid
         return new OnbashiraBlockEntity(pos, state);
     }
 
-    @SuppressWarnings("DataFlowIssue")
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         Inventory blockEntity = (Inventory) world.getBlockEntity(pos);
+        if (blockEntity == null) return ActionResult.PASS;
 
         ItemStack stack = player.getStackInHand(hand);
         boolean bl = !blockEntity.getStack(0).isEmpty();
         boolean bl2 = !stack.isEmpty();
-        boolean bl3 = !bl && bl2;
+        boolean bl3 = !bl && bl2 && world.getBlockState(pos.up()).isAir();
 
-        if (world.isClient) return bl || bl2 ? ActionResult.SUCCESS : ActionResult.PASS;
+        if (world.isClient()) return bl || bl3 ? ActionResult.SUCCESS : ActionResult.PASS;
 
-        if (bl3 && world.getBlockState(pos.up()).isAir()) {
+        if (bl3) {
             blockEntity.setStack(0, player.getStackInHand(hand).copy().split(1));
             if (!player.isCreative()) {
                 player.getStackInHand(hand).decrement(1);
