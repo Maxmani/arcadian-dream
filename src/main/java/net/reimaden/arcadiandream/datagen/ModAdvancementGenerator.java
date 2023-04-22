@@ -91,7 +91,7 @@ public class ModAdvancementGenerator extends FabricAdvancementProvider {
                             false,
                             false,
                             false)
-                    .criterion(ModItems.POWER_ITEM.toString(), InventoryChangedCriterion.Conditions.items(ModItems.POWER_ITEM))
+                    .criterion("get_item", InventoryChangedCriterion.Conditions.items(ItemPredicate.Builder.create().tag(ModTags.Items.ITEMS).build()))
                     .build(consumer, makeName("root"));
 
             Advancement mineDragonGem = Advancement.Builder.create()

@@ -1,12 +1,10 @@
 {
   "criteria": {
-    "power_item": {
+    "get_item": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "arcadiandream:power_item"
-            ]
+            "tag": "arcadiandream:items"
           }
         ]
       },
@@ -31,7 +29,7 @@
   },
   "requirements": [
     [
-      "power_item"
+      "get_item"
     ]
   ]
 }
