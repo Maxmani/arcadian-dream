@@ -12,6 +12,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
 import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -23,9 +25,13 @@ import net.minecraft.world.World;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.reimaden.arcadiandream.util.RaycastHelper;
 
+import java.util.Objects;
 import java.util.function.Predicate;
 
 public class DeathScytheItem extends SwordItem {
+
+    private static final float PITCH = 1.1f;
+    private static final float VOLUME = 1.0f;
 
     public DeathScytheItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
@@ -49,7 +55,8 @@ public class DeathScytheItem extends SwordItem {
                     Entity entity = result.getEntity();
                     Vec3d entityPos = entity.getPos();
 
-                    if (entity instanceof PlayerEntity playerEntity && playerEntity.isCreative()) {
+                    if (entity instanceof PlayerEntity playerEntity && (playerEntity.isCreative()
+                            || !Objects.requireNonNull(playerEntity.getServer()).isPvpEnabled())) {
                         return;
                     }
                     swapPositions(world, player, entity, entityPos);
@@ -63,26 +70,24 @@ public class DeathScytheItem extends SwordItem {
         }
     }
 
-    private static void swapPositions(World world, PlayerEntity player, Entity entity, Vec3d entityPos) {
-        float pitch = 1.1f;
+    private static void swapPositions(World world, PlayerEntity user, Entity target, Vec3d targetPos) {
 
-        if (entity instanceof PlayerEntity) {
-            entity.setPosition(player.getPos());
-            entity.refreshPositionAfterTeleport(entityPos);
-
-            world.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
-                    ModSounds.ITEM_DEATH_SCYTHE_TELEPORT, entity.getSoundCategory(), 1.0f, pitch);
+        if (target instanceof PlayerEntity) {
+            target.setPosition(user.getX(), user.getY(), user.getZ());
+            target.refreshPositionAfterTeleport(target.getPos());
+            playEffects(world, target, ModSounds.ITEM_DEATH_SCYTHE_TELEPORT, target.getSoundCategory());
         } else {
-            entity.refreshPositionAndAngles(player.getX(), player.getY(), player.getZ(), entity.getYaw(), entity.getPitch());
-
-            world.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
-                    ModSounds.ITEM_DEATH_SCYTHE_TELEPORT_GENERIC, entity.getSoundCategory(), 1.0f, pitch);
+            target.refreshPositionAndAngles(user.getX(), user.getY(), user.getZ(), target.getYaw(), target.getPitch());
+            playEffects(world, target, ModSounds.ITEM_DEATH_SCYTHE_TELEPORT_GENERIC, target.getSoundCategory());
         }
-        player.setPosition(entityPos.getX(), entityPos.getY(), entityPos.getZ());
-        player.refreshPositionAfterTeleport(player.getPos());
 
-        world.playSound(null, player.getX(), player.getY(), player.getZ(),
-                ModSounds.ITEM_DEATH_SCYTHE_TELEPORT, player.getSoundCategory(), 1.0f, pitch);
+        user.setPosition(targetPos.getX(), targetPos.getY(), targetPos.getZ());
+        user.refreshPositionAfterTeleport(user.getPos());
+        playEffects(world, user, ModSounds.ITEM_DEATH_SCYTHE_TELEPORT, user.getSoundCategory());
+    }
+
+    private static void playEffects(World world, Entity entity, SoundEvent soundEvent, SoundCategory soundCategory) {
+        world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), soundEvent, soundCategory, VOLUME, PITCH);
     }
 
     @Override
