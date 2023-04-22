@@ -14,7 +14,8 @@
   ],
   "contact": {
     "issues": "https://github.com/Maxmani/arcadian-dream/issues",
-    "sources": "https://github.com/Maxmani/arcadian-dream"
+    "sources": "https://github.com/Maxmani/arcadian-dream",
+    "homepage": "https://modrinth.com/mod/arcadian-dream"
   },
 
   "license": [

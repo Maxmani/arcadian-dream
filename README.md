@@ -1,4 +1,4 @@
-# Arcadian Dream
+# Arcadian Dream <img alt="Icon" width="48" src="/src/main/resources/assets/arcadiandream/icon.png"/>
 
 A Touhou mod for modern Minecraft. Arcadian Dream adds new blocks, items, mobs, and other content based on the [Touhou Project](https://en.touhouwiki.net/wiki/Touhou_Wiki) series. It aims to provide a full Touhou experience in Minecraft.
 The mod is still in early development and is not yet feature-complete. The mod is currently available for [Fabric](https://fabricmc.net/) and Minecraft version 1.19.
@@ -32,7 +32,8 @@ Everything in the mod is subject to change. This list is not exhaustive.
 
 ## Installation
 
-Alpha version coming soon.
+<a href="https://github.com/Maxmani/arcadian-dream/releases"><img alt="github" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/github_vector.svg"></a>
+<a href="https://modrinth.com/mod/arcadian-dream"><img alt="modrinth" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg"></a>
 
 ### Dependencies
 
@@ -45,7 +46,7 @@ Alpha version coming soon.
 ## Credits
 
 - All [contributors](https://github.com/Maxmani/arcadian-dream/graphs/contributors)
-- Developers of used [libraries](https://github.com/Maxmani/arcadian-dream/blob/HEAD/build.gradle#L51)
+- Developers of used [libraries](https://github.com/Maxmani/arcadian-dream/blob/HEAD/build.gradle#L46)
 - [ZUN](https://www16.big.or.jp/~zun/) for Touhou Project
 
 ### Special thanks
