@@ -7,8 +7,12 @@ sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = project.archives_base_name
-version = "${project.minecraft_version}-${project.mod_version}"
+version = project.mod_version
 group = project.maven_group
+
+remapJar {
+	archiveAppendix.set("${project.minecraft_version}")
+}
 
 repositories {
 	maven {
@@ -126,6 +130,10 @@ java {
 	// if it is present.
 	// If you remove this line, sources will not be generated.
 	withSourcesJar()
+}
+
+remapSourcesJar {
+	archiveAppendix.set("${project.minecraft_version}")
 }
 
 jar {
