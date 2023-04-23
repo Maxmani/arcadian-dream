@@ -27,6 +27,7 @@ Everything in the mod is subject to change. This list is not exhaustive.
 - More of the above
 - Laser danmaku
 - New biomes and possibly dimensions
+- In-game documentation
 - And more!
 - Seriously, I have a lot of ideas
 
