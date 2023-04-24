@@ -35,6 +35,7 @@ Everything in the mod is subject to change. This list is not exhaustive.
 
 <a href="https://github.com/Maxmani/arcadian-dream/releases"><img alt="github" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/github_vector.svg"></a>
 <a href="https://modrinth.com/mod/arcadian-dream"><img alt="modrinth" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg"></a>
+<a href="https://curseforge.com/minecraft/mc-mods/arcadian-dream"><img alt="curseforge" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/curseforge_vector.svg"></a>
 
 ### Dependencies
 
@@ -44,10 +45,15 @@ Everything in the mod is subject to change. This list is not exhaustive.
 - [Pehkui](https://github.com/Virtuoel/Pehkui)
 - [GeckoLib](https://github.com/bernie-g/geckolib)
 
+## Documentation
+
+[![Documentation Status](https://readthedocs.org/projects/arcadian-dream/badge/?version=latest)](https://arcadian-dream.readthedocs.io/en/latest/?badge=latest)
+Online documentation is available at [Read the Docs](https://arcadian-dream.readthedocs.io).
+
 ## Credits
 
 - All [contributors](https://github.com/Maxmani/arcadian-dream/graphs/contributors)
-- Developers of used [libraries](https://github.com/Maxmani/arcadian-dream/blob/HEAD/build.gradle#L46)
+- Developers of used [libraries](https://github.com/Maxmani/arcadian-dream/blob/HEAD/build.gradle#L50)
 - [ZUN](https://www16.big.or.jp/~zun/) for Touhou Project
 
 ### Special thanks
