@@ -47,7 +47,7 @@ Everything in the mod is subject to change. This list is not exhaustive.
 
 ## Documentation
 
-[![Documentation Status](https://readthedocs.org/projects/arcadian-dream/badge/?version=latest)](https://arcadian-dream.readthedocs.io/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/arcadian-dream/badge/?version=latest)](https://arcadian-dream.readthedocs.io/en/latest/?badge=latest)  
 Online documentation is available at [Read the Docs](https://arcadian-dream.readthedocs.io).
 
 ## Credits
