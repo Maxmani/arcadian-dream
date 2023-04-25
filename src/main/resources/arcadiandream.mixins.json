@@ -9,6 +9,7 @@
     "EnchantmentMixin",
     "EntityMixin",
     "FireBlockMixin",
+    "IronGolemEntityMixin",
     "LivingEntityMixin",
     "PlayerEntityMixin",
     "ProjectileEntityMixin",
