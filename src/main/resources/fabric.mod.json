@@ -32,6 +32,9 @@
     "client": [
       "net.reimaden.arcadiandream.ArcadianDreamClient"
     ],
+    "preLaunch": [
+      "net.reimaden.arcadiandream.ArcadianDreamPreLaunch"
+    ],
     "fabric-datagen": [
       "net.reimaden.arcadiandream.ArcadianDreamDataGen"
     ],
