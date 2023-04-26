@@ -53,28 +53,26 @@ public class RitualShrineBlock extends BlockWithEntity implements BlockEntityPro
         return SHAPE;
     }
 
-    @SuppressWarnings("DataFlowIssue")
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (!world.getBlockState(pos.up()).isAir()) return ActionResult.PASS;
+
         RitualShrineBlockEntity blockEntity = (RitualShrineBlockEntity) world.getBlockEntity(pos);
+        if (blockEntity == null) return ActionResult.PASS;
+
         boolean bl = !blockEntity.getStack(0).isEmpty();
 
-        if (world.isClient) return ActionResult.SUCCESS;
-
-        if (world.getBlockState(pos.up()).isAir()) {
-            if (bl) {
-                player.getInventory().offerOrDrop(blockEntity.getStack(0));
-                blockEntity.removeStack(0);
-                blockEntity.markDirty();
-                world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_ITEM_PICKUP, player.getSoundCategory(),
-                        0.2f, random.nextFloat() - random.nextFloat() * 1.4f + 2.0f);
-            } else {
-                blockEntity.doCrafting(player);
-            }
-            return ActionResult.SUCCESS;
+        if (bl) {
+            player.getInventory().offerOrDrop(blockEntity.getStack(0));
+            blockEntity.removeStack(0);
+            blockEntity.markDirty();
+            world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_ITEM_PICKUP, player.getSoundCategory(),
+                    0.2f, random.nextFloat() - random.nextFloat() * 1.4f + 2.0f);
+        } else {
+            blockEntity.doCrafting(player);
         }
 
-        return ActionResult.PASS;
+        return ActionResult.success(world.isClient());
     }
 
     @Override
