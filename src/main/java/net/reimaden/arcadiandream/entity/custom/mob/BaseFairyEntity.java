@@ -44,6 +44,7 @@ import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -226,7 +227,8 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
     }
 
     private static boolean isLightLevelValid(ServerWorldAccess world, BlockPos pos) {
-        return world.getLightLevel(pos) > 8 && world.getLevelProperties().getTimeOfDay() < 12000;
+        long timeOfDay = Objects.requireNonNull(world.getServer()).getOverworld().getTimeOfDay() % 24000;
+        return world.getLightLevel(pos) > 8 && timeOfDay >= 0 && timeOfDay < 12000;
     }
 
     @Override
