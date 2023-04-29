@@ -38,7 +38,6 @@ public class BombItem extends Item {
         if (world.isClient()) return TypedActionResult.pass(itemStack);
 
         int cancelled = 0;
-        int stars = 0;
 
         for (BaseBulletEntity bulletEntity : world.getNonSpectatingEntities(BaseBulletEntity.class,
                 user.getBoundingBox().expand(24.0, 24.0, 24.0))) {
@@ -55,17 +54,14 @@ public class BombItem extends Item {
 
                 // Get the ItemStack of the Star Items and give them to the player
                 ItemStack item = itemEntity.getStack();
-                if (user.getRandom().nextBoolean()) { // 50% of the time
-                    user.sendPickup(itemEntity, 1);
-                    user.getInventory().offerOrDrop(item);
-                    stars++;
-                }
+                user.sendPickup(itemEntity, 1);
+                user.getInventory().offerOrDrop(item);
                 itemEntity.discard();
             }
         }
 
         if (cancelled > 0) {
-            user.sendMessage(Text.translatable("item." + ArcadianDream.MOD_ID + ".bomb_item.cancel", cancelled, stars), true);
+            user.sendMessage(Text.translatable("item." + ArcadianDream.MOD_ID + ".bomb_item.cancel", cancelled), true);
             world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.ITEM_BOMB_ITEM_USE, user.getSoundCategory(), 1f, 1f);
             ModCriteria.BULLETS_CANCELLED.trigger((ServerPlayerEntity) user, cancelled, false);
             user.incrementStat(Stats.USED.getOrCreateStat(this));

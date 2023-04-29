@@ -8,7 +8,7 @@
   "item.arcadiandream.point_item": "Point Item",
   "item.arcadiandream.max_point_item": "Max Point Item",
   "item.arcadiandream.bomb_item": "Bomb Item",
-  "item.arcadiandream.bomb_item.cancel": ["",{"text":"Bullets cancelled: ","color":"aqua"},{"index":0},{"text":" || ","color":"gold"},{"text":"Star Items obtained: ","color":"aqua"},{"index":1}],
+  "item.arcadiandream.bomb_item.cancel": ["",{"text":"Bullets cancelled: ","color":"aqua"},{"index":0}],
   "item.arcadiandream.bomb_item.tooltip": [{"text":"Converts bullets into Star Items","color":"yellow"}],
   "item.arcadiandream.extend_item": "Extend Item",
   "item.arcadiandream.star_item": "Star Item",
