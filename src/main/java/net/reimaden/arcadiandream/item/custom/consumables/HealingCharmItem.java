@@ -32,20 +32,18 @@ public class HealingCharmItem extends Item {
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        PlayerEntity player = (PlayerEntity) user;
-        world.playSound(player, player.getX(), player.getY(), player.getZ(),
-                ModSounds.ITEM_HEALING_CHARM_USE, player.getSoundCategory(), 0.7f, world.random.nextFloat() * 0.4f + 0.8f);
+        if (world.isClient()) return stack;
 
-        player.getItemCooldownManager().set(this, 100);
+        PlayerEntity player = (PlayerEntity) user;
+        world.playSound(null, player.getX(), player.getY(), player.getZ(),
+                ModSounds.ITEM_HEALING_CHARM_USE, player.getSoundCategory(), 0.7f, world.getRandom().nextFloat() * 0.4f + 0.8f);
 
         player.incrementStat(Stats.USED.getOrCreateStat(this));
         if (!player.getAbilities().creativeMode) {
             stack.decrement(1);
         }
 
-        if (!world.isClient()) {
-            user.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 200));
-        }
+        user.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 100, 1));
 
         return stack;
     }
