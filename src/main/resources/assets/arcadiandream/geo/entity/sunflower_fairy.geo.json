@@ -7,8 +7,8 @@
 				"texture_width": 64,
 				"texture_height": 64,
 				"visible_bounds_width": 4,
-				"visible_bounds_height": 3.5,
-				"visible_bounds_offset": [0, 1.25, 0]
+				"visible_bounds_height": 4.5,
+				"visible_bounds_offset": [0, 1.75, 0]
 			},
 			"bones": [
 				{
@@ -180,10 +180,10 @@
 				{
 					"name": "blink",
 					"parent": "head",
-					"pivot": [0, 20.5, -4],
+					"pivot": [0, 20.5, 0],
 					"cubes": [
 						{
-							"origin": [-3, 19, -4],
+							"origin": [-3, 19, -0.5],
 							"size": [6, 3, 1],
 							"inflate": 0.001,
 							"uv": {
