@@ -22,6 +22,7 @@ import net.reimaden.arcadiandream.advancement.ModCriteria;
 import net.reimaden.arcadiandream.entity.custom.danmaku.BaseBulletEntity;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.sound.ModSounds;
+import net.reimaden.arcadiandream.statistic.ModStats;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -65,6 +66,7 @@ public class BombItem extends Item {
             world.playSound(null, user.getX(), user.getY(), user.getZ(), ModSounds.ITEM_BOMB_ITEM_USE, user.getSoundCategory(), 1f, 1f);
             ModCriteria.BULLETS_CANCELLED.trigger((ServerPlayerEntity) user, cancelled, false);
             user.incrementStat(Stats.USED.getOrCreateStat(this));
+            user.increaseStat(ModStats.BULLETS_CANCELLED, cancelled);
 
             if (!user.isCreative()) {
                 itemStack.decrement(1);

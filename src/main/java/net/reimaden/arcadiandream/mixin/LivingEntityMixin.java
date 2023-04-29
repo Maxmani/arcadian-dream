@@ -29,6 +29,7 @@ import net.reimaden.arcadiandream.advancement.ModCriteria;
 import net.reimaden.arcadiandream.entity.custom.danmaku.BaseBulletEntity;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.sound.ModSounds;
+import net.reimaden.arcadiandream.statistic.ModStats;
 import net.reimaden.arcadiandream.util.IEntityDataSaver;
 import net.reimaden.arcadiandream.util.ItemBreakUtil;
 import org.spongepowered.asm.mixin.Mixin;
@@ -76,7 +77,10 @@ public abstract class LivingEntityMixin extends Entity {
                     }
                 }
 
-                if (cancelled > 0) ModCriteria.BULLETS_CANCELLED.trigger((ServerPlayerEntity) entity, cancelled, true);
+                if (cancelled > 0) {
+                    ModCriteria.BULLETS_CANCELLED.trigger((ServerPlayerEntity) entity, cancelled, true);
+                    ((ServerPlayerEntity) entity).increaseStat(ModStats.BULLETS_CANCELLED, cancelled);
+                }
 
                 // Remove item
                 if (TrinketsApi.getTrinketComponent(entity).isPresent()) {

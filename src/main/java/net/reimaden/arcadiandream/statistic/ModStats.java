@@ -17,6 +17,7 @@ public class ModStats {
     public static final Identifier INTERACT_WITH_RITUAL_SHRINE = registerStat("interact_with_ritual_shrine", StatFormatter.DEFAULT);
     public static final Identifier INTERACT_WITH_ONBASHIRA = registerStat("interact_with_onbashira", StatFormatter.DEFAULT);
     public static final Identifier INTERACT_WITH_DANMAKU_CRAFTING_TABLE = registerStat("interact_with_danmaku_crafting_table", StatFormatter.DEFAULT);
+    public static final Identifier BULLETS_CANCELLED = registerStat("bullets_cancelled", StatFormatter.DEFAULT);
 
     @SuppressWarnings("SameParameterValue")
     private static Identifier registerStat(String id, StatFormatter formatter) {
