@@ -67,7 +67,7 @@ public class ModLootTableGenerator {
         @Override
         public void accept(BiConsumer<Identifier, LootTable.Builder> consumer) {
             consumer.accept(ModEntities.FAIRY.getLootTableId(), LootTable.builder()
-                    .pool(LootPool.builder().rolls(UniformLootNumberProvider.create(1.0f, 3.0f))
+                    .pool(LootPool.builder().rolls(UniformLootNumberProvider.create(1.0f, 4.0f))
                             .with(ItemEntry.builder(ModItems.POWER_ITEM).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f, 5.0f))).apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f))))
                             .with(ItemEntry.builder(ModItems.POINT_ITEM).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f, 5.0f))).apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f))))
                             .with(ItemEntry.builder(ModItems.STAR_ITEM).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f, 5.0f))).apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f))))
@@ -83,7 +83,7 @@ public class ModLootTableGenerator {
                     )
             );
             consumer.accept(ModEntities.SUNFLOWER_FAIRY.getLootTableId(), LootTable.builder()
-                    .pool(LootPool.builder().rolls(UniformLootNumberProvider.create(0.0f, 1.0f))
+                    .pool(LootPool.builder().rolls(UniformLootNumberProvider.create(1.0f, 4.0f))
                             .with(ItemEntry.builder(ModItems.POWER_ITEM).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 7.0f))).apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f))))
                             .with(ItemEntry.builder(ModItems.POINT_ITEM).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 7.0f))).apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f))))
                             .with(ItemEntry.builder(ModItems.STAR_ITEM).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 7.0f))).apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f))))
