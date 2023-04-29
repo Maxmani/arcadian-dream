@@ -16,10 +16,13 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
+import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.ai.DanmakuGoal;
 import net.reimaden.arcadiandream.entity.custom.danmaku.BaseBulletEntity;
 import net.reimaden.arcadiandream.entity.custom.danmaku.CircleBulletEntity;
@@ -139,6 +142,10 @@ public class SunflowerFairyEntity extends BaseFairyEntity {
         setAttackType(attackType);
 
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+    }
+
+    public static boolean canSpawn(EntityType<? extends BaseFairyEntity> type, ServerWorldAccess world, SpawnReason reason, BlockPos pos, Random random) {
+        return BaseFairyEntity.canSpawn(type, world, reason, pos, random) && ArcadianDream.CONFIG.fairyOptions.spawnSunflowerFairies();
     }
 
     public byte getAttackType() {

@@ -14,6 +14,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
+import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.damage.ModDamageSources;
 import net.reimaden.arcadiandream.entity.custom.mob.BaseFairyEntity;
 import net.reimaden.arcadiandream.particle.ModParticles;
@@ -74,7 +75,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
     }
 
     protected void applyDamage(Entity target, Entity owner) {
-        target.damage(ModDamageSources.danmaku(world, this, owner), getPower());
+        target.damage(ModDamageSources.danmaku(world, this, owner), getPower() * ArcadianDream.CONFIG.danmakuDamageMultiplier());
     }
 
     @Override

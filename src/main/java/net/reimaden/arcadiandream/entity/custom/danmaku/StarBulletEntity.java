@@ -11,6 +11,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
+import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.damage.ModDamageSources;
 import net.reimaden.arcadiandream.entity.ModEntities;
 import net.reimaden.arcadiandream.item.ModItems;
@@ -38,7 +39,7 @@ public class StarBulletEntity extends BaseBulletEntity {
 
     @Override
     protected void applyDamage(Entity target, Entity owner) {
-        target.damage(ModDamageSources.danmakuSharp(world, this, owner), getPower());
+        target.damage(ModDamageSources.danmakuSharp(world, this, owner), getPower() * ArcadianDream.CONFIG.danmakuDamageMultiplier());
     }
 
     public boolean getRotationAngle() {

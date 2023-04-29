@@ -67,4 +67,21 @@ public class ModConfigModel {
     @Sync(Option.SyncMode.OVERRIDE_CLIENT)
     @RangeConstraint(min = 1, max = 4)
     public int danmakuCooldownMultiplier = 1;
+
+    @Sync(Option.SyncMode.OVERRIDE_CLIENT)
+    @RangeConstraint(min = 1, max = 4)
+    public float danmakuDamageMultiplier = 1;
+
+    @Sync(Option.SyncMode.OVERRIDE_CLIENT)
+    public boolean cooldownPerBulletType = true;
+
+    @SectionHeader("mobs")
+
+    @Nest
+    public fairyOptions fairyOptions = new fairyOptions();
+
+    public static class fairyOptions {
+        public boolean spawnFairies = true;
+        public boolean spawnSunflowerFairies = true;
+    }
 }

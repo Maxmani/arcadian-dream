@@ -244,5 +244,12 @@
   "text.config.arcadiandream.category.houraiElixirOptions": "Hourai Elixir",
   "text.config.arcadiandream.option.houraiElixirOptions.canDrink": "Can drink",
   "text.config.arcadiandream.section.danmaku": "Danmaku",
-  "text.config.arcadiandream.option.danmakuCooldownMultiplier": "Cooldown multiplier"
+  "text.config.arcadiandream.option.danmakuCooldownMultiplier": "Cooldown multiplier",
+  "text.config.arcadiandream.option.danmakuDamageMultiplier": "Damage multiplier",
+  "text.config.arcadiandream.option.cooldownPerBulletType": "Cooldown per bullet type",
+  "text.config.arcadiandream.option.cooldownPerBulletType.tooltip": "Turning this off will make all bullet types share their cooldown.",
+  "text.config.arcadiandream.section.mobs": "Mobs",
+  "text.config.arcadiandream.category.fairyOptions": "Fairies",
+  "text.config.arcadiandream.option.fairyOptions.spawnFairies": "Spawn Fairies",
+  "text.config.arcadiandream.option.fairyOptions.spawnSunflowerFairies": "Spawn Sunflower Fairies"
 }

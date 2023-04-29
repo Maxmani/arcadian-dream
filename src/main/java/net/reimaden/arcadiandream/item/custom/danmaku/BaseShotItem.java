@@ -95,8 +95,13 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         final int cooldown = nbt.getInt("cooldown") * ArcadianDream.CONFIG.danmakuCooldownMultiplier();
 
         user.playSound(ModSounds.ENTITY_DANMAKU_FIRE, getSoundVolume(), getSoundPitch(random));
-        for (Item item : ModTags.SHOTS) {
-            user.getItemCooldownManager().set(item, cooldown);
+
+        if (ArcadianDream.CONFIG.cooldownPerBulletType()) {
+            user.getItemCooldownManager().set(this, cooldown);
+        } else {
+            for (Item item : ModTags.SHOTS) {
+                user.getItemCooldownManager().set(item, cooldown);
+            }
         }
 
         final int density = nbt.getInt("density");
@@ -195,7 +200,7 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
             int density = nbt.getInt("density");
 
             String keyPrefix = "item." + ArcadianDream.MOD_ID + ".shot.tooltip_";
-            String formattedPower = formatFloatValue(power);
+            String formattedPower = formatFloatValue(power * ArcadianDream.CONFIG.danmakuDamageMultiplier());
             String formattedSpeed = formatFloatValue(speed);
             String formattedGravity = formatFloatValue(gravity);
             String formattedDivergence = formatFloatValue(divergence);

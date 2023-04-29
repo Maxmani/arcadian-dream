@@ -19,6 +19,10 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
     private final Option<java.lang.Boolean> mochiMalletOptions_lowViolence = this.optionForKey(new Option.Key("mochiMalletOptions.lowViolence"));
     private final Option<java.lang.Boolean> houraiElixirOptions_canDrink = this.optionForKey(new Option.Key("houraiElixirOptions.canDrink"));
     private final Option<java.lang.Integer> danmakuCooldownMultiplier = this.optionForKey(new Option.Key("danmakuCooldownMultiplier"));
+    private final Option<java.lang.Integer> danmakuDamageMultiplier = this.optionForKey(new Option.Key("danmakuDamageMultiplier"));
+    private final Option<java.lang.Boolean> cooldownPerBulletType = this.optionForKey(new Option.Key("cooldownPerBulletType"));
+    private final Option<java.lang.Boolean> fairyOptions_spawnFairies = this.optionForKey(new Option.Key("fairyOptions.spawnFairies"));
+    private final Option<java.lang.Boolean> fairyOptions_spawnSunflowerFairies = this.optionForKey(new Option.Key("fairyOptions.spawnSunflowerFairies"));
 
     private ArcadianDreamConfig() {
         super(net.reimaden.arcadiandream.config.ModConfigModel.class);
@@ -119,20 +123,51 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         danmakuCooldownMultiplier.set(value);
     }
 
+    public int danmakuDamageMultiplier() {
+        return danmakuDamageMultiplier.value();
+    }
 
-    public interface NueTridentOptions {
-        boolean canHaveImpaling();
-        void canHaveImpaling(boolean value);
+    public void danmakuDamageMultiplier(int value) {
+        danmakuDamageMultiplier.set(value);
     }
-    public interface MochiMalletOptions {
-        boolean lowViolence();
-        void lowViolence(boolean value);
+
+    public boolean cooldownPerBulletType() {
+        return cooldownPerBulletType.value();
     }
+
+    public void cooldownPerBulletType(boolean value) {
+        cooldownPerBulletType.set(value);
+    }
+
+    public final FairyOptions fairyOptions = new FairyOptions();
+    public class FairyOptions implements fairyOptions {
+        public boolean spawnFairies() {
+            return fairyOptions_spawnFairies.value();
+        }
+
+        public void spawnFairies(boolean value) {
+            fairyOptions_spawnFairies.set(value);
+        }
+
+        public boolean spawnSunflowerFairies() {
+            return fairyOptions_spawnSunflowerFairies.value();
+        }
+
+        public void spawnSunflowerFairies(boolean value) {
+            fairyOptions_spawnSunflowerFairies.set(value);
+        }
+
+    }
+
     public interface HisouSwordOptions {
         int minHeightForPeaches();
         void minHeightForPeaches(int value);
         boolean canDisableShields();
         void canDisableShields(boolean value);
+    }
+    public interface HouraiElixirOptions {
+        boolean canDrink();
+        void canDrink(boolean value);
     }
     public interface ChiselOptions {
         boolean canUse();
@@ -140,9 +175,19 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         int maxDistance();
         void maxDistance(int value);
     }
-    public interface HouraiElixirOptions {
-        boolean canDrink();
-        void canDrink(boolean value);
+    public interface fairyOptions {
+        boolean spawnFairies();
+        void spawnFairies(boolean value);
+        boolean spawnSunflowerFairies();
+        void spawnSunflowerFairies(boolean value);
+    }
+    public interface MochiMalletOptions {
+        boolean lowViolence();
+        void lowViolence(boolean value);
+    }
+    public interface NueTridentOptions {
+        boolean canHaveImpaling();
+        void canHaveImpaling(boolean value);
     }
 
 }

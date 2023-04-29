@@ -20,9 +20,12 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Util;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
+import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.ai.DanmakuGoal;
 import net.reimaden.arcadiandream.entity.custom.danmaku.BaseBulletEntity;
 import net.reimaden.arcadiandream.entity.variant.FairyPersonality;
@@ -118,6 +121,10 @@ public class FairyEntity extends BaseFairyEntity {
         setPersonality(personality);
 
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+    }
+
+    public static boolean canSpawn(EntityType<? extends BaseFairyEntity> type, ServerWorldAccess world, SpawnReason reason, BlockPos pos, Random random) {
+        return BaseFairyEntity.canSpawn(type, world, reason, pos, random) && ArcadianDream.CONFIG.fairyOptions.spawnFairies();
     }
 
     public FairyVariant getVariant() {
