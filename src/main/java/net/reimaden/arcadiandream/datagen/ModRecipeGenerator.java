@@ -114,7 +114,7 @@ public class ModRecipeGenerator extends ModRecipeProvider {
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BUBBLE_BULLET_CORE)
                 .input('#', ModItems.STAR_ITEM)
                 .pattern("###")
-                .pattern("###")
+                .pattern("# #")
                 .pattern("###").criterion(RecipeProvider.hasItem(ModItems.STAR_ITEM),
                         RecipeProvider.conditionsFromItem(ModItems.STAR_ITEM))
                 .offerTo(exporter);
