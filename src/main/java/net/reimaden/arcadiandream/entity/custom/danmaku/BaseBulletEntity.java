@@ -54,18 +54,24 @@ public class BaseBulletEntity extends ThrownItemEntity {
         super.tick();
         if (!world.isClient()) {
             if (age >= getDuration()) {
-                discard();
-                despawnParticle((ServerWorld) world);
+                discardBullet();
+            }
+            if (getOwner() instanceof LivingEntity livingEntity && livingEntity.deathTime >= 19) {
+                discardBullet();
             }
         }
+    }
+
+    private void discardBullet() {
+        discard();
+        despawnParticle((ServerWorld) world);
     }
 
     @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
-        if (world.isClient()) {
-            return;
-        }
+        if (world.isClient()) return;
+
         Entity entity = entityHitResult.getEntity();
         Entity owner = getOwner();
         if (entity instanceof BaseFairyEntity && owner instanceof BaseFairyEntity) {
