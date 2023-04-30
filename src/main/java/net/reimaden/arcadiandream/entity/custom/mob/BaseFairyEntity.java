@@ -30,6 +30,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.*;
+import net.reimaden.arcadiandream.entity.ModEntities;
 import net.reimaden.arcadiandream.entity.custom.DanmakuMob;
 import net.reimaden.arcadiandream.entity.custom.danmaku.BaseBulletEntity;
 import net.reimaden.arcadiandream.entity.custom.danmaku.CircleBulletEntity;
@@ -291,5 +292,10 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
         return ImmutableList.of(
                 new CircleBulletEntity(world, user)
         );
+    }
+
+    @Override
+    public EntityGroup getGroup() {
+        return ModEntities.EntityGroups.YOUKAI;
     }
 }

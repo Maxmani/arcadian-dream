@@ -7,6 +7,7 @@ package net.reimaden.arcadiandream.entity;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
+import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registries;
@@ -71,5 +72,11 @@ public class ModEntities {
 
     public static void register() {
         ArcadianDream.LOGGER.debug("Registering entities for " + ArcadianDream.MOD_ID);
+    }
+
+    @SuppressWarnings("InstantiationOfUtilityClass")
+    public static class EntityGroups {
+        // Dunno if there's a better way to do this
+        public static final EntityGroup YOUKAI = new EntityGroup();
     }
 }
