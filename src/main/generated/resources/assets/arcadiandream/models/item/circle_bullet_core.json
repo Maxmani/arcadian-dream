@@ -1,5 +1,5 @@
 {
-  "parent": "arcadiandream:item/danmaku",
+  "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "arcadiandream:item/circle_shot"
   }

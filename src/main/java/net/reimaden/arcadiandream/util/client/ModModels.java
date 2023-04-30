@@ -15,8 +15,8 @@ import java.util.Optional;
 public class ModModels {
 
     public static final Model HANDHELD_BIG = ModModels.item("handheld_big", TextureKey.LAYER0);
-    public static final Model DANMAKU = ModModels.item("danmaku", TextureKey.LAYER0);
 
+    @SuppressWarnings("SameParameterValue")
     private static Model item(String parent, TextureKey... requiredTextureKeys) {
         return new Model(Optional.of(new Identifier(ArcadianDream.MOD_ID, "item/" + parent)), Optional.empty(), requiredTextureKeys);
     }

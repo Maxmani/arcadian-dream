@@ -88,7 +88,7 @@ public class ModModelGenerator extends FabricModelProvider {
             Identifier itemId = Registries.ITEM.getId(core);
             String bulletCoreType = itemId.getPath().split("_")[0];
             String textureName = "item/" + bulletCoreType + "_shot";
-            registerWithSpecificTexture(core, textureName, ModModels.DANMAKU, item);
+            registerWithSpecificTexture(core, textureName, Models.GENERATED, item);
         }
     }
 
