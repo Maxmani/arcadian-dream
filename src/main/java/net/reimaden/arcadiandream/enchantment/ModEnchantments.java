@@ -18,8 +18,10 @@ public class ModEnchantments {
     public static final Enchantment DANMAKU_PROTECTION = registerEnchantment("danmaku_protection",
             new DanmakuProtectionEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.ARMOR,
                     EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET));
+    public static final Enchantment YOUKAI_BUSTER = registerEnchantment("youkai_buster",
+            new YoukaiBusterEnchantment(Enchantment.Rarity.RARE, EnchantmentTarget.WEAPON,
+                    EquipmentSlot.MAINHAND));
 
-    @SuppressWarnings("SameParameterValue")
     private static Enchantment registerEnchantment(String name, Enchantment enchantment) {
         return Registry.register(Registries.ENCHANTMENT, new Identifier(ArcadianDream.MOD_ID, name), enchantment);
     }

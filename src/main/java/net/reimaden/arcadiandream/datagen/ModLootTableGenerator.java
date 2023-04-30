@@ -123,7 +123,7 @@ public class ModLootTableGenerator {
                             .with(ItemEntry.builder(ModItems.HEALING_CHARM).weight(5).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))))
                     )
                     .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0f))
-                            .with(ItemEntry.builder(Items.BOOK).weight(20).apply(new EnchantRandomlyLootFunction.Builder().add(ModEnchantments.DANMAKU_PROTECTION)))
+                            .with(ItemEntry.builder(Items.BOOK).weight(20).apply(new EnchantRandomlyLootFunction.Builder().add(ModEnchantments.DANMAKU_PROTECTION).add(ModEnchantments.YOUKAI_BUSTER)))
                             .with(ItemEntry.builder(ModItems.MAKAITE_HELMET).weight(20).apply(EnchantRandomlyLootFunction.builder()))
                             .with(ItemEntry.builder(ModItems.MAKAITE_CHESTPLATE).weight(20).apply(EnchantRandomlyLootFunction.builder()))
                             .with(ItemEntry.builder(ModItems.MAKAITE_LEGGINGS).weight(20).apply(EnchantRandomlyLootFunction.builder()))

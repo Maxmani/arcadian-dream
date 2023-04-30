@@ -63,7 +63,7 @@ public class MochiMalletItem extends ModHammerItem {
         }
 
         if (nbt != null && target.isDead()) {
-            if (nbt.contains("kill_count")){
+            if (nbt.contains("kill_count")) {
                 nbt.putInt("kill_count", nbt.getInt("kill_count") + 1);
             } else {
                 nbt.putInt("kill_count", 1);
@@ -83,7 +83,7 @@ public class MochiMalletItem extends ModHammerItem {
         super.appendTooltip(stack, world, tooltip, context);
     }
 
-    private int getKills(ItemStack stack) {
+    private static int getKills(ItemStack stack) {
         return stack.getOrCreateNbt().getInt("kill_count");
     }
 }

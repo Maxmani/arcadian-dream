@@ -14,8 +14,8 @@ import net.reimaden.arcadiandream.util.ModTags;
 
 public class DanmakuProtectionEnchantment extends Enchantment {
 
-    public DanmakuProtectionEnchantment(Rarity weight, EnchantmentTarget type, EquipmentSlot... slotTypes) {
-        super(weight, type, slotTypes);
+    public DanmakuProtectionEnchantment(Rarity weight, EnchantmentTarget type, EquipmentSlot... slots) {
+        super(weight, type, slots);
     }
 
     @Override
