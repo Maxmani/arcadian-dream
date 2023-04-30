@@ -22,7 +22,9 @@ import net.minecraft.world.poi.PointOfInterestType;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.block.ModBlocks;
 import net.reimaden.arcadiandream.item.ModItems;
+import net.reimaden.arcadiandream.item.custom.danmaku.BaseShotItem;
 import net.reimaden.arcadiandream.sound.ModSounds;
+import net.reimaden.arcadiandream.util.ColorMap;
 
 @SuppressWarnings("unused")
 public class ModVillagers {
@@ -65,8 +67,8 @@ public class ModVillagers {
         registerTrades();
     }
 
+    @SuppressWarnings("CodeBlock2Expr")
     public static void registerTrades() {
-        // WIP
         TradeOfferHelper.registerVillagerOffers(ANTIQUARIAN, 1, factories -> {
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(ModItems.STAR_ITEM, 16),
@@ -84,14 +86,46 @@ public class ModVillagers {
                     COMMON_MAX_USES, NOVICE_SELL_XP, LOW_PRICE_MULTIPLIER
             ));
         });
-        // WIP
-        // noinspection CodeBlock2Expr
         TradeOfferHelper.registerVillagerOffers(ANTIQUARIAN, 2, factories -> {
+            factories.add((entity, random) -> new TradeOffer(
+                    new ItemStack(Items.EMERALD, 12),
+                    new ItemStack(ModItems.FAITH_ITEM),
+                    DEFAULT_MAX_USES, APPRENTICE_BUY_XP, LOW_PRICE_MULTIPLIER
+            ));
+        });
+        TradeOfferHelper.registerVillagerOffers(ANTIQUARIAN, 3, factories -> {
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(Items.EMERALD, 16),
                     new ItemStack(ModItems.HEALING_CHARM),
-                    DEFAULT_MAX_USES, APPRENTICE_BUY_XP, HIGH_PRICE_MULTIPLIER
+                    DEFAULT_MAX_USES, JOURNEYMAN_BUY_XP, HIGH_PRICE_MULTIPLIER
             ));
         });
+        TradeOfferHelper.registerVillagerOffers(ANTIQUARIAN, 4, factories -> {
+            factories.add((entity, random) -> new TradeOffer(
+                    new ItemStack(Items.EMERALD, 32),
+                    getVillagerBullet(),
+                    RARE_MAX_USES, EXPERT_BUY_XP, HIGH_PRICE_MULTIPLIER
+            ));
+        });
+        TradeOfferHelper.registerVillagerOffers(ANTIQUARIAN, 5, factories -> {
+            factories.add((entity, random) -> new TradeOffer(
+                    new ItemStack(Items.EMERALD, 42),
+                    new ItemStack(ModItems.BOMB_ITEM),
+                    RARE_MAX_USES, MASTER_TRADE_XP, HIGH_PRICE_MULTIPLIER
+            ));
+        });
+    }
+
+    // TODO: Add more shots to trades
+    private static ItemStack getVillagerBullet() {
+        ItemStack stack = new ItemStack(ModItems.CIRCLE_SHOT);
+        BaseShotItem shot = (BaseShotItem) stack.getItem();
+        shot.setPower(stack, 7);
+        shot.setSpeed(stack, 1.2f);
+        shot.setDuration(stack, 72);
+        shot.setCooldown(stack, 30);
+        shot.setDensity(stack, 3);
+        shot.setColor(stack, ColorMap.getColorInt("orange"));
+        return stack;
     }
 }
