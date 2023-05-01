@@ -107,7 +107,8 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input('#', ModItems.STAR_ITEM)
                 .pattern(" # ")
                 .pattern("# #")
-                .pattern(" # ").criterion(RecipeProvider.hasItem(ModItems.STAR_ITEM),
+                .pattern(" # ")
+                .criterion(RecipeProvider.hasItem(ModItems.STAR_ITEM),
                         RecipeProvider.conditionsFromItem(ModItems.STAR_ITEM))
                 .offerTo(exporter);
 
@@ -115,7 +116,8 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input('#', ModItems.STAR_ITEM)
                 .pattern("###")
                 .pattern("# #")
-                .pattern("###").criterion(RecipeProvider.hasItem(ModItems.STAR_ITEM),
+                .pattern("###")
+                .criterion(RecipeProvider.hasItem(ModItems.STAR_ITEM),
                         RecipeProvider.conditionsFromItem(ModItems.STAR_ITEM))
                 .offerTo(exporter);
 
@@ -124,7 +126,8 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input('U', ModTags.Items.UNDEAD_PARTS)
                 .pattern("UU")
                 .pattern("##")
-                .pattern("##").criterion(RecipeProvider.hasItem(ModItems.STAR_ITEM),
+                .pattern("##")
+                .criterion(RecipeProvider.hasItem(ModItems.STAR_ITEM),
                         RecipeProvider.conditionsFromItem(ModItems.STAR_ITEM))
                 .offerTo(exporter);
 
@@ -133,7 +136,18 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input('U', Items.ARROW)
                 .pattern("# #")
                 .pattern(" U ")
-                .pattern("# #").criterion(RecipeProvider.hasItem(ModItems.STAR_ITEM),
+                .pattern("# #")
+                .criterion(RecipeProvider.hasItem(ModItems.STAR_ITEM),
+                        RecipeProvider.conditionsFromItem(ModItems.STAR_ITEM))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.KUNAI_BULLET_CORE)
+                .input('#', ModItems.STAR_ITEM)
+                .input('U', ConventionalItemTags.IRON_INGOTS)
+                .pattern("#")
+                .pattern("U")
+                .pattern("#")
+                .criterion(RecipeProvider.hasItem(ModItems.STAR_ITEM),
                         RecipeProvider.conditionsFromItem(ModItems.STAR_ITEM))
                 .offerTo(exporter);
 

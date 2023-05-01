@@ -13,6 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.damage.ModDamageSources;
@@ -69,8 +70,8 @@ public class BaseBulletEntity extends ThrownItemEntity {
 
     @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
-        super.onEntityHit(entityHitResult);
         if (world.isClient()) return;
+        super.onEntityHit(entityHitResult);
 
         Entity entity = entityHitResult.getEntity();
         Entity owner = getOwner();
@@ -87,14 +88,17 @@ public class BaseBulletEntity extends ThrownItemEntity {
     @Override
     protected void onCollision(HitResult hitResult) {
         // Make bullets ignore their owner
-        if (hitResult.getType() == HitResult.Type.ENTITY) {
+        HitResult.Type type = hitResult.getType();
+        if (type == HitResult.Type.ENTITY) {
             Entity entity = ((EntityHitResult) hitResult).getEntity();
-            if (entity == getOwner()) {
-                return;
-            }
+            if (entity == getOwner()) return;
         }
         super.onCollision(hitResult);
 
+        postHit(type);
+    }
+
+    protected void postHit(HitResult.Type type) {
         if (!world.isClient()) {
             kill();
             bulletEffects((ServerWorld) world);
@@ -103,7 +107,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
 
     private void bulletEffects(ServerWorld serverWorld) {
         despawnParticle(serverWorld);
-        playSound(ModSounds.ENTITY_DANMAKU_HIT, 0.8f, getSoundPitch());
+        playSound(ModSounds.ENTITY_DANMAKU_HIT, 0.8f, getSoundPitch(random));
     }
 
     private void despawnParticle(ServerWorld serverWorld) {
@@ -143,7 +147,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
         }
     }
 
-    public float getSoundPitch() {
-        return 1f + (random.nextFloat() - 0.5f) * 0.1f;
+    public static float getSoundPitch(Random random) {
+        return 1.0f + (random.nextFloat() - 0.5f) * 0.1f;
     }
 }

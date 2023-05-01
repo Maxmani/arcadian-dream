@@ -25,7 +25,7 @@ public class FlatBulletEntityRenderer extends BulletEntityRenderer {
         // Rotate the model based on the direction
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(MathHelper.lerp(tickDelta, entity.prevYaw, entity.getYaw()) - 90.0f));
         matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(MathHelper.lerp(tickDelta, entity.prevPitch, entity.getPitch())));
-        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(-90.0f));
-        matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(90.0f));
+        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90.0f));
+        matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(-90.0f));
     }
 }

@@ -87,13 +87,25 @@ public class ModModelGenerator extends FabricModelProvider {
         for (Item core : ModTags.BULLET_CORES) {
             Identifier itemId = Registries.ITEM.getId(core);
             String bulletCoreType = itemId.getPath().split("_")[0];
-            String textureName = "item/" + bulletCoreType + "_shot";
+            String textureName = bulletCoreType + "_shot";
             registerWithSpecificTexture(core, textureName, Models.GENERATED, item);
+        }
+        for (Item shot : ModTags.SHOTS) {
+            Identifier itemId = Registries.ITEM.getId(shot);
+            String name = itemId.getPath();
+            registerShot(shot, name, name + "_outline", item);
         }
     }
 
     @SuppressWarnings("SameParameterValue")
     private void registerWithSpecificTexture(Item item, String name, Model model, ItemModelGenerator generator) {
-        model.upload(ModelIds.getItemModelId(item), TextureMap.layer0(new Identifier(ArcadianDream.MOD_ID, name)), generator.writer);
+        model.upload(ModelIds.getItemModelId(item), TextureMap.layer0(new Identifier(ArcadianDream.MOD_ID, "item/" + name)), generator.writer);
+    }
+
+    private void registerShot(Item item, String core, String outline, ItemModelGenerator generator) {
+        Models.GENERATED_TWO_LAYERS.upload(ModelIds.getItemModelId(item), TextureMap.layered(
+                new Identifier(ArcadianDream.MOD_ID, "item/" + outline),
+                new Identifier(ArcadianDream.MOD_ID, "item/" + core)
+        ), generator.writer);
     }
 }

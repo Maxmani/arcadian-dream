@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "arcadiandream:star_item"
+    },
+    "U": {
+      "tag": "c:iron_ingots"
+    }
+  },
+  "pattern": [
+    "#",
+    "U",
+    "#"
+  ],
+  "result": {
+    "item": "arcadiandream:kunai_bullet_core"
+  },
+  "show_notification": true
+}

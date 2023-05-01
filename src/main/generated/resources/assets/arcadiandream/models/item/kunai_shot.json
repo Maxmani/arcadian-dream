@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "arcadiandream:item/kunai_shot_outline",
+    "layer1": "arcadiandream:item/kunai_shot"
+  }
+}

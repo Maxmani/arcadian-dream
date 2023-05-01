@@ -104,6 +104,7 @@ public class ModItems {
     public static final Item BUBBLE_BULLET_CORE = registerItem("bubble_bullet_core", new BulletCoreItem(new FabricItemSettings()));
     public static final Item AMULET_BULLET_CORE = registerItem("amulet_bullet_core", new BulletCoreItem(new FabricItemSettings()));
     public static final Item STAR_BULLET_CORE = registerItem("star_bullet_core", new BulletCoreItem(new FabricItemSettings()));
+    public static final Item KUNAI_BULLET_CORE = registerItem("kunai_bullet_core", new BulletCoreItem(new FabricItemSettings()));
 
     public static final Item CIRCLE_SHOT = registerItem("circle_shot", new CircleShotItem(new FabricItemSettings().maxDamage(100),
             1, 0.8f, 100, 2, 0.0f, 0.0f, "spread", 1,
@@ -117,6 +118,9 @@ public class ModItems {
     public static final Item STAR_SHOT = registerItem("star_shot", new StarShotItem(new FabricItemSettings().maxDamage(150),
             1, 0.65f, 100, 5, 0.0f, 0.0f, "spread", 1,
             10, 2.0f, 200, 120, 90, 25));
+    public static final Item KUNAI_SHOT = registerItem("kunai_shot", new KunaiShotItem(new FabricItemSettings().maxDamage(125),
+            1, 0.8f, 100, 5, 0.0f, 0.0f, "spread", 1,
+            8, 1.8f, 200, 100, 90, 18));
 
     // Music Discs
     public static final Item MUSIC_DISC_FAIRY_PLAYGROUND = registerItem("music_disc_fairy_playground", new MusicDiscItem(10, ModSounds.MUSIC_DISC_FAIRY_PLAYGROUND,
@@ -219,10 +223,12 @@ public class ModItems {
         addToItemGroup(ModItemGroups.DANMAKU, BUBBLE_BULLET_CORE);
         addToItemGroup(ModItemGroups.DANMAKU, AMULET_BULLET_CORE);
         addToItemGroup(ModItemGroups.DANMAKU, STAR_BULLET_CORE);
+        addToItemGroup(ModItemGroups.DANMAKU, KUNAI_BULLET_CORE);
         addToItemGroup(ModItemGroups.DANMAKU, CIRCLE_SHOT);
         addToItemGroup(ModItemGroups.DANMAKU, BUBBLE_SHOT);
         addToItemGroup(ModItemGroups.DANMAKU, AMULET_SHOT);
         addToItemGroup(ModItemGroups.DANMAKU, STAR_SHOT);
+        addToItemGroup(ModItemGroups.DANMAKU, KUNAI_SHOT);
         addToItemGroup(ModItemGroups.DANMAKU, SPREAD_PATTERN);
         addToItemGroup(ModItemGroups.DANMAKU, RAY_PATTERN);
         addToItemGroup(ModItemGroups.DANMAKU, RING_PATTERN);
