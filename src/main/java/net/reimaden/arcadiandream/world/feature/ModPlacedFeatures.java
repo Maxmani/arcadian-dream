@@ -33,7 +33,7 @@ public class ModPlacedFeatures {
                 modifiersWithCount(3, // Veins per chunk
                         HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(80))));
         register(context, MAKAITE_ORE, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MAKAITE_ORE),
-                modifiersWithCount(6, // Veins per chunk
+                modifiersWithCount(9, // Veins per chunk
                         PlacedFeatures.TEN_ABOVE_AND_BELOW_RANGE));
     }
 

@@ -1,4 +1,4 @@
-// 1.19.4	2023-04-30T17:38:31.455492938	Arcadian Dream/Model Definitions
+// 1.19.4	2023-05-01T16:42:45.162225354	Arcadian Dream/Model Definitions
 f2ebcff21cadc28cf53399f6a3290da06c871e6e assets/arcadiandream/blockstates/deepslate_dragon_gem_ore.json
 b634be7d5eb75939f6cf5e5d2329502efc4730e1 assets/arcadiandream/models/item/amulet_bullet_core.json
 e9e8dbe0ce582568df0e7c45a0233a6720eadae9 assets/arcadiandream/models/item/ordinary_hat.json
@@ -51,14 +51,14 @@ f7841bcc4cf3f5f326201b83b655f2603b536519 assets/arcadiandream/models/item/mochi_
 9d41ddea0a1822e88c9131f1341c0e43e658b92b assets/arcadiandream/models/item/triple_pattern.json
 ac3e1126e77b24c7e385747bfa1153a036d8527a assets/arcadiandream/models/item/makaite_hoe.json
 402162341d07cbefc6fbd154877e8ee67dda6938 assets/arcadiandream/blockstates/makaite_block.json
-416572d17e45896cdf2116c15f671ddee92d017a assets/arcadiandream/models/block/dragon_gem_block.json
 02573d1b0819c3ab129e8278deef4973fd71c8fd assets/arcadiandream/models/item/circle_bullet_core.json
+416572d17e45896cdf2116c15f671ddee92d017a assets/arcadiandream/models/block/dragon_gem_block.json
 30ecf2c9a8b01fd30180e96f89facbfefe421996 assets/arcadiandream/models/block/deepslate_dragon_gem_ore.json
 a624e46fda848287b623aecbccd045ec8103723c assets/arcadiandream/models/item/heavenly_peach.json
 2709e1355b8b0c9101983a1f5635c0ce4de02b88 assets/arcadiandream/models/block/dragon_gem_ore.json
 2d3c31049d32406ebe0f11ac82f13a3ea63745aa assets/arcadiandream/models/item/makaite_ore.json
-b576f285b19f179b7eda54956635a8b72ce1b6f8 assets/arcadiandream/models/item/mysterious_seal.json
 a235eee09a8c1e2172097bce6290adfe6a90da22 assets/arcadiandream/models/item/makaite_sword.json
+b576f285b19f179b7eda54956635a8b72ce1b6f8 assets/arcadiandream/models/item/mysterious_seal.json
 f3dce81daae1565faa354883c1daac9bac9028ae assets/arcadiandream/models/item/dragon_gem.json
 27539151eaf5e91586ba5789f940f0a5c5ad4fa7 assets/arcadiandream/models/item/miracle_mallet.json
 f1c33ba97e3b68859e9bbb6ec61f3389c2f64621 assets/arcadiandream/blockstates/end_stone_dragon_gem_ore.json

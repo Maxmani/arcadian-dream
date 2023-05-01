@@ -45,7 +45,7 @@ public class ModConfiguredFeatures {
 
         register(context, DRAGON_GEM_ORE, Feature.ORE, new OreFeatureConfig(overworldDragonGemOres, 5, 0.5f));
         register(context, END_DRAGON_GEM_ORE, Feature.ORE, new OreFeatureConfig(endDragonGemOres, 4, 0.5f));
-        register(context, MAKAITE_ORE, Feature.ORE, new OreFeatureConfig(makaiteOres, 8, 0.25f));
+        register(context, MAKAITE_ORE, Feature.ORE, new OreFeatureConfig(makaiteOres, 8));
     }
 
     private static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {
