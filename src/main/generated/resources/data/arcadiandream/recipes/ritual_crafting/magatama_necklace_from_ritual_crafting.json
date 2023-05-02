@@ -1,0 +1,32 @@
+{
+  "type": "arcadiandream:ritual_crafting",
+  "ingredients": [
+    {
+      "item": "minecraft:string"
+    },
+    {
+      "item": "minecraft:string"
+    },
+    {
+      "item": "minecraft:string"
+    },
+    {
+      "item": "arcadiandream:dragon_gem"
+    },
+    {
+      "item": "arcadiandream:bomb_item"
+    },
+    {
+      "item": "arcadiandream:dragon_gem"
+    },
+    {
+      "item": "minecraft:string"
+    },
+    {
+      "item": "minecraft:string"
+    }
+  ],
+  "result": {
+    "item": "arcadiandream:magatama_necklace"
+  }
+}

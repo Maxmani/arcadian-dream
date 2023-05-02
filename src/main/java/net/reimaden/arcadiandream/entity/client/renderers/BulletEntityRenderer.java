@@ -48,8 +48,18 @@ public class BulletEntityRenderer extends FlyingItemEntityRenderer<BaseBulletEnt
     protected void modifyMatrices(MatrixStack matrices, BaseBulletEntity entity, float tickDelta) {
         matrices.push();
         matrices.scale(scale, scale, scale);
-        matrices.translate(0.0f, 0.25f, 0.0f);
+        matrices.translate(0.0f, getHeight(entity), 0.0f);
         matrices.multiply(dispatcher.getRotation());
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180.0f));
+    }
+
+    private float getHeight(BaseBulletEntity entity) {
+        if (scale == 1.0f) {
+            return 0.25f;
+        } else if (scale == 2.0f) {
+            return 0.25f * 0.75f;
+        }
+
+        return entity.getHeight();
     }
 }

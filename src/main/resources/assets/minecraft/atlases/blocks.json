@@ -9,6 +9,11 @@
       "type": "directory",
       "source": "models/item",
       "prefix": "models/item/"
+    },
+    {
+      "type": "directory",
+      "source": "models/trinket",
+      "prefix": "models/trinket/"
     }
   ]
 }

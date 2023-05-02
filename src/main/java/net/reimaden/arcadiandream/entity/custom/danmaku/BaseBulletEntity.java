@@ -5,9 +5,12 @@
 
 package net.reimaden.arcadiandream.entity.custom.danmaku;
 
+import dev.emi.trinkets.api.TrinketsApi;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.server.world.ServerWorld;
@@ -18,8 +21,10 @@ import net.minecraft.world.World;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.damage.ModDamageSources;
 import net.reimaden.arcadiandream.entity.custom.mob.BaseFairyEntity;
+import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.particle.ModParticles;
 import net.reimaden.arcadiandream.sound.ModSounds;
+import net.reimaden.arcadiandream.statistic.ModStats;
 
 public class BaseBulletEntity extends ThrownItemEntity {
 
@@ -149,5 +154,52 @@ public class BaseBulletEntity extends ThrownItemEntity {
 
     public static float getSoundPitch(Random random) {
         return 1.0f + (random.nextFloat() - 0.5f) * 0.1f;
+    }
+
+    @Override
+    public boolean canHit() {
+        return true;
+    }
+
+    @Override
+    public boolean canBeHitByProjectile() {
+        return false;
+    }
+
+    @Override
+    public float getTargetingMargin() {
+        return (float) getBoundingBox().getXLength() * 1.1f;
+    }
+
+    @Override
+    public boolean handleAttack(Entity attacker) {
+        return !playerHasMagatama((LivingEntity) attacker) || getOwner() == attacker;
+    }
+
+    @Override
+    public boolean damage(DamageSource source, float amount) {
+        if (isInvulnerableTo(source)) return false;
+        scheduleVelocityUpdate();
+
+        final Entity entity = source.getAttacker();
+        if (entity == getOwner()) return false;
+
+        if (!world.isClient()) {
+            if (entity instanceof PlayerEntity player && playerHasMagatama(player)
+                    && player.getItemCooldownManager().getCooldownProgress(ModItems.MAGATAMA_NECKLACE, 0.0f) == 0) {
+                kill();
+                cancelParticle((ServerWorld) world);
+                player.getItemCooldownManager().set(ModItems.MAGATAMA_NECKLACE, 10);
+                player.increaseStat(ModStats.BULLETS_CANCELLED, 1);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static boolean playerHasMagatama(LivingEntity entity) {
+        //noinspection OptionalGetWithoutIsPresent
+        return TrinketsApi.getTrinketComponent(entity).get().isEquipped(ModItems.MAGATAMA_NECKLACE);
     }
 }

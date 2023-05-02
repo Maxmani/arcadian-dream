@@ -44,6 +44,7 @@ public class ModItems {
     public static final Item IBUKI_GOURD = registerItem("ibuki_gourd", new IbukiGourdItem(new FabricItemSettings().maxCount(1)));
     public static final Item HEALING_CHARM = registerItem("healing_charm", new HealingCharmItem(new FabricItemSettings().maxCount(16)));
     public static final Item HOURAI_ELIXIR = registerItem("hourai_elixir", new HouraiElixirItem(new FabricItemSettings().maxCount(1).maxDamage(3).rarity(Rarity.EPIC)));
+    public static final Item MAGATAMA_NECKLACE = registerItem("magatama_necklace", new MagatamaNecklaceItem(new FabricItemSettings().maxCount(1).rarity(Rarity.UNCOMMON)));
 
     public static final Item SPREAD_PATTERN_TEMPLATE = registerItem("spread_pattern_template", new PatternTemplateItem(new FabricItemSettings().maxCount(16)));
     public static final Item RAY_PATTERN_TEMPLATE = registerItem("ray_pattern_template", new PatternTemplateItem(new FabricItemSettings().maxCount(16)));
@@ -196,6 +197,7 @@ public class ModItems {
         addToItemGroup(ModItemGroups.ITEMS, IBUKI_GOURD);
         addToItemGroup(ModItemGroups.ITEMS, HEALING_CHARM);
         addToItemGroup(ModItemGroups.ITEMS, HOURAI_ELIXIR);
+        addToItemGroup(ModItemGroups.ITEMS, MAGATAMA_NECKLACE);
         addToItemGroup(ModItemGroups.ITEMS, HEAVENLY_PEACH);
         addToItemGroup(ModItemGroups.ITEMS, ORDINARY_HAT);
         addToItemGroup(ModItemGroups.ITEMS, MAKAITE_HELMET);

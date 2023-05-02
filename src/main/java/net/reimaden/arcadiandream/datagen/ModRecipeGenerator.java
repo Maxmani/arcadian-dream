@@ -244,5 +244,13 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input(Blocks.EMERALD_BLOCK)
                 .input(Blocks.GOLD_BLOCK, 3)
                 .offerTo(exporter, ritualCraftingId(ModItems.MIRACLE_MALLET));
+
+        RitualCraftingRecipeJsonBuilder.create(ModItems.MAGATAMA_NECKLACE)
+                .input(Items.STRING, 3)
+                .input(ModItems.DRAGON_GEM)
+                .input(ModItems.BOMB_ITEM)
+                .input(ModItems.DRAGON_GEM)
+                .input(Items.STRING, 2)
+                .offerTo(exporter, ritualCraftingId(ModItems.MAGATAMA_NECKLACE));
     }
 }
