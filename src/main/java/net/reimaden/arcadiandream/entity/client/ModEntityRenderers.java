@@ -18,6 +18,7 @@ public class ModEntityRenderers {
         EntityRendererRegistry.register(ModEntities.AMULET_BULLET, ctx -> new FlatBulletEntityRenderer(ctx, 1.0f));
         EntityRendererRegistry.register(ModEntities.STAR_BULLET, ctx -> new StarBulletEntityRenderer(ctx, 2.0f));
         EntityRendererRegistry.register(ModEntities.KUNAI_BULLET, ctx -> new FlatBulletEntityRenderer(ctx, 1.0f));
+        EntityRendererRegistry.register(ModEntities.PELLET_BULLET, ctx -> new BulletEntityRenderer(ctx, 1.0f));
 
         // Mobs
         EntityRendererRegistry.register(ModEntities.FAIRY, FairyEntityRenderer::new);

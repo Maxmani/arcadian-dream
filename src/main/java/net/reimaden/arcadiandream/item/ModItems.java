@@ -105,12 +105,13 @@ public class ModItems {
     public static final Item AMULET_BULLET_CORE = registerItem("amulet_bullet_core", new BulletCoreItem(new FabricItemSettings()));
     public static final Item STAR_BULLET_CORE = registerItem("star_bullet_core", new BulletCoreItem(new FabricItemSettings()));
     public static final Item KUNAI_BULLET_CORE = registerItem("kunai_bullet_core", new BulletCoreItem(new FabricItemSettings()));
+    public static final Item PELLET_BULLET_CORE = registerItem("pellet_bullet_core", new BulletCoreItem(new FabricItemSettings()));
 
     public static final Item CIRCLE_SHOT = registerItem("circle_shot", new CircleShotItem(new FabricItemSettings().maxDamage(100),
-            1, 0.8f, 100, 2, 0.0f, 0.0f, "spread", 1,
+            2, 0.8f, 100, 2, 0.0f, 0.0f, "spread", 1,
             12, 2.0f, 200, 100, 90, 25));
     public static final Item BUBBLE_SHOT = registerItem("bubble_shot", new BubbleShotItem(new FabricItemSettings().maxDamage(250),
-            3, 0.4f, 100, 10, 0.0f, 0.0f, "spread", 1,
+            4, 0.4f, 100, 10, 0.0f, 0.0f, "spread", 1,
             15, 0.8f, 200, 200, 90, 12));
     public static final Item AMULET_SHOT = registerItem("amulet_shot", new AmuletShotItem(new FabricItemSettings().maxDamage(100),
             1, 0.8f, 100, 5, 0.0f, 0.0f, "spread", 1,
@@ -121,6 +122,9 @@ public class ModItems {
     public static final Item KUNAI_SHOT = registerItem("kunai_shot", new KunaiShotItem(new FabricItemSettings().maxDamage(125),
             1, 0.8f, 100, 5, 0.0f, 0.0f, "spread", 1,
             8, 1.8f, 200, 100, 90, 18));
+    public static final Item PELLET_SHOT = registerItem("pellet_shot", new PelletShotItem(new FabricItemSettings().maxDamage(100),
+            1, 1.2f, 80, 2, 0.0f, 0.0f, "spread", 1,
+            6, 2.0f, 200, 100, 90, 40));
 
     // Music Discs
     public static final Item MUSIC_DISC_FAIRY_PLAYGROUND = registerItem("music_disc_fairy_playground", new MusicDiscItem(10, ModSounds.MUSIC_DISC_FAIRY_PLAYGROUND,
@@ -224,11 +228,13 @@ public class ModItems {
         addToItemGroup(ModItemGroups.DANMAKU, AMULET_BULLET_CORE);
         addToItemGroup(ModItemGroups.DANMAKU, STAR_BULLET_CORE);
         addToItemGroup(ModItemGroups.DANMAKU, KUNAI_BULLET_CORE);
+        addToItemGroup(ModItemGroups.DANMAKU, PELLET_BULLET_CORE);
         addToItemGroup(ModItemGroups.DANMAKU, CIRCLE_SHOT);
         addToItemGroup(ModItemGroups.DANMAKU, BUBBLE_SHOT);
         addToItemGroup(ModItemGroups.DANMAKU, AMULET_SHOT);
         addToItemGroup(ModItemGroups.DANMAKU, STAR_SHOT);
         addToItemGroup(ModItemGroups.DANMAKU, KUNAI_SHOT);
+        addToItemGroup(ModItemGroups.DANMAKU, PELLET_SHOT);
         addToItemGroup(ModItemGroups.DANMAKU, SPREAD_PATTERN);
         addToItemGroup(ModItemGroups.DANMAKU, RAY_PATTERN);
         addToItemGroup(ModItemGroups.DANMAKU, RING_PATTERN);

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "arcadiandream:item/pellet_shot_outline",
+    "layer1": "arcadiandream:item/pellet_shot"
+  }
+}

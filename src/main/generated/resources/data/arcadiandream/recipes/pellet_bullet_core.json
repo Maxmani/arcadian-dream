@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "arcadiandream:star_item"
+    }
+  ],
+  "result": {
+    "item": "arcadiandream:pellet_bullet_core"
+  }
+}

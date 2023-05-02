@@ -20,7 +20,7 @@
     "hidden": false,
     "icon": {
       "item": "arcadiandream:circle_shot",
-      "nbt": "{HideFlags:64,cooldown:2,density:1,display:{color:16711935},divergence:0.0f,duration:100,gravity:0.0f,pattern:\"spread\",power:1.0f,speed:0.8f}"
+      "nbt": "{HideFlags:64,cooldown:2,density:1,display:{color:16711935},divergence:0.0f,duration:100,gravity:0.0f,pattern:\"spread\",power:2.0f,speed:0.8f}"
     },
     "show_toast": true,
     "title": {

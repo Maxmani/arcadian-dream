@@ -9,10 +9,7 @@ import com.google.common.collect.ImmutableList;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.block.Blocks;
-import net.minecraft.data.server.recipe.CookingRecipeJsonBuilder;
-import net.minecraft.data.server.recipe.RecipeJsonProvider;
-import net.minecraft.data.server.recipe.RecipeProvider;
-import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.*;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
@@ -151,6 +148,12 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                         RecipeProvider.conditionsFromItem(ModItems.STAR_ITEM))
                 .offerTo(exporter);
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.PELLET_BULLET_CORE)
+                .input(ModItems.STAR_ITEM)
+                .criterion(RecipeProvider.hasItem(ModItems.STAR_ITEM),
+                        RecipeProvider.conditionsFromItem(ModItems.STAR_ITEM))
+                .offerTo(exporter);
+
         // Smelting recipes
         makeSmelting(exporter, DRAGON_GEM_ORES, RecipeCategory.MISC, ModItems.DRAGON_GEM, 1.2f, 200,
                 RecipeProvider.getItemPath(ModItems.DRAGON_GEM));
@@ -239,9 +242,7 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input(Items.BLAZE_ROD)
                 .input(Blocks.REDSTONE_BLOCK)
                 .input(Blocks.EMERALD_BLOCK)
-                .input(Blocks.GOLD_BLOCK)
-                .input(Blocks.GOLD_BLOCK)
-                .input(Blocks.GOLD_BLOCK)
+                .input(Blocks.GOLD_BLOCK, 3)
                 .offerTo(exporter, ritualCraftingId(ModItems.MIRACLE_MALLET));
     }
 }

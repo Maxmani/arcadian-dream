@@ -52,5 +52,12 @@ public class ModDispenserBehavior {
                 return Util.make(new KunaiBulletEntity(world, position.getX(), position.getY(), position.getZ()), entity -> entity.setItem(stack));
             }
         });
+        DispenserBlock.registerBehavior(ModItems.PELLET_SHOT, new DanmakuDispenserBehavior() {
+
+            @Override
+            protected ProjectileEntity createProjectile(World world, Position position, ItemStack stack) {
+                return Util.make(new PelletBulletEntity(world, position.getX(), position.getY(), position.getZ()), entity -> entity.setItem(stack));
+            }
+        });
     }
 }

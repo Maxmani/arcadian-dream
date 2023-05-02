@@ -21,11 +21,11 @@ public class ModTags {
 
     public static final ImmutableList<Item> BULLET_CORES = ImmutableList.of(
             ModItems.CIRCLE_BULLET_CORE, ModItems.BUBBLE_BULLET_CORE, ModItems.AMULET_BULLET_CORE, ModItems.STAR_BULLET_CORE,
-            ModItems.KUNAI_BULLET_CORE
+            ModItems.KUNAI_BULLET_CORE, ModItems.PELLET_BULLET_CORE
     );
     public static final ImmutableList<Item> SHOTS = ImmutableList.of(
             ModItems.CIRCLE_SHOT, ModItems.BUBBLE_SHOT, ModItems.AMULET_SHOT, ModItems.STAR_SHOT,
-            ModItems.KUNAI_SHOT
+            ModItems.KUNAI_SHOT, ModItems.PELLET_SHOT
     );
 
     public static class Blocks {

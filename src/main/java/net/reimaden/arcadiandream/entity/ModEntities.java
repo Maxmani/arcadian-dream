@@ -59,6 +59,13 @@ public class ModEntities {
                     .trackRangeChunks(DANMAKU_RANGE).trackedUpdateRate(DANMAKU_RATE)
                     .build()
     );
+    public static final EntityType<PelletBulletEntity> PELLET_BULLET = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, "pellet_bullet"),
+            FabricEntityTypeBuilder.<PelletBulletEntity>create(SpawnGroup.MISC, PelletBulletEntity::new)
+                    .dimensions(EntityDimensions.changing(0.15f, 0.15f))
+                    .trackRangeChunks(DANMAKU_RANGE).trackedUpdateRate(DANMAKU_RATE)
+                    .build()
+    );
 
     // Mobs
     public static final EntityType<FairyEntity> FAIRY = Registry.register(
