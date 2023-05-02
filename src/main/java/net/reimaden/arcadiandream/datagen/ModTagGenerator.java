@@ -51,7 +51,8 @@ public class ModTagGenerator {
             getOrCreateTagBuilder(NEEDS_DIAMOND_TOOL)
                     .addTag(ModTags.Blocks.DRAGON_GEM_ORES)
                     .add(ModBlocks.DRAGON_GEM_BLOCK, ModBlocks.RITUAL_SHRINE);
-            getOrCreateTagBuilder(NEEDS_IRON_TOOL)
+            // getOrCreateTagBuilder(NEEDS_IRON_TOOL);
+            getOrCreateTagBuilder(NEEDS_STONE_TOOL)
                     .add(ModBlocks.MAKAITE_ORE, ModBlocks.RAW_MAKAITE_BLOCK, ModBlocks.MAKAITE_BLOCK);
             getOrCreateTagBuilder(BEACON_BASE_BLOCKS)
                     .add(ModBlocks.DRAGON_GEM_BLOCK, ModBlocks.MAKAITE_BLOCK);
