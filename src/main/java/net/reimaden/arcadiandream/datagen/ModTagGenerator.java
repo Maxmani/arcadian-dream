@@ -97,6 +97,8 @@ public class ModTagGenerator {
                     .add(ModItems.DRAGON_GEM, ModItems.MAKAITE_INGOT);
             getOrCreateTagBuilder(MUSIC_DISCS)
                     .add(ModItems.MUSIC_DISC_FAIRY_PLAYGROUND, ModItems.MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN);
+            getOrCreateTagBuilder(FISHES)
+                    .add(ModItems.LAMPREY, ModItems.COOKED_LAMPREY);
 
             // Block tags to item tags
             getOrCreateTagBuilder(ModTags.Items.OBSIDIAN_BLOCKS)
@@ -123,7 +125,7 @@ public class ModTagGenerator {
             getOrCreateTagBuilder(ModTags.Items.HAMMERS)
                     .add(ModItems.MOCHI_MALLET, ModItems.MIRACLE_MALLET);
             getOrCreateTagBuilder(ConventionalItemTags.FOODS)
-                    .add(ModItems.HEAVENLY_PEACH);
+                    .add(ModItems.HEAVENLY_PEACH, ModItems.LAMPREY, ModItems.COOKED_LAMPREY);
             getOrCreateTagBuilder(ModTags.Items.ITEMS)
                     .add(ModItems.POWER_ITEM, ModItems.BIG_POWER_ITEM, ModItems.POINT_ITEM, ModItems.MAX_POINT_ITEM,
                             ModItems.BOMB_ITEM, ModItems.LIFE_FRAGMENT, ModItems.EXTEND_ITEM, ModItems.STAR_ITEM, ModItems.FAITH_ITEM);

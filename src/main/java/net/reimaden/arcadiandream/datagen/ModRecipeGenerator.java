@@ -23,6 +23,7 @@ import net.reimaden.arcadiandream.datagen.providers.ModRecipeProvider;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.util.ModTags;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 public class ModRecipeGenerator extends ModRecipeProvider {
@@ -168,6 +169,8 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 RecipeProvider.getItemPath(ModItems.DRAGON_GEM));
         makeSmelting(exporter, MAKAITE_ORES, RecipeCategory.MISC, ModItems.MAKAITE_INGOT, 0.8f, 200,
                 RecipeProvider.getItemPath(ModItems.MAKAITE_INGOT));
+        makeSmelting(exporter, List.of(ModItems.LAMPREY), RecipeCategory.FOOD, ModItems.COOKED_LAMPREY, 0.35f, 200,
+                RecipeProvider.getItemPath(ModItems.COOKED_LAMPREY));
 
         CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItems.DEATH_SCYTHE), RecipeCategory.MISC, Items.IRON_NUGGET, 0.1f, 200)
                 .criterion(RecipeProvider.hasItem(ModItems.DEATH_SCYTHE),
@@ -183,6 +186,10 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 RecipeProvider.getItemPath(ModItems.DRAGON_GEM));
         makeBlasting(exporter, MAKAITE_ORES, RecipeCategory.MISC, ModItems.MAKAITE_INGOT, 0.8f, 100,
                 RecipeProvider.getItemPath(ModItems.MAKAITE_INGOT));
+
+        // Smoking recipes
+        makeSmoking(exporter, List.of(ModItems.LAMPREY), RecipeCategory.FOOD, ModItems.COOKED_LAMPREY, 0.35f, 100,
+                RecipeProvider.getItemPath(ModItems.COOKED_LAMPREY));
 
         // Ritual Crafting recipes
         RitualCraftingRecipeJsonBuilder.create(ModItems.NUE_TRIDENT)

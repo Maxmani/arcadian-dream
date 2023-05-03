@@ -91,8 +91,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
     }
 
+    @SuppressWarnings("unused")
     protected static void makeShapeless(Consumer<RecipeJsonProvider> exporter, ItemConvertible output,
-                                     ItemConvertible input, @Nullable String group, int outputCount) {
+                                        ItemConvertible input, @Nullable String group, int outputCount) {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, output, outputCount)
                 .input(input).group(group)
                 .criterion(RecipeProvider.hasItem(input),
@@ -121,6 +122,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     protected static void makeBlasting(Consumer<RecipeJsonProvider> exporter, List<ItemConvertible> inputs, RecipeCategory category,
                                     ItemConvertible output, float experience, int cookingTime, String group) {
         makeMultipleOptions(exporter, RecipeSerializer.BLASTING, inputs, category, output, experience, cookingTime, group, "_from_blasting");
+    }
+
+    protected static void makeSmoking(Consumer<RecipeJsonProvider> exporter, List<ItemConvertible> inputs, RecipeCategory category,
+                                    ItemConvertible output, float experience, int cookingTime, String group) {
+        makeMultipleOptions(exporter, RecipeSerializer.SMOKING, inputs, category, output, experience, cookingTime, group, "_from_smoking");
     }
 
     private static void makeAxe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible material) {

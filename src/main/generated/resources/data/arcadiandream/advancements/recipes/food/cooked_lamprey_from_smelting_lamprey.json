@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_lamprey": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arcadiandream:lamprey"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "arcadiandream:cooked_lamprey_from_smelting_lamprey"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_lamprey",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "arcadiandream:cooked_lamprey_from_smelting_lamprey"
+    ]
+  }
+}

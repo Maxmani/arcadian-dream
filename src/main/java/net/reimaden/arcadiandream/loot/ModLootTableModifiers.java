@@ -7,13 +7,8 @@ package net.reimaden.arcadiandream.loot;
 
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.minecraft.block.Block;
-import net.minecraft.loot.LootTables;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.util.Identifier;
-import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.item.ModItems;
 import net.minecraft.loot.LootPool;
+import net.minecraft.loot.LootTables;
 import net.minecraft.loot.condition.LocationCheckLootCondition;
 import net.minecraft.loot.condition.MatchToolLootCondition;
 import net.minecraft.loot.condition.RandomChanceLootCondition;
@@ -24,6 +19,11 @@ import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.predicate.NumberRange;
 import net.minecraft.predicate.entity.LocationPredicate;
 import net.minecraft.predicate.item.ItemPredicate;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.util.Identifier;
+import net.reimaden.arcadiandream.ArcadianDream;
+import net.reimaden.arcadiandream.item.ModItems;
 
 import java.util.Map;
 
@@ -64,6 +64,11 @@ public class ModLootTableModifiers {
                     tableBuilder.pool(poolBuilder.build());
                     break;
                 }
+            }
+
+            // Fishing
+            if (LootTables.FISHING_FISH_GAMEPLAY.equals(id)) {
+                tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(ModItems.LAMPREY).weight(12)));
             }
 
             // Pattern templates

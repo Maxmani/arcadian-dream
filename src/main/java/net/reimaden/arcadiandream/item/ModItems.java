@@ -65,6 +65,10 @@ public class ModItems {
     // Food
     public static final Item HEAVENLY_PEACH = registerItem("heavenly_peach", new Item(new FabricItemSettings().maxCount(16)
             .food(ModFoodComponents.HEAVENLY_PEACH)));
+    public static final Item LAMPREY = registerItem("lamprey", new Item(new FabricItemSettings()
+            .food(ModFoodComponents.LAMPREY)));
+    public static final Item COOKED_LAMPREY = registerItem("cooked_lamprey", new Item(new FabricItemSettings()
+            .food(ModFoodComponents.COOKED_LAMPREY)));
 
     // Armor
     public static final Item ORDINARY_HAT = registerItem("ordinary_hat", new OrdinaryHatItem(ModArmorMaterials.ORDINARY, ArmorItem.Type.HELMET,
@@ -204,6 +208,8 @@ public class ModItems {
         addToItemGroup(ModItemGroups.ITEMS, MAGATAMA_NECKLACE);
         addToItemGroup(ModItemGroups.ITEMS, GHASTLY_LANTERN);
         addToItemGroup(ModItemGroups.ITEMS, HEAVENLY_PEACH);
+        addToItemGroup(ModItemGroups.ITEMS, LAMPREY);
+        addToItemGroup(ModItemGroups.ITEMS, COOKED_LAMPREY);
         addToItemGroup(ModItemGroups.ITEMS, ORDINARY_HAT);
         addToItemGroup(ModItemGroups.ITEMS, MAKAITE_HELMET);
         addToItemGroup(ModItemGroups.ITEMS, MAKAITE_CHESTPLATE);
