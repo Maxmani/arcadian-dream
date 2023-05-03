@@ -5,11 +5,17 @@
 
 package net.reimaden.arcadiandream.event;
 
+import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
+import net.fabricmc.fabric.api.event.player.AttackBlockCallback;
+import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 
 public class ModEvents {
 
     public static void register() {
-        ServerPlayerEvents.COPY_FROM.register(new ModPlayerEventCopyFrom());
+        ServerPlayerEvents.COPY_FROM.register(new PlayerEventCopyFrom());
+        AttackBlockCallback.EVENT.register(new EtherealEvent());
+        AttackEntityCallback.EVENT.register(new EtherealEvent());
+        ServerLivingEntityEvents.ALLOW_DAMAGE.register(new EtherealEvent());
     }
 }

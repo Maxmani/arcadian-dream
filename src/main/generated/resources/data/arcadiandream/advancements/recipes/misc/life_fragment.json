@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "arcadiandream:bomb_item_from_extend_item"
+        "recipe": "arcadiandream:life_fragment"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "arcadiandream:bomb_item_from_extend_item"
+      "arcadiandream:life_fragment"
     ]
   }
 }

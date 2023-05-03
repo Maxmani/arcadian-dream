@@ -32,7 +32,7 @@
   },
   "item.bomb_item.use": {
     "sounds": [
-      "arcadiandream:item/bomb_item/bomb"
+      "arcadiandream:item/bomb"
     ],
     "subtitle": "arcadiandream.subtitles.item.bomb_item.use"
   },
@@ -60,7 +60,7 @@
   },
   "item.extend_item.use": {
     "sounds": [
-      "arcadiandream:item/extend_item/extend"
+      "arcadiandream:item/extend"
     ],
     "subtitle": "arcadiandream.subtitles.item.extend_item.use"
   },
@@ -104,7 +104,7 @@
   },
   "item.healing_charm.use": {
     "sounds": [
-      "arcadiandream:item/healing_charm/heal"
+      "arcadiandream:item/heal"
     ],
     "subtitle": "arcadiandream.subtitles.item.healing_charm.use"
   },
@@ -172,5 +172,11 @@
       "arcadiandream:random/ritual"
     ],
     "subtitle": "arcadiandream.subtitles.entity.villager.work_antiquarian"
+  },
+  "item.ghastly_lantern.use": {
+    "sounds": [
+      "arcadiandream:item/lantern"
+    ],
+    "subtitle": "arcadiandream.subtitles.item.ghastly_lantern.use"
   }
 }

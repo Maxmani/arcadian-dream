@@ -9,7 +9,7 @@ import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.reimaden.arcadiandream.util.IEntityDataSaver;
 
-public class ModPlayerEventCopyFrom implements ServerPlayerEvents.CopyFrom{
+public class PlayerEventCopyFrom implements ServerPlayerEvents.CopyFrom{
 
     @Override
     public void copyFromPlayer(ServerPlayerEntity oldPlayer, ServerPlayerEntity newPlayer, boolean alive) {

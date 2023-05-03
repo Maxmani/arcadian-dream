@@ -126,7 +126,7 @@ public class ModTagGenerator {
                     .add(ModItems.HEAVENLY_PEACH);
             getOrCreateTagBuilder(ModTags.Items.ITEMS)
                     .add(ModItems.POWER_ITEM, ModItems.BIG_POWER_ITEM, ModItems.POINT_ITEM, ModItems.MAX_POINT_ITEM,
-                            ModItems.BOMB_ITEM, ModItems.EXTEND_ITEM, ModItems.STAR_ITEM, ModItems.FAITH_ITEM);
+                            ModItems.BOMB_ITEM, ModItems.LIFE_FRAGMENT, ModItems.EXTEND_ITEM, ModItems.STAR_ITEM, ModItems.FAITH_ITEM);
             getOrCreateTagBuilder(ModTags.Items.BULLET_CORES)
                     .add(ModTags.BULLET_CORES.toArray(new Item[0]));
             getOrCreateTagBuilder(ModTags.Items.SHOTS)

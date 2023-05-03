@@ -36,7 +36,7 @@ public class ModModelGenerator extends FabricModelProvider {
             ModItems.MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN, ModItems.ORDINARY_HAT, ModItems.RAW_MAKAITE, ModItems.HEALING_CHARM,
             ModItems.HOURAI_ELIXIR, ModItems.FAITH_ITEM, ModItems.SPREAD_PATTERN, ModItems.RAY_PATTERN,
             ModItems.RING_PATTERN, ModItems.CONE_PATTERN, ModItems.DOUBLE_PATTERN, ModItems.TRIPLE_PATTERN,
-            ModItems.MAGATAMA_NECKLACE
+            ModItems.MAGATAMA_NECKLACE, ModItems.GHASTLY_LANTERN, ModItems.LIFE_FRAGMENT
     );
 
     private static final ImmutableList<Item> HANDHELD_ITEMS = ImmutableList.of(

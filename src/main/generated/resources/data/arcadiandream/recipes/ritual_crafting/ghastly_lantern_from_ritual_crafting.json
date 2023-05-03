@@ -1,0 +1,32 @@
+{
+  "type": "arcadiandream:ritual_crafting",
+  "ingredients": [
+    {
+      "item": "minecraft:lantern"
+    },
+    {
+      "item": "arcadiandream:max_point_item"
+    },
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "arcadiandream:max_point_item"
+    },
+    {
+      "item": "arcadiandream:life_fragment"
+    },
+    {
+      "item": "arcadiandream:max_point_item"
+    },
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "item": "arcadiandream:max_point_item"
+    }
+  ],
+  "result": {
+    "item": "arcadiandream:ghastly_lantern"
+  }
+}

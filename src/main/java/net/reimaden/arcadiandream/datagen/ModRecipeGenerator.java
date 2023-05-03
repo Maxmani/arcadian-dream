@@ -43,11 +43,20 @@ public class ModRecipeGenerator extends ModRecipeProvider {
         makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.POWER_ITEM, RecipeCategory.MISC, ModItems.BIG_POWER_ITEM);
         makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.POINT_ITEM, RecipeCategory.MISC, ModItems.MAX_POINT_ITEM);
         makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.STAR_ITEM, RecipeCategory.MISC, ModItems.FAITH_ITEM);
+        makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.LIFE_FRAGMENT, RecipeCategory.MISC, ModItems.EXTEND_ITEM);
         makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.RAW_MAKAITE, RecipeCategory.BUILDING_BLOCKS, ModItems.RAW_MAKAITE_BLOCK);
         makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.MAKAITE_INGOT, RecipeCategory.BUILDING_BLOCKS, ModItems.MAKAITE_BLOCK);
         makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.DRAGON_GEM, RecipeCategory.BUILDING_BLOCKS, ModItems.DRAGON_GEM_BLOCK);
 
-        makeShapeless(exporter, ModItems.BOMB_ITEM, ModItems.EXTEND_ITEM, null, 3);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BOMB_ITEM, 3)
+                .input('#', ModItems.EXTEND_ITEM)
+                .input('X', ModTags.Items.ITEMS)
+                .pattern("XXX")
+                .pattern("X#X")
+                .pattern("XXX")
+                .criterion(RecipeProvider.hasItem(ModItems.EXTEND_ITEM),
+                        RecipeProvider.conditionsFromItem(ModItems.EXTEND_ITEM))
+                .offerTo(exporter);
 
         // Shaped Crafting recipes
         makeTools(exporter, ModItems.MAKAITE_AXE, ModItems.MAKAITE_HOE, ModItems.MAKAITE_PICKAXE,
@@ -252,5 +261,16 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input(ModItems.DRAGON_GEM)
                 .input(Items.STRING, 2)
                 .offerTo(exporter, ritualCraftingId(ModItems.MAGATAMA_NECKLACE));
+
+        RitualCraftingRecipeJsonBuilder.create(ModItems.GHASTLY_LANTERN)
+                .input(Items.LANTERN)
+                .input(ModItems.MAX_POINT_ITEM)
+                .input(Items.PAPER)
+                .input(ModItems.MAX_POINT_ITEM)
+                .input(ModItems.LIFE_FRAGMENT)
+                .input(ModItems.MAX_POINT_ITEM)
+                .input(Items.PAPER)
+                .input(ModItems.MAX_POINT_ITEM)
+                .offerTo(exporter, ritualCraftingId(ModItems.GHASTLY_LANTERN));
     }
 }

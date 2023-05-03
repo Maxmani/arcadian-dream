@@ -108,6 +108,8 @@
   "item.arcadiandream.fairy_spawn_egg": "Fairy Spawn Egg",
   "item.arcadiandream.sunflower_fairy_spawn_egg": "Sunflower Fairy Spawn Egg",
   "item.arcadiandream.magatama_necklace": "Magatama Necklace",
+  "item.arcadiandream.ghastly_lantern": "Ghastly Send-Off Lantern",
+  "item.arcadiandream.life_fragment": "Life Fragment",
 
   "block.arcadiandream.dragon_gem_ore": "Dragon Gem Ore",
   "block.arcadiandream.deepslate_dragon_gem_ore": "Deepslate Dragon Gem Ore",
@@ -135,6 +137,8 @@
 
   "enchantment.arcadiandream.danmaku_protection": "Danmaku Protection",
   "enchantment.arcadiandream.youkai_buster": "Youkai Buster",
+
+  "effect.arcadiandream.ethereal": "Ethereal",
 
   "advancements.arcadiandream.root.title": "Arcadian Dream",
   "advancements.arcadiandream.root.description": "Welcome to Gensokyo",
@@ -187,6 +191,7 @@
   "arcadiandream.subtitles.entity.fairy.death": "Fairy dies",
   "arcadiandream.subtitles.entity.fairy.hurt": "Fairy hurts",
   "arcadiandream.subtitles.entity.villager.work_antiquarian": "Antiquarian works",
+  "arcadiandream.subtitles.item.ghastly_lantern.use": "Ghastly Send-Off Lantern used",
 
   "death.attack.danmaku": "%1$s was shot by %2$s using danmaku",
   "death.attack.danmaku.item": "%1$s was shot by %2$s using %3$s",

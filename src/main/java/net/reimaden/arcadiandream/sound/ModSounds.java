@@ -25,6 +25,7 @@ public class ModSounds {
     public static final SoundEvent ITEM_DEATH_SCYTHE_TELEPORT_GENERIC = registerSoundEvent("item.death_scythe.teleport_generic");
     public static final SoundEvent ITEM_HOURAI_ELIXIR_USE = registerSoundEvent("item.hourai_elixir.use");
     public static final SoundEvent ITEM_MIRACLE_MALLET_USE = registerSoundEvent("item.miracle_mallet.use");
+    public static final SoundEvent ITEM_GHASTLY_LANTERN_USE = registerSoundEvent("item.ghastly_lantern.use");
 
     public static final SoundEvent BLOCK_ONBASHIRA_ADD_ITEM = registerSoundEvent("block.onbashira.add_item");
     public static final SoundEvent BLOCK_RITUAL_SHRINE_USE = registerSoundEvent("block.ritual_shrine.use");

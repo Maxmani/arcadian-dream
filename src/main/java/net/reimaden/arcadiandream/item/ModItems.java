@@ -17,6 +17,7 @@ import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.block.ModBlocks;
 import net.reimaden.arcadiandream.entity.ModEntities;
 import net.reimaden.arcadiandream.item.custom.armor.OrdinaryHatItem;
+import net.reimaden.arcadiandream.item.custom.consumables.GhastlyLanternItem;
 import net.reimaden.arcadiandream.item.custom.consumables.HealingCharmItem;
 import net.reimaden.arcadiandream.item.custom.consumables.HouraiElixirItem;
 import net.reimaden.arcadiandream.item.custom.danmaku.*;
@@ -32,6 +33,7 @@ public class ModItems {
     public static final Item POINT_ITEM = registerItem("point_item", new Item(new FabricItemSettings()));
     public static final Item MAX_POINT_ITEM = registerItem("max_point_item", new Item(new FabricItemSettings()));
     public static final Item BOMB_ITEM = registerItem("bomb_item", new BombItem(new FabricItemSettings().maxCount(8).rarity(Rarity.UNCOMMON)));
+    public static final Item LIFE_FRAGMENT = registerItem("life_fragment", new Item(new FabricItemSettings()));
     public static final Item EXTEND_ITEM = registerItem("extend_item", new ExtendItem(new FabricItemSettings().maxCount(1).rarity(Rarity.UNCOMMON)));
     public static final Item STAR_ITEM = registerItem("star_item", new Item(new FabricItemSettings()));
     public static final Item FAITH_ITEM = registerItem("faith_item", new Item(new FabricItemSettings()));
@@ -45,6 +47,7 @@ public class ModItems {
     public static final Item HEALING_CHARM = registerItem("healing_charm", new HealingCharmItem(new FabricItemSettings().maxCount(16)));
     public static final Item HOURAI_ELIXIR = registerItem("hourai_elixir", new HouraiElixirItem(new FabricItemSettings().maxCount(1).maxDamage(3).rarity(Rarity.EPIC)));
     public static final Item MAGATAMA_NECKLACE = registerItem("magatama_necklace", new MagatamaNecklaceItem(new FabricItemSettings().maxCount(1).rarity(Rarity.UNCOMMON)));
+    public static final Item GHASTLY_LANTERN = registerItem("ghastly_lantern", new GhastlyLanternItem(new FabricItemSettings().maxCount(1)));
 
     public static final Item SPREAD_PATTERN_TEMPLATE = registerItem("spread_pattern_template", new PatternTemplateItem(new FabricItemSettings().maxCount(16)));
     public static final Item RAY_PATTERN_TEMPLATE = registerItem("ray_pattern_template", new PatternTemplateItem(new FabricItemSettings().maxCount(16)));
@@ -187,6 +190,7 @@ public class ModItems {
         addToItemGroup(ModItemGroups.ITEMS, POINT_ITEM);
         addToItemGroup(ModItemGroups.ITEMS, MAX_POINT_ITEM);
         addToItemGroup(ModItemGroups.ITEMS, BOMB_ITEM);
+        addToItemGroup(ModItemGroups.ITEMS, LIFE_FRAGMENT);
         addToItemGroup(ModItemGroups.ITEMS, EXTEND_ITEM);
         addToItemGroup(ModItemGroups.ITEMS, STAR_ITEM);
         addToItemGroup(ModItemGroups.ITEMS, FAITH_ITEM);
@@ -198,6 +202,7 @@ public class ModItems {
         addToItemGroup(ModItemGroups.ITEMS, HEALING_CHARM);
         addToItemGroup(ModItemGroups.ITEMS, HOURAI_ELIXIR);
         addToItemGroup(ModItemGroups.ITEMS, MAGATAMA_NECKLACE);
+        addToItemGroup(ModItemGroups.ITEMS, GHASTLY_LANTERN);
         addToItemGroup(ModItemGroups.ITEMS, HEAVENLY_PEACH);
         addToItemGroup(ModItemGroups.ITEMS, ORDINARY_HAT);
         addToItemGroup(ModItemGroups.ITEMS, MAKAITE_HELMET);

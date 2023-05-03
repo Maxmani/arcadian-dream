@@ -21,7 +21,9 @@
     "client.ClientPlayNetworkHandlerMixin",
     "client.EntityRendererMixin",
     "client.GameRendererMixin",
-    "client.ItemRendererMixin"
+    "client.ItemRendererMixin",
+    "client.LivingEntityRendererMixin",
+    "client.PlayerEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
