@@ -70,6 +70,9 @@ public class ModLootTableModifiers {
             if (LootTables.FISHING_FISH_GAMEPLAY.equals(id)) {
                 tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(ModItems.LAMPREY).weight(12)));
             }
+            if (LootTables.FISHING_TREASURE_GAMEPLAY.equals(id)) {
+                tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(ModItems.LIFE_FRAGMENT)));
+            }
 
             // Pattern templates
             for (Identifier matchingId : SPREAD_PATTERN_STRUCTURES) {
