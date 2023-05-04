@@ -132,11 +132,12 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
             onbashiras.forEach(entity -> entity.setStack(0, ItemStack.EMPTY));
             onbashiras.forEach(OnbashiraBlockEntity::markDirty);
 
-            shrineBlock.setStack(0, new ItemStack(recipe.get().getOutput(registryManager).getItem(), recipe.get().getOutput(registryManager).getCount()));
+            final ItemStack output = recipe.get().getOutput(registryManager);
+            shrineBlock.setStack(0, new ItemStack(output.getItem(), output.getCount()));
             shrineBlock.markDirty();
             craftEffects();
             player.incrementStat(ModStats.INTERACT_WITH_RITUAL_SHRINE);
-            player.incrementStat(Stats.CRAFTED.getOrCreateStat(recipe.get().getOutput(registryManager).getItem()));
+            player.increaseStat(Stats.CRAFTED.getOrCreateStat(output.getItem()), output.getCount());
             ModCriteria.RITUAL_CRAFTING.trigger((ServerPlayerEntity) player);
         }
     }
