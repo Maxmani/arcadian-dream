@@ -17,7 +17,6 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.stat.Stats;
@@ -51,7 +50,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "tryUseTotem", at = @At("HEAD"), cancellable = true)
     private void arcadiandream$useExtendItem(DamageSource source, CallbackInfoReturnable<Boolean> cir) {
-        if (source.isIn(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
+        if (source.isOutOfWorld()) {
             cir.setReturnValue(false);
         } else {
             final Item item = ModItems.EXTEND_ITEM;
@@ -102,7 +101,7 @@ public abstract class LivingEntityMixin extends Entity {
     @Inject(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;isDead()Z", ordinal = 1), cancellable = true)
     private void arcadiandream$preventDeath(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         if (!world.isClient() && ((IEntityDataSaver) entity).getPersistentData().getByte("elixir") >= 3) {
-            if (entity.getHealth() - amount <= 0 && !source.isIn(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
+            if (entity.getHealth() - amount <= 0 && !source.isOutOfWorld()) {
                 entity.setHealth(entity.getMaxHealth());
 
                 world.playSound(null, entity.getX(), entity.getY(), entity.getZ(),

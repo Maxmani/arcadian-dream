@@ -10,7 +10,7 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.render.item.ItemRenderer;
-import net.minecraft.client.render.model.json.ModelTransformationMode;
+import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RotationAxis;
@@ -40,8 +40,8 @@ public class BulletEntityRenderer extends FlyingItemEntityRenderer<BaseBulletEnt
             return;
         }
         modifyMatrices(matrices, entity, tickDelta);
-        itemRenderer.renderItem(entity.getStack(), ModelTransformationMode.FIXED, light,
-                OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, entity.getWorld(), entity.getId());
+        itemRenderer.renderItem(entity.getStack(), ModelTransformation.Mode.FIXED, light,
+                OverlayTexture.DEFAULT_UV, matrices, vertexConsumers, entity.getId());
         matrices.pop();
     }
 

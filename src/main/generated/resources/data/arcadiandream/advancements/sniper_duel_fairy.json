@@ -18,12 +18,9 @@
           }
         ],
         "killing_blow": {
-          "tags": [
-            {
-              "expected": true,
-              "id": "arcadiandream:is_danmaku"
-            }
-          ]
+          "direct_entity": {
+            "type": "#arcadiandream:danmaku"
+          }
         }
       },
       "trigger": "minecraft:player_killed_entity"

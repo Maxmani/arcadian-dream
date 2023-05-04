@@ -1,6 +1,5 @@
 package net.reimaden.arcadiandream.config;
 
-import blue.endless.jankson.Jankson;
 import io.wispforest.owo.config.ConfigWrapper;
 import io.wispforest.owo.config.Option;
 import io.wispforest.owo.util.Observable;
@@ -19,7 +18,7 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
     private final Option<java.lang.Boolean> mochiMalletOptions_lowViolence = this.optionForKey(new Option.Key("mochiMalletOptions.lowViolence"));
     private final Option<java.lang.Boolean> houraiElixirOptions_canDrink = this.optionForKey(new Option.Key("houraiElixirOptions.canDrink"));
     private final Option<java.lang.Integer> danmakuCooldownMultiplier = this.optionForKey(new Option.Key("danmakuCooldownMultiplier"));
-    private final Option<java.lang.Integer> danmakuDamageMultiplier = this.optionForKey(new Option.Key("danmakuDamageMultiplier"));
+    private final Option<java.lang.Float> danmakuDamageMultiplier = this.optionForKey(new Option.Key("danmakuDamageMultiplier"));
     private final Option<java.lang.Boolean> cooldownPerBulletType = this.optionForKey(new Option.Key("cooldownPerBulletType"));
     private final Option<java.lang.Boolean> fairyOptions_spawnFairies = this.optionForKey(new Option.Key("fairyOptions.spawnFairies"));
     private final Option<java.lang.Boolean> fairyOptions_spawnSunflowerFairies = this.optionForKey(new Option.Key("fairyOptions.spawnSunflowerFairies"));
@@ -28,18 +27,8 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         super(net.reimaden.arcadiandream.config.ModConfigModel.class);
     }
 
-    private ArcadianDreamConfig(Consumer<Jankson.Builder> janksonBuilder) {
-        super(net.reimaden.arcadiandream.config.ModConfigModel.class, janksonBuilder);
-    }
-
     public static ArcadianDreamConfig createAndLoad() {
         var wrapper = new ArcadianDreamConfig();
-        wrapper.load();
-        return wrapper;
-    }
-
-    public static ArcadianDreamConfig createAndLoad(Consumer<Jankson.Builder> janksonBuilder) {
-        var wrapper = new ArcadianDreamConfig(janksonBuilder);
         wrapper.load();
         return wrapper;
     }
@@ -123,11 +112,11 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         danmakuCooldownMultiplier.set(value);
     }
 
-    public int danmakuDamageMultiplier() {
+    public float danmakuDamageMultiplier() {
         return danmakuDamageMultiplier.value();
     }
 
-    public void danmakuDamageMultiplier(int value) {
+    public void danmakuDamageMultiplier(float value) {
         danmakuDamageMultiplier.set(value);
     }
 
@@ -165,9 +154,9 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         boolean canDisableShields();
         void canDisableShields(boolean value);
     }
-    public interface HouraiElixirOptions {
-        boolean canDrink();
-        void canDrink(boolean value);
+    public interface NueTridentOptions {
+        boolean canHaveImpaling();
+        void canHaveImpaling(boolean value);
     }
     public interface ChiselOptions {
         boolean canUse();
@@ -175,19 +164,19 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         int maxDistance();
         void maxDistance(int value);
     }
-    public interface fairyOptions {
-        boolean spawnFairies();
-        void spawnFairies(boolean value);
-        boolean spawnSunflowerFairies();
-        void spawnSunflowerFairies(boolean value);
+    public interface HouraiElixirOptions {
+        boolean canDrink();
+        void canDrink(boolean value);
     }
     public interface MochiMalletOptions {
         boolean lowViolence();
         void lowViolence(boolean value);
     }
-    public interface NueTridentOptions {
-        boolean canHaveImpaling();
-        void canHaveImpaling(boolean value);
+    public interface fairyOptions {
+        boolean spawnFairies();
+        void spawnFairies(boolean value);
+        boolean spawnSunflowerFairies();
+        void spawnSunflowerFairies(boolean value);
     }
 
 }

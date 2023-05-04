@@ -13,10 +13,8 @@ import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
@@ -33,7 +31,6 @@ import static net.reimaden.arcadiandream.compat.RitualCraftingLocations.*;
 public class JEIRitualCraftingCategory implements IRecipeCategory<RitualCraftingRecipe> {
 
     private final IGuiHelper guiHelper;
-    private final DynamicRegistryManager registryManager;
 
     public static final Identifier UID = new Identifier(ArcadianDream.MOD_ID, "ritual_crafting");
     public static final Identifier TEXTURE = new Identifier(ArcadianDream.MOD_ID, "textures/gui/ritual_crafting.png");
@@ -44,9 +41,7 @@ public class JEIRitualCraftingCategory implements IRecipeCategory<RitualCrafting
     private final IDrawable background;
     private final IDrawable icon;
 
-    @SuppressWarnings("DataFlowIssue")
     public JEIRitualCraftingCategory(IGuiHelper guiHelper) {
-        this.registryManager = MinecraftClient.getInstance().world.getRegistryManager();
         this.guiHelper = guiHelper;
         this.background = guiHelper.drawableBuilder(TEXTURE, 0, 0, 184, 184).setTextureSize(184, 184).build();
         this.icon = guiHelper.createDrawableItemStack(new ItemStack(ModBlocks.RITUAL_SHRINE));
@@ -78,7 +73,7 @@ public class JEIRitualCraftingCategory implements IRecipeCategory<RitualCrafting
             builder.addSlot(RecipeIngredientRole.INPUT, ONBASHIRAS[i][0], ONBASHIRAS[i][1]).addIngredients(recipe.getIngredients().get(i));
         }
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, OUTPUT_SLOT[0], OUTPUT_SLOT[1]).addItemStack(recipe.getOutput(registryManager));
+        builder.addSlot(RecipeIngredientRole.OUTPUT, OUTPUT_SLOT[0], OUTPUT_SLOT[1]).addItemStack(recipe.getOutput());
     }
 
     @Override

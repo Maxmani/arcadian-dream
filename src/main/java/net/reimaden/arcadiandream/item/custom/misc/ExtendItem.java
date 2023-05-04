@@ -6,17 +6,10 @@
 package net.reimaden.arcadiandream.item.custom.misc;
 
 import dev.emi.trinkets.api.TrinketItem;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.item.Equipment;
 
-public class ExtendItem extends TrinketItem implements Equipment {
+public class ExtendItem extends TrinketItem {
 
     public ExtendItem(Settings settings) {
         super(settings);
-    }
-
-    @Override
-    public EquipmentSlot getSlotType() {
-        return null;
     }
 }

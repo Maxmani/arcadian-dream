@@ -19,7 +19,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.predicate.DamagePredicate;
 import net.minecraft.predicate.NumberRange;
-import net.minecraft.predicate.TagPredicate;
 import net.minecraft.predicate.entity.DamageSourcePredicate;
 import net.minecraft.predicate.entity.DistancePredicate;
 import net.minecraft.predicate.entity.EntityPredicate;
@@ -117,8 +116,7 @@ public class ModAdvancementGenerator extends FabricAdvancementProvider {
                     .parent(rootAdvancement)
                     .display(makeDisplay(AdvancementFrame.TASK, ModItems.CIRCLE_SHOT, "shoot_danmaku"))
                     .criterion("shot_danmaku", PlayerHurtEntityCriterion.Conditions.create(DamagePredicate.Builder.create()
-                            .type(DamageSourcePredicate.Builder.create().tag(TagPredicate.expected(ModTags.DamageTypes.IS_DANMAKU))
-                                    .directEntity(EntityPredicate.Builder.create().type(ModTags.EntityTypes.DANMAKU)))))
+                            .type(DamageSourcePredicate.Builder.create().directEntity(EntityPredicate.Builder.create().type(ModTags.EntityTypes.DANMAKU)))))
                     .build(consumer, makeName("shoot_danmaku"));
 
             Advancement modifyDanmaku = Advancement.Builder.create()
@@ -151,7 +149,7 @@ public class ModAdvancementGenerator extends FabricAdvancementProvider {
                     .display(makeDisplay(AdvancementFrame.CHALLENGE, coloredBullet(ModItems.STAR_SHOT, ColorMap.getColorInt("cyan")), "sniper_duel_fairy"))
                     .criterion("killed_fairy", OnKilledCriterion.Conditions.createPlayerKilledEntity(EntityPredicate.Builder.create()
                             .type(ModTags.EntityTypes.FAIRIES).distance(DistancePredicate.horizontal(NumberRange.FloatRange.atLeast(50.0))),
-                            DamageSourcePredicate.Builder.create().tag(TagPredicate.expected(ModTags.DamageTypes.IS_DANMAKU))))
+                            DamageSourcePredicate.Builder.create().directEntity(EntityPredicate.Builder.create().type(ModTags.EntityTypes.DANMAKU))))
                     .rewards(AdvancementRewards.Builder.experience(50))
                     .build(consumer, makeName("sniper_duel_fairy"));
 

@@ -1,6 +1,6 @@
-// 1.19.4	2023-05-04T17:07:08.326997197	Arcadian Dream/Advancements
+// 1.19.3	2023-05-04T23:12:18.960833102	Arcadian Dream/Advancements
+7dfba3af28227bdd83f57ba54c70ba4b22f30fb8 data/arcadiandream/advancements/sniper_duel_fairy.json
 28890424bf52e474432359adee264070878c6cdb data/arcadiandream/advancements/obtain_hourai_elixir.json
-0eb2175a4b3d5dafe591eaad0be87d9ce1b0fc90 data/arcadiandream/advancements/sniper_duel_fairy.json
 5555024af68d304eb7f94dea1646cd24174d560d data/arcadiandream/advancements/obtain_heavenly_peach.json
 d0e38aa63fc2262baeae0f89fe7b546a8c673272 data/arcadiandream/advancements/curtain_fire.json
 3a3efe091e6e5b2f0b94ab3ba62ebbb56620775d data/arcadiandream/advancements/find_abandoned_shrine.json
@@ -13,4 +13,4 @@ b90addd687db13f9b3861426e312076bcafe79a7 data/arcadiandream/advancements/mochi_m
 ef57a74678b184badfad8c346326fe86e69c24f5 data/arcadiandream/advancements/cancel_bullets.json
 19cf6c5b89416e61e2fbc6c6549d7399ec3d3b9a data/arcadiandream/advancements/modify_danmaku.json
 de1b4f1be2b2c7b4762072db1013cbf3128bad8f data/arcadiandream/advancements/hisou_sword.json
-11a2b6751bf3a24ba87757d373b5933755a3dd0d data/arcadiandream/advancements/shoot_danmaku.json
+a77dc138c6848a2649d4e51b4a46f0e05a89d32d data/arcadiandream/advancements/shoot_danmaku.json

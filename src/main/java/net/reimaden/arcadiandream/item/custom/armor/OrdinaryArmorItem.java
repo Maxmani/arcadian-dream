@@ -38,8 +38,8 @@ public class OrdinaryArmorItem extends ArmorItem implements GeoItem {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
     private final Supplier<Object> renderProvider = GeoItem.makeRenderer(this);
 
-    public OrdinaryArmorItem(ArmorMaterial material, Type type, Settings settings) {
-        super(material, type, settings);
+    public OrdinaryArmorItem(ArmorMaterial material, EquipmentSlot slot, Settings settings) {
+        super(material, slot, settings);
     }
 
     @SuppressWarnings("unchecked")

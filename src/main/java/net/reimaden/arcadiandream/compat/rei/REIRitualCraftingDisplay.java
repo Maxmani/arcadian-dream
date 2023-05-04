@@ -9,13 +9,10 @@ import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.display.Display;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.registry.DynamicRegistryManager;
 import net.reimaden.arcadiandream.recipe.RitualCraftingRecipe;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class REIRitualCraftingDisplay implements Display {
 
@@ -25,9 +22,8 @@ public class REIRitualCraftingDisplay implements Display {
     private final String dimension;
 
     public REIRitualCraftingDisplay(RitualCraftingRecipe recipe) {
-        DynamicRegistryManager registryManager = Objects.requireNonNull(MinecraftClient.getInstance().world).getRegistryManager();
         this.input = EntryIngredients.ofIngredients(recipe.getIngredients());
-        this.output = EntryIngredients.of(recipe.getOutput(registryManager));
+        this.output = EntryIngredients.of(recipe.getOutput());
         this.moonPhase = recipe.getMoonPhase();
         this.dimension = recipe.getDimension();
     }

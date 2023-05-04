@@ -12,7 +12,6 @@ import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBiomeTags;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.damage.DamageType;
 import net.minecraft.entity.decoration.painting.PaintingVariant;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -21,7 +20,6 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.poi.PointOfInterestType;
 import net.reimaden.arcadiandream.block.ModBlocks;
-import net.reimaden.arcadiandream.damage.ModDamageSources;
 import net.reimaden.arcadiandream.entity.ModEntities;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.painting.ModPaintings;
@@ -31,7 +29,6 @@ import net.reimaden.arcadiandream.villager.ModVillagers;
 import java.util.concurrent.CompletableFuture;
 
 import static net.minecraft.registry.tag.BlockTags.*;
-import static net.minecraft.registry.tag.DamageTypeTags.BYPASSES_ARMOR;
 import static net.minecraft.registry.tag.ItemTags.*;
 import static net.minecraft.registry.tag.PaintingVariantTags.PLACEABLE;
 import static net.minecraft.registry.tag.PointOfInterestTypeTags.ACQUIRABLE_JOB_SITE;
@@ -110,17 +107,17 @@ public class ModTagGenerator {
                     .add(ModItems.MAKAITE_ORE);
 
             // Modded item tags
-            getOrCreateTagBuilder(AXES)
+            getOrCreateTagBuilder(ConventionalItemTags.AXES)
                     .add(ModItems.MAKAITE_AXE);
-            getOrCreateTagBuilder(HOES)
+            getOrCreateTagBuilder(ConventionalItemTags.HOES)
                     .add(ModItems.MAKAITE_HOE);
-            getOrCreateTagBuilder(PICKAXES)
+            getOrCreateTagBuilder(ConventionalItemTags.PICKAXES)
                     .add(ModItems.MAKAITE_PICKAXE);
-            getOrCreateTagBuilder(SHOVELS)
+            getOrCreateTagBuilder(ConventionalItemTags.SHOVELS)
                     .add(ModItems.MAKAITE_SHOVEL);
             getOrCreateTagBuilder(ConventionalItemTags.SPEARS)
                     .add(ModItems.NUE_TRIDENT);
-            getOrCreateTagBuilder(SWORDS)
+            getOrCreateTagBuilder(ConventionalItemTags.SWORDS)
                     .add(ModItems.MAKAITE_SWORD, ModItems.HISOU_SWORD, ModItems.DEATH_SCYTHE);
             getOrCreateTagBuilder(ModTags.Items.HAMMERS)
                     .add(ModItems.MOCHI_MALLET, ModItems.MIRACLE_MALLET);
@@ -168,25 +165,6 @@ public class ModTagGenerator {
                     .add(ModEntities.CIRCLE_BULLET, ModEntities.BUBBLE_BULLET, ModEntities.AMULET_BULLET, ModEntities.STAR_BULLET);
             getOrCreateTagBuilder(ModTags.EntityTypes.FAIRIES)
                     .add(ModEntities.FAIRY, ModEntities.SUNFLOWER_FAIRY);
-        }
-    }
-
-    public static class DamageTypeTags extends FabricTagProvider<DamageType> {
-
-        public DamageTypeTags(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
-            super(output, RegistryKeys.DAMAGE_TYPE, registriesFuture);
-        }
-
-        @Override
-        protected void configure(RegistryWrapper.WrapperLookup lookup) {
-
-            // minecraft/tags/damage_type
-            getOrCreateTagBuilder(BYPASSES_ARMOR)
-                    .add(ModDamageSources.DANMAKU_SHARP);
-
-            // Modded damage type tags
-            getOrCreateTagBuilder(ModTags.DamageTypes.IS_DANMAKU)
-                    .add(ModDamageSources.DANMAKU, ModDamageSources.DANMAKU_SHARP);
         }
     }
 

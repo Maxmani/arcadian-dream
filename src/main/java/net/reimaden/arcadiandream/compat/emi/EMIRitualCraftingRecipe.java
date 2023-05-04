@@ -10,9 +10,7 @@ import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.tooltip.TooltipComponent;
-import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.compat.TooltipHelper;
@@ -20,7 +18,6 @@ import net.reimaden.arcadiandream.recipe.RitualCraftingRecipe;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
@@ -39,10 +36,9 @@ public class EMIRitualCraftingRecipe implements EmiRecipe {
     private final String dimension;
 
     public EMIRitualCraftingRecipe(RitualCraftingRecipe recipe) {
-        DynamicRegistryManager registryManager = Objects.requireNonNull(MinecraftClient.getInstance().world).getRegistryManager();
         this.id = recipe.getId();
         this.inputs = recipe.getIngredients().stream().map(EmiIngredient::of).collect(Collectors.toList());
-        this.output = EmiStack.of(recipe.getOutput(registryManager));
+        this.output = EmiStack.of(recipe.getOutput());
         this.moonPhase = recipe.getMoonPhase();
         this.dimension = recipe.getDimension();
     }

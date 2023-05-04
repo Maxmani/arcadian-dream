@@ -7,13 +7,7 @@
           "type": {
             "direct_entity": {
               "type": "#arcadiandream:danmaku"
-            },
-            "tags": [
-              {
-                "expected": true,
-                "id": "arcadiandream:is_danmaku"
-              }
-            ]
+            }
           }
         }
       },

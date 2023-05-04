@@ -16,12 +16,11 @@ import net.minecraft.inventory.SidedInventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.Packet;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.listener.ClientPlayPacketListener;
-import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -97,8 +96,6 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
 
     public void doCrafting(@Nullable PlayerEntity player) {
         if (world != null && !world.isClient()) {
-            DynamicRegistryManager registryManager = world.getRegistryManager();
-
             List<OnbashiraBlockEntity> onbashiras = new ArrayList<>();
             for (BlockPos pos : ONBASHIRA_LOCATIONS) {
                 getOnbashiraPos(pos.add(getPos())).ifPresent(onbashiras::add);
@@ -107,12 +104,12 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
                 getOnbashiraPos(pos.add(getPos())).ifPresent(onbashiras::add);
             }
             List<ItemStack> stacks = onbashiras.stream().filter(OnbashiraBlockEntity::hasItemStack).map(OnbashiraBlockEntity::getItemStack).toList();
-            craftItem(stacks, onbashiras, this, player, registryManager);
+            craftItem(stacks, onbashiras, this, player);
         }
     }
 
     @SuppressWarnings({"DataFlowIssue", "OptionalGetWithoutIsPresent"})
-    private void craftItem(List<ItemStack> stacks, List<OnbashiraBlockEntity> onbashiras, RitualShrineBlockEntity shrineBlock, PlayerEntity player, DynamicRegistryManager registryManager) {
+    private void craftItem(List<ItemStack> stacks, List<OnbashiraBlockEntity> onbashiras, RitualShrineBlockEntity shrineBlock, PlayerEntity player) {
         SimpleInventory inventory = new SimpleInventory(stacks.size());
         for (int i = 0; i < stacks.size(); i++) {
             inventory.setStack(i, stacks.get(i));
@@ -132,7 +129,7 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
             onbashiras.forEach(entity -> entity.setStack(0, ItemStack.EMPTY));
             onbashiras.forEach(OnbashiraBlockEntity::markDirty);
 
-            final ItemStack output = recipe.get().getOutput(registryManager);
+            final ItemStack output = recipe.get().getOutput();
             shrineBlock.setStack(0, new ItemStack(output.getItem(), output.getCount()));
             shrineBlock.markDirty();
             craftEffects();

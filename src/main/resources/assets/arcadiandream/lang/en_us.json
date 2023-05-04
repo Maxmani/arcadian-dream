@@ -196,10 +196,8 @@
   "arcadiandream.subtitles.entity.villager.work_antiquarian": "Antiquarian works",
   "arcadiandream.subtitles.item.ghastly_lantern.use": "Ghastly Send-Off Lantern used",
 
-  "death.attack.danmaku": "%1$s was shot by %2$s using danmaku",
-  "death.attack.danmaku.item": "%1$s was shot by %2$s using %3$s",
-  "death.attack.danmakuSharp": "%1$s was shot by %2$s using danmaku",
-  "death.attack.danmakuSharp.item": "%1$s was shot by %2$s using %3$s",
+  "death.attack.danmaku": [{"index":0},{"translate":"death.attack.arrow"},{"index":1}],
+  "death.attack.danmaku.player": "%1$s was shot by %2$s using danmaku",
 
   "stat.arcadiandream.interact_with_ritual_shrine": "Interactions with Ritual Shrine",
   "stat.arcadiandream.interact_with_onbashira": "Interactions with Onbashira",

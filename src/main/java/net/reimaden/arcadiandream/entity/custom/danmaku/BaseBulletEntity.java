@@ -87,7 +87,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
     }
 
     protected void applyDamage(Entity target, Entity owner) {
-        target.damage(ModDamageSources.danmaku(world, this, owner), getPower() * ArcadianDream.CONFIG.danmakuDamageMultiplier());
+        target.damage(ModDamageSources.danmaku(this, owner), getPower() * ArcadianDream.CONFIG.danmakuDamageMultiplier());
     }
 
     @Override
@@ -159,11 +159,6 @@ public class BaseBulletEntity extends ThrownItemEntity {
     @Override
     public boolean canHit() {
         return true;
-    }
-
-    @Override
-    public boolean canBeHitByProjectile() {
-        return false;
     }
 
     @Override
