@@ -241,12 +241,13 @@ public class ModRecipeGenerator extends ModRecipeProvider {
         RitualCraftingRecipeJsonBuilder.create(ModItems.HOURAI_ELIXIR)
                 .input(Items.NETHER_STAR)
                 .input(Items.ENCHANTED_GOLDEN_APPLE)
-                .input(Items.NETHER_STAR)
+                .input(ModItems.TIME_ORB)
                 .input(Items.ENCHANTED_GOLDEN_APPLE)
                 .input(Items.NETHER_STAR)
                 .input(Items.ENCHANTED_GOLDEN_APPLE)
-                .input(Items.NETHER_STAR)
+                .input(ModItems.TIME_ORB)
                 .input(Items.ENCHANTED_GOLDEN_APPLE)
+                .input(ModItems.LIFE_FRAGMENT, 8)
                 .dimension(Dimensions.THE_END.getId())
                 .offerTo(exporter, ritualCraftingId(ModItems.HOURAI_ELIXIR));
 

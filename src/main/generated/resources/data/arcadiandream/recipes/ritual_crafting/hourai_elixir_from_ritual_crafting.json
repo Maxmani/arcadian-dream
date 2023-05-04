@@ -9,7 +9,7 @@
       "item": "minecraft:enchanted_golden_apple"
     },
     {
-      "item": "minecraft:nether_star"
+      "item": "arcadiandream:time_orb"
     },
     {
       "item": "minecraft:enchanted_golden_apple"
@@ -21,10 +21,34 @@
       "item": "minecraft:enchanted_golden_apple"
     },
     {
-      "item": "minecraft:nether_star"
+      "item": "arcadiandream:time_orb"
     },
     {
       "item": "minecraft:enchanted_golden_apple"
+    },
+    {
+      "item": "arcadiandream:life_fragment"
+    },
+    {
+      "item": "arcadiandream:life_fragment"
+    },
+    {
+      "item": "arcadiandream:life_fragment"
+    },
+    {
+      "item": "arcadiandream:life_fragment"
+    },
+    {
+      "item": "arcadiandream:life_fragment"
+    },
+    {
+      "item": "arcadiandream:life_fragment"
+    },
+    {
+      "item": "arcadiandream:life_fragment"
+    },
+    {
+      "item": "arcadiandream:life_fragment"
     }
   ],
   "result": {
