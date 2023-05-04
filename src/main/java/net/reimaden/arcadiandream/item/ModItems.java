@@ -37,6 +37,7 @@ public class ModItems {
     public static final Item EXTEND_ITEM = registerItem("extend_item", new ExtendItem(new FabricItemSettings().maxCount(1).rarity(Rarity.UNCOMMON)));
     public static final Item STAR_ITEM = registerItem("star_item", new Item(new FabricItemSettings()));
     public static final Item FAITH_ITEM = registerItem("faith_item", new Item(new FabricItemSettings()));
+    public static final Item TIME_ORB = registerItem("time_orb", new Item(new FabricItemSettings().rarity(Rarity.RARE)));
 
     public static final Item DRAGON_GEM = registerItem("dragon_gem", new Item(new FabricItemSettings()));
     public static final Item RAW_MAKAITE = registerItem("raw_makaite", new Item(new FabricItemSettings().fireproof()));
@@ -198,6 +199,7 @@ public class ModItems {
         addToItemGroup(ModItemGroups.ITEMS, EXTEND_ITEM);
         addToItemGroup(ModItemGroups.ITEMS, STAR_ITEM);
         addToItemGroup(ModItemGroups.ITEMS, FAITH_ITEM);
+        addToItemGroup(ModItemGroups.ITEMS, TIME_ORB);
         addToItemGroup(ModItemGroups.ITEMS, DRAGON_GEM);
         addToItemGroup(ModItemGroups.ITEMS, RAW_MAKAITE);
         addToItemGroup(ModItemGroups.ITEMS, MAKAITE_INGOT);

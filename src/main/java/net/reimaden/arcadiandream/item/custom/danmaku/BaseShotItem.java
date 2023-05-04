@@ -16,6 +16,7 @@ import net.minecraft.stat.Stats;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.random.Random;
@@ -44,6 +45,7 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
     private final float divergence;
     private final String pattern;
     private final int density;
+    private final boolean timeOrbUsed;
 
     // Max values for the properties
     private final float maxPower;
@@ -67,6 +69,7 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         this.divergence = divergence;
         this.pattern = pattern;
         this.density = density;
+        this.timeOrbUsed = false;
 
         this.maxPower = maxPower;
         this.maxSpeed = maxSpeed;
@@ -75,7 +78,7 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         this.maxDivergence = maxDivergence;
         this.maxDensity = maxDensity;
 
-        // Gravity is a special case, because the difference between 0 and 1 is dumb
+        // Gravity scales very fast
         this.maxGravity = 1f;
     }
 
@@ -92,7 +95,7 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
             return TypedActionResult.pass(stack);
         }
 
-        final int cooldown = nbt.getInt("cooldown") * ArcadianDream.CONFIG.danmakuCooldownMultiplier();
+        final int cooldown = (nbt.getInt("cooldown") * ArcadianDream.CONFIG.danmakuCooldownMultiplier()) / (isTimeOrbUsed(stack) ? 2 : 1);
 
         user.playSound(ModSounds.ENTITY_DANMAKU_FIRE, getSoundVolume(), getSoundPitch(random));
 
@@ -148,8 +151,8 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
     public void postProcessNbt(NbtCompound nbt) {
         super.postProcessNbt(nbt);
 
-        String[] keys = {"power", "speed", "duration", "cooldown", "gravity", "divergence", "pattern", "density"};
-        Object[] values = {power, speed, duration, cooldown, gravity, divergence, pattern, density};
+        String[] keys = {"power", "speed", "duration", "cooldown", "gravity", "divergence", "pattern", "density", "timeOrbUsed"};
+        Object[] values = {power, speed, duration, cooldown, gravity, divergence, pattern, density, timeOrbUsed};
 
         // Set default values
         for (int i = 0; i < keys.length; i++) {
@@ -160,6 +163,8 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
                     nbt.putFloat(keys[i], (float) values[i]);
                 } else if (values[i] instanceof String) {
                     nbt.putString(keys[i], (String) values[i]);
+                } else if (values[i] instanceof Boolean) {
+                    nbt.putBoolean(keys[i], (boolean) values[i]);
                 }
             }
         }
@@ -202,6 +207,7 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
             String keyPrefix = "item." + ArcadianDream.MOD_ID + ".shot.tooltip_";
             String formattedPower = formatFloatValue(power * ArcadianDream.CONFIG.danmakuDamageMultiplier());
             String formattedSpeed = formatFloatValue(speed);
+            String formattedCooldown = formatFloatValue((((float) cooldown / 20) * ArcadianDream.CONFIG.danmakuCooldownMultiplier()) / (isTimeOrbUsed(stack) ? 2 : 1));
             String formattedGravity = formatFloatValue(gravity);
             String formattedDivergence = formatFloatValue(divergence);
             String formattedColor = ColorMap.matchesMap(getColor(stack)) ? getColorName(stack).getString() : String.format(Locale.ROOT, "#%06X", nbtDisplay.getInt(COLOR_KEY));
@@ -209,7 +215,7 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
             tooltip.add(Text.translatable(keyPrefix + "power", formattedPower));
             tooltip.add(Text.translatable(keyPrefix + "speed", formattedSpeed));
             tooltip.add(Text.translatable(keyPrefix + "duration", (float) duration / 20));
-            tooltip.add(Text.translatable(keyPrefix + "cooldown", ((float) cooldown / 20) * ArcadianDream.CONFIG.danmakuCooldownMultiplier()));
+            tooltip.add(Text.translatable(keyPrefix + "cooldown", formattedCooldown).setStyle(Style.EMPTY.withColor(isTimeOrbUsed(stack) ? Formatting.DARK_PURPLE : null)));
             tooltip.add(Text.translatable(keyPrefix + "gravity", formattedGravity));
             tooltip.add(Text.translatable(keyPrefix + "divergence", formattedDivergence));
             tooltip.add(Text.translatable(keyPrefix + "pattern", Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.pattern_" + pattern.toLowerCase())));
@@ -253,6 +259,11 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         stack.getOrCreateNbt().putInt(key, Math.min(value, maxValue));
     }
 
+    @SuppressWarnings("SameParameterValue")
+    private void setParamBoolean(ItemStack stack, String key, boolean value) {
+        stack.getOrCreateNbt().putBoolean(key, value);
+    }
+
     public void setPower(ItemStack stack, float power) {
         setParamFloat(stack, "power", power, maxPower);
     }
@@ -287,12 +298,21 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         setParamInt(stack, "density", density, maxDensity);
     }
 
+    public void setTimeOrbUsed(ItemStack stack, boolean isUsed) {
+        setParamBoolean(stack, "time_orb_used", isUsed);
+    }
+
     private float getParamFloat(ItemStack stack, String key) {
         return stack.getOrCreateNbt().getFloat(key);
     }
 
     private int getParamInt(ItemStack stack, String key) {
         return stack.getOrCreateNbt().getInt(key);
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private boolean getParamBoolean(ItemStack stack, String key) {
+        return stack.getOrCreateNbt().getBoolean(key);
     }
 
     public float getPower(ItemStack stack) {
@@ -349,5 +369,9 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
 
     public int getMaxDensity() {
         return maxDensity;
+    }
+
+    public boolean isTimeOrbUsed(ItemStack stack) {
+        return getParamBoolean(stack, "time_orb_used");
     }
 }

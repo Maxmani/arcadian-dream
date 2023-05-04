@@ -38,6 +38,12 @@ public class ModLootTableModifiers {
     private static final Identifier[] TRIPLE_PATTERN_STRUCTURES = {
             LootTables.STRONGHOLD_CORRIDOR_CHEST, LootTables.STRONGHOLD_CROSSING_CHEST, LootTables.STRONGHOLD_LIBRARY_CHEST
     };
+    private static final Identifier[] EXTRA_LOOT_TABLES = {
+            LootTables.SIMPLE_DUNGEON_CHEST, LootTables.END_CITY_TREASURE_CHEST, LootTables.BASTION_TREASURE_CHEST, ModLootTables.ABANDONED_SHRINE_TREASURE_CHEST,
+            LootTables.DESERT_PYRAMID_CHEST, LootTables.WOODLAND_MANSION_CHEST, LootTables.ANCIENT_CITY_ICE_BOX_CHEST, LootTables.ANCIENT_CITY_CHEST,
+            LootTables.BURIED_TREASURE_CHEST, LootTables.JUNGLE_TEMPLE_CHEST, LootTables.ABANDONED_MINESHAFT_CHEST, LootTables.STRONGHOLD_CROSSING_CHEST,
+            LootTables.STRONGHOLD_CORRIDOR_CHEST
+    };
 
     public static void modify() {
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
@@ -62,6 +68,20 @@ public class ModLootTableModifiers {
                             .conditionally(MatchToolLootCondition.builder(ItemPredicate.Builder.create().items(ModItems.HISOU_SWORD)))
                             .conditionally(LocationCheckLootCondition.builder(LocationPredicate.Builder.create().y(NumberRange.FloatRange.atLeast(PEACH_HEIGHT))));
                     tableBuilder.pool(poolBuilder.build());
+                    break;
+                }
+            }
+
+            // A loot pool that is used across multiple tables
+            // Currently only has the Time Orb
+            LootPool extraLootPool = poolBuilder
+                    .rolls(ConstantLootNumberProvider.create(1))
+                    .conditionally(RandomChanceLootCondition.builder(0.05f))
+                    .with(ItemEntry.builder(ModItems.TIME_ORB))
+                    .build();
+            for (Identifier matchingId : EXTRA_LOOT_TABLES) {
+                if (matchingId.equals(id)) {
+                    tableBuilder.pool(extraLootPool);
                     break;
                 }
             }

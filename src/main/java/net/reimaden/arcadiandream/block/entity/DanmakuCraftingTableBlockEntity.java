@@ -301,6 +301,11 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
 
                 propertyDelegate.set(0, propertyDelegate.get(0) + 1);
             }
+        } else if (modifierStack.getItem() == ModItems.TIME_ORB) {
+            if (!shot.isTimeOrbUsed(stack)) {
+                shot.setTimeOrbUsed(stack, true);
+                propertyDelegate.set(0, propertyDelegate.get(0) + 1);
+            }
         }
     }
 
