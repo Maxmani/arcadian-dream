@@ -45,6 +45,14 @@ public class ModLootTableModifiers {
             LootTables.STRONGHOLD_CORRIDOR_CHEST
     };
 
+    // A loot pool that is used across multiple tables
+    // Currently only has the Time Orb in it
+    private static final LootPool EXTRA_LOOT_POOL = LootPool.builder()
+            .rolls(ConstantLootNumberProvider.create(1))
+            .conditionally(RandomChanceLootCondition.builder(0.05f))
+            .with(ItemEntry.builder(ModItems.TIME_ORB))
+            .build();
+
     public static void modify() {
         LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
             LootPool.Builder poolBuilder = LootPool.builder();
@@ -72,16 +80,10 @@ public class ModLootTableModifiers {
                 }
             }
 
-            // A loot pool that is used across multiple tables
-            // Currently only has the Time Orb
-            LootPool extraLootPool = poolBuilder
-                    .rolls(ConstantLootNumberProvider.create(1))
-                    .conditionally(RandomChanceLootCondition.builder(0.05f))
-                    .with(ItemEntry.builder(ModItems.TIME_ORB))
-                    .build();
+            // "Global" extra loot
             for (Identifier matchingId : EXTRA_LOOT_TABLES) {
                 if (matchingId.equals(id)) {
-                    tableBuilder.pool(extraLootPool);
+                    tableBuilder.pool(EXTRA_LOOT_POOL);
                     break;
                 }
             }
