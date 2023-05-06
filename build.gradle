@@ -101,23 +101,29 @@ processResources {
 	exclude("assets/arcadiandream/sounds/records/README.md")
 }
 
-def dataOutput = 'src/main/generated/resources'
-
 loom {
 	runs {
 		datagen {
-			server()
-
+			inherit client
 			name "Data Generation"
 			vmArg "-Dfabric-api.datagen"
-			vmArg "-Dfabric-api.datagen.output-dir=${file(dataOutput)}"
+			vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated/resources")}"
+			vmArg "-Dfabric-api.datagen.modid=${mod_id}"
 
 			runDir "build/datagen"
 		}
 	}
 }
 
-sourceSets { main { resources { srcDirs += dataOutput } } }
+sourceSets {
+	main {
+		resources {
+			srcDirs += [
+					'src/main/generated/resources'
+			]
+		}
+	}
+}
 
 tasks.withType(JavaCompile).configureEach {
 	// Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
