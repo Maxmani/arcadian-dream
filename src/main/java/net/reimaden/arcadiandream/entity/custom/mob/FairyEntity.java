@@ -28,6 +28,8 @@ import net.minecraft.world.World;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.ai.DanmakuGoal;
 import net.reimaden.arcadiandream.entity.custom.danmaku.BaseBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.danmaku.CircleBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.danmaku.PelletBulletEntity;
 import net.reimaden.arcadiandream.entity.variant.FairyPersonality;
 import net.reimaden.arcadiandream.entity.variant.FairyVariant;
 import net.reimaden.arcadiandream.item.custom.danmaku.MobBulletPatterns;
@@ -153,7 +155,9 @@ public class FairyEntity extends BaseFairyEntity {
 
     @Override
     public ImmutableList<BaseBulletEntity> availableBullets(World world, LivingEntity user) {
-        return super.availableBullets(world, user);
+        return ImmutableList.of(
+                new CircleBulletEntity(world, user), new PelletBulletEntity(world, user)
+        );
     }
 
     private class AttackPatterns implements MobBulletPatterns {

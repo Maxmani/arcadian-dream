@@ -26,6 +26,7 @@ import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.ai.DanmakuGoal;
 import net.reimaden.arcadiandream.entity.custom.danmaku.BaseBulletEntity;
 import net.reimaden.arcadiandream.entity.custom.danmaku.CircleBulletEntity;
+import net.reimaden.arcadiandream.entity.custom.danmaku.PelletBulletEntity;
 import net.reimaden.arcadiandream.entity.custom.danmaku.StarBulletEntity;
 import net.reimaden.arcadiandream.item.custom.danmaku.MobBulletPatterns;
 import org.jetbrains.annotations.NotNull;
@@ -65,12 +66,13 @@ public class SunflowerFairyEntity extends BaseFairyEntity {
         int cooldown = super.getAttackCooldown();
 
         switch (getAttackType()) {
-            case 0 -> cooldown = 20;
+            case 0, 7 -> cooldown = 20;
             case 1 -> cooldown = 40;
             case 2 -> cooldown = 60;
             case 3 -> cooldown = 30;
             case 4 -> cooldown = 12;
             case 5 -> cooldown = 35;
+            case 6 -> cooldown = 25;
         }
 
         return cooldown + getCooldownOffset();
@@ -87,6 +89,8 @@ public class SunflowerFairyEntity extends BaseFairyEntity {
             case 3 -> patterns.arcAttack(this, target, world);
             case 4 -> patterns.crossAttack(this, target, world);
             case 5 -> patterns.ringAttack(this, target, world);
+            case 6 -> patterns.tripleAttack(this, target, world);
+            case 7 -> patterns.carpetBombAttackQuick(this, world);
             default -> throw new IllegalStateException("Unexpected value: " + getAttackType());
         }
     }
@@ -137,7 +141,7 @@ public class SunflowerFairyEntity extends BaseFairyEntity {
 
     @Override
     public @Nullable EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-        byte attackType = (byte) getRandom().nextInt(6);
+        byte attackType = (byte) getRandom().nextInt(8);
 
         setAttackType(attackType);
 
@@ -159,15 +163,13 @@ public class SunflowerFairyEntity extends BaseFairyEntity {
     @Override
     public ImmutableList<BaseBulletEntity> availableBullets(World world, LivingEntity user) {
         return ImmutableList.of(
-                new CircleBulletEntity(world, user), new StarBulletEntity(world, user)
+                new CircleBulletEntity(world, user), new StarBulletEntity(world, user), new PelletBulletEntity(world, user)
         );
     }
 
     private class AttackPatterns implements MobBulletPatterns {
 
         private final int randomDensity = getRandom().nextInt(6) + 5;
-
-        // TODO: Add more patterns
 
         private void burstAttack(LivingEntity fairy, LivingEntity target, World world) {
             createSpread(world, fairy, target, randomDensity, 0.5f, 5, 5, 50, getBulletColor());
@@ -191,6 +193,14 @@ public class SunflowerFairyEntity extends BaseFairyEntity {
 
         private void ringAttack(LivingEntity fairy, LivingEntity target, World world) {
             createRing(world, fairy, target, 15, 0.45f, 0, 4, 60, getBulletColor());
+        }
+
+        private void tripleAttack(LivingEntity fairy, LivingEntity target, World world) {
+            createTriple(world, fairy, target, 6, 0.8f, 5, 4, 50, getBulletColor());
+        }
+
+        private void carpetBombAttackQuick(LivingEntity fairy, World world) {
+            createRain(world, fairy, 15, 1.2f, 8, 5, 100, getBulletColor(), 0.1f);
         }
 
         @Override
