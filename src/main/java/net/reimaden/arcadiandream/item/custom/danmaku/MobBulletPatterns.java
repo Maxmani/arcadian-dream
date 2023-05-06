@@ -176,11 +176,11 @@ public interface MobBulletPatterns {
         }
     }
 
-    default void createCone(World world, LivingEntity user, LivingEntity target, int density, float speed, float divergence, float power, int duration, int color) {
+    default void createArc(World world, LivingEntity user, LivingEntity target, int density, float speed, float divergence, float power, int duration, int color) {
         float pitch = user.getPitch();
         float yaw = user.getHeadYaw();
         float targetHitbox = (target.getHeight() / 2) * 5;
-        final float cone = 45f;
+        final float arc = 45f;
 
         ItemStack stack = getBullet(world, user).getStack();
         BaseShotItem item = (BaseShotItem) stack.getItem();
@@ -192,10 +192,10 @@ public interface MobBulletPatterns {
             BaseBulletEntity bulletEntity = getBullet(world, user);
             bulletEntity.setItem(stack);
 
-            float angle = (i * (cone / (density - 1)));
+            float angle = (i * (arc / (density - 1)));
             Vec3d bullet = new Vec3d(0, 0, 1);
 
-            bullet = bullet.rotateY((angle + (180 - (cone / 2))) * MathHelper.RADIANS_PER_DEGREE);
+            bullet = bullet.rotateY((angle + (180 - (arc / 2))) * MathHelper.RADIANS_PER_DEGREE);
             bullet = bullet.rotateX((pitch + targetHitbox) * MathHelper.RADIANS_PER_DEGREE);
             bullet = bullet.rotateY((-yaw + 180) * MathHelper.RADIANS_PER_DEGREE);
 

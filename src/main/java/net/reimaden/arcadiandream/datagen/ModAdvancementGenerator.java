@@ -60,7 +60,7 @@ public class ModAdvancementGenerator extends FabricAdvancementProvider {
 
         private static final Identifier BACKGROUND = new Identifier(ArcadianDream.MOD_ID, "textures/block/danmaku_crafting_table_bottom.png");
         private static final Item[] PATTERN_ITEMS = new Item[]{ModItems.SPREAD_PATTERN, ModItems.RAY_PATTERN,
-                ModItems.RING_PATTERN, ModItems.CONE_PATTERN, ModItems.DOUBLE_PATTERN, ModItems.TRIPLE_PATTERN};
+                ModItems.RING_PATTERN, ModItems.ARC_PATTERN, ModItems.DOUBLE_PATTERN, ModItems.TRIPLE_PATTERN};
 
         private static <T> AdvancementDisplay makeDisplay(AdvancementFrame frame, T icon, String titleKey) {
             final String prefix = "advancements." + ArcadianDream.MOD_ID + "." + titleKey;

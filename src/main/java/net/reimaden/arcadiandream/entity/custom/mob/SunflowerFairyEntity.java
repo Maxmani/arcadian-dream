@@ -84,7 +84,7 @@ public class SunflowerFairyEntity extends BaseFairyEntity {
             case 0 -> patterns.burstAttack(this, target, world);
             case 1 -> patterns.spreadAttack(this, target, world);
             case 2 -> patterns.carpetBombAttack(this, world);
-            case 3 -> patterns.coneAttack(this, target, world);
+            case 3 -> patterns.arcAttack(this, target, world);
             case 4 -> patterns.crossAttack(this, target, world);
             case 5 -> patterns.ringAttack(this, target, world);
             default -> throw new IllegalStateException("Unexpected value: " + getAttackType());
@@ -181,8 +181,8 @@ public class SunflowerFairyEntity extends BaseFairyEntity {
             createRain(world, fairy, 15, 1.2f, 8, 5, 100, getBulletColor(), 0.1f);
         }
 
-        private void coneAttack(LivingEntity fairy, LivingEntity target, World world) {
-            createCone(world, fairy, target, 5, 0.5f, 0, 6, 50, getBulletColor());
+        private void arcAttack(LivingEntity fairy, LivingEntity target, World world) {
+            createArc(world, fairy, target, 5, 0.5f, 0, 6, 50, getBulletColor());
         }
 
         private void crossAttack(LivingEntity fairy, LivingEntity target, World world) {

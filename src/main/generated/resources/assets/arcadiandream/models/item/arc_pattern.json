@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "arcadiandream:item/cone_pattern"
+    "layer0": "arcadiandream:item/arc_pattern"
   }
 }

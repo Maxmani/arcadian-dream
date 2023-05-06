@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "#": {
-      "item": "arcadiandream:cone_pattern_template"
+      "item": "arcadiandream:arc_pattern_template"
     },
     "X": {
       "tag": "arcadiandream:items"
@@ -15,7 +15,7 @@
     "XXX"
   ],
   "result": {
-    "item": "arcadiandream:cone_pattern"
+    "item": "arcadiandream:arc_pattern"
   },
   "show_notification": true
 }

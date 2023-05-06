@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cone_pattern_template": {
+    "has_arc_pattern_template": {
       "conditions": {
         "items": [
           {
             "items": [
-              "arcadiandream:cone_pattern_template"
+              "arcadiandream:arc_pattern_template"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "arcadiandream:cone_pattern"
+        "recipe": "arcadiandream:arc_pattern"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_cone_pattern_template",
+      "has_arc_pattern_template",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "arcadiandream:cone_pattern"
+      "arcadiandream:arc_pattern"
     ]
   }
 }

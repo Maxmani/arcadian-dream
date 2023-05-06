@@ -125,7 +125,7 @@ public class ModLootTableModifiers {
                 poolBuilder
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(TEMPLATE_CHANCE))
-                        .with(ItemEntry.builder(ModItems.CONE_PATTERN_TEMPLATE));
+                        .with(ItemEntry.builder(ModItems.ARC_PATTERN_TEMPLATE));
                 tableBuilder.pool(poolBuilder.build());
             }
             if (LootTables.ABANDONED_MINESHAFT_CHEST.equals(id)) {

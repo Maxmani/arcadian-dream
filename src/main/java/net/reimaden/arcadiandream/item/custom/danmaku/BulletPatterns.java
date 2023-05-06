@@ -65,19 +65,19 @@ public interface BulletPatterns {
         }
     }
 
-    default void createCone(World world, PlayerEntity user, ItemStack stack, int density, float speed, float divergence) {
+    default void createArc(World world, PlayerEntity user, ItemStack stack, int density, float speed, float divergence) {
         float pitch = user.getPitch();
         float yaw = user.getYaw();
-        final float cone = 45f;
+        final float arc = 45f;
 
         for (int i = 0; i < density; i++) {
             BaseBulletEntity bulletEntity = getBullet(world, user);
             bulletEntity.setItem(stack);
 
-            float angle = (i * (cone / (density - 1)));
+            float angle = (i * (arc / (density - 1)));
             Vec3d bullet = new Vec3d(0, 0, 1);
 
-            bullet = bullet.rotateY((angle + (180 - (cone / 2))) * MathHelper.RADIANS_PER_DEGREE);
+            bullet = bullet.rotateY((angle + (180 - (arc / 2))) * MathHelper.RADIANS_PER_DEGREE);
             bullet = bullet.rotateX(pitch * MathHelper.RADIANS_PER_DEGREE);
             bullet = bullet.rotateY((-yaw + 180) * MathHelper.RADIANS_PER_DEGREE);
 

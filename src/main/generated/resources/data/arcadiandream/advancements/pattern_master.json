@@ -1,12 +1,12 @@
 {
   "parent": "arcadiandream:modify_danmaku",
   "criteria": {
-    "cone_pattern": {
+    "arc_pattern": {
       "conditions": {
         "items": [
           {
             "items": [
-              "arcadiandream:cone_pattern"
+              "arcadiandream:arc_pattern"
             ]
           }
         ]
@@ -100,7 +100,7 @@
       "ring_pattern"
     ],
     [
-      "cone_pattern"
+      "arc_pattern"
     ],
     [
       "double_pattern"

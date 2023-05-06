@@ -35,7 +35,7 @@ public class ModModelGenerator extends FabricModelProvider {
             ModItems.MAKAITE_HELMET, ModItems.MAKAITE_LEGGINGS, ModItems.MAKAITE_INGOT, ModItems.MUSIC_DISC_FAIRY_PLAYGROUND,
             ModItems.MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN, ModItems.ORDINARY_HAT, ModItems.RAW_MAKAITE, ModItems.HEALING_CHARM,
             ModItems.HOURAI_ELIXIR, ModItems.FAITH_ITEM, ModItems.SPREAD_PATTERN, ModItems.RAY_PATTERN,
-            ModItems.RING_PATTERN, ModItems.CONE_PATTERN, ModItems.DOUBLE_PATTERN, ModItems.TRIPLE_PATTERN,
+            ModItems.RING_PATTERN, ModItems.ARC_PATTERN, ModItems.DOUBLE_PATTERN, ModItems.TRIPLE_PATTERN,
             ModItems.MAGATAMA_NECKLACE, ModItems.GHASTLY_LANTERN, ModItems.LIFE_FRAGMENT, ModItems.LAMPREY,
             ModItems.COOKED_LAMPREY, ModItems.TIME_ORB
     );
