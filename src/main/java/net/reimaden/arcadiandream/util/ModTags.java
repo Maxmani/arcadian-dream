@@ -59,6 +59,8 @@ public class ModTags {
         public static final TagKey<Item> DANMAKU_DURATION_MODIFIERS = createTag("danmaku_duration_modifiers");
         public static final TagKey<Item> HAMMERS = createCommonTag("hammers");
         public static final TagKey<Item> UNDEAD_PARTS = createCommonTag("undead_parts");
+        public static final TagKey<Item> RAW_MEAT = createCommonTag("raw_meat");
+        public static final TagKey<Item> COOKED_MEAT = createCommonTag("cooked_meat");
 
         private static TagKey<Item> createTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(ArcadianDream.MOD_ID, name));
