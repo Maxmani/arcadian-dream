@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.mininglevel.v1.FabricMineableTags;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBiomeTags;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBlockTags;
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalEnchantmentTags;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.damage.DamageType;
@@ -22,6 +23,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.poi.PointOfInterestType;
 import net.reimaden.arcadiandream.block.ModBlocks;
 import net.reimaden.arcadiandream.damage.ModDamageSources;
+import net.reimaden.arcadiandream.enchantment.ModEnchantments;
 import net.reimaden.arcadiandream.entity.ModEntities;
 import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.painting.ModPaintings;
@@ -168,6 +170,21 @@ public class ModTagGenerator {
                     .add(ModEntities.CIRCLE_BULLET, ModEntities.BUBBLE_BULLET, ModEntities.AMULET_BULLET, ModEntities.STAR_BULLET);
             getOrCreateTagBuilder(ModTags.EntityTypes.FAIRIES)
                     .add(ModEntities.FAIRY, ModEntities.SUNFLOWER_FAIRY);
+        }
+    }
+
+    public static class EnchantmentTypeTags extends FabricTagProvider.EnchantmentTagProvider {
+
+        public EnchantmentTypeTags(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
+            super(output, completableFuture);
+        }
+
+        @Override
+        protected void configure(RegistryWrapper.WrapperLookup arg) {
+            getOrCreateTagBuilder(ConventionalEnchantmentTags.ENTITY_DEFENSE_ENHANCEMENT)
+                    .add(ModEnchantments.DANMAKU_PROTECTION);
+            getOrCreateTagBuilder(ConventionalEnchantmentTags.WEAPON_DAMAGE_ENHANCEMENT)
+                    .add(ModEnchantments.YOUKAI_BUSTER);
         }
     }
 

@@ -58,7 +58,7 @@ public class ModTags {
         public static final TagKey<Item> DANMAKU_SPEED_MODIFIERS = createTag("danmaku_speed_modifiers");
         public static final TagKey<Item> DANMAKU_DURATION_MODIFIERS = createTag("danmaku_duration_modifiers");
         public static final TagKey<Item> HAMMERS = createCommonTag("hammers");
-        public static final TagKey<Item> UNDEAD_PARTS = createTag("undead_parts");
+        public static final TagKey<Item> UNDEAD_PARTS = createCommonTag("undead_parts");
 
         private static TagKey<Item> createTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(ArcadianDream.MOD_ID, name));
@@ -78,10 +78,9 @@ public class ModTags {
             return TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, name));
         }
 
-        @SuppressWarnings("unused")
-        private static TagKey<EntityType<?>> createCommonTag(String name) {
-            return TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier("c", name));
-        }
+//        private static TagKey<EntityType<?>> createCommonTag(String name) {
+//            return TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier("c", name));
+//        }
     }
 
     public static class DamageTypes {
@@ -92,6 +91,10 @@ public class ModTags {
         private static TagKey<DamageType> createTag(String name) {
             return TagKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier(ArcadianDream.MOD_ID, name));
         }
+
+//        private static TagKey<DamageType> createCommonTag(String name) {
+//            return TagKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier("c", name));
+//        }
     }
 
     public static class Biomes {
@@ -102,5 +105,9 @@ public class ModTags {
         private static TagKey<Biome> createTag(String name) {
             return TagKey.of(RegistryKeys.BIOME, new Identifier(ArcadianDream.MOD_ID, name));
         }
+
+//        private static TagKey<Biome> createCommonTag(String name) {
+//            return TagKey.of(RegistryKeys.BIOME, new Identifier("c", name));
+//        }
     }
 }
