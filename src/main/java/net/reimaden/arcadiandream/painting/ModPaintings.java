@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -11,7 +11,6 @@ import net.reimaden.arcadiandream.ArcadianDream;
 import net.minecraft.entity.decoration.painting.PaintingVariant;
 import net.minecraft.util.Identifier;
 
-@SuppressWarnings("unused")
 public class ModPaintings {
 
     public static final PaintingVariant REIMADEN = registerPainting("reimaden", new PaintingVariant(16, 16));
