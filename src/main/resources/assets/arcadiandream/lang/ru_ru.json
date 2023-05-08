@@ -91,7 +91,7 @@
   "item.arcadiandream.double_pattern_template.tooltip": [{"translate":"item.arcadiandream.bullet.pattern_double","color":"gray"}],
   "item.arcadiandream.triple_pattern_template": [{"translate":"item.arcadiandream.pattern_template"}],
   "item.arcadiandream.triple_pattern_template.tooltip": [{"translate":"item.arcadiandream.bullet.pattern_triple","color":"gray"}],
-  "item.arcadiandream.pattern": "Bullet Pattern",
+  "item.arcadiandream.pattern": "Паттерн пули",
   "item.arcadiandream.spread_pattern": [{"translate":"item.arcadiandream.pattern"}],
   "item.arcadiandream.spread_pattern.tooltip": [{"translate":"item.arcadiandream.spread_pattern_template.tooltip"}],
   "item.arcadiandream.ray_pattern": [{"translate":"item.arcadiandream.pattern"}],
@@ -123,7 +123,7 @@
   "block.arcadiandream.makaite_block": "Блок макаита",
   "block.arcadiandream.onbashira": "Омбасира",
   "block.arcadiandream.onbashira_pillar": "Колонна омбасира",
-  "block.arcadiandream.ritual_shrine": "Ритуальный алтарь",
+  "block.arcadiandream.ritual_shrine": "Ритуальный стол",
   "block.arcadiandream.danmaku_crafting_table": "Верстак данмаку",
   "block.arcadiandream.mysterious_seal": "Загадочная печать",
 
