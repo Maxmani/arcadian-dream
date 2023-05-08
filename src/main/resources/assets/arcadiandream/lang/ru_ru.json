@@ -91,7 +91,7 @@
   "item.arcadiandream.double_pattern_template.tooltip": [{"translate":"item.arcadiandream.bullet.pattern_double","color":"gray"}],
   "item.arcadiandream.triple_pattern_template": [{"translate":"item.arcadiandream.pattern_template"}],
   "item.arcadiandream.triple_pattern_template.tooltip": [{"translate":"item.arcadiandream.bullet.pattern_triple","color":"gray"}],
-  "item.arcadiandream.pattern": "Паттерн пули",
+  "item.arcadiandream.pattern": "Узор пули",
   "item.arcadiandream.spread_pattern": [{"translate":"item.arcadiandream.pattern"}],
   "item.arcadiandream.spread_pattern.tooltip": [{"translate":"item.arcadiandream.spread_pattern_template.tooltip"}],
   "item.arcadiandream.ray_pattern": [{"translate":"item.arcadiandream.pattern"}],
