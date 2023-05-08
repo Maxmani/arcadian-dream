@@ -129,6 +129,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         makeMultipleOptions(exporter, RecipeSerializer.SMOKING, inputs, category, output, experience, cookingTime, group, "_from_smoking");
     }
 
+    protected static void makeCampfireCooking(Consumer<RecipeJsonProvider> exporter, List<ItemConvertible> inputs, RecipeCategory category,
+                                      ItemConvertible output, float experience, int cookingTime, String group) {
+        makeMultipleOptions(exporter, RecipeSerializer.CAMPFIRE_COOKING, inputs, category, output, experience, cookingTime, group, "_from_campfire_cooking");
+    }
+
     private static void makeAxe(Consumer<RecipeJsonProvider> exporter, ItemConvertible output, ItemConvertible material) {
         ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, output)
                 .input('#', Items.STICK)
