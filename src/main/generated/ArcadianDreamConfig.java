@@ -18,6 +18,9 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
     private final Option<java.lang.Boolean> hisouSwordOptions_canDisableShields = this.optionForKey(new Option.Key("hisouSwordOptions.canDisableShields"));
     private final Option<java.lang.Boolean> mochiMalletOptions_lowViolence = this.optionForKey(new Option.Key("mochiMalletOptions.lowViolence"));
     private final Option<java.lang.Boolean> houraiElixirOptions_canDrink = this.optionForKey(new Option.Key("houraiElixirOptions.canDrink"));
+    private final Option<java.lang.Boolean> houraiElixirOptions_nerfElixir = this.optionForKey(new Option.Key("houraiElixirOptions.nerfElixir"));
+    private final Option<java.lang.Boolean> houraiElixirOptions_allowDying = this.optionForKey(new Option.Key("houraiElixirOptions.allowDying"));
+    private final Option<java.lang.Integer> houraiElixirOptions_elixirFatigueThreshold = this.optionForKey(new Option.Key("houraiElixirOptions.elixirFatigueThreshold"));
     private final Option<java.lang.Integer> danmakuCooldownMultiplier = this.optionForKey(new Option.Key("danmakuCooldownMultiplier"));
     private final Option<java.lang.Float> danmakuDamageMultiplier = this.optionForKey(new Option.Key("danmakuDamageMultiplier"));
     private final Option<java.lang.Boolean> cooldownPerBulletType = this.optionForKey(new Option.Key("cooldownPerBulletType"));
@@ -114,6 +117,30 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
             houraiElixirOptions_canDrink.set(value);
         }
 
+        public boolean nerfElixir() {
+            return houraiElixirOptions_nerfElixir.value();
+        }
+
+        public void nerfElixir(boolean value) {
+            houraiElixirOptions_nerfElixir.set(value);
+        }
+
+        public boolean allowDying() {
+            return houraiElixirOptions_allowDying.value();
+        }
+
+        public void allowDying(boolean value) {
+            houraiElixirOptions_allowDying.set(value);
+        }
+
+        public int elixirFatigueThreshold() {
+            return houraiElixirOptions_elixirFatigueThreshold.value();
+        }
+
+        public void elixirFatigueThreshold(int value) {
+            houraiElixirOptions_elixirFatigueThreshold.set(value);
+        }
+
     }
     public int danmakuCooldownMultiplier() {
         return danmakuCooldownMultiplier.value();
@@ -139,8 +166,8 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         cooldownPerBulletType.set(value);
     }
 
-    public final FairyOptions fairyOptions = new FairyOptions();
-    public class FairyOptions implements fairyOptions {
+    public final FairyOptions_ fairyOptions = new FairyOptions_();
+    public class FairyOptions_ implements FairyOptions {
         public boolean spawnFairies() {
             return fairyOptions_spawnFairies.value();
         }
@@ -159,25 +186,25 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
 
     }
 
-    public interface NueTridentOptions {
-        boolean canHaveImpaling();
-        void canHaveImpaling(boolean value);
-    }
-    public interface MochiMalletOptions {
-        boolean lowViolence();
-        void lowViolence(boolean value);
-    }
     public interface ChiselOptions {
         boolean canUse();
         void canUse(boolean value);
         int maxDistance();
         void maxDistance(int value);
     }
-    public interface fairyOptions {
+    public interface FairyOptions {
         boolean spawnFairies();
         void spawnFairies(boolean value);
         boolean spawnSunflowerFairies();
         void spawnSunflowerFairies(boolean value);
+    }
+    public interface MochiMalletOptions {
+        boolean lowViolence();
+        void lowViolence(boolean value);
+    }
+    public interface NueTridentOptions {
+        boolean canHaveImpaling();
+        void canHaveImpaling(boolean value);
     }
     public interface HisouSwordOptions {
         int minHeightForPeaches();
@@ -188,6 +215,12 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
     public interface HouraiElixirOptions {
         boolean canDrink();
         void canDrink(boolean value);
+        boolean nerfElixir();
+        void nerfElixir(boolean value);
+        boolean allowDying();
+        void allowDying(boolean value);
+        int elixirFatigueThreshold();
+        void elixirFatigueThreshold(int value);
     }
 
 }

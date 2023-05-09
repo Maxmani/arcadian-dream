@@ -144,6 +144,7 @@
   "enchantment.arcadiandream.youkai_buster": "Youkai Buster",
 
   "effect.arcadiandream.ethereal": "Ethereal",
+  "effect.arcadiandream.elixir_fatigue": "Elixir Fatigue",
 
   "advancements.arcadiandream.root.title": "Arcadian Dream",
   "advancements.arcadiandream.root.description": "Welcome to Gensokyo",
@@ -256,6 +257,12 @@
   "text.config.arcadiandream.option.mochiMalletOptions.lowViolence.tooltip": "Disable blood on the Mochi Mallet texture.",
   "text.config.arcadiandream.category.houraiElixirOptions": "Hourai Elixir",
   "text.config.arcadiandream.option.houraiElixirOptions.canDrink": "Can drink",
+  "text.config.arcadiandream.option.houraiElixirOptions.nerfElixir": "Nerf Hourai Elixir",
+  "text.config.arcadiandream.option.houraiElixirOptions.nerfElixir.tooltip": "Taking fatal damage gives the Elixir Fatigue status effect.\nFurther deaths increase the intensity of it.",
+  "text.config.arcadiandream.option.houraiElixirOptions.allowDying": "Allow dying",
+  "text.config.arcadiandream.option.houraiElixirOptions.allowDying.tooltip": "Death becomes possible under the effects of Elixir Fatigue.",
+  "text.config.arcadiandream.option.houraiElixirOptions.elixirFatigueThreshold": "Threshold",
+  "text.config.arcadiandream.option.houraiElixirOptions.elixirFatigueThreshold.tooltip": "Minimum level of Elixir Fatigue required to allow dying.",
   "text.config.arcadiandream.section.danmaku": "Danmaku",
   "text.config.arcadiandream.option.danmakuCooldownMultiplier": "Cooldown multiplier",
   "text.config.arcadiandream.option.danmakuDamageMultiplier": "Damage multiplier",

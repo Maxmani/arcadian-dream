@@ -11,24 +11,22 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.stat.Stats;
-import net.minecraft.text.Text;
 import net.minecraft.util.Pair;
 import net.minecraft.world.World;
-import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.advancement.ModCriteria;
+import net.reimaden.arcadiandream.effect.ModEffects;
 import net.reimaden.arcadiandream.entity.custom.danmaku.BaseBulletEntity;
 import net.reimaden.arcadiandream.item.ModItems;
-import net.reimaden.arcadiandream.sound.ModSounds;
 import net.reimaden.arcadiandream.statistic.ModStats;
 import net.reimaden.arcadiandream.util.IEntityDataSaver;
 import net.reimaden.arcadiandream.util.ItemBreakUtil;
@@ -99,27 +97,11 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-    @Inject(method = "damage", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;isDead()Z", ordinal = 1), cancellable = true)
-    private void arcadiandream$preventDeath(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-        if (!world.isClient() && ((IEntityDataSaver) entity).getPersistentData().getByte("elixir") >= 3) {
-            if (entity.getHealth() - amount <= 0 && !source.isIn(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
-                entity.setHealth(entity.getMaxHealth());
-
-                world.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
-                        ModSounds.ENTITY_GENERIC_RESURRECT, entity.getSoundCategory(), 1.0f, 1.0f);
-                if (entity instanceof PlayerEntity player) {
-                    player.sendMessage(Text.translatable(ArcadianDream.MOD_ID + ".message.resurrection"), true);
-                }
-
-                cir.setReturnValue(false);
-            }
-        }
-    }
-
     @Inject(method = "canHaveStatusEffect", at = @At("HEAD"), cancellable = true)
     private void arcadiandream$effectImmunity(StatusEffectInstance effect, CallbackInfoReturnable<Boolean> cir) {
-        if (!world.isClient() && ((IEntityDataSaver) entity).getPersistentData().getByte("elixir") >= 2
-                && effect.getEffectType().getCategory() != StatusEffectCategory.BENEFICIAL) {
+        final StatusEffect effectType = effect.getEffectType();
+        if (((IEntityDataSaver) entity).getPersistentData().getByte("elixir") >= 2
+                && (effectType.getCategory() == StatusEffectCategory.HARMFUL && effectType != ModEffects.ELIXIR_FATIGUE)) {
             cir.setReturnValue(false);
         }
     }

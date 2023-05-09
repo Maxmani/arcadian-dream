@@ -60,6 +60,15 @@ public class ModConfigModel {
     public static class HouraiElixirOptions {
         @Sync(Option.SyncMode.OVERRIDE_CLIENT)
         public boolean canDrink = false;
+
+        public boolean nerfElixir = true;
+
+        @Sync(Option.SyncMode.OVERRIDE_CLIENT)
+        public boolean allowDying = false;
+
+        @Sync(Option.SyncMode.OVERRIDE_CLIENT)
+        @RangeConstraint(min = 1, max = 5)
+        public int elixirFatigueThreshold = 1;
     }
 
     @SectionHeader("danmaku")
@@ -78,9 +87,9 @@ public class ModConfigModel {
     @SectionHeader("mobs")
 
     @Nest
-    public fairyOptions fairyOptions = new fairyOptions();
+    public FairyOptions fairyOptions = new FairyOptions();
 
-    public static class fairyOptions {
+    public static class FairyOptions {
         public boolean spawnFairies = true;
         public boolean spawnSunflowerFairies = true;
     }
