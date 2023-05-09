@@ -9,14 +9,15 @@ import com.google.common.collect.ImmutableList;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.block.Blocks;
-import net.minecraft.data.server.recipe.*;
+import net.minecraft.data.server.recipe.RecipeJsonProvider;
+import net.minecraft.data.server.recipe.RecipeProvider;
+import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.util.Identifier;
-import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.block.ModBlocks;
 import net.reimaden.arcadiandream.datagen.builders.RitualCraftingRecipeJsonBuilder;
 import net.reimaden.arcadiandream.datagen.providers.ModRecipeProvider;
@@ -28,9 +29,13 @@ import java.util.function.Consumer;
 
 public class ModRecipeGenerator extends ModRecipeProvider {
 
+    private static final int DEFAULT_COOKING_TIME = 200;
+    private static final int BLASTING_SMOKING_COOKING_TIME = 100;
+    private static final int CAMPFIRE_COOKING_TIME = 600;
+
     private static final ImmutableList<ItemConvertible> DRAGON_GEM_ORES =
             ImmutableList.of(ModItems.DRAGON_GEM_ORE, ModItems.DEEPSLATE_DRAGON_GEM_ORE, ModItems.END_STONE_DRAGON_GEM_ORE);
-    public static final ImmutableList<ItemConvertible> MAKAITE_ORES =
+    private static final ImmutableList<ItemConvertible> MAKAITE_ORES =
             ImmutableList.of(ModItems.MAKAITE_ORE, ModItems.RAW_MAKAITE);
 
     public ModRecipeGenerator(FabricDataOutput output) {
@@ -165,30 +170,29 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .offerTo(exporter);
 
         // Smelting recipes
-        makeSmelting(exporter, DRAGON_GEM_ORES, RecipeCategory.MISC, ModItems.DRAGON_GEM, 1.2f, 200,
+        makeSmelting(exporter, DRAGON_GEM_ORES, RecipeCategory.MISC, ModItems.DRAGON_GEM, 1.2f, DEFAULT_COOKING_TIME,
                 RecipeProvider.getItemPath(ModItems.DRAGON_GEM));
-        makeSmelting(exporter, MAKAITE_ORES, RecipeCategory.MISC, ModItems.MAKAITE_INGOT, 0.8f, 200,
+        makeSmelting(exporter, MAKAITE_ORES, RecipeCategory.MISC, ModItems.MAKAITE_INGOT, 0.8f, DEFAULT_COOKING_TIME,
                 RecipeProvider.getItemPath(ModItems.MAKAITE_INGOT));
-        makeSmelting(exporter, List.of(ModItems.LAMPREY), RecipeCategory.FOOD, ModItems.COOKED_LAMPREY, 0.35f, 200,
+        makeSmelting(exporter, List.of(ModItems.DEATH_SCYTHE), RecipeCategory.MISC, Items.IRON_NUGGET, 0.1f, DEFAULT_COOKING_TIME,
+                RecipeProvider.getItemPath(Items.IRON_NUGGET));
+        makeSmelting(exporter, List.of(ModItems.LAMPREY), RecipeCategory.FOOD, ModItems.COOKED_LAMPREY, 0.35f, DEFAULT_COOKING_TIME,
                 RecipeProvider.getItemPath(ModItems.COOKED_LAMPREY));
 
-        CookingRecipeJsonBuilder.createSmelting(Ingredient.ofItems(ModItems.DEATH_SCYTHE), RecipeCategory.MISC, Items.IRON_NUGGET, 0.1f, 200)
-                .criterion(RecipeProvider.hasItem(ModItems.DEATH_SCYTHE),
-                        RecipeProvider.conditionsFromItem(ModItems.DEATH_SCYTHE))
-                .offerTo(exporter, new Identifier(ArcadianDream.MOD_ID, Items.IRON_NUGGET + "_from_smelting"));
-        CookingRecipeJsonBuilder.createBlasting(Ingredient.ofItems(ModItems.DEATH_SCYTHE), RecipeCategory.MISC, Items.IRON_NUGGET, 0.1f, 100)
-                .criterion(RecipeProvider.hasItem(ModItems.DEATH_SCYTHE),
-                        RecipeProvider.conditionsFromItem(ModItems.DEATH_SCYTHE))
-                .offerTo(exporter, new Identifier(ArcadianDream.MOD_ID, Items.IRON_NUGGET + "_from_blasting"));
-
         // Blasting recipes
-        makeBlasting(exporter, DRAGON_GEM_ORES, RecipeCategory.MISC, ModItems.DRAGON_GEM, 1.2f, 100,
+        makeBlasting(exporter, DRAGON_GEM_ORES, RecipeCategory.MISC, ModItems.DRAGON_GEM, 1.2f, BLASTING_SMOKING_COOKING_TIME,
                 RecipeProvider.getItemPath(ModItems.DRAGON_GEM));
-        makeBlasting(exporter, MAKAITE_ORES, RecipeCategory.MISC, ModItems.MAKAITE_INGOT, 0.8f, 100,
+        makeBlasting(exporter, MAKAITE_ORES, RecipeCategory.MISC, ModItems.MAKAITE_INGOT, 0.8f, BLASTING_SMOKING_COOKING_TIME,
                 RecipeProvider.getItemPath(ModItems.MAKAITE_INGOT));
+        makeBlasting(exporter, List.of(ModItems.DEATH_SCYTHE), RecipeCategory.MISC, Items.IRON_NUGGET, 0.1f, BLASTING_SMOKING_COOKING_TIME,
+                RecipeProvider.getItemPath(Items.IRON_NUGGET));
 
         // Smoking recipes
-        makeSmoking(exporter, List.of(ModItems.LAMPREY), RecipeCategory.FOOD, ModItems.COOKED_LAMPREY, 0.35f, 100,
+        makeSmoking(exporter, List.of(ModItems.LAMPREY), RecipeCategory.FOOD, ModItems.COOKED_LAMPREY, 0.35f, BLASTING_SMOKING_COOKING_TIME,
+                RecipeProvider.getItemPath(ModItems.COOKED_LAMPREY));
+
+        // Campfire recipes
+        makeCampfireCooking(exporter, List.of(ModItems.LAMPREY), RecipeCategory.FOOD, ModItems.COOKED_LAMPREY, 0.35f, CAMPFIRE_COOKING_TIME,
                 RecipeProvider.getItemPath(ModItems.COOKED_LAMPREY));
 
         // Ritual Crafting recipes

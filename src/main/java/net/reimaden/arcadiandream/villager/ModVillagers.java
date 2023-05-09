@@ -5,10 +5,12 @@
 
 package net.reimaden.arcadiandream.villager;
 
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import net.fabricmc.fabric.api.object.builder.v1.trade.TradeOfferHelper;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
@@ -16,6 +18,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.world.poi.PointOfInterestType;
@@ -25,6 +28,7 @@ import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.item.custom.danmaku.BaseShotItem;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.reimaden.arcadiandream.util.ColorMap;
+import net.reimaden.arcadiandream.util.ModTags;
 
 @SuppressWarnings("unused")
 public class ModVillagers {
@@ -41,8 +45,11 @@ public class ModVillagers {
     private static final int EXPERT_SELL_XP = 15;
     private static final int EXPERT_BUY_XP = 30;
     private static final int MASTER_TRADE_XP = 30;
+    private static final int WANDERING_TRADER_XP = 1;
     private static final float LOW_PRICE_MULTIPLIER = 0.05f;
     private static final float HIGH_PRICE_MULTIPLIER = 0.2f;
+
+    private static final Random RANDOM = Random.create();
 
     private static final String ANTIQUARIAN_NAME = "antiquarian";
     public static final PointOfInterestType ANTIQUARIAN_POI = registerPOI(ANTIQUARIAN_NAME, ModBlocks.DANMAKU_CRAFTING_TABLE);
@@ -65,10 +72,12 @@ public class ModVillagers {
     public static void register() {
         ArcadianDream.LOGGER.debug("Registering villagers for " + ArcadianDream.MOD_ID);
         registerTrades();
+        registerWanderingTraderTrades();
     }
 
     @SuppressWarnings("CodeBlock2Expr")
-    public static void registerTrades() {
+    private static void registerTrades() {
+        // Novice trades
         TradeOfferHelper.registerVillagerOffers(ANTIQUARIAN, 1, factories -> {
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(ModItems.STAR_ITEM, 16),
@@ -86,6 +95,7 @@ public class ModVillagers {
                     COMMON_MAX_USES, NOVICE_SELL_XP, LOW_PRICE_MULTIPLIER
             ));
         });
+        // Apprentice trades
         TradeOfferHelper.registerVillagerOffers(ANTIQUARIAN, 2, factories -> {
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(Items.EMERALD, 12),
@@ -93,6 +103,7 @@ public class ModVillagers {
                     DEFAULT_MAX_USES, APPRENTICE_BUY_XP, LOW_PRICE_MULTIPLIER
             ));
         });
+        // Journeyman trades
         TradeOfferHelper.registerVillagerOffers(ANTIQUARIAN, 3, factories -> {
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(Items.EMERALD, 16),
@@ -100,6 +111,7 @@ public class ModVillagers {
                     DEFAULT_MAX_USES, JOURNEYMAN_BUY_XP, HIGH_PRICE_MULTIPLIER
             ));
         });
+        // Expert trades
         TradeOfferHelper.registerVillagerOffers(ANTIQUARIAN, 4, factories -> {
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(Items.EMERALD, 32),
@@ -107,25 +119,59 @@ public class ModVillagers {
                     RARE_MAX_USES, EXPERT_BUY_XP, HIGH_PRICE_MULTIPLIER
             ));
         });
+        // Master trades
         TradeOfferHelper.registerVillagerOffers(ANTIQUARIAN, 5, factories -> {
             factories.add((entity, random) -> new TradeOffer(
                     new ItemStack(Items.EMERALD, 42),
                     new ItemStack(ModItems.BOMB_ITEM),
                     RARE_MAX_USES, MASTER_TRADE_XP, HIGH_PRICE_MULTIPLIER
             ));
+            factories.add((entity, random) -> new TradeOffer(
+                    new ItemStack(Items.EMERALD, 32),
+                    getVillagerBullet(),
+                    RARE_MAX_USES, MASTER_TRADE_XP, HIGH_PRICE_MULTIPLIER
+            ));
         });
     }
 
-    // TODO: Add more shots to trades
     private static ItemStack getVillagerBullet() {
-        ItemStack stack = new ItemStack(ModItems.CIRCLE_SHOT);
+        ItemStack stack;
+        final ImmutableList<Item> shots = ModTags.SHOTS;
+        switch (RANDOM.nextInt(shots.size())) {
+            default -> stack = new ItemStack(shots.get(0));
+            case 1 -> stack = new ItemStack(shots.get(1));
+            case 2 -> stack = new ItemStack(shots.get(2));
+            case 3 -> stack = new ItemStack(shots.get(3));
+            case 4 -> stack = new ItemStack(shots.get(4));
+            case 5 -> stack = new ItemStack(shots.get(5));
+        }
         BaseShotItem shot = (BaseShotItem) stack.getItem();
-        shot.setPower(stack, 7);
-        shot.setSpeed(stack, 1.2f);
-        shot.setDuration(stack, 72);
-        shot.setCooldown(stack, 30);
-        shot.setDensity(stack, 3);
-        shot.setColor(stack, ColorMap.getColorInt("orange"));
+        shot.setPower(stack, 10 - RANDOM.nextInt(5));
+        shot.setSpeed(stack, 0.6f + RANDOM.nextFloat() * 0.6f);
+        shot.setDuration(stack, 40 + RANDOM.nextInt(41));
+        shot.setCooldown(stack, 30 + RANDOM.nextInt(31));
+        shot.setDensity(stack, 3 + RANDOM.nextInt(6));
+        shot.setColor(stack, ColorMap.getRandomBulletColor(RANDOM));
         return stack;
+    }
+
+    @SuppressWarnings("CodeBlock2Expr")
+    private static void registerWanderingTraderTrades() {
+        // Ordinary trades
+        TradeOfferHelper.registerWanderingTraderOffers(1, factories -> {
+            factories.add((entity, random) -> new TradeOffer(
+                    new ItemStack(Items.EMERALD, 12),
+                    new ItemStack(ModItems.GHASTLY_LANTERN),
+                    RARE_MAX_USES, WANDERING_TRADER_XP, LOW_PRICE_MULTIPLIER
+            ));
+        });
+        // Special trades
+        TradeOfferHelper.registerWanderingTraderOffers(2, factories -> {
+            factories.add((entity, random) -> new TradeOffer(
+                    new ItemStack(Items.EMERALD, 8),
+                    new ItemStack(ModItems.LIFE_FRAGMENT),
+                    RARE_MAX_USES, WANDERING_TRADER_XP, LOW_PRICE_MULTIPLIER
+            ));
+        });
     }
 }

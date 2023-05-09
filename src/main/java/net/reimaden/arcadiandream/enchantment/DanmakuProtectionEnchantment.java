@@ -5,8 +5,11 @@
 
 package net.reimaden.arcadiandream.enchantment;
 
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalEnchantmentTags;
+import net.fabricmc.fabric.api.tag.convention.v1.TagUtil;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.enchantment.ProtectionEnchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.damage.DamageSource;
@@ -49,7 +52,8 @@ public class DanmakuProtectionEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if (other instanceof ProtectionEnchantment && (((ProtectionEnchantment) other).protectionType != ProtectionEnchantment.Type.FALL)) {
+        if ((other instanceof ProtectionEnchantment && (((ProtectionEnchantment) other).protectionType != ProtectionEnchantment.Type.FALL))
+                || (TagUtil.isIn(ConventionalEnchantmentTags.ENTITY_DEFENSE_ENHANCEMENT, other) && (other == Enchantments.FEATHER_FALLING && other == Enchantments.RESPIRATION))) {
             return false;
         }
 

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.35,
+  "group": "cooked_lamprey",
+  "ingredient": {
+    "item": "arcadiandream:lamprey"
+  },
+  "result": "arcadiandream:cooked_lamprey"
+}

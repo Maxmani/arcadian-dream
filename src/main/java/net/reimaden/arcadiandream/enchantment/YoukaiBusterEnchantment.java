@@ -5,10 +5,11 @@
 
 package net.reimaden.arcadiandream.enchantment;
 
+import net.fabricmc.fabric.api.tag.convention.v1.ConventionalEnchantmentTags;
+import net.fabricmc.fabric.api.tag.convention.v1.TagUtil;
 import net.minecraft.enchantment.DamageEnchantment;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
-import net.minecraft.enchantment.ImpalingEnchantment;
 import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EquipmentSlot;
 import net.reimaden.arcadiandream.entity.ModEntities;
@@ -44,6 +45,6 @@ public class YoukaiBusterEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        return this != other && !(other instanceof DamageEnchantment || other instanceof ImpalingEnchantment);
+        return super.canAccept(other) && !(other instanceof DamageEnchantment || TagUtil.isIn(ConventionalEnchantmentTags.WEAPON_DAMAGE_ENHANCEMENT, other));
     }
 }

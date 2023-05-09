@@ -87,8 +87,8 @@ public class ModTagGenerator {
 
     public static class ItemTags extends FabricTagProvider.ItemTagProvider {
 
-        public ItemTags(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture) {
-            super(output, completableFuture);
+        public ItemTags(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> completableFuture, BlockTagProvider blockTagProvider) {
+            super(output, completableFuture, blockTagProvider);
         }
 
         @Override
@@ -103,13 +103,9 @@ public class ModTagGenerator {
                     .add(ModItems.LAMPREY, ModItems.COOKED_LAMPREY);
 
             // Block tags to item tags
-            getOrCreateTagBuilder(ModTags.Items.OBSIDIAN_BLOCKS)
-                    .add(Items.OBSIDIAN, Items.CRYING_OBSIDIAN);
-            getOrCreateTagBuilder(ModTags.Items.DRAGON_GEM_ORES)
-                    .add(ModItems.DRAGON_GEM_ORE, ModItems.DEEPSLATE_DRAGON_GEM_ORE, ModItems.END_STONE_DRAGON_GEM_ORE);
-            getOrCreateTagBuilder(ConventionalItemTags.ORES)
-                    .addTag(ModTags.Items.DRAGON_GEM_ORES)
-                    .add(ModItems.MAKAITE_ORE);
+            copy(ModTags.Blocks.OBSIDIAN_BLOCKS, ModTags.Items.OBSIDIAN_BLOCKS);
+            copy(ModTags.Blocks.DRAGON_GEM_ORES, ModTags.Items.DRAGON_GEM_ORES);
+            copy(ConventionalBlockTags.ORES, ConventionalItemTags.ORES);
 
             // Modded item tags
             getOrCreateTagBuilder(AXES)
@@ -155,6 +151,10 @@ public class ModTagGenerator {
             getOrCreateTagBuilder(ModTags.Items.UNDEAD_PARTS)
                     .add(Items.ROTTEN_FLESH, Items.BONE, Items.PHANTOM_MEMBRANE, Items.ZOMBIE_HEAD,
                             Items.SKELETON_SKULL, Items.WITHER_SKELETON_SKULL);
+            getOrCreateTagBuilder(ModTags.Items.RAW_MEAT)
+                    .add(ModItems.LAMPREY);
+            getOrCreateTagBuilder(ModTags.Items.COOKED_MEAT)
+                    .add(ModItems.COOKED_LAMPREY);
         }
     }
 

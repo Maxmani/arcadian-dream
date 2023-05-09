@@ -7,6 +7,7 @@ package net.reimaden.arcadiandream;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
 import net.reimaden.arcadiandream.damage.ModDamageSources;
@@ -30,8 +31,8 @@ public class ArcadianDreamDataGen implements DataGeneratorEntrypoint {
         pack.addProvider(ModLootTableGenerator.BlockLoot::new);
         pack.addProvider(ModLootTableGenerator.EntityLoot::new);
         pack.addProvider(ModLootTableGenerator.ChestLoot::new);
-        pack.addProvider(ModTagGenerator.BlockTags::new);
-        pack.addProvider(ModTagGenerator.ItemTags::new);
+        FabricTagProvider.BlockTagProvider blockTagProvider = pack.addProvider(ModTagGenerator.BlockTags::new);
+        pack.addProvider((output, registries) -> new ModTagGenerator.ItemTags(output, registries, blockTagProvider));
         pack.addProvider(ModTagGenerator.EntityTypeTags::new);
         pack.addProvider(ModTagGenerator.EnchantmentTypeTags::new);
         pack.addProvider(ModTagGenerator.DamageTypeTags::new);

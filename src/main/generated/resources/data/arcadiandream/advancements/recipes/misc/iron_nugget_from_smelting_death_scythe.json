@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "arcadiandream:iron_nugget_from_blasting"
+        "recipe": "arcadiandream:iron_nugget_from_smelting_death_scythe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "arcadiandream:iron_nugget_from_blasting"
+      "arcadiandream:iron_nugget_from_smelting_death_scythe"
     ]
   }
 }

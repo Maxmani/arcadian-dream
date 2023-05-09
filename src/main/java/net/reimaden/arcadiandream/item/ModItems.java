@@ -8,6 +8,7 @@ package net.reimaden.arcadiandream.item;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -287,10 +288,23 @@ public class ModItems {
         CompostingChanceRegistry.INSTANCE.add(item, chance);
     }
 
+    private static void addFuel() {
+        addToFuelRegistry(ONBASHIRA, 300);
+        addToFuelRegistry(ONBASHIRA_PILLAR, 300);
+        addToFuelRegistry(DANMAKU_CRAFTING_TABLE, 300);
+        addToFuelRegistry(MOCHI_MALLET, 200);
+        addToFuelRegistry(ORDINARY_HAT, 100);
+    }
+
+    private static void addToFuelRegistry(Item item, int fuelTime) {
+        FuelRegistry.INSTANCE.add(item, fuelTime);
+    }
+
     public static void register() {
         ArcadianDream.LOGGER.debug("Registering items for " + ArcadianDream.MOD_ID);
 
         addItemsToItemGroups();
         addCompostables();
+        addFuel();
     }
 }
