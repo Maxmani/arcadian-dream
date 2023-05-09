@@ -5,12 +5,13 @@
 
 package net.reimaden.arcadiandream.item.custom.misc;
 
+import dev.emi.trinkets.api.SlotReference;
 import dev.emi.trinkets.api.TrinketItem;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.item.Equipment;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
+import net.reimaden.arcadiandream.item.IEquipmentHelper;
 
-public class MagatamaNecklaceItem extends TrinketItem implements Equipment {
+public class MagatamaNecklaceItem extends TrinketItem implements IEquipmentHelper {
 
     public MagatamaNecklaceItem(Settings settings) {
         super(settings);
@@ -22,7 +23,8 @@ public class MagatamaNecklaceItem extends TrinketItem implements Equipment {
     }
 
     @Override
-    public EquipmentSlot getSlotType() {
-        return null;
+    public void onEquip(ItemStack stack, SlotReference slot, LivingEntity entity) {
+        super.onEquip(stack, slot, entity);
+        playEquipSound(stack, entity);
     }
 }
