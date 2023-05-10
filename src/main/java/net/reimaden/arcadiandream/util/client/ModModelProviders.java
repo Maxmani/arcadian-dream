@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -11,10 +11,17 @@ import net.reimaden.arcadiandream.ArcadianDream;
 
 public class ModModelProviders {
 
-    public static final ModelIdentifier NUE_TRIDENT = new ModelIdentifier(ArcadianDream.MOD_ID, "nue_trident_inventory", "inventory");
+    public static final ModelIdentifier NUE_TRIDENT = registerModel("nue_trident_inventory");
+    public static final ModelIdentifier FOLDING_CHAIR = registerModel("folding_chair_inventory");
+
+    private static ModelIdentifier registerModel(String path) {
+        return new ModelIdentifier(ArcadianDream.MOD_ID, path, "inventory");
+    }
 
     public static void register() {
-        ModelLoadingRegistry.INSTANCE.registerModelProvider((manager, out) ->
-                out.accept(NUE_TRIDENT));
+        ModelLoadingRegistry.INSTANCE.registerModelProvider((manager, out) -> {
+            out.accept(NUE_TRIDENT);
+            out.accept(FOLDING_CHAIR);
+        });
     }
 }

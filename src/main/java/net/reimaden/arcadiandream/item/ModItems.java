@@ -108,6 +108,8 @@ public class ModItems {
             new FabricItemSettings()));
     public static final Item MIRACLE_MALLET = registerItem("miracle_mallet", new MiracleMalletItem(ToolMaterials.DIAMOND, 3, -3.2f,
             new FabricItemSettings().rarity(Rarity.RARE)));
+    public static final Item FOLDING_CHAIR = registerItem("folding_chair", new FoldingChairItem(ToolMaterials.IRON, 1, -3.1f,
+            new FabricItemSettings().maxDamage(ToolMaterials.IRON.getDurability() - 50)));
 
     // Danmaku
     public static final Item CIRCLE_BULLET_CORE = registerItem("circle_bullet_core", new BulletCoreItem(new FabricItemSettings()));
@@ -228,6 +230,7 @@ public class ModItems {
         addToItemGroup(ModItemGroups.ITEMS, MOCHI_MALLET);
         addToItemGroup(ModItemGroups.ITEMS, DEATH_SCYTHE);
         addToItemGroup(ModItemGroups.ITEMS, MIRACLE_MALLET);
+        addToItemGroup(ModItemGroups.ITEMS, FOLDING_CHAIR);
         addToItemGroup(ModItemGroups.ITEMS, SPREAD_PATTERN_TEMPLATE);
         addToItemGroup(ModItemGroups.ITEMS, RAY_PATTERN_TEMPLATE);
         addToItemGroup(ModItemGroups.ITEMS, RING_PATTERN_TEMPLATE);

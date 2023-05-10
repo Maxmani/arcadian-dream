@@ -71,6 +71,14 @@ public class ModConfigModel {
         public int elixirFatigueThreshold = 1;
     }
 
+    @Nest
+    public FoldingChairOptions foldingChairOptions = new FoldingChairOptions();
+
+    public static class FoldingChairOptions {
+        @RangeConstraint(min = 0.0, max = 10.0, decimalPlaces = 1)
+        public double knockbackStrength = 1.5;
+    }
+
     @SectionHeader("danmaku")
 
     @Sync(Option.SyncMode.OVERRIDE_CLIENT)

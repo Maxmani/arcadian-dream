@@ -178,5 +178,11 @@
       "arcadiandream:item/lantern"
     ],
     "subtitle": "arcadiandream.subtitles.item.ghastly_lantern.use"
+  },
+  "item.folding_chair.hit": {
+    "sounds": [
+      "arcadiandream:random/metal"
+    ],
+    "subtitle": "arcadiandream.subtitles.item.folding_chair.hit"
   }
 }

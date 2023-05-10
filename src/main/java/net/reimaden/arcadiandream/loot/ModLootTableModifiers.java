@@ -46,11 +46,11 @@ public class ModLootTableModifiers {
     };
 
     // A loot pool that is used across multiple tables
-    // Currently only has the Time Orb in it
     private static final LootPool EXTRA_LOOT_POOL = LootPool.builder()
             .rolls(ConstantLootNumberProvider.create(1))
             .conditionally(RandomChanceLootCondition.builder(0.05f))
-            .with(ItemEntry.builder(ModItems.TIME_ORB))
+            .with(ItemEntry.builder(ModItems.TIME_ORB).weight(50))
+            .with(ItemEntry.builder(ModItems.FOLDING_CHAIR).weight(50))
             .build();
 
     public static void modify() {
