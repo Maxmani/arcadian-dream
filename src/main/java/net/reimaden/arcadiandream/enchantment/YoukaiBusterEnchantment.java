@@ -12,6 +12,8 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.AxeItem;
+import net.minecraft.item.ItemStack;
 import net.reimaden.arcadiandream.entity.ModEntities;
 
 public class YoukaiBusterEnchantment extends Enchantment {
@@ -46,5 +48,13 @@ public class YoukaiBusterEnchantment extends Enchantment {
     @Override
     protected boolean canAccept(Enchantment other) {
         return super.canAccept(other) && !(other instanceof DamageEnchantment || TagUtil.isIn(ConventionalEnchantmentTags.WEAPON_DAMAGE_ENHANCEMENT, other));
+    }
+
+    @Override
+    public boolean isAcceptableItem(ItemStack stack) {
+        if (stack.getItem() instanceof AxeItem) {
+            return true;
+        }
+        return super.isAcceptableItem(stack);
     }
 }
