@@ -1,3 +1,4 @@
-// 1.19.4	2023-05-08T22:06:15.740945959	Arcadian Dream/minecraft:entity Loot Table
-52a13313c6e7f6f8ec7305245fa8da028a859540 data/arcadiandream/loot_tables/entities/fairy.json
-d8a3e70f074fe1b2cd4b338dd2b93b754e12e691 data/arcadiandream/loot_tables/entities/sunflower_fairy.json
+// 1.19.4	2023-05-16T20:13:33.4159326	Arcadian Dream/minecraft:entity Loot Table
+d8a3e70f074fe1b2cd4b338dd2b93b754e12e691 data\arcadiandream\loot_tables\entities\sunflower_fairy.json
+4406993e6ba21d89fd99223c21ed18c4799f4800 data\arcadiandream\loot_tables\entities\fairy.json
+2d672eed7a0ea3d4d9b440dada2a6629d7ad2b93 data\arcadiandream\loot_tables\entities\ice_fairy.json

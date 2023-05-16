@@ -67,7 +67,7 @@ public class ModLootTableGenerator {
         @Override
         public void accept(BiConsumer<Identifier, LootTable.Builder> consumer) {
             consumer.accept(ModEntities.FAIRY.getLootTableId(), LootTable.builder()
-                    .pool(LootPool.builder().rolls(UniformLootNumberProvider.create(1.0f, 4.0f))
+                    .pool(LootPool.builder().rolls(UniformLootNumberProvider.create(1.0f, 3.0f))
                             .with(ItemEntry.builder(ModItems.POWER_ITEM).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f, 5.0f))).apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f))))
                             .with(ItemEntry.builder(ModItems.POINT_ITEM).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f, 5.0f))).apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f))))
                             .with(ItemEntry.builder(ModItems.STAR_ITEM).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f, 5.0f))).apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f))))
@@ -96,6 +96,22 @@ public class ModLootTableGenerator {
                     )
                     .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0f))
                             .with(ItemEntry.builder(ModItems.EXTEND_ITEM).conditionally(KilledByPlayerLootCondition.builder()).conditionally(RandomChanceWithLootingLootCondition.builder(0.01f, 0.01f)))
+                    )
+            );
+            consumer.accept(ModEntities.ICE_FAIRY.getLootTableId(), LootTable.builder()
+                    .pool(LootPool.builder().rolls(UniformLootNumberProvider.create(1.0f, 4.0f))
+                            .with(ItemEntry.builder(ModItems.POWER_ITEM).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f, 5.0f))).apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f))))
+                            .with(ItemEntry.builder(ModItems.POINT_ITEM).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f, 5.0f))).apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f))))
+                            .with(ItemEntry.builder(ModItems.STAR_ITEM).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f, 5.0f))).apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f))))
+                    )
+                    .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0f))
+                            .with(ItemEntry.builder(ModItems.MUSIC_DISC_FAIRY_PLAYGROUND).conditionally(KilledByPlayerLootCondition.builder()).conditionally(RandomChanceWithLootingLootCondition.builder(0.002f, 0.002f)))
+                    )
+                    .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0f))
+                            .with(ItemEntry.builder(ModItems.BOMB_ITEM).conditionally(KilledByPlayerLootCondition.builder()).conditionally(RandomChanceWithLootingLootCondition.builder(0.02f, 0.007f)))
+                    )
+                    .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0f))
+                            .with(ItemEntry.builder(ModItems.EXTEND_ITEM).conditionally(KilledByPlayerLootCondition.builder()).conditionally(RandomChanceWithLootingLootCondition.builder(0.006f, 0.006f)))
                     )
             );
         }

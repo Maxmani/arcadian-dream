@@ -11,6 +11,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.reimaden.arcadiandream.entity.custom.danmaku.BaseBulletEntity;
+import net.reimaden.arcadiandream.util.ModTags;
 import org.jetbrains.annotations.NotNull;
 
 public interface MobBulletPatterns {
@@ -21,11 +22,7 @@ public interface MobBulletPatterns {
         float targetHitbox = (target.getHeight() / 2) * 5;
         float n = speed / density;
 
-        ItemStack stack = getBullet(world, user).getStack();
-        BaseShotItem item = (BaseShotItem) stack.getItem();
-        item.setPower(stack, power);
-        item.setDuration(stack, duration);
-        item.setColor(stack, color);
+        ItemStack stack = getStack(world, user, power, duration, color);
 
         for (int i = 0; i < density; i++) {
             BaseBulletEntity bulletEntity = getBullet(world, user);
@@ -43,11 +40,7 @@ public interface MobBulletPatterns {
         float yaw = user.getHeadYaw();
         float targetHitbox = (target.getHeight() / 2) * 5;
 
-        ItemStack stack = getBullet(world, user).getStack();
-        BaseShotItem item = (BaseShotItem) stack.getItem();
-        item.setPower(stack, power);
-        item.setDuration(stack, duration);
-        item.setColor(stack, color);
+        ItemStack stack = getStack(world, user, power, duration, color);
 
         for (int i = 0; i < density; i++) {
             BaseBulletEntity bulletEntity = getBullet(world, user);
@@ -63,11 +56,7 @@ public interface MobBulletPatterns {
         float yaw = user.getHeadYaw();
         float targetHitbox = (target.getHeight() / 2) * 5;
 
-        ItemStack stack = getBullet(world, user).getStack();
-        BaseShotItem item = (BaseShotItem) stack.getItem();
-        item.setPower(stack, power);
-        item.setDuration(stack, duration);
-        item.setColor(stack, color);
+        ItemStack stack = getStack(world, user, power, duration, color);
 
         for (int i = 0; i < density; i++) {
             BaseBulletEntity bulletEntity = getBullet(world, user);
@@ -93,11 +82,7 @@ public interface MobBulletPatterns {
         float targetHitbox = (target.getHeight() / 2) * 5;
         float n = speed / density;
 
-        ItemStack stack = getBullet(world, user).getStack();
-        BaseShotItem item = (BaseShotItem) stack.getItem();
-        item.setPower(stack, power);
-        item.setDuration(stack, duration);
-        item.setColor(stack, color);
+        ItemStack stack = getStack(world, user, power, duration, color);
 
         for (int j = 0; j < rays; j++) {
             float s = speed;
@@ -129,11 +114,7 @@ public interface MobBulletPatterns {
         float targetHitbox = (target.getHeight() / 2) * 5;
         float n = speed / density;
 
-        ItemStack stack = getBullet(world, user).getStack();
-        BaseShotItem item = (BaseShotItem) stack.getItem();
-        item.setPower(stack, power);
-        item.setDuration(stack, duration);
-        item.setColor(stack, color);
+        ItemStack stack = getStack(world, user, power, duration, color);
 
         for (int j = 0; j < rays; j++) {
             float s = speed;
@@ -160,12 +141,8 @@ public interface MobBulletPatterns {
     default void createRain(World world, LivingEntity user, int density, float speed, float divergence, float power, int duration, int color, float gravity) {
         float yaw = user.getHeadYaw();
 
-        ItemStack stack = getBullet(world, user).getStack();
-        BaseShotItem item = (BaseShotItem) stack.getItem();
-        item.setPower(stack, power);
-        item.setDuration(stack, duration);
-        item.setColor(stack, color);
-        item.setGravity(stack, gravity);
+        ItemStack stack = getStack(world, user, power, duration, color);
+        ((BaseShotItem) stack.getItem()).setGravity(stack, gravity);
 
         for (int i = 0; i < density; i++) {
             BaseBulletEntity bulletEntity = getBullet(world, user);
@@ -182,11 +159,7 @@ public interface MobBulletPatterns {
         float targetHitbox = (target.getHeight() / 2) * 5;
         final float arc = 45f;
 
-        ItemStack stack = getBullet(world, user).getStack();
-        BaseShotItem item = (BaseShotItem) stack.getItem();
-        item.setPower(stack, power);
-        item.setDuration(stack, duration);
-        item.setColor(stack, color);
+        ItemStack stack = getStack(world, user, power, duration, color);
 
         for (int i = 0; i < density; i++) {
             BaseBulletEntity bulletEntity = getBullet(world, user);
@@ -203,6 +176,19 @@ public interface MobBulletPatterns {
 
             world.spawnEntity(bulletEntity);
         }
+    }
+
+    @NotNull
+    private ItemStack getStack(World world, LivingEntity user, float power, int duration, int color) {
+        ItemStack stack = getBullet(world, user).getStack();
+        BaseShotItem item = (BaseShotItem) stack.getItem();
+        item.setPower(stack, power);
+        item.setDuration(stack, duration);
+        item.setColor(stack, color);
+        if (user.getType().isIn(ModTags.EntityTypes.FREEZING_DANMAKU_CAPABLE)) {
+            item.setIcy(stack, true);
+        }
+        return stack;
     }
 
     @NotNull

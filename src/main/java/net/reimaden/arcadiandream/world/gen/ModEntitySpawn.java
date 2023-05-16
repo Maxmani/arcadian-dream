@@ -10,10 +10,12 @@ import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.tag.convention.v1.ConventionalBiomeTags;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.SpawnRestriction;
+import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.BiomeKeys;
 import net.reimaden.arcadiandream.entity.ModEntities;
 import net.reimaden.arcadiandream.entity.custom.mob.FairyEntity;
+import net.reimaden.arcadiandream.entity.custom.mob.IceFairyEntity;
 import net.reimaden.arcadiandream.entity.custom.mob.SunflowerFairyEntity;
 
 public class ModEntitySpawn {
@@ -32,6 +34,8 @@ public class ModEntitySpawn {
                 ModEntities.SUNFLOWER_FAIRY, FAIRY_WEIGHT / 4, 1, 1);
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.SUNFLOWER_PLAINS), SpawnGroup.MONSTER,
                 ModEntities.SUNFLOWER_FAIRY, (int) (FAIRY_WEIGHT * 1.25f), 1, 1);
+        BiomeModifications.addSpawn(BiomeSelectors.tag(BiomeTags.SPAWNS_SNOW_FOXES), SpawnGroup.MONSTER,
+                ModEntities.ICE_FAIRY, FAIRY_WEIGHT / 4, 1, 2);
     }
 
     private static void restrictSpawns() {
@@ -39,5 +43,7 @@ public class ModEntitySpawn {
                 Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, FairyEntity::canSpawn);
         SpawnRestriction.register(ModEntities.SUNFLOWER_FAIRY, SpawnRestriction.Location.ON_GROUND,
                 Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, SunflowerFairyEntity::canSpawn);
+        SpawnRestriction.register(ModEntities.ICE_FAIRY, SpawnRestriction.Location.ON_GROUND,
+                Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, IceFairyEntity::canSpawn);
     }
 }

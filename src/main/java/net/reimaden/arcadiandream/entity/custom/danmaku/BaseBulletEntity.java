@@ -13,6 +13,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -66,6 +67,16 @@ public class BaseBulletEntity extends ThrownItemEntity {
                 discardBullet();
             }
         }
+        frozenParticles(this, world);
+    }
+
+    private static void frozenParticles(BaseBulletEntity entity, World world) {
+        if (!entity.isIcy()) return;
+        float offset = 2.0f;
+        double xOffset = entity.getVelocity().x * offset;
+        double yOffset = entity.getVelocity().y * offset;
+        double zOffset = entity.getVelocity().z * offset;
+        world.addParticle(ParticleTypes.SNOWFLAKE, entity.getX() - xOffset, entity.getY() + entity.getHeight() / 2 - yOffset, entity.getZ() - zOffset, 0, 0, 0);
     }
 
     private void discardBullet() {
@@ -88,6 +99,14 @@ public class BaseBulletEntity extends ThrownItemEntity {
 
     protected void applyDamage(Entity target, Entity owner) {
         target.damage(ModDamageSources.danmaku(world, this, owner), getPower() * ArcadianDream.CONFIG.danmakuDamageMultiplier());
+        if (isIcy() && target.canFreeze()) {
+            applyFreeze(target);
+        }
+    }
+
+    protected void applyFreeze(Entity target) {
+        int frozenTicks = target.getFrozenTicks();
+        target.setFrozenTicks((int) Math.min(target.getMinFreezeDamageTicks() * 4, frozenTicks + 10 * getPower()));
     }
 
     @Override
@@ -149,6 +168,14 @@ public class BaseBulletEntity extends ThrownItemEntity {
             return getStack().getOrCreateNbt().getFloat("gravity");
         } else {
             return 0.0f;
+        }
+    }
+
+    public boolean isIcy() {
+        if (getStack().hasNbt()) {
+            return getStack().getOrCreateNbt().getBoolean("icy");
+        } else {
+            return false;
         }
     }
 

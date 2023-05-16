@@ -27,6 +27,7 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
     private final Option<java.lang.Boolean> cooldownPerBulletType = this.optionForKey(new Option.Key("cooldownPerBulletType"));
     private final Option<java.lang.Boolean> fairyOptions_spawnFairies = this.optionForKey(new Option.Key("fairyOptions.spawnFairies"));
     private final Option<java.lang.Boolean> fairyOptions_spawnSunflowerFairies = this.optionForKey(new Option.Key("fairyOptions.spawnSunflowerFairies"));
+    private final Option<java.lang.Boolean> fairyOptions_spawnIceFairies = this.optionForKey(new Option.Key("fairyOptions.spawnIceFairies"));
 
     private ArcadianDreamConfig() {
         super(net.reimaden.arcadiandream.config.ModConfigModel.class);
@@ -196,23 +197,47 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
             fairyOptions_spawnSunflowerFairies.set(value);
         }
 
+        public boolean spawnIceFairies() {
+            return fairyOptions_spawnIceFairies.value();
+        }
+
+        public void spawnIceFairies(boolean value) {
+            fairyOptions_spawnIceFairies.set(value);
+        }
+
     }
 
-    public interface FairyOptions {
-        boolean spawnFairies();
-        void spawnFairies(boolean value);
-        boolean spawnSunflowerFairies();
-        void spawnSunflowerFairies(boolean value);
-    }
-    public interface FoldingChairOptions {
-        double knockbackStrength();
-        void knockbackStrength(double value);
-    }
     public interface HisouSwordOptions {
         int minHeightForPeaches();
         void minHeightForPeaches(int value);
         boolean canDisableShields();
         void canDisableShields(boolean value);
+    }
+    public interface ChiselOptions {
+        boolean canUse();
+        void canUse(boolean value);
+        int maxDistance();
+        void maxDistance(int value);
+    }
+    public interface NueTridentOptions {
+        boolean canHaveImpaling();
+        void canHaveImpaling(boolean value);
+    }
+    public interface FoldingChairOptions {
+        double knockbackStrength();
+        void knockbackStrength(double value);
+    }
+    public interface MochiMalletOptions {
+        boolean lowViolence();
+        void lowViolence(boolean value);
+    }
+    public interface FairyOptions {
+        boolean spawnFairies();
+        void spawnFairies(boolean value);
+        boolean spawnSunflowerFairies();
+        void spawnSunflowerFairies(boolean value);
+        boolean spawnIceFairies();
+        void spawnIceFairies(boolean value);
     }
     public interface HouraiElixirOptions {
         boolean canDrink();
@@ -223,20 +248,6 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         void allowDying(boolean value);
         int elixirFatigueThreshold();
         void elixirFatigueThreshold(int value);
-    }
-    public interface MochiMalletOptions {
-        boolean lowViolence();
-        void lowViolence(boolean value);
-    }
-    public interface NueTridentOptions {
-        boolean canHaveImpaling();
-        void canHaveImpaling(boolean value);
-    }
-    public interface ChiselOptions {
-        boolean canUse();
-        void canUse(boolean value);
-        int maxDistance();
-        void maxDistance(int value);
     }
 
 }

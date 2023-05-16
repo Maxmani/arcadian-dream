@@ -34,6 +34,7 @@ import java.util.concurrent.CompletableFuture;
 
 import static net.minecraft.registry.tag.BlockTags.*;
 import static net.minecraft.registry.tag.DamageTypeTags.BYPASSES_ARMOR;
+import static net.minecraft.registry.tag.EntityTypeTags.*;
 import static net.minecraft.registry.tag.ItemTags.*;
 import static net.minecraft.registry.tag.PaintingVariantTags.PLACEABLE;
 import static net.minecraft.registry.tag.PointOfInterestTypeTags.ACQUIRABLE_JOB_SITE;
@@ -166,10 +167,23 @@ public class ModTagGenerator {
 
         @Override
         protected void configure(RegistryWrapper.WrapperLookup arg) {
+
+            // minecraft/tags/entity_type
+            getOrCreateTagBuilder(FALL_DAMAGE_IMMUNE)
+                    .addTag(ModTags.EntityTypes.FAIRIES);
+            getOrCreateTagBuilder(FREEZE_IMMUNE_ENTITY_TYPES)
+                    .add(ModEntities.ICE_FAIRY);
+            getOrCreateTagBuilder(POWDER_SNOW_WALKABLE_MOBS)
+                    .add(ModEntities.ICE_FAIRY);
+
+            // Modded entity tags
             getOrCreateTagBuilder(ModTags.EntityTypes.DANMAKU)
-                    .add(ModEntities.CIRCLE_BULLET, ModEntities.BUBBLE_BULLET, ModEntities.AMULET_BULLET, ModEntities.STAR_BULLET);
+                    .add(ModEntities.CIRCLE_BULLET, ModEntities.BUBBLE_BULLET, ModEntities.AMULET_BULLET, ModEntities.STAR_BULLET,
+                            ModEntities.KUNAI_BULLET, ModEntities.PELLET_BULLET);
             getOrCreateTagBuilder(ModTags.EntityTypes.FAIRIES)
-                    .add(ModEntities.FAIRY, ModEntities.SUNFLOWER_FAIRY);
+                    .add(ModEntities.FAIRY, ModEntities.SUNFLOWER_FAIRY, ModEntities.ICE_FAIRY);
+            getOrCreateTagBuilder(ModTags.EntityTypes.FREEZING_DANMAKU_CAPABLE)
+                    .add(ModEntities.ICE_FAIRY);
         }
     }
 

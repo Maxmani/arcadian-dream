@@ -46,6 +46,7 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
     private final String pattern;
     private final int density;
     private final boolean timeOrbUsed;
+    private final boolean icy;
 
     // Max values for the properties
     private final float maxPower;
@@ -70,6 +71,7 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         this.pattern = pattern;
         this.density = density;
         this.timeOrbUsed = false;
+        this.icy = false;
 
         this.maxPower = maxPower;
         this.maxSpeed = maxSpeed;
@@ -151,8 +153,8 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
     public void postProcessNbt(NbtCompound nbt) {
         super.postProcessNbt(nbt);
 
-        String[] keys = {"power", "speed", "duration", "cooldown", "gravity", "divergence", "pattern", "density", "timeOrbUsed"};
-        Object[] values = {power, speed, duration, cooldown, gravity, divergence, pattern, density, timeOrbUsed};
+        String[] keys = {"power", "speed", "duration", "cooldown", "gravity", "divergence", "pattern", "density", "timeOrbUsed", "icy"};
+        Object[] values = {power, speed, duration, cooldown, gravity, divergence, pattern, density, timeOrbUsed, icy};
 
         // Set default values
         for (int i = 0; i < keys.length; i++) {
@@ -302,6 +304,10 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         setParamBoolean(stack, "time_orb_used", isUsed);
     }
 
+    public void setIcy(ItemStack stack, boolean isIcy) {
+        setParamBoolean(stack, "icy", isIcy);
+    }
+
     private float getParamFloat(ItemStack stack, String key) {
         return stack.getOrCreateNbt().getFloat(key);
     }
@@ -373,5 +379,10 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
 
     public boolean isTimeOrbUsed(ItemStack stack) {
         return getParamBoolean(stack, "time_orb_used");
+    }
+
+    @SuppressWarnings("unused") // TODO: Add a modifier to make bullets icy
+    public boolean isIcy(ItemStack stack) {
+        return getParamBoolean(stack, "icy");
     }
 }

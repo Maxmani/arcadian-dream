@@ -169,14 +169,12 @@ public class SunflowerFairyEntity extends BaseFairyEntity {
 
     private class AttackPatterns implements MobBulletPatterns {
 
-        private final int randomDensity = getRandom().nextInt(6) + 5;
-
         private void burstAttack(LivingEntity fairy, LivingEntity target, World world) {
-            createSpread(world, fairy, target, randomDensity, 0.5f, 5, 5, 50, getBulletColor());
+            createSpread(world, fairy, target, getRandomNumberProvider() + 2, 0.5f, 5, 5, 50, getBulletColor());
         }
 
         private void spreadAttack(LivingEntity fairy, LivingEntity target, World world) {
-            createSpread(world, fairy, target, randomDensity + 5, 0.2f, 180, 4, 20, getBulletColor());
+            createSpread(world, fairy, target, getRandomNumberProvider() + 7, 0.2f, 180, 4, 20, getBulletColor());
         }
 
         private void carpetBombAttack(LivingEntity fairy, World world) {

@@ -61,6 +61,7 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
 
     private int bulletColor;
     private int cooldownOffset;
+    private int randomNumberProvider;
     private static final TrackedData<Byte> BULLET_TYPE = DataTracker.registerData(BaseFairyEntity.class, TrackedDataHandlerRegistry.BYTE);
 
     protected BaseFairyEntity(EntityType<? extends HostileEntity> entityType, World world) {
@@ -104,6 +105,7 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
         tickAngerLogic((ServerWorld) world, true);
     }
 
+    @SuppressWarnings("SameReturnValue")
     private PlayState predicate(AnimationState<?> state) {
         if (state.isMoving() && hurtTime == 0) {
             state.getController().setAnimation(RawAnimation.begin().then("move", Animation.LoopType.LOOP));
@@ -174,11 +176,6 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
     }
 
     @Override
-    public boolean handleFallDamage(float fallDistance, float damageMultiplier, DamageSource damageSource) {
-        return false;
-    }
-
-    @Override
     protected void fall(double heightDifference, boolean onGround, BlockState state, BlockPos landedPosition) {}
 
     @Override
@@ -187,6 +184,7 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
         writeAngerToNbt(nbt);
         nbt.putInt("BulletColor", getBulletColor());
         nbt.putInt("CooldownOffset", getCooldownOffset());
+        nbt.putInt("RandomNumberProvider", getRandomNumberProvider());
         nbt.putByte("BulletType", getBulletType());
     }
 
@@ -196,6 +194,7 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
         readAngerFromNbt(world, nbt);
         setBulletColor(nbt.getInt("BulletColor"));
         setCooldownOffset(nbt.getInt("CooldownOffset"));
+        setRandomNumberProvider(nbt.getInt("RandomNumberProvider"));
         dataTracker.set(BULLET_TYPE, nbt.getByte("BulletType"));
     }
 
@@ -210,13 +209,19 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
         int bulletColor = ColorMap.getRandomBulletColor(getRandom());
         int cooldownOffset = getRandom().nextInt(11) - 5;
+        int randomNumberProvider = getRandom().nextInt(11) + 1;
         byte bulletType = (byte) getRandom().nextInt(availableBullets(this.world, this).size());
 
-        setBulletColor(bulletColor);
-        setCooldownOffset(cooldownOffset);
-        setBulletType(bulletType);
+        initializeBullets(bulletColor, cooldownOffset, randomNumberProvider, bulletType);
 
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+    }
+
+    protected void initializeBullets(int bulletColor, int cooldownOffset, int randomNumberProvider, byte bulletType) {
+        setBulletColor(bulletColor);
+        setCooldownOffset(cooldownOffset);
+        setRandomNumberProvider(randomNumberProvider);
+        setBulletType(bulletType);
     }
 
     public static boolean canSpawn(EntityType<? extends BaseFairyEntity> type, ServerWorldAccess world, SpawnReason reason, BlockPos pos, Random random) {
@@ -267,7 +272,7 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
         return bulletColor;
     }
 
-    private void setBulletColor(int bulletColor) {
+    protected void setBulletColor(int bulletColor) {
         this.bulletColor = bulletColor;
     }
 
@@ -275,15 +280,23 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
         return cooldownOffset;
     }
 
-    private void setCooldownOffset(int cooldownOffset) {
+    protected void setCooldownOffset(int cooldownOffset) {
         this.cooldownOffset = cooldownOffset;
+    }
+
+    public int getRandomNumberProvider() {
+        return randomNumberProvider;
+    }
+
+    protected void setRandomNumberProvider(int randomNumberProvider) {
+        this.randomNumberProvider = randomNumberProvider;
     }
 
     public byte getBulletType() {
         return dataTracker.get(BULLET_TYPE);
     }
 
-    private void setBulletType(byte bulletType) {
+    protected void setBulletType(byte bulletType) {
         dataTracker.set(BULLET_TYPE, bulletType);
     }
 

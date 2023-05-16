@@ -16,6 +16,7 @@ import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.custom.danmaku.*;
 import net.reimaden.arcadiandream.entity.custom.mob.FairyEntity;
+import net.reimaden.arcadiandream.entity.custom.mob.IceFairyEntity;
 import net.reimaden.arcadiandream.entity.custom.mob.SunflowerFairyEntity;
 
 public class ModEntities {
@@ -78,6 +79,12 @@ public class ModEntities {
             Registries.ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, "sunflower_fairy"),
             FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, SunflowerFairyEntity::new)
                     .dimensions(EntityDimensions.fixed(0.7f, 1.7f))
+                    .build()
+    );
+    public static final EntityType<IceFairyEntity> ICE_FAIRY = Registry.register(
+            Registries.ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, "ice_fairy"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, IceFairyEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.55f, 1.55f))
                     .build()
     );
 

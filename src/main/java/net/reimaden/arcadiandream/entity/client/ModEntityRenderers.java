@@ -23,5 +23,6 @@ public class ModEntityRenderers {
         // Mobs
         EntityRendererRegistry.register(ModEntities.FAIRY, FairyEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.SUNFLOWER_FAIRY, SunflowerFairyEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.ICE_FAIRY, IceFairyEntityRenderer::new);
     }
 }

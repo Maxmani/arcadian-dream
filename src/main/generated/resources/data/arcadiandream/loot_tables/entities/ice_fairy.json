@@ -76,7 +76,7 @@
       ],
       "rolls": {
         "type": "minecraft:uniform",
-        "max": 3.0,
+        "max": 4.0,
         "min": 1.0
       }
     },
@@ -90,9 +90,9 @@
               "condition": "minecraft:killed_by_player"
             },
             {
-              "chance": 0.001,
+              "chance": 0.002,
               "condition": "minecraft:random_chance_with_looting",
-              "looting_multiplier": 0.001
+              "looting_multiplier": 0.002
             }
           ],
           "name": "arcadiandream:music_disc_fairy_playground"
@@ -110,9 +110,9 @@
               "condition": "minecraft:killed_by_player"
             },
             {
-              "chance": 0.01,
+              "chance": 0.02,
               "condition": "minecraft:random_chance_with_looting",
-              "looting_multiplier": 0.005
+              "looting_multiplier": 0.007
             }
           ],
           "name": "arcadiandream:bomb_item"
@@ -130,9 +130,9 @@
               "condition": "minecraft:killed_by_player"
             },
             {
-              "chance": 0.004,
+              "chance": 0.006,
               "condition": "minecraft:random_chance_with_looting",
-              "looting_multiplier": 0.005
+              "looting_multiplier": 0.006
             }
           ],
           "name": "arcadiandream:extend_item"

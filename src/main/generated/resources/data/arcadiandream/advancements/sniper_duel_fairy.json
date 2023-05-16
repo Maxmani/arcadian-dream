@@ -38,7 +38,7 @@
     "hidden": false,
     "icon": {
       "item": "arcadiandream:star_shot",
-      "nbt": "{HideFlags:64,cooldown:5,density:1,display:{color:65535},divergence:0.0f,duration:100,gravity:0.0f,pattern:\"spread\",power:1.0f,speed:0.65f,timeOrbUsed:0b}"
+      "nbt": "{HideFlags:64,cooldown:5,density:1,display:{color:65535},divergence:0.0f,duration:100,gravity:0.0f,icy:0b,pattern:\"spread\",power:1.0f,speed:0.65f,timeOrbUsed:0b}"
     },
     "show_toast": true,
     "title": {

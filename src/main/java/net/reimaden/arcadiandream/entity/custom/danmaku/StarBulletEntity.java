@@ -40,6 +40,9 @@ public class StarBulletEntity extends BaseBulletEntity {
     @Override
     protected void applyDamage(Entity target, Entity owner) {
         target.damage(ModDamageSources.danmakuSharp(world, this, owner), getPower() * ArcadianDream.CONFIG.danmakuDamageMultiplier());
+        if (isIcy() && target.canFreeze()) {
+            applyFreeze(target);
+        }
     }
 
     public boolean getRotationAngle() {

@@ -75,6 +75,7 @@ public class ModTags {
 
         public static final TagKey<EntityType<?>> DANMAKU = createTag("danmaku");
         public static final TagKey<EntityType<?>> FAIRIES = createTag("fairies");
+        public static final TagKey<EntityType<?>> FREEZING_DANMAKU_CAPABLE = createTag("freezing_danmaku_capable");
 
         private static TagKey<EntityType<?>> createTag(String name) {
             return TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, name));

@@ -100,5 +100,6 @@ public class ModConfigModel {
     public static class FairyOptions {
         public boolean spawnFairies = true;
         public boolean spawnSunflowerFairies = true;
+        public boolean spawnIceFairies = true;
     }
 }

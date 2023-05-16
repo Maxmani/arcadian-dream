@@ -107,6 +107,7 @@
   "item.arcadiandream.miracle_mallet": "Miracle Mallet",
   "item.arcadiandream.fairy_spawn_egg": "Fairy Spawn Egg",
   "item.arcadiandream.sunflower_fairy_spawn_egg": "Sunflower Fairy Spawn Egg",
+  "item.arcadiandream.ice_fairy_spawn_egg": "Ice Fairy Spawn Egg",
   "item.arcadiandream.magatama_necklace": "Magatama Necklace",
   "item.arcadiandream.ghastly_lantern": "Ghastly Send-Off Lantern",
   "item.arcadiandream.life_fragment": "Life Fragment",
@@ -141,6 +142,7 @@
   "entity.minecraft.villager.antiquarian": "Antiquarian",
   "entity.arcadiandream.fairy": "Fairy",
   "entity.arcadiandream.sunflower_fairy": "Sunflower Fairy",
+  "entity.arcadiandream.ice_fairy": "Ice Fairy",
 
   "enchantment.arcadiandream.danmaku_protection": "Danmaku Protection",
   "enchantment.arcadiandream.youkai_buster": "Youkai Buster",
@@ -276,5 +278,6 @@
   "text.config.arcadiandream.section.mobs": "Mobs",
   "text.config.arcadiandream.category.fairyOptions": "Fairies",
   "text.config.arcadiandream.option.fairyOptions.spawnFairies": "Spawn Fairies",
-  "text.config.arcadiandream.option.fairyOptions.spawnSunflowerFairies": "Spawn Sunflower Fairies"
+  "text.config.arcadiandream.option.fairyOptions.spawnSunflowerFairies": "Spawn Sunflower Fairies",
+  "text.config.arcadiandream.option.fairyOptions.spawnIceFairies": "Spawn Ice Fairies"
 }

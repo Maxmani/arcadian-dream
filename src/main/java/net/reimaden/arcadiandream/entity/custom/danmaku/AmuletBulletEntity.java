@@ -43,5 +43,8 @@ public class AmuletBulletEntity extends BaseBulletEntity {
         } else {
             target.damage(ModDamageSources.danmaku(world, this, owner), getPower() * ArcadianDream.CONFIG.danmakuDamageMultiplier());
         }
+        if (isIcy() && target.canFreeze()) {
+            applyFreeze(target);
+        }
     }
 }
