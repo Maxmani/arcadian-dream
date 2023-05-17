@@ -306,6 +306,12 @@ public class DanmakuCraftingTableBlockEntity extends BlockEntity implements Impl
                 shot.setTimeOrbUsed(stack, true);
                 propertyDelegate.set(0, propertyDelegate.get(0) + 1);
             }
+        } else if (modifierStack.getItem() == ModItems.ENCHANTED_ICE) {
+            if (!shot.isIcy(stack)) {
+                shot.setIcy(stack, true);
+                shot.setDivergence(stack, Math.min(shot.getMaxDivergence(), shot.getDivergence(stack) + 5));
+                propertyDelegate.set(0, propertyDelegate.get(0) + 1);
+            }
         }
     }
 

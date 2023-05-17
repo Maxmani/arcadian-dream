@@ -140,7 +140,7 @@ public class ModTagGenerator {
                     .addTag(ModTags.Items.DANMAKU_DENSITY_MODIFIERS)
                     .addTag(ModTags.Items.DANMAKU_SPEED_MODIFIERS)
                     .addTag(ModTags.Items.DANMAKU_DURATION_MODIFIERS)
-                    .add(ModItems.TIME_ORB);
+                    .add(ModItems.TIME_ORB, ModItems.ENCHANTED_ICE);
             getOrCreateTagBuilder(ModTags.Items.DANMAKU_POWER_MODIFIERS)
                     .add(ModItems.POWER_ITEM);
             getOrCreateTagBuilder(ModTags.Items.DANMAKU_DENSITY_MODIFIERS)

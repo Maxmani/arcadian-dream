@@ -34,7 +34,7 @@ import java.util.Locale;
 
 public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns {
 
-    private final Random random = Random.create();
+    private static final Random RANDOM = Random.create();
 
     // Shot properties, aka the initial stats
     private final float power;
@@ -99,7 +99,7 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
 
         final int cooldown = (nbt.getInt("cooldown") * ArcadianDream.CONFIG.danmakuCooldownMultiplier()) / (isTimeOrbUsed(stack) ? 2 : 1);
 
-        user.playSound(ModSounds.ENTITY_DANMAKU_FIRE, getSoundVolume(), getSoundPitch(random));
+        user.playSound(ModSounds.ENTITY_DANMAKU_FIRE, getSoundVolume(), getSoundPitch(RANDOM));
 
         if (ArcadianDream.CONFIG.cooldownPerBulletType()) {
             user.getItemCooldownManager().set(this, cooldown);
@@ -223,6 +223,11 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
             tooltip.add(Text.translatable(keyPrefix + "pattern", Text.translatable("item." + ArcadianDream.MOD_ID + ".bullet.pattern_" + pattern.toLowerCase())));
             tooltip.add(Text.translatable(keyPrefix + "density", density));
             tooltip.add(Text.translatable(keyPrefix + "color", formattedColor).setStyle(Style.EMPTY.withColor(getColor(stack))));
+
+            // Special modifiers
+            if (isIcy(stack)) {
+                tooltip.add(Text.translatable(keyPrefix + "icy"));
+            }
         }
     }
 
@@ -287,7 +292,6 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         setParamFloat(stack, "gravity", gravity, maxGravity);
     }
 
-    @SuppressWarnings("unused")
     public void setDivergence(ItemStack stack, float divergence) {
         setParamFloat(stack, "divergence", divergence, maxDivergence);
     }
@@ -316,7 +320,6 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         return stack.getOrCreateNbt().getInt(key);
     }
 
-    @SuppressWarnings("SameParameterValue")
     private boolean getParamBoolean(ItemStack stack, String key) {
         return stack.getOrCreateNbt().getBoolean(key);
     }
@@ -342,7 +345,6 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         return getParamFloat(stack, "gravity");
     }
 
-    @SuppressWarnings("unused")
     public float getDivergence(ItemStack stack) {
         return getParamFloat(stack, "divergence");
     }
@@ -381,7 +383,6 @@ public class BaseShotItem extends Item implements DyeableBullet, BulletPatterns 
         return getParamBoolean(stack, "time_orb_used");
     }
 
-    @SuppressWarnings("unused") // TODO: Add a modifier to make bullets icy
     public boolean isIcy(ItemStack stack) {
         return getParamBoolean(stack, "icy");
     }

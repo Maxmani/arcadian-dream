@@ -43,6 +43,7 @@ public class ModItems {
     public static final Item DRAGON_GEM = registerItem("dragon_gem", new Item(new FabricItemSettings()));
     public static final Item RAW_MAKAITE = registerItem("raw_makaite", new Item(new FabricItemSettings().fireproof()));
     public static final Item MAKAITE_INGOT = registerItem("makaite_ingot", new Item(new FabricItemSettings().fireproof()));
+    public static final Item ENCHANTED_ICE = registerItem("enchanted_ice", new EnchantedIceItem(new FabricItemSettings().rarity(Rarity.UNCOMMON)));
 
     public static final Item WALL_PASSING_CHISEL = registerItem("wall_passing_chisel", new WallPassingChiselItem(new FabricItemSettings().maxDamage(100)));
     public static final Item IBUKI_GOURD = registerItem("ibuki_gourd", new IbukiGourdItem(new FabricItemSettings().maxCount(1)));
@@ -209,6 +210,7 @@ public class ModItems {
         addToItemGroup(ModItemGroups.ITEMS, DRAGON_GEM);
         addToItemGroup(ModItemGroups.ITEMS, RAW_MAKAITE);
         addToItemGroup(ModItemGroups.ITEMS, MAKAITE_INGOT);
+        addToItemGroup(ModItemGroups.ITEMS, ENCHANTED_ICE);
         addToItemGroup(ModItemGroups.ITEMS, WALL_PASSING_CHISEL);
         addToItemGroup(ModItemGroups.ITEMS, IBUKI_GOURD);
         addToItemGroup(ModItemGroups.ITEMS, HEALING_CHARM);

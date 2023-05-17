@@ -113,6 +113,13 @@ public class ModLootTableGenerator {
                     .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0f))
                             .with(ItemEntry.builder(ModItems.EXTEND_ITEM).conditionally(KilledByPlayerLootCondition.builder()).conditionally(RandomChanceWithLootingLootCondition.builder(0.006f, 0.006f)))
                     )
+                    .pool(LootPool.builder().rolls(ConstantLootNumberProvider.create(1.0f))
+                            .with(ItemEntry.builder(Items.ICE).weight(50).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f, 3.0f))).apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f))))
+                            .with(ItemEntry.builder(Items.PACKED_ICE).weight(30).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f, 2.0f))).apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f))))
+                            .with(ItemEntry.builder(Items.BLUE_ICE).weight(18).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f))).apply(LootingEnchantLootFunction.builder(UniformLootNumberProvider.create(0.0f, 1.0f))))
+                            .with(ItemEntry.builder(ModItems.ENCHANTED_ICE).weight(2))
+                            .conditionally(RandomChanceWithLootingLootCondition.builder(0.7f, 0.1f))
+                    )
             );
         }
     }
