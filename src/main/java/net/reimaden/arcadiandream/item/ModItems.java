@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -25,6 +26,8 @@ import net.reimaden.arcadiandream.item.custom.danmaku.*;
 import net.reimaden.arcadiandream.item.custom.misc.*;
 import net.reimaden.arcadiandream.item.custom.tools.*;
 import net.reimaden.arcadiandream.sound.ModSounds;
+
+import java.util.Collections;
 
 public class ModItems {
 
@@ -285,10 +288,24 @@ public class ModItems {
         addToItemGroup(ItemGroups.SPAWN_EGGS, FAIRY_SPAWN_EGG);
         addToItemGroup(ItemGroups.SPAWN_EGGS, SUNFLOWER_FAIRY_SPAWN_EGG);
         addToItemGroup(ItemGroups.SPAWN_EGGS, ICE_FAIRY_SPAWN_EGG);
+
+        addSuspiciousStews();
     }
 
     private static void addToItemGroup(ItemGroup group, Item item) {
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private static void addToItemGroup(ItemGroup group, ItemStack stack, ItemGroup.StackVisibility visibility) {
+        //noinspection UnstableApiUsage
+        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.SUSPICIOUS_STEW, Collections.singletonList(stack), visibility));
+    }
+
+    private static void addSuspiciousStews() {
+        ItemStack stack = new ItemStack(Items.SUSPICIOUS_STEW);
+        SuspiciousStewItem.addEffectToStew(stack, StatusEffects.LEVITATION, 200);
+        addToItemGroup(ItemGroups.FOOD_AND_DRINK, stack, ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
     }
 
     private static void addCompostables() {
