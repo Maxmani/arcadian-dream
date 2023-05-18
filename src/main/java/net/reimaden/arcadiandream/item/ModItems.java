@@ -111,6 +111,8 @@ public class ModItems {
             new FabricItemSettings().rarity(Rarity.RARE)));
     public static final Item FOLDING_CHAIR = registerItem("folding_chair", new FoldingChairItem(ToolMaterials.IRON, 1, -3.1f,
             new FabricItemSettings().maxDamage(ToolMaterials.IRON.getDurability() - 50)));
+    public static final Item ICICLE_SWORD = registerItem("icicle_sword", new IcicleSwordItem(ModToolMaterials.ENCHANTED_ICE, 3, -2.4f,
+            new FabricItemSettings().rarity(Rarity.UNCOMMON)));
 
     // Danmaku
     public static final Item CIRCLE_BULLET_CORE = registerItem("circle_bullet_core", new BulletCoreItem(new FabricItemSettings()));
@@ -236,6 +238,7 @@ public class ModItems {
         addToItemGroup(ModItemGroups.ITEMS, DEATH_SCYTHE);
         addToItemGroup(ModItemGroups.ITEMS, MIRACLE_MALLET);
         addToItemGroup(ModItemGroups.ITEMS, FOLDING_CHAIR);
+        addToItemGroup(ModItemGroups.ITEMS, ICICLE_SWORD);
         addToItemGroup(ModItemGroups.ITEMS, SPREAD_PATTERN_TEMPLATE);
         addToItemGroup(ModItemGroups.ITEMS, RAY_PATTERN_TEMPLATE);
         addToItemGroup(ModItemGroups.ITEMS, RING_PATTERN_TEMPLATE);

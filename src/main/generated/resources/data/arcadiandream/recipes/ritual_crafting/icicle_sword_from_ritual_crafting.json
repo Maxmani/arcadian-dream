@@ -1,0 +1,17 @@
+{
+  "type": "arcadiandream:ritual_crafting",
+  "ingredients": [
+    {
+      "tag": "minecraft:swords"
+    },
+    {
+      "item": "arcadiandream:enchanted_ice"
+    },
+    {
+      "item": "arcadiandream:enchanted_ice"
+    }
+  ],
+  "result": {
+    "item": "arcadiandream:icicle_sword"
+  }
+}

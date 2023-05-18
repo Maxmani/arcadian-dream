@@ -3,7 +3,7 @@
  * Licensed under the EUPL-1.2 or later.
  */
 
-package net.reimaden.arcadiandream.util;
+package net.reimaden.arcadiandream.util.client;
 
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.util.Identifier;

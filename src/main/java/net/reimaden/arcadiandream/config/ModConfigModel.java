@@ -79,6 +79,13 @@ public class ModConfigModel {
         public double knockbackStrength = 1.5;
     }
 
+    @Nest
+    public IcicleSwordOptions icicleSwordOptions = new IcicleSwordOptions();
+
+    public static class IcicleSwordOptions {
+        public boolean meltsInstantly = true;
+    }
+
     @SectionHeader("danmaku")
 
     @Sync(Option.SyncMode.OVERRIDE_CLIENT)

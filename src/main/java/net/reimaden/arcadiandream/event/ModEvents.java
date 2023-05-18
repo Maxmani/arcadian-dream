@@ -18,5 +18,6 @@ public class ModEvents {
         AttackEntityCallback.EVENT.register(new EtherealEvent());
         ServerLivingEntityEvents.ALLOW_DAMAGE.register(new EtherealEvent());
         ServerLivingEntityEvents.ALLOW_DEATH.register(new ElixirEvent());
+        ServerLivingEntityEvents.ALLOW_DAMAGE.register(new IcicleSwordEvent());
     }
 }

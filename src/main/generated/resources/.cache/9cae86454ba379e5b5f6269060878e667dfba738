@@ -1,4 +1,4 @@
-// 1.19.4	2023-05-17T23:18:53.2500947	Arcadian Dream/Tags for minecraft:item
+// 1.19.4	2023-05-18T21:18:06.3163013	Arcadian Dream/Tags for minecraft:item
 b847cbad014dd8a5c7d85cba225a9b12b3fa3abf data\arcadiandream\tags\items\bullet_cores.json
 628dc8f78c7bde824d4cc9778219ea879917c0c6 data\minecraft\tags\items\beacon_payment_items.json
 5bbaf049f3334d6d8c9d808de4f8cbc22567de21 data\arcadiandream\tags\items\shots.json
@@ -16,7 +16,7 @@ a4e9402b6b245ddc9f85e55338b52a52c5dc1c25 data\arcadiandream\tags\items\items.jso
 4651de23556edc9f1df1f9c414f4d5383d6a899c data\arcadiandream\tags\items\danmaku_power_modifiers.json
 f77b1199ac0c67a4210437472e2802767222f7a2 data\c\tags\items\raw_meat.json
 c3ec5d72e6d29ea2e3739b3c55e95ec4aaf56e09 data\minecraft\tags\items\axes.json
-af7dcf4b1fa741f90379cc51dc2c42c1b27cd463 data\minecraft\tags\items\swords.json
+2c6d68b1a80f6c38c4b19ae00261271ba9975c89 data\minecraft\tags\items\swords.json
 b792c29d9820be69e91577d73563dcbbb62c25e0 data\c\tags\items\undead_parts.json
 6a55cdc3faae5abf87c84c42345e90db0024f0c6 data\arcadiandream\tags\items\danmaku_density_modifiers.json
 9bcc55fda813f90b905ba617d7dec5f0cbbaa0c8 data\minecraft\tags\items\music_discs.json

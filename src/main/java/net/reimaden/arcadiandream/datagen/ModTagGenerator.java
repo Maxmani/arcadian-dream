@@ -120,7 +120,7 @@ public class ModTagGenerator {
             getOrCreateTagBuilder(ConventionalItemTags.SPEARS)
                     .add(ModItems.NUE_TRIDENT);
             getOrCreateTagBuilder(SWORDS)
-                    .add(ModItems.MAKAITE_SWORD, ModItems.HISOU_SWORD, ModItems.DEATH_SCYTHE);
+                    .add(ModItems.MAKAITE_SWORD, ModItems.HISOU_SWORD, ModItems.DEATH_SCYTHE, ModItems.ICICLE_SWORD);
             getOrCreateTagBuilder(ModTags.Items.HAMMERS)
                     .add(ModItems.MOCHI_MALLET, ModItems.MIRACLE_MALLET);
             getOrCreateTagBuilder(ConventionalItemTags.FOODS)

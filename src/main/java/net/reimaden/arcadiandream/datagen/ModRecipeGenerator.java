@@ -284,5 +284,10 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input(Items.PAPER)
                 .input(ModItems.MAX_POINT_ITEM)
                 .offerTo(exporter, ritualCraftingId(ModItems.GHASTLY_LANTERN));
+
+        RitualCraftingRecipeJsonBuilder.create(ModItems.ICICLE_SWORD)
+                .input(ItemTags.SWORDS)
+                .input(ModItems.ENCHANTED_ICE, 2)
+                .offerTo(exporter, ritualCraftingId(ModItems.ICICLE_SWORD));
     }
 }

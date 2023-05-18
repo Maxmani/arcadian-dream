@@ -17,16 +17,25 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ToolItem;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Pair;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
+import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.advancement.ModCriteria;
 import net.reimaden.arcadiandream.effect.ModEffects;
 import net.reimaden.arcadiandream.entity.custom.danmaku.BaseBulletEntity;
 import net.reimaden.arcadiandream.item.ModItems;
+import net.reimaden.arcadiandream.item.ModToolMaterials;
 import net.reimaden.arcadiandream.statistic.ModStats;
 import net.reimaden.arcadiandream.util.IEntityDataSaver;
 import net.reimaden.arcadiandream.util.ItemBreakUtil;
@@ -111,5 +120,63 @@ public abstract class LivingEntityMixin extends Entity {
         if (ItemBreakUtil.isDisallowed(stack.getItem())) {
             ci.cancel();
         }
+    }
+
+    @Inject(method = "tickMovement", at = @At("TAIL"))
+    private void arcadiandream$meltIcicleSword(CallbackInfo ci) {
+        ItemStack mainStack = entity.getMainHandStack();
+        ItemStack offStack = entity.getOffHandStack();
+
+        Biome currentBiome = world.getBiome(entity.getBlockPos()).value();
+        float temperature = currentBiome.getTemperature();
+
+        boolean isInWarmBiome = temperature > 0.5f;
+        boolean canEvaporate = world.getDimension().ultrawarm();
+        boolean canMelt = isInWarmBiome && isAffectedByDaylight();
+
+        if (ArcadianDream.CONFIG.icicleSwordOptions.meltsInstantly() && canEvaporate) {
+            decrementStackAndSpawnParticles(mainStack);
+            decrementStackAndSpawnParticles(offStack);
+        } else if (canMelt || canEvaporate) {
+            damageStack(mainStack, temperature, Hand.MAIN_HAND);
+            damageStack(offStack, temperature, Hand.OFF_HAND);
+        }
+    }
+
+    private void decrementStackAndSpawnParticles(ItemStack stack) {
+        if (isEnchantedIceTool(stack)) {
+            stack.decrement(1);
+            double x = getBlockPos().getX();
+            double y = getBlockPos().getY();
+            double z = getBlockPos().getZ();
+            world.playSound(entity, getBlockPos(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS,
+                    0.5f, 2.6f + (world.random.nextFloat() - world.random.nextFloat()) * 0.8f);
+            for (int i = 0; i < 8; ++i) {
+                world.addParticle(ParticleTypes.LARGE_SMOKE, x + Math.random(), y + Math.random(), z + Math.random(), 0.0, 0.0, 0.0);
+            }
+        }
+    }
+
+    private void damageStack(ItemStack stack, float temperature, Hand hand) {
+        if (isEnchantedIceTool(stack)) {
+            int damageAmount = (int) (random.nextInt(3) * temperature);
+            stack.damage(damageAmount, entity, e -> e.sendToolBreakStatus(hand));
+        }
+    }
+
+    private static boolean isEnchantedIceTool(ItemStack stack) {
+        return stack.getItem() instanceof ToolItem tool && tool.getMaterial() == ModToolMaterials.ENCHANTED_ICE;
+    }
+
+    private boolean isAffectedByDaylight() {
+        if (world.isDay() && !world.isClient()) {
+            boolean isInPowderSnow = inPowderSnow || wasInPowderSnow;
+            // I don't give a damn
+            // noinspection deprecation
+            float brightness = getBrightnessAtEyes();
+            BlockPos blockPos = BlockPos.ofFloored(getX(), getEyeY(), getZ());
+            return brightness > 0.5f && random.nextFloat() * 30.0f < (brightness - 0.4f) * 2.0f && !isInPowderSnow && world.isSkyVisible(blockPos);
+        }
+        return false;
     }
 }

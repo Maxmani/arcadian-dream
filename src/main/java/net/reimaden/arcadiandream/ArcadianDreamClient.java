@@ -14,7 +14,7 @@ import net.reimaden.arcadiandream.model.ModEntityModelLayers;
 import net.reimaden.arcadiandream.model.trinket.ModTrinketRenderers;
 import net.reimaden.arcadiandream.networking.ModMessages;
 import net.reimaden.arcadiandream.particle.ModParticles;
-import net.reimaden.arcadiandream.util.ModModelPredicateProvider;
+import net.reimaden.arcadiandream.util.client.ModModelPredicateProvider;
 import net.reimaden.arcadiandream.util.client.ModColorProviders;
 import net.reimaden.arcadiandream.util.client.ModModelProviders;
 

@@ -63,11 +63,11 @@ public class ModModelGenerator extends FabricModelProvider {
     }
 
     @SuppressWarnings("SameParameterValue")
-    private void registerNorthDefaultRotationStates(Block block, Consumer<BlockStateSupplier> blockStateCollector) {
+    private static void registerNorthDefaultRotationStates(Block block, Consumer<BlockStateSupplier> blockStateCollector) {
         blockStateCollector.accept(VariantsBlockStateSupplier.create(block, BlockStateVariant.create().put(VariantSettings.MODEL, ModelIds.getBlockModelId(block))).coordinate(BlockStateModelGenerator.createNorthDefaultRotationStates()));
     }
 
-    private void registerSeal(BlockStateModelGenerator generator) {
+    private static void registerSeal(BlockStateModelGenerator generator) {
         registerNorthDefaultRotationStates(ModBlocks.MYSTERIOUS_SEAL, generator.blockStateCollector);
         generator.registerItemModel(ModBlocks.MYSTERIOUS_SEAL);
     }
@@ -85,6 +85,7 @@ public class ModModelGenerator extends FabricModelProvider {
         }
 
         item.register(ModItems.DEATH_SCYTHE, ModModels.HANDHELD_BIG);
+        item.register(ModItems.ICICLE_SWORD, "_melted", Models.HANDHELD);
 
         for (Item core : ModTags.BULLET_CORES) {
             Identifier itemId = Registries.ITEM.getId(core);
@@ -100,11 +101,11 @@ public class ModModelGenerator extends FabricModelProvider {
     }
 
     @SuppressWarnings("SameParameterValue")
-    private void registerWithSpecificTexture(Item item, String name, Model model, ItemModelGenerator generator) {
+    private static void registerWithSpecificTexture(Item item, String name, Model model, ItemModelGenerator generator) {
         model.upload(ModelIds.getItemModelId(item), TextureMap.layer0(new Identifier(ArcadianDream.MOD_ID, "item/" + name)), generator.writer);
     }
 
-    private void registerShot(Item item, String core, String outline, ItemModelGenerator generator) {
+    private static void registerShot(Item item, String core, String outline, ItemModelGenerator generator) {
         Models.GENERATED_TWO_LAYERS.upload(ModelIds.getItemModelId(item), TextureMap.layered(
                 new Identifier(ArcadianDream.MOD_ID, "item/" + outline),
                 new Identifier(ArcadianDream.MOD_ID, "item/" + core)

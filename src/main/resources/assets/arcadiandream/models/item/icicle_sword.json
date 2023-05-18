@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "arcadiandream:item/icicle_sword"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "minecraft:damage": 0.75
+      },
+      "model": "arcadiandream:item/icicle_sword_melted"
+    }
+  ]
+}
