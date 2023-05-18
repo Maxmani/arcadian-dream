@@ -1,4 +1,4 @@
-// 1.19.4	2023-05-18T21:18:06.3163013	Arcadian Dream/Tags for minecraft:item
+// 1.19.4	2023-05-18T23:15:23.770199	Arcadian Dream/Tags for minecraft:item
 b847cbad014dd8a5c7d85cba225a9b12b3fa3abf data\arcadiandream\tags\items\bullet_cores.json
 628dc8f78c7bde824d4cc9778219ea879917c0c6 data\minecraft\tags\items\beacon_payment_items.json
 5bbaf049f3334d6d8c9d808de4f8cbc22567de21 data\arcadiandream\tags\items\shots.json
@@ -6,10 +6,11 @@ ce08bc7154395a8294695711cb63ed80c74b4b77 data\arcadiandream\tags\items\dragon_ge
 17b791fbb02cf078115b86c7346a19793c242043 data\minecraft\tags\items\shovels.json
 2a96f7db03d7de0a1be4809ec8341d457669f296 data\c\tags\items\spears.json
 970a7849263e703ec9c5d9e6ec7a0f21f84addad data\minecraft\tags\items\fishes.json
-67d4c89e9b687fbbccec2aa8e65747186cef0924 data\c\tags\items\hammers.json
 92a25d0436938daf12da7d7acb2d7982d1058178 data\arcadiandream\tags\items\danmaku_duration_modifiers.json
+cc574286770f20db5b561fe1bd4ddf7f763fde40 data\c\tags\items\hammers.json
 7f6cec9b9055f107f9166259995070795ea95049 data\minecraft\tags\items\hoes.json
 e321519edf246eb747c974e642a10950c9bbce6f data\arcadiandream\tags\items\danmaku_modifiers.json
+75e8e6e925c3e0106c03c6d981addb331b05f580 data\minecraft\tags\items\tools.json
 eebf2e570846d666cbc982caf74e7661b3d016ee data\c\tags\items\obsidian_blocks.json
 166e6d885fb32cfaa7ed5bba849e0f7a4b559108 data\c\tags\items\foods.json
 a4e9402b6b245ddc9f85e55338b52a52c5dc1c25 data\arcadiandream\tags\items\items.json
