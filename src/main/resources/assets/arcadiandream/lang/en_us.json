@@ -217,7 +217,8 @@
   "stat.arcadiandream.interact_with_danmaku_crafting_table": "Interactions with Danmaku Crafting Table",
   "stat.arcadiandream.bullets_cancelled": "Bullets Cancelled",
 
-  "arcadiandream.commands.elixir.success": "Removed Hourai Elixir for %s",
+  "arcadiandream.commands.elixir.clear": "Removed Hourai Elixir for %s",
+  "arcadiandream.commands.elixir.set": "Set Hourai Elixir level to %2$s for %1$s",
 
   "arcadiandream.message.resurrection": [{"text":"You have resurrected","color":"dark_red"}],
 
