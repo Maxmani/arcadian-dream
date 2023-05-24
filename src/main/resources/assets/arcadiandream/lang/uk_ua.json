@@ -72,6 +72,7 @@
   "item.arcadiandream.shot.tooltip_smite": [{"translate":"enchantment.minecraft.smite","color":"#00CCFF"}],
   "item.arcadiandream.shot.tooltip_armorPenetration": [{"text":"Пробиття броні","color":"yellow"}],
   "item.arcadiandream.shot.tooltip_piercing": [{"translate":"enchantment.minecraft.piercing","color":"green"}],
+  "item.arcadiandream.shot.tooltip_icy": [{"text":"Icy","color":"#B0DAFF"}],
   "item.arcadiandream.bullet.pattern_spread": "Розповсюдження",
   "item.arcadiandream.bullet.pattern_ray": "Промінь",
   "item.arcadiandream.bullet.pattern_ring": "Кільце",
@@ -107,12 +108,17 @@
   "item.arcadiandream.miracle_mallet": "Магічна киянка",
   "item.arcadiandream.fairy_spawn_egg": "Яйце виклику феї",
   "item.arcadiandream.sunflower_fairy_spawn_egg": "Яйце виклику соняшникової феї",
+  "item.arcadiandream.ice_fairy_spawn_egg": "Ice Fairy Spawn Egg",
   "item.arcadiandream.magatama_necklace": "Намисто з магатамою",
   "item.arcadiandream.ghastly_lantern": "Провідний ліхтар привидів",
   "item.arcadiandream.life_fragment": "Фрагмент життя",
   "item.arcadiandream.lamprey": "Мінога",
   "item.arcadiandream.cooked_lamprey": "Смажена мінога",
   "item.arcadiandream.time_orb": "Сфера часу",
+  "item.arcadiandream.folding_chair": "Folding Chair",
+  "item.arcadiandream.folding_chair.tooltip": [{"text":"Has an oddly shaped dent on it","italic":true,"color":"gray"}],
+  "item.arcadiandream.enchanted_ice": "Enchanted Ice",
+  "item.arcadiandream.icicle_sword": "Icicle Sword",
 
   "block.arcadiandream.dragon_gem_ore": "Руда драконячого самоцвіту",
   "block.arcadiandream.deepslate_dragon_gem_ore": "Глибосланцева руда драконячого самоцвіту",
@@ -134,14 +140,18 @@
   "entity.arcadiandream.bubble_bullet": "Бульбашкова куля",
   "entity.arcadiandream.amulet_bullet": "Амулетна куля",
   "entity.arcadiandream.star_bullet": "Зіркова куля",
+  "entity.arcadiandream.kunai_bullet": "Kunai Bullet",
+  "entity.arcadiandream.pellet_bullet": "Pellet Bullet",
   "entity.minecraft.villager.antiquarian": "Антиквар",
   "entity.arcadiandream.fairy": "Фея",
   "entity.arcadiandream.sunflower_fairy": "Соняшникова фея",
+  "entity.arcadiandream.ice_fairy": "Ice Fairy",
 
   "enchantment.arcadiandream.danmaku_protection": "Захист від данмаку",
   "enchantment.arcadiandream.youkai_buster": "Запечатування йокаїв",
 
   "effect.arcadiandream.ethereal": "Безтілесний",
+  "effect.arcadiandream.elixir_fatigue": "Elixir Fatigue",
 
   "advancements.arcadiandream.root.title": "Arcadian Dream",
   "advancements.arcadiandream.root.description": "Ласкаво просимо в Генсокійо",
@@ -195,6 +205,7 @@
   "arcadiandream.subtitles.entity.fairy.hurt": "Феї була надана шкода",
   "arcadiandream.subtitles.entity.villager.work_antiquarian": "Антиквар працює",
   "arcadiandream.subtitles.item.ghastly_lantern.use": "Провідний ліхтар привидів використано",
+  "arcadiandream.subtitles.item.folding_chair.hit": "Folding Chair clangs",
 
   "death.attack.danmaku": "%1$s був застарілян данмаку %2$s",
   "death.attack.danmaku.item": "%1$s ліквідований %2$s за допомогою %3$s",
@@ -207,6 +218,7 @@
   "stat.arcadiandream.bullets_cancelled": "Куль скасовано",
 
   "arcadiandream.commands.elixir.success": "Ефект Хоурайського еліксиру було знято з %s",
+  "arcadiandream.commands.elixir.set": "Set Hourai Elixir level to %2$s for %1$s",
 
   "arcadiandream.message.resurrection": [{"text":"Вас відновили","color":"dark_red"}],
 
@@ -254,6 +266,16 @@
   "text.config.arcadiandream.option.mochiMalletOptions.lowViolence.tooltip": "Вимкнути кров на текстурі калатала мочі.",
   "text.config.arcadiandream.category.houraiElixirOptions": [{"translate":"item.arcadiandream.hourai_elixir"}],
   "text.config.arcadiandream.option.houraiElixirOptions.canDrink": "Можна пити",
+  "text.config.arcadiandream.option.houraiElixirOptions.nerfElixir": "Nerf Hourai Elixir",
+  "text.config.arcadiandream.option.houraiElixirOptions.nerfElixir.tooltip": "Taking fatal damage gives the Elixir Fatigue status effect.\nFurther deaths increase the intensity of it.",
+  "text.config.arcadiandream.option.houraiElixirOptions.allowDying": "Allow dying",
+  "text.config.arcadiandream.option.houraiElixirOptions.allowDying.tooltip": "Death becomes possible under the effects of Elixir Fatigue.",
+  "text.config.arcadiandream.option.houraiElixirOptions.elixirFatigueThreshold": "Threshold",
+  "text.config.arcadiandream.option.houraiElixirOptions.elixirFatigueThreshold.tooltip": "Minimum level of Elixir Fatigue required to allow dying.",
+  "text.config.arcadiandream.category.foldingChairOptions": [{"translate":"item.arcadiandream.folding_chair"}],
+  "text.config.arcadiandream.option.foldingChairOptions.knockbackStrength": "Knockback strength",
+  "text.config.arcadiandream.category.icicleSwordOptions": [{"translate":"item.arcadiandream.icicle_sword"}],
+  "text.config.arcadiandream.option.icicleSwordOptions.meltsInstantly": "Melts instantly in the Nether",
   "text.config.arcadiandream.section.danmaku": "Данмаку",
   "text.config.arcadiandream.option.danmakuCooldownMultiplier": "Множник часу перезаряджання",
   "text.config.arcadiandream.option.danmakuDamageMultiplier": "Множник шкоди",
@@ -263,4 +285,5 @@
   "text.config.arcadiandream.category.fairyOptions": "Феї",
   "text.config.arcadiandream.option.fairyOptions.spawnFairies": "Феї з'являтимуться",
   "text.config.arcadiandream.option.fairyOptions.spawnSunflowerFairies": "Соняшникові феї будуть з'являтися"
+  "text.config.arcadiandream.option.fairyOptions.spawnIceFairies": "Spawn Ice Fairies"
 }
