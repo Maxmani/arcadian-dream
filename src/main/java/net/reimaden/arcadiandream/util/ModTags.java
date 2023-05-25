@@ -35,12 +35,16 @@ public class ModTags {
         public static final TagKey<Block> FAIRIES_SPAWNABLE_ON = createTag("fairies_spawnable_on");
 
         private static TagKey<Block> createTag(String name) {
-            return TagKey.of(RegistryKeys.BLOCK, new Identifier(ArcadianDream.MOD_ID, name));
+            return create(ArcadianDream.MOD_ID, name);
         }
 
         @SuppressWarnings("SameParameterValue")
         private static TagKey<Block> createCommonTag(String name) {
-            return TagKey.of(RegistryKeys.BLOCK, new Identifier("c", name));
+            return create("c", name);
+        }
+
+        private static TagKey<Block> create(String namespace, String name) {
+            return TagKey.of(RegistryKeys.BLOCK, new Identifier(namespace, name));
         }
     }
 
@@ -63,11 +67,15 @@ public class ModTags {
         public static final TagKey<Item> COOKED_MEAT = createCommonTag("cooked_meat");
 
         private static TagKey<Item> createTag(String name) {
-            return TagKey.of(RegistryKeys.ITEM, new Identifier(ArcadianDream.MOD_ID, name));
+            return create(ArcadianDream.MOD_ID, name);
         }
 
         private static TagKey<Item> createCommonTag(String name) {
-            return TagKey.of(RegistryKeys.ITEM, new Identifier("c", name));
+            return create("c", name);
+        }
+
+        private static TagKey<Item> create(String namespace, String name) {
+            return TagKey.of(RegistryKeys.ITEM, new Identifier(namespace, name));
         }
     }
 
