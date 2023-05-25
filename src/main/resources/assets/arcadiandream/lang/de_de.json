@@ -72,6 +72,7 @@
   "item.arcadiandream.shot.tooltip_smite": [{"translate":"enchantment.minecraft.smite","color":"#00CCFF"}],
   "item.arcadiandream.shot.tooltip_armorPenetration": [{"text":"Panzerbrecher","color":"yellow"}],
   "item.arcadiandream.shot.tooltip_piercing": [{"translate":"enchantment.minecraft.piercing","color":"green"}],
+  "item.arcadiandream.shot.tooltip_icy": [{"text":"Eisig","color":"#B0DAFF"}],
   "item.arcadiandream.bullet.pattern_spread": "Streuung",
   "item.arcadiandream.bullet.pattern_ray": "Strahl",
   "item.arcadiandream.bullet.pattern_ring": "Ring",
@@ -107,12 +108,17 @@
   "item.arcadiandream.miracle_mallet": "Wunderhammer",
   "item.arcadiandream.fairy_spawn_egg": "Fee-Spawn-Ei",
   "item.arcadiandream.sunflower_fairy_spawn_egg": "Sonnenblumenfee-Spawn-Ei",
+  "item.arcadiandream.ice_fairy_spawn_egg": "Eisfee-Spawn-Ei",
   "item.arcadiandream.magatama_necklace": "Magatama-Halskette",
   "item.arcadiandream.ghastly_lantern": "Gespenstische Abschiedslaterne",
   "item.arcadiandream.life_fragment": "Lebensfragment",
   "item.arcadiandream.lamprey": "Neunauge",
   "item.arcadiandream.cooked_lamprey": "Gebratenes Neunauge",
   "item.arcadiandream.time_orb": "Zeitsphäre",
+  "item.arcadiandream.folding_chair": "Klappstuhl",
+  "item.arcadiandream.folding_chair.tooltip": [{"text":"Hat eine merkwürdige Delle","italic":true,"color":"gray"}],
+  "item.arcadiandream.enchanted_ice": "Verzaubertes Eis",
+  "item.arcadiandream.icicle_sword": "Eiszapfen-Schwert",
 
   "block.arcadiandream.dragon_gem_ore": "Drachensteinerz",
   "block.arcadiandream.deepslate_dragon_gem_ore": "Tiefenschiefer-Drachensteinerz",
@@ -139,11 +145,13 @@
   "entity.minecraft.villager.antiquarian": "Antiquar",
   "entity.arcadiandream.fairy": "Fee",
   "entity.arcadiandream.sunflower_fairy": "Sonnenblumenfee",
+  "entity.arcadiandream.ice_fairy": "Eisfee",
 
   "enchantment.arcadiandream.danmaku_protection": "Danmakuschutz",
   "enchantment.arcadiandream.youkai_buster": "Yokaiversiegelung",
 
   "effect.arcadiandream.ethereal": "Ätherisch",
+  "effect.arcadiandream.elixir_fatigue": "Elixirerschöpfung",
 
   "advancements.arcadiandream.root.title": "Arcadian Dream",
   "advancements.arcadiandream.root.description": "Willkommen in Gensoukyou",
@@ -197,6 +205,7 @@
   "arcadiandream.subtitles.entity.fairy.hurt": "Fee wird Schaden zugefügt",
   "arcadiandream.subtitles.entity.villager.work_antiquarian": "Antiquar arbeitet",
   "arcadiandream.subtitles.item.ghastly_lantern.use": "Gespenstische Abschiedslaterne benutzt",
+  "arcadiandream.subtitles.item.folding_chair.hit": "Klappstuhl rasselt",
 
   "death.attack.danmaku": "%1$s wurde von %2$s mit Danmaku erschossen",
   "death.attack.danmaku.item": "%1$s wurde von %2$s mit %3$s erschossen",
@@ -209,6 +218,7 @@
   "stat.arcadiandream.bullets_cancelled": "Kugeln konvertiert",
 
   "arcadiandream.commands.elixir.success": "Effekt des Hourai-Elixirs für %s enfernt",
+  "arcadiandream.commands.elixir.set": "Hourai-Elixir-Level füt %2$s auf %1$s gesetzt",
 
   "arcadiandream.message.resurrection": [{"text":"Du wurdest wiederbelebt","color":"dark_red"}],
 
@@ -256,6 +266,16 @@
   "text.config.arcadiandream.option.mochiMalletOptions.lowViolence.tooltip": "Entfernt Blut von der Textur des Mochi-Klopfers.",
   "text.config.arcadiandream.category.houraiElixirOptions": [{"translate":"item.arcadiandream.hourai_elixir"}],
   "text.config.arcadiandream.option.houraiElixirOptions.canDrink": "Kann trinken",
+  "text.config.arcadiandream.option.houraiElixirOptions.nerfElixir": "Hourai-Elixir nerfen",
+  "text.config.arcadiandream.option.houraiElixirOptions.nerfElixir.tooltip": "Totalschaden gibt dir den Elixirerschöpfung-Effekt.\nWeitere Tode erhöhen den Effektlevel.",
+  "text.config.arcadiandream.option.houraiElixirOptions.allowDying": "Sterben erlauben",
+  "text.config.arcadiandream.option.houraiElixirOptions.allowDying.tooltip": "Ermöglicht den Tod mit dem Elixirerschöpfung-Effekt.",
+  "text.config.arcadiandream.option.houraiElixirOptions.elixirFatigueThreshold": "Schwellenwert",
+  "text.config.arcadiandream.option.houraiElixirOptions.elixirFatigueThreshold.tooltip": "Minimaler Elixirerschöpfung-Effektlevel, um sterben zu erlauben.",
+  "text.config.arcadiandream.category.foldingChairOptions": [{"translate":"item.arcadiandream.folding_chair"}],
+  "text.config.arcadiandream.option.foldingChairOptions.knockbackStrength": "Rückstoß-Level",
+  "text.config.arcadiandream.category.icicleSwordOptions": [{"translate":"item.arcadiandream.icicle_sword"}],
+  "text.config.arcadiandream.option.icicleSwordOptions.meltsInstantly": "Schmilzt sofort im Nether",
   "text.config.arcadiandream.section.danmaku": "Danmaku",
   "text.config.arcadiandream.option.danmakuCooldownMultiplier": "Abklingzeit-Multiplikator",
   "text.config.arcadiandream.option.danmakuDamageMultiplier": "Schaden-Multiplikator",
@@ -264,5 +284,6 @@
   "text.config.arcadiandream.section.mobs": "Kreaturen",
   "text.config.arcadiandream.category.fairyOptions": "Feen",
   "text.config.arcadiandream.option.fairyOptions.spawnFairies": "Feen spawnen",
-  "text.config.arcadiandream.option.fairyOptions.spawnSunflowerFairies": "Sonnenblumenfeen spawnen"
+  "text.config.arcadiandream.option.fairyOptions.spawnSunflowerFairies": "Sonnenblumenfeen spawnen",
+  "text.config.arcadiandream.option.fairyOptions.spawnIceFairies": "Eisfeen spawnen"
 }
