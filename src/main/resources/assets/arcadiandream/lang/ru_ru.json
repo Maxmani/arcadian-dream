@@ -151,7 +151,7 @@
   "enchantment.arcadiandream.youkai_buster": "Запечатывание ёкаев",
 
   "effect.arcadiandream.ethereal": "Эфирный",
-  "effect.arcadiandream.elixir_fatigue": "Усталость эликсира",
+  "effect.arcadiandream.elixir_fatigue": "Усталость от эликсира",
 
   "advancements.arcadiandream.root.title": "Arcadian Dream",
   "advancements.arcadiandream.root.description": "Добро пожаловать в Генсокё",
@@ -218,7 +218,7 @@
   "stat.arcadiandream.bullets_cancelled": "Пуль отменено",
 
   "arcadiandream.commands.elixir.success": "Эффект Хорайского эликсира был снят с %s",
-  "arcadiandream.commands.elixir.set": "Уровен Хорайского эликсира был поменян на %2$s для %1$s",
+  "arcadiandream.commands.elixir.set": "Уровень Хорайского эликсира был поменян на %2$s с %1$s",
 
   "arcadiandream.message.resurrection": [{"text":"Вас восстановили","color":"dark_red"}],
 
@@ -267,23 +267,23 @@
   "text.config.arcadiandream.category.houraiElixirOptions": [{"translate":"item.arcadiandream.hourai_elixir"}],
   "text.config.arcadiandream.option.houraiElixirOptions.canDrink": "Можно пить",
   "text.config.arcadiandream.option.houraiElixirOptions.nerfElixir": "Сбалансированный Хорайский эликсир",
-  "text.config.arcadiandream.option.houraiElixirOptions.nerfElixir.tooltip": "Получение фатального урона даёт эффект усталости эликсира.\nДальнейшие смерти усиляют эффект.",
+  "text.config.arcadiandream.option.houraiElixirOptions.nerfElixir.tooltip": "Получение фатального урона даёт эффект усталости от эликсира.\nДальнейшие смерти усиляют эффект.",
   "text.config.arcadiandream.option.houraiElixirOptions.allowDying": "Разрешить смерть",
-  "text.config.arcadiandream.option.houraiElixirOptions.allowDying.tooltip": "Смерть становится возможной с эффектом усталости эликсира.",
+  "text.config.arcadiandream.option.houraiElixirOptions.allowDying.tooltip": "Смерть становится возможной с эффектом усталости от эликсира.",
   "text.config.arcadiandream.option.houraiElixirOptions.elixirFatigueThreshold": "Предел",
-  "text.config.arcadiandream.option.houraiElixirOptions.elixirFatigueThreshold.tooltip": "Минимальный уровень усталости эликсира, нужный чтобы смерть была возможной.",
+  "text.config.arcadiandream.option.houraiElixirOptions.elixirFatigueThreshold.tooltip": "Минимальный уровень усталости от эликсира, нужный для того, чтобы смерть была возможной.",
   "text.config.arcadiandream.category.foldingChairOptions": [{"translate":"item.arcadiandream.folding_chair"}],
-  "text.config.arcadiandream.option.foldingChairOptions.knockbackStrength": "Сила откидывания",
+  "text.config.arcadiandream.option.foldingChairOptions.knockbackStrength": "Сила отдачи",
   "text.config.arcadiandream.category.icicleSwordOptions": [{"translate":"item.arcadiandream.icicle_sword"}],
   "text.config.arcadiandream.option.icicleSwordOptions.meltsInstantly": "Тает моментально в Нижнем мире",
   "text.config.arcadiandream.section.danmaku": "Данмаку",
   "text.config.arcadiandream.option.danmakuCooldownMultiplier": "Множитель времени перезарядки",
   "text.config.arcadiandream.option.danmakuDamageMultiplier": "Множитель урона",
   "text.config.arcadiandream.option.cooldownPerBulletType": "Время перезарядки на каждый вид пуль",
-  "text.config.arcadiandream.option.cooldownPerBulletType.tooltip": "Отключение этого параметра приведет к тому, что все типы пуль будут иметь общее время перезарядки.",
+  "text.config.arcadiandream.option.cooldownPerBulletType.tooltip": "Отключение этого параметра приведёт к тому, что все типы пуль будут иметь общее время перезарядки.",
   "text.config.arcadiandream.section.mobs": "Сущности",
   "text.config.arcadiandream.category.fairyOptions": "Феи",
   "text.config.arcadiandream.option.fairyOptions.spawnFairies": "Феи будут появляться",
-  "text.config.arcadiandream.option.fairyOptions.spawnSunflowerFairies": "Подсолнечные феи будут появляться"
-  "text.config.arcadiandream.option.fairyOptions.spawnIceFairies": "Ледяные феи будут появлятся"
+  "text.config.arcadiandream.option.fairyOptions.spawnSunflowerFairies": "Подсолнечные феи будут появляться",
+  "text.config.arcadiandream.option.fairyOptions.spawnIceFairies": "Ледяные феи будут появляться"
 }

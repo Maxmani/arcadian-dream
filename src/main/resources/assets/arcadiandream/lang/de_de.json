@@ -284,6 +284,6 @@
   "text.config.arcadiandream.section.mobs": "Kreaturen",
   "text.config.arcadiandream.category.fairyOptions": "Feen",
   "text.config.arcadiandream.option.fairyOptions.spawnFairies": "Feen spawnen",
-  "text.config.arcadiandream.option.fairyOptions.spawnSunflowerFairies": "Sonnenblumenfeen spawnen"
+  "text.config.arcadiandream.option.fairyOptions.spawnSunflowerFairies": "Sonnenblumenfeen spawnen",
   "text.config.arcadiandream.option.fairyOptions.spawnIceFairies": "Eisfeen spawnen"
 }
