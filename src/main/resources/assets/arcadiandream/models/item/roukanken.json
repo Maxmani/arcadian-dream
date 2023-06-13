@@ -1,0 +1,20 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "arcadiandream:item/roukanken_0"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "arcadiandream:sheathed": 0.0
+      },
+      "model": "arcadiandream:item/roukanken_0"
+    },
+    {
+      "predicate": {
+        "arcadiandream:sheathed": 1.0
+      },
+      "model": "arcadiandream:item/roukanken_1"
+    }
+  ]
+}

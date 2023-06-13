@@ -7,6 +7,7 @@ package net.reimaden.arcadiandream.event;
 
 import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.AttackBlockCallback;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 
@@ -19,5 +20,6 @@ public class ModEvents {
         ServerLivingEntityEvents.ALLOW_DAMAGE.register(new EtherealEvent());
         ServerLivingEntityEvents.ALLOW_DEATH.register(new ElixirEvent());
         ServerLivingEntityEvents.ALLOW_DAMAGE.register(new IcicleSwordEvent());
+        ServerTickEvents.START_SERVER_TICK.register(new PlayerTickHandler());
     }
 }
