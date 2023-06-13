@@ -4,11 +4,17 @@ package net.reimaden.arcadiandream.item.custom.tools;
 
 
 
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Multimap;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.attribute.EntityAttribute;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -35,6 +41,8 @@ public class RoukankenItem extends SwordItem {
 boolean isDashing = false;
 
 int dashTimer;
+
+
 
     public RoukankenItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
@@ -67,15 +75,15 @@ int dashTimer;
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 
-if (!world.isClient && hand == Hand.MAIN_HAND){
+        ItemStack stack = user.getMainHandStack();
+        NbtCompound nbt;
+        if (stack.hasNbt()) {
+            nbt = stack.getNbt();
+        } else {
+            nbt = new NbtCompound();
+        }
 
-    ItemStack stack = user.getMainHandStack();
-    NbtCompound nbt;
-    if (stack.hasNbt()) {
-        nbt = stack.getNbt();
-    } else {
-        nbt = new NbtCompound();
-    }
+if (!world.isClient && hand == Hand.MAIN_HAND){
 
 //Dash Function
     if (StaminaHelper.getStamina((IEntityDataSaver) user) >= 30 && !user.isSneaking() && nbt.getByte("sheathed") == 0) {
@@ -111,6 +119,30 @@ if (!world.isClient && hand == Hand.MAIN_HAND){
 }
         return super.use(world, user, hand);
     }
+
+    @Override //Change atk stats depending on state
+    public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
+        final Multimap<EntityAttribute, EntityAttributeModifier> multimap = HashMultimap.create();
+        NbtCompound nbt;
+        if (stack.hasNbt()) {
+            nbt = stack.getNbt();
+        } else {
+            nbt = new NbtCompound();
+        }
+        if (slot == EquipmentSlot.MAINHAND && nbt.getByte("sheathed") == 0){
+            multimap.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
+                    new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Weapon modifier",
+                            10,
+                            EntityAttributeModifier.Operation.ADDITION));
+        } else {
+            multimap.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
+                    new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Weapon modifier",
+                            2,
+                            EntityAttributeModifier.Operation.ADDITION));
+        }
+        return multimap;
+    }
+
 
     private void generateTrail(World world, PlayerEntity user){
             boolean hasFireAspect = EnchantmentHelper.getFireAspect(user) > 0;

@@ -10,6 +10,6 @@ import net.reimaden.arcadiandream.util.StaminaHelper;
 
 public class StaminaC2SPacket {
     public static void receive(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
-        StaminaHelper.changeStamina((IEntityDataSaver) player, 1);
+        StaminaHelper.changeStamina((IEntityDataSaver) player, StaminaHelper.getStaminaRegenerationFactor((IEntityDataSaver) player));
     }
 }

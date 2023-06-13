@@ -10,6 +10,7 @@ import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.util.IEntityDataSaver;
 import net.reimaden.arcadiandream.util.ModTags;
+import net.reimaden.arcadiandream.util.StaminaHelper;
 
 public class StaminaHUD implements HudRenderCallback {
     private static final Identifier STAMINA_BAR_FRAME = new Identifier(ArcadianDream.MOD_ID,
@@ -39,7 +40,9 @@ public class StaminaHUD implements HudRenderCallback {
         }
 
     private void renderCurrentStaminaBar(MatrixStack matrices, int x, int y){
-        int currentStamina = ((IEntityDataSaver) MinecraftClient.getInstance().player).getPersistentData().getInt(ArcadianDream.MOD_ID + "_stamina");
-        DrawableHelper.drawTexture(matrices, x - 94, y - 54, 0, 0, currentStamina , 12, 100, 12);
+        IEntityDataSaver player = (IEntityDataSaver) client.player;
+        int currentStamina = (StaminaHelper.getStamina(player));
+        int currentMax = (StaminaHelper.getMaxStamina(player));
+        DrawableHelper.drawTexture(matrices, x - 94, y - 54, 0, 0, currentStamina / (currentMax / 100) , 12, 100, 12);
     }
 }
