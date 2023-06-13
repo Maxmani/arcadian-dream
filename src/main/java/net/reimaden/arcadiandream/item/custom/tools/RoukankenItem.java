@@ -83,7 +83,7 @@ int dashTimer;
             nbt = new NbtCompound();
         }
 
-if (!world.isClient && hand == Hand.MAIN_HAND){
+if (!world.isClient && hand == Hand.MAIN_HAND && nbt != null){
 
 //Dash Function
     if (StaminaHelper.getStamina((IEntityDataSaver) user) >= 30 && !user.isSneaking() && nbt.getByte("sheathed") == 0) {
@@ -129,17 +129,21 @@ if (!world.isClient && hand == Hand.MAIN_HAND){
         } else {
             nbt = new NbtCompound();
         }
-        if (slot == EquipmentSlot.MAINHAND && nbt.getByte("sheathed") == 0){
-            multimap.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
-                    new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Weapon modifier",
-                            10,
-                            EntityAttributeModifier.Operation.ADDITION));
-        } else {
-            multimap.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
-                    new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Weapon modifier",
-                            2,
-                            EntityAttributeModifier.Operation.ADDITION));
+        if (nbt != null)
+        {
+            if (slot == EquipmentSlot.MAINHAND && nbt.getByte("sheathed") == 0){
+                multimap.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
+                        new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Weapon modifier",
+                                10,
+                                EntityAttributeModifier.Operation.ADDITION));
+            } else {
+                multimap.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
+                        new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Weapon modifier",
+                                2,
+                                EntityAttributeModifier.Operation.ADDITION));
+            }
         }
+
         return multimap;
     }
 
