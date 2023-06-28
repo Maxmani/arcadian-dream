@@ -9,11 +9,13 @@ import com.google.common.collect.Multimap;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
@@ -25,7 +27,9 @@ import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.reimaden.arcadiandream.damage.ModDamageSources;
 import net.reimaden.arcadiandream.networking.ModMessages;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.reimaden.arcadiandream.util.IEntityDataSaver;
@@ -88,6 +92,8 @@ if (!world.isClient && hand == Hand.MAIN_HAND && nbt != null){
         StaminaHelper.changeStamina((IEntityDataSaver) user, -30);
         PacketByteBuf buffer = PacketByteBufs.create();
         ServerPlayNetworking.send((ServerPlayerEntity) user, ModMessages.ROUKANKEN_DASH, buffer);
+
+        SliceNDice(world, user, user.getMainHandStack());
 
         if (user.isOnGround()){
             playSound(world, user, ModSounds.ROUKANKEN_DASH_1);
@@ -158,6 +164,18 @@ if (!world.isClient && hand == Hand.MAIN_HAND && nbt != null){
         world.playSound(null, user.getBlockPos(), sound,
                 user.getSoundCategory(), 1f, pitch);
     }
+
+    private void SliceNDice(World world, PlayerEntity user, ItemStack item){
+        double offset = 2;
+        for (MobEntity mob : world.getNonSpectatingEntities(MobEntity.class,
+                user.getBoundingBox().expand(2.5, 2, 2.5).offset(new Vec3d(
+                        user.getRotationVector().getX() * offset,
+                        user.getRotationVector().getY() * offset,
+                        user.getRotationVector().getZ() * offset)))) {
+            mob.damage(ModDamageSources.danmaku(world, mob, user), 8 + (2 * EnchantmentHelper.getLevel(Enchantments.SHARPNESS, item)));
+        }
+    }
+
 
     }
 
