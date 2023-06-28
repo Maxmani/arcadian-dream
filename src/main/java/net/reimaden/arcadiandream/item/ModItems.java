@@ -111,7 +111,7 @@ public class ModItems {
     public static final Item DEATH_SCYTHE = registerItem("death_scythe", new DeathScytheItem(ToolMaterials.IRON, 4, -3.0f,
             new FabricItemSettings()));
     public static final Item ROUKANKEN = registerItem("roukanken", new RoukankenItem(ToolMaterials.NETHERITE, 10, -2.0f,
-            new FabricItemSettings()));
+            new FabricItemSettings().rarity(Rarity.EPIC)));
     public static final Item MIRACLE_MALLET = registerItem("miracle_mallet", new MiracleMalletItem(ToolMaterials.DIAMOND, 3, -3.2f,
             new FabricItemSettings().rarity(Rarity.RARE)));
     public static final Item FOLDING_CHAIR = registerItem("folding_chair", new FoldingChairItem(ToolMaterials.IRON, 1, -3.1f,

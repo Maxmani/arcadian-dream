@@ -8,6 +8,8 @@ import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
@@ -25,15 +27,20 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.damage.ModDamageSources;
 import net.reimaden.arcadiandream.networking.ModMessages;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.reimaden.arcadiandream.util.IEntityDataSaver;
 import net.reimaden.arcadiandream.util.StaminaHelper;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 
 public class RoukankenItem extends SwordItem {
@@ -46,7 +53,6 @@ int dashTimer;
 
     public RoukankenItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
-
     }
 
     @Override
@@ -132,15 +138,17 @@ if (!world.isClient && hand == Hand.MAIN_HAND && nbt != null){
         }
         if (nbt != null)
         {
+
+
             if (slot == EquipmentSlot.MAINHAND && nbt.getByte("sheathed") == 0){
                 multimap.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
                         new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Weapon modifier",
                                 10,
                                 EntityAttributeModifier.Operation.ADDITION));
-            } else {
+            } else if (slot == EquipmentSlot.MAINHAND && nbt.getByte("sheathed") == 1) {
                 multimap.put(EntityAttributes.GENERIC_ATTACK_DAMAGE,
                         new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Weapon modifier",
-                                2,
+                                0,
                                 EntityAttributeModifier.Operation.ADDITION));
             }
         }
@@ -148,6 +156,18 @@ if (!world.isClient && hand == Hand.MAIN_HAND && nbt != null){
         return multimap;
     }
 
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        super.appendTooltip(stack, world, tooltip, context);
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".roukanken.tooltip"));
+            tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".roukanken.tooltip_2"));
+        } else {
+            tooltip.add(Text.translatable("item." + ArcadianDream.MOD_ID + ".shot.tooltip"));
+        }
+
+    }
 
     private void generateTrail(World world, PlayerEntity user){
             boolean hasFireAspect = EnchantmentHelper.getFireAspect(user) > 0;
@@ -175,7 +195,6 @@ if (!world.isClient && hand == Hand.MAIN_HAND && nbt != null){
             mob.damage(ModDamageSources.danmaku(world, mob, user), 8 + (2 * EnchantmentHelper.getLevel(Enchantments.SHARPNESS, item)));
         }
     }
-
 
     }
 
