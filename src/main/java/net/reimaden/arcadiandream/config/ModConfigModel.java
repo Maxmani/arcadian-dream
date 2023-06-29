@@ -109,4 +109,23 @@ public class ModConfigModel {
         public boolean spawnSunflowerFairies = true;
         public boolean spawnIceFairies = true;
     }
+
+    @Sync(Option.SyncMode.OVERRIDE_CLIENT)
+    @SectionHeader("stamina")
+    @Nest
+    public StaminaOptions staminaOptions = new StaminaOptions();
+    public static class StaminaOptions {
+        public int staminaMax = 100;
+        public int staminaRegen = 1;
+
+    }
+
+    @Nest
+    public StaminaBarOptions staminaBarOptions = new StaminaBarOptions();
+
+    public static class StaminaBarOptions {
+        public int staminaBarPosX = 94;
+        public int staminaBarPosY = 54;
+    }
+
 }

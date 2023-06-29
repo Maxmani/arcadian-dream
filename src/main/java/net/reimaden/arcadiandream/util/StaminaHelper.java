@@ -12,8 +12,8 @@ import net.reimaden.arcadiandream.networking.ModMessages;
 
 public class StaminaHelper {
 
-    private static final int BaseMaxStamina = 100;
-    private static final int BaseStaminaRegen = 1;
+    private static final int BaseMaxStamina = ArcadianDream.CONFIG.staminaOptions.staminaMax();
+    private static final int BaseStaminaRegen = ArcadianDream.CONFIG.staminaOptions.staminaRegen();
 
     public static void changeStamina(IEntityDataSaver player, int amount){
         NbtCompound nbt = player.getPersistentData();
