@@ -289,5 +289,22 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input(ItemTags.SWORDS)
                 .input(ModItems.ENCHANTED_ICE, 2)
                 .offerTo(exporter, ritualCraftingId(ModItems.ICICLE_SWORD));
+
+        RitualCraftingRecipeJsonBuilder.create(ModItems.ROUKANKEN)
+                .input(Items.NETHERITE_SWORD)
+                .input(Items.NETHER_STAR)
+                .input(ModItems.DRAGON_GEM_BLOCK, 2)
+                .input(ModItems.MAKAITE_SWORD)
+                .input(ModItems.DRAGON_GEM_BLOCK, 2)
+                .input(Items.NETHER_STAR)
+                .input(ItemTags.FLOWERS)
+                .input(ItemTags.FLOWERS)
+                .input(ModItems.GHASTLY_LANTERN, 2)
+                .input(ItemTags.LEAVES)
+                .input(ItemTags.LEAVES)
+                .input(Items.IRON_INGOT, 2)
+                .offerTo(exporter, ritualCraftingId(ModItems.ROUKANKEN));
+
+
     }
 }
