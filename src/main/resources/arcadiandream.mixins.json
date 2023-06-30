@@ -11,6 +11,7 @@
     "FireBlockMixin",
     "IronGolemEntityMixin",
     "LivingEntityMixin",
+    "MilkBucketItemMixin",
     "PlayerEntityMixin",
     "ProjectileEntityMixin",
     "ThrownEntityMixin",

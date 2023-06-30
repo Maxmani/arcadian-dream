@@ -15,6 +15,7 @@ import net.fabricmc.fabric.api.tag.convention.v1.ConventionalItemTags;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.damage.DamageType;
 import net.minecraft.entity.decoration.painting.PaintingVariant;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKeys;
@@ -23,6 +24,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.poi.PointOfInterestType;
 import net.reimaden.arcadiandream.block.ModBlocks;
 import net.reimaden.arcadiandream.damage.ModDamageSources;
+import net.reimaden.arcadiandream.effect.ModEffects;
 import net.reimaden.arcadiandream.enchantment.ModEnchantments;
 import net.reimaden.arcadiandream.entity.ModEntities;
 import net.reimaden.arcadiandream.item.ModItems;
@@ -221,6 +223,19 @@ public class ModTagGenerator {
             // Modded damage type tags
             getOrCreateTagBuilder(ModTags.DamageTypes.IS_DANMAKU)
                     .add(ModDamageSources.DANMAKU, ModDamageSources.DANMAKU_SHARP);
+        }
+    }
+
+    public static class StatusEffectTags extends FabricTagProvider<StatusEffect> {
+
+        public StatusEffectTags(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+            super(output, RegistryKeys.STATUS_EFFECT, registriesFuture);
+        }
+
+        @Override
+        protected void configure(RegistryWrapper.WrapperLookup arg) {
+            getOrCreateTagBuilder(ModTags.StatusEffects.UNREMOVABLE)
+                    .add(ModEffects.ELIXIR_FATIGUE);
         }
     }
 
