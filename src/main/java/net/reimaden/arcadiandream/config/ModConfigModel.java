@@ -120,12 +120,4 @@ public class ModConfigModel {
 
     }
 
-    @Nest
-    public StaminaBarOptions staminaBarOptions = new StaminaBarOptions();
-
-    public static class StaminaBarOptions {
-        public int staminaBarPosX = 94;
-        public int staminaBarPosY = 54;
-    }
-
 }

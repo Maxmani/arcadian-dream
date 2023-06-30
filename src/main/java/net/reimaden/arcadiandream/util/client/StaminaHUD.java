@@ -6,10 +6,8 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
-import net.reimaden.arcadiandream.config.ArcadianDreamConfig;
 import net.reimaden.arcadiandream.util.IEntityDataSaver;
 import net.reimaden.arcadiandream.util.ModTags;
 import net.reimaden.arcadiandream.util.StaminaHelper;
@@ -36,15 +34,16 @@ public class StaminaHUD implements HudRenderCallback {
                 RenderSystem.setShaderTexture(0, STAMINA_BAR);
                 renderCurrentStaminaBar(matrixStack, x, y);
                 RenderSystem.setShaderTexture(0, STAMINA_BAR_FRAME);
-                DrawableHelper.drawTexture(matrixStack, x - ArcadianDream.CONFIG.staminaBarOptions.staminaBarPosX(), y - ArcadianDream.CONFIG.staminaBarOptions.staminaBarPosY(), 0, 0, 100, 12, 100, 12);
             }
             }
         }
 
     private void renderCurrentStaminaBar(MatrixStack matrices, int x, int y){
         IEntityDataSaver player = (IEntityDataSaver) client.player;
-        int currentStamina = (StaminaHelper.getStamina(player));
-        int currentMax = (StaminaHelper.getMaxStamina(player));
-        DrawableHelper.drawTexture(matrices, x - ArcadianDream.CONFIG.staminaBarOptions.staminaBarPosX(), y - ArcadianDream.CONFIG.staminaBarOptions.staminaBarPosY(), 0, 0, currentStamina / (currentMax / 100) , 12, 100, 12);
+        double currentStamina = (StaminaHelper.getStamina(player));
+        double currentMax = (StaminaHelper.getMaxStamina(player));
+        double adjustedWidth = ((182 / currentMax) * currentStamina);
+        DrawableHelper.drawTexture(matrices, x - 65 - 27, y - 29, 0, 0, (int) adjustedWidth, 6, 182, 5);
     }
+
 }
