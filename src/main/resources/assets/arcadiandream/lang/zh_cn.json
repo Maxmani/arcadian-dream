@@ -17,7 +17,7 @@
   "item.arcadiandream.ordinary_hat": "普通的帽子",
   "item.arcadiandream.ordinary_hat.tooltip": [{"text":"增加拾取物品的范围","color":"yellow"}],
   "item.arcadiandream.nue_trident": "鵺之三叉戟",
-  "item.arcadiandream.hisou_sword": "绯想剑",
+  "item.arcadiandream.hisou_sword": "绯想之剑",
   "item.arcadiandream.mochi_mallet": "团子槌",
   "item.arcadiandream.mochi_mallet.tooltip": ["",{"text":"杀死了 ","color":"gray"},{"index":0,"color":"dark_red"}],
   "item.arcadiandream.death_scythe": "死神镰刀",
