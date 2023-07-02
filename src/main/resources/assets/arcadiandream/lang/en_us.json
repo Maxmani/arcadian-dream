@@ -271,7 +271,7 @@
   "text.config.arcadiandream.option.houraiElixirOptions.allowDying": "Allow dying",
   "text.config.arcadiandream.option.houraiElixirOptions.allowDying.tooltip": "Death becomes possible under the effects of Elixir Fatigue.",
   "text.config.arcadiandream.option.houraiElixirOptions.elixirFatigueThreshold": "Threshold",
-  "text.config.arcadiandream.option.houraiElixirOptions.elixirFatigueThreshold.tooltip": "Minimum level of Elixir Fatigue required to allow dying.",
+  "text.config.arcadiandream.option.houraiElixirOptions.elixirFatigueThreshold.tooltip": "The minimum level of Elixir Fatigue required to allow dying.",
   "text.config.arcadiandream.category.foldingChairOptions": [{"translate":"item.arcadiandream.folding_chair"}],
   "text.config.arcadiandream.option.foldingChairOptions.knockbackStrength": "Knockback strength",
   "text.config.arcadiandream.category.icicleSwordOptions": [{"translate":"item.arcadiandream.icicle_sword"}],
