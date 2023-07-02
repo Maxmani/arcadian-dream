@@ -59,8 +59,7 @@ int dashTimer;
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         if (selected) {
 
-            //This is fucking retarded. I shouldn't have to do this. Fuck you.
-            //Cancels fall damage during dashes. Wanted to have it still be there if you fall a certain amount but my hand was forced.
+            //Cancel Fall damage when dashing
             if (!entity.isOnGround() && isDashing) {
                 entity.fallDistance = 0F;
             } else {
@@ -92,10 +91,16 @@ int dashTimer;
 if (!world.isClient && hand == Hand.MAIN_HAND && nbt != null){
 
 //Dash Function
+
+
+
     if (StaminaHelper.getStamina((IEntityDataSaver) user) >= 30 && !user.isSneaking() && nbt.getByte("sheathed") == 0) {
         isDashing = true;
 
-        StaminaHelper.changeStamina((IEntityDataSaver) user, -30);
+        if (!user.isCreative()){
+            StaminaHelper.changeStamina((IEntityDataSaver) user, -30);
+        }
+
         PacketByteBuf buffer = PacketByteBufs.create();
         ServerPlayNetworking.send((ServerPlayerEntity) user, ModMessages.ROUKANKEN_DASH, buffer);
 

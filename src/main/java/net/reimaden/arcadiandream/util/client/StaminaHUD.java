@@ -13,8 +13,7 @@ import net.reimaden.arcadiandream.util.ModTags;
 import net.reimaden.arcadiandream.util.StaminaHelper;
 
 public class StaminaHUD implements HudRenderCallback {
-    private static final Identifier STAMINA_BAR_FRAME = new Identifier(ArcadianDream.MOD_ID,
-            "textures/ui/stambarframe.png");
+
     private static final Identifier STAMINA_BAR = new Identifier(ArcadianDream.MOD_ID,
             "textures/ui/stambar.png");
 
@@ -28,12 +27,11 @@ public class StaminaHUD implements HudRenderCallback {
                 int x = width / 2;
                 int y = height;
 
-            if (client.player.getMainHandStack().isIn(ModTags.Items.STAMINA_BASED_ITEM)) {
+            if (client.player.getMainHandStack().isIn(ModTags.Items.STAMINA_BASED_ITEM) && !client.player.isCreative() && !client.player.isSpectator())  {
                 RenderSystem.setShader(GameRenderer::getPositionTexProgram);
                 RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
                 RenderSystem.setShaderTexture(0, STAMINA_BAR);
                 renderCurrentStaminaBar(matrixStack, x, y);
-                RenderSystem.setShaderTexture(0, STAMINA_BAR_FRAME);
             }
             }
         }
@@ -43,7 +41,7 @@ public class StaminaHUD implements HudRenderCallback {
         double currentStamina = (StaminaHelper.getStamina(player));
         double currentMax = (StaminaHelper.getMaxStamina(player));
         double adjustedWidth = ((182 / currentMax) * currentStamina);
-        DrawableHelper.drawTexture(matrices, x - 65 - 27, y - 29, 0, 0, (int) adjustedWidth, 6, 182, 5);
+        DrawableHelper.drawTexture(matrices, x - 91, y - 29, 0, 0, (int) adjustedWidth, 5, 182, 5);
     }
 
 }
