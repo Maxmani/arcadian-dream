@@ -110,6 +110,8 @@ public class ModItems {
             new FabricItemSettings()));
     public static final Item DEATH_SCYTHE = registerItem("death_scythe", new DeathScytheItem(ToolMaterials.IRON, 4, -3.0f,
             new FabricItemSettings()));
+    public static final Item ROUKANKEN = registerItem("roukanken", new RoukankenItem(ToolMaterials.NETHERITE, 10, -2.0f,
+            new FabricItemSettings().rarity(Rarity.EPIC)));
     public static final Item MIRACLE_MALLET = registerItem("miracle_mallet", new MiracleMalletItem(ToolMaterials.DIAMOND, 3, -3.2f,
             new FabricItemSettings().rarity(Rarity.RARE)));
     public static final Item FOLDING_CHAIR = registerItem("folding_chair", new FoldingChairItem(ToolMaterials.IRON, 1, -3.1f,
@@ -239,6 +241,7 @@ public class ModItems {
         addToItemGroup(ModItemGroups.ITEMS, HISOU_SWORD);
         addToItemGroup(ModItemGroups.ITEMS, MOCHI_MALLET);
         addToItemGroup(ModItemGroups.ITEMS, DEATH_SCYTHE);
+        addToItemGroup(ModItemGroups.ITEMS, ROUKANKEN);
         addToItemGroup(ModItemGroups.ITEMS, MIRACLE_MALLET);
         addToItemGroup(ModItemGroups.ITEMS, FOLDING_CHAIR);
         addToItemGroup(ModItemGroups.ITEMS, ICICLE_SWORD);

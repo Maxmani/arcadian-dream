@@ -66,6 +66,7 @@ public class ModTags {
         public static final TagKey<Item> UNDEAD_PARTS = createCommonTag("undead_parts");
         public static final TagKey<Item> RAW_MEAT = createCommonTag("raw_meat");
         public static final TagKey<Item> COOKED_MEAT = createCommonTag("cooked_meat");
+        public static final TagKey<Item> STAMINA_BASED_ITEM = createCommonTag("stamina_based_item");
 
         private static TagKey<Item> createTag(String name) {
             return create(ArcadianDream.MOD_ID, name);

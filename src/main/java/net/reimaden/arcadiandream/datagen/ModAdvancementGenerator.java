@@ -94,6 +94,7 @@ public class ModAdvancementGenerator extends FabricAdvancementProvider {
                     .criterion("get_item", InventoryChangedCriterion.Conditions.items(ItemPredicate.Builder.create().tag(ModTags.Items.ITEMS).build()))
                     .build(consumer, makeName("root"));
 
+
             Advancement mineDragonGem = Advancement.Builder.create()
                     .parent(rootAdvancement)
                     .display(makeDisplay(AdvancementFrame.TASK, ModItems.DRAGON_GEM, "mine_dragon_gem"))
@@ -105,6 +106,12 @@ public class ModAdvancementGenerator extends FabricAdvancementProvider {
                     .display(makeDisplay(AdvancementFrame.TASK, ModItems.RITUAL_SHRINE, "ritual_crafting"))
                     .criterion("ritual_crafting", RitualCraftingCriterion.Conditions.create())
                     .build(consumer, makeName("ritual_crafting"));
+
+            Advancement roukankenSword = Advancement.Builder.create()
+                    .parent(ritualCrafting)
+                    .display(makeDisplay(AdvancementFrame.TASK, ModItems.ROUKANKEN, "roukanken_sword"))
+                    .criterion(ModItems.ROUKANKEN.toString(), InventoryChangedCriterion.Conditions.items(ModItems.ROUKANKEN))
+                    .build(consumer, makeName("roukanken_sword"));
 
             Advancement obtainHouraiElixir = Advancement.Builder.create()
                     .parent(ritualCrafting)
