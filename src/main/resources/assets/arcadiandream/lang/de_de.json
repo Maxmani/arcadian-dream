@@ -73,8 +73,6 @@
   "item.arcadiandream.shot.tooltip_armorPenetration": [{"text":"Panzerbrecher","color":"yellow"}],
   "item.arcadiandream.shot.tooltip_piercing": [{"translate":"enchantment.minecraft.piercing","color":"green"}],
   "item.arcadiandream.shot.tooltip_icy": [{"text":"Eisig","color":"#B0DAFF"}],
-  "item.arcadiandream.roukanken.tooltip": [{"text":"Drücke Umschalttaste + Rechtsklick um Roukanken zu zücken/zurückzustecken."}],
-  "item.arcadiandream.roukanken.tooltip_2": [{"text":"Drücke Rechtsklick, wenn Roukanken gezückt ist, um nach vorne zu stürmen und Feinden vor Ihnen Schaden zuzufügen."}],
   "item.arcadiandream.bullet.pattern_spread": "Streuung",
   "item.arcadiandream.bullet.pattern_ray": "Strahl",
   "item.arcadiandream.bullet.pattern_ring": "Ring",
@@ -121,7 +119,6 @@
   "item.arcadiandream.folding_chair.tooltip": [{"text":"Hat eine merkwürdige Delle","italic":true,"color":"gray"}],
   "item.arcadiandream.enchanted_ice": "Verzaubertes Eis",
   "item.arcadiandream.icicle_sword": "Eiszapfen-Schwert",
-  "item.arcadiandream.roukanken": "Roukanken",
 
   "block.arcadiandream.dragon_gem_ore": "Drachensteinerz",
   "block.arcadiandream.deepslate_dragon_gem_ore": "Tiefenschiefer-Drachensteinerz",
@@ -186,8 +183,6 @@
   "advancements.arcadiandream.obtain_heavenly_peach.description": "Ernte Himmelspfirsiche, indem du Laub mithilfe des Schwerts des Hisou hoch über der Erde abbaust",
   "advancements.arcadiandream.mochi_mallet_kills.title": "Das sind keine Mochi!",
   "advancements.arcadiandream.mochi_mallet_kills.description": "Erziele 100 Eliminierungen mit dem Mochi-Klopfer",
-  "advancements.arcadiandream.roukanken_sword.title": "Stärkstes Gartenwerkzeug",
-  "advancements.arcadiandream.roukanken_sword.description": "Erhalte Roukanken, das geisterhafte Katana",
 
   "arcadiandream.subtitles.entity.danmaku.fire": "Danmaku geschossen",
   "arcadiandream.subtitles.entity.danmaku.hit": "Danmaku trifft",

@@ -122,7 +122,7 @@ public class ModTagGenerator {
             getOrCreateTagBuilder(ConventionalItemTags.SPEARS)
                     .add(ModItems.NUE_TRIDENT);
             getOrCreateTagBuilder(SWORDS)
-                    .add(ModItems.MAKAITE_SWORD, ModItems.HISOU_SWORD, ModItems.DEATH_SCYTHE, ModItems.ICICLE_SWORD, ModItems.ROUKANKEN);
+                    .add(ModItems.MAKAITE_SWORD, ModItems.HISOU_SWORD, ModItems.DEATH_SCYTHE, ModItems.ICICLE_SWORD);
             getOrCreateTagBuilder(ModTags.Items.HAMMERS)
                     .add(ModItems.MOCHI_MALLET, ModItems.MIRACLE_MALLET, ModItems.FOLDING_CHAIR);
             getOrCreateTagBuilder(TOOLS)
@@ -161,8 +161,6 @@ public class ModTagGenerator {
                     .add(ModItems.LAMPREY);
             getOrCreateTagBuilder(ModTags.Items.COOKED_MEAT)
                     .add(ModItems.COOKED_LAMPREY);
-            getOrCreateTagBuilder(ModTags.Items.STAMINA_BASED_ITEM)
-                    .add(ModItems.ROUKANKEN);
         }
     }
 

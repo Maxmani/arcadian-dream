@@ -184,29 +184,5 @@
       "arcadiandream:random/metal"
     ],
     "subtitle": "arcadiandream.subtitles.item.folding_chair.hit"
-  },
-  "item.roukanken_dash_1.use": {
-    "sounds": [
-      "arcadiandream:item/roukanken_dash_1"
-    ],
-    "subtitle": "arcadiandream.subtitles.item.roukanken_dash_1.use"
-  },
-  "item.roukanken_dash_2.use": {
-    "sounds": [
-      "arcadiandream:item/roukanken_dash_2"
-    ],
-    "subtitle": "arcadiandream.subtitles.item.roukanken_dash_2.use"
-  },
-  "item.roukanken_sheathe.use": {
-    "sounds": [
-      "arcadiandream:item/roukanken_sheathe"
-    ],
-    "subtitle": "arcadiandream.subtitles.item.roukanken_sheathe.use"
-  },
-  "item.roukanken_unsheathe.use": {
-    "sounds": [
-      "arcadiandream:item/roukanken_unsheathe"
-    ],
-    "subtitle": "arcadiandream.subtitles.item.roukanken_unsheathe.use"
   }
 }
