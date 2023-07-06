@@ -9,6 +9,7 @@ import com.google.common.collect.ImmutableList;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.damage.DamageType;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
@@ -107,6 +108,16 @@ public class ModTags {
 //        private static TagKey<DamageType> createCommonTag(String name) {
 //            return TagKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier("c", name));
 //        }
+    }
+
+    public static class StatusEffects {
+
+        public static final TagKey<StatusEffect> UNREMOVABLE = createTag("unremovable");
+
+        @SuppressWarnings("SameParameterValue")
+        private static TagKey<StatusEffect> createTag(String name) {
+            return TagKey.of(RegistryKeys.STATUS_EFFECT, new Identifier(ArcadianDream.MOD_ID, name));
+        }
     }
 
     public static class Biomes {

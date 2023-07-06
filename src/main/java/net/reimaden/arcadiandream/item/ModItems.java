@@ -98,7 +98,7 @@ public class ModItems {
             new FabricItemSettings().fireproof()));
     public static final Item MAKAITE_SHOVEL = registerItem("makaite_shovel", new ShovelItem(ModToolMaterials.MAKAITE, 1.5f, -3.0f,
             new FabricItemSettings().fireproof()));
-    public static final Item MAKAITE_HOE = registerItem("makaite_hoe", new ModHoeItem(ModToolMaterials.MAKAITE, -2, -1.0f,
+    public static final Item MAKAITE_HOE = registerItem("makaite_hoe", new HoeItem(ModToolMaterials.MAKAITE, -2, -1.0f,
             new FabricItemSettings().fireproof()));
 
     // Weapons
