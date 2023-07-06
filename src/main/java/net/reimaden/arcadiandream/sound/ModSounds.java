@@ -28,12 +28,6 @@ public class ModSounds {
     public static final SoundEvent ITEM_GHASTLY_LANTERN_USE = registerSoundEvent("item.ghastly_lantern.use");
     public static final SoundEvent ITEM_FOLDING_CHAIR_HIT = registerSoundEvent("item.folding_chair.hit");
 
-    public static final SoundEvent ROUKANKEN_DASH_1 = registerSoundEvent("item.roukanken_dash_1.use");
-    public static final SoundEvent ROUKANKEN_DASH_2 = registerSoundEvent("item.roukanken_dash_2.use");
-    public static final SoundEvent ROUKANKEN_SHEATHE = registerSoundEvent("item.roukanken_sheathe.use");
-
-    public static final SoundEvent ROUKANKEN_UNSHEATHE = registerSoundEvent("item.roukanken_unsheathe.use");
-
     public static final SoundEvent BLOCK_ONBASHIRA_ADD_ITEM = registerSoundEvent("block.onbashira.add_item");
     public static final SoundEvent BLOCK_RITUAL_SHRINE_USE = registerSoundEvent("block.ritual_shrine.use");
     public static final SoundEvent BLOCK_ONBASHIRA_CREATE = registerSoundEvent("block.onbashira.create");

@@ -15,7 +15,6 @@ public class ModModelPredicateProvider {
 
     public static void register() {
         registerMochiMallet();
-        registerRoukankenSheathe();
     }
 
     private static void registerMochiMallet() {
@@ -28,14 +27,4 @@ public class ModModelPredicateProvider {
             return 0.0f;
         });
     }
-
-    private static void registerRoukankenSheathe() {
-        ModelPredicateProviderRegistry.register(ModItems.ROUKANKEN, new Identifier(ArcadianDream.MOD_ID, "sheathed"), (stack, world, entity, seed) -> {
-            if (stack.getNbt() != null) {
-                return stack.hasNbt() ? MathHelper.clamp(stack.getNbt().getByte("sheathed"), 0.0f, 1) : 0.0f;
-            }
-            return 0.0f;
-        });
-
-}
 }

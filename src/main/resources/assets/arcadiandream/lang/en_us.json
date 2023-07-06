@@ -73,8 +73,6 @@
   "item.arcadiandream.shot.tooltip_armorPenetration": [{"text":"Armor Penetration","color":"yellow"}],
   "item.arcadiandream.shot.tooltip_piercing": [{"translate":"enchantment.minecraft.piercing","color":"green"}],
   "item.arcadiandream.shot.tooltip_icy": [{"text":"Icy","color":"#B0DAFF"}],
-  "item.arcadiandream.roukanken.tooltip": [{"text":"Sneak and use to sheathe/unsheathe."}],
-  "item.arcadiandream.roukanken.tooltip_2": [{"text":"Use when unsheathed to dash forward, damaging foes in front of you."}],
   "item.arcadiandream.bullet.pattern_spread": "Spread",
   "item.arcadiandream.bullet.pattern_ray": "Ray",
   "item.arcadiandream.bullet.pattern_ring": "Ring",
@@ -121,7 +119,6 @@
   "item.arcadiandream.folding_chair.tooltip": [{"text":"Has an oddly shaped dent on it","italic":true,"color":"gray"}],
   "item.arcadiandream.enchanted_ice": "Enchanted Ice",
   "item.arcadiandream.icicle_sword": "Icicle Sword",
-  "item.arcadiandream.roukanken": "Roukanken",
 
   "block.arcadiandream.dragon_gem_ore": "Dragon Gem Ore",
   "block.arcadiandream.deepslate_dragon_gem_ore": "Deepslate Dragon Gem Ore",
@@ -186,8 +183,6 @@
   "advancements.arcadiandream.obtain_heavenly_peach.description": "Acquire some Heavenly Peaches by breaking leaves high above the ground",
   "advancements.arcadiandream.mochi_mallet_kills.title": "That Ain't Mochi!",
   "advancements.arcadiandream.mochi_mallet_kills.description": "Accumulate 100 kills with a Mochi Mallet",
-  "advancements.arcadiandream.roukanken_sword.title": "The strongest gardening tool",
-  "advancements.arcadiandream.roukanken_sword.description": "Obtain Roukanken, the ghostly katana",
 
   "arcadiandream.subtitles.entity.danmaku.fire": "Danmaku fired",
   "arcadiandream.subtitles.entity.danmaku.hit": "Danmaku hits",
