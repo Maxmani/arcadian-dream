@@ -54,7 +54,7 @@
     "trinkets" : ">=3.7.1",
     "owo": ">=0.11.1",
     "pehkui": ">=3.7.7",
-    "geckolib": ">=4.2.1"
+    "geckolib": ">=4.2"
   },
   "custom": {
     "modmenu": {
