@@ -16,10 +16,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ProjectileEntity.class)
 public class ProjectileEntityMixin {
 
-    private final ProjectileEntity bullet = ((ProjectileEntity) (Object) this);
-
     @Inject(method = "setVelocity(Lnet/minecraft/entity/Entity;FFFFF)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/projectile/ProjectileEntity;setVelocity(Lnet/minecraft/util/math/Vec3d;)V"), cancellable = true)
     private void arcadiandream$preventMomentum(Entity shooter, float pitch, float yaw, float roll, float speed, float divergence, CallbackInfo ci) {
+        final ProjectileEntity bullet = ((ProjectileEntity) (Object) this);
+
         if (bullet instanceof BaseBulletEntity) {
             ci.cancel();
         }

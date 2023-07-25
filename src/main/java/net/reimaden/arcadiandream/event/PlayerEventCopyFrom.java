@@ -16,6 +16,6 @@ public class PlayerEventCopyFrom implements ServerPlayerEvents.CopyFrom{
         IEntityDataSaver original = ((IEntityDataSaver) oldPlayer);
         IEntityDataSaver player = ((IEntityDataSaver) newPlayer);
 
-        player.getPersistentData().putByte("elixir", original.getPersistentData().getByte("elixir"));
+        player.arcadiandream$getPersistentData().putByte("elixir", original.arcadiandream$getPersistentData().getByte("elixir"));
     }
 }

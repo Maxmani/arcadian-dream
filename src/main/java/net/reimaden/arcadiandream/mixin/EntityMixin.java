@@ -12,6 +12,7 @@ import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.entity.custom.danmaku.BaseBulletEntity;
 import net.reimaden.arcadiandream.util.IEntityDataSaver;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -20,7 +21,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Entity.class)
 public abstract class EntityMixin implements IEntityDataSaver {
 
-    private NbtCompound persistentData;
+    @Unique
+    private NbtCompound arcadiandream$persistentData;
 
     @ModifyExpressionValue(method = "updateMovementInFluid", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/Vec3d;length()D", ordinal = 0))
     private double arcadiandream$preventPushFromFluids(double original) {
@@ -29,25 +31,25 @@ public abstract class EntityMixin implements IEntityDataSaver {
     }
 
     @Override
-    public NbtCompound getPersistentData() {
-        if (this.persistentData == null) {
-            this.persistentData = new NbtCompound();
+    public NbtCompound arcadiandream$getPersistentData() {
+        if (this.arcadiandream$persistentData == null) {
+            this.arcadiandream$persistentData = new NbtCompound();
         }
 
-        return persistentData;
+        return arcadiandream$persistentData;
     }
 
     @Inject(method = "writeNbt", at = @At("HEAD"))
     private void arcadiandream$injectWriteMethod(NbtCompound nbt, CallbackInfoReturnable<NbtCompound> cir) {
-        if (persistentData != null) {
-            nbt.put(ArcadianDream.MOD_ID, persistentData);
+        if (arcadiandream$persistentData != null) {
+            nbt.put(ArcadianDream.MOD_ID, arcadiandream$persistentData);
         }
     }
 
     @Inject(method = "readNbt", at = @At("HEAD"))
     private void arcadiandream$injectReadMethod(NbtCompound nbt, CallbackInfo ci) {
         if (nbt.contains(ArcadianDream.MOD_ID)) {
-            persistentData = nbt.getCompound(ArcadianDream.MOD_ID);
+            arcadiandream$persistentData = nbt.getCompound(ArcadianDream.MOD_ID);
         }
     }
 }

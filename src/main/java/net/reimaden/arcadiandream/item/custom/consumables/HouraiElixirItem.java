@@ -46,7 +46,7 @@ public class HouraiElixirItem extends Item {
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         Hand hand = user.getActiveHand();
         IEntityDataSaver data = (IEntityDataSaver) user;
-        byte elixir = data.getPersistentData().getByte("elixir");
+        byte elixir = data.arcadiandream$getPersistentData().getByte("elixir");
         ServerPlayerEntity player = (ServerPlayerEntity) user;
 
         if (!world.isClient()) {

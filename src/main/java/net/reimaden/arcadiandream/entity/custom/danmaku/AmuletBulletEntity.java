@@ -39,9 +39,9 @@ public class AmuletBulletEntity extends BaseBulletEntity {
     @Override
     protected void applyDamage(Entity target, Entity owner) {
         if (target instanceof LivingEntity livingEntity && livingEntity.getGroup() == EntityGroup.UNDEAD) {
-            target.damage(ModDamageSources.danmaku(world, this, owner), getPower() * 2 * ArcadianDream.CONFIG.danmakuDamageMultiplier());
+            target.damage(ModDamageSources.danmaku(getWorld(), this, owner), getPower() * 2 * ArcadianDream.CONFIG.danmakuDamageMultiplier());
         } else {
-            target.damage(ModDamageSources.danmaku(world, this, owner), getPower() * ArcadianDream.CONFIG.danmakuDamageMultiplier());
+            target.damage(ModDamageSources.danmaku(getWorld(), this, owner), getPower() * ArcadianDream.CONFIG.danmakuDamageMultiplier());
         }
         if (isIcy() && target.canFreeze()) {
             applyFreeze(target);

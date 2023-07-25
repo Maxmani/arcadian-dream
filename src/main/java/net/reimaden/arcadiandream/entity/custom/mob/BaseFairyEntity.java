@@ -79,7 +79,7 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
 
     @Override
     public void attack(LivingEntity target, float pullProgress) {
-        if (getBulletType() > availableBullets(world, this).size() - 1 || getBulletType() < 0) {
+        if (getBulletType() > availableBullets(getWorld(), this).size() - 1 || getBulletType() < 0) {
             setBulletType((byte) 0);
         }
 
@@ -94,7 +94,7 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
     public void tickMovement() {
         super.tickMovement();
         Vec3d vec3d = getVelocity();
-        if (!onGround && vec3d.y < 0.0 && !(moveControl.getTargetY() < getY())) {
+        if (!isOnGround() && vec3d.y < 0.0 && !(moveControl.getTargetY() < getY())) {
             setVelocity(vec3d.multiply(1.0, 0.6, 1.0));
         }
     }
@@ -102,7 +102,7 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
     @Override
     protected void mobTick() {
         super.mobTick();
-        tickAngerLogic((ServerWorld) world, true);
+        tickAngerLogic((ServerWorld) getWorld(), true);
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -191,7 +191,7 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
     @Override
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
-        readAngerFromNbt(world, nbt);
+        readAngerFromNbt(getWorld(), nbt);
         setBulletColor(nbt.getInt("BulletColor"));
         setCooldownOffset(nbt.getInt("CooldownOffset"));
         setRandomNumberProvider(nbt.getInt("RandomNumberProvider"));
@@ -210,7 +210,7 @@ public class BaseFairyEntity extends HostileEntity implements GeoEntity, Danmaku
         int bulletColor = ColorMap.getRandomBulletColor(getRandom());
         int cooldownOffset = getRandom().nextInt(11) - 5;
         int randomNumberProvider = getRandom().nextInt(11) + 1;
-        byte bulletType = (byte) getRandom().nextInt(availableBullets(this.world, this).size());
+        byte bulletType = (byte) getRandom().nextInt(availableBullets(this.getWorld(), this).size());
 
         initializeBullets(bulletColor, cooldownOffset, randomNumberProvider, bulletType);
 

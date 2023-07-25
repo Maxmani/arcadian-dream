@@ -40,6 +40,7 @@ import net.reimaden.arcadiandream.statistic.ModStats;
 import net.reimaden.arcadiandream.util.IEntityDataSaver;
 import net.reimaden.arcadiandream.util.ItemBreakUtil;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -50,14 +51,14 @@ import java.util.List;
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
 
-    private final LivingEntity entity = (LivingEntity) (Object) this;
-
     public LivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
     }
 
     @Inject(method = "tryUseTotem", at = @At("HEAD"), cancellable = true)
     private void arcadiandream$useExtendItem(DamageSource source, CallbackInfoReturnable<Boolean> cir) {
+        final LivingEntity entity = (LivingEntity) (Object) this;
+
         if (source.isIn(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
             cir.setReturnValue(false);
         } else {
@@ -70,16 +71,16 @@ public abstract class LivingEntityMixin extends Entity {
                 entity.setHealth(entity.getMaxHealth());
                 entity.clearStatusEffects();
                 entity.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 60, 4));
-                entity.world.sendEntityStatus(this, (byte)160);
+                entity.getWorld().sendEntityStatus(this, (byte)160);
                 cir.setReturnValue(true);
 
                 // Clear bullets
-                for (BaseBulletEntity bulletEntity : world.getNonSpectatingEntities(BaseBulletEntity.class,
+                for (BaseBulletEntity bulletEntity : getWorld().getNonSpectatingEntities(BaseBulletEntity.class,
                         entity.getBoundingBox().expand(24.0, 24.0, 24.0))) {
 
                     if (bulletEntity.getOwner() != entity) {
                         bulletEntity.discard();
-                        bulletEntity.cancelParticle((ServerWorld) world);
+                        bulletEntity.cancelParticle((ServerWorld) getWorld());
                         cancelled++;
                     }
                 }
@@ -108,8 +109,10 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "canHaveStatusEffect", at = @At("HEAD"), cancellable = true)
     private void arcadiandream$effectImmunity(StatusEffectInstance effect, CallbackInfoReturnable<Boolean> cir) {
+        final LivingEntity entity = (LivingEntity) (Object) this;
+
         final StatusEffect effectType = effect.getEffectType();
-        if (((IEntityDataSaver) entity).getPersistentData().getByte("elixir") >= 2
+        if (((IEntityDataSaver) entity).arcadiandream$getPersistentData().getByte("elixir") >= 2
                 && (effectType.getCategory() == StatusEffectCategory.HARMFUL && effectType != ModEffects.ELIXIR_FATIGUE)) {
             cir.setReturnValue(false);
         }
@@ -124,14 +127,16 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "tickMovement", at = @At("TAIL"))
     private void arcadiandream$meltIcicleSword(CallbackInfo ci) {
+        final LivingEntity entity = (LivingEntity) (Object) this;
+
         ItemStack mainStack = entity.getMainHandStack();
         ItemStack offStack = entity.getOffHandStack();
 
-        Biome currentBiome = world.getBiome(entity.getBlockPos()).value();
+        Biome currentBiome = getWorld().getBiome(entity.getBlockPos()).value();
         float temperature = currentBiome.getTemperature();
 
         boolean isInWarmBiome = temperature > 0.5f;
-        boolean canEvaporate = world.getDimension().ultrawarm();
+        boolean canEvaporate = getWorld().getDimension().ultrawarm();
         boolean canMelt = isInWarmBiome && isAffectedByDaylight();
 
         if (ArcadianDream.CONFIG.icicleSwordOptions.meltsInstantly() && canEvaporate) {
@@ -143,39 +148,47 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
+    @Unique
     private void decrementStackAndSpawnParticles(ItemStack stack) {
+        final LivingEntity entity = (LivingEntity) (Object) this;
+
         if (isEnchantedIceTool(stack)) {
             stack.decrement(1);
             double x = getBlockPos().getX();
             double y = getBlockPos().getY();
             double z = getBlockPos().getZ();
-            world.playSound(entity, getBlockPos(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS,
-                    0.5f, 2.6f + (world.random.nextFloat() - world.random.nextFloat()) * 0.8f);
+            getWorld().playSound(entity, getBlockPos(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS,
+                    0.5f, 2.6f + (getWorld().random.nextFloat() - getWorld().random.nextFloat()) * 0.8f);
             for (int i = 0; i < 8; ++i) {
-                world.addParticle(ParticleTypes.LARGE_SMOKE, x + Math.random(), y + Math.random(), z + Math.random(), 0.0, 0.0, 0.0);
+                getWorld().addParticle(ParticleTypes.LARGE_SMOKE, x + Math.random(), y + Math.random(), z + Math.random(), 0.0, 0.0, 0.0);
             }
         }
     }
 
+    @Unique
     private void damageStack(ItemStack stack, float temperature, Hand hand) {
+        final LivingEntity entity = (LivingEntity) (Object) this;
+
         if (isEnchantedIceTool(stack)) {
             int damageAmount = (int) (random.nextInt(3) * temperature);
             stack.damage(damageAmount, entity, e -> e.sendToolBreakStatus(hand));
         }
     }
 
+    @Unique
     private static boolean isEnchantedIceTool(ItemStack stack) {
         return stack.getItem() instanceof ToolItem tool && tool.getMaterial() == ModToolMaterials.ENCHANTED_ICE;
     }
 
+    @Unique
     private boolean isAffectedByDaylight() {
-        if (world.isDay() && !world.isClient()) {
+        if (getWorld().isDay() && !getWorld().isClient()) {
             boolean isInPowderSnow = inPowderSnow || wasInPowderSnow;
             // I don't give a damn
             // noinspection deprecation
             float brightness = getBrightnessAtEyes();
             BlockPos blockPos = BlockPos.ofFloored(getX(), getEyeY(), getZ());
-            return brightness > 0.5f && random.nextFloat() * 30.0f < (brightness - 0.4f) * 2.0f && !isInPowderSnow && world.isSkyVisible(blockPos);
+            return brightness > 0.5f && random.nextFloat() * 30.0f < (brightness - 0.4f) * 2.0f && !isInPowderSnow && getWorld().isSkyVisible(blockPos);
         }
         return false;
     }

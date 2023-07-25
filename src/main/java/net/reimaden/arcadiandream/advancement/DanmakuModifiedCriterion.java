@@ -10,7 +10,7 @@ import net.minecraft.advancement.criterion.AbstractCriterion;
 import net.minecraft.advancement.criterion.AbstractCriterionConditions;
 import net.minecraft.predicate.entity.AdvancementEntityPredicateDeserializer;
 import net.minecraft.predicate.entity.AdvancementEntityPredicateSerializer;
-import net.minecraft.predicate.entity.EntityPredicate;
+import net.minecraft.predicate.entity.LootContextPredicate;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
@@ -20,7 +20,7 @@ public class DanmakuModifiedCriterion extends AbstractCriterion<DanmakuModifiedC
     private static final Identifier ID = new Identifier(ArcadianDream.MOD_ID, "danmaku_modified");
 
     @Override
-    protected Conditions conditionsFromJson(JsonObject obj, EntityPredicate.Extended playerPredicate, AdvancementEntityPredicateDeserializer predicateDeserializer) {
+    protected Conditions conditionsFromJson(JsonObject obj, LootContextPredicate playerPredicate, AdvancementEntityPredicateDeserializer predicateDeserializer) {
         return new Conditions(playerPredicate);
     }
 
@@ -40,12 +40,12 @@ public class DanmakuModifiedCriterion extends AbstractCriterion<DanmakuModifiedC
             return new JsonObject();
         }
 
-        public Conditions(EntityPredicate.Extended entity) {
+        public Conditions(LootContextPredicate entity) {
             super(ID, entity);
         }
 
         public static Conditions create() {
-            return new Conditions(EntityPredicate.Extended.EMPTY);
+            return new Conditions(LootContextPredicate.EMPTY);
         }
     }
 }

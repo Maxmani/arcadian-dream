@@ -11,7 +11,7 @@ import net.minecraft.advancement.criterion.AbstractCriterionConditions;
 import net.minecraft.predicate.NumberRange;
 import net.minecraft.predicate.entity.AdvancementEntityPredicateDeserializer;
 import net.minecraft.predicate.entity.AdvancementEntityPredicateSerializer;
-import net.minecraft.predicate.entity.EntityPredicate;
+import net.minecraft.predicate.entity.LootContextPredicate;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
@@ -21,7 +21,7 @@ public class BulletsCancelledCriterion extends AbstractCriterion<BulletsCancelle
     private static final Identifier ID = new Identifier(ArcadianDream.MOD_ID, "bullets_cancelled");
 
     @Override
-    protected Conditions conditionsFromJson(JsonObject obj, EntityPredicate.Extended playerPredicate, AdvancementEntityPredicateDeserializer predicateDeserializer) {
+    protected Conditions conditionsFromJson(JsonObject obj, LootContextPredicate playerPredicate, AdvancementEntityPredicateDeserializer predicateDeserializer) {
         NumberRange.IntRange intRange = NumberRange.IntRange.fromJson(obj.get("amount"));
         Boolean fromExtend = obj.has("from_extend") ? obj.get("from_extend").getAsBoolean() : null;
         return new Conditions(playerPredicate, intRange, fromExtend);
@@ -49,7 +49,7 @@ public class BulletsCancelledCriterion extends AbstractCriterion<BulletsCancelle
             return jsonObject;
         }
 
-        public Conditions(EntityPredicate.Extended entity, NumberRange.IntRange amount, Boolean fromExtend) {
+        public Conditions(LootContextPredicate entity, NumberRange.IntRange amount, Boolean fromExtend) {
             super(ID, entity);
             this.amount = amount;
             this.fromExtend = fromExtend;
@@ -60,7 +60,7 @@ public class BulletsCancelledCriterion extends AbstractCriterion<BulletsCancelle
         }
 
         public static Conditions create(Boolean fromExtend) {
-            return new Conditions(EntityPredicate.Extended.EMPTY, NumberRange.IntRange.ANY, fromExtend);
+            return new Conditions(LootContextPredicate.EMPTY, NumberRange.IntRange.ANY, fromExtend);
         }
 
         public static Conditions amount(NumberRange.IntRange amount) {
@@ -68,7 +68,7 @@ public class BulletsCancelledCriterion extends AbstractCriterion<BulletsCancelle
         }
 
         public static Conditions amount(NumberRange.IntRange amount, Boolean fromExtend) {
-            return new Conditions(EntityPredicate.Extended.EMPTY, amount, fromExtend);
+            return new Conditions(LootContextPredicate.EMPTY, amount, fromExtend);
         }
 
         public boolean matches(int amount, Boolean fromExtend) {

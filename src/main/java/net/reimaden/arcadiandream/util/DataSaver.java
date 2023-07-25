@@ -10,7 +10,7 @@ import net.minecraft.nbt.NbtCompound;
 public class DataSaver {
 
     public static void addElixir(IEntityDataSaver player, byte level) {
-        NbtCompound nbt = player.getPersistentData();
+        NbtCompound nbt = player.arcadiandream$getPersistentData();
         byte elixirLevel = nbt.getByte("elixir");
 
         if (elixirLevel + level >= 3) {

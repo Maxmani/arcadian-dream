@@ -14,7 +14,7 @@ import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.text.Text;
@@ -82,14 +82,14 @@ public class JEIRitualCraftingCategory implements IRecipeCategory<RitualCrafting
     }
 
     @Override
-    public void draw(@NotNull RitualCraftingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull MatrixStack stack, double mouseX, double mouseY) {
+    public void draw(@NotNull RitualCraftingRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull DrawContext context, double mouseX, double mouseY) {
         IDrawable moon_icon = guiHelper.drawableBuilder(MOON_ICON, 0, 0, 16, 16).setTextureSize(16, 16).build();
         IDrawable dimension_icon = guiHelper.drawableBuilder(DIMENSION_ICON, 0, 0, 16, 16).setTextureSize(16, 16).build();
 
         if (getMoonPhase(recipe)) {
-            moon_icon.draw(stack, MOON_SLOT[0], MOON_SLOT[1]);
+            moon_icon.draw(context, MOON_SLOT[0], MOON_SLOT[1]);
         } else if (getDimension(recipe)) {
-            dimension_icon.draw(stack, DIMENSION_SLOT[0], DIMENSION_SLOT[1]);
+            dimension_icon.draw(context, DIMENSION_SLOT[0], DIMENSION_SLOT[1]);
         }
     }
 

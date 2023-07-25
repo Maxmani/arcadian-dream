@@ -28,7 +28,7 @@ public class ElixirEvent implements ServerLivingEntityEvents.AllowDeath {
 
     @Override
     public boolean allowDeath(LivingEntity entity, DamageSource damageSource, float damageAmount) {
-        if (((IEntityDataSaver) entity).getPersistentData().getByte("elixir") < 3) return true;
+        if (((IEntityDataSaver) entity).arcadiandream$getPersistentData().getByte("elixir") < 3) return true;
 
         final StatusEffectInstance elixirFatigue = getElixirFatigue(entity);
         if (HOURAI_ELIXIR_OPTIONS.allowDying()) {

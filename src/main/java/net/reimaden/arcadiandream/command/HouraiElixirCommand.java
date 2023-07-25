@@ -34,9 +34,9 @@ public class HouraiElixirCommand {
     private static int clear(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
         Entity entity = EntityArgumentType.getEntity(context, "target");
         IEntityDataSaver target = (IEntityDataSaver) entity;
-        target.getPersistentData().remove("elixir");
+        target.arcadiandream$getPersistentData().remove("elixir");
 
-        context.getSource().sendFeedback(Text.translatable(ArcadianDream.MOD_ID + ".commands.elixir.clear",
+        context.getSource().sendFeedback(() -> Text.translatable(ArcadianDream.MOD_ID + ".commands.elixir.clear",
                 entity.getName().getString()), true);
 
         return 1;
@@ -46,9 +46,9 @@ public class HouraiElixirCommand {
         Entity entity = EntityArgumentType.getEntity(context, "target");
         int elixirLevel = IntegerArgumentType.getInteger(context, "level");
         IEntityDataSaver target = (IEntityDataSaver) entity;
-        target.getPersistentData().putByte("elixir", (byte) elixirLevel);
+        target.arcadiandream$getPersistentData().putByte("elixir", (byte) elixirLevel);
 
-        context.getSource().sendFeedback(Text.translatable(ArcadianDream.MOD_ID + ".commands.elixir.set",
+        context.getSource().sendFeedback(() -> Text.translatable(ArcadianDream.MOD_ID + ".commands.elixir.set",
                 entity.getName().getString(), elixirLevel), true);
 
         return 1;

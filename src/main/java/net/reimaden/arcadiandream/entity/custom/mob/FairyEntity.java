@@ -83,12 +83,12 @@ public class FairyEntity extends BaseFairyEntity {
         super.attack(target, pullProgress);
 
         switch (getPersonality()) {
-            case AGGRESSIVE -> patterns.aggressive(this, target, world);
-            case CURIOUS -> patterns.curious(this, target, world);
-            case CONFIDENT -> patterns.confident(this, target, world);
-            case PLAYFUL -> patterns.playful(this, target, world);
-            case SPONTANEOUS -> patterns.spontaneous(this, target, world);
-            case TIMID -> patterns.timid(this, target, world);
+            case AGGRESSIVE -> patterns.aggressive(this, target, getWorld());
+            case CURIOUS -> patterns.curious(this, target, getWorld());
+            case CONFIDENT -> patterns.confident(this, target, getWorld());
+            case PLAYFUL -> patterns.playful(this, target, getWorld());
+            case SPONTANEOUS -> patterns.spontaneous(this, target, getWorld());
+            case TIMID -> patterns.timid(this, target, getWorld());
             default -> throw new IllegalStateException("Unexpected value: " + getPersonality());
         }
     }

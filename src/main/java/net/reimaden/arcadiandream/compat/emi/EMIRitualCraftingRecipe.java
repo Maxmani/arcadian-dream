@@ -83,7 +83,7 @@ public class EMIRitualCraftingRecipe implements EmiRecipe {
         for (int i = 0; i < inputs.size(); i++) {
             widget.addSlot(inputs.get(i), ONBASHIRAS[i][0] - 1, ONBASHIRAS[i][1] - 1).drawBack(false);
         }
-        widget.addSlot(output, OUTPUT_SLOT[0] - 5, OUTPUT_SLOT[1] - 5).recipeContext(this).output(true).drawBack(false);
+        widget.addSlot(output, OUTPUT_SLOT[0] - 5, OUTPUT_SLOT[1] - 5).recipeContext(this).large(true).drawBack(false);
         if (moonPhase != -1) {
             BiFunction<Integer, Integer, List<TooltipComponent>> tooltipSupplier = (mouseX, mouseY) ->
                     List.of(TooltipComponent.of(TooltipHelper.moonPhase(moonPhase).asOrderedText()));

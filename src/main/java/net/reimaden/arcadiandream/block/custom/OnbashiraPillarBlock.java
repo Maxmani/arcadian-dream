@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Maxmani and contributors.
+ * Copyright (c) 2022-2023 Maxmani and contributors.
  * Licensed under the EUPL-1.2 or later.
  */
 
@@ -12,8 +12,8 @@ import net.minecraft.block.Waterloggable;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.stat.Stats;
@@ -53,11 +53,11 @@ public class OnbashiraPillarBlock extends Block implements Waterloggable {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ItemStack paper = Items.PAPER.getDefaultStack();
-        ItemStack lead = Items.LEAD.getDefaultStack();
+        final Item paper = Items.PAPER;
+        final Item lead = Items.LEAD;
 
-        boolean hasItems = (player.getMainHandStack().isItemEqual(paper) && player.getOffHandStack().isItemEqual(lead))
-                || (player.getMainHandStack().isItemEqual(lead) && player.getOffHandStack().isItemEqual(paper));
+        boolean hasItems = (player.getMainHandStack().isOf(paper) && player.getOffHandStack().isOf(lead))
+                || (player.getMainHandStack().isOf(lead) && player.getOffHandStack().isOf(paper));
 
         if (world.isClient()) return hasItems ? ActionResult.SUCCESS : ActionResult.PASS;
 

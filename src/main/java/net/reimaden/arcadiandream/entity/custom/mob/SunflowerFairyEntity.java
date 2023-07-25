@@ -83,14 +83,14 @@ public class SunflowerFairyEntity extends BaseFairyEntity {
         super.attack(target, pullProgress);
 
         switch (getAttackType()) {
-            case 0 -> patterns.burstAttack(this, target, world);
-            case 1 -> patterns.spreadAttack(this, target, world);
-            case 2 -> patterns.carpetBombAttack(this, world);
-            case 3 -> patterns.arcAttack(this, target, world);
-            case 4 -> patterns.crossAttack(this, target, world);
-            case 5 -> patterns.ringAttack(this, target, world);
-            case 6 -> patterns.tripleAttack(this, target, world);
-            case 7 -> patterns.carpetBombAttackQuick(this, world);
+            case 0 -> patterns.burstAttack(this, target, getWorld());
+            case 1 -> patterns.spreadAttack(this, target, getWorld());
+            case 2 -> patterns.carpetBombAttack(this, getWorld());
+            case 3 -> patterns.arcAttack(this, target, getWorld());
+            case 4 -> patterns.crossAttack(this, target, getWorld());
+            case 5 -> patterns.ringAttack(this, target, getWorld());
+            case 6 -> patterns.tripleAttack(this, target, getWorld());
+            case 7 -> patterns.carpetBombAttackQuick(this, getWorld());
             default -> throw new IllegalStateException("Unexpected value: " + getAttackType());
         }
     }
@@ -107,7 +107,7 @@ public class SunflowerFairyEntity extends BaseFairyEntity {
 
         double d = getAttributeValue(EntityAttributes.GENERIC_FOLLOW_RANGE);
         Box box = Box.from(getPos()).expand(d, 10.0, d);
-        world.getEntitiesByClass(BaseFairyEntity.class, box, EntityPredicates.EXCEPT_SPECTATOR).stream()
+        getWorld().getEntitiesByClass(BaseFairyEntity.class, box, EntityPredicates.EXCEPT_SPECTATOR).stream()
                 .filter(fairy -> fairy != this)
                 .filter(fairy -> fairy.getTarget() == null)
                 .filter(fairy -> !fairy.isTeammate(attacker))

@@ -84,14 +84,14 @@ public class IceFairyEntity extends BaseFairyEntity {
         super.attack(target, pullProgress);
 
         switch (getAttackType()) {
-            case 0 -> patterns.rainAttack(this, world);
-            case 1 -> patterns.hexagonAttack(this, target, world);
-            case 2 -> patterns.divergedHexagonAttack(this, target, world);
-            case 3 -> patterns.snowballAttack(this, target, world);
-            case 4 -> patterns.rayAttack(this, target, world);
-            case 5 -> patterns.rayButBigAttack(this, target, world);
-            case 6 -> patterns.randomAttack(this, target, world);
-            case 7 -> patterns.randomArcAttack(this, target, world);
+            case 0 -> patterns.rainAttack(this, getWorld());
+            case 1 -> patterns.hexagonAttack(this, target, getWorld());
+            case 2 -> patterns.divergedHexagonAttack(this, target, getWorld());
+            case 3 -> patterns.snowballAttack(this, target, getWorld());
+            case 4 -> patterns.rayAttack(this, target, getWorld());
+            case 5 -> patterns.rayButBigAttack(this, target, getWorld());
+            case 6 -> patterns.randomAttack(this, target, getWorld());
+            case 7 -> patterns.randomArcAttack(this, target, getWorld());
             default -> throw new IllegalStateException("Unexpected value: " + getAttackType());
         }
     }

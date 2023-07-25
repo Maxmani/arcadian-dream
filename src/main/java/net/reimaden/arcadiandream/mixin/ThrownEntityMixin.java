@@ -14,11 +14,11 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin(ThrownEntity.class)
 public abstract class ThrownEntityMixin {
 
-    private final ThrownEntity bullet = ((ThrownEntity) (Object) this);
-
     // Prevent bullets from stopping in midair
     @ModifyConstant(method = "tick", constant = @Constant(floatValue = 0.99f))
     private float arcadiandream$danmakuAirFriction(float value) {
+        final ThrownEntity bullet = ((ThrownEntity) (Object) this);
+
         if (bullet instanceof BaseBulletEntity) {
             return 1f;
         }
@@ -28,6 +28,8 @@ public abstract class ThrownEntityMixin {
     // Prevent bullets from stopping in water
     @ModifyConstant(method = "tick", constant = @Constant(floatValue = 0.8f))
     private float arcadiandream$danmakuWaterFriction(float value) {
+        final ThrownEntity bullet = ((ThrownEntity) (Object) this);
+
         if (bullet instanceof BaseBulletEntity) {
             return 1f;
         }

@@ -6,10 +6,8 @@
 package net.reimaden.arcadiandream.item;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -26,8 +24,6 @@ import net.reimaden.arcadiandream.item.custom.danmaku.*;
 import net.reimaden.arcadiandream.item.custom.misc.*;
 import net.reimaden.arcadiandream.item.custom.tools.*;
 import net.reimaden.arcadiandream.sound.ModSounds;
-
-import java.util.Collections;
 
 public class ModItems {
 
@@ -200,114 +196,6 @@ public class ModItems {
         return Registry.register(Registries.ITEM, new Identifier(ArcadianDream.MOD_ID, name), block);
     }
 
-    // Mojang moment
-    private static void addItemsToItemGroups() {
-        addToItemGroup(ModItemGroups.ITEMS, POWER_ITEM);
-        addToItemGroup(ModItemGroups.ITEMS, BIG_POWER_ITEM);
-        addToItemGroup(ModItemGroups.ITEMS, POINT_ITEM);
-        addToItemGroup(ModItemGroups.ITEMS, MAX_POINT_ITEM);
-        addToItemGroup(ModItemGroups.ITEMS, BOMB_ITEM);
-        addToItemGroup(ModItemGroups.ITEMS, LIFE_FRAGMENT);
-        addToItemGroup(ModItemGroups.ITEMS, EXTEND_ITEM);
-        addToItemGroup(ModItemGroups.ITEMS, STAR_ITEM);
-        addToItemGroup(ModItemGroups.ITEMS, FAITH_ITEM);
-        addToItemGroup(ModItemGroups.ITEMS, TIME_ORB);
-        addToItemGroup(ModItemGroups.ITEMS, DRAGON_GEM);
-        addToItemGroup(ModItemGroups.ITEMS, RAW_MAKAITE);
-        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_INGOT);
-        addToItemGroup(ModItemGroups.ITEMS, ENCHANTED_ICE);
-        addToItemGroup(ModItemGroups.ITEMS, WALL_PASSING_CHISEL);
-        addToItemGroup(ModItemGroups.ITEMS, IBUKI_GOURD);
-        addToItemGroup(ModItemGroups.ITEMS, HEALING_CHARM);
-        addToItemGroup(ModItemGroups.ITEMS, HOURAI_ELIXIR);
-        addToItemGroup(ModItemGroups.ITEMS, MAGATAMA_NECKLACE);
-        addToItemGroup(ModItemGroups.ITEMS, GHASTLY_LANTERN);
-        addToItemGroup(ModItemGroups.ITEMS, HEAVENLY_PEACH);
-        addToItemGroup(ModItemGroups.ITEMS, LAMPREY);
-        addToItemGroup(ModItemGroups.ITEMS, COOKED_LAMPREY);
-        addToItemGroup(ModItemGroups.ITEMS, ORDINARY_HAT);
-        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_HELMET);
-        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_CHESTPLATE);
-        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_LEGGINGS);
-        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_BOOTS);
-        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_SWORD);
-        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_PICKAXE);
-        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_AXE);
-        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_SHOVEL);
-        addToItemGroup(ModItemGroups.ITEMS, MAKAITE_HOE);
-        addToItemGroup(ModItemGroups.ITEMS, NUE_TRIDENT);
-        addToItemGroup(ModItemGroups.ITEMS, HISOU_SWORD);
-        addToItemGroup(ModItemGroups.ITEMS, MOCHI_MALLET);
-        addToItemGroup(ModItemGroups.ITEMS, DEATH_SCYTHE);
-        addToItemGroup(ModItemGroups.ITEMS, MIRACLE_MALLET);
-        addToItemGroup(ModItemGroups.ITEMS, FOLDING_CHAIR);
-        addToItemGroup(ModItemGroups.ITEMS, ICICLE_SWORD);
-        addToItemGroup(ModItemGroups.ITEMS, SPREAD_PATTERN_TEMPLATE);
-        addToItemGroup(ModItemGroups.ITEMS, RAY_PATTERN_TEMPLATE);
-        addToItemGroup(ModItemGroups.ITEMS, RING_PATTERN_TEMPLATE);
-        addToItemGroup(ModItemGroups.ITEMS, ARC_PATTERN_TEMPLATE);
-        addToItemGroup(ModItemGroups.ITEMS, DOUBLE_PATTERN_TEMPLATE);
-        addToItemGroup(ModItemGroups.ITEMS, TRIPLE_PATTERN_TEMPLATE);
-        addToItemGroup(ModItemGroups.ITEMS, MUSIC_DISC_FAIRY_PLAYGROUND);
-        addToItemGroup(ModItemGroups.ITEMS, MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN);
-
-        addToItemGroup(ModItemGroups.DANMAKU, BOMB_ITEM);
-        addToItemGroup(ModItemGroups.DANMAKU, DANMAKU_CRAFTING_TABLE);
-        addToItemGroup(ModItemGroups.DANMAKU, CIRCLE_BULLET_CORE);
-        addToItemGroup(ModItemGroups.DANMAKU, BUBBLE_BULLET_CORE);
-        addToItemGroup(ModItemGroups.DANMAKU, AMULET_BULLET_CORE);
-        addToItemGroup(ModItemGroups.DANMAKU, STAR_BULLET_CORE);
-        addToItemGroup(ModItemGroups.DANMAKU, KUNAI_BULLET_CORE);
-        addToItemGroup(ModItemGroups.DANMAKU, PELLET_BULLET_CORE);
-        addToItemGroup(ModItemGroups.DANMAKU, CIRCLE_SHOT);
-        addToItemGroup(ModItemGroups.DANMAKU, BUBBLE_SHOT);
-        addToItemGroup(ModItemGroups.DANMAKU, AMULET_SHOT);
-        addToItemGroup(ModItemGroups.DANMAKU, STAR_SHOT);
-        addToItemGroup(ModItemGroups.DANMAKU, KUNAI_SHOT);
-        addToItemGroup(ModItemGroups.DANMAKU, PELLET_SHOT);
-        addToItemGroup(ModItemGroups.DANMAKU, SPREAD_PATTERN);
-        addToItemGroup(ModItemGroups.DANMAKU, RAY_PATTERN);
-        addToItemGroup(ModItemGroups.DANMAKU, RING_PATTERN);
-        addToItemGroup(ModItemGroups.DANMAKU, ARC_PATTERN);
-        addToItemGroup(ModItemGroups.DANMAKU, DOUBLE_PATTERN);
-        addToItemGroup(ModItemGroups.DANMAKU, TRIPLE_PATTERN);
-
-        addToItemGroup(ModItemGroups.BLOCKS, ONBASHIRA);
-        addToItemGroup(ModItemGroups.BLOCKS, ONBASHIRA_PILLAR);
-        addToItemGroup(ModItemGroups.BLOCKS, RITUAL_SHRINE);
-        addToItemGroup(ModItemGroups.BLOCKS, DANMAKU_CRAFTING_TABLE);
-        addToItemGroup(ModItemGroups.BLOCKS, MYSTERIOUS_SEAL);
-        addToItemGroup(ModItemGroups.BLOCKS, DRAGON_GEM_ORE);
-        addToItemGroup(ModItemGroups.BLOCKS, DEEPSLATE_DRAGON_GEM_ORE);
-        addToItemGroup(ModItemGroups.BLOCKS, END_STONE_DRAGON_GEM_ORE);
-        addToItemGroup(ModItemGroups.BLOCKS, MAKAITE_ORE);
-        addToItemGroup(ModItemGroups.BLOCKS, RAW_MAKAITE_BLOCK);
-        addToItemGroup(ModItemGroups.BLOCKS, DRAGON_GEM_BLOCK);
-        addToItemGroup(ModItemGroups.BLOCKS, MAKAITE_BLOCK);
-
-        addToItemGroup(ItemGroups.SPAWN_EGGS, FAIRY_SPAWN_EGG);
-        addToItemGroup(ItemGroups.SPAWN_EGGS, SUNFLOWER_FAIRY_SPAWN_EGG);
-        addToItemGroup(ItemGroups.SPAWN_EGGS, ICE_FAIRY_SPAWN_EGG);
-
-        addSuspiciousStews();
-    }
-
-    private static void addToItemGroup(ItemGroup group, Item item) {
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));
-    }
-
-    @SuppressWarnings("SameParameterValue")
-    private static void addToItemGroup(ItemGroup group, ItemStack stack, ItemGroup.StackVisibility visibility) {
-        //noinspection UnstableApiUsage
-        ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.addAfter(Items.SUSPICIOUS_STEW, Collections.singletonList(stack), visibility));
-    }
-
-    private static void addSuspiciousStews() {
-        ItemStack stack = new ItemStack(Items.SUSPICIOUS_STEW);
-        SuspiciousStewItem.addEffectToStew(stack, StatusEffects.LEVITATION, 200);
-        addToItemGroup(ItemGroups.FOOD_AND_DRINK, stack, ItemGroup.StackVisibility.PARENT_AND_SEARCH_TABS);
-    }
-
     private static void addCompostables() {
         addToComposterRegistry(HEAVENLY_PEACH, 0.65f);
     }
@@ -332,7 +220,6 @@ public class ModItems {
     public static void register() {
         ArcadianDream.LOGGER.debug("Registering items for " + ArcadianDream.MOD_ID);
 
-        addItemsToItemGroups();
         addCompostables();
         addFuel();
     }

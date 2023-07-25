@@ -59,7 +59,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
     @Override
     public void tick() {
         super.tick();
-        if (!world.isClient()) {
+        if (!getWorld().isClient()) {
             if (age >= getDuration()) {
                 discardBullet();
             }
@@ -67,7 +67,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
                 discardBullet();
             }
         }
-        frozenParticles(this, world);
+        frozenParticles(this, getWorld());
     }
 
     private static void frozenParticles(BaseBulletEntity entity, World world) {
@@ -81,12 +81,12 @@ public class BaseBulletEntity extends ThrownItemEntity {
 
     private void discardBullet() {
         discard();
-        despawnParticle((ServerWorld) world);
+        despawnParticle((ServerWorld) getWorld());
     }
 
     @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
-        if (world.isClient()) return;
+        if (getWorld().isClient()) return;
         super.onEntityHit(entityHitResult);
 
         Entity entity = entityHitResult.getEntity();
@@ -98,7 +98,7 @@ public class BaseBulletEntity extends ThrownItemEntity {
     }
 
     protected void applyDamage(Entity target, Entity owner) {
-        target.damage(ModDamageSources.danmaku(world, this, owner), getPower() * ArcadianDream.CONFIG.danmakuDamageMultiplier());
+        target.damage(ModDamageSources.danmaku(getWorld(), this, owner), getPower() * ArcadianDream.CONFIG.danmakuDamageMultiplier());
         if (isIcy() && target.canFreeze()) {
             applyFreeze(target);
         }
@@ -123,9 +123,9 @@ public class BaseBulletEntity extends ThrownItemEntity {
     }
 
     protected void postHit(HitResult.Type type) {
-        if (!world.isClient()) {
+        if (!getWorld().isClient()) {
             kill();
-            bulletEffects((ServerWorld) world);
+            bulletEffects((ServerWorld) getWorld());
         }
     }
 
@@ -211,11 +211,11 @@ public class BaseBulletEntity extends ThrownItemEntity {
         final Entity entity = source.getAttacker();
         if (entity == getOwner()) return false;
 
-        if (!world.isClient()) {
+        if (!getWorld().isClient()) {
             if (entity instanceof PlayerEntity player && playerHasMagatama(player)
                     && player.getItemCooldownManager().getCooldownProgress(ModItems.MAGATAMA_NECKLACE, 0.0f) == 0) {
                 kill();
-                cancelParticle((ServerWorld) world);
+                cancelParticle((ServerWorld) getWorld());
                 player.getItemCooldownManager().set(ModItems.MAGATAMA_NECKLACE, 10);
                 player.increaseStat(ModStats.BULLETS_CANCELLED, 1);
                 return true;

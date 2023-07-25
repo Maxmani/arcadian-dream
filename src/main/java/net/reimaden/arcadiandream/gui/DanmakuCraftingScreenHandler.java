@@ -165,7 +165,7 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
 
             // Don't run the onCraft method if the shot is being modified
             if (inventory.getStack(1).isEmpty()) {
-                stack.onCraft(player.world, player, count);
+                stack.onCraft(player.getWorld(), player, count);
             }
         }
     }
@@ -193,7 +193,7 @@ public class DanmakuCraftingScreenHandler extends ScreenHandler {
     }
 
     private static void craft(Inventory inventory, PropertyDelegate propertyDelegate, PlayerEntity player) {
-        if (player.world.isClient()) return;
+        if (player.getWorld().isClient()) return;
 
         /* Inventory slot indexes
          * 0 = Core

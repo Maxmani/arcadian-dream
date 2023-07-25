@@ -55,6 +55,7 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 
 	// Libraries
 	// https://github.com/emilyploszaj/trinkets
@@ -72,8 +73,8 @@ dependencies {
 	// modRuntimeOnly("mezz.jei:jei-${project.minecraft_version}-fabric:${project.jei_version}")
 
 	// https://github.com/emilyploszaj/emi
-	modCompileOnly "dev.emi:emi:${project.emi_version}"
-	modRuntimeOnly "dev.emi:emi:${project.emi_version}"
+	modCompileOnly "dev.emi:emi-fabric:${project.emi_version}:api"
+	modLocalRuntime "dev.emi:emi-fabric:${project.emi_version}"
 
 	// https://github.com/wisp-forest/owo-lib
 	annotationProcessor modImplementation("io.wispforest:owo-lib:${project.owo_version}")
@@ -86,9 +87,7 @@ dependencies {
 	modImplementation "software.bernie.geckolib:geckolib-fabric-${project.minecraft_version}:${project.geckolib_version}"
 
 	// https://github.com/LlamaLad7/MixinExtras
-	implementation("com.github.LlamaLad7:MixinExtras:${project.mixinextras_version}")
-	annotationProcessor("com.github.LlamaLad7:MixinExtras:${project.mixinextras_version}")
-	include("com.github.LlamaLad7:MixinExtras:${project.mixinextras_version}")
+	include(implementation(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-fabric:${project.mixinextras_version}")))
 }
 
 processResources {

@@ -11,24 +11,26 @@ import java.util.function.Consumer;
 
 public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandream.config.ModConfigModel> {
 
-    private final Option<java.lang.Boolean> chiselOptions_canUse = this.optionForKey(new Option.Key("chiselOptions.canUse"));
-    private final Option<java.lang.Integer> chiselOptions_maxDistance = this.optionForKey(new Option.Key("chiselOptions.maxDistance"));
-    private final Option<java.lang.Boolean> nueTridentOptions_canHaveImpaling = this.optionForKey(new Option.Key("nueTridentOptions.canHaveImpaling"));
-    private final Option<java.lang.Integer> hisouSwordOptions_minHeightForPeaches = this.optionForKey(new Option.Key("hisouSwordOptions.minHeightForPeaches"));
-    private final Option<java.lang.Boolean> hisouSwordOptions_canDisableShields = this.optionForKey(new Option.Key("hisouSwordOptions.canDisableShields"));
-    private final Option<java.lang.Boolean> mochiMalletOptions_lowViolence = this.optionForKey(new Option.Key("mochiMalletOptions.lowViolence"));
-    private final Option<java.lang.Boolean> houraiElixirOptions_canDrink = this.optionForKey(new Option.Key("houraiElixirOptions.canDrink"));
-    private final Option<java.lang.Boolean> houraiElixirOptions_nerfElixir = this.optionForKey(new Option.Key("houraiElixirOptions.nerfElixir"));
-    private final Option<java.lang.Boolean> houraiElixirOptions_allowDying = this.optionForKey(new Option.Key("houraiElixirOptions.allowDying"));
-    private final Option<java.lang.Integer> houraiElixirOptions_elixirFatigueThreshold = this.optionForKey(new Option.Key("houraiElixirOptions.elixirFatigueThreshold"));
-    private final Option<java.lang.Double> foldingChairOptions_knockbackStrength = this.optionForKey(new Option.Key("foldingChairOptions.knockbackStrength"));
-    private final Option<java.lang.Boolean> icicleSwordOptions_meltsInstantly = this.optionForKey(new Option.Key("icicleSwordOptions.meltsInstantly"));
-    private final Option<java.lang.Integer> danmakuCooldownMultiplier = this.optionForKey(new Option.Key("danmakuCooldownMultiplier"));
-    private final Option<java.lang.Float> danmakuDamageMultiplier = this.optionForKey(new Option.Key("danmakuDamageMultiplier"));
-    private final Option<java.lang.Boolean> cooldownPerBulletType = this.optionForKey(new Option.Key("cooldownPerBulletType"));
-    private final Option<java.lang.Boolean> fairyOptions_spawnFairies = this.optionForKey(new Option.Key("fairyOptions.spawnFairies"));
-    private final Option<java.lang.Boolean> fairyOptions_spawnSunflowerFairies = this.optionForKey(new Option.Key("fairyOptions.spawnSunflowerFairies"));
-    private final Option<java.lang.Boolean> fairyOptions_spawnIceFairies = this.optionForKey(new Option.Key("fairyOptions.spawnIceFairies"));
+    public final Keys keys = new Keys();
+
+    private final Option<java.lang.Boolean> chiselOptions_canUse = this.optionForKey(this.keys.chiselOptions_canUse);
+    private final Option<java.lang.Integer> chiselOptions_maxDistance = this.optionForKey(this.keys.chiselOptions_maxDistance);
+    private final Option<java.lang.Boolean> nueTridentOptions_canHaveImpaling = this.optionForKey(this.keys.nueTridentOptions_canHaveImpaling);
+    private final Option<java.lang.Integer> hisouSwordOptions_minHeightForPeaches = this.optionForKey(this.keys.hisouSwordOptions_minHeightForPeaches);
+    private final Option<java.lang.Boolean> hisouSwordOptions_canDisableShields = this.optionForKey(this.keys.hisouSwordOptions_canDisableShields);
+    private final Option<java.lang.Boolean> mochiMalletOptions_lowViolence = this.optionForKey(this.keys.mochiMalletOptions_lowViolence);
+    private final Option<java.lang.Boolean> houraiElixirOptions_canDrink = this.optionForKey(this.keys.houraiElixirOptions_canDrink);
+    private final Option<java.lang.Boolean> houraiElixirOptions_nerfElixir = this.optionForKey(this.keys.houraiElixirOptions_nerfElixir);
+    private final Option<java.lang.Boolean> houraiElixirOptions_allowDying = this.optionForKey(this.keys.houraiElixirOptions_allowDying);
+    private final Option<java.lang.Integer> houraiElixirOptions_elixirFatigueThreshold = this.optionForKey(this.keys.houraiElixirOptions_elixirFatigueThreshold);
+    private final Option<java.lang.Double> foldingChairOptions_knockbackStrength = this.optionForKey(this.keys.foldingChairOptions_knockbackStrength);
+    private final Option<java.lang.Boolean> icicleSwordOptions_meltsInstantly = this.optionForKey(this.keys.icicleSwordOptions_meltsInstantly);
+    private final Option<java.lang.Integer> danmakuCooldownMultiplier = this.optionForKey(this.keys.danmakuCooldownMultiplier);
+    private final Option<java.lang.Float> danmakuDamageMultiplier = this.optionForKey(this.keys.danmakuDamageMultiplier);
+    private final Option<java.lang.Boolean> cooldownPerBulletType = this.optionForKey(this.keys.cooldownPerBulletType);
+    private final Option<java.lang.Boolean> fairyOptions_spawnFairies = this.optionForKey(this.keys.fairyOptions_spawnFairies);
+    private final Option<java.lang.Boolean> fairyOptions_spawnSunflowerFairies = this.optionForKey(this.keys.fairyOptions_spawnSunflowerFairies);
+    private final Option<java.lang.Boolean> fairyOptions_spawnIceFairies = this.optionForKey(this.keys.fairyOptions_spawnIceFairies);
 
     private ArcadianDreamConfig() {
         super(net.reimaden.arcadiandream.config.ModConfigModel.class);
@@ -218,7 +220,40 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         }
 
     }
-
+    public interface ChiselOptions {
+        boolean canUse();
+        void canUse(boolean value);
+        int maxDistance();
+        void maxDistance(int value);
+    }
+    public interface NueTridentOptions {
+        boolean canHaveImpaling();
+        void canHaveImpaling(boolean value);
+    }
+    public interface HisouSwordOptions {
+        int minHeightForPeaches();
+        void minHeightForPeaches(int value);
+        boolean canDisableShields();
+        void canDisableShields(boolean value);
+    }
+    public interface MochiMalletOptions {
+        boolean lowViolence();
+        void lowViolence(boolean value);
+    }
+    public interface HouraiElixirOptions {
+        boolean canDrink();
+        void canDrink(boolean value);
+        boolean nerfElixir();
+        void nerfElixir(boolean value);
+        boolean allowDying();
+        void allowDying(boolean value);
+        int elixirFatigueThreshold();
+        void elixirFatigueThreshold(int value);
+    }
+    public interface FoldingChairOptions {
+        double knockbackStrength();
+        void knockbackStrength(double value);
+    }
     public interface IcicleSwordOptions {
         boolean meltsInstantly();
         void meltsInstantly(boolean value);
@@ -231,40 +266,25 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         boolean spawnIceFairies();
         void spawnIceFairies(boolean value);
     }
-    public interface FoldingChairOptions {
-        double knockbackStrength();
-        void knockbackStrength(double value);
+    public static class Keys {
+        public final Option.Key chiselOptions_canUse = new Option.Key("chiselOptions.canUse");
+        public final Option.Key chiselOptions_maxDistance = new Option.Key("chiselOptions.maxDistance");
+        public final Option.Key nueTridentOptions_canHaveImpaling = new Option.Key("nueTridentOptions.canHaveImpaling");
+        public final Option.Key hisouSwordOptions_minHeightForPeaches = new Option.Key("hisouSwordOptions.minHeightForPeaches");
+        public final Option.Key hisouSwordOptions_canDisableShields = new Option.Key("hisouSwordOptions.canDisableShields");
+        public final Option.Key mochiMalletOptions_lowViolence = new Option.Key("mochiMalletOptions.lowViolence");
+        public final Option.Key houraiElixirOptions_canDrink = new Option.Key("houraiElixirOptions.canDrink");
+        public final Option.Key houraiElixirOptions_nerfElixir = new Option.Key("houraiElixirOptions.nerfElixir");
+        public final Option.Key houraiElixirOptions_allowDying = new Option.Key("houraiElixirOptions.allowDying");
+        public final Option.Key houraiElixirOptions_elixirFatigueThreshold = new Option.Key("houraiElixirOptions.elixirFatigueThreshold");
+        public final Option.Key foldingChairOptions_knockbackStrength = new Option.Key("foldingChairOptions.knockbackStrength");
+        public final Option.Key icicleSwordOptions_meltsInstantly = new Option.Key("icicleSwordOptions.meltsInstantly");
+        public final Option.Key danmakuCooldownMultiplier = new Option.Key("danmakuCooldownMultiplier");
+        public final Option.Key danmakuDamageMultiplier = new Option.Key("danmakuDamageMultiplier");
+        public final Option.Key cooldownPerBulletType = new Option.Key("cooldownPerBulletType");
+        public final Option.Key fairyOptions_spawnFairies = new Option.Key("fairyOptions.spawnFairies");
+        public final Option.Key fairyOptions_spawnSunflowerFairies = new Option.Key("fairyOptions.spawnSunflowerFairies");
+        public final Option.Key fairyOptions_spawnIceFairies = new Option.Key("fairyOptions.spawnIceFairies");
     }
-    public interface NueTridentOptions {
-        boolean canHaveImpaling();
-        void canHaveImpaling(boolean value);
-    }
-    public interface HouraiElixirOptions {
-        boolean canDrink();
-        void canDrink(boolean value);
-        boolean nerfElixir();
-        void nerfElixir(boolean value);
-        boolean allowDying();
-        void allowDying(boolean value);
-        int elixirFatigueThreshold();
-        void elixirFatigueThreshold(int value);
-    }
-    public interface MochiMalletOptions {
-        boolean lowViolence();
-        void lowViolence(boolean value);
-    }
-    public interface ChiselOptions {
-        boolean canUse();
-        void canUse(boolean value);
-        int maxDistance();
-        void maxDistance(int value);
-    }
-    public interface HisouSwordOptions {
-        int minHeightForPeaches();
-        void minHeightForPeaches(int value);
-        boolean canDisableShields();
-        void canDisableShields(boolean value);
-    }
-
 }
 

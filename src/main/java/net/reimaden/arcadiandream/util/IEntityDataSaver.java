@@ -8,5 +8,5 @@ package net.reimaden.arcadiandream.util;
 import net.minecraft.nbt.NbtCompound;
 
 public interface IEntityDataSaver {
-    NbtCompound getPersistentData();
+    NbtCompound arcadiandream$getPersistentData();
 }
