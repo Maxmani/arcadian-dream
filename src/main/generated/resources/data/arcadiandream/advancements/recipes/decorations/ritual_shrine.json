@@ -30,5 +30,6 @@
     "recipes": [
       "arcadiandream:ritual_shrine"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

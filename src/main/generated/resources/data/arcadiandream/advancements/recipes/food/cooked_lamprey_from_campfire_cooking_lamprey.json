@@ -30,5 +30,6 @@
     "recipes": [
       "arcadiandream:cooked_lamprey_from_campfire_cooking_lamprey"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "arcadiandream:makaite_boots"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

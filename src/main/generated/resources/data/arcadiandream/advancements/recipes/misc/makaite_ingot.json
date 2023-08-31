@@ -30,5 +30,6 @@
     "recipes": [
       "arcadiandream:makaite_ingot"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

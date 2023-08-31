@@ -30,5 +30,6 @@
     "recipes": [
       "arcadiandream:raw_makaite"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

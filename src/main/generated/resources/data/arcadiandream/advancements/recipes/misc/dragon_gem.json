@@ -30,5 +30,6 @@
     "recipes": [
       "arcadiandream:dragon_gem"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

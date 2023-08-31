@@ -30,5 +30,6 @@
     "recipes": [
       "arcadiandream:iron_nugget_from_blasting_death_scythe"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

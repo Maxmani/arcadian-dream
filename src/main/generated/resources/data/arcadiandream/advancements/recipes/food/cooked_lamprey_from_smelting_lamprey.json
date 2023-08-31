@@ -30,5 +30,6 @@
     "recipes": [
       "arcadiandream:cooked_lamprey_from_smelting_lamprey"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

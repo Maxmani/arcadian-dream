@@ -30,5 +30,6 @@
     "recipes": [
       "arcadiandream:bomb_item"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -28,5 +28,6 @@
     "recipes": [
       "arcadiandream:onbashira_pillar"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

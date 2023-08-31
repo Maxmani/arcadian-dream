@@ -30,5 +30,6 @@
     "recipes": [
       "arcadiandream:big_power_item"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

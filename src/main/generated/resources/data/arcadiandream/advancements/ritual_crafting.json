@@ -24,5 +24,6 @@
     [
       "ritual_crafting"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

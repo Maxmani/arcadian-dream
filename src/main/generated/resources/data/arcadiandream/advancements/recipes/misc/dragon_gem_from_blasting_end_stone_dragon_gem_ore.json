@@ -30,5 +30,6 @@
     "recipes": [
       "arcadiandream:dragon_gem_from_blasting_end_stone_dragon_gem_ore"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

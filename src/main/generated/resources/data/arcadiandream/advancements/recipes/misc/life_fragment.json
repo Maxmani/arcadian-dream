@@ -30,5 +30,6 @@
     "recipes": [
       "arcadiandream:life_fragment"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

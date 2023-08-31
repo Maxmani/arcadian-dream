@@ -30,5 +30,6 @@
     "recipes": [
       "arcadiandream:makaite_shovel"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

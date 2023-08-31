@@ -22,8 +22,10 @@
     "client.ClientPlayNetworkHandlerMixin",
     "client.EntityRendererMixin",
     "client.GameRendererMixin",
+    "client.ItemRendererAccessor",
     "client.ItemRendererMixin",
     "client.LivingEntityRendererMixin",
+    "client.ModelLoaderMixin",
     "client.PlayerEntityRendererMixin"
   ],
   "injectors": {

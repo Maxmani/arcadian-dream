@@ -27,5 +27,6 @@
     [
       "cancelled_bullets"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

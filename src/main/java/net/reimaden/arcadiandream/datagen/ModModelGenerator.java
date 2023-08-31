@@ -37,7 +37,8 @@ public class ModModelGenerator extends FabricModelProvider {
             ModItems.HOURAI_ELIXIR, ModItems.FAITH_ITEM, ModItems.SPREAD_PATTERN, ModItems.RAY_PATTERN,
             ModItems.RING_PATTERN, ModItems.ARC_PATTERN, ModItems.DOUBLE_PATTERN, ModItems.TRIPLE_PATTERN,
             ModItems.MAGATAMA_NECKLACE, ModItems.GHASTLY_LANTERN, ModItems.LIFE_FRAGMENT, ModItems.LAMPREY,
-            ModItems.COOKED_LAMPREY, ModItems.TIME_ORB, ModItems.ENCHANTED_ICE
+            ModItems.COOKED_LAMPREY, ModItems.TIME_ORB, ModItems.ENCHANTED_ICE, ModItems.NUE_TRIDENT,
+            ModItems.FOLDING_CHAIR
     );
 
     private static final ImmutableList<Item> HANDHELD_ITEMS = ImmutableList.of(

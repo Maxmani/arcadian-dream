@@ -39,5 +39,6 @@
     [
       "shot_danmaku"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

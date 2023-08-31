@@ -37,5 +37,6 @@
     [
       "abandoned_shrine"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

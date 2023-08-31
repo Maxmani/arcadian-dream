@@ -30,5 +30,6 @@
     "recipes": [
       "arcadiandream:max_point_item"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

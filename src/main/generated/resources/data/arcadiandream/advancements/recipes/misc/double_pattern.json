@@ -30,5 +30,6 @@
     "recipes": [
       "arcadiandream:double_pattern"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

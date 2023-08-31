@@ -30,5 +30,6 @@
     "recipes": [
       "arcadiandream:cooked_lamprey_from_smoking_lamprey"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

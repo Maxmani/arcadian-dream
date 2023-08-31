@@ -30,5 +30,6 @@
     "recipes": [
       "arcadiandream:ring_pattern"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

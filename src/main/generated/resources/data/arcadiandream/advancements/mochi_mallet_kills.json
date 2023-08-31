@@ -35,5 +35,6 @@
     [
       "kills_accumulated"
     ]
-  ]
+  ],
+  "sends_telemetry_event": true
 }

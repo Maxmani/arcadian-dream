@@ -135,8 +135,8 @@
           "functions": [
             {
               "enchantments": [
-                "arcadiandream:youkai_buster",
-                "arcadiandream:danmaku_protection"
+                "arcadiandream:danmaku_protection",
+                "arcadiandream:youkai_buster"
               ],
               "function": "minecraft:enchant_randomly"
             }
