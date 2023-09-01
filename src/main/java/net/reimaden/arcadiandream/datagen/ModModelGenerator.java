@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
 import net.minecraft.data.client.*;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
@@ -31,8 +32,7 @@ public class ModModelGenerator extends FabricModelProvider {
     private static final ImmutableList<Item> GENERATED_ITEMS = ImmutableList.of(
             ModItems.POWER_ITEM, ModItems.BIG_POWER_ITEM, ModItems.POINT_ITEM, ModItems.MAX_POINT_ITEM,
             ModItems.BOMB_ITEM, ModItems.EXTEND_ITEM, ModItems.STAR_ITEM, ModItems.DRAGON_GEM,
-            ModItems.HEAVENLY_PEACH, ModItems.IBUKI_GOURD, ModItems.MAKAITE_BOOTS, ModItems.MAKAITE_CHESTPLATE,
-            ModItems.MAKAITE_HELMET, ModItems.MAKAITE_LEGGINGS, ModItems.MAKAITE_INGOT, ModItems.MUSIC_DISC_FAIRY_PLAYGROUND,
+            ModItems.HEAVENLY_PEACH, ModItems.IBUKI_GOURD, ModItems.MAKAITE_INGOT, ModItems.MUSIC_DISC_FAIRY_PLAYGROUND,
             ModItems.MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN, ModItems.ORDINARY_HAT, ModItems.RAW_MAKAITE, ModItems.HEALING_CHARM,
             ModItems.HOURAI_ELIXIR, ModItems.FAITH_ITEM, ModItems.SPREAD_PATTERN, ModItems.RAY_PATTERN,
             ModItems.RING_PATTERN, ModItems.ARC_PATTERN, ModItems.DOUBLE_PATTERN, ModItems.TRIPLE_PATTERN,
@@ -99,6 +99,11 @@ public class ModModelGenerator extends FabricModelProvider {
             String name = itemId.getPath();
             registerShot(shot, name, name + "_outline", item);
         }
+
+        item.registerArmor((ArmorItem) ModItems.MAKAITE_HELMET);
+        item.registerArmor((ArmorItem) ModItems.MAKAITE_CHESTPLATE);
+        item.registerArmor((ArmorItem) ModItems.MAKAITE_LEGGINGS);
+        item.registerArmor((ArmorItem) ModItems.MAKAITE_BOOTS);
     }
 
     @SuppressWarnings("SameParameterValue")

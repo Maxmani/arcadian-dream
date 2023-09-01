@@ -98,6 +98,8 @@ public class ModTagGenerator {
         protected void configure(RegistryWrapper.WrapperLookup arg) {
 
             // minecraft/tags/items
+            getOrCreateTagBuilder(TRIMMABLE_ARMOR)
+                    .add(ModItems.MAKAITE_HELMET, ModItems.MAKAITE_CHESTPLATE, ModItems.MAKAITE_LEGGINGS, ModItems.MAKAITE_BOOTS);
             getOrCreateTagBuilder(BEACON_PAYMENT_ITEMS)
                     .add(ModItems.DRAGON_GEM, ModItems.MAKAITE_INGOT);
             getOrCreateTagBuilder(MUSIC_DISCS)
