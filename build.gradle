@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.2-SNAPSHOT'
+	id 'fabric-loom' version '1.3-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -45,6 +45,21 @@ repositories {
 	maven {
 		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
 	}
+	// maven {
+	//	 name = "Modrinth"
+	//	 url = "https://api.modrinth.com/maven"
+	// }
+	maven {
+		url = "https://jm.gserv.me/repository/maven-public/"
+	}
+	maven {
+		name = "GitHubPackages"
+		url = uri("https://maven.pkg.github.com/dhyces/trimmed")
+		credentials {
+			username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+			password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+		}
+	}
 }
 
 dependencies {
@@ -55,7 +70,6 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 
 	// Libraries
 	// https://github.com/emilyploszaj/trinkets
@@ -86,6 +100,11 @@ dependencies {
 
 	// https://github.com/LlamaLad7/MixinExtras
 	include(implementation(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-fabric:${project.mixinextras_version}")))
+
+	// https://github.com/dhyces/trimmed
+	modRuntimeOnly("mysticdrew:common-networking-fabric:${project.common_networking_version}-${project.minecraft_version}")
+	// include(modImplementation("maven.modrinth:trimmed:${project.minecraft_version}-${project.trimmed_version}+fabric"))
+	include(modImplementation("dev.dhyces.trimmed:trimmed-fabric-${project.minecraft_version}:${project.trimmed_version}"))
 }
 
 processResources {
@@ -101,7 +120,7 @@ processResources {
 loom {
 	runs {
 		datagen {
-			inherit client
+			inherit server
 			name "Data Generation"
 			vmArg "-Dfabric-api.datagen"
 			vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated/resources")}"
@@ -141,10 +160,10 @@ remapSourcesJar {
 
 jar {
 	from("LICENSE") {
-		rename { "${it}_${project.archivesBaseName}"}
+		rename { "${it}_${project.base.archivesName.get()}"}
 	}
 	from("LICENSE.ASSETS") {
-		rename { "${it}_${project.archivesBaseName}"}
+		rename { "${it}_${project.base.archivesName.get()}"}
 	}
 }
 

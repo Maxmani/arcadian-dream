@@ -5,6 +5,7 @@
 
 package net.reimaden.arcadiandream;
 
+import dhyces.trimmed.api.data.TrimDatagenSuite;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -12,6 +13,9 @@ import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
 import net.reimaden.arcadiandream.damage.ModDamageSources;
 import net.reimaden.arcadiandream.datagen.*;
+import net.reimaden.arcadiandream.item.ModArmorMaterials;
+import net.reimaden.arcadiandream.item.ModArmorTrimMaterials;
+import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.world.feature.ModConfiguredFeatures;
 import net.reimaden.arcadiandream.world.feature.ModPlacedFeatures;
 import net.reimaden.arcadiandream.world.structure.ModStructurePools;
@@ -25,6 +29,8 @@ public class ArcadianDreamDataGen implements DataGeneratorEntrypoint {
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
+        TrimDatagenSuite trimDatagenSuite = new TrimDatagenSuite(pack, ArcadianDream.MOD_ID, null);
+
         pack.addProvider(ModRecipeGenerator::new);
         pack.addProvider(ModAdvancementGenerator::new);
         pack.addProvider(ModWorldGenerator::new);
@@ -42,6 +48,11 @@ public class ArcadianDreamDataGen implements DataGeneratorEntrypoint {
         pack.addProvider(ModTagGenerator.BiomeTags::new);
         pack.addProvider(ModModelGenerator::new);
         pack.addProvider(ModDamageTypeGenerator::new);
+        pack.addProvider((FabricDataGenerator.Pack.Factory<ModItemOverrideGenerator>) ModItemOverrideGenerator::new);
+
+        // Raaaaargh, putting this stuff here for now
+        trimDatagenSuite.makeMaterial(ModArmorTrimMaterials.MAKAITE, ModItems.MAKAITE_INGOT, 0xDB6432,
+                materialConfig -> materialConfig.armorOverride(ModArmorMaterials.MAKAITE, ArcadianDream.MOD_ID + "-makaite_darker"));
     }
 
     @Override
