@@ -29,7 +29,6 @@ public class ArcadianDreamDataGen implements DataGeneratorEntrypoint {
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
-        TrimDatagenSuite trimDatagenSuite = new TrimDatagenSuite(pack, ArcadianDream.MOD_ID, null);
 
         pack.addProvider(ModRecipeGenerator::new);
         pack.addProvider(ModAdvancementGenerator::new);
@@ -50,7 +49,9 @@ public class ArcadianDreamDataGen implements DataGeneratorEntrypoint {
         pack.addProvider(ModDamageTypeGenerator::new);
         pack.addProvider((FabricDataGenerator.Pack.Factory<ModItemOverrideGenerator>) ModItemOverrideGenerator::new);
 
-        // Raaaaargh, putting this stuff here for now
+        // Trimmed API
+        TrimDatagenSuite trimDatagenSuite = TrimDatagenSuite.create(pack, ArcadianDream.MOD_ID);
+
         trimDatagenSuite.makeMaterial(ModArmorTrimMaterials.MAKAITE, ModItems.MAKAITE_INGOT, 0xDB6432,
                 materialConfig -> materialConfig.armorOverride(ModArmorMaterials.MAKAITE, ArcadianDream.MOD_ID + "-makaite_darker"));
     }
