@@ -26,7 +26,8 @@ public class ModModelGenerator extends FabricModelProvider {
 
     private static final ImmutableList<Block> SIMPLE_CUBES = ImmutableList.of(
             ModBlocks.DRAGON_GEM_ORE, ModBlocks.DEEPSLATE_DRAGON_GEM_ORE, ModBlocks.END_STONE_DRAGON_GEM_ORE, ModBlocks.MAKAITE_BLOCK,
-            ModBlocks.RAW_MAKAITE_BLOCK, ModBlocks.MAKAITE_ORE
+            ModBlocks.RAW_MAKAITE_BLOCK, ModBlocks.MAKAITE_ORE, ModBlocks.HIHIIROKANE_ORE, ModBlocks.DEEPSLATE_HIHIIROKANE_ORE,
+            ModBlocks.HIHIIROKANE_CHUNK_BLOCK, ModBlocks.HIHIIROKANE_BLOCK
     );
 
     private static final ImmutableList<Item> GENERATED_ITEMS = ImmutableList.of(
@@ -38,7 +39,7 @@ public class ModModelGenerator extends FabricModelProvider {
             ModItems.RING_PATTERN, ModItems.ARC_PATTERN, ModItems.DOUBLE_PATTERN, ModItems.TRIPLE_PATTERN,
             ModItems.MAGATAMA_NECKLACE, ModItems.GHASTLY_LANTERN, ModItems.LIFE_FRAGMENT, ModItems.LAMPREY,
             ModItems.COOKED_LAMPREY, ModItems.TIME_ORB, ModItems.ENCHANTED_ICE, ModItems.NUE_TRIDENT,
-            ModItems.FOLDING_CHAIR
+            ModItems.FOLDING_CHAIR, ModItems.HIHIIROKANE_CHUNK, ModItems.HIHIIROKANE_INGOT
     );
 
     private static final ImmutableList<Item> HANDHELD_ITEMS = ImmutableList.of(

@@ -119,6 +119,8 @@
   "item.arcadiandream.folding_chair.tooltip": [{"text":"Has an oddly shaped dent on it","italic":true,"color":"gray"}],
   "item.arcadiandream.enchanted_ice": "Enchanted Ice",
   "item.arcadiandream.icicle_sword": "Icicle Sword",
+  "item.arcadiandream.hihiirokane_chunk": "Hihi'irokane Chunk",
+  "item.arcadiandream.hihiirokane_ingot": "Hihi'irokane Ingot",
 
   "trim_pattern.arcadiandream.makaite": "Makaite Material",
 
@@ -134,6 +136,10 @@
   "block.arcadiandream.ritual_shrine": "Ritual Shrine",
   "block.arcadiandream.danmaku_crafting_table": "Danmaku Crafting Table",
   "block.arcadiandream.mysterious_seal": "Mysterious Seal",
+  "block.arcadiandream.hihiirokane_ore": "Hihi'irokane Ore",
+  "block.arcadiandream.deepslate_hihiirokane_ore": "Deepslate Hihi'irokane Ore",
+  "block.arcadiandream.hihiirokane_chunk_block": "Block of Hihi'irokane Chunks",
+  "block.arcadiandream.hihiirokane_block": "Block of Hihi'irokane",
 
   "painting.arcadiandream.reimaden.title": "Reimaden",
   "painting.arcadiandream.reimaden.author": "Maxmani",

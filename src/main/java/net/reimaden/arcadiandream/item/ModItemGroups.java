@@ -36,6 +36,8 @@ public class ModItemGroups {
                 entries.add(ModItems.DRAGON_GEM);
                 entries.add(ModItems.RAW_MAKAITE);
                 entries.add(ModItems.MAKAITE_INGOT);
+                entries.add(ModItems.HIHIIROKANE_CHUNK);
+                entries.add(ModItems.HIHIIROKANE_INGOT);
                 entries.add(ModItems.ENCHANTED_ICE);
                 entries.add(ModItems.WALL_PASSING_CHISEL);
                 entries.add(ModItems.IBUKI_GOURD);
@@ -74,7 +76,7 @@ public class ModItemGroups {
             }).build());
     @SuppressWarnings("unused")
     public static final ItemGroup BLOCKS = Registry.register(Registries.ITEM_GROUP, new Identifier(ArcadianDream.MOD_ID, "blocks"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemGroup." + ArcadianDream.MOD_ID + ".blocks")).icon(() -> new ItemStack(ModItems.ONBASHIRA)).entries((displayContext, entries) -> {
+            FabricItemGroup.builder().displayName(Text.translatable("itemGroup." + ArcadianDream.MOD_ID + ".blocks")).icon(() -> new ItemStack(ModBlocks.ONBASHIRA)).entries((displayContext, entries) -> {
                 entries.add(ModBlocks.ONBASHIRA);
                 entries.add(ModBlocks.ONBASHIRA_PILLAR);
                 entries.add(ModBlocks.RITUAL_SHRINE);
@@ -87,6 +89,10 @@ public class ModItemGroups {
                 entries.add(ModBlocks.RAW_MAKAITE_BLOCK);
                 entries.add(ModBlocks.DRAGON_GEM_BLOCK);
                 entries.add(ModBlocks.MAKAITE_BLOCK);
+                entries.add(ModBlocks.HIHIIROKANE_ORE);
+                entries.add(ModBlocks.DEEPSLATE_HIHIIROKANE_ORE);
+                entries.add(ModBlocks.HIHIIROKANE_CHUNK_BLOCK);
+                entries.add(ModBlocks.HIHIIROKANE_BLOCK);
             }).build());
     @SuppressWarnings("unused")
     public static final ItemGroup DANMAKU = Registry.register(Registries.ITEM_GROUP, new Identifier(ArcadianDream.MOD_ID, "danmaku"),
@@ -114,6 +120,8 @@ public class ModItemGroups {
             }).build());
 
     public static void register() {
+        ArcadianDream.LOGGER.debug("Registering item groups for " + ArcadianDream.MOD_ID);
+
         addToExistingGroup();
     }
 

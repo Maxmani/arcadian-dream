@@ -53,6 +53,9 @@ public class ModTagGenerator {
         protected void configure(RegistryWrapper.WrapperLookup arg) {
 
             // minecraft/tags/blocks
+            getOrCreateTagBuilder(ModTags.Blocks.NEEDS_TOOL_LEVEL_4)
+                    .addTag(ModTags.Blocks.HIHIIROKANE_ORES)
+                    .add(ModBlocks.HIHIIROKANE_CHUNK_BLOCK, ModBlocks.HIHIIROKANE_BLOCK);
             getOrCreateTagBuilder(NEEDS_DIAMOND_TOOL)
                     .addTag(ModTags.Blocks.DRAGON_GEM_ORES)
                     .add(ModBlocks.DRAGON_GEM_BLOCK, ModBlocks.RITUAL_SHRINE);
@@ -68,8 +71,9 @@ public class ModTagGenerator {
                     .add(ModBlocks.ONBASHIRA, ModBlocks.ONBASHIRA_PILLAR, ModBlocks.DANMAKU_CRAFTING_TABLE, ModBlocks.MYSTERIOUS_SEAL);
             getOrCreateTagBuilder(PICKAXE_MINEABLE)
                     .addTag(ModTags.Blocks.DRAGON_GEM_ORES)
+                    .addTag(ModTags.Blocks.HIHIIROKANE_ORES)
                     .add(ModBlocks.DRAGON_GEM_BLOCK, ModBlocks.MAKAITE_ORE, ModBlocks.RAW_MAKAITE_BLOCK, ModBlocks.MAKAITE_BLOCK,
-                            ModBlocks.RITUAL_SHRINE);
+                            ModBlocks.RITUAL_SHRINE, ModBlocks.HIHIIROKANE_CHUNK_BLOCK, ModBlocks.HIHIIROKANE_BLOCK);
             getOrCreateTagBuilder(FabricMineableTags.SWORD_MINEABLE)
                     .add(ModBlocks.MYSTERIOUS_SEAL);
 
@@ -80,11 +84,14 @@ public class ModTagGenerator {
                     .add(ModBlocks.DRAGON_GEM_ORE, ModBlocks.DEEPSLATE_DRAGON_GEM_ORE, ModBlocks.END_STONE_DRAGON_GEM_ORE);
             getOrCreateTagBuilder(ConventionalBlockTags.ORES)
                     .addTag(ModTags.Blocks.DRAGON_GEM_ORES)
-                    .add(ModBlocks.MAKAITE_ORE);
+                    .add(ModBlocks.MAKAITE_ORE)
+                    .addTag(ModTags.Blocks.HIHIIROKANE_ORES);
             getOrCreateTagBuilder(ModTags.Blocks.FAIRIES_SPAWNABLE_ON)
                     .forceAddTag(FOXES_SPAWNABLE_ON)
                     .forceAddTag(ICE)
                     .add(Blocks.MUD);
+            getOrCreateTagBuilder(ModTags.Blocks.HIHIIROKANE_ORES)
+                    .add(ModBlocks.HIHIIROKANE_ORE, ModBlocks.DEEPSLATE_HIHIIROKANE_ORE);
         }
     }
 
@@ -111,6 +118,7 @@ public class ModTagGenerator {
             copy(ModTags.Blocks.OBSIDIAN_BLOCKS, ModTags.Items.OBSIDIAN_BLOCKS);
             copy(ModTags.Blocks.DRAGON_GEM_ORES, ModTags.Items.DRAGON_GEM_ORES);
             copy(ConventionalBlockTags.ORES, ConventionalItemTags.ORES);
+            copy(ModTags.Blocks.HIHIIROKANE_ORES, ModTags.Items.HIHIIROKANE_ORES);
 
             // Modded item tags
             getOrCreateTagBuilder(AXES)

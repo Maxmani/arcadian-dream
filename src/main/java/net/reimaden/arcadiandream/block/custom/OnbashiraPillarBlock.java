@@ -30,7 +30,6 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.reimaden.arcadiandream.block.ModBlocks;
-import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
 
@@ -67,7 +66,7 @@ public class OnbashiraPillarBlock extends Block implements Waterloggable {
                 player.getOffHandStack().decrement(1);
             }
             world.setBlockState(pos, ModBlocks.ONBASHIRA.getStateWithProperties(state));
-            player.incrementStat(Stats.CRAFTED.getOrCreateStat(ModItems.ONBASHIRA));
+            player.incrementStat(Stats.CRAFTED.getOrCreateStat(ModBlocks.ONBASHIRA.asItem()));
             world.playSound(null, pos, ModSounds.BLOCK_ONBASHIRA_CREATE, SoundCategory.BLOCKS, 0.8f, 1.2f);
             return ActionResult.SUCCESS;
         }

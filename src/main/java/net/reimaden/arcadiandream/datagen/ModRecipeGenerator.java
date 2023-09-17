@@ -34,7 +34,7 @@ public class ModRecipeGenerator extends ModRecipeProvider {
     private static final int CAMPFIRE_COOKING_TIME = 600;
 
     private static final ImmutableList<ItemConvertible> DRAGON_GEM_ORES =
-            ImmutableList.of(ModItems.DRAGON_GEM_ORE, ModItems.DEEPSLATE_DRAGON_GEM_ORE, ModItems.END_STONE_DRAGON_GEM_ORE);
+            ImmutableList.of(ModBlocks.DRAGON_GEM_ORE, ModBlocks.DEEPSLATE_DRAGON_GEM_ORE, ModBlocks.END_STONE_DRAGON_GEM_ORE);
     private static final ImmutableList<ItemConvertible> MAKAITE_ORES =
             ImmutableList.of(ModItems.MAKAITE_ORE, ModItems.RAW_MAKAITE);
 
@@ -52,7 +52,7 @@ public class ModRecipeGenerator extends ModRecipeProvider {
         makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.LIFE_FRAGMENT, RecipeCategory.MISC, ModItems.EXTEND_ITEM);
         makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.RAW_MAKAITE, RecipeCategory.BUILDING_BLOCKS, ModItems.RAW_MAKAITE_BLOCK);
         makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.MAKAITE_INGOT, RecipeCategory.BUILDING_BLOCKS, ModItems.MAKAITE_BLOCK);
-        makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.DRAGON_GEM, RecipeCategory.BUILDING_BLOCKS, ModItems.DRAGON_GEM_BLOCK);
+        makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.DRAGON_GEM, RecipeCategory.BUILDING_BLOCKS, ModBlocks.DRAGON_GEM_BLOCK);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BOMB_ITEM, 3)
                 .input('#', ModItems.EXTEND_ITEM)

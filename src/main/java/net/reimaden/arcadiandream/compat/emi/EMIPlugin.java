@@ -16,7 +16,6 @@ import net.minecraft.recipe.RecipeManager;
 import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.block.ModBlocks;
-import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.recipe.RitualCraftingRecipe;
 
 public class EMIPlugin implements EmiPlugin {
@@ -42,7 +41,7 @@ public class EMIPlugin implements EmiPlugin {
 
         registry.addRecipe(EmiWorldInteractionRecipe.builder()
                 .id(new Identifier(ArcadianDream.MOD_ID, "/onbashira_crafting"))
-                .leftInput(EmiStack.of(ModItems.ONBASHIRA_PILLAR))
+                .leftInput(EmiStack.of(ModBlocks.ONBASHIRA_PILLAR))
                 .rightInput(lead, false)
                 .rightInput(paper, false)
                 .output(EmiStack.of(ModBlocks.ONBASHIRA))

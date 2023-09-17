@@ -2,10 +2,13 @@
   "replace": false,
   "values": [
     "#arcadiandream:dragon_gem_ores",
+    "#arcadiandream:hihiirokane_ores",
     "arcadiandream:dragon_gem_block",
     "arcadiandream:makaite_ore",
     "arcadiandream:raw_makaite_block",
     "arcadiandream:makaite_block",
-    "arcadiandream:ritual_shrine"
+    "arcadiandream:ritual_shrine",
+    "arcadiandream:hihiirokane_chunk_block",
+    "arcadiandream:hihiirokane_block"
   ]
 }

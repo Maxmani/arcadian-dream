@@ -5,11 +5,13 @@
 
 package net.reimaden.arcadiandream.block;
 
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.ExperienceDroppingBlock;
 import net.minecraft.block.MapColor;
+import net.minecraft.item.BlockItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
@@ -33,7 +35,7 @@ public class ModBlocks {
                     .sounds(BlockSoundGroup.AMETHYST_BLOCK).requiresTool().luminance(7)));
     public static final Block DANMAKU_CRAFTING_TABLE = registerBlock("danmaku_crafting_table",
             new DanmakuCraftingTableBlock(FabricBlockSettings.copyOf(Blocks.CRAFTING_TABLE).mapColor(MapColor.DARK_RED).strength(2.5f)));
-    public static final Block MYSTERIOUS_SEAL = registerBlock("mysterious_seal",
+    public static final Block MYSTERIOUS_SEAL = registerWithoutItem("mysterious_seal",
             new MysteriousSealBlock(FabricBlockSettings.create().strength(0.1f).noCollision()
                     .sounds(BlockSoundGroup.AZALEA_LEAVES).luminance(5)));
 
@@ -48,13 +50,23 @@ public class ModBlocks {
             new ExperienceDroppingBlock(FabricBlockSettings.copyOf(DRAGON_GEM_ORE).strength(12.0f, 9.0f)
                     .mapColor(MapColor.PALE_YELLOW), UniformIntProvider.create(DRAGON_GEM_MIN_XP, DRAGON_GEM_MAX_XP)));
 
-    public static final Block MAKAITE_ORE = registerBlock("makaite_ore",
+    public static final Block MAKAITE_ORE = registerWithoutItem("makaite_ore",
             new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.STONE).mapColor(MapColor.DARK_RED).strength(4.0f, 3.0f)
                     .requiresTool().sounds(BlockSoundGroup.NETHER_ORE)));
 
+    public static final Block HIHIIROKANE_ORE = registerBlock("hihiirokane_ore",
+            new ExperienceDroppingBlock(FabricBlockSettings.copyOf(Blocks.STONE).strength(20.0f, 12.0f).requiresTool()));
+    public static final Block DEEPSLATE_HIHIIROKANE_ORE = registerBlock("deepslate_hihiirokane_ore",
+            new ExperienceDroppingBlock(FabricBlockSettings.copyOf(HIHIIROKANE_ORE).strength(30.0F, 12.0f)
+                    .mapColor(MapColor.DEEPSLATE_GRAY).sounds(BlockSoundGroup.DEEPSLATE)));
+
     // Raw Ore Blocks
-    public static final Block RAW_MAKAITE_BLOCK = registerBlock("raw_makaite_block",
+    public static final Block RAW_MAKAITE_BLOCK = registerWithoutItem("raw_makaite_block",
             new Block(FabricBlockSettings.copyOf(Blocks.STONE).mapColor(MapColor.ORANGE).strength(5.0f, 6.0f)
+                    .requiresTool()));
+
+    public static final Block HIHIIROKANE_CHUNK_BLOCK = registerBlock("hihiirokane_chunk_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.STONE).mapColor(MapColor.DARK_RED).strength(40.0f, 20.0f)
                     .requiresTool()));
 
     // Metal Blocks
@@ -62,12 +74,27 @@ public class ModBlocks {
             new DragonGemBlock(FabricBlockSettings.create().mapColor(MapColor.BRIGHT_TEAL).strength(5.0f, 6.0f)
                     .sounds(BlockSoundGroup.METAL).luminance(9).requiresTool()));
 
-    public static final Block MAKAITE_BLOCK = registerBlock("makaite_block",
+    public static final Block MAKAITE_BLOCK = registerWithoutItem("makaite_block",
             new Block(FabricBlockSettings.create().mapColor(MapColor.ORANGE).strength(5.0f, 6.0f)
                     .sounds(BlockSoundGroup.METAL).requiresTool()));
 
+    public static final Block HIHIIROKANE_BLOCK = registerBlock("hihiirokane_block",
+            new Block(FabricBlockSettings.create().mapColor(MapColor.DARK_RED).strength(50.0f, 20.0f)
+                    .sounds(BlockSoundGroup.METAL).requiresTool()));
+
     private static Block registerBlock(String name, Block block) {
+        registerBlockItem(name, block);
+        return registerWithoutItem(name, block);
+    }
+
+    // Mostly used for blocks that require special item settings
+    private static Block registerWithoutItem(String name, Block block) {
         return Registry.register(Registries.BLOCK, new Identifier(ArcadianDream.MOD_ID, name), block);
+    }
+
+    private static void registerBlockItem(String name, Block block) {
+        Registry.register(Registries.ITEM, new Identifier(ArcadianDream.MOD_ID, name),
+                new BlockItem(block, new FabricItemSettings()));
     }
 
     public static void register() {

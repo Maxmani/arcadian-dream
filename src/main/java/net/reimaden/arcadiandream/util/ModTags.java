@@ -34,6 +34,8 @@ public class ModTags {
         public static final TagKey<Block> OBSIDIAN_BLOCKS = createCommonTag("obsidian_blocks");
         public static final TagKey<Block> DRAGON_GEM_ORES = createTag("dragon_gem_ores");
         public static final TagKey<Block> FAIRIES_SPAWNABLE_ON = createTag("fairies_spawnable_on");
+        public static final TagKey<Block> HIHIIROKANE_ORES = createTag("hihiirokane_ores");
+        public static final TagKey<Block> NEEDS_TOOL_LEVEL_4 = createFabricTag("needs_tool_level_4");
 
         private static TagKey<Block> createTag(String name) {
             return create(ArcadianDream.MOD_ID, name);
@@ -42,6 +44,11 @@ public class ModTags {
         @SuppressWarnings("SameParameterValue")
         private static TagKey<Block> createCommonTag(String name) {
             return create("c", name);
+        }
+
+        @SuppressWarnings("SameParameterValue")
+        private static TagKey<Block> createFabricTag(String name) {
+            return create("fabric", name);
         }
 
         private static TagKey<Block> create(String namespace, String name) {
@@ -66,6 +73,7 @@ public class ModTags {
         public static final TagKey<Item> UNDEAD_PARTS = createCommonTag("undead_parts");
         public static final TagKey<Item> RAW_MEAT = createCommonTag("raw_meat");
         public static final TagKey<Item> COOKED_MEAT = createCommonTag("cooked_meat");
+        public static final TagKey<Item> HIHIIROKANE_ORES = createTag("hihiirokane_ores");
 
         private static TagKey<Item> createTag(String name) {
             return create(ArcadianDream.MOD_ID, name);
@@ -87,12 +95,17 @@ public class ModTags {
         public static final TagKey<EntityType<?>> FREEZING_DANMAKU_CAPABLE = createTag("freezing_danmaku_capable");
 
         private static TagKey<EntityType<?>> createTag(String name) {
-            return TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier(ArcadianDream.MOD_ID, name));
+            return create(ArcadianDream.MOD_ID, name);
         }
 
-//        private static TagKey<EntityType<?>> createCommonTag(String name) {
-//            return TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier("c", name));
-//        }
+        @SuppressWarnings("unused")
+        private static TagKey<EntityType<?>> createCommonTag(String name) {
+            return create("c", name);
+        }
+
+        private static TagKey<EntityType<?>> create(String namespace, String name) {
+            return TagKey.of(RegistryKeys.ENTITY_TYPE, new Identifier(namespace, name));
+        }
     }
 
     public static class DamageTypes {
@@ -101,12 +114,17 @@ public class ModTags {
 
         @SuppressWarnings("SameParameterValue")
         private static TagKey<DamageType> createTag(String name) {
-            return TagKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier(ArcadianDream.MOD_ID, name));
+            return create(ArcadianDream.MOD_ID, name);
         }
 
-//        private static TagKey<DamageType> createCommonTag(String name) {
-//            return TagKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier("c", name));
-//        }
+        @SuppressWarnings("unused")
+        private static TagKey<DamageType> createCommonTag(String name) {
+            return create("c", name);
+        }
+
+        private static TagKey<DamageType> create(String namespace, String name) {
+            return TagKey.of(RegistryKeys.DAMAGE_TYPE, new Identifier(namespace, name));
+        }
     }
 
     public static class StatusEffects {
@@ -115,7 +133,16 @@ public class ModTags {
 
         @SuppressWarnings("SameParameterValue")
         private static TagKey<StatusEffect> createTag(String name) {
-            return TagKey.of(RegistryKeys.STATUS_EFFECT, new Identifier(ArcadianDream.MOD_ID, name));
+            return create(ArcadianDream.MOD_ID, name);
+        }
+
+        @SuppressWarnings("unused")
+        private static TagKey<StatusEffect> createCommonTag(String name) {
+            return create("c", name);
+        }
+
+        private static TagKey<StatusEffect> create(String namespace, String name) {
+            return TagKey.of(RegistryKeys.STATUS_EFFECT, new Identifier(namespace, name));
         }
     }
 
@@ -125,11 +152,16 @@ public class ModTags {
 
         @SuppressWarnings("SameParameterValue")
         private static TagKey<Biome> createTag(String name) {
-            return TagKey.of(RegistryKeys.BIOME, new Identifier(ArcadianDream.MOD_ID, name));
+            return create(ArcadianDream.MOD_ID, name);
         }
 
-//        private static TagKey<Biome> createCommonTag(String name) {
-//            return TagKey.of(RegistryKeys.BIOME, new Identifier("c", name));
-//        }
+        @SuppressWarnings("unused")
+        private static TagKey<Biome> createCommonTag(String name) {
+            return create("c", name);
+        }
+
+        private static TagKey<Biome> create(String namespace, String name) {
+            return TagKey.of(RegistryKeys.BIOME, new Identifier(namespace, name));
+        }
     }
 }

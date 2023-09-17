@@ -55,6 +55,10 @@ public class ModLootTableGenerator {
             addDrop(ModBlocks.ONBASHIRA_PILLAR);
             addDrop(ModBlocks.DANMAKU_CRAFTING_TABLE);
             addDropWithSilkTouch(ModBlocks.MYSTERIOUS_SEAL);
+            addDrop(ModBlocks.HIHIIROKANE_ORE, oreDrops(ModBlocks.HIHIIROKANE_ORE, ModItems.HIHIIROKANE_CHUNK));
+            addDrop(ModBlocks.DEEPSLATE_HIHIIROKANE_ORE, oreDrops(ModBlocks.DEEPSLATE_HIHIIROKANE_ORE, ModItems.HIHIIROKANE_CHUNK));
+            addDrop(ModBlocks.HIHIIROKANE_CHUNK_BLOCK);
+            addDrop(ModBlocks.HIHIIROKANE_BLOCK);
         }
     }
 

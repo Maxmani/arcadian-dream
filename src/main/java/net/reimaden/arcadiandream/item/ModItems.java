@@ -43,6 +43,8 @@ public class ModItems {
     public static final Item RAW_MAKAITE = registerItem("raw_makaite", new Item(new FabricItemSettings().fireproof()));
     public static final Item MAKAITE_INGOT = registerItem("makaite_ingot", new Item(new FabricItemSettings().fireproof()));
     public static final Item ENCHANTED_ICE = registerItem("enchanted_ice", new EnchantedIceItem(new FabricItemSettings().rarity(Rarity.UNCOMMON)));
+    public static final Item HIHIIROKANE_CHUNK = registerItem("hihiirokane_chunk", new Item(new FabricItemSettings()));
+    public static final Item HIHIIROKANE_INGOT = registerItem("hihiirokane_ingot", new Item(new FabricItemSettings()));
 
     public static final Item WALL_PASSING_CHISEL = registerItem("wall_passing_chisel", new WallPassingChiselItem(new FabricItemSettings().maxDamage(100)));
     public static final Item IBUKI_GOURD = registerItem("ibuki_gourd", new IbukiGourdItem(new FabricItemSettings().maxCount(1)));
@@ -162,33 +164,13 @@ public class ModItems {
     }
 
     // Block Items
-    public static final Item ONBASHIRA = registerBlockItem("onbashira", new BlockItem(ModBlocks.ONBASHIRA,
-            new FabricItemSettings()));
-    public static final Item ONBASHIRA_PILLAR = registerBlockItem("onbashira_pillar", new BlockItem(ModBlocks.ONBASHIRA_PILLAR,
-            new FabricItemSettings()));
-    public static final Item RITUAL_SHRINE = registerBlockItem("ritual_shrine", new BlockItem(ModBlocks.RITUAL_SHRINE,
-            new FabricItemSettings()));
-    public static final Item DANMAKU_CRAFTING_TABLE = registerBlockItem("danmaku_crafting_table", new BlockItem(ModBlocks.DANMAKU_CRAFTING_TABLE,
-            new FabricItemSettings()));
+    // The ones that don't require any special settings are in the ModBlocks class
     public static final Item MYSTERIOUS_SEAL = registerBlockItem("mysterious_seal", new BlockItem(ModBlocks.MYSTERIOUS_SEAL,
             new FabricItemSettings().rarity(Rarity.RARE)));
-
-    public static final Item DRAGON_GEM_ORE = registerBlockItem("dragon_gem_ore", new BlockItem(ModBlocks.DRAGON_GEM_ORE,
-            new FabricItemSettings()));
-    public static final Item DEEPSLATE_DRAGON_GEM_ORE = registerBlockItem("deepslate_dragon_gem_ore", new BlockItem(ModBlocks.DEEPSLATE_DRAGON_GEM_ORE,
-            new FabricItemSettings()));
-    public static final Item END_STONE_DRAGON_GEM_ORE = registerBlockItem("end_stone_dragon_gem_ore", new BlockItem(ModBlocks.END_STONE_DRAGON_GEM_ORE,
-            new FabricItemSettings()));
-
     public static final Item MAKAITE_ORE = registerBlockItem("makaite_ore", new BlockItem(ModBlocks.MAKAITE_ORE,
             new FabricItemSettings().fireproof()));
-
     public static final Item RAW_MAKAITE_BLOCK = registerBlockItem("raw_makaite_block", new BlockItem(ModBlocks.RAW_MAKAITE_BLOCK,
             new FabricItemSettings().fireproof()));
-
-    public static final Item DRAGON_GEM_BLOCK = registerBlockItem("dragon_gem_block", new BlockItem(ModBlocks.DRAGON_GEM_BLOCK,
-            new FabricItemSettings()));
-
     public static final Item MAKAITE_BLOCK = registerBlockItem("makaite_block", new BlockItem(ModBlocks.MAKAITE_BLOCK,
             new FabricItemSettings().fireproof()));
 
@@ -206,9 +188,9 @@ public class ModItems {
     }
 
     private static void addFuel() {
-        addToFuelRegistry(ONBASHIRA, 300);
-        addToFuelRegistry(ONBASHIRA_PILLAR, 300);
-        addToFuelRegistry(DANMAKU_CRAFTING_TABLE, 300);
+        addToFuelRegistry(ModBlocks.ONBASHIRA.asItem(), 300);
+        addToFuelRegistry(ModBlocks.ONBASHIRA_PILLAR.asItem(), 300);
+        addToFuelRegistry(ModBlocks.DANMAKU_CRAFTING_TABLE.asItem(), 300);
         addToFuelRegistry(MOCHI_MALLET, 200);
         addToFuelRegistry(ORDINARY_HAT, 100);
     }
