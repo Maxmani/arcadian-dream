@@ -53,6 +53,7 @@ public class ModTagGenerator {
         protected void configure(RegistryWrapper.WrapperLookup arg) {
 
             // minecraft/tags/blocks
+            // fabric/tags/blocks
             getOrCreateTagBuilder(ModTags.Blocks.NEEDS_TOOL_LEVEL_4)
                     .addTag(ModTags.Blocks.HIHIIROKANE_ORES)
                     .add(ModBlocks.HIHIIROKANE_CHUNK_BLOCK, ModBlocks.HIHIIROKANE_BLOCK);
@@ -63,7 +64,7 @@ public class ModTagGenerator {
             getOrCreateTagBuilder(NEEDS_STONE_TOOL)
                     .add(ModBlocks.MAKAITE_ORE, ModBlocks.RAW_MAKAITE_BLOCK, ModBlocks.MAKAITE_BLOCK);
             getOrCreateTagBuilder(BEACON_BASE_BLOCKS)
-                    .add(ModBlocks.DRAGON_GEM_BLOCK, ModBlocks.MAKAITE_BLOCK);
+                    .add(ModBlocks.DRAGON_GEM_BLOCK, ModBlocks.MAKAITE_BLOCK, ModBlocks.HIHIIROKANE_BLOCK);
 
             // minecraft/tags/blocks/mineable
             // fabric/tags/blocks/mineable
@@ -108,7 +109,7 @@ public class ModTagGenerator {
             getOrCreateTagBuilder(TRIMMABLE_ARMOR)
                     .add(ModItems.MAKAITE_HELMET, ModItems.MAKAITE_CHESTPLATE, ModItems.MAKAITE_LEGGINGS, ModItems.MAKAITE_BOOTS);
             getOrCreateTagBuilder(BEACON_PAYMENT_ITEMS)
-                    .add(ModItems.DRAGON_GEM, ModItems.MAKAITE_INGOT);
+                    .add(ModItems.DRAGON_GEM, ModItems.MAKAITE_INGOT, ModItems.HIHIIROKANE_INGOT);
             getOrCreateTagBuilder(MUSIC_DISCS)
                     .add(ModItems.MUSIC_DISC_FAIRY_PLAYGROUND, ModItems.MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN);
             getOrCreateTagBuilder(FISHES)
