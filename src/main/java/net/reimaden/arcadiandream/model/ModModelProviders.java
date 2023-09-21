@@ -3,8 +3,9 @@
  * Licensed under the EUPL-1.2 or later.
  */
 
-package net.reimaden.arcadiandream.util.client;
+package net.reimaden.arcadiandream.model;
 
+import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.minecraft.client.util.ModelIdentifier;
 import net.reimaden.arcadiandream.ArcadianDream;
 
@@ -15,5 +16,9 @@ public class ModModelProviders {
 
     private static ModelIdentifier registerModel(String path) {
         return new ModelIdentifier(ArcadianDream.MOD_ID, path, "inventory");
+    }
+
+    public static void register() {
+        ModelLoadingPlugin.register(pluginContext -> pluginContext.addModels(NUE_TRIDENT, FOLDING_CHAIR));
     }
 }

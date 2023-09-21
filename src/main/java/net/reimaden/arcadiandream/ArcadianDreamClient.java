@@ -11,6 +11,7 @@ import net.reimaden.arcadiandream.block.entity.client.ModBlockEntityRenderer;
 import net.reimaden.arcadiandream.entity.client.ModEntityRenderers;
 import net.reimaden.arcadiandream.gui.ModScreenHandlers;
 import net.reimaden.arcadiandream.model.ModEntityModelLayers;
+import net.reimaden.arcadiandream.model.ModModelProviders;
 import net.reimaden.arcadiandream.model.trinket.ModTrinketRenderers;
 import net.reimaden.arcadiandream.networking.ModMessages;
 import net.reimaden.arcadiandream.particle.ModParticles;
@@ -31,5 +32,6 @@ public class ArcadianDreamClient implements ClientModInitializer {
         ModBlockRenderLayers.register();
         ModEntityModelLayers.register();
         ModTrinketRenderers.register();
+        ModModelProviders.register();
     }
 }

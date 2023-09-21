@@ -25,7 +25,6 @@
     "client.ItemRendererAccessor",
     "client.ItemRendererMixin",
     "client.LivingEntityRendererMixin",
-    "client.ModelLoaderMixin",
     "client.PlayerEntityRendererMixin"
   ],
   "injectors": {

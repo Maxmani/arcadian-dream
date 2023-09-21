@@ -12,7 +12,7 @@ import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.reimaden.arcadiandream.item.ModItems;
-import net.reimaden.arcadiandream.util.client.ModModelProviders;
+import net.reimaden.arcadiandream.model.ModModelProviders;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
