@@ -22,6 +22,8 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> DRAGON_GEM_ORE = registerKey("dragon_gem_ore");
     public static final RegistryKey<PlacedFeature> END_DRAGON_GEM_ORE = registerKey("end_dragon_gem_ore");
     public static final RegistryKey<PlacedFeature> MAKAITE_ORE = registerKey("makaite_ore");
+    public static final RegistryKey<PlacedFeature> HIHIIROKANE_ORE = registerKey("hihiirokane_ore");
+    public static final RegistryKey<PlacedFeature> HIHIIROKANE_ORE_BURIED = registerKey("hihiirokane_ore_buried");
 
     public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -35,6 +37,12 @@ public class ModPlacedFeatures {
         register(context, MAKAITE_ORE, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.MAKAITE_ORE),
                 modifiersWithCount(9, // Veins per chunk
                         PlacedFeatures.TEN_ABOVE_AND_BELOW_RANGE));
+        register(context, HIHIIROKANE_ORE, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.HIHIIROKANE_ORE),
+                modifiersWithCount(4, // Veins per chunk
+                        HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(5))));
+        register(context, HIHIIROKANE_ORE_BURIED, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.HIHIIROKANE_ORE_BURIED),
+                modifiersWithCount(4, // Veins per chunk
+                        HeightRangePlacementModifier.uniform(YOffset.getBottom(), YOffset.fixed(5))));
     }
 
     private static RegistryKey<PlacedFeature> registerKey(String name) {
