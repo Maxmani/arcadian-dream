@@ -54,6 +54,8 @@ public class ArcadianDreamDataGen implements DataGeneratorEntrypoint {
 
         trimDatagenSuite.makeMaterial(ModArmorTrimMaterials.MAKAITE, ModItems.MAKAITE_INGOT, 0xDB6432,
                 materialConfig -> materialConfig.armorOverride(ModArmorMaterials.MAKAITE, ArcadianDream.MOD_ID + "-makaite_darker"));
+        trimDatagenSuite.makeMaterial(ModArmorTrimMaterials.HIHIIROKANE, ModItems.HIHIIROKANE_INGOT, 0xAE0000,
+                materialConfig -> materialConfig.armorOverride(ModArmorMaterials.HIHIIROKANE, ArcadianDream.MOD_ID + "-hihiirokane_darker"));
     }
 
     @Override

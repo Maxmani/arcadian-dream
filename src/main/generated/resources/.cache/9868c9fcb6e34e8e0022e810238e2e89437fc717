@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-22T01:25:35.95419968	Arcadian Dream/Model Definitions
+// 1.20.1	2023-09-22T03:21:47.296221546	Arcadian Dream/Model Definitions
 8665c40bf0b9b475a0f6ff1a2d61017c81991644 assets/arcadiandream/models/item/death_scythe.json
 358490faacde8361e7c43b03cd7c28ed2f62afd7 assets/arcadiandream/models/item/makaite_helmet.json
 316632ea4c361d65fe536cf2b053a1f00b08a2d0 assets/arcadiandream/models/block/makaite_ore.json
@@ -15,8 +15,8 @@ ac3e1126e77b24c7e385747bfa1153a036d8527a assets/arcadiandream/models/item/makait
 95140d326e829b8302dad28330043f268db9a025 assets/arcadiandream/models/item/makaite_boots_gold_trim.json
 f48370327879f14a44e32e7dcef4539c7ccb18f5 assets/arcadiandream/models/item/makaite_chestplate_redstone_trim.json
 a235eee09a8c1e2172097bce6290adfe6a90da22 assets/arcadiandream/models/item/makaite_sword.json
-b634be7d5eb75939f6cf5e5d2329502efc4730e1 assets/arcadiandream/models/item/amulet_bullet_core.json
 8c0e8aa5b2e7eec483b816954e98f438a3b6c6ad assets/arcadiandream/models/item/makaite_chestplate_diamond_trim.json
+b634be7d5eb75939f6cf5e5d2329502efc4730e1 assets/arcadiandream/models/item/amulet_bullet_core.json
 be18823d95f8835b8822acf191961e68982fe97c assets/arcadiandream/models/item/onbashira_pillar.json
 1e5fbbdc33d3cdb792ef3680d49223e64b52e075 assets/arcadiandream/models/item/makaite_boots_iron_trim.json
 ef2b1b5e288c07e83056fb32c9a156d2c8fc8577 assets/arcadiandream/models/item/onbashira.json

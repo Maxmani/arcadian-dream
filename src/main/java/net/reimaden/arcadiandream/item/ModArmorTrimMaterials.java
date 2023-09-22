@@ -14,8 +14,8 @@ import net.reimaden.arcadiandream.ArcadianDream;
 public class ModArmorTrimMaterials {
 
     public static final RegistryKey<ArmorTrimMaterial> MAKAITE = createArmorTrim("makaite");
+    public static final RegistryKey<ArmorTrimMaterial> HIHIIROKANE = createArmorTrim("hihiirokane");
 
-    @SuppressWarnings("SameParameterValue")
     private static RegistryKey<ArmorTrimMaterial> createArmorTrim(String name) {
         return RegistryKey.of(RegistryKeys.TRIM_MATERIAL, new Identifier(ArcadianDream.MOD_ID, name));
     }
