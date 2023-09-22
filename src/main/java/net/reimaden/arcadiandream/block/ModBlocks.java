@@ -80,7 +80,7 @@ public class ModBlocks {
 
     public static final Block HIHIIROKANE_BLOCK = registerBlock("hihiirokane_block",
             new Block(FabricBlockSettings.create().mapColor(MapColor.DARK_RED).strength(50.0f, 20.0f)
-                    .sounds(BlockSoundGroup.METAL).requiresTool()));
+                    .sounds(BlockSoundGroup.NETHERITE).requiresTool()));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
