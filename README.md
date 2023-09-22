@@ -1,7 +1,7 @@
 # Arcadian Dream <img alt="Icon" width="48" src="/src/main/resources/assets/arcadiandream/icon.png"/>
 
 A Touhou mod for modern Minecraft. Arcadian Dream adds new blocks, items, mobs, and other content based on the [Touhou Project](https://en.touhouwiki.net/wiki/Touhou_Wiki) series. It aims to provide a full Touhou experience in Minecraft.
-The mod is still in early development and is not yet feature-complete. The mod is currently available for [Fabric](https://fabricmc.net/) and Minecraft version 1.19.
+The mod is still in early development and is not yet feature-complete. The mod is currently available for [Fabric](https://fabricmc.net/) and Minecraft versions 1.19-1.20.
 
 My code is not the best, and I'm still learning. If you see something that could be improved, feel free to open an issue or a pull request.
 Some features are implemented in a different way than in previous Touhou mods, and I've tried to put my own spin on things.
@@ -47,8 +47,8 @@ Everything in the mod is subject to change. This list is not exhaustive.
 
 ## Documentation
 
-[![Documentation Status](https://readthedocs.org/projects/arcadian-dream/badge/?version=latest)](https://arcadian-dream.readthedocs.io/en/latest/?badge=latest)  
-Online documentation is available at [Read the Docs](https://arcadian-dream.readthedocs.io).
+[![Netlify Status](https://api.netlify.com/api/v1/badges/03d06ab6-01e9-4c6e-b806-a30d6ec5966f/deploy-status)](https://app.netlify.com/sites/arcadiandream/deploys)  
+Online documentation is available [here](https://arcadiandream.reimaden.net).
 
 ## Credits
 
