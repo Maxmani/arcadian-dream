@@ -123,17 +123,17 @@ public class ModTagGenerator {
 
             // Modded item tags
             getOrCreateTagBuilder(AXES)
-                    .add(ModItems.MAKAITE_AXE);
+                    .add(ModItems.MAKAITE_AXE, ModItems.HIHIIROKANE_AXE);
             getOrCreateTagBuilder(HOES)
-                    .add(ModItems.MAKAITE_HOE);
+                    .add(ModItems.MAKAITE_HOE, ModItems.HIHIIROKANE_HOE);
             getOrCreateTagBuilder(PICKAXES)
-                    .add(ModItems.MAKAITE_PICKAXE);
+                    .add(ModItems.MAKAITE_PICKAXE, ModItems.HIHIIROKANE_PICKAXE);
             getOrCreateTagBuilder(SHOVELS)
-                    .add(ModItems.MAKAITE_SHOVEL);
+                    .add(ModItems.MAKAITE_SHOVEL, ModItems.HIHIIROKANE_SHOVEL);
             getOrCreateTagBuilder(ConventionalItemTags.SPEARS)
                     .add(ModItems.NUE_TRIDENT);
             getOrCreateTagBuilder(SWORDS)
-                    .add(ModItems.MAKAITE_SWORD, ModItems.HISOU_SWORD, ModItems.DEATH_SCYTHE, ModItems.ICICLE_SWORD);
+                    .add(ModItems.MAKAITE_SWORD, ModItems.HISOU_SWORD, ModItems.DEATH_SCYTHE, ModItems.ICICLE_SWORD, ModItems.HIHIIROKANE_SWORD);
             getOrCreateTagBuilder(ModTags.Items.HAMMERS)
                     .add(ModItems.MOCHI_MALLET, ModItems.MIRACLE_MALLET, ModItems.FOLDING_CHAIR);
             getOrCreateTagBuilder(TOOLS)

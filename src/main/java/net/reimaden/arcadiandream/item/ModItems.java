@@ -27,7 +27,7 @@ import net.reimaden.arcadiandream.sound.ModSounds;
 
 public class ModItems {
 
-    // Items
+    // Items ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final Item POWER_ITEM = registerItem("power_item", new Item(new FabricItemSettings()));
     public static final Item BIG_POWER_ITEM = registerItem("big_power_item", new Item(new FabricItemSettings()));
     public static final Item POINT_ITEM = registerItem("point_item", new Item(new FabricItemSettings()));
@@ -65,16 +65,18 @@ public class ModItems {
     public static final Item ARC_PATTERN = registerItem("arc_pattern", new PatternItem(new FabricItemSettings().maxCount(16)));
     public static final Item DOUBLE_PATTERN = registerItem("double_pattern", new PatternItem(new FabricItemSettings().maxCount(16)));
     public static final Item TRIPLE_PATTERN = registerItem("triple_pattern", new PatternItem(new FabricItemSettings().maxCount(16)));
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Food
+    // Food ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final Item HEAVENLY_PEACH = registerItem("heavenly_peach", new Item(new FabricItemSettings().maxCount(16)
             .food(ModFoodComponents.HEAVENLY_PEACH)));
     public static final Item LAMPREY = registerItem("lamprey", new Item(new FabricItemSettings()
             .food(ModFoodComponents.LAMPREY)));
     public static final Item COOKED_LAMPREY = registerItem("cooked_lamprey", new Item(new FabricItemSettings()
             .food(ModFoodComponents.COOKED_LAMPREY)));
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Armor
+    // Armor ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final Item ORDINARY_HAT = registerItem("ordinary_hat", new OrdinaryHatItem(ModArmorMaterials.ORDINARY, ArmorItem.Type.HELMET,
             new FabricItemSettings()));
 
@@ -86,8 +88,9 @@ public class ModItems {
             new FabricItemSettings().fireproof()));
     public static final Item MAKAITE_BOOTS = registerItem("makaite_boots", new ArmorItem(ModArmorMaterials.MAKAITE, ArmorItem.Type.BOOTS,
             new FabricItemSettings().fireproof()));
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Tools
+    // Tools ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final Item MAKAITE_SWORD = registerItem("makaite_sword", new SwordItem(ModToolMaterials.MAKAITE, 3, -2.4f,
             new FabricItemSettings().fireproof()));
     public static final Item MAKAITE_PICKAXE = registerItem("makaite_pickaxe", new PickaxeItem(ModToolMaterials.MAKAITE, 1, -2.8f,
@@ -99,7 +102,19 @@ public class ModItems {
     public static final Item MAKAITE_HOE = registerItem("makaite_hoe", new HoeItem(ModToolMaterials.MAKAITE, -2, -1.0f,
             new FabricItemSettings().fireproof()));
 
-    // Weapons
+    public static final Item HIHIIROKANE_SWORD = registerItem("hihiirokane_sword", new SwordItem(ModToolMaterials.HIHIIROKANE, 3, -2.4f,
+            new FabricItemSettings().fireproof()));
+    public static final Item HIHIIROKANE_PICKAXE = registerItem("hihiirokane_pickaxe", new PickaxeItem(ModToolMaterials.HIHIIROKANE, 1, -2.8f,
+            new FabricItemSettings().fireproof()));
+    public static final Item HIHIIROKANE_AXE = registerItem("hihiirokane_axe", new AxeItem(ModToolMaterials.HIHIIROKANE, 6, -3.1f,
+            new FabricItemSettings().fireproof()));
+    public static final Item HIHIIROKANE_SHOVEL = registerItem("hihiirokane_shovel", new ShovelItem(ModToolMaterials.HIHIIROKANE, 1.5f, -3.0f,
+            new FabricItemSettings().fireproof()));
+    public static final Item HIHIIROKANE_HOE = registerItem("hihiirokane_hoe", new HoeItem(ModToolMaterials.HIHIIROKANE, -2, -1.0f,
+            new FabricItemSettings().fireproof()));
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // Weapons /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final Item NUE_TRIDENT = registerItem("nue_trident", new NueTridentItem(ToolMaterials.NETHERITE, 5, -2.9f,
             new FabricItemSettings().fireproof()));
     public static final Item HISOU_SWORD = registerItem("hisou_sword", new SwordItem(ModToolMaterials.HISOU, 3, -2.0f,
@@ -114,8 +129,9 @@ public class ModItems {
             new FabricItemSettings().maxDamage(ToolMaterials.IRON.getDurability() - 50)));
     public static final Item ICICLE_SWORD = registerItem("icicle_sword", new IcicleSwordItem(ModToolMaterials.ENCHANTED_ICE, 3, -2.4f,
             new FabricItemSettings().rarity(Rarity.UNCOMMON)));
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Danmaku
+    // Danmaku /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final Item CIRCLE_BULLET_CORE = registerItem("circle_bullet_core", new BulletCoreItem(new FabricItemSettings()));
     public static final Item BUBBLE_BULLET_CORE = registerItem("bubble_bullet_core", new BulletCoreItem(new FabricItemSettings()));
     public static final Item AMULET_BULLET_CORE = registerItem("amulet_bullet_core", new BulletCoreItem(new FabricItemSettings()));
@@ -141,14 +157,16 @@ public class ModItems {
     public static final Item PELLET_SHOT = registerItem("pellet_shot", new PelletShotItem(new FabricItemSettings().maxDamage(100),
             1, 1.2f, 80, 2, 0.0f, 0.0f, "spread", 1,
             6, 2.0f, 200, 100, 90, 40));
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Music Discs
+    // Music Discs /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final Item MUSIC_DISC_FAIRY_PLAYGROUND = registerItem("music_disc_fairy_playground", new MusicDiscItem(10, ModSounds.MUSIC_DISC_FAIRY_PLAYGROUND,
             new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 180));
     public static final Item MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN = registerItem("music_disc_the_shrine_long_forgotten", new MusicDiscItem(14, ModSounds.MUSIC_DISC_THE_SHRINE_LONG_FORGOTTEN,
             new FabricItemSettings().maxCount(1).rarity(Rarity.RARE), 134));
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // Spawn Eggs
+    // Spawn Eggs //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final Item FAIRY_SPAWN_EGG = registerItem("fairy_spawn_egg",
             new SpawnEggItem(ModEntities.FAIRY, 0x004BCC, 0xF6FF5F,
                     new FabricItemSettings()));
@@ -158,6 +176,7 @@ public class ModItems {
     public static final Item ICE_FAIRY_SPAWN_EGG = registerItem("ice_fairy_spawn_egg",
             new SpawnEggItem(ModEntities.ICE_FAIRY, 0xABF0FF, 0xC6FBFF,
                     new FabricItemSettings()));
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(ArcadianDream.MOD_ID, name), item);
