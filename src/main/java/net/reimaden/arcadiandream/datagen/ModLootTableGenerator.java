@@ -8,6 +8,9 @@ package net.reimaden.arcadiandream.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
+import net.minecraft.block.Block;
+import net.minecraft.data.server.loottable.BlockLootTableGenerator;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
@@ -17,10 +20,7 @@ import net.minecraft.loot.condition.RandomChanceWithLootingLootCondition;
 import net.minecraft.loot.context.LootContextTypes;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.entry.TagEntry;
-import net.minecraft.loot.function.EnchantRandomlyLootFunction;
-import net.minecraft.loot.function.LootingEnchantLootFunction;
-import net.minecraft.loot.function.SetCountLootFunction;
-import net.minecraft.loot.function.SetStewEffectLootFunction;
+import net.minecraft.loot.function.*;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.util.Identifier;
@@ -44,9 +44,9 @@ public class ModLootTableGenerator {
         @Override
         public void generate() {
             addDrop(ModBlocks.DRAGON_GEM_BLOCK);
-            addDrop(ModBlocks.DRAGON_GEM_ORE, oreDrops(ModBlocks.DRAGON_GEM_ORE, ModItems.DRAGON_GEM));
-            addDrop(ModBlocks.DEEPSLATE_DRAGON_GEM_ORE, oreDrops(ModBlocks.DEEPSLATE_DRAGON_GEM_ORE, ModItems.DRAGON_GEM));
-            addDrop(ModBlocks.END_STONE_DRAGON_GEM_ORE, oreDrops(ModBlocks.END_STONE_DRAGON_GEM_ORE, ModItems.DRAGON_GEM));
+            addDrop(ModBlocks.DRAGON_GEM_ORE, this::dragonGemOreDrops);
+            addDrop(ModBlocks.DEEPSLATE_DRAGON_GEM_ORE, this::dragonGemOreDrops);
+            addDrop(ModBlocks.END_STONE_DRAGON_GEM_ORE, this::dragonGemOreDrops);
             addDrop(ModBlocks.MAKAITE_BLOCK);
             addDrop(ModBlocks.RAW_MAKAITE_BLOCK);
             addDrop(ModBlocks.MAKAITE_ORE, oreDrops(ModBlocks.MAKAITE_ORE, ModItems.RAW_MAKAITE));
@@ -55,10 +55,18 @@ public class ModLootTableGenerator {
             addDrop(ModBlocks.ONBASHIRA_PILLAR);
             addDrop(ModBlocks.DANMAKU_CRAFTING_TABLE);
             addDropWithSilkTouch(ModBlocks.MYSTERIOUS_SEAL);
-            addDrop(ModBlocks.HIHIIROKANE_ORE, oreDrops(ModBlocks.HIHIIROKANE_ORE, ModItems.HIHIIROKANE_CHUNK));
-            addDrop(ModBlocks.DEEPSLATE_HIHIIROKANE_ORE, oreDrops(ModBlocks.DEEPSLATE_HIHIIROKANE_ORE, ModItems.HIHIIROKANE_CHUNK));
+            addDrop(ModBlocks.HIHIIROKANE_ORE, this::hihiirokaneOreDrops);
+            addDrop(ModBlocks.DEEPSLATE_HIHIIROKANE_ORE, this::hihiirokaneOreDrops);
             addDrop(ModBlocks.HIHIIROKANE_CHUNK_BLOCK);
             addDrop(ModBlocks.HIHIIROKANE_BLOCK);
+        }
+
+        private LootTable.Builder dragonGemOreDrops(Block block) {
+            return oreDrops(block, ModItems.DRAGON_GEM);
+        }
+
+        private LootTable.Builder hihiirokaneOreDrops(Block block) {
+            return BlockLootTableGenerator.dropsWithSilkTouch(block, applyExplosionDecay(block, ItemEntry.builder(ModItems.HIHIIROKANE_CHUNK).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f))).apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE))));
         }
     }
 

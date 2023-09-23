@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_hihiirokane_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arcadiandream:hihiirokane_ore"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "arcadiandream:hihiirokane_chunk_from_blasting_hihiirokane_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_hihiirokane_ore",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "arcadiandream:hihiirokane_chunk_from_blasting_hihiirokane_ore"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 2.0,
+  "group": "hihiirokane_chunk",
+  "ingredient": {
+    "item": "arcadiandream:hihiirokane_ore"
+  },
+  "result": "arcadiandream:hihiirokane_chunk"
+}

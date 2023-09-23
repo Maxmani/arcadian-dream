@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "arcadiandream:hihiirokane_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "arcadiandream:hihiirokane_ingot"
+  }
+}

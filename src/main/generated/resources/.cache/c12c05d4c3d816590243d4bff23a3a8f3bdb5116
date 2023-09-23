@@ -1,7 +1,7 @@
-// 1.20.1	2023-09-22T03:21:47.294820746	Arcadian Dream/Tags for minecraft:entity_type
+// 1.20.1	2023-09-23T03:34:23.035266424	Arcadian Dream/Tags for minecraft:entity_type
 f2699ff0f05251f6ae4af4e7364f816b0009e376 data/minecraft/tags/entity_types/powder_snow_walkable_mobs.json
 1c71a4546c767932751d0ac673dacaee9281d6e6 data/minecraft/tags/entity_types/fall_damage_immune.json
 f2699ff0f05251f6ae4af4e7364f816b0009e376 data/arcadiandream/tags/entity_types/freezing_danmaku_capable.json
 f2699ff0f05251f6ae4af4e7364f816b0009e376 data/minecraft/tags/entity_types/freeze_immune_entity_types.json
-61af8409272edfd64ba34a42d5c7d8df7816f979 data/arcadiandream/tags/entity_types/danmaku.json
 b27dd8509a17cb270d017686c8479669f1902022 data/arcadiandream/tags/entity_types/fairies.json
+61af8409272edfd64ba34a42d5c7d8df7816f979 data/arcadiandream/tags/entity_types/danmaku.json

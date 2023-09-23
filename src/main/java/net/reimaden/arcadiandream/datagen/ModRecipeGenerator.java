@@ -37,6 +37,8 @@ public class ModRecipeGenerator extends ModRecipeProvider {
             ImmutableList.of(ModBlocks.DRAGON_GEM_ORE, ModBlocks.DEEPSLATE_DRAGON_GEM_ORE, ModBlocks.END_STONE_DRAGON_GEM_ORE);
     private static final ImmutableList<ItemConvertible> MAKAITE_ORES =
             ImmutableList.of(ModItems.MAKAITE_ORE, ModItems.RAW_MAKAITE);
+    private static final ImmutableList<ItemConvertible> HIHIIROKANE_ORES =
+            ImmutableList.of(ModBlocks.HIHIIROKANE_ORE, ModBlocks.DEEPSLATE_HIHIIROKANE_ORE);
 
     public ModRecipeGenerator(FabricDataOutput output) {
         super(output);
@@ -53,6 +55,8 @@ public class ModRecipeGenerator extends ModRecipeProvider {
         makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.RAW_MAKAITE, RecipeCategory.BUILDING_BLOCKS, ModItems.RAW_MAKAITE_BLOCK);
         makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.MAKAITE_INGOT, RecipeCategory.BUILDING_BLOCKS, ModItems.MAKAITE_BLOCK);
         makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.DRAGON_GEM, RecipeCategory.BUILDING_BLOCKS, ModBlocks.DRAGON_GEM_BLOCK);
+        makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.HIHIIROKANE_CHUNK, RecipeCategory.BUILDING_BLOCKS, ModBlocks.HIHIIROKANE_CHUNK_BLOCK);
+        makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.HIHIIROKANE_INGOT, RecipeCategory.BUILDING_BLOCKS, ModBlocks.HIHIIROKANE_BLOCK);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BOMB_ITEM, 3)
                 .input('#', ModItems.EXTEND_ITEM)
@@ -178,6 +182,8 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 RecipeProvider.getItemPath(Items.IRON_NUGGET));
         makeSmelting(exporter, List.of(ModItems.LAMPREY), RecipeCategory.FOOD, ModItems.COOKED_LAMPREY, 0.35f, DEFAULT_COOKING_TIME,
                 RecipeProvider.getItemPath(ModItems.COOKED_LAMPREY));
+        makeSmelting(exporter, HIHIIROKANE_ORES, RecipeCategory.MISC, ModItems.HIHIIROKANE_CHUNK, 2.0f, DEFAULT_COOKING_TIME,
+                RecipeProvider.getItemPath(ModItems.HIHIIROKANE_CHUNK));
 
         // Blasting recipes
         makeBlasting(exporter, DRAGON_GEM_ORES, RecipeCategory.MISC, ModItems.DRAGON_GEM, 1.2f, BLASTING_SMOKING_COOKING_TIME,
@@ -186,6 +192,8 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 RecipeProvider.getItemPath(ModItems.MAKAITE_INGOT));
         makeBlasting(exporter, List.of(ModItems.DEATH_SCYTHE), RecipeCategory.MISC, Items.IRON_NUGGET, 0.1f, BLASTING_SMOKING_COOKING_TIME,
                 RecipeProvider.getItemPath(Items.IRON_NUGGET));
+        makeBlasting(exporter, HIHIIROKANE_ORES, RecipeCategory.MISC, ModItems.HIHIIROKANE_CHUNK, 2.0f, BLASTING_SMOKING_COOKING_TIME,
+                RecipeProvider.getItemPath(ModItems.HIHIIROKANE_CHUNK));
 
         // Smoking recipes
         makeSmoking(exporter, List.of(ModItems.LAMPREY), RecipeCategory.FOOD, ModItems.COOKED_LAMPREY, 0.35f, BLASTING_SMOKING_COOKING_TIME,
@@ -289,5 +297,10 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input(ItemTags.SWORDS)
                 .input(ModItems.ENCHANTED_ICE, 2)
                 .offerTo(exporter, ritualCraftingId(ModItems.ICICLE_SWORD));
+
+        RitualCraftingRecipeJsonBuilder.create(ModItems.HIHIIROKANE_INGOT)
+                .input(ModItems.HIHIIROKANE_CHUNK, 8)
+                .input(ModItems.MAKAITE_INGOT, 8)
+                .offerTo(exporter, ritualCraftingId(ModItems.HIHIIROKANE_INGOT));
     }
 }
