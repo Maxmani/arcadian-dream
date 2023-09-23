@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-23T18:19:46.837799081	Arcadian Dream/Model Definitions
+// 1.20.1	2023-09-23T20:18:06.762792067	Arcadian Dream/Model Definitions
 8665c40bf0b9b475a0f6ff1a2d61017c81991644 assets/arcadiandream/models/item/death_scythe.json
 358490faacde8361e7c43b03cd7c28ed2f62afd7 assets/arcadiandream/models/item/makaite_helmet.json
 824264f060dff145f04cd7f2ad82b288768a81ad assets/arcadiandream/models/item/hihiirokane_sword.json
@@ -30,8 +30,8 @@ da8cb1aa91addba3818a09d7b2da1467812152ff assets/arcadiandream/models/item/makait
 5ebfaacbbda81c359b9e04abca6a564974bca44c assets/arcadiandream/blockstates/makaite_ore.json
 cbb1fb20f86cd9959397fb2681659e6b26b1158f assets/arcadiandream/models/item/ray_pattern.json
 30ecf2c9a8b01fd30180e96f89facbfefe421996 assets/arcadiandream/models/block/deepslate_dragon_gem_ore.json
-ba7c83197b592f47490bc56fbb40b99814661ee5 assets/arcadiandream/models/item/makaite_chestplate.json
 36efad711ce5c617dc1b17cebb419e75871bf1b8 assets/arcadiandream/models/item/deepslate_dragon_gem_ore.json
+ba7c83197b592f47490bc56fbb40b99814661ee5 assets/arcadiandream/models/item/makaite_chestplate.json
 092e157f1b28084406acb4ae21dafec079992f92 assets/arcadiandream/blockstates/hihiirokane_block.json
 6715abbf1feaa48c423149ebde4db512a7e411ae assets/arcadiandream/models/item/hisou_sword.json
 da2a70047500d96231eee95da1871bc59f9a7c30 assets/arcadiandream/models/item/ritual_shrine.json
@@ -73,6 +73,7 @@ f1c33ba97e3b68859e9bbb6ec61f3389c2f64621 assets/arcadiandream/blockstates/end_st
 8870eac424f9b9bd9c3960395d5681aa46769f78 assets/arcadiandream/blockstates/danmaku_crafting_table.json
 c298a429db892e3172f3c87d9585b5469204fcbf assets/arcadiandream/models/item/makaite_leggings_redstone_trim.json
 5524c13e16d2d4b93b5bbb83aad8cd669126b735 assets/arcadiandream/models/item/bubble_bullet_core.json
+4109d42db4fa57eb85580d3ab2893fd324c65621 assets/arcadiandream/models/item/hihiirokane_upgrade_smithing_template.json
 5e3959ba638f54bc858a3e45fb3a1cf76af4ecf6 assets/arcadiandream/models/item/makaite_helmet_amethyst_trim.json
 ceeb4c9bbc1ff1ccd22c32a5b249a78c78a46f93 assets/arcadiandream/models/item/bubble_shot.json
 a93156a34e996f83ce647afe490973d6778dcc21 assets/arcadiandream/models/item/star_item.json

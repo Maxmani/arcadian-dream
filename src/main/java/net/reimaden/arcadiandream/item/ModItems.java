@@ -65,6 +65,8 @@ public class ModItems {
     public static final Item ARC_PATTERN = registerItem("arc_pattern", new PatternItem(new FabricItemSettings().maxCount(16)));
     public static final Item DOUBLE_PATTERN = registerItem("double_pattern", new PatternItem(new FabricItemSettings().maxCount(16)));
     public static final Item TRIPLE_PATTERN = registerItem("triple_pattern", new PatternItem(new FabricItemSettings().maxCount(16)));
+
+    public static final Item HIHIIROKANE_UPGRADE_SMITHING_TEMPLATE = registerItem("hihiirokane_upgrade_smithing_template", ModSmithingTemplateItem.createHihiirokaneUpgrade());
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Food ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

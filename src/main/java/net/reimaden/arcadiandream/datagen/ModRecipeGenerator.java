@@ -203,6 +203,14 @@ public class ModRecipeGenerator extends ModRecipeProvider {
         makeCampfireCooking(exporter, List.of(ModItems.LAMPREY), RecipeCategory.FOOD, ModItems.COOKED_LAMPREY, 0.35f, CAMPFIRE_COOKING_TIME,
                 RecipeProvider.getItemPath(ModItems.COOKED_LAMPREY));
 
+        // Smithing recipes
+        makeSmithingTemplateCopyingRecipePlain(exporter, ModItems.HIHIIROKANE_UPGRADE_SMITHING_TEMPLATE, Items.END_STONE, Items.NETHERITE_INGOT);
+        makeHihiirokaneUpgradeRecipe(exporter, Items.NETHERITE_SWORD, RecipeCategory.COMBAT, ModItems.HIHIIROKANE_SWORD);
+        makeHihiirokaneUpgradeRecipe(exporter, Items.NETHERITE_PICKAXE, RecipeCategory.TOOLS, ModItems.HIHIIROKANE_PICKAXE);
+        makeHihiirokaneUpgradeRecipe(exporter, Items.NETHERITE_AXE, RecipeCategory.TOOLS, ModItems.HIHIIROKANE_AXE);
+        makeHihiirokaneUpgradeRecipe(exporter, Items.NETHERITE_SHOVEL, RecipeCategory.TOOLS, ModItems.HIHIIROKANE_SHOVEL);
+        makeHihiirokaneUpgradeRecipe(exporter, Items.NETHERITE_HOE, RecipeCategory.TOOLS, ModItems.HIHIIROKANE_HOE);
+
         // Ritual Crafting recipes
         RitualCraftingRecipeJsonBuilder.create(ModItems.NUE_TRIDENT)
                 .input(Items.TRIDENT)

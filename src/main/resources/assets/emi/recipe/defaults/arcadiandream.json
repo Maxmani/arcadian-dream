@@ -35,6 +35,11 @@
     "arcadiandream:cooked_lamprey_from_smelting_lamprey",
     "arcadiandream:ritual_crafting/icicle_sword_from_ritual_crafting",
     "arcadiandream:hihiirokane_chunk_block",
-    "arcadiandream:hihiirokane_block"
+    "arcadiandream:hihiirokane_block",
+    "arcadiandream:hihiirokane_sword_smithing",
+    "arcadiandream:hihiirokane_pickaxe_smithing",
+    "arcadiandream:hihiirokane_axe_smithing",
+    "arcadiandream:hihiirokane_shovel_smithing",
+    "arcadiandream:hihiirokane_hoe_smithing"
   ]
 }

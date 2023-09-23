@@ -14,6 +14,7 @@
     "MilkBucketItemMixin",
     "PlayerEntityMixin",
     "ProjectileEntityMixin",
+    "SmithingTemplateItemInvoker",
     "ThrownEntityMixin",
     "TntBlockMixin",
     "UnbreakingEnchantmentMixin"

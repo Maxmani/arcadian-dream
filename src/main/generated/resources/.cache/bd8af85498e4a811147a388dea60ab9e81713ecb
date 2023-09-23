@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-23T18:19:46.836574425	Arcadian Dream/World Gen
+// 1.20.1	2023-09-23T20:18:06.761534974	Arcadian Dream/World Gen
 c30579dd5d946d6126babfc9a1edefb496ad31a1 data/arcadiandream/worldgen/placed_feature/end_dragon_gem_ore.json
 8a7a2a9386ef563a09e44f54ac48f6ff8275a11b data/arcadiandream/worldgen/configured_feature/hihiirokane_ore_buried.json
 a295e7388d99fd167b68b1fdd958fabdc1ef1c99 data/arcadiandream/worldgen/structure_set/abandoned_shrines.json
@@ -10,6 +10,6 @@ a295e7388d99fd167b68b1fdd958fabdc1ef1c99 data/arcadiandream/worldgen/structure_s
 ab4347a3bfbaf067836d35024235add742affe4d data/arcadiandream/worldgen/placed_feature/makaite_ore.json
 d13deae28360c277e2725b4f74c1571b925eca9c data/arcadiandream/worldgen/configured_feature/dragon_gem_ore.json
 7a48741b5a117a1eb3a94e640df4acd1d46268e3 data/arcadiandream/worldgen/processor_list/shrine_degradation.json
-953f7e155888cb6c1f8f40613ae55fcb2b49da95 data/arcadiandream/worldgen/configured_feature/end_dragon_gem_ore.json
 19ad0f2ef22682204d1a17e5709fc7ee6821702c data/arcadiandream/worldgen/placed_feature/hihiirokane_ore_buried.json
+953f7e155888cb6c1f8f40613ae55fcb2b49da95 data/arcadiandream/worldgen/configured_feature/end_dragon_gem_ore.json
 108cb7139b10b9cc158b4692c1f74c725f5b044c data/arcadiandream/worldgen/placed_feature/dragon_gem_ore.json
