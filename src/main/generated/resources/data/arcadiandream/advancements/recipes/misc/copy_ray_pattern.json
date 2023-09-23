@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:copy_ray_pattern"
+        "recipe": "arcadiandream:copy_ray_pattern"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:copy_ray_pattern"
+      "arcadiandream:copy_ray_pattern"
     ]
   },
   "sends_telemetry_event": false

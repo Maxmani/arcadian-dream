@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:copy_triple_pattern"
+        "recipe": "arcadiandream:copy_triple_pattern"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:copy_triple_pattern"
+      "arcadiandream:copy_triple_pattern"
     ]
   },
   "sends_telemetry_event": false

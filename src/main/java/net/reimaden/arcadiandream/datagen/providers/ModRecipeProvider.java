@@ -15,7 +15,6 @@ import net.minecraft.recipe.AbstractCookingRecipe;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.Registries;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.reimaden.arcadiandream.ArcadianDream;
@@ -282,7 +281,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .pattern("XXX")
                 .criterion(RecipeProvider.hasItem(pattern),
                         RecipeProvider.conditionsFromItem(pattern))
-                .offerTo(exporter, "copy_" + Registries.ITEM.getId(pattern.asItem()).getPath());
+                .offerTo(exporter, new Identifier(ArcadianDream.MOD_ID, "copy_" + RecipeProvider.getRecipeName(pattern)));
     }
 
     protected static void makePatterns(Consumer<RecipeJsonProvider> exporter, ItemConvertible template, ItemConvertible pattern) {
