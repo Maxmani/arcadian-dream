@@ -4,6 +4,7 @@
   "package": "net.reimaden.arcadiandream.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "BlockMixin",
     "DamageEnchantmentMixin",
     "EnchantmentHelperMixin",
     "EnchantmentMixin",
