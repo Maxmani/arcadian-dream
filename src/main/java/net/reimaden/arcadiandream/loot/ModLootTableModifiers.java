@@ -66,12 +66,21 @@ public class ModLootTableModifiers {
             LootPool.Builder poolBuilder = LootPool.builder();
 
             if (LootTables.END_CITY_TREASURE_CHEST.equals(id)) {
-                poolBuilder
+                LootPool.Builder poolBuilderDragonGem = LootPool.builder();
+                LootPool.Builder poolBuilderUpgrade = LootPool.builder();
+
+                poolBuilderDragonGem
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(RandomChanceLootCondition.builder(0.25f))
                         .with(ItemEntry.builder(ModItems.DRAGON_GEM))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
-                tableBuilder.pool(poolBuilder.build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                tableBuilder.pool(poolBuilderDragonGem.build());
+                poolBuilderUpgrade
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(RandomChanceLootCondition.builder(0.1f))
+                        .with(ItemEntry.builder(ModItems.HIHIIROKANE_UPGRADE_SMITHING_TEMPLATE))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)));
+                tableBuilder.pool(poolBuilderUpgrade.build());
             }
 
             for (Map.Entry<RegistryKey<Block>, Block> entry : Registries.BLOCK.getEntrySet()) {
