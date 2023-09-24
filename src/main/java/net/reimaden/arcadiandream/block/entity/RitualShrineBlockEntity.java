@@ -113,6 +113,8 @@ public class RitualShrineBlockEntity extends BlockEntity implements ImplementedI
 
     @SuppressWarnings({"DataFlowIssue", "OptionalGetWithoutIsPresent"})
     private void craftItem(List<ItemStack> stacks, List<OnbashiraBlockEntity> onbashiras, RitualShrineBlockEntity shrineBlock, PlayerEntity player, DynamicRegistryManager registryManager) {
+        if (onbashiras.isEmpty()) return;
+
         SimpleInventory inventory = new SimpleInventory(stacks.size());
         for (int i = 0; i < stacks.size(); i++) {
             inventory.setStack(i, stacks.get(i));
