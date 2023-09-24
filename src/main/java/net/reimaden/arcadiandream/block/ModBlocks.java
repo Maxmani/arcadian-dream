@@ -78,7 +78,7 @@ public class ModBlocks {
             new Block(FabricBlockSettings.create().mapColor(MapColor.ORANGE).strength(5.0f, 6.0f)
                     .sounds(BlockSoundGroup.METAL).requiresTool()));
 
-    public static final Block HIHIIROKANE_BLOCK = registerBlock("hihiirokane_block",
+    public static final Block HIHIIROKANE_BLOCK = registerWithoutItem("hihiirokane_block",
             new Block(FabricBlockSettings.create().mapColor(MapColor.DARK_RED).strength(50.0f, 20.0f)
                     .sounds(BlockSoundGroup.NETHERITE).requiresTool()));
 

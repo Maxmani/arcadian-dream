@@ -56,7 +56,7 @@ public class ModRecipeGenerator extends ModRecipeProvider {
         makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.MAKAITE_INGOT, RecipeCategory.BUILDING_BLOCKS, ModItems.MAKAITE_BLOCK);
         makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.DRAGON_GEM, RecipeCategory.BUILDING_BLOCKS, ModBlocks.DRAGON_GEM_BLOCK);
         makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.HIHIIROKANE_CHUNK, RecipeCategory.BUILDING_BLOCKS, ModBlocks.HIHIIROKANE_CHUNK_BLOCK);
-        makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.HIHIIROKANE_INGOT, RecipeCategory.BUILDING_BLOCKS, ModBlocks.HIHIIROKANE_BLOCK);
+        makeReversibleCompacting(exporter, RecipeCategory.MISC, ModItems.HIHIIROKANE_INGOT, RecipeCategory.BUILDING_BLOCKS, ModItems.HIHIIROKANE_BLOCK);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BOMB_ITEM, 3)
                 .input('#', ModItems.EXTEND_ITEM)

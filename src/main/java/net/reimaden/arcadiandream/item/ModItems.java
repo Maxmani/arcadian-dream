@@ -27,6 +27,17 @@ import net.reimaden.arcadiandream.sound.ModSounds;
 
 public class ModItems {
 
+    public static final int SWORD_ATTACK_DAMAGE = 3;
+    public static final float SWORD_ATTACK_SPEED = -2.4f;
+    public static final int PICKAXE_ATTACK_DAMAGE = 1;
+    public static final float PICKAXE_ATTACK_SPEED = -2.8f;
+    public static final int AXE_ATTACK_DAMAGE = 6;
+    public static final float AXE_ATTACK_SPEED = -3.1f;
+    public static final float SHOVEL_ATTACK_DAMAGE = 1.5f;
+    public static final float SHOVEL_ATTACK_SPEED = -3.0f;
+    public static final int HOE_ATTACK_DAMAGE = -2;
+    public static final float HOE_ATTACK_SPEED = -1.0f;
+
     // Items ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final Item POWER_ITEM = registerItem("power_item", new Item(new FabricItemSettings()));
     public static final Item BIG_POWER_ITEM = registerItem("big_power_item", new Item(new FabricItemSettings()));
@@ -44,7 +55,7 @@ public class ModItems {
     public static final Item MAKAITE_INGOT = registerItem("makaite_ingot", new Item(new FabricItemSettings().fireproof()));
     public static final Item ENCHANTED_ICE = registerItem("enchanted_ice", new EnchantedIceItem(new FabricItemSettings().rarity(Rarity.UNCOMMON)));
     public static final Item HIHIIROKANE_CHUNK = registerItem("hihiirokane_chunk", new Item(new FabricItemSettings()));
-    public static final Item HIHIIROKANE_INGOT = registerItem("hihiirokane_ingot", new Item(new FabricItemSettings()));
+    public static final Item HIHIIROKANE_INGOT = registerItem("hihiirokane_ingot", new Item(new FabricItemSettings().fireproof()));
 
     public static final Item WALL_PASSING_CHISEL = registerItem("wall_passing_chisel", new WallPassingChiselItem(new FabricItemSettings().maxDamage(100)));
     public static final Item IBUKI_GOURD = registerItem("ibuki_gourd", new IbukiGourdItem(new FabricItemSettings().maxCount(1)));
@@ -93,26 +104,26 @@ public class ModItems {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Tools ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public static final Item MAKAITE_SWORD = registerItem("makaite_sword", new SwordItem(ModToolMaterials.MAKAITE, 3, -2.4f,
+    public static final Item MAKAITE_SWORD = registerItem("makaite_sword", new SwordItem(ModToolMaterials.MAKAITE, SWORD_ATTACK_DAMAGE, SWORD_ATTACK_SPEED,
             new FabricItemSettings().fireproof()));
-    public static final Item MAKAITE_PICKAXE = registerItem("makaite_pickaxe", new PickaxeItem(ModToolMaterials.MAKAITE, 1, -2.8f,
+    public static final Item MAKAITE_PICKAXE = registerItem("makaite_pickaxe", new PickaxeItem(ModToolMaterials.MAKAITE, PICKAXE_ATTACK_DAMAGE, PICKAXE_ATTACK_SPEED,
             new FabricItemSettings().fireproof()));
-    public static final Item MAKAITE_AXE = registerItem("makaite_axe", new AxeItem(ModToolMaterials.MAKAITE, 6, -3.1f,
+    public static final Item MAKAITE_AXE = registerItem("makaite_axe", new AxeItem(ModToolMaterials.MAKAITE, AXE_ATTACK_DAMAGE, AXE_ATTACK_SPEED,
             new FabricItemSettings().fireproof()));
-    public static final Item MAKAITE_SHOVEL = registerItem("makaite_shovel", new ShovelItem(ModToolMaterials.MAKAITE, 1.5f, -3.0f,
+    public static final Item MAKAITE_SHOVEL = registerItem("makaite_shovel", new ShovelItem(ModToolMaterials.MAKAITE, SHOVEL_ATTACK_DAMAGE, SHOVEL_ATTACK_SPEED,
             new FabricItemSettings().fireproof()));
-    public static final Item MAKAITE_HOE = registerItem("makaite_hoe", new HoeItem(ModToolMaterials.MAKAITE, -2, -1.0f,
+    public static final Item MAKAITE_HOE = registerItem("makaite_hoe", new HoeItem(ModToolMaterials.MAKAITE, HOE_ATTACK_DAMAGE, HOE_ATTACK_SPEED,
             new FabricItemSettings().fireproof()));
 
-    public static final Item HIHIIROKANE_SWORD = registerItem("hihiirokane_sword", new SwordItem(ModToolMaterials.HIHIIROKANE, 3, -2.4f,
+    public static final Item HIHIIROKANE_SWORD = registerItem("hihiirokane_sword", new SwordItem(ModToolMaterials.HIHIIROKANE, SWORD_ATTACK_DAMAGE, SWORD_ATTACK_SPEED,
             new FabricItemSettings().fireproof()));
-    public static final Item HIHIIROKANE_PICKAXE = registerItem("hihiirokane_pickaxe", new PickaxeItem(ModToolMaterials.HIHIIROKANE, 1, -2.8f,
+    public static final Item HIHIIROKANE_PICKAXE = registerItem("hihiirokane_pickaxe", new PickaxeItem(ModToolMaterials.HIHIIROKANE, PICKAXE_ATTACK_DAMAGE, PICKAXE_ATTACK_SPEED,
             new FabricItemSettings().fireproof()));
-    public static final Item HIHIIROKANE_AXE = registerItem("hihiirokane_axe", new AxeItem(ModToolMaterials.HIHIIROKANE, 6, -3.1f,
+    public static final Item HIHIIROKANE_AXE = registerItem("hihiirokane_axe", new AxeItem(ModToolMaterials.HIHIIROKANE, AXE_ATTACK_DAMAGE, AXE_ATTACK_SPEED,
             new FabricItemSettings().fireproof()));
-    public static final Item HIHIIROKANE_SHOVEL = registerItem("hihiirokane_shovel", new ShovelItem(ModToolMaterials.HIHIIROKANE, 1.5f, -3.0f,
+    public static final Item HIHIIROKANE_SHOVEL = registerItem("hihiirokane_shovel", new ShovelItem(ModToolMaterials.HIHIIROKANE, SHOVEL_ATTACK_DAMAGE, SHOVEL_ATTACK_SPEED,
             new FabricItemSettings().fireproof()));
-    public static final Item HIHIIROKANE_HOE = registerItem("hihiirokane_hoe", new HoeItem(ModToolMaterials.HIHIIROKANE, -2, -1.0f,
+    public static final Item HIHIIROKANE_HOE = registerItem("hihiirokane_hoe", new HoeItem(ModToolMaterials.HIHIIROKANE, HOE_ATTACK_DAMAGE, HOE_ATTACK_SPEED,
             new FabricItemSettings().fireproof()));
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -193,6 +204,8 @@ public class ModItems {
     public static final Item RAW_MAKAITE_BLOCK = registerBlockItem("raw_makaite_block", new BlockItem(ModBlocks.RAW_MAKAITE_BLOCK,
             new FabricItemSettings().fireproof()));
     public static final Item MAKAITE_BLOCK = registerBlockItem("makaite_block", new BlockItem(ModBlocks.MAKAITE_BLOCK,
+            new FabricItemSettings().fireproof()));
+    public static final Item HIHIIROKANE_BLOCK = registerBlockItem("hihiirokane_block", new BlockItem(ModBlocks.HIHIIROKANE_BLOCK,
             new FabricItemSettings().fireproof()));
 
     private static Item registerBlockItem(String name, BlockItem block) {
