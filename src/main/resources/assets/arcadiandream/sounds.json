@@ -184,5 +184,17 @@
       "arcadiandream:random/metal"
     ],
     "subtitle": "arcadiandream.subtitles.item.folding_chair.hit"
+  },
+  "item.hihiirokane.autosmelt.on": {
+    "sounds": [
+      "mob/ghast/fireball4"
+    ],
+    "subtitle": "arcadiandream.subtitles.item.hihiirokane.autosmelt.on"
+  },
+  "item.hihiirokane.autosmelt.off": {
+    "sounds": [
+      "random/fizz"
+    ],
+    "subtitle": "arcadiandream.subtitles.item.hihiirokane.autosmelt.off"
   }
 }

@@ -11,12 +11,12 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ToolItem;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.recipe.SmeltingRecipe;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
-import net.reimaden.arcadiandream.item.ModToolMaterials;
+import net.reimaden.arcadiandream.item.custom.tools.HihiirokaneTool;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -59,24 +59,29 @@ public class BlockMixin {
         List<ItemStack> items = new ArrayList<>();
         List<ItemStack> returnValue = cir.getReturnValue();
 
-        // TODO: Make auto-smelting optional
-        if (((ToolItem) stack.getItem()).getMaterial() != ModToolMaterials.HIHIIROKANE) {
+        if (!(stack.getItem() instanceof HihiirokaneTool)) {
             cir.setReturnValue(returnValue);
             return;
         }
 
-        for (ItemStack itemStack : returnValue) {
-            Optional<SmeltingRecipe> recipe = world.getRecipeManager().getFirstMatch(RecipeType.SMELTING, new SimpleInventory(itemStack), world);
+        NbtCompound nbt = stack.getOrCreateNbt();
+        if (!nbt.contains("autosmelt") || nbt.getBoolean("autosmelt")) {
+            for (ItemStack itemStack : returnValue) {
+                Optional<SmeltingRecipe> recipe = world.getRecipeManager().getFirstMatch(RecipeType.SMELTING, new SimpleInventory(itemStack), world);
 
-            if (recipe.isPresent()) {
-                ItemStack smelted = recipe.get().getOutput(world.getRegistryManager()).copy();
-                smelted.setCount(itemStack.getCount());
-                items.add(smelted);
-            } else {
-                items.add(itemStack);
+                if (recipe.isPresent()) {
+                    ItemStack smelted = recipe.get().getOutput(world.getRegistryManager()).copy();
+                    smelted.setCount(itemStack.getCount());
+                    items.add(smelted);
+                } else {
+                    items.add(itemStack);
+                }
             }
+
+            cir.setReturnValue(items);
+            return;
         }
 
-        cir.setReturnValue(items);
+        cir.setReturnValue(returnValue);
     }
 }

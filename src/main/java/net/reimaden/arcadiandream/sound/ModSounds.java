@@ -27,6 +27,8 @@ public class ModSounds {
     public static final SoundEvent ITEM_MIRACLE_MALLET_USE = registerSoundEvent("item.miracle_mallet.use");
     public static final SoundEvent ITEM_GHASTLY_LANTERN_USE = registerSoundEvent("item.ghastly_lantern.use");
     public static final SoundEvent ITEM_FOLDING_CHAIR_HIT = registerSoundEvent("item.folding_chair.hit");
+    public static final SoundEvent ITEM_HIHIIROKANE_AUTOSMELT_ON = registerSoundEvent("item.hihiirokane.autosmelt.on");
+    public static final SoundEvent ITEM_HIHIIROKANE_AUTOSMELT_OFF = registerSoundEvent("item.hihiirokane.autosmelt.off");
 
     public static final SoundEvent BLOCK_ONBASHIRA_ADD_ITEM = registerSoundEvent("block.onbashira.add_item");
     public static final SoundEvent BLOCK_RITUAL_SHRINE_USE = registerSoundEvent("block.ritual_shrine.use");

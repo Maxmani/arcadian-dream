@@ -115,15 +115,15 @@ public class ModItems {
     public static final Item MAKAITE_HOE = registerItem("makaite_hoe", new HoeItem(ModToolMaterials.MAKAITE, HOE_ATTACK_DAMAGE, HOE_ATTACK_SPEED,
             new FabricItemSettings().fireproof()));
 
-    public static final Item HIHIIROKANE_SWORD = registerItem("hihiirokane_sword", new SwordItem(ModToolMaterials.HIHIIROKANE, SWORD_ATTACK_DAMAGE, SWORD_ATTACK_SPEED,
+    public static final Item HIHIIROKANE_SWORD = registerItem("hihiirokane_sword", new HihiirokaneSwordItem(ModToolMaterials.HIHIIROKANE, SWORD_ATTACK_DAMAGE, SWORD_ATTACK_SPEED,
             new FabricItemSettings().fireproof()));
-    public static final Item HIHIIROKANE_PICKAXE = registerItem("hihiirokane_pickaxe", new PickaxeItem(ModToolMaterials.HIHIIROKANE, PICKAXE_ATTACK_DAMAGE, PICKAXE_ATTACK_SPEED,
+    public static final Item HIHIIROKANE_PICKAXE = registerItem("hihiirokane_pickaxe", new HihiirokanePickaxeItem(ModToolMaterials.HIHIIROKANE, PICKAXE_ATTACK_DAMAGE, PICKAXE_ATTACK_SPEED,
             new FabricItemSettings().fireproof()));
-    public static final Item HIHIIROKANE_AXE = registerItem("hihiirokane_axe", new AxeItem(ModToolMaterials.HIHIIROKANE, AXE_ATTACK_DAMAGE, AXE_ATTACK_SPEED,
+    public static final Item HIHIIROKANE_AXE = registerItem("hihiirokane_axe", new HihiirokaneAxeItem(ModToolMaterials.HIHIIROKANE, AXE_ATTACK_DAMAGE, AXE_ATTACK_SPEED,
             new FabricItemSettings().fireproof()));
-    public static final Item HIHIIROKANE_SHOVEL = registerItem("hihiirokane_shovel", new ShovelItem(ModToolMaterials.HIHIIROKANE, SHOVEL_ATTACK_DAMAGE, SHOVEL_ATTACK_SPEED,
+    public static final Item HIHIIROKANE_SHOVEL = registerItem("hihiirokane_shovel", new HihiirokaneShovelItem(ModToolMaterials.HIHIIROKANE, SHOVEL_ATTACK_DAMAGE, SHOVEL_ATTACK_SPEED,
             new FabricItemSettings().fireproof()));
-    public static final Item HIHIIROKANE_HOE = registerItem("hihiirokane_hoe", new HoeItem(ModToolMaterials.HIHIIROKANE, HOE_ATTACK_DAMAGE, HOE_ATTACK_SPEED,
+    public static final Item HIHIIROKANE_HOE = registerItem("hihiirokane_hoe", new HihiirokaneHoeItem(ModToolMaterials.HIHIIROKANE, HOE_ATTACK_DAMAGE, HOE_ATTACK_SPEED,
             new FabricItemSettings().fireproof()));
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

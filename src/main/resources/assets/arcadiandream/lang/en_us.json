@@ -126,6 +126,8 @@
   "item.arcadiandream.hihiirokane_axe": "Hihi'irokane Axe",
   "item.arcadiandream.hihiirokane_shovel": "Hihi'irokane Shovel",
   "item.arcadiandream.hihiirokane_hoe": "Hihi'irokane Hoe",
+  "item.arcadiandream.hihiirokane.tooltip.autosmelt_on": [{"text":"Auto-smelt: ON","color":"#FFC64D"}],
+  "item.arcadiandream.hihiirokane.tooltip.autosmelt_off": [{"text":"Auto-smelt: OFF","color":"#AE0000"}],
   "item.arcadiandream.smithing_template.hihiirokane_upgrade.additions_slot_description": "Add Hihi'irokane Ingot",
   "item.arcadiandream.smithing_template.hihiirokane_upgrade.applies_to": "Netherite Equipment",
   "item.arcadiandream.smithing_template.hihiirokane_upgrade.base_slot_description": "Add Netherite armor, weapon, or tool",
@@ -226,6 +228,8 @@
   "arcadiandream.subtitles.entity.villager.work_antiquarian": "Antiquarian works",
   "arcadiandream.subtitles.item.ghastly_lantern.use": "Ghastly Send-Off Lantern used",
   "arcadiandream.subtitles.item.folding_chair.hit": "Folding Chair clangs",
+  "arcadiandream.subtitles.item.hihiirokane.autosmelt.on": "Hihi'irokane flares up",
+  "arcadiandream.subtitles.item.hihiirokane.autosmelt.off": "Hihi'irokane fizzles out",
 
   "death.attack.danmaku": "%1$s was shot by %2$s using danmaku",
   "death.attack.danmaku.item": "%1$s was shot by %2$s using %3$s",
