@@ -10,7 +10,6 @@ import net.minecraft.item.ArmorMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.reimaden.arcadiandream.ArcadianDream;
 import net.reimaden.arcadiandream.sound.ModSounds;
 
@@ -22,9 +21,8 @@ public enum ModArmorMaterials implements ArmorMaterial {
             ModSounds.ITEM_ARMOR_EQUIP_ORDINARY, 0.0f, 0.0f, () -> Ingredient.fromTag(ItemTags.WOOL)),
     MAKAITE("makaite", 24, new int[] {2, 6, 5, 2}, 10,
             ModSounds.ITEM_ARMOR_EQUIP_MAKAITE, 0.0f, 0.0f, () -> Ingredient.ofItems(ModItems.MAKAITE_INGOT)),
-    // TODO: Add Hihi'irokane armor fully and tweak these stats
-    HIHIIROKANE("hihiirokane", 41, new int[] {3, 8, 6, 3}, 20,
-            SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 4.0f, 0.1f, () -> Ingredient.ofItems(ModItems.HIHIIROKANE_INGOT));
+    HIHIIROKANE("hihiirokane", 41, new int[] {4, 9, 7, 4}, 20,
+            ModSounds.ITEM_ARMOR_EQUIP_HIHIIROKANE, 4.0f, 0.1f, () -> Ingredient.ofItems(ModItems.HIHIIROKANE_INGOT));
 
     private final String name;
     private final int durabilityMultiplier;

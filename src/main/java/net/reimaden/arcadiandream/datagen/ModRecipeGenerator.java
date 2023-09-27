@@ -210,6 +210,10 @@ public class ModRecipeGenerator extends ModRecipeProvider {
         makeHihiirokaneUpgradeRecipe(exporter, Items.NETHERITE_AXE, RecipeCategory.TOOLS, ModItems.HIHIIROKANE_AXE);
         makeHihiirokaneUpgradeRecipe(exporter, Items.NETHERITE_SHOVEL, RecipeCategory.TOOLS, ModItems.HIHIIROKANE_SHOVEL);
         makeHihiirokaneUpgradeRecipe(exporter, Items.NETHERITE_HOE, RecipeCategory.TOOLS, ModItems.HIHIIROKANE_HOE);
+        makeHihiirokaneUpgradeRecipe(exporter, Items.NETHERITE_HELMET, RecipeCategory.COMBAT, ModItems.HIHIIROKANE_HELMET);
+        makeHihiirokaneUpgradeRecipe(exporter, Items.NETHERITE_CHESTPLATE, RecipeCategory.COMBAT, ModItems.HIHIIROKANE_CHESTPLATE);
+        makeHihiirokaneUpgradeRecipe(exporter, Items.NETHERITE_LEGGINGS, RecipeCategory.COMBAT, ModItems.HIHIIROKANE_LEGGINGS);
+        makeHihiirokaneUpgradeRecipe(exporter, Items.NETHERITE_BOOTS, RecipeCategory.COMBAT, ModItems.HIHIIROKANE_BOOTS);
 
         // Ritual Crafting recipes
         RitualCraftingRecipeJsonBuilder.create(ModItems.NUE_TRIDENT)

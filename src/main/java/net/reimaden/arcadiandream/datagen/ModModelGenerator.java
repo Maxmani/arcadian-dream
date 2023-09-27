@@ -107,6 +107,10 @@ public class ModModelGenerator extends FabricModelProvider {
         item.registerArmor((ArmorItem) ModItems.MAKAITE_CHESTPLATE);
         item.registerArmor((ArmorItem) ModItems.MAKAITE_LEGGINGS);
         item.registerArmor((ArmorItem) ModItems.MAKAITE_BOOTS);
+        item.registerArmor((ArmorItem) ModItems.HIHIIROKANE_HELMET);
+        item.registerArmor((ArmorItem) ModItems.HIHIIROKANE_CHESTPLATE);
+        item.registerArmor((ArmorItem) ModItems.HIHIIROKANE_LEGGINGS);
+        item.registerArmor((ArmorItem) ModItems.HIHIIROKANE_BOOTS);
     }
 
     @SuppressWarnings("SameParameterValue")

@@ -59,6 +59,10 @@ public class ModItemGroups {
                 entries.add(ModItems.MAKAITE_AXE);
                 entries.add(ModItems.MAKAITE_SHOVEL);
                 entries.add(ModItems.MAKAITE_HOE);
+                entries.add(ModItems.HIHIIROKANE_HELMET);
+                entries.add(ModItems.HIHIIROKANE_CHESTPLATE);
+                entries.add(ModItems.HIHIIROKANE_LEGGINGS);
+                entries.add(ModItems.HIHIIROKANE_BOOTS);
                 entries.add(ModItems.HIHIIROKANE_SWORD);
                 entries.add(ModItems.HIHIIROKANE_PICKAXE);
                 entries.add(ModItems.HIHIIROKANE_AXE);

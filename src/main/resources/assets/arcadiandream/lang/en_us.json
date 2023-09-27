@@ -136,6 +136,10 @@
   "item.arcadiandream.fairy_charm.tooltip.mode_pacify": [{"text":"Mode: Pacify","color":"#12E935"}],
   "item.arcadiandream.fairy_charm.tooltip.mode_prevent": [{"text":"Mode: Prevent Spawning","color":"#F93914"}],
   "item.arcadiandream.fairy_charm.tooltip.mode_both": [{"text":"Mode: Both","color":"#F9F414"}],
+  "item.arcadiandream.hihiirokane_helmet": "Hihi'irokane Helmet",
+  "item.arcadiandream.hihiirokane_chestplate": "Hihi'irokane Chestplate",
+  "item.arcadiandream.hihiirokane_leggings": "Hihi'irokane Leggings",
+  "item.arcadiandream.hihiirokane_boots": "Hihi'irokane Boots",
 
   "upgrade.arcadiandream.hihiirokane_upgrade": "Hihi'irokane Upgrade",
 
@@ -235,6 +239,7 @@
   "arcadiandream.subtitles.item.hihiirokane.autosmelt.on": "Hihi'irokane flares up",
   "arcadiandream.subtitles.item.hihiirokane.autosmelt.off": "Hihi'irokane fizzles out",
   "arcadiandream.subtitles.item.fairy_charm.use": "Fairy Charm dings",
+  "arcadiandream.subtitles.item.armor.equip_hihiirokane": "Hihi'irokane armor clanks",
 
   "death.attack.danmaku": "%1$s was shot by %2$s using danmaku",
   "death.attack.danmaku.item": "%1$s was shot by %2$s using %3$s",

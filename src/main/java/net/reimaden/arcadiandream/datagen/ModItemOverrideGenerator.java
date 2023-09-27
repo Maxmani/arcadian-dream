@@ -25,5 +25,11 @@ public class ModItemOverrideGenerator extends ItemOverrideDataProvider {
                 .exclude(new Identifier(ArcadianDream.MOD_ID, "trims/color_palettes/makaite"))
                 .include(new Identifier(ArcadianDream.MOD_ID, "trims/color_palettes/makaite_darker"))
                 .end();
+        anyTrimBuilder(new ArmorSet(ModItems.HIHIIROKANE_HELMET, ModItems.HIHIIROKANE_CHESTPLATE, ModItems.HIHIIROKANE_LEGGINGS, ModItems.HIHIIROKANE_BOOTS))
+                .twoLayer()
+                .excludeVanillaDarker()
+                .exclude(new Identifier(ArcadianDream.MOD_ID, "trims/color_palettes/hihiirokane"))
+                .include(new Identifier(ArcadianDream.MOD_ID, "trims/color_palettes/hihiirokane_darker"))
+                .end();
     }
 }

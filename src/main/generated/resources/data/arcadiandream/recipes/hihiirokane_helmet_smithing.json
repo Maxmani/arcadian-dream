@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "arcadiandream:hihiirokane_ingot"
+  },
+  "base": {
+    "item": "minecraft:netherite_helmet"
+  },
+  "result": {
+    "item": "arcadiandream:hihiirokane_helmet"
+  },
+  "template": {
+    "item": "arcadiandream:hihiirokane_upgrade_smithing_template"
+  }
+}

@@ -107,7 +107,8 @@ public class ModTagGenerator {
 
             // minecraft/tags/items
             getOrCreateTagBuilder(TRIMMABLE_ARMOR)
-                    .add(ModItems.MAKAITE_HELMET, ModItems.MAKAITE_CHESTPLATE, ModItems.MAKAITE_LEGGINGS, ModItems.MAKAITE_BOOTS);
+                    .add(ModItems.MAKAITE_HELMET, ModItems.MAKAITE_CHESTPLATE, ModItems.MAKAITE_LEGGINGS, ModItems.MAKAITE_BOOTS,
+                            ModItems.HIHIIROKANE_HELMET, ModItems.HIHIIROKANE_CHESTPLATE, ModItems.HIHIIROKANE_LEGGINGS, ModItems.HIHIIROKANE_BOOTS);
             getOrCreateTagBuilder(BEACON_PAYMENT_ITEMS)
                     .add(ModItems.DRAGON_GEM, ModItems.MAKAITE_INGOT, ModItems.HIHIIROKANE_INGOT);
             getOrCreateTagBuilder(MUSIC_DISCS)
@@ -133,7 +134,8 @@ public class ModTagGenerator {
             getOrCreateTagBuilder(ConventionalItemTags.SPEARS)
                     .add(ModItems.NUE_TRIDENT);
             getOrCreateTagBuilder(SWORDS)
-                    .add(ModItems.MAKAITE_SWORD, ModItems.HISOU_SWORD, ModItems.DEATH_SCYTHE, ModItems.ICICLE_SWORD, ModItems.HIHIIROKANE_SWORD);
+                    .add(ModItems.MAKAITE_SWORD, ModItems.HISOU_SWORD, ModItems.DEATH_SCYTHE, ModItems.ICICLE_SWORD,
+                            ModItems.HIHIIROKANE_SWORD);
             getOrCreateTagBuilder(ModTags.Items.HAMMERS)
                     .add(ModItems.MOCHI_MALLET, ModItems.MIRACLE_MALLET, ModItems.FOLDING_CHAIR);
             getOrCreateTagBuilder(TOOLS)

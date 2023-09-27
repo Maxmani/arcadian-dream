@@ -102,6 +102,15 @@ public class ModItems {
             new FabricItemSettings().fireproof()));
     public static final Item MAKAITE_BOOTS = registerItem("makaite_boots", new ArmorItem(ModArmorMaterials.MAKAITE, ArmorItem.Type.BOOTS,
             new FabricItemSettings().fireproof()));
+
+    public static final Item HIHIIROKANE_HELMET = registerItem("hihiirokane_helmet", new ArmorItem(ModArmorMaterials.HIHIIROKANE, ArmorItem.Type.HELMET,
+            new FabricItemSettings().fireproof()));
+    public static final Item HIHIIROKANE_CHESTPLATE = registerItem("hihiirokane_chestplate", new ArmorItem(ModArmorMaterials.HIHIIROKANE, ArmorItem.Type.CHESTPLATE,
+            new FabricItemSettings().fireproof()));
+    public static final Item HIHIIROKANE_LEGGINGS = registerItem("hihiirokane_leggings", new ArmorItem(ModArmorMaterials.HIHIIROKANE, ArmorItem.Type.LEGGINGS,
+            new FabricItemSettings().fireproof()));
+    public static final Item HIHIIROKANE_BOOTS = registerItem("hihiirokane_boots", new ArmorItem(ModArmorMaterials.HIHIIROKANE, ArmorItem.Type.BOOTS,
+            new FabricItemSettings().fireproof()));
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Tools ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
