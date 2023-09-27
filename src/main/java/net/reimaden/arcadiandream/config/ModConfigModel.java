@@ -86,6 +86,16 @@ public class ModConfigModel {
         public boolean meltsInstantly = true;
     }
 
+    @Nest
+    public FairyCharmOptions fairyCharmOptions = new FairyCharmOptions();
+
+    public static class FairyCharmOptions {
+        public boolean canPreventSpawning = true;
+
+        @RangeConstraint(min = 25, max = 128, decimalPlaces = 0)
+        public double distance = 128;
+    }
+
     @SectionHeader("danmaku")
 
     @Sync(Option.SyncMode.OVERRIDE_CLIENT)

@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-23T21:04:25.661483153	Arcadian Dream/Model Definitions
+// 1.20.1	2023-09-27T02:15:06.226109296	Arcadian Dream/Model Definitions
 8665c40bf0b9b475a0f6ff1a2d61017c81991644 assets/arcadiandream/models/item/death_scythe.json
 358490faacde8361e7c43b03cd7c28ed2f62afd7 assets/arcadiandream/models/item/makaite_helmet.json
 824264f060dff145f04cd7f2ad82b288768a81ad assets/arcadiandream/models/item/hihiirokane_sword.json
@@ -116,6 +116,7 @@ d4a98e7abde5d9530bab47b7d362e6f2631314b0 assets/arcadiandream/models/block/raw_m
 9e0e32906a9f5e3948947667c802838bfcc2e073 assets/arcadiandream/models/item/healing_charm.json
 46675d5f1888dd3ad31ab43d1982e42458a51e0d assets/arcadiandream/blockstates/raw_makaite_block.json
 42d53a2c07c98800c30ccf12e6191e27a89be9fa assets/arcadiandream/models/item/star_bullet_core.json
+a972e750f92ca4b6947e4bdd044bdb3c6877c788 assets/arcadiandream/models/item/fairy_charm.json
 1377710fcf69a47b334e107e75ad7cfd010b20ab assets/arcadiandream/models/block/hihiirokane_block.json
 2e7f5228582495c1646370d6828fafb991dd07e1 assets/arcadiandream/models/item/makaite_leggings_emerald_trim.json
 e9d5006b9749c8a8facad819b770a5a5ad922280 assets/arcadiandream/models/item/makaite_helmet_quartz_trim.json

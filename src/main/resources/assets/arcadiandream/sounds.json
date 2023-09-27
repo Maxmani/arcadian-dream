@@ -196,5 +196,11 @@
       "random/fizz"
     ],
     "subtitle": "arcadiandream.subtitles.item.hihiirokane.autosmelt.off"
+  },
+  "item.fairy_charm.use": {
+    "sounds": [
+      "random/orb"
+    ],
+    "subtitle": "arcadiandream.subtitles.item.fairy_charm.use"
   }
 }

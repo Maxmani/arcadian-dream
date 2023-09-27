@@ -60,7 +60,7 @@ public class FairyEntity extends BaseFairyEntity {
         goalSelector.add(5, new LookAroundGoal(this));
 
         targetSelector.add(1, new RevengeGoal(this, BaseFairyEntity.class));
-        targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
+        targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true, this::shouldAngerAt));
         targetSelector.add(3, new UniversalAngerGoal<>(this, false));
     }
 

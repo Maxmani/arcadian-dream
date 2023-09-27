@@ -63,6 +63,7 @@ public class ModItems {
     public static final Item HOURAI_ELIXIR = registerItem("hourai_elixir", new HouraiElixirItem(new FabricItemSettings().maxCount(1).maxDamage(3).rarity(Rarity.EPIC)));
     public static final Item MAGATAMA_NECKLACE = registerItem("magatama_necklace", new MagatamaNecklaceItem(new FabricItemSettings().maxCount(1).rarity(Rarity.UNCOMMON)));
     public static final Item GHASTLY_LANTERN = registerItem("ghastly_lantern", new GhastlyLanternItem(new FabricItemSettings().maxCount(1)));
+    public static final Item FAIRY_CHARM = registerItem("fairy_charm", new FairyCharmItem(new FabricItemSettings().maxCount(1).rarity(Rarity.UNCOMMON)));
 
     public static final Item SPREAD_PATTERN_TEMPLATE = registerItem("spread_pattern_template", new PatternTemplateItem(new FabricItemSettings().maxCount(16)));
     public static final Item RAY_PATTERN_TEMPLATE = registerItem("ray_pattern_template", new PatternTemplateItem(new FabricItemSettings().maxCount(16)));

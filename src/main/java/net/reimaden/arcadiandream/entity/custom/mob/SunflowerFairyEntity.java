@@ -6,6 +6,9 @@
 package net.reimaden.arcadiandream.entity.custom.mob;
 
 import com.google.common.collect.ImmutableList;
+import dev.emi.trinkets.api.SlotReference;
+import dev.emi.trinkets.api.TrinketComponent;
+import dev.emi.trinkets.api.TrinketsApi;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -13,9 +16,11 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.random.Random;
@@ -28,9 +33,13 @@ import net.reimaden.arcadiandream.entity.custom.danmaku.BaseBulletEntity;
 import net.reimaden.arcadiandream.entity.custom.danmaku.CircleBulletEntity;
 import net.reimaden.arcadiandream.entity.custom.danmaku.PelletBulletEntity;
 import net.reimaden.arcadiandream.entity.custom.danmaku.StarBulletEntity;
+import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.item.custom.danmaku.MobBulletPatterns;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
+import java.util.Optional;
 
 public class SunflowerFairyEntity extends BaseFairyEntity {
 
@@ -58,7 +67,24 @@ public class SunflowerFairyEntity extends BaseFairyEntity {
         goalSelector.add(5, new LookAroundGoal(this));
 
         targetSelector.add(1, new RevengeGoal(this, BaseFairyEntity.class));
-        targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+        targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true, this::isTarget));
+    }
+
+    private boolean isTarget(LivingEntity entity) {
+        Optional<TrinketComponent> trinketComponent = TrinketsApi.getTrinketComponent(entity);
+
+        if (trinketComponent.isEmpty()) return true;
+
+        List<Pair<SlotReference, ItemStack>> list = trinketComponent.get().getEquipped(ModItems.FAIRY_CHARM);
+        if (list.size() > 0) {
+            ItemStack stack = list.get(0).getRight();
+            if (stack != null) {
+                NbtCompound nbt = stack.getOrCreateNbt();
+                return nbt.getInt("mode") == 1;
+            }
+        }
+
+        return true;
     }
 
     @Override

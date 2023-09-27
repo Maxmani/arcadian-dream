@@ -25,6 +25,8 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
     private final Option<java.lang.Integer> houraiElixirOptions_elixirFatigueThreshold = this.optionForKey(this.keys.houraiElixirOptions_elixirFatigueThreshold);
     private final Option<java.lang.Double> foldingChairOptions_knockbackStrength = this.optionForKey(this.keys.foldingChairOptions_knockbackStrength);
     private final Option<java.lang.Boolean> icicleSwordOptions_meltsInstantly = this.optionForKey(this.keys.icicleSwordOptions_meltsInstantly);
+    private final Option<java.lang.Boolean> fairyCharmOptions_canPreventSpawning = this.optionForKey(this.keys.fairyCharmOptions_canPreventSpawning);
+    private final Option<java.lang.Double> fairyCharmOptions_distance = this.optionForKey(this.keys.fairyCharmOptions_distance);
     private final Option<java.lang.Integer> danmakuCooldownMultiplier = this.optionForKey(this.keys.danmakuCooldownMultiplier);
     private final Option<java.lang.Float> danmakuDamageMultiplier = this.optionForKey(this.keys.danmakuDamageMultiplier);
     private final Option<java.lang.Boolean> cooldownPerBulletType = this.optionForKey(this.keys.cooldownPerBulletType);
@@ -169,6 +171,25 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         }
 
     }
+    public final FairyCharmOptions_ fairyCharmOptions = new FairyCharmOptions_();
+    public class FairyCharmOptions_ implements FairyCharmOptions {
+        public boolean canPreventSpawning() {
+            return fairyCharmOptions_canPreventSpawning.value();
+        }
+
+        public void canPreventSpawning(boolean value) {
+            fairyCharmOptions_canPreventSpawning.set(value);
+        }
+
+        public double distance() {
+            return fairyCharmOptions_distance.value();
+        }
+
+        public void distance(double value) {
+            fairyCharmOptions_distance.set(value);
+        }
+
+    }
     public int danmakuCooldownMultiplier() {
         return danmakuCooldownMultiplier.value();
     }
@@ -258,6 +279,12 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         boolean meltsInstantly();
         void meltsInstantly(boolean value);
     }
+    public interface FairyCharmOptions {
+        boolean canPreventSpawning();
+        void canPreventSpawning(boolean value);
+        double distance();
+        void distance(double value);
+    }
     public interface FairyOptions {
         boolean spawnFairies();
         void spawnFairies(boolean value);
@@ -279,6 +306,8 @@ public class ArcadianDreamConfig extends ConfigWrapper<net.reimaden.arcadiandrea
         public final Option.Key houraiElixirOptions_elixirFatigueThreshold = new Option.Key("houraiElixirOptions.elixirFatigueThreshold");
         public final Option.Key foldingChairOptions_knockbackStrength = new Option.Key("foldingChairOptions.knockbackStrength");
         public final Option.Key icicleSwordOptions_meltsInstantly = new Option.Key("icicleSwordOptions.meltsInstantly");
+        public final Option.Key fairyCharmOptions_canPreventSpawning = new Option.Key("fairyCharmOptions.canPreventSpawning");
+        public final Option.Key fairyCharmOptions_distance = new Option.Key("fairyCharmOptions.distance");
         public final Option.Key danmakuCooldownMultiplier = new Option.Key("danmakuCooldownMultiplier");
         public final Option.Key danmakuDamageMultiplier = new Option.Key("danmakuDamageMultiplier");
         public final Option.Key cooldownPerBulletType = new Option.Key("cooldownPerBulletType");

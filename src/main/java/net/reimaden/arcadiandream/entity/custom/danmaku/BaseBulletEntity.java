@@ -5,6 +5,7 @@
 
 package net.reimaden.arcadiandream.entity.custom.danmaku;
 
+import dev.emi.trinkets.api.TrinketComponent;
 import dev.emi.trinkets.api.TrinketsApi;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -26,6 +27,8 @@ import net.reimaden.arcadiandream.item.ModItems;
 import net.reimaden.arcadiandream.particle.ModParticles;
 import net.reimaden.arcadiandream.sound.ModSounds;
 import net.reimaden.arcadiandream.statistic.ModStats;
+
+import java.util.Optional;
 
 public class BaseBulletEntity extends ThrownItemEntity {
 
@@ -226,7 +229,8 @@ public class BaseBulletEntity extends ThrownItemEntity {
     }
 
     private static boolean playerHasMagatama(LivingEntity entity) {
-        //noinspection OptionalGetWithoutIsPresent
-        return TrinketsApi.getTrinketComponent(entity).get().isEquipped(ModItems.MAGATAMA_NECKLACE);
+        Optional<TrinketComponent> trinketComponent = TrinketsApi.getTrinketComponent(entity);
+
+        return trinketComponent.isPresent() && trinketComponent.get().isEquipped(ModItems.MAGATAMA_NECKLACE);
     }
 }

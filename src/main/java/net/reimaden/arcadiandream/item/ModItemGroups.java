@@ -45,6 +45,7 @@ public class ModItemGroups {
                 entries.add(ModItems.HOURAI_ELIXIR);
                 entries.add(ModItems.MAGATAMA_NECKLACE);
                 entries.add(ModItems.GHASTLY_LANTERN);
+                entries.add(ModItems.FAIRY_CHARM);
                 entries.add(ModItems.HEAVENLY_PEACH);
                 entries.add(ModItems.LAMPREY);
                 entries.add(ModItems.COOKED_LAMPREY);

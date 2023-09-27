@@ -5,21 +5,18 @@
 
 package net.reimaden.arcadiandream.item.custom.misc;
 
-import dev.emi.trinkets.api.SlotReference;
 import dev.emi.trinkets.api.TrinketItem;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
-import net.reimaden.arcadiandream.item.IEquipmentHelper;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.item.Equipment;
 
-public class ExtendItem extends TrinketItem implements IEquipmentHelper {
+public class ExtendItem extends TrinketItem implements Equipment {
 
     public ExtendItem(Settings settings) {
         super(settings);
     }
 
     @Override
-    public void onEquip(ItemStack stack, SlotReference slot, LivingEntity entity) {
-        super.onEquip(stack, slot, entity);
-        playEquipSound(stack, entity);
+    public EquipmentSlot getSlotType() {
+        return EquipmentSlot.MAINHAND;
     }
 }
