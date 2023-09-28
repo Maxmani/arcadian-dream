@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-28T17:36:18.526029056	Arcadian Dream/Model Definitions
+// 1.20.1	2023-09-28T17:51:38.781829899	Arcadian Dream/Model Definitions
 78b645aeb69c74b1e03bfc622260f7f12054cbfd assets/arcadiandream/models/item/hihiirokane_chestplate_netherite_trim.json
 316632ea4c361d65fe536cf2b053a1f00b08a2d0 assets/arcadiandream/models/block/makaite_ore.json
 ec4d03e6d4d7224c579cc071f078dfe339f3e196 assets/arcadiandream/models/item/hihiirokane_helmet_copper_trim.json
@@ -71,8 +71,8 @@ e89d524d60e5af33bb746b5c699f97dd29deada6 assets/arcadiandream/models/item/makait
 b5c192ae4f2ce498480d1d59dac9d90556bc7654 assets/arcadiandream/blockstates/mysterious_seal.json
 b00d8df148c4dfeff561a1a4b8ce3401943a2f99 assets/arcadiandream/models/item/makaite_chestplate_emerald_trim.json
 e0e78929981df5d50293aaf67debe5be8b469cbf assets/arcadiandream/models/item/hihiirokane_helmet_amethyst_trim.json
-877cbf560cf064f7e660d00c612e879760cfc214 assets/arcadiandream/models/item/point_item.json
 087534ad55258abb1bcc1803f760adf46be4ae99 assets/arcadiandream/models/item/dragon_gem_block.json
+877cbf560cf064f7e660d00c612e879760cfc214 assets/arcadiandream/models/item/point_item.json
 d29e809285fe1a0cd3448237ac56f3fedbd83427 assets/arcadiandream/models/item/makaite_boots_emerald_trim.json
 3dd019c5905874740a310340e3affd249e444873 assets/arcadiandream/models/item/hihiirokane_leggings_amethyst_trim.json
 31fb4e758d26eed5dc8fce79ce2b7b5bd44e0711 assets/arcadiandream/models/item/hihiirokane_chestplate_diamond_trim.json

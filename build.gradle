@@ -45,21 +45,6 @@ repositories {
 	maven {
 		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
 	}
-	// maven {
-	//	 name = "Modrinth"
-	//	 url = "https://api.modrinth.com/maven"
-	// }
-	maven {
-		url = "https://jm.gserv.me/repository/maven-public/"
-	}
-	maven {
-		name = "GitHubPackages"
-		url = uri("https://maven.pkg.github.com/dhyces/trimmed")
-		credentials {
-			username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-			password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
-		}
-	}
 }
 
 dependencies {
@@ -100,11 +85,6 @@ dependencies {
 
 	// https://github.com/LlamaLad7/MixinExtras
 	include(implementation(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-fabric:${project.mixinextras_version}")))
-
-	// https://github.com/dhyces/trimmed
-	modRuntimeOnly("mysticdrew:common-networking-fabric:${project.common_networking_version}-${project.minecraft_version}")
-	// include(modImplementation("maven.modrinth:trimmed:${project.minecraft_version}-${project.trimmed_version}+fabric"))
-	include(modImplementation("dev.dhyces.trimmed:trimmed-fabric-${project.minecraft_version}:${project.trimmed_version}"))
 }
 
 processResources {

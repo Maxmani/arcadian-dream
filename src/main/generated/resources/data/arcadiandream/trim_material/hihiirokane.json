@@ -1,9 +1,0 @@
-{
-  "asset_name": "arcadiandream-hihiirokane",
-  "description": {
-    "color": "#AE0000",
-    "translate": "trim_pattern.arcadiandream.hihiirokane"
-  },
-  "ingredient": "arcadiandream:hihiirokane_ingot",
-  "item_model_index": -1.0
-}

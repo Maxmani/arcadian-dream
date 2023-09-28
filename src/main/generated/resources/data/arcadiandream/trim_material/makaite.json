@@ -1,9 +1,0 @@
-{
-  "asset_name": "arcadiandream-makaite",
-  "description": {
-    "color": "#DB6432",
-    "translate": "trim_pattern.arcadiandream.makaite"
-  },
-  "ingredient": "arcadiandream:makaite_ingot",
-  "item_model_index": -1.0
-}

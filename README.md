@@ -53,7 +53,7 @@ Online documentation is available [here](https://arcadiandream.reimaden.net).
 ## Credits
 
 - All [contributors](https://github.com/Maxmani/arcadian-dream/graphs/contributors)
-- Developers of used [libraries](https://github.com/Maxmani/arcadian-dream/blob/HEAD/build.gradle#L65)
+- Developers of used [libraries](https://github.com/Maxmani/arcadian-dream/blob/HEAD/build.gradle#L50)
 - [ZUN](https://www16.big.or.jp/~zun/) for Touhou Project
 
 ### Special thanks
