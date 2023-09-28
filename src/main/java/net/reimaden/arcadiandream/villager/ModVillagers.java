@@ -135,16 +135,8 @@ public class ModVillagers {
     }
 
     private static ItemStack getVillagerBullet() {
-        ItemStack stack;
         final ImmutableList<Item> shots = ModTags.SHOTS;
-        switch (RANDOM.nextInt(shots.size())) {
-            default -> stack = new ItemStack(shots.get(0));
-            case 1 -> stack = new ItemStack(shots.get(1));
-            case 2 -> stack = new ItemStack(shots.get(2));
-            case 3 -> stack = new ItemStack(shots.get(3));
-            case 4 -> stack = new ItemStack(shots.get(4));
-            case 5 -> stack = new ItemStack(shots.get(5));
-        }
+        ItemStack stack = new ItemStack(shots.get(RANDOM.nextInt(shots.size())));
         BaseShotItem shot = (BaseShotItem) stack.getItem();
         shot.setPower(stack, 10 - RANDOM.nextInt(5));
         shot.setSpeed(stack, 0.6f + RANDOM.nextFloat() * 0.6f);
