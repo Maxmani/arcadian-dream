@@ -50,6 +50,10 @@ public class RitualCraftingRecipeJsonBuilder implements CraftingRecipeJsonBuilde
         return input(Ingredient.fromTag(tag));
     }
 
+    public RitualCraftingRecipeJsonBuilder input(TagKey<Item> tag, int size) {
+        return input(Ingredient.fromTag(tag), size);
+    }
+
     public RitualCraftingRecipeJsonBuilder input(ItemConvertible itemProvider) {
         return input(itemProvider, 1);
     }

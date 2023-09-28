@@ -314,5 +314,13 @@ public class ModRecipeGenerator extends ModRecipeProvider {
                 .input(ModItems.HIHIIROKANE_CHUNK, 8)
                 .input(ModItems.MAKAITE_INGOT, 8)
                 .offerTo(exporter, ritualCraftingId(ModItems.HIHIIROKANE_INGOT));
+
+        RitualCraftingRecipeJsonBuilder.create(ModItems.FAIRY_CHARM)
+                .input(Items.SUNFLOWER)
+                .input(ItemTags.FLOWERS, 3)
+                .input(ModItems.BOMB_ITEM)
+                .input(ItemTags.SAPLINGS, 3)
+                .input(ModItems.DRAGON_GEM, 4)
+                .offerTo(exporter, ritualCraftingId(ModItems.FAIRY_CHARM));
     }
 }

@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-27T15:57:18.387268275	Arcadian Dream/Tags for minecraft:item
+// 1.20.1	2023-09-28T17:34:30.489597528	Arcadian Dream/Tags for minecraft:item
 2a360fb5d4317a615e1f09137665ab24b2c2cefe data/minecraft/tags/items/swords.json
 f77b1199ac0c67a4210437472e2802767222f7a2 data/c/tags/items/raw_meat.json
 5bbaf049f3334d6d8c9d808de4f8cbc22567de21 data/arcadiandream/tags/items/shots.json
@@ -9,8 +9,8 @@ b847cbad014dd8a5c7d85cba225a9b12b3fa3abf data/arcadiandream/tags/items/bullet_co
 bdb3c43a2cb8c5285723c58e5852a958c7c3a6a9 data/c/tags/items/ores.json
 9bcc55fda813f90b905ba617d7dec5f0cbbaa0c8 data/minecraft/tags/items/music_discs.json
 5a0ce851ebcded427135724bcf08eac4e6b7e946 data/c/tags/items/cooked_meat.json
-8303f3092dcf7a4961eb589c83df1a39a445cc5c data/minecraft/tags/items/beacon_payment_items.json
 970a7849263e703ec9c5d9e6ec7a0f21f84addad data/minecraft/tags/items/fishes.json
+8303f3092dcf7a4961eb589c83df1a39a445cc5c data/minecraft/tags/items/beacon_payment_items.json
 e321519edf246eb747c974e642a10950c9bbce6f data/arcadiandream/tags/items/danmaku_modifiers.json
 166e6d885fb32cfaa7ed5bba849e0f7a4b559108 data/c/tags/items/foods.json
 a4e9402b6b245ddc9f85e55338b52a52c5dc1c25 data/arcadiandream/tags/items/items.json

@@ -1,0 +1,44 @@
+{
+  "type": "arcadiandream:ritual_crafting",
+  "ingredients": [
+    {
+      "item": "minecraft:sunflower"
+    },
+    {
+      "tag": "minecraft:flowers"
+    },
+    {
+      "tag": "minecraft:flowers"
+    },
+    {
+      "tag": "minecraft:flowers"
+    },
+    {
+      "item": "arcadiandream:bomb_item"
+    },
+    {
+      "tag": "minecraft:saplings"
+    },
+    {
+      "tag": "minecraft:saplings"
+    },
+    {
+      "tag": "minecraft:saplings"
+    },
+    {
+      "item": "arcadiandream:dragon_gem"
+    },
+    {
+      "item": "arcadiandream:dragon_gem"
+    },
+    {
+      "item": "arcadiandream:dragon_gem"
+    },
+    {
+      "item": "arcadiandream:dragon_gem"
+    }
+  ],
+  "result": {
+    "item": "arcadiandream:fairy_charm"
+  }
+}
