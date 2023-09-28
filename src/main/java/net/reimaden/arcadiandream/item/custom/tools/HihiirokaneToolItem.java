@@ -20,30 +20,28 @@ import net.reimaden.arcadiandream.sound.ModSounds;
 
 import java.util.List;
 
-public interface HihiirokaneTool {
+public interface HihiirokaneToolItem {
 
     static TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand, Item item) {
         ItemStack stack = user.getStackInHand(hand);
 
+        if (!user.isSneaking() || !user.getOffHandStack().isEmpty()) return TypedActionResult.pass(stack);
+
+        user.getItemCooldownManager().set(item, 20);
+
+        NbtCompound nbt = stack.getOrCreateNbt();
+        nbt.putBoolean("autosmelt", nbt.contains("autosmelt") && !nbt.getBoolean("autosmelt"));
+
         if (!world.isClient()) {
-            if (!user.isSneaking()) return TypedActionResult.pass(stack);
-
-            user.getItemCooldownManager().set(item, 20);
-
-            NbtCompound nbt = stack.getOrCreateNbt();
-            nbt.putBoolean("autosmelt", nbt.contains("autosmelt") && !nbt.getBoolean("autosmelt"));
-
             user.playSound(nbt.getBoolean("autosmelt") ? ModSounds.ITEM_HIHIIROKANE_AUTOSMELT_ON : ModSounds.ITEM_HIHIIROKANE_AUTOSMELT_OFF,
                     user.getSoundCategory(), 0.5f, 1.2f);
 
             String translationKey = Util.createTranslationKey("item", new Identifier(ArcadianDream.MOD_ID,
                     nbt.getBoolean("autosmelt") ? "hihiirokane.tooltip.autosmelt_on" : "hihiirokane.tooltip.autosmelt_off"));
             user.sendMessage(Text.translatable(translationKey), true);
-
-            return TypedActionResult.success(stack);
         }
 
-        return TypedActionResult.pass(stack);
+        return TypedActionResult.success(stack, world.isClient());
     }
 
     static void appendTooltip(ItemStack stack, List<Text> tooltip) {

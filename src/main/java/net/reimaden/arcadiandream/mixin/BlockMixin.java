@@ -16,7 +16,7 @@ import net.minecraft.recipe.RecipeType;
 import net.minecraft.recipe.SmeltingRecipe;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
-import net.reimaden.arcadiandream.item.custom.tools.HihiirokaneTool;
+import net.reimaden.arcadiandream.item.custom.tools.HihiirokaneToolItem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -59,7 +59,7 @@ public class BlockMixin {
         List<ItemStack> items = new ArrayList<>();
         List<ItemStack> returnValue = cir.getReturnValue();
 
-        if (!(stack.getItem() instanceof HihiirokaneTool)) {
+        if (!(stack.getItem() instanceof HihiirokaneToolItem)) {
             cir.setReturnValue(returnValue);
             return;
         }

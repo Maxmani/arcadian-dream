@@ -18,7 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class HihiirokanePickaxeItem extends PickaxeItem implements HihiirokaneTool {
+public class HihiirokanePickaxeItem extends PickaxeItem implements HihiirokaneToolItem {
 
     public HihiirokanePickaxeItem(ToolMaterial material, int attackDamage, float attackSpeed, Settings settings) {
         super(material, attackDamage, attackSpeed, settings);
@@ -26,12 +26,12 @@ public class HihiirokanePickaxeItem extends PickaxeItem implements HihiirokaneTo
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        return HihiirokaneTool.use(world, user, hand, this);
+        return HihiirokaneToolItem.use(world, user, hand, this);
     }
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        HihiirokaneTool.appendTooltip(stack, tooltip);
+        HihiirokaneToolItem.appendTooltip(stack, tooltip);
 
         super.appendTooltip(stack, world, tooltip, context);
     }
