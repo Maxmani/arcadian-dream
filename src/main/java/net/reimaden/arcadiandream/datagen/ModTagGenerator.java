@@ -93,6 +93,8 @@ public class ModTagGenerator {
                     .add(Blocks.MUD);
             getOrCreateTagBuilder(ModTags.Blocks.HIHIIROKANE_ORES)
                     .add(ModBlocks.HIHIIROKANE_ORE, ModBlocks.DEEPSLATE_HIHIIROKANE_ORE);
+            getOrCreateTagBuilder(ConventionalBlockTags.VILLAGER_JOB_SITES)
+                    .add(ModBlocks.DANMAKU_CRAFTING_TABLE);
         }
     }
 
@@ -106,6 +108,20 @@ public class ModTagGenerator {
         protected void configure(RegistryWrapper.WrapperLookup arg) {
 
             // minecraft/tags/items
+            getOrCreateTagBuilder(AXES)
+                    .add(ModItems.MAKAITE_AXE, ModItems.HIHIIROKANE_AXE);
+            getOrCreateTagBuilder(HOES)
+                    .add(ModItems.MAKAITE_HOE, ModItems.HIHIIROKANE_HOE);
+            getOrCreateTagBuilder(PICKAXES)
+                    .add(ModItems.MAKAITE_PICKAXE, ModItems.HIHIIROKANE_PICKAXE);
+            getOrCreateTagBuilder(SHOVELS)
+                    .add(ModItems.MAKAITE_SHOVEL, ModItems.HIHIIROKANE_SHOVEL);
+            getOrCreateTagBuilder(SWORDS)
+                    .add(ModItems.MAKAITE_SWORD, ModItems.HISOU_SWORD, ModItems.DEATH_SCYTHE, ModItems.ICICLE_SWORD,
+                            ModItems.HIHIIROKANE_SWORD);
+            getOrCreateTagBuilder(TOOLS)
+                    .addTag(ConventionalItemTags.SPEARS)
+                    .addTag(ModTags.Items.HAMMERS);
             getOrCreateTagBuilder(TRIMMABLE_ARMOR)
                     .add(ModItems.MAKAITE_HELMET, ModItems.MAKAITE_CHESTPLATE, ModItems.MAKAITE_LEGGINGS, ModItems.MAKAITE_BOOTS,
                             ModItems.HIHIIROKANE_HELMET, ModItems.HIHIIROKANE_CHESTPLATE, ModItems.HIHIIROKANE_LEGGINGS, ModItems.HIHIIROKANE_BOOTS);
@@ -121,26 +137,13 @@ public class ModTagGenerator {
             copy(ModTags.Blocks.DRAGON_GEM_ORES, ModTags.Items.DRAGON_GEM_ORES);
             copy(ConventionalBlockTags.ORES, ConventionalItemTags.ORES);
             copy(ModTags.Blocks.HIHIIROKANE_ORES, ModTags.Items.HIHIIROKANE_ORES);
+            copy(ConventionalBlockTags.VILLAGER_JOB_SITES, ConventionalItemTags.VILLAGER_JOB_SITES);
 
             // Modded item tags
-            getOrCreateTagBuilder(AXES)
-                    .add(ModItems.MAKAITE_AXE, ModItems.HIHIIROKANE_AXE);
-            getOrCreateTagBuilder(HOES)
-                    .add(ModItems.MAKAITE_HOE, ModItems.HIHIIROKANE_HOE);
-            getOrCreateTagBuilder(PICKAXES)
-                    .add(ModItems.MAKAITE_PICKAXE, ModItems.HIHIIROKANE_PICKAXE);
-            getOrCreateTagBuilder(SHOVELS)
-                    .add(ModItems.MAKAITE_SHOVEL, ModItems.HIHIIROKANE_SHOVEL);
             getOrCreateTagBuilder(ConventionalItemTags.SPEARS)
                     .add(ModItems.NUE_TRIDENT);
-            getOrCreateTagBuilder(SWORDS)
-                    .add(ModItems.MAKAITE_SWORD, ModItems.HISOU_SWORD, ModItems.DEATH_SCYTHE, ModItems.ICICLE_SWORD,
-                            ModItems.HIHIIROKANE_SWORD);
             getOrCreateTagBuilder(ModTags.Items.HAMMERS)
                     .add(ModItems.MOCHI_MALLET, ModItems.MIRACLE_MALLET, ModItems.FOLDING_CHAIR);
-            getOrCreateTagBuilder(TOOLS)
-                    .addTag(ConventionalItemTags.SPEARS)
-                    .addTag(ModTags.Items.HAMMERS);
             getOrCreateTagBuilder(ConventionalItemTags.FOODS)
                     .add(ModItems.HEAVENLY_PEACH, ModItems.LAMPREY, ModItems.COOKED_LAMPREY);
             getOrCreateTagBuilder(ModTags.Items.ITEMS)
@@ -174,6 +177,12 @@ public class ModTagGenerator {
                     .add(ModItems.LAMPREY);
             getOrCreateTagBuilder(ModTags.Items.COOKED_MEAT)
                     .add(ModItems.COOKED_LAMPREY);
+            getOrCreateTagBuilder(ConventionalItemTags.RAW_ORES)
+                    .add(ModItems.RAW_MAKAITE, ModItems.HIHIIROKANE_CHUNK);
+            getOrCreateTagBuilder(ConventionalItemTags.GEMS)
+                    .add(ModItems.DRAGON_GEM);
+            getOrCreateTagBuilder(ConventionalItemTags.INGOTS)
+                    .add(ModItems.MAKAITE_INGOT, ModItems.HIHIIROKANE_INGOT);
         }
     }
 
