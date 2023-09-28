@@ -1,0 +1,38 @@
+{
+  "parent": "arcadiandream:ritual_crafting",
+  "criteria": {
+    "hihiirokane_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arcadiandream:hihiirokane_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.arcadiandream.obtain_hihiirokane_ingot.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "arcadiandream:hihiirokane_ingot"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.arcadiandream.obtain_hihiirokane_ingot.title"
+    }
+  },
+  "requirements": [
+    [
+      "hihiirokane_ingot"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

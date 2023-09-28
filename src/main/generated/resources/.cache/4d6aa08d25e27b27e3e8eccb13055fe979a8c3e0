@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-28T17:51:38.780891827	Arcadian Dream/Recipes
+// 1.20.1	2023-09-28T19:14:53.364480106	Arcadian Dream/Recipes
 c795286e21cccb329057256f4481e3c2de8f563d data/arcadiandream/advancements/recipes/combat/makaite_sword.json
 c35c8f55883a6c52a619174ea5f8ad795f4a6ac9 data/arcadiandream/recipes/circle_bullet_core.json
 8c7871cf469d35e02e4f77747b3133c5dce47702 data/arcadiandream/advancements/recipes/combat/makaite_chestplate.json
@@ -63,8 +63,8 @@ fe5145deeee11e13ca6da4bd23034a66c98f0f78 data/arcadiandream/advancements/recipes
 1a68ecac59098a30db006843eefb57b249b05c95 data/arcadiandream/recipes/ritual_crafting/death_scythe_from_ritual_crafting.json
 0a479a4dfcf584593d35cca85ab93cb9804ca3e0 data/arcadiandream/recipes/ordinary_hat.json
 63ee5e8f2c90be7702d1133c41c328ccc2b30a8a data/arcadiandream/advancements/recipes/combat/hihiirokane_sword_smithing.json
-366b344e76e6f931516ea3e0fdbef7fa28d940b8 data/arcadiandream/advancements/recipes/misc/copy_double_pattern.json
 b68ede3782de2b13870299cf8554a12b3eb8e602 data/arcadiandream/recipes/danmaku_crafting_table.json
+366b344e76e6f931516ea3e0fdbef7fa28d940b8 data/arcadiandream/advancements/recipes/misc/copy_double_pattern.json
 bd2de01d7de457e4e0e8c15ff81b5d3089473dee data/arcadiandream/recipes/point_item.json
 935595d880b22a5e478ed7cfda8e93661a274c29 data/arcadiandream/advancements/recipes/decorations/ritual_shrine.json
 2021085a2fb422616f7571d631dcbc7adeba0c19 data/arcadiandream/advancements/recipes/misc/iron_nugget_from_smelting_death_scythe.json

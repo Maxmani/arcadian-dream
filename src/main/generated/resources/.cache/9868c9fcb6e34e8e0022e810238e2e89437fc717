@@ -1,4 +1,4 @@
-// 1.20.1	2023-09-28T17:51:38.781829899	Arcadian Dream/Model Definitions
+// 1.20.1	2023-09-28T19:14:53.365360038	Arcadian Dream/Model Definitions
 78b645aeb69c74b1e03bfc622260f7f12054cbfd assets/arcadiandream/models/item/hihiirokane_chestplate_netherite_trim.json
 316632ea4c361d65fe536cf2b053a1f00b08a2d0 assets/arcadiandream/models/block/makaite_ore.json
 ec4d03e6d4d7224c579cc071f078dfe339f3e196 assets/arcadiandream/models/item/hihiirokane_helmet_copper_trim.json
@@ -147,8 +147,8 @@ dff7b8502b5db1f7522ab8013ec00df5f9d33ce7 assets/arcadiandream/models/item/mochi_
 b3bb07e4f1672cee148493163d1335fae3f014ad assets/arcadiandream/models/item/music_disc_fairy_playground.json
 b3fd83ff6c264078e0e26b32a9ac2bd489ce343f assets/arcadiandream/models/item/bomb_item.json
 124392e53fff3b4bfe6b63bb793fb6f73cb4f6d4 assets/arcadiandream/models/item/makaite_boots_amethyst_trim.json
-0b639cae8a2e791ac94ef5a3c6a553e68b4b834d assets/arcadiandream/models/item/max_point_item.json
 3c34e19811f927014367bdd77b39181ffa284e2c assets/arcadiandream/models/item/hihiirokane_leggings_iron_trim.json
+0b639cae8a2e791ac94ef5a3c6a553e68b4b834d assets/arcadiandream/models/item/max_point_item.json
 272c4115040d7835d7ce5348c00bf8531f569c4e assets/arcadiandream/models/item/circle_shot.json
 2fea0de40cdddd8a5de65b535af8404721a74e00 assets/arcadiandream/models/item/hihiirokane_ore.json
 32a5996cb506d53af01969540542e0121b7a80d1 assets/arcadiandream/models/item/danmaku_crafting_table.json

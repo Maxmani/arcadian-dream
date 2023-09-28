@@ -1,0 +1,57 @@
+{
+  "parent": "arcadiandream:obtain_hihiirokane_ingot",
+  "criteria": {
+    "hihiirokane_armor": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "arcadiandream:hihiirokane_helmet"
+            ]
+          },
+          {
+            "items": [
+              "arcadiandream:hihiirokane_chestplate"
+            ]
+          },
+          {
+            "items": [
+              "arcadiandream:hihiirokane_leggings"
+            ]
+          },
+          {
+            "items": [
+              "arcadiandream:hihiirokane_boots"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.arcadiandream.hihiirokane_armor.description"
+    },
+    "frame": "challenge",
+    "hidden": false,
+    "icon": {
+      "item": "arcadiandream:hihiirokane_chestplate",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.arcadiandream.hihiirokane_armor.title"
+    }
+  },
+  "requirements": [
+    [
+      "hihiirokane_armor"
+    ]
+  ],
+  "rewards": {
+    "experience": 200
+  },
+  "sends_telemetry_event": true
+}

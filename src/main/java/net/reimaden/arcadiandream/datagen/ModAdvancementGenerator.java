@@ -186,6 +186,27 @@ public class ModAdvancementGenerator extends FabricAdvancementProvider {
                     .criterion("kills_accumulated", InventoryChangedCriterion.Conditions.items(ItemPredicate.Builder.create()
                             .items(ModItems.MOCHI_MALLET).nbt(getKillsNbt()).build()))
                     .build(consumer, makeName("mochi_mallet_kills"));
+
+            Advancement obtainHihiirokaneIngot = Advancement.Builder.create()
+                    .parent(ritualCrafting)
+                    .display(makeDisplay(AdvancementFrame.TASK, ModItems.HIHIIROKANE_INGOT, "obtain_hihiirokane_ingot"))
+                    .criterion(ModItems.HIHIIROKANE_INGOT.toString(), InventoryChangedCriterion.Conditions.items(ModItems.HIHIIROKANE_INGOT))
+                    .build(consumer, makeName("obtain_hihiirokane_ingot"));
+
+            Advancement hihiirokaneArmor = Advancement.Builder.create()
+                    .parent(obtainHihiirokaneIngot)
+                    .display(makeDisplay(AdvancementFrame.CHALLENGE, ModItems.HIHIIROKANE_CHESTPLATE, "hihiirokane_armor"))
+                    .criterion("hihiirokane_armor", InventoryChangedCriterion.Conditions.items(ModItems.HIHIIROKANE_HELMET,
+                            ModItems.HIHIIROKANE_CHESTPLATE, ModItems.HIHIIROKANE_LEGGINGS, ModItems.HIHIIROKANE_BOOTS))
+                    .rewards(AdvancementRewards.Builder.experience(200))
+                    .build(consumer, makeName("hihiirokane_armor"));
+
+            Advancement obtainHihiirokaneHoe = Advancement.Builder.create()
+                    .parent(obtainHihiirokaneIngot)
+                    .display(makeDisplay(AdvancementFrame.CHALLENGE, ModItems.HIHIIROKANE_HOE, "obtain_hihiirokane_hoe"))
+                    .criterion(ModItems.HIHIIROKANE_HOE.toString(), InventoryChangedCriterion.Conditions.items(ModItems.HIHIIROKANE_HOE))
+                    .rewards(AdvancementRewards.Builder.experience(150))
+                    .build(consumer, makeName("obtain_hihiirokane_hoe"));
         }
 
         private static NbtCompound densityNbt() {
